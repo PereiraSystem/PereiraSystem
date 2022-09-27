@@ -1,0 +1,3883 @@
+
+
+
+(defconst gl-max-lumber-camps-qty 1)
+(defconst gl-max-mining-camps-qty 2)
+
+(defrule
+    (true)
+=>    
+    (set-goal gl-max-lumber-camps-qty 3)
+    (set-goal gl-max-mining-camps-qty 2)
+    (up-chat-data-to-self "LUMBER CAMPS MAX QTY = %d" g: gl-max-lumber-camps-qty)
+    (up-chat-data-to-self "MINING CAMPS MAX QTY = %d" g: gl-max-mining-camps-qty)
+    (disable-self)	    
+)
+
+(defrule(true)=>(enable-timer 1 300)(disable-self)) ;1 is timer number, 300 is timer value in seconds
+
+(defrule
+	(timer-triggered 1)
+=>
+	(chat-to-player my-player-number "MAXIMUM CAMPS INCREASED!")
+	(disable-timer 1)
+    (enable-timer 1 300)    
+    (up-modify-goal gl-max-lumber-camps-qty c:+ 1) ;x12 times per hour
+    (up-modify-goal gl-max-mining-camps-qty c:+ 1)
+    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (up-chat-data-to-self "LUMBER CAMPS MAX QTY = %d" g: gl-max-lumber-camps-qty)
+    (up-chat-data-to-self "MINING CAMPS MAX QTY = %d" g: gl-max-mining-camps-qty)	
+)
+
+(defrule(true)=>(enable-timer 2 1800)(disable-self)) 
+(defrule
+	(timer-triggered 2)
+    (current-age == imperial-age)
+=>
+	(chat-to-player my-player-number "DELETING IDLE VILLAGERS!")
+	(disable-timer 2)
+    (enable-timer 2 600)    
+    (up-delete-idle-units idle-type-villager)
+)
+
+
+(defrule 
+    (cc-players-unit-type-count any-ally villager  > 0)
+=>
+    (up-modify-sn sn-maximum-town-size c:+ 8)
+    (chat-to-player my-player-number "WE HAVE ALLIES, TOWN SIZE +8")
+    (disable-self)
+)
+
+; 1 CONSTANTES
+
+(load "Constants\Constants for AoFE")
+
+#load-if-defined POPULATION-CAP-150
+
+    (defconst maximoCasasAntesBorrar 21)    
+    (defconst maximoCasasNecesarias 30)
+    (defconst cantGranjasImperial 20)
+
+    (defconst maxCivilesEdadMedia 15)
+    (defconst maxCivilesEdadFeudal 17)
+    (defconst maxCivilesEdadCastillos 53)
+    (defconst maxCivilesEdadImperial 85)
+
+    (defconst cantCarretas 30)
+    (defconst cantBarcosComercio 20)
+
+    (defconst cantLancerosMinima 7)
+    (defconst cantLanceros 60)
+    (defconst cantMilicia 45)
+
+    (defconst cantArqueros 40)
+    (defconst cantJavalineros 30)
+    (defconst cantArquerosCaballo 30)
+    (defconst cantMosqueteros 30)
+
+    (defconst cantCaballerosBaja 5)
+    (defconst cantCaballeros 40)
+    (defconst cantScoutsBaja 8)
+    (defconst cantScouts 40)
+
+    (defconst cantMonjes 5)
+    (defconst cantMonjesAlta 16)
+
+    (defconst cantArietesBaja 2)
+    (defconst cantArietes 5)
+    (defconst cantEscorpiones 8)
+    (defconst cantCatapultas 8)
+    (defconst cantBombardos 8)
+
+    (defconst cantUnicosBaja 10)
+    (defconst cantUnicos 40)
+    (defconst cantTrebuchets 3)
+    (defconst cantTrebuchetsAlta 8)
+
+    (defconst cantBarcoNormal 20)
+    (defconst cantBarcoCanyones 20)
+    (defconst cantBarcoFuego 20)
+    (defconst cantBarcoDemolicion 20)
+    (defconst cantBarcoEspecial 20)
+
+#end-if
+
+#load-if-defined POPULATION-CAP-175
+
+    (defconst maximoCasasAntesBorrar 21)    
+    (defconst maximoCasasNecesarias 30)
+    (defconst cantGranjasImperial 20)
+
+    (defconst maxCivilesEdadMedia 23)
+    (defconst maxCivilesEdadFeudal 43)
+    (defconst maxCivilesEdadCastillos 63)
+    (defconst maxCivilesEdadImperial 85)
+
+    (defconst cantCarretas 30)
+    (defconst cantBarcosComercio 20)
+
+    (defconst cantLancerosMinima 8)
+    (defconst cantLanceros 60)
+    (defconst cantMilicia 45)
+
+    (defconst cantArqueros 40)
+    (defconst cantJavalineros 30)
+    (defconst cantArquerosCaballo 30)
+    (defconst cantMosqueteros 30)
+
+    (defconst cantCaballerosBaja 5)
+    (defconst cantCaballeros 40)
+    (defconst cantScoutsBaja 8)
+    (defconst cantScouts 40)
+
+    (defconst cantMonjes 3)
+    (defconst cantMonjesAlta 16)
+
+    (defconst cantArietesBaja 2)
+    (defconst cantArietes 5)
+    (defconst cantEscorpiones 8)
+    (defconst cantCatapultas 8)
+    (defconst cantBombardos 8)
+
+    (defconst cantUnicosBaja 10)
+    (defconst cantUnicos 40)
+    (defconst cantTrebuchets 3)
+    (defconst cantTrebuchetsAlta 8)
+
+    (defconst cantBarcoNormal 20)
+    (defconst cantBarcoCanyones 20)
+    (defconst cantBarcoFuego 20)
+    (defconst cantBarcoDemolicion 20)
+    (defconst cantBarcoEspecial 20)
+
+#end-if
+
+#load-if-defined POPULATION-CAP-200
+
+    (defconst maximoCasasAntesBorrar 21)    
+    (defconst maximoCasasNecesarias 30)
+    (defconst cantGranjasImperial 20)
+
+    (defconst maxCivilesEdadMedia 23)
+    (defconst maxCivilesEdadFeudal 43)
+    (defconst maxCivilesEdadCastillos 63)
+    (defconst maxCivilesEdadImperial 85)
+
+    (defconst cantCarretas 30)
+    (defconst cantBarcosComercio 20)
+
+    (defconst cantLancerosMinima 7)
+    (defconst cantLanceros 60)
+    (defconst cantMilicia 45)
+
+    (defconst cantArqueros 40)
+    (defconst cantJavalineros 30)
+    (defconst cantArquerosCaballo 30)
+    (defconst cantMosqueteros 30)
+
+    (defconst cantCaballerosBaja 5)
+    (defconst cantCaballeros 40)
+    (defconst cantScoutsBaja 8)
+    (defconst cantScouts 40)
+
+    (defconst cantMonjes 3)
+    (defconst cantMonjesAlta 16)
+
+    (defconst cantArietesBaja 2)
+    (defconst cantArietes 5)
+    (defconst cantEscorpiones 8)
+    (defconst cantCatapultas 8)
+    (defconst cantBombardos 8)
+
+    (defconst cantUnicosBaja 10)
+    (defconst cantUnicos 40)
+    (defconst cantTrebuchets 3)
+    (defconst cantTrebuchetsAlta 8)
+
+    (defconst cantBarcoNormal 20)
+    (defconst cantBarcoCanyones 20)
+    (defconst cantBarcoFuego 20)
+    (defconst cantBarcoDemolicion 20)
+    (defconst cantBarcoEspecial 20)
+
+#end-if
+
+; 2 NUMEROS ESTRATEGICOS
+; EXPLORAR
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-total-number-explorers 1) 
+    (set-strategic-number sn-number-explore-groups 1)  
+    (set-strategic-number sn-maximum-gaia-attack-response 5)
+    (disable-self)
+)
+
+(defrule 
+    (current-age == feudal-age)
+=>
+    (set-strategic-number sn-total-number-explorers 2) 
+    (set-strategic-number sn-number-explore-groups 2)
+    (disable-self)
+)
+
+(defrule 
+    (hold-relics)
+=>
+    (set-strategic-number sn-total-number-explorers 0) 
+    (set-strategic-number sn-number-explore-groups 0)
+    (disable-self)
+)
+
+; CAZAR
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-enable-boar-hunting 0)
+    (set-strategic-number sn-minimum-boar-lure-group-size 3)
+    (set-strategic-number sn-minimum-boar-hunt-group-size 6)
+    (set-strategic-number sn-minimum-number-hunters 6)
+    (disable-self)
+)
+
+(defrule 
+    (unit-type-count-total villager > 7)
+=>
+    (set-strategic-number sn-enable-boar-hunting 1)
+    (disable-self)
+)
+
+; CONSTRUIR
+(defrule(true)=>(set-strategic-number sn-initial-exploration-required 0)(disable-self))
+
+
+; PERMITIR MURALLA PREVIAMENTE
+(defrule(true)=>(enable-wall-placement 1)(disable-self))
+
+
+(defrule(civ-selected gothic)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
+
+
+
+; CONSTRUCTORES EXTRA
+(defrule
+    (true)
+=>
+    (up-assign-builders c: monastery c:+ 3)
+    (up-assign-builders c: blacksmith c:+ 1)
+    (up-assign-builders c: university c:+ 1)
+    (up-assign-builders c: siege-workshop c:+ 1)
+    (up-assign-builders c: bombard-tower c:+ 1) 
+    (up-assign-builders c: watch-tower c:+ 1)
+    (up-assign-builders c: guard-tower c:+ 1)          
+    (up-assign-builders c: keep c:+ 1)
+    (up-assign-builders c: castle c:+ 6)
+    (up-assign-builders c: town-center c:+ 3)    
+    (disable-self)
+)
+
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-minimum-town-size 8)
+    (set-strategic-number sn-maximum-town-size 10)
+    (disable-self)
+)
+
+; DISTANCIAS RECURSOS
+; CANCELAR MINA SI PELIGROSO
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-defer-dropsite-update 1)
+    (disable-self)
+)
+
+; ARBOLES REQUERIDOS
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-dropsite-separation-distance 3) ; NF
+    (set-strategic-number sn-allow-adjacent-dropsites 0) ; CAMBIA CON 3 CAMPAMENTOS
+    (set-strategic-number sn-required-forest-tiles 5)
+    (disable-self)
+)
+
+; CAMP MAX DISTANCE INICIO (AUMENTARAN SOLOS AL CONSTRUIR)
+(defrule 
+    (true)
+=>  
+    (set-strategic-number sn-camp-max-distance 11); 
+    (set-strategic-number sn-mill-max-distance 11)  
+    (disable-self)
+)
+
+; DROP DISTANCE INICIO
+(defrule 
+    (true)
+=>  
+    (set-strategic-number sn-maximum-hunt-drop-distance 16)
+    (set-strategic-number sn-maximum-food-drop-distance 7)
+    (set-strategic-number sn-maximum-wood-drop-distance 20)
+    (set-strategic-number sn-maximum-gold-drop-distance 0)
+    (set-strategic-number sn-maximum-stone-drop-distance 0)
+    (disable-self)
+)
+
+
+; DROP DISTANCE FEUDAL
+(defrule 
+    (current-age == feudal-age)
+=>  
+    (set-strategic-number sn-maximum-wood-drop-distance 11)
+    (set-strategic-number sn-maximum-food-drop-distance 9)    
+    (set-strategic-number sn-maximum-gold-drop-distance 8)
+    (set-strategic-number sn-maximum-stone-drop-distance 0)    
+    (disable-self)
+)
+
+; DROP DISTANCE CASTILLOS
+(defrule 
+    (current-age == castle-age)
+=>  
+    (set-strategic-number sn-enable-boar-hunting 0); no more hunting
+    (set-strategic-number sn-minimum-number-hunters 0)
+    (set-strategic-number sn-maximum-hunt-drop-distance 0)
+    (set-strategic-number sn-maximum-wood-drop-distance 10) 
+    (set-strategic-number sn-maximum-gold-drop-distance 8)
+    (set-strategic-number sn-maximum-stone-drop-distance 8)    
+    (disable-self)
+)
+
+; MADERA MODO INDUSTRIAL
+(defrule 
+    (building-type-count-total lumber-camp > 3)
+=>  
+    (set-strategic-number sn-maximum-wood-drop-distance 3)
+    (up-chat-data-to-self "+3 LUMBER CAMPS. ADJACENT DROPSITES ALLOWED.: MAX WOOD DROP DISTANCE = %d" s: sn-maximum-wood-drop-distance)
+    (set-strategic-number sn-required-forest-tiles 8)
+    (set-strategic-number sn-allow-adjacent-dropsites 1)     
+    (disable-self)
+)
+
+; PORCENTAJE OBREROS QUE CONSTRUYEN
+(defrule
+    (current-age == dark-age)
+=>
+    (set-strategic-number sn-percent-civilian-explorers 0)
+    (set-strategic-number sn-percent-civilian-builders 80)
+    (set-strategic-number sn-cap-civilian-builders 100)
+    (disable-self)
+)    
+
+; PORCENTAJE OBREROS EN CADA RECURSO
+
+(defrule
+    (current-age == dark-age)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 65)
+    (set-strategic-number sn-wood-gatherer-percentage 35)
+    (set-strategic-number sn-gold-gatherer-percentage 0)
+    (set-strategic-number sn-stone-gatherer-percentage 0)
+    (disable-self)
+)
+
+(defrule
+    (current-age == feudal-age)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 54)
+    (set-strategic-number sn-wood-gatherer-percentage 32)
+    (set-strategic-number sn-gold-gatherer-percentage 14)
+    (set-strategic-number sn-stone-gatherer-percentage 0)
+    (disable-self)
+)
+
+(defrule
+    (current-age == castle-age)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 66)
+    (set-strategic-number sn-wood-gatherer-percentage 18)
+    (set-strategic-number sn-gold-gatherer-percentage 14)
+    (set-strategic-number sn-stone-gatherer-percentage 6)
+    (disable-self)
+)
+
+(defrule
+    (current-age == castle-age)(building-type-count-total monastery > 0)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 74)
+    (set-strategic-number sn-wood-gatherer-percentage 8)
+    (set-strategic-number sn-gold-gatherer-percentage 10)
+    (set-strategic-number sn-stone-gatherer-percentage 8)
+    (chat-to-player my-player-number "MONASTERY BUILT: SENDING MORE VILLAGERS FOR FOOD")
+    (disable-self)
+)
+
+(defrule
+    (current-age == castle-age)(hold-relics)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 78)
+    (set-strategic-number sn-wood-gatherer-percentage 12)
+    (set-strategic-number sn-gold-gatherer-percentage 2)
+    (set-strategic-number sn-stone-gatherer-percentage 8)
+    (chat-to-player my-player-number "CASTLE AGE WITH ALL RELICS - SENDING LESS VILLAGERS FOR GOLD")    
+    (disable-self)
+)
+
+(defrule
+    (current-age == imperial-age)(not(hold-relics))
+=>
+    (set-strategic-number sn-food-gatherer-percentage 74)
+    (set-strategic-number sn-wood-gatherer-percentage 8)
+    (set-strategic-number sn-gold-gatherer-percentage 11)
+    (set-strategic-number sn-stone-gatherer-percentage 7)
+(chat-to-player my-player-number "IMPERIAL AGE WITH NO RELICS - SENDING MORE VILLAGERS FOR GOLD")     
+    (disable-self)
+)
+
+(defrule
+    (current-age == imperial-age)(hold-relics)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 74)
+    (set-strategic-number sn-wood-gatherer-percentage 10)
+    (set-strategic-number sn-gold-gatherer-percentage 9)
+    (set-strategic-number sn-stone-gatherer-percentage 7)
+    (chat-to-player my-player-number "IMPERIAL AGE WITH ALL RELICS - SENDING LESS VILLAGERS FOR GOLD")     
+    (disable-self)
+)
+
+; COMBATE                               
+; DEFENSA                      
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-allow-civilian-defense 2)   
+    (set-strategic-number sn-defense-distance 36)     
+    (disable-self)
+)
+; ATAQUE                               
+
+(defrule 
+    (true)
+=>
+    (set-difficulty-parameter ability-to-dodge-missiles 0)
+	(set-difficulty-parameter ability-to-maintain-distance 0)
+    (set-strategic-number sn-gather-idle-soldiers-at-center 1)
+)
+
+(defrule 
+    (current-age == imperial-age)
+    (building-type-count castle > 0)
+    (military-population > 70)
+    (food-amount > 1300)
+=>
+    (set-strategic-number sn-number-attack-groups 1)
+    (attack-now)
+)
+
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-ignore-attack-group-under-attack 0)        
+    (set-strategic-number sn-enable-patrol-attack 1)
+    (set-strategic-number sn-percentage-explore-exterminators 100)   
+    (set-strategic-number sn-disable-defend-groups 0)  
+    (set-strategic-number sn-relic-return-distance 999)
+    (set-strategic-number sn-allow-civilian-offense 1)  
+    ;(set-strategic-number sn-number-civilian-militia 100) 
+	(set-strategic-number sn-garrison-rams 1)   	
+    (disable-self)
+)
+
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-group-form-distance 45)
+    ;(set-strategic-number sn-attack-group-gather-spacing 3)    
+    (set-strategic-number sn-minimum-attack-group-size 1)
+    (set-strategic-number sn-maximum-attack-group-size 150)
+    (set-strategic-number sn-number-attack-groups 0)  
+    (set-strategic-number sn-percent-attack-soldiers 100)           
+    (disable-self)
+)
+
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-minimum-boat-attack-group-size 5)
+    (set-strategic-number sn-maximum-boat-attack-group-size 18)
+    (set-strategic-number sn-free-siege-targeting 0)
+    (set-strategic-number sn-enemy-sighted-response-distance 45)    
+    (set-strategic-number sn-number-boat-attack-groups 1) 
+    (disable-self)
+)
+
+; ESCOGER OBJETIVO ATAQUE    
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-wall-targeting-mode 1)
+    (set-strategic-number sn-attack-intelligence 1)
+    (set-strategic-number sn-target-evaluation-distance 10)
+    (set-strategic-number sn-coop-share-attacking 1)
+    (set-strategic-number sn-target-evaluation-boat 10)    
+    (disable-self)
+)
+
+; 3 MEJORAS
+; CAMBIO DE ERA
+(defrule
+    (can-research feudal-age)
+    (unit-type-count-total villager > 11)
+=> 
+    (research feudal-age) 
+)
+
+(defrule
+    (can-research castle-age)
+    (civilian-population > 16)
+=>
+    (research castle-age)    
+)
+
+(defrule
+    (can-research imperial-age)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)    
+=>
+    (research imperial-age) 
+)
+
+; LEnADORES
+(defrule(can-research ri-double-bit-axe)(research-completed ri-wheel-barrow)=>(research ri-double-bit-axe))
+(defrule(can-research ri-bow-saw)(research-completed ri-hand-cart)=>(research ri-bow-saw))
+(defrule(can-research ri-two-man-saw)=>(research ri-two-man-saw))
+
+; CENTRO CIUDAD       
+; MEJORAR ALDEANOS
+
+(defrule
+    (can-research ri-loom)
+    (or
+        (current-age >= castle-age)
+        (gold-amount > 250)
+    )
+=>
+    (research ri-loom)
+)
+
+(defrule
+    (can-research ri-wheel-barrow)(wood-amount > 100)
+=>
+    (research ri-wheel-barrow)
+)
+
+(defrule
+    (can-research ri-hand-cart )(building-type-count-total monastery > 0)
+=>
+    (research ri-hand-cart )
+)
+
+; MEJORAR VISION
+(defrule
+    (can-research ri-town-watch )
+    (food-amount > 1600)
+=>
+    (research ri-town-watch )
+)
+
+(defrule
+    (can-research ri-town-patrol )
+    (food-amount > 2500)
+=>
+    (research ri-town-patrol )
+)
+
+; MARKET
+(defrule
+    (can-research ri-cartography)
+    (current-age >= castle-age)
+=>
+    (research ri-cartography)
+)
+
+(defrule
+    (can-research ri-caravan )
+    (or
+        (unit-type-count-total trade-cart > 0)
+    	(unit-type-count-total trade-cog > 0)
+    )
+=>
+    (research ri-caravan )
+)
+
+(defrule
+    (can-research ri-guilds )
+=>
+    (research ri-guilds)
+)
+
+(defrule
+    (can-research ri-coinage )(cc-players-building-type-count any-ally market > 0)
+=>
+    (research ri-coinage)
+)
+
+(defrule
+    (can-research ri-banking )(cc-players-building-type-count any-ally market > 0)
+=>
+    (research ri-banking)
+)
+
+; GRANJAS
+(defrule
+    (can-research ri-horse-collar)(wood-amount > 101)
+    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)
+=>
+    (research ri-horse-collar)
+)
+
+(defrule
+    (can-research ri-heavy-plow)(wood-amount > 101)
+ 	(research-completed ri-hand-cart) 
+ 	(research-completed ri-bow-saw)   
+=>
+    (research ri-heavy-plow)
+)
+
+(defrule
+    (can-research ri-crop-rotation)
+=>
+    (research ri-crop-rotation)
+)
+
+; MINAS
+ (defrule
+    (can-research ri-gold-mining)(wood-amount > 100)(current-age >= castle-age)
+    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
+=>
+    (research ri-gold-mining)
+)
+
+(defrule
+    (can-research ri-gold-shaft-mining)(wood-amount > 100)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+=>
+    (research ri-gold-shaft-mining)
+)
+
+(defrule
+  	(current-age >= castle-age)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+    (wood-amount > 100)  	
+    (can-research ri-stone-mining)
+=>
+    (research ri-stone-mining)
+)
+
+(defrule
+    (can-research ri-stone-shaft-mining)(wood-amount > 100)
+=>
+    (research ri-stone-shaft-mining)
+)
+
+
+; TECNOLOGIA UNICA
+
+; AOK
+; BIZANTINOS
+(defrule
+    (civ-selected byzantine)(unit-type-count-total fire-ship-line > 0)
+    (can-research my-second-unique-research )
+=>
+    (research my-second-unique-research) 
+)
+
+(defrule
+    (can-research my-unique-research)
+    (civ-selected byzantine)(unit-type-count-total my-unique-unit-line > 0)
+=>
+    (research my-unique-research)
+    (chat-to-player my-player-number "CATAFRACTROFICO")
+    (disable-self)
+)
+
+; CELTAS
+(defrule
+    (can-research ri-stronghold)
+    (or
+        (building-type-count-total castle > 0)
+        (building-type-count-total watch-tower-line > 0)    
+    )
+    (or
+        (current-age == imperial-age)
+        (town-under-attack)
+    )
+=>
+    (research ri-stronghold)(chat-to-player my-player-number "TORRES Y CASTILLOS DISPARAN 25% MÁS RÁPIDO!") 
+)
+
+(defrule
+    (can-research my-unique-research)
+    (civ-selected celtic)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "ARMAS DE ASEDIO +40% HP!")
+)
+
+; CHINOS
+(defrule
+    (civ-selected chinese)
+    (or
+        (or
+            (building-type-count-total watch-tower-line > 0)
+            (building-type-count-total bombard-tower > 0)
+        )
+        (building-type-count-total stone-wall-line > 0)
+    )
+    (can-research my-second-unique-research )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "MUROS Y TORRES +30% HP!") 
+)
+
+(defrule
+    (civ-selected chinese)
+    (can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "ARQUEROS ÚNICOS +2 ATAQUE, ESCORPIONES +4 ATAQUE!")
+)
+
+; FRANCOS ESTA AL REVES
+(defrule
+    (civ-selected frankish)(unit-type-count-total my-unique-unit-line > 0)
+    (can-research my-unique-research )
+=>
+    (research my-unique-research)(chat-to-player my-player-number "LANZADORES DE HACHA +1 ALCANCE!") 
+)
+
+(defrule
+    (civ-selected frankish)
+    (can-research my-second-unique-research )
+=>
+    (research my-second-unique-research)
+    (chat-to-player my-player-number "ESTABLOS PRODUCEN 40% MÁS RÁPIDO!") 
+)
+
+; GODOS AL REVES
+(defrule
+    (civ-selected gothic)
+    (can-research my-unique-research)
+    (current-age == imperial-age)
+=>
+    (research  my-unique-research)(chat-to-player my-player-number "CREA HUSCARLES EN LAS BARRACAS!") 
+)
+
+(defrule
+    (civ-selected gothic)
+    (can-research my-second-unique-research)
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "BARRACAS PRODUCEN 100% MÁS RÁPIDO!") 
+)
+
+; INGLESES
+(defrule
+    (civ-selected briton)
+    (can-research my-second-unique-research )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "ARQUEROS +1 ALCANCE, TORRES + 2 ATAQUE!") 
+)
+
+(defrule
+    (can-research my-unique-research)
+    (civ-selected briton)(unit-type-count-total trebuchet > 0)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "TREBUCHETS HACEN DAÑO DE ÁREA!")
+)
+
+; JAPONESES
+(defrule
+    (can-research 484)
+    (building-type-count-total watch-tower-line > 2)
+=>
+    (research 484 )(chat-to-player my-player-number "TORRES DISPARAN FLECHAS EXTRA!") 
+)
+
+(defrule
+    (civ-selected japanese)(can-research my-unique-research)(unit-type-count-total trebuchet > 0)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "TREBUCHETS RÁPIDOS!")
+)
+
+; MONGOLES
+(defrule
+    (can-research 487)
+=>
+    (research 487)(chat-to-player my-player-number "PODEMOS VIVIR SIN CASAS COMO LOS HUNOS!")
+)
+
+(defrule
+    (civ-selected mongol)(can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "MÁQUINAS DE ASEDIO 50% MÁS RÁPIDAS!") 
+)
+
+; PERSAS
+(defrule
+    (civ-selected persian)
+    (can-research my-second-unique-research)
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "ARQUEROS NO CUESTAN ORO!")  
+)
+
+(defrule
+    (civ-selected persian)(can-research my-unique-research)
+    (unit-type-count-total my-unique-unit-line > 0)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "ELEFANTES 30% MÁS RÁPIDOS!")  
+)
+
+; SARRACENOS
+(defrule
+    (can-research ri-madrasah)(unit-type-count monk > 0)
+=>
+    (research ri-madrasah)(chat-to-player my-player-number "MONJES DEVUELVEN 33% ORO AL MORIR!")
+)
+
+(defrule
+    (can-research my-unique-research)
+    (or
+        (unit-type-count my-unique-unit-line > 2)
+        (unit-type-count camel-line > 2)  
+    )
+    (civ-selected saracen)
+=>
+    (research my-unique-research)
+    (chat-to-player my-player-number "LA ESQUINA ES EL SITIO TIPICO DEL CAMELLO PERO YO LAS COSTUMBRES ME LAS PASO POR LOS HUEVOS. CAMELLOS +20% HP!")
+)   
+
+; TEUTONES
+(defrule
+    (civ-selected teutonic)(can-research my-second-unique-research )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "MÁQUINAS DE ASEDIO +4 DEFENSA CUERPO A CUERPO!") 
+)
+
+(defrule
+    (civ-selected teutonic)(can-research my-unique-research)
+    (building-type-count-total castle > 0)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "CASTILLOS + 3 ALCANCE. INFANTERÍA GUARNECIDA DISPARA FLECHAS!")  
+)
+
+; TURCOS
+(defrule
+    (can-research ri-sipahi)(unit-type-count-total cavalry-archer > 0)
+=>
+    (research ri-sipahi)(chat-to-player my-player-number "ARQUEROS A CABALLO +20 HP!")  
+)
+
+(defrule
+    (civ-selected turkish)(can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "CAÑONES DE TODO TIPO +3 ALCANCE!")  
+)
+
+; VIKINGOS
+(defrule
+    (can-research ri-chieftains)
+=>
+    (research ri-chieftains)(chat-to-player my-player-number "INFANTERÍA CAUSA DAÑO EXTRA A CABALLERÍA!")  
+)
+
+(defrule
+    (civ-selected viking)(can-research my-unique-research)(unit-type-count-total my-unique-unit-line > 0)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "BERSERKERS SE REGENERAN!")  
+)
+
+; AOC
+; AZTECAS
+(defrule
+    (can-research ri-atlatl)
+    (or
+        (unit-type-count-total skirmisher-line > 0)
+        (or
+            (unit-type-count-total genitour > 0)
+            (unit-type-count-total elite-genitour > 0)
+        )     
+    )
+=>
+    (research ri-atlatl)(chat-to-player my-player-number "JAVALINAS +1 ATAQUE +1 ALCANCE")    
+)
+
+(defrule
+    (civ-selected aztec)
+    (can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "INFANTERIA +4 ATAQUE")   
+)
+
+; COREANOS
+(defrule
+    (civ-selected korean)
+    (building-type-count-total watch-tower-line > 3)
+    (can-research my-second-unique-research )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "TORRES +2 ALCANCE!")  
+)
+
+(defrule
+    (civ-selected korean)
+    (unit-type-count-total mangonel-line > 0)
+    (can-research my-unique-research )
+=>
+    (research my-unique-research)(chat-to-player my-player-number "CATAPULTAS +1 RANGO!")  
+)
+
+; ESPANYOLES
+(defrule
+    (can-research ri-inquisition)
+    (current-age == imperial-age)
+=>
+    (research ri-inquisition)(chat-to-player my-player-number "CONVERTIREMOS AL HEREJE!") 
+)
+
+(defrule
+    (civ-selected spanish)
+    (can-research my-unique-research)
+    (research-completed ri-sappers)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "QUE NO VA SABE NI ONDE SA METÍO!")  
+)
+
+; HUNOS
+(defrule
+    (can-research 483) ;saqueadores
+=>
+    (research 483)(chat-to-player my-player-number "CREAR TARCANOS EN ESTABLOS!") 
+)
+
+(defrule
+    (civ-selected hun)
+    (can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "RELIQUIAS ENEMIGAS PRODUCEN LA MITAD!")   
+)
+
+; MAYAS
+(defrule
+    (civ-selected mayan)(unit-type-count-total skirmisher-line > 0) 
+    (can-research my-second-unique-research)
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "JAVALINEROS X2 PROYECTILES!")  
+)
+
+(defrule
+    (civ-selected mayan)(unit-type-count-total eagle-warrior-line > 0)  
+    (can-research my-unique-research )
+=>
+    (research my-unique-research)(chat-to-player my-player-number "GUERREROS ÁGUILA +40 HP!")  
+)
+
+; FORGOTTEN
+
+; ESLAVOS
+(defrule
+    (can-research ri-orthodoxy )
+    (current-age == imperial-age)
+=>
+    (research ri-orthodoxy)(chat-to-player my-player-number "MONJES +3 DEFENSA CUERPO A CUERPO, +3 DEFENSA A DISTANCIA!")  
+)
+
+(defrule
+    (can-research ri-druzhina)
+=>
+    (research ri-druzhina)(chat-to-player my-player-number "INFANTERÍA ATACA CON ÁREA DE EFECTO!")  
+)
+
+; HUNGAROS
+(defrule
+    (civ-selected magyar)
+    (can-research my-second-unique-research)
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "UNIDAD ÚNICA YA NO CUESTA ORO!")  
+)
+
+(defrule
+    (civ-selected magyar)(unit-type-count-total cavalry-archer-line > 0)  
+    (can-research my-unique-research )
+=>
+    (research my-unique-research)(chat-to-player my-player-number "ARQUEROS A CABALLO +1 ATAQUE, +1 ALCANCE!")  
+)
+
+; INCAS
+(defrule
+    (civ-selected incan)(can-research my-second-unique-research )
+    (or
+        (unit-type-count-total skirmisher > 0)    
+        (unit-type-count-total slinger > 0)        
+    )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "JAVALINEROS Y HONDEROS SIN ALCANCE MÍNIMO!")    
+)
+
+(defrule
+    (civ-selected incan)(can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "UNIDADES UNICAS, HONDEROS Y GUERREROS ÁGUILA +1 DEFENSA CUERPO A CUERPO, + 2 DEFENSA A DISTANCIA!")  
+)
+
+; INDIOS
+(defrule
+    (civ-selected indian)
+    (can-research my-second-unique-research )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "INGRESOS DE ORO 10% MÁS RÁPIDOS!")  
+)
+
+(defrule
+    (civ-selected indian)(can-research my-unique-research) ; rango
+    (current-age == imperial-age)
+    (unit-type-count-total hand-cannoneer > 0)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "MOSQUETEROS +1 ALCANCE!")  
+)
+
+; ITALIANOS
+(defrule
+    (civ-selected italian)
+    (can-research my-second-unique-research )
+    (current-age == imperial-age)
+    (or
+        (or
+            (unit-type-count-total condottiero > 0)
+            (unit-type-count-total archer-line > 0)
+        )    
+        (unit-type-count-total my-unique-unit-line > 0)
+    )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "ARQUEROS A PIE Y CONDOTTIERO + 1 ARMADURA CUERPO A CUERPO, +1 ARMADURA A DISTANCIA!")  
+)
+
+(defrule
+    (civ-selected italian)
+    (can-research my-unique-research) ; ruta de la seda
+    (or
+        (unit-type-count-total trade-cart > 0)
+        (unit-type-count-total trade-cog > 0)
+    )
+=>
+    (research my-unique-research)(chat-to-player my-player-number "UNIDADES COMERCIALES A MITAD DE PRECIO!")  
+)
+
+; PORTUGUESES
+(defrule
+    (can-research ri-carrack)
+    (current-age == imperial-age)(building-type-count-total dock > 0)
+=>
+    (research ri-carrack)  (chat-to-player my-player-number "BARCOS +1 ARMADURA CUERPO A CUERPO, 1 ARMADURA A DISTANCIA!") 
+)
+
+(defrule
+    (can-research ri-arquebus )
+    (current-age == imperial-age)
+=>
+    (research ri-arquebus) (chat-to-player my-player-number "UNIDADES DE PÓLVORA TIENEN MÁS PUNTERÍA!")
+)
+
+; AFRICAN KINGDOMS        
+; MALIES
+(defrule
+    (can-research ri-tigui )
+    (current-age == imperial-age) (building-type-count-total town-center > 1)
+=>
+    (research ri-tigui)(chat-to-player my-player-number "CENTROS DE CIUDAD DISPARAN SOLOS!") 
+)
+
+(defrule
+    (can-research my-unique-research)(civ-selected malian)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "CABALLERÍA +5 ATAQUE!")
+)
+
+;ETIOPES
+(defrule
+    (can-research 574); ethiop, royal
+    (unit-type-count-total my-unique-unit-line > 0)
+=>
+    (research 574)(chat-to-player my-player-number "UNIDADES ÚNICAS SE PRODUCEN MÁS RÁPIDO!") 
+)
+
+(defrule
+    (can-research my-unique-research)
+    (civ-selected ethiopian)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "AUMENTA ÁREA DE DAÑO DE ARMAS DE ASEDIO!")
+)
+
+; BEREBERES
+(defrule
+    (can-research 578) 
+    (building-type-count-total castle > 1);KASBAH
+=>
+    (research 578) 
+)
+
+(defrule
+    (can-research my-unique-research)
+    (or
+        (unit-type-count-total my-unique-unit-line > 0)
+        (unit-type-count-total camel-line > 0)  
+    )
+    (civ-selected berbers)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "CAMELLOS REGENERAN VIDA!")
+)
+
+; RISE OF THE RAJAS   
+; BIRMANOS
+(defrule
+    (can-research my-second-unique-research )
+    (civ-selected burmese)
+    (unit-type-count-total battle-elephant-line > 0)
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "ELEFANTES +1 DEFENSA CUERPO A CUERPO, +2 DEFENSA A DISTANCIA!") 
+)
+
+(defrule
+    (can-research my-unique-research)
+    (civ-selected burmese)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "CABALLERÍA +6 ATAQUE CONTRA EDIFICIOS!")
+)
+
+; KHMER
+(defrule
+    (civ-selected khmer)(can-research my-second-unique-research )
+    (unit-type-count-total battle-elephant-line > 0)
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "ELEFANTES +3 ATAQUE!") 
+)
+
+(defrule
+    (civ-selected khmer)(can-research my-unique-research)
+    (or(unit-type-count-total my-unique-unit-line > 0)(unit-type-count-total scorpion-line > 0))
+=>
+    (research my-unique-research)(chat-to-player my-player-number "ELEFANTES CON BALLESTA Y ESCORPIONES X2 PROYECTILES!")
+)
+; MALAYOS
+(defrule
+    (can-research 624 )
+    (building-type-count-total dock > 0)
+    (current-age == imperial-age)
+=>
+    (research 624)(chat-to-player my-player-number "LOS PUERTOS DISPARAN FLECHAS!") 
+)
+(defrule
+    (civ-selected malay)(can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "MILICIA NO CUESTA ORO!")
+)
+
+; VIETNAMITAS
+(defrule
+    (can-research my-second-unique-research)(unit-type-count-total battle-elephant-line > 0)
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "ELEFANTES + 50 HP!") 
+)
+
+(defrule
+    (civ-selected vietnamese)(can-research my-unique-research)(gold-amount < 2000)(food-amount > 2000)(wood-amount > 500)
+=>
+    (research my-unique-research)
+    (chat-to-player my-player-number "500 DE ORO -GRATIS-!") 
+)
+
+; DEFINITIVE   
+
+; BULGAROS
+(defrule
+    (civ-selected bulgarians)
+    (can-research my-second-unique-research )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "CABALLERÍA ATACA 33% MÁS RÁPIDO!") 
+)
+
+(defrule
+    (civ-selected bulgarians)(unit-type-count-total militiaman-line > 0)
+    (can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "MILICIA +5 DEFENSA CUERPO A CUERPO!") 
+)
+
+; CUMANOS
+(defrule
+    (civ-selected cumans)
+    (can-research my-second-unique-research )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "CABALLERÍA (MENOS PALADINES) PRODUCIDA 100% MÁS RÁPIDO!")  
+)
+
+(defrule
+    (civ-selected cumans)(cc-players-building-type-count any-ally castle > 0)
+    (can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "ALIADOS TIENEN 10 MERCENARIOS GRATIS EN CASTILLO!")  
+)
+; LITUANOS
+(defrule
+    (civ-selected lithuanians)(can-research my-second-unique-research)
+    (or
+        (building-type-count-total town-center > 1)    
+        (town-under-attack)
+    )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "CENTROS DE CIUDAD +3 ALCANCE!")  
+)
+
+(defrule
+    (civ-selected lithuanians)(can-research my-unique-research)
+    (or
+        (unit-type-count-total spearman-line > 0)
+        (unit-type-count-total skirmisher-line > 0)  
+    )    
+=>
+    (research my-unique-research)(chat-to-player my-player-number "LANCEROS Y JAVALINEROS +2 ARMADURA A DISTANCIA!")  
+)
+
+; TARTAROS
+
+(defrule
+    (civ-selected tatars)(can-research my-second-unique-research )
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "CABALLERIA EXCEPTO C. PESADA +1 DEFENSA CUERPO A CUERPO, +1 DEFENSA A DISTANCIA!")   
+)
+
+(defrule
+    (civ-selected tatars)(can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "TREBUCHETS + 3 ALCANCE!") 
+)
+
+; LORDS OF THE WEST   
+; BORGOnA
+(defrule 
+    (can-research ri-burgundian-vineyards)
+=>
+    (research ri-burgundian-vineyards ) 
+)
+
+(defrule
+    (can-research my-unique-research)(food-amount > 1500)
+    (unit-type-count-total villager > cantCaballeros)
+    
+    (civ-selected burgundians)(military-population > cantCaballeros)
+    (or
+        (unit-type-count-total battering-ram > 4)    
+        (unit-type-count-total trebuchet > 4)        
+    )
+=>
+    (research my-unique-research)
+    (chat-to-player my-player-number "REVOLUSION")(attack-now)
+    (disable-self)
+)
+
+; SICILIANOS
+(defrule
+    (can-research ri-first-crusade)
+    (or
+        (building-type-count-total town-center > 2) 
+        (building-type-count-total barracks > 2) 
+    )
+    (current-age == imperial-age)
+=>
+    (research ri-first-crusade)(chat-to-player my-player-number "5 SARGENTOS GRATIS POR CENTRO DE CIUDAD!") 
+)
+
+(defrule
+    (civ-selected sicilians)(can-research my-unique-research)
+    (unit-type-count-total knight-line > 0)    
+=>
+    (research my-unique-research)(chat-to-player my-player-number "CABALLEROS +1 ARMADURA CUERPO A CUERPO, +2 ARMADURA DISTANCIA!") 
+)
+
+; DAWN OF DUKES   
+; BOHEMIOS
+
+(defrule
+    (civ-selected bohemians)
+    (can-research my-second-unique-research)
+=>
+    (research my-second-unique-research)(chat-to-player my-player-number "UNIDADES DE POLVORA SE MUEVEN MÁS RAPIDO") 
+)
+
+(defrule
+    (civ-selected bohemians)(food-amount > 20000)
+    (can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "TECNOLOGÍAS DE MONASTERIO NO VALEN ORO SINO COMIDA") 
+)
+
+; POLACOS
+(defrule 
+    (can-research ri-szlachta-privileges)
+=>
+    (research ri-szlachta-privileges)(chat-to-player my-player-number "CABALLEROS CUESTAN 60% MENOS ORO!")  
+)
+
+(defrule
+    (civ-selected poles)(unit-type-count-total knight-line > 0)
+    (can-research my-unique-research)
+=>
+    (research my-unique-research)(chat-to-player my-player-number "CABALLEROS HACEN DAÑO DE ÁREA!") 
+)
+
+
+; PUERTO
+(defrule
+	(unit-type-count-total fishing-ship > 9)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow) 
+    (can-research ri-gillnets)
+=>
+    (research ri-gillnets)
+)
+
+(defrule
+    (or
+        (or
+            (or
+                (players-unit-type-count any-enemy galley-line > 0)
+                (players-unit-type-count any-enemy demolition-ship-line > 0)
+            )
+            (or
+                (players-unit-type-count any-enemy cannon-galleon-line > 0)
+                (players-unit-type-count any-enemy fire-ship-line > 0)
+            )
+        )
+        (or
+            (or
+                (players-unit-type-count any-enemy turtle-ship-line > 0)
+                (players-unit-type-count any-enemy caravel-line > 0)             
+            )
+            (players-unit-type-count any-enemy longboat-line > 0)       
+        )
+    )
+	(can-research ri-careening)
+=>
+	(chat-to-player my-player-number "ESTO ES UN EJERCITIO DE PIRATERIA!!!!")
+	(research ri-careening)
+    (disable-self)
+)
+
+(defrule
+    (can-research ri-dry-dock)
+=>
+    (research ri-dry-dock)
+    (disable-self)
+)
+
+(defrule
+	(can-research ri-war-galley)
+	(unit-type-count-total galley-line > 1)
+=>
+	(research ri-war-galley)
+    (disable-self)
+)
+
+(defrule
+    (can-research ri-fast-fire-ship)
+    (unit-type-count-total fire-ship-line > 1)
+=>
+    (research ri-fast-fire-ship)
+    (disable-self)
+)
+
+(defrule
+	(can-research ri-galleon)
+=>
+	(research ri-galleon)
+    (disable-self)
+)
+
+(defrule
+	(can-research ri-cannon-galleon)
+=>
+	(research ri-cannon-galleon)
+    (disable-self)
+)
+
+(defrule
+	(can-research ri-deck-guns)
+	(unit-type-count-total cannon-galleon-line > 1)	
+=>
+	(research ri-deck-guns)
+    (disable-self)
+)
+
+(defrule
+	(can-research ri-shipwright)
+	(or
+		(unit-type-count-total galley-line > 0)
+		(unit-type-count-total cannon-galleon-line > 0)	
+	)
+=>
+	(research ri-shipwright)
+    (disable-self)
+)
+
+(defrule
+    (can-research ri-elite-turtle-ship)(unit-type-count-total turtle-ship-line > 0)
+=>
+    (research ri-elite-turtle-ship)
+    (disable-self)
+)   
+
+(defrule
+    (can-research ri-elite-caravel)(unit-type-count-total caravel-line > 0)
+=>
+    (research ri-elite-caravel)
+    (disable-self)
+)   
+
+(defrule
+    (can-research ri-elite-longboat)(unit-type-count-total longboat-line > 0)
+=>
+    (research ri-elite-longboat)
+    (disable-self)
+)   
+
+; MEJORAS MILITARES           
+; MEJORAS BARRACAS
+; COMUNES
+(defrule
+    (can-research ri-tracking  ) 
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+ ;MAS VISION INFANTERIA
+=>
+    (research ri-tracking)
+)
+
+(defrule
+    (can-research ri-squires)
+    (or(town-under-attack)(current-age > feudal-age))
+=>
+    (research ri-squires) ; MAS VELOCIDAD
+)
+
+(defconst incendiarismo 602)
+
+(defrule
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+    (can-research incendiarismo)(or(current-age == imperial-age)(gold-amount > 1200))
+=>
+    (research incendiarismo ) ; MAS ATAQUE EDIFICIOS
+)
+
+; G. AGUILA
+(defrule
+    (can-research ri-eagle-warrior)
+    (unit-type-count-total eagle-warrior-line > 0)     
+=>
+    (research ri-eagle-warrior)
+)
+
+(defrule
+    (can-research ri-elite-eagle-warrior)
+    (unit-type-count-total eagle-warrior-line > 0)     
+=>
+    (research ri-elite-eagle-warrior)
+)
+
+; MILICIA
+ (defrule
+ 	(unit-type-count-total militiaman-line > 2) 	
+    (can-research ri-man-at-arms)
+=>
+    (research ri-man-at-arms)
+)
+
+(defrule
+    (can-research ri-long-swordsman)
+    (unit-type-count-total militiaman-line > 2) 	
+=>
+    (research ri-long-swordsman)
+)
+
+(defrule
+    (can-research ri-two-handed-swordsman)(unit-type-count-total militiaman-line > 6)
+=>
+    (research ri-two-handed-swordsman)
+)
+
+(defrule
+    (can-research ri-champion)
+    (unit-type-count-total militiaman-line > 7) 	
+=>
+    (research ri-champion)
+)
+
+(defrule
+    (can-research ri-supplies)
+    (unit-type-count-total militiaman-line > 3)
+=>
+    (research ri-supplies) ; MAS VELOCIDAD
+)
+
+; PIQUERO
+(defrule
+    (can-research ri-pikeman)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow) 
+    (building-type-count-total monastery > 0)
+    (unit-type-count-total spearman-line > 4)
+=>
+    (research ri-pikeman)
+)
+
+(defrule
+    (can-research ri-halberdier)
+    (unit-type-count-total spearman-line > 4)
+    (building-type-count-total monastery > 0)
+=>
+    (research ri-halberdier)
+)
+
+; MEJORAS ESTABLOS                     
+; COMUNES 
+(defrule
+    (can-research ri-bloodlines)
+    (research-completed ri-wheel-barrow)
+    (or(current-age > castle-age)(food-amount > 900))
+    (unit-type-count-total monk >= cantMonjes)
+    (not(civ-selected gothic))
+=>
+    (research ri-bloodlines)
+)
+
+(defrule
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow) 
+    (can-research ri-husbandry)
+=>
+    (research ri-husbandry)
+)
+(defrule
+    (can-research ri-stirrups)
+=>
+    (research ri-stirrups)
+)
+
+; CABALLERIA LIGERA   
+(defrule
+    (can-research ri-light-cavalry)
+    (current-age == imperial-age)
+=>
+    (research ri-light-cavalry)
+)
+
+(defrule
+    (can-research ri-hussar)
+    (current-age == imperial-age)
+=>
+    (research ri-hussar)
+)
+
+; definitive husar alado
+(defrule
+    (can-research 786)
+    (current-age == imperial-age)
+=>
+    (research 786)
+)
+(defrule
+    (can-research 788)
+    (current-age == imperial-age)
+=>
+    (research 788)
+)(defrule
+    (can-research 789)
+    (current-age == imperial-age)
+=>
+    (research 789)
+)
+
+; CAMELLOS
+(defrule
+    (can-research ri-heavy-camel)
+    (current-age == imperial-age)
+=>
+    (research ri-heavy-camel)
+)
+
+(defrule
+    (can-research ri-imperial-camel)
+    (current-age == imperial-age)
+=>
+    (research ri-imperial-camel)
+)
+
+; ELEFANTES
+(defrule
+    (can-research ri-elite-battle-elephant)
+    (current-age == imperial-age)
+=>
+    (research ri-elite-battle-elephant)
+)
+
+; CABALLERIA PESADA
+(defrule
+    (can-research ri-cavalier)(not(civ-selected byzantine))(unit-type-count-total knight-line > 5)	
+    (current-age == imperial-age)
+=>
+    (research ri-cavalier)
+)
+
+(defrule
+    (can-research ri-paladin )(unit-type-count-total knight-line > 5)	
+    (current-age == imperial-age)
+=>
+    (research ri-paladin)
+)
+
+(defrule
+    (can-research ri-elite-steppe-lancer)(unit-type-count-total 1370 > 3)
+    (current-age == imperial-age)
+=>
+    (research ri-elite-steppe-lancer)
+)
+
+; ARQUERIA          
+; COMUNES
+(defrule
+ 	(research-completed ri-hand-cart)
+ 	(research-completed ri-two-man-saw)
+    (can-research ri-thumb-ring )
+=>
+    (research ri-thumb-ring )
+)
+
+; ARQUERO 
+(defrule
+    (can-research ri-crossbow )
+ 	(research-completed ri-hand-cart)
+ 	(research-completed ri-bow-saw)    
+    (unit-type-count-total archer-line > 1)
+=>
+    (research ri-crossbow )
+)
+
+(defrule
+    (can-research ri-arbalest )
+    (unit-type-count-total archer-line > 1)
+=>
+    (research ri-arbalest )
+)
+
+; javalinas
+(defrule
+    (can-research ri-elite-genitour)
+    (unit-type-count-total genitour > 0)
+=>
+    (research ri-elite-genitour )
+)
+
+(defrule
+    (can-research ri-elite-skirmisher)(research-completed ri-hand-cart)(unit-type-count-total skirmisher-line > 1)
+=>
+    (research ri-elite-skirmisher)
+)
+
+; MEJORAS CASTILLO
+(defrule
+    (can-research ri-conscription)
+    (current-age == imperial-age)
+=>
+    (research ri-conscription )
+)
+
+(defrule
+    (can-research my-unique-unit-upgrade)
+    (current-age == imperial-age)(not(civ-selected ethiopian))
+=>
+    (research my-unique-unit-upgrade)
+    (chat-to-player my-player-number "UNIDAD UNICA MEJORADA ")
+)
+
+(defrule
+    (can-research ri-hoardings )
+    (current-age == imperial-age)
+    (building-type-count-total castle > 1)
+    (wood-amount > 1000)
+    (food-amount > 1000)
+=>
+    (research ri-hoardings)
+)
+
+(defrule
+    (can-research ri-sappers )
+    (current-age == imperial-age)
+    (food-amount > 2000)
+    (gold-amount > 1000)
+=>
+    (research ri-sappers)(set-strategic-number sn-allow-civilian-offense 2)
+    (chat-to-all "SE VA A HABE UN FOLLON")   
+)
+
+; MEJORAS HERRERIA                             
+; ATAQUE INFANTERIA Y CABALLERIA       
+
+ (defrule
+    (can-research ri-forging)
+=>
+    (research ri-forging)
+)
+
+(defrule
+	(research-completed ri-hand-cart)
+	(research-completed ri-bow-saw)    
+    (can-research ri-iron-casting)
+=>
+    (research ri-iron-casting)
+)
+
+(defrule
+    (can-research ri-blast-furnace)
+=>
+    (research ri-blast-furnace)
+)
+
+; DEFENSA INFANTERIA
+
+(defrule
+    (research-completed ri-double-bit-axe)  
+=>
+    (research ri-scale-mail)
+)
+
+(defrule
+    (can-research ri-chain-mail)
+    (research-completed ri-hand-cart)
+	(research-completed ri-bow-saw)   
+=>
+    (research ri-chain-mail)
+)
+
+(defrule
+    (can-research ri-plate-mail)
+=>
+    (research ri-plate-mail)
+)
+
+; DEFENSA CABALLERIA                
+
+(defrule
+    (can-research ri-scale-barding)
+    (or(building-type-count stable > 0)(building-type-count castle > 0))  
+=>
+    (research ri-scale-barding)
+)
+
+(defrule
+    (can-research ri-chain-barding)
+    (research-completed ri-hand-cart)
+	(research-completed ri-bow-saw)(research-completed ri-heavy-plow)   
+=>
+    (research ri-chain-barding)
+)
+
+(defrule
+    (can-research ri-plate-barding)
+=>
+    (research ri-plate-barding)
+)
+
+; FLECHAS ATAQUE 
+
+(defrule
+    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
+    (can-research ri-fletching)(town-under-attack)
+=>
+    (research ri-fletching)
+)
+
+(defrule
+    (can-research ri-bodkin-arrow)
+=>
+    (research ri-bodkin-arrow)
+)
+
+(defrule
+    (can-research ri-bracer)
+=>
+    (research ri-bracer)
+)
+
+; DEFENSA ARQUEROS      
+(defrule
+    (can-research ri-padded-archer-armor )(building-type-count-total archery-range > 0)
+=>
+    (research ri-padded-archer-armor )
+)
+
+(defrule
+    (can-research ri-leather-archer-armor )
+    (research-completed ri-hand-cart)
+=>
+    (research ri-leather-archer-armor )
+)
+
+(defrule
+    (can-research ri-ring-archer-armor )
+=>
+    (research ri-ring-archer-armor )
+)
+
+; ARQUEROS CABALLO
+(defrule
+    (can-research ri-parthian-tactics)
+    (current-age == imperial-age)
+    (unit-type-count-total cavalry-archer-line > 4)
+=>
+    (research ri-parthian-tactics )
+)
+
+(defrule
+    (can-research ri-heavy-cavalry-archer)
+    (current-age == imperial-age)
+    (unit-type-count-total cavalry-archer-line > 4)
+=>
+    (research ri-heavy-cavalry-archer)
+)
+
+; MEJORAS TALLER MAQUINARIA ASEDIO
+; CATAPULTA
+
+(defrule
+	(unit-type-count-total mangonel-line > 2)
+    (can-research ri-onager )
+=>
+	(research ri-onager )
+    
+)
+
+(defrule
+	(unit-type-count-total mangonel-line > 3)
+    (can-research ri-siege-onager )
+=>
+    (research ri-siege-onager )
+)
+
+; BALLESTA (ESCORPION)
+(defrule
+    (or
+        (unit-type-count-total scorpion-line > 3)
+        (or(civ-selected chinese)(civ-selected khmer))
+    )
+    (can-research ri-heavy-scorpion )
+=>
+    (research ri-heavy-scorpion )
+)
+
+; ARIETE
+(defrule
+	(unit-type-count-total battering-ram-line > 2)
+    (can-research ri-capped-ram )
+=>
+    (research ri-capped-ram )
+)
+
+(defrule
+	(unit-type-count-total battering-ram-line > 2)
+    (can-research ri-siege-ram )
+=>
+    (research ri-siege-ram )
+)
+
+; OBUSES (BOHEMIOS)
+(defrule
+	;(unit-type-count-total bombard-cannon > 0)
+    (can-research 787)
+=>
+    (research 787)
+)
+
+; MONASTERIO
+(defrule ;herbs
+    (town-under-attack)(research-completed ri-atonement)
+=>
+    (research 441)
+)
+
+(defrule
+    (can-research ri-fervor )(unit-type-count-total monk-set >= cantMonjes)
+=>
+    (research ri-fervor )
+)
+
+(defrule
+    (unit-type-count-total monk >= cantMonjes)
+	(research-completed ri-fervor)
+    (can-research ri-sanctity )
+=>
+    (research ri-sanctity )
+)
+
+(defrule
+	(unit-type-count-total monk > 3)
+	(research-completed ri-hand-cart)
+    (can-research ri-redemption )
+    (current-age == imperial-age)
+=>
+    (research ri-redemption )
+)
+
+(defrule
+    (unit-type-count-total monk > 3)
+	(research-completed ri-hand-cart)
+    (current-age == imperial-age)
+    (can-research ri-heresy)
+=>
+    (research ri-heresy )
+)
+
+(defrule
+    (unit-type-count-total monk > 3)
+	(research-completed ri-hand-cart)
+    (current-age == imperial-age)
+    (or
+        (gold-amount > 800)
+        (civ-selected bohemians)
+    )    
+    (can-research ri-atonement)
+=>
+    (research ri-atonement)
+)
+
+(defrule
+	(unit-type-count-total monk > 3)
+    (or
+        (gold-amount > 800)
+        (civ-selected bohemians)
+    )    
+    (can-research ri-theocracy)
+=>
+    (research ri-theocracy)
+)
+
+(defrule
+	(unit-type-count-total monk > 3)
+    (can-research ri-block-printing)
+    (or
+        (gold-amount > 800)
+        (civ-selected bohemians)
+    )
+=>
+    (research ri-block-printing)
+)
+
+(defrule
+    (can-research ri-faith)
+    (or
+        (gold-amount > 1800)
+        (civ-selected bohemians)
+    )
+=>
+    (research ri-faith)
+)
+
+(defrule
+	(unit-type-count-total monk > 3)
+    (or
+        (gold-amount > 800)
+        (civ-selected bohemians)
+    )    
+    (can-research ri-illumination)
+=>
+    (research ri-illumination)
+)
+
+; MEJORAS UNIVERSIDAD                 
+; E. CASTILLOS
+(defrule
+    (current-age == imperial-age)(building-type-count-total castle > 1)
+    (can-research ri-masonry)
+=>
+    (research ri-masonry)
+)
+
+(defrule
+   	(building-type-count-total stone-wall-line > 10)
+    (current-age == imperial-age)
+    (can-research ri-fortified-wall ) 
+=>
+    (research ri-fortified-wall )
+)
+
+(defrule
+    (can-research ri-ballistics )
+=>
+    (research ri-ballistics )
+)
+
+(defrule
+	(building-type-count-total watch-tower > 3)
+	(not(civ-selected korean))
+    (can-research ri-guard-tower)
+=>
+    (research ri-guard-tower)
+)
+
+(defrule
+    (or
+        (or
+            (or
+                (players-unit-type-count any-enemy galley-line > 0)
+                (players-unit-type-count any-enemy demolition-ship-line > 0)
+            )
+            (or
+                (players-unit-type-count any-enemy cannon-galleon-line > 0)
+                (players-unit-type-count any-enemy fire-ship-line > 0)
+            )
+        )
+        (or
+            (or
+                (players-unit-type-count any-enemy turtle-ship-line > 0)
+                (players-unit-type-count any-enemy caravel-line > 0)             
+            )
+            (players-unit-type-count any-enemy longboat-line > 0)       
+        )
+    )
+	(can-research ri-heated-shot)
+=>
+	(chat-to-player my-player-number "ESTO ES UN EJERCITIO DE PIRATERIA!!!!")
+	(research ri-heated-shot)
+)
+
+(defrule
+	(town-under-attack)
+    (can-research ri-murder-holes)
+=>
+    (research ri-murder-holes)
+)
+
+; E. IMPERIAL
+
+(defrule
+    (building-type-count-total castle > 1)
+    (can-research ri-architecture)
+=>
+    (research ri-architecture)
+)
+
+(defrule
+    (can-research ri-chemistry)
+=>
+    (research ri-chemistry)
+)
+
+(defrule
+    (can-research ri-siege-engineers)
+=>
+    (research ri-siege-engineers)
+)
+
+(defrule
+	(or
+        (building-type-count-total guard-tower > 4)
+        (building-type-count-total watch-tower > 4)
+	)
+    (can-research ri-keep )
+=>
+    (research ri-keep )
+)
+
+(defrule
+    (can-research ri-bombard-tower )
+=>
+    (research ri-bombard-tower )
+)
+
+; 4. CONSTRUIR EDIFICIOS
+;CIVILES
+; MOLINO                
+(defrule  
+    (building-type-count-total mill < 1)
+    (can-build mill)(wood-amount > 100)
+    (building-type-count-total lumber-camp > 0)  
+=>
+    (build mill)(chat-to-player my-player-number "MILL 1")
+)
+
+(defrule  
+    (building-type-count-total mill < 2)(current-age > dark-age)
+    (can-build mill)(resource-found food)(wood-amount > 100)
+    (building-type-count-total lumber-camp > 0)(dropsite-min-distance food > 6)
+    (not(civ-selected khmer))
+=>
+    (build mill)(chat-to-player my-player-number "MILL 2")(up-modify-sn sn-mill-max-distance c:+ 12)
+)
+
+
+(defrule
+	(current-age == imperial-age) 
+    (resource-found food)(building-type-count-total mill < 8) 
+    (dropsite-min-distance food > 3)(wood-amount > 800)
+    (can-build mill)(not(civ-selected khmer))
+=>
+    (build mill)
+    (up-modify-sn sn-mill-max-distance c:+ 8)(chat-to-player my-player-number "MILL")
+)
+
+; GRANJAS
+; EDAD 1
+(defrule
+	(building-type-count-total farm < 4)
+    (building-type-count-total barracks > 0)(wood-amount > 100)
+	(can-build farm)
+	(idle-farm-count < 1)
+=>
+	(build farm)
+)
+
+; EDAD 2
+(defrule
+	(current-age == feudal-age)
+    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
+	(idle-farm-count < 1)
+	(can-build farm)(food-amount < 5000)(wood-amount > 100)
+=>
+    (build farm)
+)
+
+; EDAD 3
+(defrule
+	(current-age == castle-age)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)    
+	(building-type-count-total farm < 20)(food-amount < 5000)(wood-amount > 100)
+    (building-type-count-total monastery > 0)
+	(can-build farm)
+	(idle-farm-count < 2)
+=>
+	(build farm)
+)
+
+; EDAD 4
+(defrule
+	(current-age == imperial-age)(food-amount < 5000)(wood-amount > 300)
+	(can-build farm)
+	(building-type-count-total farm < 32) ; no miramos si granjas inactivas
+=>
+    (build farm)
+)
+
+; CASAS
+(defrule
+    (current-age == dark-age)
+    (wood-amount > 100)
+    (building-type-count-total house < 1)
+    (can-build house)
+=>
+    (build house)(chat-to-player my-player-number "HOUSE 1") 
+)
+
+(defrule
+    (current-age == dark-age)
+    (wood-amount > 100)(unit-type-count-total villager > 5)
+    (building-type-count-total house < 2)
+    (can-build house)
+=>
+    (build house)(chat-to-player my-player-number "HOUSE 2") 
+)
+
+(defrule
+    (current-age == dark-age)
+    (building-type-count barracks > 0)(building-type-count mill > 0)
+    (unit-type-count-total villager > 10) 
+    (building-type-count-total house < 3)
+    (can-build house)
+=>
+    (build house)(chat-to-player my-player-number "HOUSE 3") 
+)
+
+(defrule
+    (current-age == feudal-age)
+    ;(research-completed ri-wheel-barrow)
+    ;(research-completed ri-double-bit-axe)
+    ;(research-completed ri-horse-collar)
+    (housing-headroom < 4)
+    (population-headroom > 0)
+    (can-build house)
+=>
+    (build house)
+)
+
+(defrule
+    (current-age >= castle-age)
+    (housing-headroom < 5)
+    (population-headroom > 0)
+    (can-build house)
+=>
+    (build house)
+)
+
+; MADERA                       
+(defrule
+    (building-type-count-total lumber-camp == 0)(unit-type-count-total villager > 9)
+    (can-build lumber-camp)
+    (resource-found wood)
+    (dropsite-min-distance wood > 3)
+    (or
+        (building-type-count house > 0)
+        (civ-selected hun)
+    )
+=>
+    (build lumber-camp)  
+    (chat-to-player my-player-number "LUMBER CAMP 1")(up-modify-sn sn-camp-max-distance c:+ 4)    
+)
+
+(defrule
+    (building-type-count-total lumber-camp < 2)
+    (or
+        (current-age > dark-age)
+        (food-amount > 600)
+    )
+    (can-build lumber-camp)
+    (resource-found wood)
+    (dropsite-min-distance wood > 6)
+=>
+    (build lumber-camp)
+    (chat-to-player my-player-number "LUMBER CAMP 2")(up-modify-sn sn-camp-max-distance c:+ 4)     
+)
+
+(defrule
+	(current-age >= castle-age)
+    (building-type-count-total lumber-camp g:< gl-max-lumber-camps-qty) 	
+    (resource-found wood)
+    (dropsite-min-distance wood > 3)
+    (can-build lumber-camp)
+=>
+    (build lumber-camp)
+    (chat-to-player my-player-number "LUMBER CAMP")(up-modify-sn sn-camp-max-distance c:+ 7)               
+)
+
+; MINAS                       
+; ORO
+(defrule 
+    (current-age == feudal-age)(wood-amount > 101)
+    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
+    (resource-found gold) 
+    (dropsite-min-distance gold > 3)
+    (building-type-count-total mining-camp == 0)
+    (building-type-count-total mining-camp < gl-max-mining-camps-qty)    
+    (can-build mining-camp)
+=>
+    (build mining-camp)
+    (up-modify-sn sn-mining-camp-max-distance c:+ 32)  
+    (chat-to-player my-player-number "MINING CAMP - GOLD")  
+)
+
+(defrule 
+    (current-age >= castle-age)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)    
+    (building-type-count-total monastery > 0)
+    ;(wood-amount > 300)
+    (building-type-count-total mining-camp < gl-max-mining-camps-qty)
+    (resource-found gold) 
+    (dropsite-min-distance gold > 3)     
+    (can-build mining-camp)
+=>
+    (build mining-camp)
+    (chat-to-player my-player-number "MINING CAMP - GOLD") 
+    (up-modify-sn sn-mining-camp-max-distance c:+ 12)
+)
+
+; PIEDRA
+(defrule 
+    (current-age >= castle-age)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)            
+    (building-type-count-total monastery > 0)
+    (building-type-count-total mining-camp < gl-max-mining-camps-qty)
+    (resource-found stone) 
+    (dropsite-min-distance stone > 3)
+    (can-build mining-camp)
+=>
+    (build mining-camp)(chat-to-player my-player-number "MINING CAMP - STONE 1")
+    (up-modify-sn sn-mining-camp-max-distance c:+ 32)  
+)
+
+(defrule 
+    (current-age == imperial-age) 
+    ;(wood-amount > 300)
+    (unit-type-count-total mining-camp < gl-max-mining-camps-qty)    
+    (resource-found stone)    
+    (dropsite-min-distance stone > 3)       
+    (can-build mining-camp) 
+=>
+    (build mining-camp)
+    (chat-to-player my-player-number "MINING CAMP - STONE")
+    (up-modify-sn sn-mining-camp-max-distance c:+ 12)  
+)
+
+; HERRERIA
+(defrule
+    (building-type-count-total blacksmith == 0)
+    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
+    (can-build blacksmith)(military-population > 15)
+=>
+    (build blacksmith)(chat-to-player my-player-number "BLACKSMITH")
+)
+
+; MERCADO
+(defrule
+    (building-type-count-total market == 0)
+    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
+    (can-build market)(military-population >= cantLancerosMinima)
+    (food-amount > 500)(gold-amount > 100)
+=>
+    (build market)(chat-to-player my-player-number "MARKET 1")  
+)
+
+(defrule
+    (cc-players-building-type-count any-ally market > 0)
+    (building-type-count-total market == 1)(can-build market)
+    (current-age == imperial-age)
+    (building-type-count-total university > 0)(building-type-count-total castle > 0)
+=>
+    (build market)(chat-to-player my-player-number "MARKET 2")  
+)
+
+(defrule
+    (cc-players-building-type-count any-ally market > 0)
+    (building-type-count-total market == 2)(can-build market)
+    (current-age == imperial-age)
+    (building-type-count-total university > 0)(building-type-count-total castle > 0)(building-type-count-total barracks > 1)
+=>
+    (build market)(chat-to-player my-player-number "MARKET 3")  
+)
+
+(defrule
+    (cc-players-building-type-count any-ally market > 0)
+    (building-type-count-total market == 3)(can-build market)
+    (current-age == imperial-age)
+    (building-type-count-total university > 0)(building-type-count-total castle > 0)(building-type-count-total barracks > 1)
+=>
+    (build market)(chat-to-player my-player-number "MARKET 4")  
+)
+
+
+
+; UNIV
+(defrule
+    (building-type-count-total university == 0)
+    (building-type-count-total monastery > 0)
+    (building-type-count-total castle > 0)  
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)    
+    (can-build university)
+    (or
+        (building-type-count-total house > 11)
+        (civ-selected hun)
+    )
+=>
+    (build university)(chat-to-player my-player-number "UNIVERSITY")(up-modify-sn sn-maximum-town-size c:+ 4)
+)
+
+; PUERTO
+
+#load-if-not-defined KILIMANJARO-MAP 
+#load-if-not-defined ACROPOLIS-MAP 
+#load-if-not-defined VALLEY-MAP 
+#load-if-not-defined CENOTES-MAP
+#load-if-not-defined OASIS-MAP 
+
+    (defrule
+        (can-build dock)
+        (building-type-count-total lumber-camp > 0)
+        (building-type-count-total dock < 1)
+    =>
+        (build dock)
+        (chat-to-player my-player-number "DOCK?")
+    )
+
+    (defrule
+        (current-age == imperial-age)
+        (civ-selected malay)(building-type-count-total dock < 24)
+        (can-build dock)    
+    =>  
+        (build dock)
+    )
+
+#end-if #end-if #end-if #end-if #end-if
+
+; CENTRO CIUDAD                               
+(defrule
+    (can-build town-center)
+    (building-type-count-total town-center == 0) 
+=>
+    (build town-center)
+)
+
+(defrule
+    (can-build town-center)(civ-selected cumans)
+    (building-type-count-total town-center == 1) 
+=>
+    (build town-center)
+)
+
+(defrule
+    (can-build town-center)
+    (or
+        (not(town-under-attack))
+        (current-age > castle-age)
+    )
+	(building-type-count-total town-center < 2) (military-population > 25)
+    ;(building-type-count-total monastery > 0)(building-type-count-total castle > 0)(building-type-count-total university > 0)  
+=>
+    (build town-center)   (chat-to-player my-player-number "TOWN CENTER 2")
+)
+(defrule
+    (can-build town-center)(current-age == imperial-age)
+	(building-type-count-total town-center < 3) 
+    (building-type-count-total monastery > 0)
+    ;(building-type-count-total university > 0)  
+    (building-type-count-total castle > 0)
+=>
+    (build town-center)   (chat-to-player my-player-number "TOWN CENTER 3")
+)
+
+(defrule
+	(current-age == imperial-age)
+    (can-build town-center)
+    (building-type-count-total monastery > 0) 
+    (building-type-count-total castle > 0)(building-type-count-total university > 0)  
+    (building-type-count-total town-center < 8) (building-type-count-total town-center > 2)
+=>
+    (build town-center)(up-modify-sn sn-maximum-town-size c:+ 3) (chat-to-player my-player-number "TOWN CENTER")
+)
+
+; MILITARES
+; MURALLA - EMPALIZADA
+; GATES
+(defrule 
+    (or
+        (building-type-count-total 72 > 0)
+        (building-type-count-total stone-wall > 0)
+    )
+    (building-type-count-total castle > 0)
+    (current-age == imperial-age)
+    (can-build-gate 1)
+=>
+    (build-gate 1)  
+)
+
+(defrule 
+    (or
+        (building-type-count-total 72 > 0)
+        (building-type-count-total stone-wall > 0)
+    )
+    (building-type-count-total castle > 0)(current-age == imperial-age)
+    (can-build-gate 2)
+=>
+    (build-gate 2)  
+)
+
+; WALL
+
+(defrule 
+	(can-build-wall 1 stone-wall-line)
+    (building-type-count-total castle > 0)(current-age == imperial-age)
+=>
+	(build-wall 1  stone-wall-line) 
+)
+
+(defrule 
+	(can-build-wall 1 72)
+    (building-type-count-total castle > 0)(current-age == imperial-age)
+=>
+	(build-wall 1 72)
+)
+
+(defrule 
+	(can-build-wall 2 stone-wall-line)
+    (building-type-count-total castle > 0)(current-age == imperial-age)
+=>
+	(build-wall 2  stone-wall-line)
+)
+
+(defrule 
+	(can-build-wall 2 72)
+    (building-type-count-total castle > 0)(current-age == imperial-age)
+=>
+	(build-wall 2 72)
+)
+
+; CASTILLO             
+(defrule
+	(current-age >= castle-age)
+    (can-build castle)
+    (building-type-count-total castle == 0)(building-type-count-total barracks > 0)
+=>
+    (build castle)
+    (chat-to-player my-player-number "CASTLE 1")(up-modify-sn sn-maximum-town-size c:+ 4) 
+)
+
+(defrule
+	(current-age == imperial-age)
+    (can-build castle)(building-type-count-total castle == 1)(building-type-count-total university > 0)(building-type-count-total monastery > 0)(building-type-count-total siege-workshop > 0)
+=>
+    (build castle)(chat-to-player my-player-number "CASTLE 2")
+    (up-modify-sn sn-maximum-town-size c:+ 3)
+)
+
+(defrule
+    (current-age == imperial-age)(can-build castle)
+    (building-type-count-total monastery > 0)(building-type-count-total university > 0)  
+    (not(civ-selected korean))
+=>
+    (build castle)(up-modify-sn sn-maximum-town-size c:+ 2)(chat-to-player my-player-number "CASTLE X")
+)
+
+
+
+(defrule ; MINI CASTILLO HUNGARO
+    (can-build krepost) (building-type-count-total castle > 1)(building-type-count-total krepost < 4)
+=>
+    (build krepost)(up-modify-sn sn-maximum-town-size c:+ 2)   
+)
+
+
+
+(defrule ; ; MINI CASTILLO SICILIANO
+    (can-build donjon) (building-type-count-total castle > 1)(building-type-count-total donjon < 4)
+=>
+    (build donjon)(up-modify-sn sn-maximum-town-size c:+ 2)   
+)
+
+
+
+; PROD MILITAR
+; CONSTRUIR BARRACAS                     
+(defrule
+	(building-type-count-total barracks < 1)
+    (or
+    	(building-type-count-total lumber-camp > 0)
+        (wood-amount > 700)
+    )
+    (can-build barracks)
+=>
+    (build barracks)
+    (chat-to-player my-player-number "BARRACKS 1")(up-modify-sn sn-maximum-town-size c:+ 1)
+)
+
+(defrule
+	(current-age == imperial-age)
+	(building-type-count-total barracks == 1)
+    (or
+        (and(building-type-count-total siege-workshop > 0)(building-type-count-total castle > 0))
+        (civ-selected gothic)
+    )
+    (can-build barracks)
+=>
+    (build barracks)(chat-to-player my-player-number "BARRACKS 2")(up-modify-sn sn-maximum-town-size c:+ 4)
+)
+
+(defrule
+	(current-age == imperial-age)
+	(building-type-count-total barracks == 2)
+    (or
+        (and(building-type-count-total siege-workshop > 0)(building-type-count-total castle > 0))
+        (civ-selected gothic)
+    )
+    (can-build barracks)
+=>
+    (build barracks)(chat-to-player my-player-number "BARRACKS 3")(up-modify-sn sn-maximum-town-size c:+ 4)
+)
+
+(defrule
+	(current-age == imperial-age)(building-type-count-total barracks < 16)
+    (can-build barracks)(wood-amount > 2000)
+=>
+    (build barracks)(chat-to-player my-player-number "BARRACKS")
+)
+
+(defrule
+    (civ-selected gothic)
+    (current-age == imperial-age)
+    (wood-amount > 3000)
+    (can-build barracks)
+=>
+    (build barracks)(chat-to-player my-player-number "GOTHIC BARRACKS")
+)
+
+; ESTABLOS
+(defrule
+	(building-type-count-total stable == 0)
+    (building-type-count-total monastery > 0)
+    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar) 
+	(not(civ-selected gothic))
+    (can-build stable)
+    (or
+        (building-type-count-total house > 3)
+        (civ-selected hun)
+    )
+=>
+    (build stable)
+    (chat-to-player my-player-number "STABLE 1") 
+)
+
+(defrule
+	(current-age == imperial-age)
+	(building-type-count-total stable < 2)
+    (building-type-count-total university > 0)
+	(not(civ-selected gothic))	
+    (can-build stable)
+=>
+    (build stable)(chat-to-player my-player-number "STABLE 2")(up-modify-sn sn-maximum-town-size c:+ 2) 
+)
+
+(defrule
+	(current-age == imperial-age)
+	(building-type-count-total stable < 3)
+    (building-type-count-total university > 0)
+	(not(civ-selected gothic))	
+    (can-build stable)
+=>
+    (build stable)(chat-to-player my-player-number "STABLE 3")(up-modify-sn sn-maximum-town-size c:+ 2) 
+)
+
+(defrule
+	(current-age == imperial-age)(building-type-count-total stable < 16)
+    (can-build stable)(wood-amount > 2000)
+    (not(civ-selected gothic))
+=>
+    (build stable)(chat-to-player my-player-number "STABLE")
+)
+
+; CONSTRUIR ARQUERIA
+(defrule
+	(building-type-count-total archery-range == 0)
+    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)     
+    (can-build archery-range)
+=>
+    (build archery-range)
+    (chat-to-player my-player-number "ARCHERY RANGE 1")
+)
+
+(defrule
+	(current-age == imperial-age)
+	(building-type-count-total archery-range < 2)
+    (building-type-count-total university > 0)
+    (not(civ-selected gothic))
+    (can-build archery-range)
+=>
+    (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE 2")
+)
+
+(defrule
+	(current-age == imperial-age)
+	(building-type-count-total archery-range < 3)
+    (building-type-count-total university > 0)
+    (not(civ-selected gothic))
+    (can-build archery-range)
+=>
+    (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE 3")
+)
+
+(defrule
+	(current-age == imperial-age)(building-type-count-total archery-range < 16)
+    (not(civ-selected gothic))
+    (can-build archery-range)(wood-amount > 2000)
+=>
+    (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE")
+)
+
+; CONSTRUIR TALLER ASEDIO
+(defrule
+    (can-build siege-workshop)
+    (building-type-count-total siege-workshop == 0)
+	(not(civ-selected gothic))
+    (or
+        (building-type-count-total house > 4)
+        (civ-selected hun)
+    )
+=>
+    (build siege-workshop)
+    (chat-to-player my-player-number "SIEGE WORKSHOP 1")(up-modify-sn sn-maximum-town-size c:+ 2)   
+)
+
+(defrule
+    (can-build siege-workshop)
+    (current-age == imperial-age)(building-type-count-total university > 0)(building-type-count-total castle > 0)
+    (building-type-count-total siege-workshop == 1)
+=>
+    (build siege-workshop)(chat-to-player my-player-number "SIEGE WORKSHOP 2")(up-modify-sn sn-maximum-town-size c:+ 2) 
+)
+
+(defrule
+	(current-age == imperial-age)
+	(building-type-count-total siege-workshop < 16)
+    (building-type-count-total university > 0)(building-type-count-total castle > 0)
+    (can-build siege-workshop)(wood-amount > 2000)(not(civ-selected gothic)) 
+=>
+    (build siege-workshop)(chat-to-player my-player-number "SIEGE WORKSHOP")(up-modify-sn sn-maximum-town-size c:+ 2)
+)
+
+; MONASTERIO              
+(defrule
+    (building-type-count-total monastery == 0)
+    (can-build monastery)
+    (or
+        (building-type-count-total house > 3)
+        (civ-selected hun)
+    )
+=> 
+    (build monastery)
+    (chat-to-player my-player-number "MONASTERY 1") 
+)
+
+
+
+(defrule
+    (building-type-count-total monastery == 2)(building-type-count-total castle > 0)(building-type-count-total town-center > 1)
+    (can-build monastery)   
+    (building-type-count-total house > 25)
+    (civ-selected saracen)
+=> 
+    (build monastery)
+    (chat-to-player my-player-number "MONASTERY 2") 
+)
+
+; TORRE 
+; DE PEGA
+(defrule
+    (can-build outpost)
+    (wood-amount > 5001)
+    (building-type-count-total outpost < 1)
+=>
+    (build outpost) 
+)
+
+;BOMBARDEO  
+(defrule
+    (can-build bombard-tower)
+    (gold-amount > 301)
+    (building-type-count-total castle > 0)
+=>
+    (build bombard-tower)(up-modify-sn sn-maximum-town-size c:+ 1)  
+)
+
+;NORMAL
+(defrule(can-build watch-tower-line)
+(building-type-count-total watch-tower-line < 1)(building-type-count-total monastery > 0)
+=>
+(build watch-tower-line)  
+)
+
+(defrule
+	(current-age == imperial-age)
+    (can-build watch-tower-line)(not(can-build bombard-tower))
+    (building-type-count-total castle > 1)(not (civ-selected teutonic)) (not (civ-selected portuguese)) 
+=>
+    (build watch-tower-line)(up-modify-sn sn-maximum-town-size c:+ 1)   
+)
+
+; 5. CREAR UNIDADES
+; UNIDADES CIVILES                       
+; ALDEANOS 
+(defrule
+    (civilian-population  < 7)
+    (can-train villager)
+=>
+    (train villager)
+)
+
+(defrule
+    (current-age == dark-age)
+    (civilian-population  < maxCivilesEdadMedia)
+    (can-train villager)
+=>
+    (train villager)
+)
+
+(defrule
+    (current-age == feudal-age)
+    (or(research-completed ri-wheel-barrow)(food-amount > 225)) 
+
+    (civilian-population < maxCivilesEdadFeudal)
+    (can-train villager)
+=>
+    (train villager)
+)
+
+(defrule
+    (current-age == castle-age)
+    (or(research-completed ri-hand-cart)(food-amount > 350))  
+    (civilian-population < maxCivilesEdadCastillos)
+    (can-train villager)
+=>
+    (train villager)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (civilian-population < maxCivilesEdadImperial)
+    (food-amount < 1000)(wood-amount < 1000)(gold-amount < 500)
+    (can-train villager)
+=>
+    (train villager)
+)
+
+; CARRETAS
+(defrule 
+    (cc-players-building-type-count any-ally market  > 0)
+    (unit-type-count-total trade-cart < 2)  
+    (civilian-population < 100)(military-population > 20)
+=>
+    (train trade-cart)
+)
+
+(defrule 
+    (cc-players-building-type-count any-ally market > 0)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+    (unit-type-count-total trade-cart < 4)  
+    (civilian-population < 100)
+=>
+    (train trade-cart)
+)
+
+(defrule 
+    (current-age == imperial-age)
+    (cc-players-building-type-count any-ally market  > 0)
+    (unit-type-count-total trade-cart < cantCarretas)    
+    (research-completed ri-caravan)
+    (civilian-population < 100)
+=>
+	(train trade-cart)
+)
+
+; UNIDADES MILITARES                                                                        
+; MONASTERIO                                  
+(defrule
+    (unit-type-count-total monk-set < cantMonjes)
+    (can-train monk)(not(hold-relics))
+=>
+    (train monk)
+)
+
+(defrule
+    (or
+        (or
+            (civ-selected mayan)
+            (civ-selected byzantine)
+        )
+        (or
+            (civ-selected teutonic)
+            (civ-selected saracen)
+        )     
+    )
+    (current-age == imperial-age)(gold-amount > 400)
+    (unit-type-count-total monk < cantMonjesAlta) 
+    (can-train monk)
+=>
+    (train monk)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (gold-amount > 1300)
+    (can-train missionary)
+=>
+    (train missionary)
+)
+
+; CASTILLO
+; TREBUCHET
+(defrule
+    (and
+        (unit-type-count-total trebuchet < cantTrebuchets)
+        (unit-type-count-total 954 < cantTrebuchets)
+    )
+    (unit-type-count-total trebuchet < cantTrebuchets)
+    (not(civ-selected tatars))(not(civ-selected gothic)) 
+    (not(civ-selected japanese))
+    (military-population > cantCaballeros) 
+    (can-train trebuchet)   
+=>
+    (train trebuchet)
+)
+
+(defrule
+    (or
+        (civ-selected tatars)
+        (civ-selected japanese)
+    )
+    (unit-type-count-total trebuchet < cantTrebuchetsAlta)
+    (can-train trebuchet)
+=>
+    (train trebuchet)
+)
+
+; PETARDOS        
+(defrule
+    (current-age == imperial-age)
+    (civ-selected saracen)
+    (can-train petard)(gold-amount > 2100)
+=>
+    (train petard)
+)
+
+; UNICAS            
+(defrule
+    (current-age == castle-age)(town-under-attack)
+    (unit-type-count-total my-unique-unit-line < 30)(gold-amount > 160)
+    (can-train my-unique-unit-line)(not(civ-selected korean))(not(civ-selected celtic))
+    (not(civ-selected ethiopian))(not(civ-selected khmer))(not(civ-selected chinese))
+=>
+    (train my-unique-unit-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (unit-type-count-total my-unique-unit-line < 30)(gold-amount > 160)(not(civ-selected khmer))
+    (can-train my-unique-unit-line)(not(civ-selected korean))(not(civ-selected celtic))
+    (not(civ-selected ethiopian))
+    (research-completed my-unique-unit-upgrade)
+=>
+    (train my-unique-unit-line)
+)
+
+(defrule
+    (can-train my-unique-unit-line)(civ-selected malay)(town-under-attack)
+=>
+    (train my-unique-unit-line)
+)
+
+(defrule
+	(current-age == imperial-age)(research-completed my-unique-unit-upgrade)
+	(unit-type-count-total my-unique-unit-line < cantUnicos)
+    (or
+        (gold-amount > 401)
+        (civ-selected magyar)
+    )
+	(not(civ-selected korean))(not(civ-selected celtic))(not(civ-selected chinese))(not(civ-selected chinese))
+	(can-train my-unique-unit-line)(not(civ-selected ethiopian))(not(civ-selected khmer))
+=>
+	(train my-unique-unit-line)
+)
+
+(defrule
+    (can-train my-unique-unit-line)(research-completed my-unique-unit-upgrade)
+    (civ-selected briton)
+    (gold-amount > 200)
+=>
+    (train my-unique-unit-line)
+)
+
+(defrule ;TARTAROS
+	(current-age == imperial-age)
+	(unit-type-count-total my-unique-unit-line < cantUnicos)
+    (gold-amount > 201)
+	(civ-selected tatars)
+	(can-train my-unique-unit-line)
+=>
+	(train my-unique-unit-line)
+)
+
+(defrule ;GODOS
+	(civ-selected gothic)
+	(can-train my-unique-unit-line)
+=>
+	(train my-unique-unit-line)
+)
+
+(defrule ;HUNOS
+    (current-age == imperial-age)
+    (can-train stable-tarkan)
+=>
+    (train stable-tarkan)
+)
+
+; TALLER ASEDIO
+; CANYONES BOMBARDEO
+(defrule
+	(unit-type-count-total houfnice < 8)
+	(can-train houfnice)
+=>
+	(train houfnice)
+)
+
+(defrule
+	(unit-type-count-total bombard-cannon < 8)(not(can-train houfnice))
+	(can-train bombard-cannon)(not(civ-selected korean))(not(civ-selected ethiopian))
+=>
+	(train bombard-cannon)
+)
+
+; CATAPULTAS
+(defrule
+    (current-age == feudal-age)
+    (town-under-attack)
+    (unit-type-count-total mangonel-line < 10)
+   
+	(can-train mangonel-line)
+=>
+    (train mangonel-line)
+)
+
+(defrule
+    (current-age == castle-age)
+    (unit-type-count-total mangonel-line < 10)
+    (town-under-attack)
+	(can-train mangonel-line)
+=>
+    (train mangonel-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (unit-type-count-total mangonel-line < 10)(gold-amount > 180) 
+    (not(civ-selected khmer))(not(civ-selected portuguese))(not(civ-selected gothic))
+	(can-train mangonel-line)  (not(civ-selected persian)) (not(civ-selected slavic))
+=>
+    (train mangonel-line)
+)
+
+(defrule
+    (can-train mangonel-line)
+    (or
+        (or
+            (or
+                (or 
+                    (civ-selected aztec)
+                    (civ-selected bulgarians)
+                )
+                (or 
+                    (civ-selected cumans)        
+                    (civ-selected ethiopian)
+                )
+            )   
+            (or
+                (or 
+                    (civ-selected malian)
+                    (civ-selected mongol)
+                )
+                (or 
+                    (civ-selected saracen)        
+                    (civ-selected sicilians)
+                )
+            )     
+        )	    
+        (or
+            (civ-selected slavic)
+            (civ-selected teutonic)
+        )   
+    )
+    (unit-type-count-total mangonel-line < cantCatapultas)
+=>
+    (train mangonel-line)
+)
+
+(defrule
+    (or
+        (civ-selected korean)
+        (civ-selected celtic)
+    )
+    (current-age == imperial-age)
+	(can-train mangonel-line)
+=>
+    (train mangonel-line)
+)
+
+; ARIETES
+(defrule
+    (current-age == imperial-age)
+	(unit-type-count-total battering-ram-line < 2)(not(civ-selected gothic)) 
+=>
+	(train battering-ram-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+	(unit-type-count-total battering-ram-line < 6)
+    (gold-amount > 200)
+	(can-train battering-ram-line)(not(civ-selected vietnamese))(not(civ-selected portuguese))
+	(not(civ-selected korean))(not(civ-selected poles))(not(civ-selected tatars))(not(civ-selected gothic)) 
+    (not(civ-selected celtic))(not(civ-selected bohemians))(not(civ-selected khmer))
+    ;(not(civ-selected persian))(not(civ-selected spanish))
+=>
+	(train battering-ram-line)
+)
+
+; BALLESTAS O ESCORPIONES   
+
+(defrule
+    (current-age == castle-age)
+    (can-train scorpion-line)(wood-amount > 100)
+    (unit-type-count-total scorpion-line < cantEscorpiones)
+    (or
+      (civ-selected khmer)
+      (civ-selected chinese)  
+    )	
+=>
+    (train scorpion-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (can-train scorpion-line)
+    (unit-type-count-total scorpion-line < cantEscorpiones)
+    (or
+        (or
+            (civ-selected celtic)
+            (civ-selected celtic)  
+        )
+        (or
+            (civ-selected khmer)
+            (civ-selected chinese)  
+        )
+    )	
+=>
+    (train scorpion-line)
+)
+
+(defrule
+    (current-age == imperial-age)(research-completed my-unique-research)
+    (can-train scorpion-line)
+    (wood-amount > 200)
+    (civ-selected khmer)
+=>
+    (train scorpion-line)
+)
+
+; PUERTO MILITARES                                 
+; BARCOS ESPECIALES
+; COREANOS
+(defrule
+    (unit-type-count-total turtle-ship-line < 4)
+    (research-completed ri-careening)
+    (current-age == imperial-age)    
+    (can-train turtle-ship-line)
+=>
+    (train turtle-ship-line)
+)
+
+; VIKINGOS
+(defrule
+    (unit-type-count-total longboat-line < 4)(research-completed ri-careening)
+    (current-age == imperial-age)    
+    (can-train longboat-line)
+=>
+    (train longboat-line)
+)
+
+; PORTUGUESES   
+(defrule
+    (unit-type-count-total caravel-line < 4)(research-completed ri-careening)
+    (current-age == imperial-age)
+    (can-train caravel-line)
+=>
+    (train caravel-line)
+)
+
+; CAnONERO
+(defrule
+    (unit-type-count-total cannon-galleon-line < 4)
+    (can-train elite-cannon-galleon)
+=>
+    (train elite-cannon-galleon)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (research-completed ri-careening)
+    (unit-type-count-total cannon-galleon-line < 4)
+    (can-train cannon-galleon-line)
+=>
+    (train cannon-galleon-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (research-completed ri-careening)
+    (unit-type-count-total galley-line < 4)
+    (can-train galley-line)
+=>
+    (train galley-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (research-completed ri-careening)
+    (unit-type-count-total fire-ship-line < 4)
+    (can-train fire-ship-line)
+=>
+    (train fire-ship-line)
+)
+
+; ESTABLO
+; LANCERO ESTEPA
+(defrule ;steppe lancer
+	(can-train 1370)(unit-type-count-total 1370 < cantCaballeros)(gold-amount > 801)
+    (or(current-age == imperial-age)(food-amount > 1000))
+=>
+    (train 1370)
+)
+
+(defrule
+	(can-train 1372)(unit-type-count-total 1370 < cantCaballeros)(gold-amount > 801)
+    (or(current-age == imperial-age)(food-amount > 1000))
+=>
+    (train 1372)
+)
+
+; ELEFANTES 
+(defrule
+	(current-age == imperial-age)(gold-amount > 600)
+	(can-train battle-elephant-line)(not(civ-selected khmer))    
+=>
+    (train battle-elephant-line)
+)
+
+(defrule
+	(current-age == imperial-age)(unit-type-count-total battle-elephant-line < 12)
+	(can-train battle-elephant-line)(civ-selected khmer)  
+=>
+    (train battle-elephant-line)
+)
+
+; SCOUTS
+;(defrule(unit-type-count-total scout-cavalry-line < 2)(can-train scout-cavalry-line) =>(train scout-cavalry-line))
+
+(defrule
+	(current-age == feudal-age)
+    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
+	(can-train scout-cavalry-line)(food-amount > 650)   
+	(unit-type-count-total scout-cavalry-line < 3)
+=>
+    (train scout-cavalry-line)
+)
+
+(defrule
+	(current-age == castle-age)      
+	(can-train scout-cavalry-line)
+    (food-amount > 850)  
+    (unit-type-count-total scout-cavalry-line < 4)
+=>
+    (train scout-cavalry-line)
+)
+
+(defrule
+	(current-age == imperial-age)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+    (research-completed ri-light-cavalry)          
+	(can-train scout-cavalry-line)(not(civ-selected japanese))  
+    (unit-type-count-total scout-cavalry-line < 8)
+=>
+    (train scout-cavalry-line)
+)
+
+(defrule
+	(can-train scout-cavalry-line)
+    (research-completed my-unique-research)
+    (civ-selected poles)
+=>
+    (train scout-cavalry-line)
+)
+
+; CAMELLOS
+(defrule
+	(current-age == castle-age)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)  
+    (civ-selected berbers)
+	(can-train camel-line)
+	(gold-amount > 800)
+	(unit-type-count-total camel-line < cantCaballerosBaja)
+=>
+    (train camel-line)
+)
+
+(defrule
+	(current-age == imperial-age)
+    (gold-amount > 201)
+	(unit-type-count-total camel-line < cantCaballeros)
+    
+=>
+    (train camel-line)
+)
+
+
+
+;CABALLERIA PESADA 
+(defrule
+	(current-age == castle-age)
+	(can-train knight-line)
+	(unit-type-count-total knight-line < 2)
+    (unit-type-count-total monk-set >= cantMonjes)
+=>
+    (train knight-line)
+)
+
+(defrule
+	(current-age == imperial-age)
+	(can-train knight-line)
+	(unit-type-count-total knight-line < 8)
+    (gold-amount > 202)
+=>
+    (train knight-line)
+)
+
+(defrule
+	(current-age == imperial-age)
+	(can-train knight-line)
+	(unit-type-count-total knight-line < cantCaballeros)
+    (gold-amount > 500)
+    (or
+        (or
+            
+                (civ-selected bulgarians)
+            
+            (or 
+                (civ-selected frankish)        
+                (civ-selected malian)
+            )
+        )
+        (or
+            (or 
+                (civ-selected poles)
+                (civ-selected sicilians)
+            )
+            (civ-selected teutonic)            
+        )   
+
+    )
+=>
+    (train knight-line)
+)
+
+(defrule
+	(can-train knight-line)
+    (research-completed ri-szlachta-privileges)
+    (civ-selected poles)(gold-amount > 750)
+=>
+    (train knight-line)
+)
+
+; ARQUERIA
+; ARQUERO 
+(defrule
+    (current-age == castle-age)
+	(unit-type-count-total archer-line < cantArqueros)
+    (gold-amount > 1200)(wood-amount > 400)
+	(can-train archer-line)(not(civ-selected gothic)) 
+=>
+	(train archer-line)
+)
+
+(defrule
+    (wood-amount > 200)(gold-amount > 200)
+	(unit-type-count-total archer-line < cantArqueros)
+    (or
+        (or(civ-selected sicilians)(civ-selected mayan))
+        (or(civ-selected ethiopian)(civ-selected mayan))    
+    )
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+
+(defrule
+    (wood-amount > 200)
+	(unit-type-count-total archer-line < cantArqueros)
+    (civ-selected persian)
+    (research-completed my-second-unique-research)
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+; ARQUERO CABALLO
+(defrule
+(current-age == imperial-age)
+    (wood-amount > 200)(gold-amount > 200)
+	(unit-type-count-total cavalry-archer-line < cantArquerosCaballo)
+    (or
+        (or(civ-selected tatars)(civ-selected mongol))
+        (civ-selected hun) 
+    )
+	(can-train cavalry-archer-line)
+=>
+	(train cavalry-archer-line)
+)
+
+; JAVALINERO
+; JAV A CABALLO
+(defrule
+    (unit-type-count-total elite-genitour < cantJavalineros)(gold-amount < 800)
+    (or
+            (players-unit-type-count any-enemy archer-line > 4)
+            (players-unit-type-count any-enemy cavalry-archer-line > 4)        
+    )    
+    (can-train elite-genitour)
+=>
+    (train elite-genitour)
+)
+
+(defrule
+    (unit-type-count-total genitour < cantJavalineros)(gold-amount < 800)
+    (or
+            (players-unit-type-count any-enemy archer-line > 4)
+            (players-unit-type-count any-enemy cavalry-archer-line > 4)        
+        )    
+    (can-train genitour)
+=>
+    (train genitour)
+)
+
+;JAVALINERO NORMAL
+(defrule
+    (current-age == feudal-age)
+    (unit-type-count-total skirmisher-line < 20)    
+    (research-completed ri-padded-archer-armor)
+    (or
+        (players-unit-type-count any-enemy 936 > 4)
+        (players-unit-type-count any-enemy 900 > 4)
+    )
+    (can-train skirmisher-line)
+    (not(can-train genitour)) (not(civ-selected sicilians))     
+=>
+    (train skirmisher-line)
+)
+
+(defrule
+    (current-age == castle-age)
+    (unit-type-count-total skirmisher-line < cantJavalineros)    
+    (research-completed ri-leather-archer-armor)   
+    (or
+        (players-unit-type-count any-enemy archer-line > 4)
+        (players-unit-type-count any-enemy cavalry-archer-line > 4)
+    )
+    (can-train skirmisher-line)(not(can-train genitour))
+    (not(civ-selected sicilians))    
+=>
+    (train skirmisher-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (unit-type-count-total skirmisher-line < cantJavalineros)    
+    (research-completed ri-leather-archer-armor)    
+    (or
+        (players-unit-type-count any-enemy archer-line > 4)
+        (players-unit-type-count any-enemy cavalry-archer-line > 4)
+    )
+    (can-train skirmisher-line)(not(can-train genitour))
+    (not(civ-selected khmer))
+    (not(civ-selected spanish))(not(civ-selected sicilians))
+    (not(civ-selected portuguese))(not(civ-selected gothic))    
+=>
+    (train skirmisher-line)
+)
+
+; MOSQUETEROS
+(defrule
+    (unit-type-count-total hand-cannoneer < cantMosqueteros)
+    (can-train hand-cannoneer)(not(can-train conquistador))(not(can-train elite-conquistador))
+    (not(civ-selected tatars))(not(civ-selected saracen))(not(civ-selected persian))(not(civ-selected khmer))
+    (not(civ-selected berbers))(not(civ-selected turkish))(not(civ-selected korean))    
+    (not(civ-selected bulgarians))(not(civ-selected byzantine))(not(civ-selected gothic))(not(civ-selected japanese))   
+=>
+    (train hand-cannoneer)
+)
+
+; HONDEROS INCAS
+(defrule
+    (unit-type-count-total slinger < cantJavalineros)
+    (can-train slinger)
+=>
+    (train slinger)
+)
+
+; BARRACAS                                         
+; MILICIA
+(defrule
+    (current-age == dark-age)(town-under-attack)
+    (can-train militiaman-line)
+=>
+    (train militiaman-line)
+)
+
+
+
+(defrule
+    (current-age == imperial-age)
+    (unit-type-count-total militiaman-line < cantMilicia)
+    (gold-amount > 400)
+    (can-train militiaman-line)
+    (or
+        (or
+            (or 
+                (civ-selected aztec)
+                (civ-selected bulgarians)
+            )
+            (or 
+                (civ-selected bulgarians)        
+                (civ-selected burmese)
+            )
+        )   
+        (or
+            (or 
+                (civ-selected gothic)
+                (civ-selected incan)
+            )
+            (or 
+                (civ-selected malian)        
+                (civ-selected slavic)
+            )
+        )       
+    )
+=>
+    (train militiaman-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (unit-type-count-total militiaman-line < cantMilicia)
+    (gold-amount > 800)
+    (can-train militiaman-line)
+    (or
+        (or
+        (civ-selected japanese)   (civ-selected sicilians)   
+        )
+                     
+        (or        
+            (civ-selected teutonic)                
+            (civ-selected viking)                
+        )      
+    )
+=>
+    (train militiaman-line)
+)
+
+
+
+(defrule
+    (current-age == imperial-age)
+    (unit-type-count-total militiaman-line < cantMilicia)
+    (research-completed my-unique-research)
+    (can-train militiaman-line)
+    (civ-selected malay)
+=>
+    (train militiaman-line)
+)
+
+
+; LANCERO
+(defrule
+    (current-age == feudal-age)
+    (unit-type-count-total spearman-line < cantLancerosMinima)
+    (can-train spearman-line)
+=>
+    (train spearman-line)
+)
+
+(defrule
+    (current-age == castle-age)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+    (unit-type-count-total spearman-line < cantLanceros)
+    (can-train spearman-line)
+=>
+    (train spearman-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (unit-type-count-total spearman-line < 20)
+    (wood-amount > 100)
+    (can-train spearman-line)
+    (not(civ-selected cumans))  
+=>
+    (train spearman-line)
+)
+
+(defrule ;godos
+	(current-age >= feudal-age)
+	(unit-type-count-total spearman-line < 4)
+	(civ-selected gothic) ; para explorar ya que los godos solo hacen unidades de castillo
+	(can-train spearman-line)
+=>
+	(train spearman-line)
+)
+
+; G AGUILA
+
+(defrule
+    (current-age == feudal-age)
+    (can-train eagle-warrior-line)
+    (unit-type-count-total eagle-warrior-line < 4)
+    =>
+    (train eagle-warrior-line)
+)
+
+(defrule
+    (current-age == castle-age)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)    
+    (can-train eagle-warrior-line)
+    (unit-type-count-total eagle-warrior-line < 4)
+    =>
+    (train eagle-warrior-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (can-train eagle-warrior-line)
+    (unit-type-count-total eagle-warrior-line < 7)(gold-amount > 500)
+    =>
+    (train eagle-warrior-line)
+)
+
+; MERCENARIO ITALIANO
+(defrule
+    (unit-type-count-total condottiero < cantMilicia)
+    (players-unit-type-count any-enemy hand-cannoneer > 3)   
+    (can-train condottiero)
+=>
+    (train condottiero)
+)
+
+; 6 COMERCIAR                            
+
+
+
+; EXCESO DE MADERA 
+(defrule
+    (can-sell-commodity wood)
+    (wood-amount > 1100)
+    (gold-amount < 1100)
+=>
+    (sell-commodity wood)
+)
+
+; EXCESO DE COMIDA
+
+(defrule
+    (current-age == feudal-age)
+    (can-sell-commodity food)
+    (food-amount > 800)
+    (or
+         (wood-amount < 200)
+         (stone-amount < 200)
+    )
+	(gold-amount < 1100)
+=>
+    (sell-commodity food)
+)
+
+(defrule
+    (current-age == castle-age)
+    (can-sell-commodity food)
+    (food-amount > 300)
+	(gold-amount < 100)
+    (unit-type-count-total monk < cantMonjes)
+=>
+    (sell-commodity food)
+)
+
+(defrule
+    (can-sell-commodity food)
+    (food-amount > 1100)
+	(gold-amount < 1100)
+=>
+    (sell-commodity food)
+)
+
+; EXCESO DE ORO
+(defrule
+	(current-age == feudal-age)
+	(can-buy-commodity food)
+    (gold-amount > 300)(food-amount < 800)
+=>
+    (buy-commodity food)
+)
+
+(defrule
+	(can-buy-commodity food)
+    (gold-amount > 900)
+    (food-amount < 300)
+=>
+    (buy-commodity food)
+)
+
+(defrule
+	(can-buy-commodity wood)
+    (gold-amount > 900)
+    (wood-amount < 300)
+=>
+    (buy-commodity wood)
+)
+
+(defrule
+	(can-buy-commodity stone)
+    (gold-amount > 900)
+    (stone-amount < 300)
+=>
+    (buy-commodity stone)
+)
+
+;EXCESO PIEDRA FEUDAL
+(defrule
+	(current-age == feudal-age)
+	(can-sell-commodity stone)
+    (gold-amount < 200)(food-amount > 799) 
+    (or
+        (building-type-count-total archery-range > 0)
+        (building-type-count-total stable > 0)
+    )    
+=>
+    (sell-commodity stone)
+)
+
+;falta piedra
+(defrule
+	(current-age > feudal-age)
+	(can-buy-commodity stone)
+    (stone-amount < 650)(building-type-count-total castle < 0)    
+=>
+    (buy-commodity stone)
+)
+
+;TRIBUTOS
+
+(defrule
+    (current-age == feudal-age)
+    (wood-amount > 900)
+=>
+    (tribute-to-player any-ally wood 100)
+)
+
+(defrule
+    (current-age == feudal-age)
+    (food-amount > 9000)
+=>
+    (tribute-to-player any-ally food 100)
+)
+
+(defrule
+    (current-age == feudal-age)
+    (gold-amount > 900)
+=>
+    (tribute-to-player any-ally gold 100)
+)
+
+(defrule
+    (current-age == castle-age)
+    (wood-amount > 1300)
+=>
+    (tribute-to-player any-ally wood 100)
+)
+
+(defrule
+    (current-age == castle-age)
+    (food-amount > 1300)
+=>
+    (tribute-to-player any-ally food 100)
+)
+
+(defrule
+    (current-age == castle-age)
+    (gold-amount > 1300)
+=>
+    (tribute-to-player any-ally gold 100)
+)
+
+(defrule
+    (current-age == castle-age)
+    (stone-amount > 1300)
+=>
+    (tribute-to-player any-ally stone 100)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 8000)
+=>
+    (tribute-to-player any-ally wood 100)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (food-amount > 8000)
+=>
+    (tribute-to-player any-ally food 100)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (gold-amount > 8000)
+=>
+    (tribute-to-player any-ally gold 100)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (stone-amount > 8000)
+=>
+    (tribute-to-player any-ally stone 100)
+)
+
+; 7 BORRAR ALDEANOS
+
+    (defrule
+        (current-age == imperial-age)
+        (or
+            (players-building-type-count any-enemy town-center > 0)       
+            (players-building-type-count any-enemy castle > 0)         
+        )
+        (wood-amount > 2000)
+        (food-amount > 2000)
+        (gold-amount > 2000)
+        (military-population > 60)
+        (building-type-count-total house >= maximoCasasAntesBorrar) 
+        (unit-type-count-total villager > maxCivilesEdadFeudal)   
+    =>
+        (do-nothing)
+    )
+
+
+(defrule
+    (or
+        (players-unit-type-count any-enemy archer-line > 4)
+        (players-unit-type-count any-enemy cavalry-archer-line > 4)        
+    )
+=>
+    (chat-to-all "DUDE HAS LITTLE ARCHERS")(chat-to-all "30")(disable-self)
+)
+
+(defrule
+    (or
+        (players-unit-type-count any-enemy scout-cavalry-line > 4)
+        (players-unit-type-count any-enemy knight-line > 4)        
+    )
+=>
+    (chat-to-all "DUDE HAS HORSIES")(chat-to-all "30")(disable-self)  
+)
+
+(defrule
+    (players-unit-type-count any-enemy spearman-line > 4)
+=>
+    (chat-to-all "DUDE WANTS TO KILL MY HORSIES")(chat-to-all "30")(disable-self) 
+)
+
+(defrule
+    (players-unit-type-count any-enemy skirmisher-line > 4)
+=>
+    (chat-to-all "DUDE WANTS TO KILL MY LITTLE ARCHERS")(chat-to-all "30")(disable-self)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy trebuchet > 4)
+=>
+    (chat-to-all "DUDE WANTS TO DESTROY MY CONDOS")(chat-to-all "30")(disable-self)
+)
+
+(defrule
+	(hold-relics)
+=>
+	(chat-to-all "WE GOT THE RELICS!!!!!!!!!")(chat-to-all "30")
+    (disable-self)
+)
