@@ -59,7 +59,6 @@
 	(timer-triggered 5)
     (current-age == imperial-age)
 =>
-	(chat-to-player my-player-number "ATTACK!!!")
 	(disable-timer 5)
     (enable-timer 5 1)
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
@@ -577,7 +576,7 @@
     (set-strategic-number sn-minimum-boat-attack-group-size 5)
     (set-strategic-number sn-maximum-boat-attack-group-size 18)
     (set-strategic-number sn-free-siege-targeting 0)
-    (set-strategic-number sn-enemy-sighted-response-distance 45)    
+    (set-strategic-number sn-enemy-sighted-response-distance 25)    
     (set-strategic-number sn-number-boat-attack-groups 1) 
     (disable-self)
 )
@@ -3163,9 +3162,9 @@
     (current-age == imperial-age)
     (unit-type-count-total mangonel-line < 10)(gold-amount > 180) 
     (not(civ-selected khmer))(not(civ-selected portuguese))
-    (not(civ-selected gothic))(not(civ-selected vietnamese))
-    (not(civ-selected lithuanians))(not(civ-selected persian))
-    (not(civ-selected slavic))(not(civ-selected malian))     
+    (not(civ-selected gothic))(not(civ-selected vietnamese))(not(civ-selected mongol))
+    (not(civ-selected lithuanians))(not(civ-selected persian))(not(civ-selected spanish))
+    (not(civ-selected slavic))(not(civ-selected malian))(not(civ-selected chinese))      
 	(can-train mangonel-line)    
 =>
     (train mangonel-line)
@@ -3198,7 +3197,7 @@
             )     
         )	    
         (or
-            (civ-selected slavic)
+            (civ-selected teutonic)
             (civ-selected teutonic)
         )   
     )
