@@ -1,6 +1,3 @@
-
-
-
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
 
@@ -1746,9 +1743,16 @@
 )
 
 (defrule
-    (can-research ri-elite-skirmisher)(research-completed ri-hand-cart)(unit-type-count-total skirmisher-line > 1)
+    (can-research ri-elite-skirmisher)(research-completed ri-hand-cart)
+    (unit-type-count-total skirmisher-line > 1)
 =>
     (research ri-elite-skirmisher)
+)
+
+(defrule
+    (can-research ri-imperial-skirmisher)(unit-type-count-total skirmisher-line > 1)
+=>
+    (research ri-imperial-skirmisher)
 )
 
 ; MEJORAS CASTILLO
@@ -2868,17 +2872,9 @@
 
 ;NORMAL
 (defrule
-    (can-build watch-tower-line)
-    (building-type-count-total watch-tower-line < 1)
+    (can-build watch-tower-line)(not(can-train camel-line))
+    (building-type-count-total watch-tower-line < 3)
     (building-type-count-total monastery > 0)
-=>
-    (build watch-tower-line)
-)
-
-(defrule
-    (can-build watch-tower-line)
-    (building-type-count-total watch-tower-line < 2)
-    (building-type-count-total castle > 0)
 =>
     (build watch-tower-line)  
 )
@@ -3165,6 +3161,7 @@
     (current-age == imperial-age)
     (unit-type-count-total mangonel-line < 10)(gold-amount > 180) 
     (not(civ-selected khmer))(not(civ-selected portuguese))(not(civ-selected gothic))
+    (not(civ-selected vietnamese))(not(civ-selected lithuanians))
 	(can-train mangonel-line)  (not(civ-selected persian)) (not(civ-selected slavic))
 =>
     (train mangonel-line)
