@@ -54,6 +54,16 @@
     (up-delete-idle-units idle-type-villager)
 )
 
+(defrule(true)=>(enable-timer 5 2700)(disable-self)) 
+(defrule
+	(timer-triggered 5)
+    (current-age == imperial-age)
+=>
+	(chat-to-player my-player-number "ATTACK!!!")
+	(disable-timer 5)
+    (enable-timer 5 1)    
+    (attack-now)(set-strategic-number sn-number-attack-groups 1)
+)
 
 (defrule 
     (cc-players-unit-type-count any-ally villager  > 0)
@@ -73,7 +83,7 @@
     (defconst maximoCasasNecesarias 30)
     (defconst cantGranjasImperial 20)
 
-    (defconst maxCivilesEdadMedia 15)
+    (defconst maxCivilesEdadMedia 16)
     (defconst maxCivilesEdadFeudal 17)
     (defconst maxCivilesEdadCastillos 53)
     (defconst maxCivilesEdadImperial 85)
@@ -532,15 +542,6 @@
     (set-strategic-number sn-gather-idle-soldiers-at-center 1)
 )
 
-(defrule 
-    (current-age == imperial-age)
-    (building-type-count castle > 0)
-    (military-population > 70)
-    (food-amount > 1300)
-=>
-    (set-strategic-number sn-number-attack-groups 1)
-    (attack-now)
-)
 
 (defrule 
     (true)
@@ -595,7 +596,7 @@
 ; CAMBIO DE ERA
 (defrule
     (can-research feudal-age)
-    (unit-type-count-total villager > 11)
+    (unit-type-count-total villager > 12)
 => 
     (research feudal-age) 
 )
@@ -1953,7 +1954,8 @@
 
 ; ARIETE
 (defrule
-	(unit-type-count-total battering-ram-line > 2)
+	(unit-type-count-total battering-ram-line > 1)
+    (food-amount > 700)
     (can-research ri-capped-ram )
 =>
     (research ri-capped-ram )
@@ -2308,7 +2310,8 @@
     )
 =>
     (build lumber-camp)  
-    (chat-to-player my-player-number "LUMBER CAMP 1")(up-modify-sn sn-camp-max-distance c:+ 4)    
+    (chat-to-player my-player-number "LUMBER CAMP 1")
+    (up-modify-sn sn-camp-max-distance c:+ 4)    
 )
 
 (defrule
@@ -2322,7 +2325,8 @@
     (dropsite-min-distance wood > 6)
 =>
     (build lumber-camp)
-    (chat-to-player my-player-number "LUMBER CAMP 2")(up-modify-sn sn-camp-max-distance c:+ 4)     
+    (chat-to-player my-player-number "LUMBER CAMP 2")
+    (up-modify-sn sn-camp-max-distance c:+ 4)     
 )
 
 (defrule
@@ -2333,7 +2337,8 @@
     (can-build lumber-camp)
 =>
     (build lumber-camp)
-    (chat-to-player my-player-number "LUMBER CAMP")(up-modify-sn sn-camp-max-distance c:+ 7)               
+    (chat-to-player my-player-number "LUMBER CAMP")
+    (up-modify-sn sn-camp-max-distance c:+ 4)               
 )
 
 ; MINAS                       
@@ -2613,8 +2618,8 @@
     (can-build castle)(building-type-count-total castle == 1)(building-type-count-total university > 0)(building-type-count-total monastery > 0)(building-type-count-total siege-workshop > 0)
 =>
     (build castle)(chat-to-player my-player-number "CASTLE 2")
-    (up-modify-sn sn-maximum-town-size c:+ 2)
-    (up-modify-sn sn-minimum-town-size c:+ 2)
+    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (up-modify-sn sn-minimum-town-size c:+ 1)
 )
 
 (defrule
@@ -2668,8 +2673,8 @@
 =>  
     
     (build barracks)(chat-to-player my-player-number "BARRACKS 2")
-    (up-modify-sn sn-maximum-town-size c:+ 2)
-    (up-modify-sn sn-minimum-town-size c:+ 2)
+    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (up-modify-sn sn-minimum-town-size c:+ 1)
 )
 
 (defrule
@@ -2728,7 +2733,7 @@
     (can-build stable)(military-population > 60)
 =>
     (build stable)(chat-to-player my-player-number "STABLE 2")
-    (up-modify-sn sn-maximum-town-size c:+ 2)(up-modify-sn sn-minimum-town-size c:+ 2)  
+    (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
 (defrule
@@ -2738,7 +2743,8 @@
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>
-    (build stable)(chat-to-player my-player-number "STABLE 3")(up-modify-sn sn-maximum-town-size c:+ 1) 
+    (build stable)(chat-to-player my-player-number "STABLE 3")
+    (up-modify-sn sn-maximum-town-size c:+ 1) 
 )
 
 (defrule
@@ -2746,7 +2752,8 @@
     (can-build stable)(wood-amount > 2000)
     (not(civ-selected gothic))
 =>
-    (build stable)(chat-to-player my-player-number "STABLE")(up-modify-sn sn-maximum-town-size c:+ 1)
+    (build stable)(chat-to-player my-player-number "STABLE")
+    (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
 ; CONSTRUIR ARQUERIA
@@ -2770,8 +2777,8 @@
     (can-build archery-range)(military-population > 60)
 =>
     (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE 2")
-    (up-modify-sn sn-maximum-town-size c:+ 2)
-    (up-modify-sn sn-minimum-town-size c:+ 2)
+    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (up-modify-sn sn-minimum-town-size c:+ 1)
 )
 
 (defrule
@@ -2781,7 +2788,8 @@
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
-    (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE 3")(up-modify-sn sn-maximum-town-size c:+ 1)
+    (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE 3")
+    (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
 (defrule
@@ -2789,7 +2797,8 @@
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 2000)
 =>
-    (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE")(up-modify-sn sn-maximum-town-size c:+ 1)
+    (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE")
+    (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
 ; CONSTRUIR TALLER ASEDIO
@@ -2872,7 +2881,9 @@
 
 ;NORMAL
 (defrule
-    (can-build watch-tower-line)(not(can-train camel-line))
+    (can-build watch-tower-line
+    (unit-type-count-total camel-line < 3)
+    (unit-type-count-total villager > 26)
     (building-type-count-total watch-tower-line < 3)
     (building-type-count-total monastery > 0)
 =>
@@ -3160,9 +3171,11 @@
 (defrule
     (current-age == imperial-age)
     (unit-type-count-total mangonel-line < 10)(gold-amount > 180) 
-    (not(civ-selected khmer))(not(civ-selected portuguese))(not(civ-selected gothic))
-    (not(civ-selected vietnamese))(not(civ-selected lithuanians))
-	(can-train mangonel-line)  (not(civ-selected persian)) (not(civ-selected slavic))
+    (not(civ-selected khmer))(not(civ-selected portuguese))
+    (not(civ-selected gothic))(not(civ-selected vietnamese))
+    (not(civ-selected lithuanians))(not(civ-selected persian))
+    (not(civ-selected slavic))(not(civ-selected malian))     
+	(can-train mangonel-line)    
 =>
     (train mangonel-line)
 )
