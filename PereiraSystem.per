@@ -70,8 +70,8 @@
 (defrule 
     (cc-players-unit-type-count any-ally villager  > 0)
 =>
-    (up-modify-sn sn-maximum-town-size c:+ 8)
-    (chat-to-player my-player-number "WE HAVE ALLIES, TOWN SIZE +8")
+    (up-modify-sn sn-maximum-town-size c:+ 2)
+    (chat-to-player my-player-number "WE HAVE ALLIES, TOWN SIZE +2")
     (disable-self)
 )
 
