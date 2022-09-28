@@ -685,7 +685,9 @@
 )
 
 (defrule
-    (can-research ri-coinage )(cc-players-building-type-count any-ally market > 0)
+    (can-research ri-coinage )
+    (cc-players-building-type-count any-ally market > 0)
+    (building-type-count-total monastery > 0)    
 =>
     (research ri-coinage)
 )
@@ -2467,7 +2469,8 @@
         (civ-selected hun)
     )
 =>
-    (build university)(chat-to-player my-player-number "UNIVERSITY")(up-modify-sn sn-maximum-town-size c:+ 4)
+    (build university)(chat-to-player my-player-number "UNIVERSITY")
+    (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
 ; PUERTO
@@ -2637,7 +2640,7 @@
 (defrule ; MINI CASTILLO HUNGARO
     (can-build krepost) (building-type-count-total castle > 1)(building-type-count-total krepost < 4)
 =>
-    (build krepost)(up-modify-sn sn-maximum-town-size c:+ 2)   
+    (build krepost)(up-modify-sn sn-maximum-town-size c:+ 1)   
 )
 
 
@@ -2645,7 +2648,7 @@
 (defrule ; ; MINI CASTILLO SICILIANO
     (can-build donjon) (building-type-count-total castle > 1)(building-type-count-total donjon < 4)
 =>
-    (build donjon)(up-modify-sn sn-maximum-town-size c:+ 2)   
+    (build donjon)(up-modify-sn sn-maximum-town-size c:+ 1)   
 )
 
 
@@ -2814,7 +2817,9 @@
     )
 =>
     (build siege-workshop)
-    (chat-to-player my-player-number "SIEGE WORKSHOP 1")(up-modify-sn sn-maximum-town-size c:+ 2)   
+    (chat-to-player my-player-number "SIEGE WORKSHOP 1")
+    (up-modify-sn sn-maximum-town-size c:+ 2)
+    (up-modify-sn sn-minimum-town-size c:+ 2)   
 )
 
 (defrule
@@ -2823,8 +2828,8 @@
     (building-type-count-total siege-workshop == 1)
 =>
     (build siege-workshop)(chat-to-player my-player-number "SIEGE WORKSHOP 2")
-    (up-modify-sn sn-maximum-town-size c:+ 4)
-    (up-modify-sn sn-minimum-town-size c:+ 4)
+    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (up-modify-sn sn-minimum-town-size c:+ 1)
 )
 
 (defrule
@@ -2947,29 +2952,13 @@
 )
 
 ; CARRETAS
-(defrule 
-    (cc-players-building-type-count any-ally market  > 0)
-    (unit-type-count-total trade-cart < 2)  
-    (civilian-population < 100)(military-population > 20)
-=>
-    (train trade-cart)
-)
-
-(defrule 
-    (cc-players-building-type-count any-ally market > 0)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
-    (unit-type-count-total trade-cart < 4)  
-    (civilian-population < 100)
-=>
-    (train trade-cart)
-)
 
 (defrule 
     (current-age == imperial-age)
     (cc-players-building-type-count any-ally market  > 0)
     (unit-type-count-total trade-cart < cantCarretas)    
     (research-completed ri-caravan)
-    (civilian-population < 100)
+    (civilian-population < 100)(military-population > 50)
 =>
 	(train trade-cart)
 )
