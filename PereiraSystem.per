@@ -228,9 +228,9 @@
 (defrule 
     (cc-players-unit-type-count any-ally villager  > 0)
 =>
-    (up-modify-sn sn-maximum-town-size c:+ 2)
+    (up-modify-sn sn-maximum-town-size c:+ 8)
     (up-modify-sn sn-enemy-sighted-response-distance c:+ 24)
-    (chat-to-player my-player-number "WE HAVE ALLIES, TOWN SIZE +2, RESPONSE DISTANCE +24")
+    (chat-to-player my-player-number "WE HAVE ALLIES, TOWN SIZE +8, RESPONSE DISTANCE +24")
     (disable-self)
 )
 
