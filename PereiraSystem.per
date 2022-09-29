@@ -1,6 +1,151 @@
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
 
+(defconst gl-maximoCasasAntesBorrar 101)    
+(defconst gl-maximoCasasNecesarias 102)
+(defconst gl-cantGranjasImperial 103)
+
+(defconst gl-maxCivilesEdadMedia 104)
+(defconst gl-maxCivilesEdadFeudal 105)
+(defconst gl-maxCivilesEdadCastillos 106)
+(defconst gl-maxCivilesEdadImperial 107)
+
+(defconst gl-cantCarretas 108)
+(defconst gl-cantBarcosComercio 109)
+
+(defconst gl-cantLancerosMinima 110)
+(defconst gl-cantLancerosMedia 111)
+(defconst gl-cantLanceros 112)
+(defconst gl-cantMilicia 113)
+
+(defconst gl-cantArqueros 114)
+(defconst gl-cantJavalineros 115)
+(defconst gl-cantArquerosCaballo 116)
+(defconst gl-cantMosqueteros 117)
+
+(defconst gl-cantCaballerosBaja 118)
+(defconst gl-cantCaballeros 119)
+(defconst gl-cantScoutsBaja 120)
+(defconst gl-cantScouts 121)
+
+(defconst gl-cantMonjes 122)
+(defconst gl-cantMonjesAlta 123)
+
+(defconst gl-cantArietesBaja 124)
+(defconst gl-cantArietes 125)
+(defconst gl-cantEscorpiones 126)
+(defconst gl-cantCatapultas 127)
+(defconst gl-cantBombardos 128)
+
+(defconst gl-cantUnicosBaja 129)
+(defconst gl-cantUnicos 130)
+(defconst gl-cantTrebuchets 131)
+(defconst gl-cantTrebuchetsAlta 132)
+
+(defconst gl-cantBarcoNormal 133)
+(defconst gl-cantBarcoCanyones 134)
+(defconst gl-cantBarcoFuego 135)
+(defconst gl-cantBarcoDemolicion 136)
+(defconst gl-cantBarcoEspecial 137)
+
+#load-if-defined POPULATION-CAP-150
+(defrule
+    (true)
+=>
+    (set-goal gl-maximoCasasAntesBorrar 21)    
+    (set-goal gl-maximoCasasNecesarias 30)
+    (set-goal gl-cantGranjasImperial 20)
+
+    (set-goal gl-maxCivilesEdadMedia 16)
+    (set-goal gl-maxCivilesEdadFeudal 18)
+    (set-goal gl-maxCivilesEdadCastillos 53)
+    (set-goal gl-maxCivilesEdadImperial 85)
+
+    (set-goal gl-cantCarretas 30)
+    (set-goal gl-cantBarcosComercio 20)
+)
+
+(defrule
+    (true)
+=>
+    (set-goal gl-cantLancerosMinima 7)
+    (set-goal gl-cantLancerosMedia 40)
+    (set-goal gl-cantLanceros 60)
+    (set-goal gl-cantMilicia 45)
+
+    (set-goal gl-cantArqueros 40)
+    (set-goal gl-cantJavalineros 30)
+    (set-goal gl-cantArquerosCaballo 30)
+    (set-goal gl-cantMosqueteros 30)
+
+    (set-goal gl-cantCaballerosBaja 5)
+    (set-goal gl-cantCaballeros 40)
+    (set-goal gl-cantScoutsBaja 8)
+    (set-goal gl-cantScouts 40)
+)
+
+(defrule
+    (true)
+=>
+    (set-goal gl-cantMonjes 5)
+    (set-goal gl-cantMonjesAlta 16)
+
+    (set-goal gl-cantArietesBaja 2)
+    (set-goal gl-cantArietes 5)
+    (set-goal gl-cantEscorpiones 8)
+    (set-goal gl-cantCatapultas 8)
+    (set-goal gl-cantBombardos 8)
+
+    (set-goal gl-cantUnicosBaja 10)
+    (set-goal gl-cantUnicos 40)
+    (set-goal gl-cantTrebuchets 3)
+    (set-goal gl-cantTrebuchetsAlta 8)
+)
+
+(defrule
+    (true)
+=>
+    (set-goal gl-cantBarcoNormal 20)
+    (set-goal gl-cantBarcoCanyones 20)
+    (set-goal gl-cantBarcoFuego 20)
+    (set-goal gl-cantBarcoDemolicion 20)
+    (set-goal gl-cantBarcoEspecial 20)
+)
+
+#end-if
+
+#load-if-defined POPULATION-CAP-25
+
+#end-if
+
+#load-if-defined POPULATION-CAP-50
+
+#end-if
+
+#load-if-defined POPULATION-CAP-75
+
+#end-if
+
+#load-if-defined POPULATION-CAP-100
+
+#end-if
+
+#load-if-defined POPULATION-CAP-125
+
+#end-if
+
+#load-if-defined POPULATION-CAP-175
+
+#end-if
+
+#load-if-defined POPULATION-CAP-200
+
+#end-if
+
+#load-if-defined POPULATION-CAP-250
+
+#end-if
+
 (defrule
     (true)
 =>    
@@ -70,7 +215,8 @@
     (cc-players-unit-type-count any-ally villager  > 0)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 2)
-    (chat-to-player my-player-number "WE HAVE ALLIES, TOWN SIZE +2")
+    (up-modify-sn sn-enemy-sighted-response-distance c:+ 32)
+    (chat-to-player my-player-number "WE HAVE ALLIES, TOWN SIZE +2, RESPONSE DISTANCE +32")
     (disable-self)
 )
 
@@ -78,206 +224,6 @@
 
 (load "Constants\Constants for AoFE")
 
-#load-if-defined POPULATION-CAP-150
-
-    (defconst maximoCasasAntesBorrar 21)    
-    (defconst maximoCasasNecesarias 30)
-    (defconst cantGranjasImperial 20)
-
-    (defconst maxCivilesEdadMedia 16)
-    (defconst maxCivilesEdadFeudal 17)
-    (defconst maxCivilesEdadCastillos 53)
-    (defconst maxCivilesEdadImperial 85)
-
-    (defconst cantCarretas 30)
-    (defconst cantBarcosComercio 20)
-
-    (defconst cantLancerosMinima 7)
-    (defconst cantLancerosMedia 40)
-    (defconst cantLanceros 60)
-    (defconst cantMilicia 45)
-
-    (defconst cantArqueros 40)
-    (defconst cantJavalineros 30)
-    (defconst cantArquerosCaballo 30)
-    (defconst cantMosqueteros 30)
-
-    (defconst cantCaballerosBaja 5)
-    (defconst cantCaballeros 40)
-    (defconst cantScoutsBaja 8)
-    (defconst cantScouts 40)
-
-    (defconst cantMonjes 5)
-    (defconst cantMonjesAlta 16)
-
-    (defconst cantArietesBaja 2)
-    (defconst cantArietes 5)
-    (defconst cantEscorpiones 8)
-    (defconst cantCatapultas 8)
-    (defconst cantBombardos 8)
-
-    (defconst cantUnicosBaja 10)
-    (defconst cantUnicos 40)
-    (defconst cantTrebuchets 3)
-    (defconst cantTrebuchetsAlta 8)
-
-    (defconst cantBarcoNormal 20)
-    (defconst cantBarcoCanyones 20)
-    (defconst cantBarcoFuego 20)
-    (defconst cantBarcoDemolicion 20)
-    (defconst cantBarcoEspecial 20)
-
-#end-if
-
-#load-if-defined POPULATION-CAP-175
-
-    (defconst maximoCasasAntesBorrar 21)    
-    (defconst maximoCasasNecesarias 30)
-    (defconst cantGranjasImperial 20)
-
-    (defconst maxCivilesEdadMedia 15)
-    (defconst maxCivilesEdadFeudal 17)
-    (defconst maxCivilesEdadCastillos 53)
-    (defconst maxCivilesEdadImperial 85)
-
-    (defconst cantCarretas 30)
-    (defconst cantBarcosComercio 20)
-
-    (defconst cantLancerosMinima 7)
-    (defconst cantLanceros 75)
-    (defconst cantMilicia 45)
-
-    (defconst cantArqueros 40)
-    (defconst cantJavalineros 30)
-    (defconst cantArquerosCaballo 30)
-    (defconst cantMosqueteros 30)
-
-    (defconst cantCaballerosBaja 5)
-    (defconst cantCaballeros 40)
-    (defconst cantScoutsBaja 8)
-    (defconst cantScouts 40)
-
-    (defconst cantMonjes 5)
-    (defconst cantMonjesAlta 16)
-
-    (defconst cantArietesBaja 2)
-    (defconst cantArietes 5)
-    (defconst cantEscorpiones 8)
-    (defconst cantCatapultas 8)
-    (defconst cantBombardos 8)
-
-    (defconst cantUnicosBaja 10)
-    (defconst cantUnicos 40)
-    (defconst cantTrebuchets 3)
-    (defconst cantTrebuchetsAlta 8)
-
-    (defconst cantBarcoNormal 20)
-    (defconst cantBarcoCanyones 20)
-    (defconst cantBarcoFuego 20)
-    (defconst cantBarcoDemolicion 20)
-    (defconst cantBarcoEspecial 20)
-
-#end-if
-
-#load-if-defined POPULATION-CAP-200
-
-    (defconst maximoCasasAntesBorrar 21)    
-    (defconst maximoCasasNecesarias 30)
-    (defconst cantGranjasImperial 20)
-
-    (defconst maxCivilesEdadMedia 15)
-    (defconst maxCivilesEdadFeudal 17)
-    (defconst maxCivilesEdadCastillos 53)
-    (defconst maxCivilesEdadImperial 85)
-
-    (defconst cantCarretas 30)
-    (defconst cantBarcosComercio 20)
-
-    (defconst cantLancerosMinima 7)
-    (defconst cantLanceros 110)
-    (defconst cantMilicia 45)
-
-    (defconst cantArqueros 40)
-    (defconst cantJavalineros 30)
-    (defconst cantArquerosCaballo 30)
-    (defconst cantMosqueteros 30)
-
-    (defconst cantCaballerosBaja 5)
-    (defconst cantCaballeros 40)
-    (defconst cantScoutsBaja 8)
-    (defconst cantScouts 40)
-
-    (defconst cantMonjes 5)
-    (defconst cantMonjesAlta 16)
-
-    (defconst cantArietesBaja 2)
-    (defconst cantArietes 5)
-    (defconst cantEscorpiones 8)
-    (defconst cantCatapultas 8)
-    (defconst cantBombardos 8)
-
-    (defconst cantUnicosBaja 10)
-    (defconst cantUnicos 40)
-    (defconst cantTrebuchets 3)
-    (defconst cantTrebuchetsAlta 8)
-
-    (defconst cantBarcoNormal 20)
-    (defconst cantBarcoCanyones 20)
-    (defconst cantBarcoFuego 20)
-    (defconst cantBarcoDemolicion 20)
-    (defconst cantBarcoEspecial 20)
-
-#end-if
-
-#load-if-defined POPULATION-CAP-250
-
-    (defconst maximoCasasAntesBorrar 21)    
-    (defconst maximoCasasNecesarias 30)
-    (defconst cantGranjasImperial 20)
-
-    (defconst maxCivilesEdadMedia 15)
-    (defconst maxCivilesEdadFeudal 17)
-    (defconst maxCivilesEdadCastillos 53)
-    (defconst maxCivilesEdadImperial 85)
-
-    (defconst cantCarretas 30)
-    (defconst cantBarcosComercio 20)
-
-    (defconst cantLancerosMinima 7)
-    (defconst cantLanceros 160)
-    (defconst cantMilicia 45)
-
-    (defconst cantArqueros 40)
-    (defconst cantJavalineros 30)
-    (defconst cantArquerosCaballo 30)
-    (defconst cantMosqueteros 30)
-
-    (defconst cantCaballerosBaja 5)
-    (defconst cantCaballeros 40)
-    (defconst cantScoutsBaja 8)
-    (defconst cantScouts 40)
-
-    (defconst cantMonjes 5)
-    (defconst cantMonjesAlta 16)
-
-    (defconst cantArietesBaja 2)
-    (defconst cantArietes 5)
-    (defconst cantEscorpiones 8)
-    (defconst cantCatapultas 8)
-    (defconst cantBombardos 8)
-
-    (defconst cantUnicosBaja 10)
-    (defconst cantUnicos 40)
-    (defconst cantTrebuchets 3)
-    (defconst cantTrebuchetsAlta 8)
-
-    (defconst cantBarcoNormal 20)
-    (defconst cantBarcoCanyones 20)
-    (defconst cantBarcoFuego 20)
-    (defconst cantBarcoDemolicion 20)
-    (defconst cantBarcoEspecial 20)
-
-#end-if
 
 ; 2 NUMEROS ESTRATEGICOS
 ; EXPLORAR
@@ -597,7 +543,7 @@
 ; CAMBIO DE ERA
 (defrule
     (can-research feudal-age)
-    (unit-type-count-total villager > 12)
+    (unit-type-count-total villager > 13)
 => 
     (research feudal-age) 
 )
@@ -627,7 +573,7 @@
 
 (defrule
     (can-research ri-loom)
-    (or(current-age == imperial-age)(unit-type-count-total monk-set >= cantMonjes))
+    (or(current-age == imperial-age)(unit-type-count-total monk-set g:>= gl-cantMonjes))
 =>
     (research ri-loom)
 )
@@ -1336,9 +1282,9 @@
 
 (defrule
     (can-research my-unique-research)(food-amount > 1500)
-    (unit-type-count-total villager > cantCaballeros)
+    (unit-type-count-total villager > gl-cantCaballeros)
     
-    (civ-selected burgundians)(military-population > cantCaballeros)
+    (civ-selected burgundians)(military-population > gl-cantCaballeros)
     (or
         (unit-type-count-total battering-ram > 4)    
         (unit-type-count-total trebuchet > 4)        
@@ -1614,7 +1560,7 @@
     (can-research ri-bloodlines)
     (research-completed ri-wheel-barrow)
     (or(current-age > castle-age)(food-amount > 900))
-    (unit-type-count-total monk >= cantMonjes)
+    (unit-type-count-total monk >= gl-cantMonjes)
     (not(civ-selected gothic))
 =>
     (research ri-bloodlines)
@@ -1987,13 +1933,13 @@
 )
 
 (defrule
-    (can-research ri-fervor )(unit-type-count-total monk-set >= cantMonjes)
+    (can-research ri-fervor )(unit-type-count-total monk-set g:>= gl-cantMonjes)
 =>
     (research ri-fervor )
 )
 
 (defrule
-    (unit-type-count-total monk >= cantMonjes)
+    (unit-type-count-total monk g:>= gl-cantMonjes)
 	(research-completed ri-fervor)
     (can-research ri-sanctity )
 =>
@@ -2421,7 +2367,7 @@
     (building-type-count-total market == 0)
     (research-completed ri-wheel-barrow)(research-completed ri-horse-collar)
     (research-completed ri-double-bit-axe)
-    (can-build market)(military-population >= cantLancerosMinima)
+    (can-build market)(military-population >= gl-cantLancerosMinima)
     (food-amount > 500)(gold-amount > 100)
 =>
     (build market)(chat-to-player my-player-number "MARKET 1")  
@@ -2916,7 +2862,7 @@
 
 (defrule
     (current-age == dark-age)
-    (civilian-population  < maxCivilesEdadMedia)
+    (civilian-population  g:< gl-maxCivilesEdadMedia)
     (can-train villager)
 =>
     (train villager)
@@ -2926,7 +2872,7 @@
     (current-age == feudal-age)
     (or(research-completed ri-wheel-barrow)(food-amount > 225)) 
 
-    (civilian-population < maxCivilesEdadFeudal)
+    (civilian-population g:< gl-maxCivilesEdadFeudal)
     (can-train villager)
 =>
     (train villager)
@@ -2935,7 +2881,7 @@
 (defrule
     (current-age == castle-age)
     (or(research-completed ri-hand-cart)(food-amount > 350))  
-    (civilian-population < maxCivilesEdadCastillos)
+    (civilian-population g:< gl-maxCivilesEdadCastillos)
     (can-train villager)
 =>
     (train villager)
@@ -2943,7 +2889,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (civilian-population < maxCivilesEdadImperial)
+    (civilian-population g:< gl-maxCivilesEdadImperial)
     (food-amount < 1000)(wood-amount < 1000)(gold-amount < 500)
     (can-train villager)
 =>
@@ -2955,7 +2901,7 @@
 (defrule 
     (current-age == imperial-age)
     (cc-players-building-type-count any-ally market  > 0)
-    (unit-type-count-total trade-cart < cantCarretas)    
+    (unit-type-count-total trade-cart g:< gl-cantCarretas)    
     (research-completed ri-caravan)
     (civilian-population < 100)(military-population > 50)
 =>
@@ -2965,7 +2911,7 @@
 ; UNIDADES MILITARES                                                                        
 ; MONASTERIO                                  
 (defrule
-    (unit-type-count-total monk-set < cantMonjes)
+    (unit-type-count-total monk-set g:< gl-cantMonjes)
     (can-train monk)(not(hold-relics))
 =>
     (train monk)
@@ -2974,7 +2920,7 @@
 #load-if-defined DEBUG
 
  (defrule
-    (unit-type-count-total monk-set < cantMonjes)
+    (unit-type-count-total monk-set g:< gl-cantMonjes)
     (can-train monk)(not(hold-relics))
 =>
     (train monk)(up-guard-unit monk c: spearman-line)
@@ -3001,7 +2947,7 @@
         )     
     )
     (current-age == imperial-age)(gold-amount > 400)
-    (unit-type-count-total monk < cantMonjesAlta) 
+    (unit-type-count-total monk g:< gl-cantMonjesAlta) 
     (can-train monk)
 =>
     (train monk)
@@ -3019,13 +2965,13 @@
 ; TREBUCHET
 (defrule
     (and
-        (unit-type-count-total trebuchet < cantTrebuchets)
-        (unit-type-count-total 954 < cantTrebuchets)
+        (unit-type-count-total trebuchet g:< gl-cantTrebuchets)
+        (unit-type-count-total 954 < gl-cantTrebuchets)
     )
-    (unit-type-count-total trebuchet < cantTrebuchets)
+    (unit-type-count-total trebuchet g:< gl-cantTrebuchets)
     (not(civ-selected tatars))(not(civ-selected gothic)) 
     (not(civ-selected japanese))
-    (military-population > cantCaballeros) 
+    (military-population g:> gl-cantCaballeros) 
     (can-train trebuchet)   
 =>
     (train trebuchet)
@@ -3036,7 +2982,7 @@
         (civ-selected tatars)
         (civ-selected japanese)
     )
-    (unit-type-count-total trebuchet < cantTrebuchetsAlta)
+    (unit-type-count-total trebuchet g:< gl-cantTrebuchetsAlta)
     (can-train trebuchet)
 =>
     (train trebuchet)
@@ -3079,7 +3025,7 @@
 
 (defrule
 	(current-age == imperial-age)(research-completed my-unique-unit-upgrade)
-	(unit-type-count-total my-unique-unit-line < cantUnicos)
+	(unit-type-count-total my-unique-unit-line g:< gl-cantUnicos)
     (or
         (gold-amount > 401)
         (civ-selected magyar)
@@ -3100,7 +3046,7 @@
 
 (defrule ;TARTAROS
 	(current-age == imperial-age)
-	(unit-type-count-total my-unique-unit-line < cantUnicos)
+	(unit-type-count-total my-unique-unit-line g:< gl-cantUnicos)
     (gold-amount > 201)
 	(civ-selected tatars)
 	(can-train my-unique-unit-line)
@@ -3201,7 +3147,7 @@
             (civ-selected teutonic)
         )   
     )
-    (unit-type-count-total mangonel-line < cantCatapultas)
+    (unit-type-count-total mangonel-line g:< gl-cantCatapultas)
 =>
     (train mangonel-line)
 )
@@ -3242,7 +3188,7 @@
 (defrule
     (current-age == castle-age)
     (can-train scorpion-line)(wood-amount > 100)
-    (unit-type-count-total scorpion-line < cantEscorpiones)
+    (unit-type-count-total scorpion-line g:< gl-cantEscorpiones)
     (or
       (civ-selected khmer)
       (civ-selected chinese)  
@@ -3254,7 +3200,7 @@
 (defrule
     (current-age == imperial-age)
     (can-train scorpion-line)
-    (unit-type-count-total scorpion-line < cantEscorpiones)
+    (unit-type-count-total scorpion-line g:< gl-cantEscorpiones)
     (or
         (or
             (civ-selected celtic)
@@ -3347,7 +3293,7 @@
 ; LANCERO ESTEPA
 (defrule ;steppe lancer
 	(can-train 1370)
-    (unit-type-count-total 1370 < cantCaballeros)
+    (unit-type-count-total 1370 < gl-cantCaballeros)
     (or
         (current-age == imperial-age)
         (and(food-amount > 1071)(gold-amount > 841))
@@ -3358,7 +3304,7 @@
 
 (defrule ;steppe lancer
 	(can-train 1372)
-    (unit-type-count-total 1372 < cantCaballeros)
+    (unit-type-count-total 1372 < gl-cantCaballeros)
     (or
         (current-age == imperial-age)
         (and(food-amount > 1071)(gold-amount > 841))
@@ -3435,7 +3381,7 @@
 (defrule
 	(current-age == imperial-age)
     (gold-amount > 201)
-	(unit-type-count-total camel-line < cantCaballeros)
+	(unit-type-count-total camel-line < gl-cantCaballeros)
     
 =>
     (train camel-line)
@@ -3455,7 +3401,7 @@
 (defrule
 	(current-age == imperial-age)
 	(can-train knight-line)
-	(unit-type-count-total knight-line < cantCaballeros)
+	(unit-type-count-total knight-line < gl-cantCaballeros)
     (gold-amount > 500)
     (or
         (or
@@ -3492,7 +3438,7 @@
 ; ARQUERO 
 (defrule
     (current-age == castle-age)
-	(unit-type-count-total archer-line < cantArqueros)
+	(unit-type-count-total archer-line g:< gl-cantArqueros)
     (gold-amount > 1200)(wood-amount > 400)
 	(can-train archer-line)(not(civ-selected gothic)) 
 =>
@@ -3501,7 +3447,7 @@
 
 (defrule
     (wood-amount > 200)(gold-amount > 200)
-	(unit-type-count-total archer-line < cantArqueros)
+	(unit-type-count-total archer-line g:< gl-cantArqueros)
     (or
         (or(civ-selected sicilians)(civ-selected mayan))
         (or(civ-selected ethiopian)(civ-selected mayan))    
@@ -3514,7 +3460,7 @@
 
 (defrule
     (wood-amount > 200)
-	(unit-type-count-total archer-line < cantArqueros)
+	(unit-type-count-total archer-line g:< gl-cantArqueros)
     (civ-selected persian)
     (research-completed my-second-unique-research)
 	(can-train archer-line)
@@ -3525,7 +3471,7 @@
 (defrule
 (current-age == imperial-age)
     (wood-amount > 200)(gold-amount > 200)
-	(unit-type-count-total cavalry-archer-line < cantArquerosCaballo)
+	(unit-type-count-total cavalry-archer-line g:< gl-cantArquerosCaballo)
     (or
         (or(civ-selected tatars)(civ-selected mongol))
         (civ-selected hun) 
@@ -3538,7 +3484,7 @@
 ; JAVALINERO
 ; JAV A CABALLO
 (defrule
-    (unit-type-count-total elite-genitour < cantJavalineros)(gold-amount < 800)
+    (unit-type-count-total elite-genitour g:< gl-cantJavalineros)(gold-amount < 800)
     (or
             (players-unit-type-count any-enemy archer-line > 4)
             (players-unit-type-count any-enemy cavalry-archer-line > 4)        
@@ -3549,7 +3495,7 @@
 )
 
 (defrule
-    (unit-type-count-total genitour < cantJavalineros)(gold-amount < 800)
+    (unit-type-count-total genitour g:< gl-cantJavalineros)(gold-amount < 800)
     (or
             (players-unit-type-count any-enemy archer-line > 4)
             (players-unit-type-count any-enemy cavalry-archer-line > 4)        
@@ -3587,7 +3533,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total skirmisher-line < cantJavalineros)    
+    (unit-type-count-total skirmisher-line g:< gl-cantJavalineros)    
     (research-completed ri-leather-archer-armor)    
     (or
         (players-unit-type-count any-enemy archer-line > 4)
@@ -3603,7 +3549,7 @@
 
 ; MOSQUETEROS
 (defrule
-    (unit-type-count-total hand-cannoneer < cantMosqueteros)
+    (unit-type-count-total hand-cannoneer g:< gl-cantMosqueteros)
     (can-train hand-cannoneer)(not(can-train conquistador))(not(can-train elite-conquistador))
     (not(civ-selected tatars))(not(civ-selected saracen))(not(civ-selected persian))(not(civ-selected khmer))
     (not(civ-selected berbers))(not(civ-selected turkish))(not(civ-selected korean))    
@@ -3614,7 +3560,7 @@
 
 ; HONDEROS INCAS
 (defrule
-    (unit-type-count-total slinger < cantJavalineros)
+    (unit-type-count-total slinger g:< gl-cantJavalineros)
     (can-train slinger)
 =>
     (train slinger)
@@ -3633,7 +3579,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total militiaman-line < cantMilicia)
+    (unit-type-count-total militiaman-line g:< gl-cantMilicia)
     (gold-amount > 400)
     (can-train militiaman-line)
     (or
@@ -3664,7 +3610,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total militiaman-line < cantMilicia)
+    (unit-type-count-total militiaman-line g:< gl-cantMilicia)
     (gold-amount > 800)
     (can-train militiaman-line)
     (or
@@ -3685,7 +3631,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total militiaman-line < cantMilicia)
+    (unit-type-count-total militiaman-line g:< gl-cantMilicia)
     (research-completed my-unique-research)
     (can-train militiaman-line)
     (civ-selected malay)
@@ -3699,16 +3645,16 @@
     (current-age == feudal-age)
     (research-completed ri-wheel-barrow)
     (research-completed ri-double-bit-axe)
-    (unit-type-count-total spearman-line < cantLancerosMinima)
+    (unit-type-count-total spearman-line g:< gl-cantLancerosMinima)
     (can-train spearman-line)
 =>
     (train spearman-line)
 )
 
 (defrule
-    (current-age == castle-age)(unit-type-count-total villager > 23)
+    (current-age == castle-age)(building-type-count-total monastery > 0)
     ;(research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
-    (unit-type-count-total spearman-line < cantLancerosMedia)
+    (unit-type-count-total spearman-line g:< gl-cantLancerosMedia)
     (building-type-count-total monastery > 0)
     (can-train spearman-line)
 =>
@@ -3717,7 +3663,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total spearman-line < cantLanceros)
+    (unit-type-count-total spearman-line g:< gl-cantLanceros)
     (wood-amount > 100)
     (can-train spearman-line)
     (not(civ-selected cumans))  
@@ -3763,7 +3709,7 @@
 
 ; MERCENARIO ITALIANO
 (defrule
-    (unit-type-count-total condottiero < cantMilicia)
+    (unit-type-count-total condottiero g:< gl-cantMilicia)
     (players-unit-type-count any-enemy hand-cannoneer > 3)   
     (can-train condottiero)
 =>
@@ -3788,7 +3734,7 @@
 (defrule
     (current-age == feudal-age)
     (can-sell-commodity food)
-    (food-amount > 800)
+    (food-amount > 1000)
     (or
          (wood-amount < 200)
          (stone-amount < 200)
@@ -3803,14 +3749,14 @@
     (can-sell-commodity food)
     (food-amount > 300)
 	(gold-amount < 100)
-    (unit-type-count-total monk < cantMonjes)
+    (unit-type-count-total monk-set g:< gl-cantMonjes)
 =>
     (sell-commodity food)
 )
 
 (defrule
     (can-sell-commodity food)
-    (food-amount > 1100)
+    (food-amount > 1300)
 	(gold-amount < 1100)
 =>
     (sell-commodity food)
@@ -3962,8 +3908,8 @@
         (food-amount > 2000)
         (gold-amount > 2000)
         (military-population > 60)
-        (building-type-count-total house >= maximoCasasAntesBorrar) 
-        (unit-type-count-total villager > maxCivilesEdadFeudal)   
+        (building-type-count-total house g:>= gl-maximoCasasAntesBorrar) 
+        (unit-type-count-total villager g:> gl-maxCivilesEdadFeudal)   
     =>
         (do-nothing)
     )
