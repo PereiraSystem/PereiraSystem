@@ -1,3 +1,17 @@
+;PEREIRA SYSTEM AI - AGE OF EMPIRES II DEFINITIVE - (LORDS OF THE WEST) by LordBoniato
+
+; 1. Constants and timers
+; 2. Strategic numbers
+; 3. Researching
+; 4. Building
+; 5. Creating units
+; 6. Trade
+; 7. Taunts 
+
+; 1. CONSTANTS AND TIMERS
+
+(load "Constants\Constants for AoFE")
+
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
 
@@ -220,13 +234,8 @@
     (disable-self)
 )
 
-; 1 CONSTANTES
-
-(load "Constants\Constants for AoFE")
-
-
-; 2 NUMEROS ESTRATEGICOS
-; EXPLORAR
+; 2. STRATEGIC NUMBERS
+; EXPLORE
 (defrule 
     (true)
 =>
@@ -2367,7 +2376,7 @@
     (building-type-count-total market == 0)
     (research-completed ri-wheel-barrow)(research-completed ri-horse-collar)
     (research-completed ri-double-bit-axe)
-    (can-build market)(military-population >= gl-cantLancerosMinima)
+    (can-build market)(military-population g:>= gl-cantLancerosMinima)
     (food-amount > 500)(gold-amount > 100)
 =>
     (build market)(chat-to-player my-player-number "MARKET 1")  
