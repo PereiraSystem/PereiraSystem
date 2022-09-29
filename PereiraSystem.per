@@ -428,9 +428,9 @@
 (defrule
     (current-age == castle-age)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 69)
-    (set-strategic-number sn-wood-gatherer-percentage 16)
-    (set-strategic-number sn-gold-gatherer-percentage 15)
+    (set-strategic-number sn-food-gatherer-percentage 68)
+    (set-strategic-number sn-wood-gatherer-percentage 18)
+    (set-strategic-number sn-gold-gatherer-percentage 14)
     (set-strategic-number sn-stone-gatherer-percentage 0)
     (disable-self)
 )
@@ -438,10 +438,10 @@
 (defrule
     (current-age == castle-age)(building-type-count-total monastery > 0)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 69)
-    (set-strategic-number sn-wood-gatherer-percentage 16)
+    (set-strategic-number sn-food-gatherer-percentage 68)
+    (set-strategic-number sn-wood-gatherer-percentage 18)
     (set-strategic-number sn-gold-gatherer-percentage 8)
-    (set-strategic-number sn-stone-gatherer-percentage 7)
+    (set-strategic-number sn-stone-gatherer-percentage 6)
     (chat-to-player my-player-number "MONASTERY BUILT: SENDING SOME GOLD VILLAGERS FOR STONE")
     (disable-self)
 )
@@ -449,10 +449,10 @@
 (defrule
     (current-age == castle-age)(hold-relics)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 74)
-    (set-strategic-number sn-wood-gatherer-percentage 15)
-    (set-strategic-number sn-gold-gatherer-percentage 2)
-    (set-strategic-number sn-stone-gatherer-percentage 9)
+    (set-strategic-number sn-food-gatherer-percentage 68)
+    (set-strategic-number sn-wood-gatherer-percentage 18)
+    (set-strategic-number sn-gold-gatherer-percentage 4)
+    (set-strategic-number sn-stone-gatherer-percentage 10)
     (chat-to-player my-player-number "CASTLE AGE WITH ALL RELICS - SENDING LESS VILLAGERS FOR GOLD")    
     (disable-self)
 )
