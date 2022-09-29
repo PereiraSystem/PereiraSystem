@@ -75,7 +75,7 @@
     (set-goal gl-maxCivilesEdadCastillos 53)
     (set-goal gl-maxCivilesEdadImperial 85)
 
-    (set-goal gl-cantCarretas 8)
+    (set-goal gl-cantCarretas 14)
     (set-goal gl-cantBarcosComercio 20)
 )
 
@@ -88,7 +88,7 @@
     (set-goal gl-cantMilicia 45)
 
     (set-goal gl-cantArqueros 40)
-    (set-goal gl-cantJavalineros 30)
+    (set-goal gl-cantJavalineros 25)
     (set-goal gl-cantArquerosCaballo 30)
     (set-goal gl-cantMosqueteros 30)
 
@@ -428,8 +428,8 @@
 (defrule
     (current-age == castle-age)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 70)
-    (set-strategic-number sn-wood-gatherer-percentage 15)
+    (set-strategic-number sn-food-gatherer-percentage 69)
+    (set-strategic-number sn-wood-gatherer-percentage 16)
     (set-strategic-number sn-gold-gatherer-percentage 15)
     (set-strategic-number sn-stone-gatherer-percentage 0)
     (disable-self)
@@ -438,8 +438,8 @@
 (defrule
     (current-age == castle-age)(building-type-count-total monastery > 0)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 70)
-    (set-strategic-number sn-wood-gatherer-percentage 15)
+    (set-strategic-number sn-food-gatherer-percentage 69)
+    (set-strategic-number sn-wood-gatherer-percentage 16)
     (set-strategic-number sn-gold-gatherer-percentage 8)
     (set-strategic-number sn-stone-gatherer-percentage 7)
     (chat-to-player my-player-number "MONASTERY BUILT: SENDING SOME GOLD VILLAGERS FOR STONE")
@@ -601,15 +601,15 @@
 
 ; MEJORAR VISION
 (defrule
-    (can-research ri-town-watch )
-    (food-amount > 1600)
+    (can-research ri-town-watch)
+    (food-amount > 1200)
 =>
     (research ri-town-watch )
 )
 
 (defrule
     (can-research ri-town-patrol )
-    (food-amount > 2500)
+    (food-amount > 1500)
 =>
     (research ri-town-patrol )
 )
@@ -1568,8 +1568,7 @@
 (defrule
     (can-research ri-bloodlines)
     (research-completed ri-wheel-barrow)
-    (or(current-age > castle-age)(food-amount > 900))
-    (unit-type-count-total monk >= gl-cantMonjes)
+    (or(current-age > castle-age)(food-amount > 1000))
     (not(civ-selected gothic))
 =>
     (research ri-bloodlines)
@@ -2188,7 +2187,7 @@
 (defrule
 	(current-age == castle-age)   
 	(building-type-count-total farm < 20)
-    (food-amount < 5000)(wood-amount > 100)
+    (food-amount < 1200)(wood-amount > 100)
     (building-type-count-total monastery > 0)
 	(can-build farm)
 	(idle-farm-count < 1)
@@ -2843,10 +2842,14 @@
 ;NORMAL
 (defrule
     (can-build watch-tower-line)
-    (unit-type-count-total camel-line < 3)
+    
     (unit-type-count-total villager > 26)
     (building-type-count-total watch-tower-line < 3)
     (building-type-count-total monastery > 0)
+    (building-type-count-total stable > 0)
+    (food-amount > 200)(gold-amount > 200)
+    (unit-type-count-total camel-line < 1)
+    (not(can-train camel-line))
 =>
     (build watch-tower-line)  
 )
@@ -3492,7 +3495,9 @@
 ; JAVALINERO
 ; JAV A CABALLO
 (defrule
-    (unit-type-count-total elite-genitour g:< gl-cantJavalineros)(gold-amount < 800)
+    (current-age == castle-age)
+    (unit-type-count-total elite-genitour g:< gl-cantJavalineros)
+    (or(food-amount > 900)(town-under-attack))
     (or
             (players-unit-type-count any-enemy archer-line > 4)
             (players-unit-type-count any-enemy cavalry-archer-line > 4)        
@@ -3503,11 +3508,12 @@
 )
 
 (defrule
-    (unit-type-count-total genitour g:< gl-cantJavalineros)(gold-amount < 800)
+    (current-age == imperial-age)
+    (unit-type-count-total genitour g:< gl-cantJavalineros)
     (or
             (players-unit-type-count any-enemy archer-line > 4)
             (players-unit-type-count any-enemy cavalry-archer-line > 4)        
-        )    
+    )    
     (can-train genitour)
 =>
     (train genitour)
@@ -3530,7 +3536,11 @@
 
 (defrule
     (current-age == castle-age)(unit-type-count-total villager > 35)
-    (unit-type-count-total skirmisher-line < 8)    
+    (unit-type-count-total skirmisher-line < 8)
+        (or
+        (players-unit-type-count any-enemy 936 > 4)
+        (players-unit-type-count any-enemy 900 > 4)
+    )    
     ;(research-completed ri-leather-archer-armor)   
     (building-type-count-total monastery > 0)
     (can-train skirmisher-line)(not(can-train genitour))
@@ -3724,21 +3734,18 @@
     (train condottiero)
 )
 
-; 6 COMERCIAR                            
-
-
+; 6. TRADE                           
 
 ; EXCESO DE MADERA 
 (defrule
     (can-sell-commodity wood)
-    (wood-amount > 1100)
-    (gold-amount < 1100)
+    (wood-amount > 1500)
+    (gold-amount < 1000)
 =>
     (sell-commodity wood)
 )
 
 ; EXCESO DE COMIDA
-
 (defrule
     (current-age == feudal-age)
     (can-sell-commodity food)
@@ -3921,47 +3928,3 @@
     =>
         (do-nothing)
     )
-
-
-(defrule
-    (or
-        (players-unit-type-count any-enemy archer-line > 4)
-        (players-unit-type-count any-enemy cavalry-archer-line > 4)        
-    )
-=>
-    (chat-to-all "DUDE HAS LITTLE ARCHERS")(chat-to-all "30")(disable-self)
-)
-
-(defrule
-    (or
-        (players-unit-type-count any-enemy scout-cavalry-line > 4)
-        (players-unit-type-count any-enemy knight-line > 4)        
-    )
-=>
-    (chat-to-all "DUDE HAS HORSIES")(chat-to-all "30")(disable-self)  
-)
-
-(defrule
-    (players-unit-type-count any-enemy spearman-line > 4)
-=>
-    (chat-to-all "DUDE WANTS TO KILL MY HORSIES")(chat-to-all "30")(disable-self) 
-)
-
-(defrule
-    (players-unit-type-count any-enemy skirmisher-line > 4)
-=>
-    (chat-to-all "DUDE WANTS TO KILL MY LITTLE ARCHERS")(chat-to-all "30")(disable-self)    
-)
-
-(defrule
-    (players-unit-type-count any-enemy trebuchet > 4)
-=>
-    (chat-to-all "DUDE WANTS TO DESTROY MY CONDOS")(chat-to-all "30")(disable-self)
-)
-
-(defrule
-	(hold-relics)
-=>
-	(chat-to-all "WE GOT THE RELICS!!!!!!!!!")(chat-to-all "30")
-    (disable-self)
-)
