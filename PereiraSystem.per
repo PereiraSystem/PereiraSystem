@@ -2385,7 +2385,8 @@
     (cc-players-building-type-count any-ally market > 0)
     (building-type-count-total market == 1)(can-build market)
     (current-age == imperial-age)
-    (building-type-count-total university > 0)(building-type-count-total castle > 0)
+    (building-type-count-total university > 0)
+    (building-type-count-total castle > 0)(building-type-count-total barracks > 1)
 =>
     (build market)(chat-to-player my-player-number "MARKET 2")  
 )
@@ -2394,7 +2395,9 @@
     (cc-players-building-type-count any-ally market > 0)
     (building-type-count-total market == 2)(can-build market)
     (current-age == imperial-age)
-    (building-type-count-total university > 0)(building-type-count-total castle > 0)(building-type-count-total barracks > 1)
+    (building-type-count-total university > 0)
+    (building-type-count-total castle > 0)
+    (building-type-count-total barracks > 1)(military-population > 60)
 =>
     (build market)(chat-to-player my-player-number "MARKET 3")  
 )
@@ -2403,7 +2406,8 @@
     (cc-players-building-type-count any-ally market > 0)
     (building-type-count-total market == 3)(can-build market)
     (current-age == imperial-age)
-    (building-type-count-total university > 0)(building-type-count-total castle > 0)(building-type-count-total barracks > 1)
+    (building-type-count-total university > 0)(building-type-count-total castle > 0)
+    (building-type-count-total barracks > 1)(military-population > 65)
 =>
     (build market)(chat-to-player my-player-number "MARKET 4")  
 )
