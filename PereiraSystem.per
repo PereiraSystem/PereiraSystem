@@ -170,12 +170,12 @@
     (disable-self)	    
 )
 
-(defrule(true)=>(enable-timer 1 600)(disable-self)) 
+(defrule(true)=>(enable-timer 1 720)(disable-self)) 
 (defrule
 	(timer-triggered 1)
 =>
 	(disable-timer 1)
-    (enable-timer 1 600)    
+    (enable-timer 1 720)    
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)
     (up-chat-data-to-self "TOWN SIZE MAX INCREASED! = %d" s: sn-maximum-town-size)
