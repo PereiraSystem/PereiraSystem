@@ -3274,6 +3274,14 @@
     (train cannon-galleon-line)
 )
 
+; GALLEY
+(defrule
+    (unit-type-count-total galley-line < 1)
+    (can-train galley-line)
+=>
+    (train galley-line)
+)
+
 (defrule
     (current-age == imperial-age)
     (research-completed ri-careening)
