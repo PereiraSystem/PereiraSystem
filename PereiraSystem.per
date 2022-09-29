@@ -41,6 +41,7 @@
 (defconst gl-cantCaballeros 119)
 (defconst gl-cantScoutsBaja 120)
 (defconst gl-cantScouts 121)
+(defconst gl-camelQtyLow 138)
 
 (defconst gl-cantMonjes 122)
 (defconst gl-cantMonjesAlta 123)
@@ -96,6 +97,7 @@
     (set-goal gl-cantCaballeros 40)
     (set-goal gl-cantScoutsBaja 8)
     (set-goal gl-cantScouts 40)
+    (set-goal gl-camelQtyLow 4)
 )
 
 (defrule
@@ -105,7 +107,7 @@
     (set-goal gl-cantMonjesAlta 16)
 
     (set-goal gl-cantArietesBaja 2)
-    (set-goal gl-cantArietes 5)
+    (set-goal gl-cantArietes 6)
     (set-goal gl-cantEscorpiones 8)
     (set-goal gl-cantCatapultas 8)
     (set-goal gl-cantBombardos 8)
@@ -215,14 +217,32 @@
 
 (defrule(true)=>(enable-timer 5 2700)(disable-self)) 
 (defrule
-	(timer-triggered 5)
+        (timer-triggered 5)
+        (and
+            (food-amount > 5000)
+            (and
+                (gold-amount > 1900)
+                (wood-amount > 5000)                
+            )
+        )
     (current-age == imperial-age)
 =>
 	(disable-timer 5)
     (enable-timer 5 1)
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    
+    (chat-to-player my-player-number "TIME HAS PASSED, TIME TO ATTACK!!!!")       
+)
+
+(defrule
+    (food-amount > 5000)
+    (gold-amount > 1700)
+    (wood-amount > 5000)                
+    (current-age == imperial-age)
+=>
+    (set-strategic-number sn-enemy-sighted-response-distance 255)    
+    (attack-now)(set-strategic-number sn-number-attack-groups 1)
+    (chat-to-player my-player-number "WE ARE RICH, TIME TO ATTACK!!!!")    
 )
 
 (defrule 
@@ -1533,7 +1553,10 @@
 
 (defrule
     (can-research ri-champion)
-    (unit-type-count-total militiaman-line > 7) 	
+    (or
+       (unit-type-count-total militiaman-line > 6)
+       (and(unit-type-count-total militiaman-line > 0)(food-amount > 4000))
+    )    
 =>
     (research ri-champion)
 )
@@ -3207,12 +3230,42 @@
     (unit-type-count-total scorpion-line g:< gl-cantEscorpiones)
     (or
         (or
-            (civ-selected viking)
-            (civ-selected celtic)  
+            (or
+                (or
+                    (civ-selected viking)
+                    (civ-selected celtic)  
+                )
+                (or
+                    (civ-selected mongol)
+                    (civ-selected berbers)  
+                )
+            )
+            (or
+                (or
+                    (civ-selected teutonic)
+                    (civ-selected slavic)  
+                )
+                (or
+                    (civ-selected burmese)
+                    (civ-selected sicilians)  
+                )      
+            )            
         )
         (or
-            (civ-selected khmer)
-            (civ-selected chinese)  
+            (or
+                (or
+                    (civ-selected ethiopian)
+                    (civ-selected chinese)  
+                )
+                (or
+                    (civ-selected magyar)
+                    (civ-selected malay)  
+                )                    
+            )       
+            (or
+                (civ-selected incan)
+                (civ-selected japanese)  
+            )        
         )
     )	
 =>
@@ -3341,7 +3394,12 @@
 )
 
 ; SCOUTS
-(defrule(unit-type-count-total scout-cavalry-line < 2)(can-train scout-cavalry-line) =>(train scout-cavalry-line))
+(defrule
+    (unit-type-count-total scout-cavalry-line < 2)(current-age < imperial-age)
+    (can-train scout-cavalry-line) 
+=>
+    (train scout-cavalry-line)
+)
 
 (defrule
 	(current-age == feudal-age)
@@ -3365,8 +3423,9 @@
 	(current-age == imperial-age)
     (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
     (research-completed ri-light-cavalry)          
-	(can-train scout-cavalry-line)(not(civ-selected japanese))  
-    (unit-type-count-total scout-cavalry-line < 8)
+	(can-train scout-cavalry-line)
+    (not(civ-selected japanese))(not(civ-selected viking))  
+    (unit-type-count-total scout-cavalry-line < 8)(gold-amount < 1400)
 =>
     (train scout-cavalry-line)
 )
@@ -3385,7 +3444,7 @@
     (research-completed ri-hand-cart)
     (research-completed ri-bow-saw)(research-completed ri-heavy-plow)  
 	(can-train camel-line)
-	(unit-type-count-total camel-line < 4)
+	(unit-type-count-total camel-line g:< gl-camelQtyLow)
 =>
     (train camel-line)
 )
@@ -3393,33 +3452,22 @@
 (defrule
 	(current-age == imperial-age)
     (gold-amount > 201)
-	(unit-type-count-total camel-line < gl-cantCaballeros)
-    
+	(unit-type-count-total camel-line g:< gl-cantCaballeros)
 =>
     (train camel-line)
 )
 
-;CABALLERIA PESADA 
+; KNIGHT LINE
 
 (defrule
 	(current-age == imperial-age)
 	(can-train knight-line)
-	(unit-type-count-total knight-line < 8)
-    (gold-amount > 202)
-=>
-    (train knight-line)
-)
-
-(defrule
-	(current-age == imperial-age)
-	(can-train knight-line)
-	(unit-type-count-total knight-line < gl-cantCaballeros)
+	(unit-type-count-total knight-line g:< gl-cantCaballeros)
     (gold-amount > 500)
     (or
         (or
             
-                (civ-selected bulgarians)
-            
+            (civ-selected bulgarians)            
             (or 
                 (civ-selected frankish)        
                 (civ-selected malian)
@@ -3432,7 +3480,6 @@
             )
             (civ-selected teutonic)            
         )   
-
     )
 =>
     (train knight-line)
