@@ -2268,7 +2268,7 @@
 =>
     (build lumber-camp)  
     (chat-to-player my-player-number "LUMBER CAMP 1")
-    (up-modify-sn sn-camp-max-distance c:+ 4)    
+    (up-modify-sn sn-camp-max-distance c:+ 12)    
 )
 
 (defrule
@@ -2283,7 +2283,7 @@
 =>
     (build lumber-camp)
     (chat-to-player my-player-number "LUMBER CAMP 2")
-    (up-modify-sn sn-camp-max-distance c:+ 4)     
+    (up-modify-sn sn-camp-max-distance c:+ 12)     
 )
 
 (defrule
@@ -2295,7 +2295,7 @@
 =>
     (build lumber-camp)
     (chat-to-player my-player-number "LUMBER CAMP")
-    (up-modify-sn sn-camp-max-distance c:+ 4)               
+    (up-modify-sn sn-camp-max-distance c:+ 8)               
 )
 
 ; MINAS                       
@@ -3121,18 +3121,6 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total mangonel-line < 10)(gold-amount > 180) 
-    (not(civ-selected khmer))(not(civ-selected portuguese))
-    (not(civ-selected gothic))(not(civ-selected vietnamese))(not(civ-selected mongol))
-    (not(civ-selected lithuanians))(not(civ-selected persian))(not(civ-selected spanish))
-    (not(civ-selected slavic))(not(civ-selected malian))(not(civ-selected chinese))      
-	(can-train mangonel-line)    
-=>
-    (train mangonel-line)
-)
-
-(defrule
-    (current-age == imperial-age)
     (can-train mangonel-line)
     (or
         (or
@@ -3743,7 +3731,7 @@
 ; EXCESO DE MADERA 
 (defrule
     (can-sell-commodity wood)
-    (wood-amount > 1500)
+    (wood-amount > 1600)
     (gold-amount < 1000)
 =>
     (sell-commodity wood)
@@ -3753,7 +3741,7 @@
 (defrule
     (current-age == feudal-age)
     (can-sell-commodity food)
-    (food-amount > 1000)
+    (food-amount > 1300)
     (or
          (wood-amount < 200)
          (stone-amount < 200)
@@ -3774,8 +3762,9 @@
 )
 
 (defrule
+    (current-age == imperial-age)
     (can-sell-commodity food)
-    (food-amount > 1300)
+    (food-amount > 1600)
 	(gold-amount < 1100)
 =>
     (sell-commodity food)
@@ -3792,7 +3781,7 @@
 
 (defrule
 	(can-buy-commodity food)
-    (gold-amount > 900)
+    (gold-amount > 1600)
     (food-amount < 300)
 =>
     (buy-commodity food)
@@ -3800,7 +3789,7 @@
 
 (defrule
 	(can-buy-commodity wood)
-    (gold-amount > 900)
+    (gold-amount > 1600)
     (wood-amount < 300)
 =>
     (buy-commodity wood)
@@ -3808,7 +3797,7 @@
 
 (defrule
 	(can-buy-commodity stone)
-    (gold-amount > 900)
+    (gold-amount > 1600)
     (stone-amount < 300)
 =>
     (buy-commodity stone)
@@ -3840,77 +3829,77 @@
 
 (defrule
     (current-age == feudal-age)
-    (wood-amount > 900)
+    (wood-amount > 600)
 =>
     (tribute-to-player any-ally wood 100)
 )
 
 (defrule
     (current-age == feudal-age)
-    (food-amount > 9000)
+    (food-amount > 1000)
 =>
     (tribute-to-player any-ally food 100)
 )
 
 (defrule
     (current-age == feudal-age)
-    (gold-amount > 900)
+    (gold-amount > 400)
 =>
     (tribute-to-player any-ally gold 100)
 )
 
 (defrule
     (current-age == castle-age)
-    (wood-amount > 1300)
+    (wood-amount > 800)
 =>
     (tribute-to-player any-ally wood 100)
 )
 
 (defrule
     (current-age == castle-age)
-    (food-amount > 1300)
+    (food-amount > 1200)
 =>
     (tribute-to-player any-ally food 100)
 )
 
 (defrule
     (current-age == castle-age)
-    (gold-amount > 1300)
+    (gold-amount > 1000)
 =>
     (tribute-to-player any-ally gold 100)
 )
 
 (defrule
     (current-age == castle-age)
-    (stone-amount > 1300)
+    (stone-amount > 800)
 =>
     (tribute-to-player any-ally stone 100)
 )
 
 (defrule
     (current-age == imperial-age)
-    (wood-amount > 8000)
+    (wood-amount > 1500)
 =>
     (tribute-to-player any-ally wood 100)
 )
 
 (defrule
     (current-age == imperial-age)
-    (food-amount > 8000)
+    (food-amount > 1500)
 =>
     (tribute-to-player any-ally food 100)
 )
 
 (defrule
     (current-age == imperial-age)
-    (gold-amount > 8000)
+    (gold-amount > 1500)
 =>
     (tribute-to-player any-ally gold 100)
 )
 
 (defrule
     (current-age == imperial-age)
-    (stone-amount > 8000)
+    (stone-amount > 1500)
 =>
     (tribute-to-player any-ally stone 100)
 )
