@@ -2153,7 +2153,54 @@
 )
 
 ; 4. CONSTRUIR EDIFICIOS
-;CIVILES
+; CIVILES
+
+; CENTRO CIUDAD                               
+(defrule
+    (can-build town-center)
+    (building-type-count-total town-center == 0) 
+=>
+    (build town-center)
+)
+
+(defrule
+    (can-build town-center)(civ-selected cumans)
+    (building-type-count-total town-center == 1) 
+=>
+    (build town-center)
+)
+
+(defrule
+    (can-build town-center)
+    (or
+        (not(town-under-attack))
+        (current-age > castle-age)
+    )
+	(building-type-count-total town-center < 2) (military-population > 25)
+    ;(building-type-count-total monastery > 0)(building-type-count-total castle > 0)(building-type-count-total university > 0)  
+=>
+    (build town-center)   (chat-to-player my-player-number "TOWN CENTER 2")
+)
+(defrule
+    (can-build town-center)(current-age == imperial-age)(food-amount > 400)
+	(building-type-count-total town-center < 3) 
+    (building-type-count-total monastery > 0)
+    ;(building-type-count-total university > 0)  
+    (building-type-count-total castle > 0)(military-population > 40)
+=>
+    (build town-center)   (chat-to-player my-player-number "TOWN CENTER 3")
+)
+
+(defrule
+	(current-age == imperial-age)(military-population > 60)(food-amount > 400)
+    (can-build town-center)
+    (building-type-count-total monastery > 0) 
+    (building-type-count-total castle > 0)(building-type-count-total university > 0)  
+    (building-type-count-total town-center < 6) (building-type-count-total town-center > 2)
+=>
+    (build town-center) (chat-to-player my-player-number "TOWN CENTER")
+)
+
 ; MOLINO                
 (defrule  
     (building-type-count-total mill < 1)
@@ -2479,51 +2526,7 @@
 
 #end-if #end-if #end-if #end-if #end-if
 
-; CENTRO CIUDAD                               
-(defrule
-    (can-build town-center)
-    (building-type-count-total town-center == 0) 
-=>
-    (build town-center)
-)
 
-(defrule
-    (can-build town-center)(civ-selected cumans)
-    (building-type-count-total town-center == 1) 
-=>
-    (build town-center)
-)
-
-(defrule
-    (can-build town-center)
-    (or
-        (not(town-under-attack))
-        (current-age > castle-age)
-    )
-	(building-type-count-total town-center < 2) (military-population > 25)
-    ;(building-type-count-total monastery > 0)(building-type-count-total castle > 0)(building-type-count-total university > 0)  
-=>
-    (build town-center)   (chat-to-player my-player-number "TOWN CENTER 2")
-)
-(defrule
-    (can-build town-center)(current-age == imperial-age)(food-amount > 400)
-	(building-type-count-total town-center < 3) 
-    (building-type-count-total monastery > 0)
-    ;(building-type-count-total university > 0)  
-    (building-type-count-total castle > 0)(military-population > 40)
-=>
-    (build town-center)   (chat-to-player my-player-number "TOWN CENTER 3")
-)
-
-(defrule
-	(current-age == imperial-age)(military-population > 60)(food-amount > 400)
-    (can-build town-center)
-    (building-type-count-total monastery > 0) 
-    (building-type-count-total castle > 0)(building-type-count-total university > 0)  
-    (building-type-count-total town-center < 6) (building-type-count-total town-center > 2)
-=>
-    (build town-center) (chat-to-player my-player-number "TOWN CENTER")
-)
 
 ; MILITARES
 ; MURALLA - EMPALIZADA
