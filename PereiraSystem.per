@@ -359,7 +359,7 @@
 (defrule 
     (true)
 =>  
-    (set-strategic-number sn-camp-max-distance 13); 
+    (set-strategic-number sn-camp-max-distance 19); 
     (set-strategic-number sn-mill-max-distance 9)  
     (disable-self)
 )
@@ -383,7 +383,7 @@
 =>  
     (set-strategic-number sn-maximum-wood-drop-distance 11)
     (set-strategic-number sn-maximum-food-drop-distance 9)    
-    (set-strategic-number sn-maximum-gold-drop-distance 8)
+
     (set-strategic-number sn-maximum-stone-drop-distance 0)    
     (disable-self)
 )
@@ -450,6 +450,7 @@
 =>
     (set-strategic-number sn-food-gatherer-percentage 59)
     (set-strategic-number sn-wood-gatherer-percentage 27)
+    (set-strategic-number sn-maximum-gold-drop-distance 8)
     (set-strategic-number sn-gold-gatherer-percentage 14)
     (set-strategic-number sn-stone-gatherer-percentage 0)
     (disable-self)
@@ -685,7 +686,8 @@
 ; GRANJAS
 (defrule
     (can-research ri-horse-collar)(wood-amount > 101)
-    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)
+    (building-type-count-total farm > 3)
+    (research-completed ri-double-bit-axe)
 =>
     (research ri-horse-collar)
 )
@@ -2357,7 +2359,7 @@
 =>
     (build lumber-camp)  
     (chat-to-player my-player-number "LUMBER CAMP 1")
-    (up-modify-sn sn-camp-max-distance c:+ 12)    
+    (up-modify-sn sn-camp-max-distance c:+ 24)    
 )
 
 (defrule
@@ -2368,11 +2370,11 @@
     )
     (can-build lumber-camp)
     (resource-found wood)
-    (dropsite-min-distance wood > 6)
+    (dropsite-min-distance wood > 3)
 =>
     (build lumber-camp)
     (chat-to-player my-player-number "LUMBER CAMP 2")
-    (up-modify-sn sn-camp-max-distance c:+ 12)     
+    (up-modify-sn sn-camp-max-distance c:+ 8)     
 )
 
 (defrule
@@ -2463,11 +2465,11 @@
 ; MERCADO
 (defrule
     (building-type-count-total market == 0)
-    (research-completed ri-wheel-barrow)(research-completed ri-horse-collar)
+    ;(research-completed ri-wheel-barrow)
+    (research-completed ri-horse-collar)
     (research-completed ri-double-bit-axe)
     (can-build market)
     (or(military-population g:>= gl-cantLancerosMinima)(wood-amount > 300))
-    (food-amount > 500)(gold-amount > 100)
 =>
     (build market)(chat-to-player my-player-number "MARKET 1")  
 )
@@ -2577,7 +2579,7 @@
 )
 
 ; WALL
-
+;STONE
 (defrule 
 	(can-build-wall 1 stone-wall-line)
     (building-type-count-total castle > 0)(current-age == imperial-age)
@@ -2585,11 +2587,19 @@
 =>
 	(build-wall 1  stone-wall-line) 
 )
-
+;WOOD
 (defrule 
 	(can-build-wall 1 72)
     (building-type-count-total castle > 0)(current-age == imperial-age)
     (military-population > 65)(unit-type-count-total villager > 50)
+=>
+	(build-wall 1 72)
+)
+;EARLY WOOD
+(defrule 
+	(can-build-wall 1 72)
+    (current-age < castle-age)
+    (wood-amount > 250)
 =>
 	(build-wall 1 72)
 )
@@ -3836,6 +3846,15 @@
 ; 6. TRADE                           
 
 ; SELLING WOOD
+
+(defrule
+    (current-age == feudal-age)
+    (can-sell-commodity wood)
+    (wood-amount > 500)
+=>
+    (sell-commodity wood)
+)
+
 (defrule
     (can-sell-commodity wood)
     (wood-amount > 2000)
