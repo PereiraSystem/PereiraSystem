@@ -259,8 +259,8 @@
 (defrule 
     (true)
 =>
-    (set-strategic-number sn-total-number-explorers 1) 
-    (set-strategic-number sn-number-explore-groups 1)  
+    (set-strategic-number sn-total-number-explorers 2) 
+    (set-strategic-number sn-number-explore-groups 2)  
     (set-strategic-number sn-maximum-gaia-attack-response 5)
     (disable-self)
 )
@@ -2359,6 +2359,8 @@
 =>
     (build lumber-camp)  
     (chat-to-player my-player-number "LUMBER CAMP 1")
+    (set-strategic-number sn-total-number-explorers 1) 
+    (set-strategic-number sn-number-explore-groups 1) 
     (up-modify-sn sn-camp-max-distance c:+ 24)    
 )
 
