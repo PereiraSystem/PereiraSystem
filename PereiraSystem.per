@@ -2475,7 +2475,8 @@
     (building-type-count-total market == 0)
     (research-completed ri-wheel-barrow)(research-completed ri-horse-collar)
     (research-completed ri-double-bit-axe)
-    (can-build market)(military-population g:>= gl-cantLancerosMinima)
+    (can-build market)
+    (or(military-population g:>= gl-cantLancerosMinima)(wood-amount > 300))
     (food-amount > 500)(gold-amount > 100)
 =>
     (build market)(chat-to-player my-player-number "MARKET 1")  
