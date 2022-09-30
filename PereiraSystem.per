@@ -3525,6 +3525,14 @@
 ; ARQUERIA
 ; ARQUERO 
 (defrule
+    (current-age == feudal-age)
+	(unit-type-count-total archer-line < 1)
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
     (current-age == castle-age)
 	(unit-type-count-total archer-line g:< gl-cantArqueros)
     (gold-amount > 1200)(wood-amount > 400)
@@ -3674,13 +3682,20 @@
 ; BARRACAS                                         
 ; MILICIA
 (defrule
-    (current-age == dark-age)(town-under-attack)
-    (can-train militiaman-line)
+    (current-age == dark-age)
+    (unit-type-count-total militiaman-line < 1)
 =>
     (train militiaman-line)
 )
 
-
+(defrule
+    (current-age == feudal-age)
+    (town-under-attack)
+    (unit-type-count-total militiaman-line < 2)
+    (can-train militiaman-line)
+=>
+    (train militiaman-line)
+)
 
 (defrule
     (current-age == imperial-age)
