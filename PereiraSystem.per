@@ -307,7 +307,7 @@
 (defrule(true)=>(enable-wall-placement 1)(disable-self))
 
 
-(defrule(civ-selected gothic)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
+(defrule(true)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
 
 
 
@@ -592,7 +592,7 @@
     (can-research castle-age)
     (civilian-population > 16)
 =>
-    (research castle-age)    
+    (research castle-age)(set-strategic-number sn-gate-type-for-wall 2)    
 )
 
 (defrule
@@ -2559,7 +2559,7 @@
 (defrule 
     (building-type-count-total 72 > 0)
     (current-age < castle-age)
-    (wood-amount > 250)
+    (wood-amount > 101)(unit-type-count-total archer-line > 0)
     (can-build-gate 1)
 =>
     (build-gate 1)  
@@ -2610,7 +2610,7 @@
 (defrule 
 	(can-build-wall 1 72)
     (current-age < castle-age)
-    (wood-amount > 250)
+    (wood-amount > 101)(unit-type-count-total archer-line > 0)
 =>
 	(build-wall 1 72)
 )
@@ -2682,7 +2682,7 @@
 (defrule
 	(building-type-count-total barracks < 1)
     (or
-    	(building-type-count-total lumber-camp > 0)
+    	(and(building-type-count-total lumber-camp > 0)(wood-amount > 101)
         (wood-amount > 400)
     )
     (can-build barracks)
