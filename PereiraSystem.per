@@ -3848,6 +3848,15 @@
 )
 
 (defrule
+    (current-age == imperial-age)
+	(can-buy-commodity stone)
+    (building-type-count-total castle == 0)
+    (stone-amount < 650)
+=>
+    (buy-commodity stone)
+)
+
+(defrule
 	(can-buy-commodity food)
     (gold-amount > 1600)
     (food-amount < 300)
