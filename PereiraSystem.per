@@ -446,6 +446,16 @@
 )
 
 (defrule
+    (current-age == feudal-age)(wood-amount > 500)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 69)
+    (set-strategic-number sn-wood-gatherer-percentage 17)
+    (set-strategic-number sn-gold-gatherer-percentage 14)
+    (set-strategic-number sn-stone-gatherer-percentage 0)
+    (disable-self)
+)
+
+(defrule
     (current-age == castle-age)
 =>
     (set-strategic-number sn-food-gatherer-percentage 68)
@@ -3587,6 +3597,15 @@
 )
 
 ;JAVALINERO NORMAL
+(defrule
+    (current-age == feudal-age)
+    (unit-type-count-total skirmisher-line < 1)    
+    (can-train skirmisher-line)
+    (not(can-train genitour))   
+=>
+    (train skirmisher-line)
+)
+
 (defrule
     (current-age == feudal-age)
     (unit-type-count-total skirmisher-line < 20)    
