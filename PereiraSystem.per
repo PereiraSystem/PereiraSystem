@@ -2033,7 +2033,7 @@
 (defrule
     (can-research ri-faith)
     (or
-        (gold-amount > 1800)
+        (and(gold-amount > 1200)(food-amount > 1400))
         (civ-selected bohemians)
     )
 =>
