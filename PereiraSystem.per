@@ -2393,8 +2393,9 @@
     (current-age == feudal-age)(wood-amount > 101)
     (research-completed ri-wheel-barrow)(research-completed ri-horse-collar)
     (research-completed ri-double-bit-axe)
+    (building-type-count-total market > 0) 
     (resource-found gold) 
-    ;(dropsite-min-distance gold > 3)
+    (dropsite-min-distance gold > 3)
     (building-type-count-total mining-camp == 0)  
     (can-build mining-camp)
 =>
@@ -3683,7 +3684,7 @@
 ; MILICIA
 (defrule
     (current-age == dark-age)
-    (unit-type-count-total militiaman-line < 1)
+    (unit-type-count-total militiaman-line < 2)
 =>
     (train militiaman-line)
 )
@@ -3691,7 +3692,7 @@
 (defrule
     (current-age == feudal-age)
     (town-under-attack)
-    (unit-type-count-total militiaman-line < 2)
+    (unit-type-count-total militiaman-line < 1)
     (can-train militiaman-line)
 =>
     (train militiaman-line)
