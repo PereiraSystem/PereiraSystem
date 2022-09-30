@@ -2255,7 +2255,7 @@
 (defrule
     (current-age == dark-age)
 	(building-type-count-total farm < 4)
-    (building-type-count-total barracks > 0)(wood-amount > 100)
+    (building-type-count-total barracks > 0)(wood-amount > 101)
 	(can-build farm)
 	(idle-farm-count < 1)
 =>
@@ -2265,7 +2265,7 @@
 ; EDAD 2
 (defrule
 	(current-age == feudal-age)
-    (building-type-count-total farm < 6)
+    (building-type-count-total farm < 6)(wood-amount > 101)
 	(idle-farm-count < 1)
 	(can-build farm)
     (wood-amount > 100)
@@ -2297,7 +2297,7 @@
 ; CASAS
 (defrule
     (current-age == dark-age)
-    (wood-amount > 100)
+    (wood-amount > 101)
     (building-type-count-total house < 1)
     (can-build house)
 =>
@@ -2306,7 +2306,7 @@
 
 (defrule
     (current-age == dark-age)
-    (wood-amount > 100)(unit-type-count-total villager > 5)
+    (wood-amount > 101)(unit-type-count-total villager > 5)
     (building-type-count-total house < 2)
     (can-build house)
 =>
@@ -2324,7 +2324,7 @@
 )
 
 (defrule
-    (current-age == feudal-age)
+    (current-age == feudal-age)(wood-amount > 101)
     ;(research-completed ri-wheel-barrow)
     ;(research-completed ri-double-bit-axe)
     ;(research-completed ri-horse-collar)
@@ -2336,7 +2336,7 @@
 )
 
 (defrule
-    (current-age >= castle-age)
+    (current-age >= castle-age)(wood-amount > 101)
     ;(research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
     (housing-headroom < 5)
     (population-headroom > 0)
@@ -2902,7 +2902,7 @@
 ;NORMAL
 (defrule
     (can-build watch-tower-line)
-    (building-type-count-total 72 > 0)
+    (building-type-count-total 72 > 0)(wood-amount > 101)
     (building-type-count-total watch-tower-line < 2)
 =>
     (build watch-tower-line)  
