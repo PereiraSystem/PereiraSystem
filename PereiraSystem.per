@@ -3613,7 +3613,8 @@
 ;JAVALINERO NORMAL
 (defrule
     (current-age == feudal-age)
-    (unit-type-count-total skirmisher-line < 1)    
+    (town-under-attack)
+    (unit-type-count-total skirmisher-line < 6)    
     (can-train skirmisher-line)
     (not(can-train genitour))   
 =>
