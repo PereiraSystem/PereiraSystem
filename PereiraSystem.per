@@ -2682,7 +2682,7 @@
 (defrule
 	(building-type-count-total barracks < 1)
     (or
-    	(and(building-type-count-total lumber-camp > 0)(wood-amount > 101)
+    	(and(building-type-count-total lumber-camp > 0)(wood-amount > 101))
         (wood-amount > 400)
     )
     (can-build barracks)
