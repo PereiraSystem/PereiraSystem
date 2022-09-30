@@ -2558,16 +2558,7 @@
 ; MILITARES
 ; MURALLA - EMPALIZADA
 ; GATES
-; EARLY WOOD GATE
 
-(defrule 
-    (building-type-count-total 72 > 0)
-    (current-age < castle-age)
-    (wood-amount > 101)(unit-type-count-total archer-line > 0)
-    (can-build-gate 1)
-=>
-    (build-gate 1)  
-)
 
 (defrule 
     (or
@@ -2610,14 +2601,7 @@
 =>
 	(build-wall 1 72)
 )
-;EARLY WOOD
-(defrule 
-	(can-build-wall 1 72)
-    (current-age < castle-age)
-    (wood-amount > 101)(unit-type-count-total archer-line > 0)
-=>
-	(build-wall 1 72)
-)
+
 
 (defrule 
 	(can-build-wall 2 stone-wall-line)
@@ -3551,13 +3535,7 @@
 
 ; ARQUERIA
 ; ARQUERO 
-(defrule
-    (current-age == feudal-age)
-	(unit-type-count-total archer-line < 1)
-	(can-train archer-line)
-=>
-	(train archer-line)
-)
+
 
 (defrule
     (current-age == castle-age)
