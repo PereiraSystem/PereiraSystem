@@ -2554,6 +2554,17 @@
 ; MILITARES
 ; MURALLA - EMPALIZADA
 ; GATES
+; EARLY WOOD GATE
+
+(defrule 
+    (building-type-count-total 72 > 0)
+    (current-age < castle-age)
+    (wood-amount > 250)
+    (can-build-gate 1)
+=>
+    (build-gate 1)  
+)
+
 (defrule 
     (or
         (building-type-count-total 72 > 0)
