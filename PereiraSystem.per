@@ -2345,7 +2345,8 @@
 
 ; MADERA                       
 (defrule
-    (building-type-count-total lumber-camp == 0)(unit-type-count-total villager > 9)
+    (building-type-count-total lumber-camp == 0)
+    (unit-type-count-total villager > 7)
     (can-build lumber-camp)
     (resource-found wood)
     (dropsite-min-distance wood > 3)
