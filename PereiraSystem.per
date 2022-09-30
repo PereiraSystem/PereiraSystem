@@ -2898,13 +2898,19 @@
 )
 
 ;NORMAL
+
+#load-if-defined INNER-CIRCLE-MAP 
 (defrule
     (can-build watch-tower-line)
-    (town-under-attack)(wood-amount > 101)
+    (wood-amount > 101)
     (building-type-count-total watch-tower-line < 3)
 =>
-    (build watch-tower-line)  
+    (build watch-tower-line)
+    (up-assign-builders c: watch-tower c:+ 2)
+    (up-assign-builders c: guard-tower c:+ 2)          
+    (up-assign-builders c: keep c:+ 2)  
 )
+#end-if
 
 (defrule
     (can-build watch-tower-line)
