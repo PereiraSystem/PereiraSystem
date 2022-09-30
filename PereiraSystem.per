@@ -1322,10 +1322,10 @@
 )
 
 (defrule
+    (civ-selected burgundians)
     (can-research my-unique-research)(food-amount > 1500)
-    (unit-type-count-total villager > gl-cantCaballeros)
-    
-    (civ-selected burgundians)(military-population > gl-cantCaballeros)
+    (unit-type-count-total villager g:> gl-cantCaballeros)
+    (military-population g:> gl-cantCaballeros)
     (or
         (unit-type-count-total battering-ram > 4)    
         (unit-type-count-total trebuchet > 4)        
