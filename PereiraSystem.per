@@ -450,16 +450,6 @@
 =>
     (set-strategic-number sn-food-gatherer-percentage 59)
     (set-strategic-number sn-wood-gatherer-percentage 27)
-    (set-strategic-number sn-gold-gatherer-percentage 0)
-    (set-strategic-number sn-stone-gatherer-percentage 0)
-    (disable-self)
-)
-
-(defrule
-    (current-age == feudal-age)(wood-amount > 500)
-=>
-    (set-strategic-number sn-food-gatherer-percentage 69)
-    (set-strategic-number sn-wood-gatherer-percentage 17)
     (set-strategic-number sn-gold-gatherer-percentage 14)
     (set-strategic-number sn-stone-gatherer-percentage 0)
     (disable-self)
@@ -3693,18 +3683,13 @@
 
 ; BARRACAS                                         
 ; MILICIA
-(defrule
-    (current-age == dark-age)
-    (unit-type-count-total militiaman-line < 2)
-=>
-    (train militiaman-line)
-)
+
 
 (defrule
     (current-age == feudal-age)
     (town-under-attack)
-    (unit-type-count-total militiaman-line < 1)
     (can-train militiaman-line)
+    (not((can-train archer-line))(not((can-train camel-line))
 =>
     (train militiaman-line)
 )
