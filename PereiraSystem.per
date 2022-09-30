@@ -2902,7 +2902,8 @@
 ;NORMAL
 (defrule
     (can-build watch-tower-line)
-    (building-type-count-total watch-tower-line < 1)
+    (building-type-count-total 72 > 0)
+    (building-type-count-total watch-tower-line < 2)
 =>
     (build watch-tower-line)  
 )
