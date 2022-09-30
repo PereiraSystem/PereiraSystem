@@ -2157,6 +2157,14 @@
 
 ; CENTRO CIUDAD                               
 (defrule
+    (can-build wonder)
+    (building-type-count-total wonder == 0) 
+=>
+    (build wonder)
+)
+
+; CENTRO CIUDAD                               
+(defrule
     (can-build town-center)
     (building-type-count-total town-center == 0) 
 =>
