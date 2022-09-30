@@ -2232,8 +2232,8 @@
 ; MOLINO                
 (defrule  
     (building-type-count-total mill < 1)
-    (can-build mill)(wood-amount > 100)
-    (building-type-count-total lumber-camp > 0)  
+    (can-build mill)
+    (or(building-type-count-total lumber-camp > 0)(wood-amount > 400))  
 =>
     (build mill)(chat-to-player my-player-number "MILL 1")
 )
@@ -2671,7 +2671,7 @@
 	(building-type-count-total barracks < 1)
     (or
     	(building-type-count-total lumber-camp > 0)
-        (wood-amount > 700)
+        (wood-amount > 400)
     )
     (can-build barracks)
 =>
