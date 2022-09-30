@@ -2900,7 +2900,7 @@
 ;NORMAL
 (defrule
     (can-build watch-tower-line)
-    (building-type-count-total 72 > 0)(wood-amount > 101)
+    (town-under-attack)(wood-amount > 101)
     (building-type-count-total watch-tower-line < 2)
 =>
     (build watch-tower-line)  
