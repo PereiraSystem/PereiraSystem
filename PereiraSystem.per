@@ -3840,8 +3840,9 @@
 
 (defrule
     (current-age == feudal-age)
-    (can-train eagle-warrior-line)
-    (unit-type-count-total eagle-warrior-line < 2)
+    (or(up-compare-goal gl-dudeHasArchers > 0)
+    (up-compare-goal gl-dudeHasSkirmishers > 0))
+    (unit-type-count-total eagle-warrior-line g:< gl-cantScouts)
     =>
     (train eagle-warrior-line)
 )
