@@ -18,10 +18,11 @@
 (defconst gl-max-mining-camps-qty 2)
 
 (defconst gl-dudeHasScouts 51)
-(defconst gl-dudeHasHeavyCavalry 52)
-(defconst gl-dudeHasRangedUnits 53)
-(defconst gl-dudeHasSiege 54)
-
+(defconst gl-dudeHasKnights 52)
+(defconst gl-dudeHasCamels 53)
+(defconst gl-dudeHasElephants 54)
+(defconst gl-dudeHasArchers 55)
+(defconst gl-dudeHasSkirmishers 56)
 
 (defconst gl-maximoCasasAntesBorrar 101)    
 (defconst gl-maximoCasasNecesarias 102)
@@ -184,9 +185,11 @@
     (true)
 =>    
     (set-goal gl-dudeHasScouts 0)
-    (set-goal gl-dudeHasHeavyCavalry 0)
-    (set-goal gl-dudeHasRangedUnits 0)
-    (set-goal gl-dudeHasSiege 0)
+    (set-goal gl-dudeHasKnights 0)
+    (set-goal gl-dudeHasCamels 0)
+    (set-goal gl-dudeHasElephants 0)
+    (set-goal gl-dudeHasArchers 0)
+    (set-goal gl-dudeHasSkirmishers 0)    
     (disable-self)	    
 )
 
@@ -3633,10 +3636,7 @@
 (defrule
     (current-age == imperial-age)
     (unit-type-count-total genitour g:< gl-cantJavalineros)
-    (or
-            (players-unit-type-count any-enemy archer-line > 4)
-            (players-unit-type-count any-enemy cavalry-archer-line > 4)        
-    )    
+
     (can-train genitour)
 =>
     (train genitour)
@@ -3657,10 +3657,7 @@
     (current-age == feudal-age)
     (unit-type-count-total skirmisher-line < 20)    
     (research-completed ri-padded-archer-armor)
-    (or
-        (players-unit-type-count any-enemy 936 > 4)
-        (players-unit-type-count any-enemy 900 > 4)
-    )
+    (gl-du)
     (can-train skirmisher-line)
     (not(can-train genitour)) (not(civ-selected sicilians))     
 =>
@@ -4090,3 +4087,14 @@
     =>
         (do-nothing)
     )
+
+
+; 8. DETECT THINGS
+
+(defrule
+    (players-unit-type-count any-enemy scout-line > 4)
+=>  
+    (set-goal gl-dudeHasScouts 1)    
+    (up-chat-data-to-self "DUDE HAS HORSIES = %d" g: gl-dudeHasScouts)
+    (disable-self)  
+)
