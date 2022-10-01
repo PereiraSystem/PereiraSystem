@@ -23,6 +23,7 @@
 (defconst gl-dudeHasElephants 54)
 (defconst gl-dudeHasArchers 55)
 (defconst gl-dudeHasSkirmishers 56)
+(defconst gl-zero 499)
 
 (defconst gl-maximoCasasAntesBorrar 101)    
 (defconst gl-maximoCasasNecesarias 102)
@@ -189,7 +190,8 @@
     (set-goal gl-dudeHasCamels 0)
     (set-goal gl-dudeHasElephants 0)
     (set-goal gl-dudeHasArchers 0)
-    (set-goal gl-dudeHasSkirmishers 0)    
+    (set-goal gl-dudeHasSkirmishers 0)
+    (set-goal gl-zero 0)      
     (disable-self)	    
 )
 
@@ -3790,7 +3792,7 @@
 (defrule
     (current-age == feudal-age)
     (wood-amount > 125)
-    (0 g:< gl-dudeHasScouts)
+    (gl-zero g:< gl-dudeHasScouts)
     (unit-type-count-total spearman-line g:< gl-cantLancerosMinima)
     (can-train spearman-line)
 =>
