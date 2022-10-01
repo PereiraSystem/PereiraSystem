@@ -2328,7 +2328,7 @@
 ; CASAS
 (defrule
     (current-age == dark-age)
-    (wood-amount > 101)
+    (wood-amount > 125)
     (building-type-count-total house < 1)
     (can-build house)
 =>
@@ -2337,7 +2337,7 @@
 
 (defrule
     (current-age == dark-age)
-    (wood-amount > 101)(unit-type-count-total villager > 5)
+    (wood-amount > 125)(unit-type-count-total villager > 5)
     (building-type-count-total house < 2)
     (can-build house)
 =>
