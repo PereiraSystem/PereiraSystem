@@ -685,7 +685,14 @@
 
 ; GRANJAS
 (defrule
-    (can-research ri-horse-collar)(wood-amount > 101)
+    (can-research ri-horse-collar)
+        (or
+            (and
+                (food-amount > 875)
+                (not(town-under-attack))
+            )
+            (current-age == imperial-age)
+        )
     (building-type-count-total farm > 3)
     (research-completed ri-double-bit-axe)
 =>
