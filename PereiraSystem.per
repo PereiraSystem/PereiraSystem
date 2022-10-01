@@ -3791,7 +3791,8 @@
 (defrule
     (current-age == feudal-age)
     (wood-amount > 125)
-    (goal gl-dudeHasScouts 1)
+    ;(goal gl-dudeHasScouts 1)
+    (up-compare-goal gl-dudeHasScouts != 0)
     (unit-type-count-total spearman-line g:< gl-cantLancerosMinima)
     ;(unit-type-count-total spearman-line < 4)    
     (can-train spearman-line)
@@ -3833,7 +3834,7 @@
 (defrule
     (current-age == feudal-age)
     (can-train eagle-warrior-line)
-    (unit-type-count-total eagle-warrior-line < 4)
+    (unit-type-count-total eagle-warrior-line < 2)
     =>
     (train eagle-warrior-line)
 )
