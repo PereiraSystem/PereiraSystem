@@ -4089,7 +4089,7 @@
 ; 8. DETECT THINGS
 
 (defrule
-    (players-unit-type-count any-enemy scout-cavalry-line > 4)
+    (players-unit-type-count any-enemy scout-cavalry-line > 2)
 =>  
     (set-goal gl-dudeHasScouts 1)    
     (up-chat-data-to-self "DUDE HAS HORSIES = TRUE %d" g: gl-dudeHasScouts)
@@ -4097,7 +4097,7 @@
 )
 
 (defrule
-    (players-unit-type-count any-enemy skirmisher-line > 3)
+    (players-unit-type-count any-enemy skirmisher-line > 1)
 =>  
     (set-goal gl-dudeHasSkirmishers 1)    
     (up-chat-data-to-self "DUDE HAS POOR MAN´S ARCHERS = TRUE %d" g: gl-dudeHasSkirmishers)
@@ -4105,7 +4105,7 @@
 )
 
 (defrule
-    (players-unit-type-count any-enemy archer-line > 3)
+    (players-unit-type-count any-enemy archer-line > 1)
 =>  
     (set-goal gl-dudeHasArchers 1)    
     (up-chat-data-to-self "DUDE HAS ARCHERS = TRUE %d" g: gl-dudeHasArchers)
