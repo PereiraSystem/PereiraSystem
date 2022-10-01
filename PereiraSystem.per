@@ -2662,15 +2662,19 @@
     (build krepost)(up-modify-sn sn-maximum-town-size c:+ 1)   
 )
 
+(defrule ; SICILIANS
+    (can-build donjon) 
+    (building-type-count-total donjon < 1)
+=>
+    (build donjon)
+)
 
-
-(defrule ; ; MINI CASTILLO SICILIANO
-    (can-build donjon) (building-type-count-total castle > 1)(building-type-count-total donjon < 4)
+(defrule ; SICILIANS
+    (can-build donjon) 
+    (building-type-count-total donjon < 64)
 =>
     (build donjon)(up-modify-sn sn-maximum-town-size c:+ 1)   
 )
-
-
 
 ; PROD MILITAR
 ; CONSTRUIR BARRACAS                     
