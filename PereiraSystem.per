@@ -190,8 +190,7 @@
     (set-goal gl-dudeHasCamels 0)
     (set-goal gl-dudeHasElephants 0)
     (set-goal gl-dudeHasArchers 0)
-    (set-goal gl-dudeHasSkirmishers 0)
-    (set-goal gl-zero 0)      
+    (set-goal gl-dudeHasSkirmishers 0) 
     (disable-self)	    
 )
 
@@ -4108,7 +4107,7 @@
 (defrule
     (players-unit-type-count any-enemy archer-line > 3)
 =>  
-    (set-goal gl-dudeHasSkirmishers 1)    
+    (set-goal gl-dudeHasArchers 1)    
     (up-chat-data-to-self "DUDE HAS ARCHERS = TRUE %d" g: gl-dudeHasArchers)
     (disable-self)  
 )
