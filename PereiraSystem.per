@@ -3472,9 +3472,12 @@
 
 (defrule
 	(current-age == feudal-age)
-    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
-	(can-train scout-cavalry-line)(food-amount > 650)   
-	(unit-type-count-total scout-cavalry-line < 2)
+    (research-completed ri-wheel-barrow)
+    (research-completed ri-double-bit-axe)
+    (or(up-compare-goal gl-dudeHasArchers > 0)
+    (up-compare-goal gl-dudeHasSkirmishers > 0))
+	(can-train scout-cavalry-line)
+	(unit-type-count-total scout-cavalry-line g:< gl-cantScouts)
 =>
     (train scout-cavalry-line)
 )
