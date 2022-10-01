@@ -3638,7 +3638,6 @@
 ;JAVALINERO NORMAL
 (defrule
     (current-age == feudal-age)
-    (town-under-attack)
     (unit-type-count-total skirmisher-line < 6)    
     (can-train skirmisher-line)
     (not(can-train genitour))   
@@ -3650,7 +3649,6 @@
     (current-age == feudal-age)
     (unit-type-count-total skirmisher-line < 20)    
     (research-completed ri-padded-archer-armor)
-    (gl-du)
     (can-train skirmisher-line)
     (not(can-train genitour)) (not(civ-selected sicilians))     
 =>
@@ -3792,10 +3790,7 @@
 (defrule
     (current-age == feudal-age)
     (wood-amount > 125)
-    (or
-        (players-unit-type-count any-enemy scout-cavalry-line > 1)
-        (players-unit-type-count any-enemy knight-line > 0)
-    )    
+    (gl-dudeHasScouts g:> 0)
     (unit-type-count-total spearman-line g:< gl-cantLancerosMinima)
     (can-train spearman-line)
 =>
