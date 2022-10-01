@@ -12,8 +12,16 @@
 
 (load "Constants\Constants for AoFE")
 
+
+
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
+
+(defconst gl-dudeHasScouts 51)
+(defconst gl-dudeHasHeavyCavalry 52)
+(defconst gl-dudeHasRangedUnits 53)
+(defconst gl-dudeHasSiege 54)
+
 
 (defconst gl-maximoCasasAntesBorrar 101)    
 (defconst gl-maximoCasasNecesarias 102)
@@ -171,6 +179,23 @@
     (up-chat-data-to-self "MINING CAMPS MAX QTY = %d" g: gl-max-mining-camps-qty)
     (disable-self)	    
 )
+
+(defrule
+    (true)
+=>    
+    (set-goal gl-dudeHasScouts 0)
+    (set-goal gl-dudeHasHeavyCavalry 0)
+    (set-goal gl-dudeHasRangedUnits 0)
+    (set-goal gl-dudeHasSiege 0)
+    (disable-self)	    
+)
+
+(defconst  51)
+(defconst  52)
+(defconst  53)
+(defconst  54)
+
+
 
 (defrule(true)=>(enable-timer 1 720)(disable-self)) 
 (defrule
@@ -2738,16 +2763,7 @@
 
 ; ESTABLOS
 (defrule
-	(building-type-count-total stable == 0)
-    (building-type-count-total monastery > 0)
-    ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar) 
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)    
-	(not(civ-selected gothic))
     (can-build stable)
-    (or
-        (building-type-count-total house > 3)
-        (civ-selected hun)
-    )
 =>
     (build stable)
     (chat-to-player my-player-number "STABLE 1") 
