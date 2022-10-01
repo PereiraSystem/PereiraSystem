@@ -3792,7 +3792,7 @@
 (defrule
     (current-age == feudal-age)
     (wood-amount > 125)
-    (gl-zero g:< gl-dudeHasScouts)
+    ;(0 g:< gl-dudeHasScouts)
     (unit-type-count-total spearman-line g:< gl-cantLancerosMinima)
     (can-train spearman-line)
 =>
