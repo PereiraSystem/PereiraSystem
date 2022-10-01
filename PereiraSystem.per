@@ -2760,7 +2760,7 @@
 
 ; ESTABLOS
 (defrule
-    (can-build stable)
+    (can-build stable)(building-type-count-total stable < 1)
 =>
     (build stable)
     (chat-to-player my-player-number "STABLE 1") 
