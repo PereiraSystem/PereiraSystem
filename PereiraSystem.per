@@ -4084,7 +4084,8 @@
 ; 8. DETECT THINGS
 
 (defrule
-    (players-unit-type-count any-enemy scout-cavalry-line > 4)
+    ;(players-unit-type-count any-enemy scout-cavalry-line > 4)
+    (true)
 =>  
     (set-goal gl-dudeHasScouts 1)    
     (up-chat-data-to-self "DUDE HAS HORSIES = TRUE %d" g: gl-dudeHasScouts)
