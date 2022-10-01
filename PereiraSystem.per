@@ -3639,7 +3639,8 @@
 ;JAVALINERO NORMAL
 (defrule
     (current-age == feudal-age)
-    (unit-type-count-total skirmisher-line < 6)    
+    (unit-type-count-total skirmisher-line < 8) 
+    (up-compare-goal gl-dudeHasArchers > 0)
     (can-train skirmisher-line)
     (not(can-train genitour))   
 =>
@@ -3648,10 +3649,11 @@
 
 (defrule
     (current-age == feudal-age)
-    (unit-type-count-total skirmisher-line < 20)    
+    (unit-type-count-total skirmisher-line < 20)
+    (up-compare-goal gl-dudeHasArchers > 0)        
     (research-completed ri-padded-archer-armor)
     (can-train skirmisher-line)
-    (not(can-train genitour)) (not(civ-selected sicilians))     
+    (not(can-train genitour))   
 =>
     (train skirmisher-line)
 )
@@ -4084,10 +4086,25 @@
 ; 8. DETECT THINGS
 
 (defrule
-    ;(players-unit-type-count any-enemy scout-cavalry-line > 4)
-    (true)
+    (players-unit-type-count any-enemy scout-cavalry-line > 4)
 =>  
     (set-goal gl-dudeHasScouts 1)    
     (up-chat-data-to-self "DUDE HAS HORSIES = TRUE %d" g: gl-dudeHasScouts)
+    (disable-self)  
+)
+
+(defrule
+    (players-unit-type-count any-enemy skirmisher-line > 3)
+=>  
+    (set-goal gl-dudeHasSkirmishers 1)    
+    (up-chat-data-to-self "DUDE HAS POOR MAN´S ARCHERS = TRUE %d" g: gl-dudeHasSkirmishers)
+    (disable-self)  
+)
+
+(defrule
+    (players-unit-type-count any-enemy archer-line > 3)
+=>  
+    (set-goal gl-dudeHasSkirmishers 1)    
+    (up-chat-data-to-self "DUDE HAS ARCHERS = TRUE %d" g: gl-dudeHasArchers)
     (disable-self)  
 )
