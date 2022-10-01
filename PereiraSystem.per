@@ -3807,7 +3807,8 @@
     (building-type-count-total monastery > 0)
     (can-train spearman-line)
 =>
-    (train spearman-line)
+    ;(train spearman-line)
+    (do-nothing)
 )
 
 (defrule
@@ -3817,7 +3818,8 @@
     (can-train spearman-line)
     (not(civ-selected cumans))  
 =>
-    (train spearman-line)
+    ;(train spearman-line)
+     (do-nothing)
 )
 
 (defrule ;godos
