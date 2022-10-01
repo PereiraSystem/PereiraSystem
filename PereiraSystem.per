@@ -1843,9 +1843,9 @@
 ; DEFENSA INFANTERIA
 
 (defrule
-    (can-research ri-scale-mail)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw) 
-    (or(town-under-attack)(current-age == imperial-age))  
+    (can-research ri-scale-mail) 
+    (or(town-under-attack)
+    (current-age == imperial-age))  
 =>
     (research ri-scale-mail)
 )
@@ -3791,7 +3791,7 @@
 (defrule
     (current-age == feudal-age)
     (wood-amount > 125)
-    (not(goal gl-dudeHasScouts 0))
+    (goal gl-dudeHasScouts 1)
     (unit-type-count-total spearman-line g:< gl-cantLancerosMinima)
     (can-train spearman-line)
 =>
@@ -4083,6 +4083,6 @@
     (players-unit-type-count any-enemy scout-cavalry-line > 4)
 =>  
     (set-goal gl-dudeHasScouts 1)    
-    (up-chat-data-to-self "DUDE HAS HORSIES = %d" g: gl-dudeHasScouts)
+    (up-chat-data-to-self "DUDE HAS HORSIES = TRUE %d" g: gl-dudeHasScouts)
     (disable-self)  
 )
