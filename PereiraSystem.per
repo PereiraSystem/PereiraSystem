@@ -2638,6 +2638,13 @@
 
 (defrule
     (can-build-wall 1 72)(enemy-buildings-in-town)
+=>
+    (chat-to-player my-player-number "ENEMY BUILDINGS IN TOWN! LET´S BUILD A SITY WALL)
+    (disable-self)
+)
+
+(defrule
+    (can-build-wall 1 72)(enemy-buildings-in-town)
     (or
         (wood-amount > 101)
         (and(civ-selected japanese)(wood-amount > 51))
