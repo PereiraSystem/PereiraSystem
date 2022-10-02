@@ -341,15 +341,16 @@
     (up-assign-builders c: guard-tower c:+ 1)          
     (up-assign-builders c: keep c:+ 1)
     (up-assign-builders c: castle c:+ 6)
-    (up-assign-builders c: town-center c:+ 3)    
+    (up-assign-builders c: town-center c:+ 3)
+    (up-assign-builders c: palisade-wall c:+ 3)     
     (disable-self)
 )
 
 (defrule 
     (true)
 =>
-    (set-strategic-number sn-minimum-town-size 8)
-    (set-strategic-number sn-maximum-town-size 10)
+    (set-strategic-number sn-minimum-town-size 0)
+    (set-strategic-number sn-maximum-town-size 7)
     (disable-self)
 )
 
@@ -2586,8 +2587,8 @@
 (defrule(true)=>(enable-wall-placement 1)(disable-self))
 
 
-;(defrule(civ-selected gothic)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
-(defrule(enemy-buildings-in-town)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
+(defrule(civ-selected gothic)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
+
 
 
 ; EXPERIMENTAL EARLY PALISADE WALL (GATE)
@@ -2635,7 +2636,16 @@
 
 ; EXPERIMENTAL EARLY WALL (GATE)
 
-(defrule(can-build-wall 1 72)=>(build-wall 1 72))
+(defrule
+    (can-build-wall 1 72)(enemy-buildings-in-town)
+    (or
+        (wood-amount > 101)
+        (and(civ-selected japanese)(wood-amount > 51)
+    )
+=>
+    (set-strategic-number sn-gate-type-for-wall 1)
+    (build-wall 1 72)
+)
 
 (defrule 
 	(can-build-wall 1 72)
@@ -3730,7 +3740,8 @@
 ; BARRACAS                                         
 ; MILICIA
 (defrule
-    (can-train militiaman-line) ;explorer
+    (can-train militiaman-line)
+    (unit-type-count-total militiaman-line < 2) ;explorer
 =>
     (train militiaman-line)(disable-self)
 )
