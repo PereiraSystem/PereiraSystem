@@ -2666,19 +2666,13 @@
 )
 
 
-; EXPERIMENTAL WOOD EARLY WALL (GATE)
+; EXPERIMENTAL WOOD EARLY WALL 
+
+
 
 (defrule
-    ;(can-build-complete-wall 1 72)
-    (enemy-buildings-in-town)
-    (military-population > 0)
-=>
-    (chat-to-player my-player-number "ENEMY BUILDINGS IN TOWN! LET´S BUILD A SITY WALL")
-    (disable-self)
-)
-
-(defrule
-    (can-build-wall 1 72)(enemy-buildings-in-town)
+    (can-build-wall 1 72)
+    (enemy-buildings-in-town)(not-town-under-attack)
     (or
         (wood-amount > 101)
         (and(civ-selected japanese)(wood-amount > 51))
