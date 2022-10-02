@@ -2922,18 +2922,16 @@
 
 ;NORMAL
 
-#load-if-defined SPECIAL-MAP 
+
 (defrule
     (can-build watch-tower-line)
-    (wood-amount > 101)
-    (building-type-count-total watch-tower-line < 3)
+    (wood-amount > 150)
 =>
-    (build watch-tower-line)
-    (up-assign-builders c: watch-tower c:+ 2)
-    (up-assign-builders c: guard-tower c:+ 2)          
-    (up-assign-builders c: keep c:+ 2)  
+    (up-assign-builders c: watch-tower c:+ 8)
+    (up-assign-builders c: guard-tower c:+ 8)          
+    (up-assign-builders c: keep c:+ 8)
+    (build watch-tower-line)  
 )
-#end-if
 
 (defrule
     (can-build watch-tower-line)
