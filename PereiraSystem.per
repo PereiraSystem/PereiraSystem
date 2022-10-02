@@ -2731,10 +2731,16 @@
 
 ; PROD MILITAR
 ; CONSTRUIR BARRACAS                     
-(defrule
+(defrule ;four nested conditionals, the japanese would do it for you
 	(building-type-count-total barracks < 1)
     (or
-    	(and(building-type-count-total lumber-camp > 0)(wood-amount > 275))
+    	(or
+            (and(building-type-count-total lumber-camp > 0)(wood-amount > 275))
+            (and
+                (and(building-type-count-total lumber-camp > 0)(wood-amount > 225))
+                (civ-selected japanese)
+            )            
+        )
         (wood-amount > 305)
     )
     (can-build barracks)
