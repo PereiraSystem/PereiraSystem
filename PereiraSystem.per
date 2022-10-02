@@ -2637,7 +2637,9 @@
 ; EXPERIMENTAL EARLY WALL (GATE)
 
 (defrule
-    (can-build-wall 1 72)(enemy-buildings-in-town)
+    (can-build-wall 1 72)
+    (enemy-buildings-in-town)
+    (military-population > 0)
 =>
     (chat-to-player my-player-number "ENEMY BUILDINGS IN TOWN! LET´S BUILD A SITY WALL")
     (disable-self)
