@@ -2646,7 +2646,8 @@
 ; EXPERIMENTAL EARLY WALL (GATE)
 
 (defrule
-    (can-build-wall 1 72)
+    (can-build-complete-wall 1 72)
+    
     (enemy-buildings-in-town)
     (military-population > 0)
 =>
