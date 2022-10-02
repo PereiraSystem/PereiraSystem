@@ -23,7 +23,7 @@
 (defconst gl-dudeHasElephants 54)
 (defconst gl-dudeHasArchers 55)
 (defconst gl-dudeHasSkirmishers 56)
-(defconst gl-zero 499)
+(defconst gl-dudeHasSpearmen 57)
 
 (defconst gl-maximoCasasAntesBorrar 101)    
 (defconst gl-maximoCasasNecesarias 102)
@@ -4171,5 +4171,13 @@
 =>  
     (set-goal gl-dudeHasArchers 1)    
     (up-chat-data-to-self "DUDE HAS ARCHERS = TRUE %d" g: gl-dudeHasArchers)
+    (disable-self)  
+)
+
+(defrule
+    (players-unit-type-count any-enemy spearman-line > 1)
+=>  
+    (set-goal gl-dudeHasSpearmen 1)    
+    (up-chat-data-to-self "DUDE HAS SPEARMEN = TRUE %d" g: gl-dudeHasSpearmen)
     (disable-self)  
 )
