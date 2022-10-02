@@ -2668,11 +2668,10 @@
 
 ; EXPERIMENTAL WOOD EARLY WALL 
 
-
-
 (defrule
     (can-build-wall 1 72)
-    (enemy-buildings-in-town)(not-town-under-attack)
+    (enemy-buildings-in-town)(not(town-under-attack))
+    (building-type-count-total archery-range > 0)(military-population > 4)
     (or
         (wood-amount > 101)
         (and(civ-selected japanese)(wood-amount > 51))
