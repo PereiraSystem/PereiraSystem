@@ -2405,7 +2405,7 @@
 ; MADERA                       
 (defrule
     (building-type-count-total lumber-camp == 0)
-    (or(enemy-buildings-in-town)(town-under-attack)
+    (or(enemy-buildings-in-town)(town-under-attack))
     (unit-type-count-total villager > 6)
     (can-build lumber-camp)
     (resource-found wood)
@@ -2416,6 +2416,21 @@
     )
 =>
     (build lumber-camp)(delete-building town-center)  
+    (chat-to-player my-player-number "LUMBER CAMP 1")    
+)
+
+(defrule
+    (building-type-count-total lumber-camp == 0)
+    (unit-type-count-total villager > 6)
+    (can-build lumber-camp)
+    (resource-found wood)
+    (dropsite-min-distance wood > 8)
+    (or
+        (building-type-count house > 0)
+        (civ-selected hun)
+    )
+=>
+    (build lumber-camp)
     (chat-to-player my-player-number "LUMBER CAMP 1")    
 )
 
