@@ -2201,7 +2201,7 @@
 )
 
 ; CENTRO CIUDAD    
-(defrule(true)=>(delete-building town-center)(disable-self))
+;(defrule(true)=>(delete-building town-center)(disable-self))
 
 (defrule
     (can-build town-center)(resource-found wood)
@@ -2388,10 +2388,16 @@
 =>
     (build lumber-camp)  
     (chat-to-player my-player-number "LUMBER CAMP 1")
+       
+    (up-modify-sn sn-camp-max-distance c:+ 24)    
+)
+
+(defrule
+    (building-type-count lumber-camp > 0) 
+=>
     (set-strategic-number sn-total-number-explorers 1) 
     (set-strategic-number sn-number-explore-groups 1)
-    (set-strategic-number sn-percent-civilian-explorers 0)     
-    (up-modify-sn sn-camp-max-distance c:+ 24)    
+    (set-strategic-number sn-percent-civilian-explorers 0)  
 )
 
 (defrule
@@ -2641,7 +2647,7 @@
 ; EXPERIMENTAL EARLY WALL (GATE)
 
 (defrule
-    (can-build-complete-wall 1 72)
+    ;(can-build-complete-wall 1 72)
     
     (enemy-buildings-in-town)
     (military-population > 0)
