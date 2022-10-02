@@ -282,9 +282,8 @@
 (defrule 
     (unit-type-count villager > 4)(building-type-count lumber-camp < 2)
 =>  
-    (set-strategic-number sn-total-number-explorers 3) 
-    (set-strategic-number sn-number-explore-groups 3)  
-    (set-strategic-number sn-maximum-gaia-attack-response 5)
+    (set-strategic-number sn-total-number-explorers 2) 
+    (set-strategic-number sn-number-explore-groups 2)  
     (disable-self)
 )
 
@@ -293,12 +292,27 @@
 =>  
     (set-strategic-number sn-total-number-explorers 3) 
     (set-strategic-number sn-number-explore-groups 3)  
-    (set-strategic-number sn-maximum-gaia-attack-response 5)
     (disable-self)
 )
 
 (defrule 
-    (current-age == feudal-age)
+    (unit-type-count villager > 9)(building-type-count lumber-camp < 2)
+=>  
+    (set-strategic-number sn-total-number-explorers 4) 
+    (set-strategic-number sn-number-explore-groups 4)  
+    (disable-self)
+)
+
+(defrule 
+    (unit-type-count villager > 11)(building-type-count lumber-camp < 2)
+=>  
+    (set-strategic-number sn-total-number-explorers 5) 
+    (set-strategic-number sn-number-explore-groups 5)  
+    (disable-self)
+)
+
+(defrule 
+    (current-age == feudal-age)(not(town-under-attack))
 =>
     (set-strategic-number sn-total-number-explorers 3) 
     (set-strategic-number sn-number-explore-groups 3)
@@ -2650,13 +2664,12 @@
 =>
 	(build-wall 1  stone-wall-line) 
 )
-;WOOD
 
-; EXPERIMENTAL EARLY WALL (GATE)
+
+; EXPERIMENTAL WOOD EARLY WALL (GATE)
 
 (defrule
     ;(can-build-complete-wall 1 72)
-    
     (enemy-buildings-in-town)
     (military-population > 0)
 =>
@@ -2675,6 +2688,7 @@
     (build-wall 1 72)
 )
 
+;WOOD
 (defrule 
 	(can-build-wall 1 72)
     (building-type-count-total castle > 0)(current-age == imperial-age)
@@ -2683,6 +2697,7 @@
 	(build-wall 1 72)
 )
 
+;STONE 2
 
 (defrule 
 	(can-build-wall 2 stone-wall-line)
@@ -2690,6 +2705,7 @@
 =>
 	(build-wall 2  stone-wall-line)
 )
+;WOOD 2
 
 (defrule 
 	(can-build-wall 2 72)
@@ -3158,7 +3174,10 @@
     (train petard)
 )
 
-; UNICAS            
+; UNICAS      
+
+(defrule(town-under-attack)(can-train my-unique-unit-line)=>(train my-unique-unit-line))
+
 (defrule
     (current-age == castle-age)(town-under-attack)
     (unit-type-count-total my-unique-unit-line < 30)(gold-amount > 160)
