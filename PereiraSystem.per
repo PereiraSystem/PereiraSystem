@@ -2200,9 +2200,16 @@
     (build wonder)
 )
 
-; CENTRO CIUDAD                               
+; CENTRO CIUDAD    
 (defrule
-    (can-build town-center)
+    (delete building town-center)
+=>
+    (disable-self)
+)
+
+(defrule
+    (can-build town-center)(resource-found wood)
+    (resource-found gold)(resource-found stone)
     (building-type-count-total town-center == 0) 
 =>
     (build town-center)
