@@ -2499,6 +2499,7 @@
     (can-build market)
     (or(military-population g:>= gl-cantLancerosMinima)(wood-amount > 300))
 =>
+    (up-modify-sn sn-maximum-town-size c:+ 1)
     (build market)(chat-to-player my-player-number "MARKET 1")  
 )
 
