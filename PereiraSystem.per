@@ -387,7 +387,7 @@
 (defrule 
     (true)
 =>  
-    (set-strategic-number sn-camp-max-distance 26); 
+    (set-strategic-number sn-camp-max-distance 35); 
     (set-strategic-number sn-mill-max-distance 9)  
     (disable-self)
 )
@@ -2397,9 +2397,7 @@
     )
 =>
     (build lumber-camp)  
-    (chat-to-player my-player-number "LUMBER CAMP 1")
-       
-    (up-modify-sn sn-camp-max-distance c:+ 24)    
+    (chat-to-player my-player-number "LUMBER CAMP 1")    
 )
 
 (defrule
