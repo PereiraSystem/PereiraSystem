@@ -2201,12 +2201,7 @@
 )
 
 ; CENTRO CIUDAD    
-(defrule
-    (true)
-=>
-    (delete-building town-center)
-    (disable-self)
-)
+(defrule(true)=>(delete-building town-center)(disable-self))
 
 (defrule
     (can-build town-center)(resource-found wood)
