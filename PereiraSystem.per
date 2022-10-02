@@ -268,7 +268,7 @@
 )
 
 (defrule 
-    (cc-players-unit-type-count any-ally villager  > 0)
+    (players-unit-type-count any-ally villager  > 0)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 8)
     (up-modify-sn sn-enemy-sighted-response-distance c:+ 24)
@@ -713,14 +713,14 @@
 
 (defrule
     (can-research ri-coinage )
-    (cc-players-building-type-count any-ally market > 0)
+    (players-building-type-count any-ally market > 0)
     (building-type-count-total monastery > 0)    
 =>
     (research ri-coinage)
 )
 
 (defrule
-    (can-research ri-banking )(cc-players-building-type-count any-ally market > 0)
+    (can-research ri-banking )(players-building-type-count any-ally market > 0)
 =>
     (research ri-banking)
 )
@@ -1322,7 +1322,7 @@
 )
 
 (defrule
-    (civ-selected cumans)(cc-players-building-type-count any-ally castle > 0)
+    (civ-selected cumans)(players-building-type-count any-ally castle > 0)
     (can-research my-unique-research)
 =>
     (research my-unique-research)(chat-to-player my-player-number "ALIADOS TIENEN 10 MERCENARIOS GRATIS EN CASTILLO!")  
@@ -2276,9 +2276,11 @@
 ; MOLINO                
 (defrule  
     (building-type-count-total mill < 1)
-    (can-build mill)
-    (wood-amount > 101)
-    (or(building-type-count-total lumber-camp > 0)(wood-amount > 400))  
+    (can-build mill)(resource-found food)
+    (gaia-type-count prey-animal-class > 4)
+    (wood-amount > 100)
+    (or(building-type-count-total lumber-camp > 0)
+        (wood-amount > 400))  
 =>
     (build mill)(chat-to-player my-player-number "MILL 1")
 )
@@ -2535,7 +2537,7 @@
 )
 
 (defrule
-    (cc-players-building-type-count any-ally market > 0)
+    (players-building-type-count any-ally market > 0)
     (building-type-count-total market == 1)(can-build market)
     (current-age == imperial-age)
     (building-type-count-total university > 0)
@@ -2545,7 +2547,7 @@
 )
 
 (defrule
-    (cc-players-building-type-count any-ally market > 0)
+    (players-building-type-count any-ally market > 0)
     (building-type-count-total market == 2)(can-build market)
     (current-age == imperial-age)
     (building-type-count-total university > 0)
@@ -2556,7 +2558,7 @@
 )
 
 (defrule
-    (cc-players-building-type-count any-ally market > 0)
+    (players-building-type-count any-ally market > 0)
     (building-type-count-total market == 3)(can-build market)
     (current-age == imperial-age)
     (building-type-count-total university > 0)(building-type-count-total castle > 0)
@@ -3072,7 +3074,7 @@
 
 (defrule 
     (current-age == imperial-age)
-    (cc-players-building-type-count any-ally market  > 0)
+    (players-building-type-count any-ally market  > 0)
     (unit-type-count-total trade-cart g:< gl-cantCarretas)    
     (civilian-population < 100)(military-population > 50)
 =>
