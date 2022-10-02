@@ -3796,6 +3796,15 @@
 (defrule
     (current-age == feudal-age)
     (wood-amount > 125)
+    (unit-type-count-total spearman-line < 2)    
+    (can-train spearman-line)
+=>
+    (train spearman-line)
+)
+
+(defrule
+    (current-age == feudal-age)
+    (wood-amount > 125)
     ;(goal gl-dudeHasScouts 1)
     (up-compare-goal gl-dudeHasScouts > 0)
     (unit-type-count-total spearman-line g:< gl-cantLancerosMinima)
