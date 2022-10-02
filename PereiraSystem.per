@@ -278,11 +278,21 @@
 
 ; 2. STRATEGIC NUMBERS
 ; EXPLORE
+
 (defrule 
-    (true)
-=>
-    (set-strategic-number sn-total-number-explorers 2) 
-    (set-strategic-number sn-number-explore-groups 2)  
+    (unit-type-count villager > 4)(building-type-count lumber-camp < 2)
+=>  
+    (set-strategic-number sn-total-number-explorers 3) 
+    (set-strategic-number sn-number-explore-groups 3)  
+    (set-strategic-number sn-maximum-gaia-attack-response 5)
+    (disable-self)
+)
+
+(defrule 
+    (unit-type-count villager > 6)(building-type-count lumber-camp < 2)
+=>  
+    (set-strategic-number sn-total-number-explorers 3) 
+    (set-strategic-number sn-number-explore-groups 3)  
     (set-strategic-number sn-maximum-gaia-attack-response 5)
     (disable-self)
 )
