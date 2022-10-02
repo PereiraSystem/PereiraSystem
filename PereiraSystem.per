@@ -2922,7 +2922,6 @@
 
 ;NORMAL
 
-
 (defrule
     (can-build watch-tower-line)
     (wood-amount > 150)
@@ -3461,7 +3460,8 @@
 
 ; SCOUTS
 (defrule
-    (unit-type-count-total scout-cavalry-line < 2)(current-age < imperial-age)
+    (unit-type-count-total scout-cavalry-line < 2)
+    (current-age < imperial-age)
     (can-train scout-cavalry-line) 
 =>
     (train scout-cavalry-line)
@@ -3480,10 +3480,13 @@
 )
 
 (defrule
-	(current-age == castle-age)      
+	(current-age == castle-age)
+    (research-completed ri-wheel-barrow)
+    (research-completed ri-double-bit-axe)
+    (or(up-compare-goal gl-dudeHasArchers > 0)
+    (up-compare-goal gl-dudeHasSkirmishers > 0))
 	(can-train scout-cavalry-line)
-    (food-amount > 850)  
-    (unit-type-count-total scout-cavalry-line < 3)
+	(unit-type-count-total scout-cavalry-line g:< gl-cantScouts)
 =>
     (train scout-cavalry-line)
 )
