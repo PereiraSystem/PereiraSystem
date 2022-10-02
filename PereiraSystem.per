@@ -2404,7 +2404,8 @@
 
 ; MADERA                       
 (defrule
-    (building-type-count-total lumber-camp == 0)(enemy-buildings-in-town)
+    (building-type-count-total lumber-camp == 0)
+    (or(enemy-buildings-in-town)(town-under-attack)
     (unit-type-count-total villager > 6)
     (can-build lumber-camp)
     (resource-found wood)
@@ -2427,7 +2428,7 @@
 )
 
 (defrule
-    (building-type-count-total lumber-camp < 2)
+    (building-type-count-total lumber-camp == 1)
     (or
         (current-age > dark-age)
         (food-amount > 600)
