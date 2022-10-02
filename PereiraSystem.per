@@ -2202,8 +2202,9 @@
 
 ; CENTRO CIUDAD    
 (defrule
-    (delete building town-center)
+    (true)
 =>
+    (delete-building town-center)
     (disable-self)
 )
 
