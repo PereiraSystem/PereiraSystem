@@ -2381,7 +2381,7 @@
 
 (defrule
     (current-age == dark-age)
-    (building-type-count barracks > 0)(building-type-count mill > 0)
+    (or(building-type-count barracks > 0)(building-type-count mill > 0))
     (unit-type-count-total villager > 10) 
     (building-type-count-total house < 3)
     (can-build house)
