@@ -457,8 +457,8 @@
 (defrule
     (current-age == dark-age)
 =>
-    (set-strategic-number sn-percent-civilian-explorers 20)
-    (set-strategic-number sn-percent-civilian-builders 80)
+    (set-strategic-number sn-percent-civilian-explorers 100)
+    (set-strategic-number sn-percent-civilian-builders 100)
     (set-strategic-number sn-cap-civilian-builders 100)
     (disable-self)
 )    
@@ -2418,7 +2418,9 @@
         (civ-selected hun)
     )
 =>
-    (build lumber-camp)(delete-building town-center)  
+    (build lumber-camp)
+    (delete-building town-center)(delete-building mill) 
+    (delete-building house)(delete-building barracks)      
     (chat-to-player my-player-number "LUMBER CAMP 1 - TOWN CENTER DELETED")    
 )
 
@@ -2532,7 +2534,7 @@
     (build mining-camp)
     ;(chat-to-player my-player-number "MINING CAMP - STONE ")
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    (up-chat-data-to-self "MINING CAMP - STONE - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "MINING CAMP - STONE  - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
 )
 
 (defrule 
