@@ -468,6 +468,18 @@
 ; PORCENTAJE OBREROS EN CADA RECURSO
 
 (defrule
+    (game-time > 300)(building-type-count-total town-center < 0)
+    (or(wood-amount < 275)(stone < amount))
+=>
+    (set-strategic-number sn-food-gatherer-percentage 25)
+    (set-strategic-number sn-wood-gatherer-percentage 25)
+    (set-strategic-number sn-gold-gatherer-percentage 25)
+    (set-strategic-number sn-stone-gatherer-percentage 25)
+)
+
+
+
+(defrule
     (current-age == dark-age)
 =>
     (set-strategic-number sn-food-gatherer-percentage 75)
