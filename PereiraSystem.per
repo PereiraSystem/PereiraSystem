@@ -2700,8 +2700,9 @@
 ;STONE
 (defrule 
 	(can-build-wall 1 stone-wall-line)
-    (building-type-count-total castle > 0)(current-age == imperial-age)
+    (building-type-count castle > 0)(current-age == imperial-age)
     (military-population > 75)(unit-type-count-total villager > 65)
+    (food-amount > 1300)(gold-amount > 1300)(wood-amount > 1300)
 =>
 	(build-wall 1  stone-wall-line) 
 )
@@ -2709,8 +2710,9 @@
 ;WOOD
 (defrule 
 	(can-build-wall 1 72)
-    (building-type-count-total castle > 0)(current-age == imperial-age)
+    (building-type-count castle > 0)(current-age == imperial-age)
     (military-population > 75)(unit-type-count-total villager > 65)
+    (food-amount > 1300)(gold-amount > 1300)(wood-amount > 1300)    
 =>
 	(build-wall 1 72)
 )
