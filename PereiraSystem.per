@@ -2287,11 +2287,6 @@
     (building-type-count-total mill < 1)
     (can-build mill)
     (resource-found food)
-    ;(dropsite-min-distance food > 6)
-    ;(gaia-type-count prey-animal-class > 4)
-    (wood-amount > 200)
-    (or(building-type-count-total lumber-camp > 0)
-        (wood-amount > 400))  
 =>
     (build mill)(chat-to-player my-player-number "MILL 1")
 )
