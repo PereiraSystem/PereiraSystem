@@ -2286,7 +2286,6 @@
 (defrule  
     (building-type-count-total mill < 1)
     (can-build mill)
-    (resource-found food)
 =>
     (build mill)(chat-to-player my-player-number "MILL 1")
 )
