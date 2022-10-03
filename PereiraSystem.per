@@ -567,8 +567,8 @@
 (defrule 
     (true)
 =>
-    (set-strategic-number sn-allow-civilian-defense 3)   
-    (set-strategic-number sn-defense-distance 36)     
+    (set-strategic-number sn-allow-civilian-defense 1)   
+    (set-strategic-number sn-defense-distance 20)     
     (disable-self)
 )
 ; ATAQUE                               
@@ -2286,7 +2286,8 @@
 ; MOLINO                
 (defrule  
     (building-type-count-total mill < 1)
-    (can-build mill)(wood-amount > 200)
+    (can-build mill)
+    (wood-amount > 200)
 =>
     (build mill)(chat-to-player my-player-number "MILL 1")
 )
