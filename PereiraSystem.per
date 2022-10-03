@@ -2326,10 +2326,9 @@
 ; EDAD 2
 (defrule
 	(current-age == feudal-age)
-    (building-type-count-total farm < 6)(wood-amount > 101)
+    (wood-amount > 125)
 	(idle-farm-count < 1)
 	(can-build farm)
-    (wood-amount > 100)
 =>
     (build farm)
 )
