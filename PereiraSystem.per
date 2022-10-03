@@ -175,7 +175,7 @@
 (defrule
     (true)
 =>    
-    (set-goal gl-max-lumber-camps-qty 16)
+    (set-goal gl-max-lumber-camps-qty 4)
     (set-goal gl-max-mining-camps-qty 1)
     (up-chat-data-to-self "LUMBER CAMPS MAX QTY = %d" g: gl-max-lumber-camps-qty)
     (up-chat-data-to-self "MINING CAMPS MAX QTY = %d" g: gl-max-mining-camps-qty)
@@ -348,24 +348,21 @@
 ; CONSTRUIR
 (defrule(true)=>(set-strategic-number sn-initial-exploration-required 0)(disable-self))
 
-
-
-
-
 ; CONSTRUCTORES EXTRA
 (defrule
     (true)
 =>
-    (up-assign-builders c: monastery c:+ 3)(up-assign-builders c: market c:+ 2)
+    (up-assign-builders c: monastery c:+ 3)
+    (up-assign-builders c: market c:+ 2)
     (up-assign-builders c: blacksmith c:+ 1)
     (up-assign-builders c: university c:+ 1)
     (up-assign-builders c: siege-workshop c:+ 1)
     (up-assign-builders c: bombard-tower c:+ 1) 
-    (up-assign-builders c: watch-tower c:+ 1)
-    (up-assign-builders c: guard-tower c:+ 1)          
-    (up-assign-builders c: keep c:+ 1)
-    (up-assign-builders c: castle c:+ 6)
-    (up-assign-builders c: town-center c:+ 3)
+    (up-assign-builders c: watch-tower c:+ 8)
+    (up-assign-builders c: guard-tower c:+ 8)          
+    (up-assign-builders c: keep c:+ 8)
+    (up-assign-builders c: castle c:+ 8)
+    (up-assign-builders c: town-center c:+ 8)
     (up-assign-builders c: palisade-wall c:+ 3)     
     (disable-self)
 )
@@ -393,7 +390,7 @@
 =>
     (set-strategic-number sn-dropsite-separation-distance 3) ; NF
     (set-strategic-number sn-allow-adjacent-dropsites 0) ; CAMBIA CON 3 CAMPAMENTOS
-    (set-strategic-number sn-required-forest-tiles 5)
+    (set-strategic-number sn-required-forest-tiles 3)
     (disable-self)
 )
 
@@ -402,7 +399,7 @@
     (true)
 =>  
     (set-strategic-number sn-camp-max-distance 35); 
-    (set-strategic-number sn-mill-max-distance 9)  
+    (set-strategic-number sn-mill-max-distance 20)  
     (disable-self)
 )
 
