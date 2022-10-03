@@ -2492,7 +2492,8 @@
 ; MINAS                       
 ; ORO
 (defrule 
-    (current-age == feudal-age)(wood-amount > 101)
+    (current-age == feudal-age)
+    (wood-amount > 101)
     ;(research-completed ri-wheel-barrow)
     (research-completed ri-double-bit-axe)
     (resource-found gold) 
@@ -2522,6 +2523,18 @@
 )
 
 ; PIEDRA
+(defrule 
+    (building-type-count-total town-center < 0)
+    (resource-found stone) 
+    (dropsite-min-distance stone > 3)
+    (can-build mining-camp)
+=>
+    (build mining-camp)
+    ;(chat-to-player my-player-number "MINING CAMP - STONE ")
+    (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
+    (up-chat-data-to-self "MINING CAMP - STONE - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
+)
+
 (defrule 
     (current-age >= castle-age)
     (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)            
