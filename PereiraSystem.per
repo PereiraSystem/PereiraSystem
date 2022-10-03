@@ -2641,14 +2641,14 @@
 ; PERMITIR MURALLA PREVIAMENTE
 (defrule(true)=>(enable-wall-placement 1)(disable-self))
 
-
 (defrule(civ-selected gothic)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
 
 
-
-; EXPERIMENTAL EARLY PALISADE WALL (GATE)
 (defrule 
-    (building-type-count-total 72 > 0)
+    (or
+        (building-type-count-total 72 > 0)
+        (building-type-count-total stone-wall > 0)
+    )
     (can-build-gate 1)
 =>
     (build-gate 1)  
@@ -2659,20 +2659,6 @@
         (building-type-count-total 72 > 0)
         (building-type-count-total stone-wall > 0)
     )
-    (building-type-count-total castle > 0)
-    (current-age == imperial-age)
-    (military-population > 65)(unit-type-count-total villager > 50)
-    (can-build-gate 1)
-=>
-    (build-gate 1)  
-)
-
-(defrule 
-    (or
-        (building-type-count-total 72 > 0)
-        (building-type-count-total stone-wall > 0)
-    )
-    (building-type-count-total castle > 0)(current-age == imperial-age)
     (can-build-gate 2)
 =>
     (build-gate 2)  
@@ -2689,20 +2675,7 @@
 )
 
 
-; EXPERIMENTAL WOOD EARLY WALL 
 
-(defrule
-    (can-build-wall 1 72)
-    (enemy-buildings-in-town)(not(town-under-attack))
-    (building-type-count-total archery-range > 0)(military-population > 4)
-    (or
-        (wood-amount > 101)
-        (and(civ-selected japanese)(wood-amount > 51))
-    )
-=>
-    (set-strategic-number sn-gate-type-for-wall 1)
-    (build-wall 1 72)
-)
 
 ;WOOD
 (defrule 
