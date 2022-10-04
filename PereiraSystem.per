@@ -682,7 +682,7 @@
 (defrule
     (can-research ri-wheel-barrow)(wood-amount > 149)
     (or
-        (and(not-town-under-attack)(enemy-buildings-in-town))
+        (and(not(town-under-attack))(enemy-buildings-in-town))
         (food-amount > 800)
     )
 =>
