@@ -2584,7 +2584,7 @@
 ; HERRERIA
 (defrule
     (building-type-count-total blacksmith == 0)
-    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
+    ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
     (can-build blacksmith)(military-population > 15)
 =>
     (build blacksmith)(chat-to-player my-player-number "BLACKSMITH")
