@@ -665,13 +665,26 @@
 
 (defrule
     (can-research ri-loom)
-    (or(current-age == imperial-age)(unit-type-count-total monk-set g:>= gl-cantMonjes))
+    (or
+        (or
+            (enemy-buildings-in-town)
+            (unit-type-count-total monk-set g:>= gl-cantMonjes))
+        )
+        (or
+            (current-age == imperial-age)
+            (gold-amount > 250)
+        )            
+    )
 =>
     (research ri-loom)
 )
 
 (defrule
     (can-research ri-wheel-barrow)(wood-amount > 149)
+    (or
+        (and(not-town-under-attack)(enemy-buildings-in-town))
+        (food-amount > 800)
+    )
 =>
     (research ri-wheel-barrow)
 )
