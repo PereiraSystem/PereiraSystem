@@ -409,7 +409,7 @@
     (true)
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
-    (set-strategic-number sn-maximum-food-drop-distance 7)
+    (set-strategic-number sn-maximum-food-drop-distance 9)
     (set-strategic-number sn-maximum-wood-drop-distance 20)
     (set-strategic-number sn-maximum-gold-drop-distance 0)
     (set-strategic-number sn-maximum-stone-drop-distance 0)
@@ -423,8 +423,8 @@
 =>  
     (set-strategic-number sn-maximum-wood-drop-distance 11)
     (set-strategic-number sn-maximum-food-drop-distance 9)    
-
-    (set-strategic-number sn-maximum-stone-drop-distance 0)    
+    (set-strategic-number sn-maximum-gold-drop-distance 11)
+    (set-strategic-number sn-maximum-stone-drop-distance 11)    
     (disable-self)
 )
 
@@ -2541,7 +2541,7 @@
 ; PIEDRA
 (defrule 
     (or(building-type-count-total town-center < 0)
-    (stone-amount < 100)
+    (stone-amount < 100))
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
