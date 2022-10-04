@@ -2235,7 +2235,7 @@
 )
 
 ; CENTRO CIUDAD    
-;(defrule(true)=>(delete-building town-center)(disable-self))
+
 
 (defrule
     (can-build town-center)(resource-found wood)
@@ -2409,20 +2409,20 @@
 ; MADERA                       
 (defrule
     (building-type-count-total lumber-camp == 0)
-    (or(enemy-buildings-in-town)(town-under-attack))
+    ;(or(enemy-buildings-in-town)(town-under-attack))
     (unit-type-count-total villager > 6)
     (can-build lumber-camp)
     (resource-found wood)
-    ;(dropsite-min-distance wood > 8)
+    (dropsite-min-distance wood > 8)
     (or
         (building-type-count house > 0)
         (civ-selected hun)
     )
 =>
     (build lumber-camp)
-    (delete-building town-center)(delete-building mill)(delete-building barracks)
-    (delete-building farm)(delete-building farm)(delete-building farm)         
-    (chat-to-player my-player-number "LUMBER CAMP 1 - TOWN CENTER DELETED")    
+    ;(delete-building town-center)(delete-building mill)(delete-building barracks)
+    ;(delete-building farm)(delete-building farm)(delete-building farm)         
+    (chat-to-player my-player-number "LUMBER CAMP 1 ")    
 )
 
 (defrule
