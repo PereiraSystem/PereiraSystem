@@ -2329,7 +2329,6 @@
 ; EDAD 1
 (defrule
     (current-age == dark-age)
-	(building-type-count-total farm < 4)
     (building-type-count-total barracks > 0)(wood-amount > 125)
 	(can-build farm)(or(building-type-count-total lumber-camp > 0)(wood-amount > 175)) 
 	(idle-farm-count < 2)
