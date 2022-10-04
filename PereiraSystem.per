@@ -408,25 +408,16 @@
 (defrule 
     (true)
 =>  
-    (set-strategic-number sn-maximum-hunt-drop-distance 16)
+    (set-strategic-number sn-maximum-hunt-drop-distance 9)
     (set-strategic-number sn-maximum-food-drop-distance 9)
-    (set-strategic-number sn-maximum-wood-drop-distance 20)
-    (set-strategic-number sn-maximum-gold-drop-distance 0)
-    (set-strategic-number sn-maximum-stone-drop-distance 0)
+    (set-strategic-number sn-maximum-wood-drop-distance 9)
+    (set-strategic-number sn-maximum-gold-drop-distance 9)
+    (set-strategic-number sn-maximum-stone-drop-distance 9)
     (disable-self)
 )
 
 
-; DROP DISTANCE FEUDAL
-(defrule 
-    (current-age == feudal-age)
-=>  
-    (set-strategic-number sn-maximum-wood-drop-distance 11)
-    (set-strategic-number sn-maximum-food-drop-distance 9)    
-    (set-strategic-number sn-maximum-gold-drop-distance 11)
-    (set-strategic-number sn-maximum-stone-drop-distance 11)    
-    (disable-self)
-)
+
 
 ; DROP DISTANCE CASTILLOS
 (defrule 
