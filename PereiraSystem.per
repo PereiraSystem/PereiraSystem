@@ -2540,7 +2540,8 @@
 
 ; PIEDRA
 (defrule 
-    (building-type-count-total town-center < 0)
+    (or(building-type-count-total town-center < 0)
+    (stone-amount < 100)
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
