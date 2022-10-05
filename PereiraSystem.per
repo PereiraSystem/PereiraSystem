@@ -1921,8 +1921,9 @@
 ; FLECHAS ATAQUE 
 
 (defrule
-    (research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
-    (can-research ri-fletching)(or(town-under-attack)(current-age == imperial-age))
+    ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
+    (can-research ri-fletching)
+    (or(town-under-attack)(current-age == imperial-age))
 =>
     (research ri-fletching)
 )
@@ -2576,7 +2577,7 @@
 (defrule
     (building-type-count-total blacksmith == 0)
     ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
-    (can-build blacksmith)(military-population > 15)
+    (can-build blacksmith)
 =>
     (build blacksmith)(chat-to-player my-player-number "BLACKSMITH")
 )
