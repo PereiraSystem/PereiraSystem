@@ -2585,14 +2585,9 @@
 ; MERCADO
 (defrule
     (building-type-count-total market == 0)
-    ;(research-completed ri-wheel-barrow)
-    ;(research-completed ri-horse-collar)
     ;(research-completed ri-double-bit-axe)
     (can-build market)
-    ;(not(town-under-attack))
-    ;(not(enemy-buildings-in-town))
-    (or(military-population g:>= gl-cantLancerosMinima)
-    (wood-amount > 275))
+    (wood-amount > 275)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (build market)(chat-to-player my-player-number "MARKET 1")  
