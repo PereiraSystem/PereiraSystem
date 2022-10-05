@@ -2290,7 +2290,7 @@
 ; MOLINO                
 (defrule  
     (building-type-count-total mill < 1)
-    (can-build mill)
+    (can-build mill)(resource-found food)
     (wood-amount > 200)
 =>
     (build mill)(chat-to-player my-player-number "MILL 1")
