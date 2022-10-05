@@ -3035,6 +3035,7 @@
 
 (defrule
     (can-build watch-tower-line)
+    (building-type-count-total market > 0)    
 =>
     (build watch-tower-line)  
 )
