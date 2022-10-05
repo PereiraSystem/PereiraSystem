@@ -2422,8 +2422,9 @@
 =>
     (build lumber-camp)
     ;(delete-building town-center)(delete-building mill)(delete-building barracks)
-    ;(delete-building farm)(delete-building farm)(delete-building farm)         
-    (chat-to-player my-player-number "LUMBER CAMP 1 ")    
+    ;(delete-building farm)(delete-building farm)(delete-building farm) 
+    (set-strategic-number sn-maximum-wood-drop-distance 3)        
+    (chat-to-player my-player-number "LUMBER CAMP 1  - not deleting city")    
 )
 
 (defrule
@@ -2464,6 +2465,21 @@
     (build lumber-camp)
     (chat-to-player my-player-number "LUMBER CAMP 2")
     (up-modify-sn sn-camp-max-distance c:+ 8)     
+)
+
+(defrule
+    (building-type-count-total lumber-camp == 3)
+    (or
+        (current-age > dark-age)
+        (food-amount > 600)
+    )
+    (can-build lumber-camp)
+    (resource-found wood)
+    (dropsite-min-distance wood > 3)
+=>
+    (build lumber-camp)
+    (chat-to-player my-player-number "LUMBER CAMP 3")
+    (up-modify-sn sn-camp-max-distance c:+ 4)     
 )
 
 (defrule
