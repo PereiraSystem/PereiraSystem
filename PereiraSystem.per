@@ -2571,6 +2571,8 @@
     ;(research-completed ri-horse-collar)
     ;(research-completed ri-double-bit-axe)
     (can-build market)
+    (not(town-under-attack))
+    (not(enemy-buildings-in-town))
     (or(military-population g:>= gl-cantLancerosMinima)(wood-amount > 300))
 =>
     (up-modify-sn sn-maximum-town-size c:+ 1)
