@@ -2782,7 +2782,7 @@
 )
 
 (defrule ; SICILIANS
-    (can-build donjon) 
+    (can-build donjon)(building-type-count-total market > 0) 
     (building-type-count-total donjon < 1)
 =>
     (build donjon)
