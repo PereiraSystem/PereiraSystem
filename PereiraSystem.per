@@ -2873,7 +2873,6 @@
 (defrule
     (current-age == castle-age)
     (can-build stable)(building-type-count-total stable < 1)
-    (not(enemy-build)
 =>
     (build stable)
     (chat-to-player my-player-number "STABLE 1") 
