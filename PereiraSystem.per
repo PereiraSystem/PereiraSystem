@@ -462,17 +462,13 @@
 
 ; PORCENTAJE OBREROS EN CADA RECURSO
 
-
-
-
-
 (defrule
     (current-age == dark-age)
 =>
     (set-strategic-number sn-food-gatherer-percentage 68)
-    (set-strategic-number sn-wood-gatherer-percentage 20)
-    (set-strategic-number sn-gold-gatherer-percentage 6) ;
-    (set-strategic-number sn-stone-gatherer-percentage 6)
+    (set-strategic-number sn-wood-gatherer-percentage 32)
+    (set-strategic-number sn-gold-gatherer-percentage 0)
+    (set-strategic-number sn-stone-gatherer-percentage 0)
     (disable-self)
 )
 
@@ -480,30 +476,11 @@
     (current-age == feudal-age)
 =>
     (set-strategic-number sn-food-gatherer-percentage 60)
-    (set-strategic-number sn-wood-gatherer-percentage 30)
-    (set-strategic-number sn-gold-gatherer-percentage 5) ;
+    (set-strategic-number sn-wood-gatherer-percentage 28)
+    (set-strategic-number sn-gold-gatherer-percentage 7) ;
     (set-strategic-number sn-stone-gatherer-percentage 5)
     (disable-self)
 )
-
-(defrule
-    (current-age == feudal-age)
-    (stone-amount > 650)
-=>
-    (set-strategic-number sn-stone-gatherer-percentage 0)
-    (set-strategic-number sn-maximum-stone-drop-distance 0)    
-    (disable-self)
-)
-
-(defrule
-    (current-age == feudal-age)
-    (gold-amount > 300)
-=>
-    (set-strategic-number sn-gold-gatherer-percentage 0)
-    (set-strategic-number sn-maximum-gold-drop-distance 0)    
-    (disable-self)
-)
-
 
 (defrule
     (current-age == castle-age)(building-type-count-total monastery > 0)
