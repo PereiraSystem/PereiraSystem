@@ -285,7 +285,7 @@
 )
 
 (defrule 
-    (unit-type-count villager > 4)(building-type-count lumber-camp < 2)
+    (unit-type-count villager > 4)(building-type-count lumber-camp < 1)
 =>  
     (set-strategic-number sn-total-number-explorers 2) 
     (set-strategic-number sn-number-explore-groups 2)  
@@ -293,7 +293,7 @@
 )
 
 (defrule 
-    (unit-type-count villager > 6)(building-type-count lumber-camp < 2)
+    (unit-type-count villager > 6)(building-type-count lumber-camp < 1)
 =>  
     (set-strategic-number sn-total-number-explorers 3) 
     (set-strategic-number sn-number-explore-groups 3)  
@@ -301,7 +301,7 @@
 )
 
 (defrule 
-    (unit-type-count villager > 9)(building-type-count lumber-camp < 2)
+    (unit-type-count villager > 9)(building-type-count lumber-camp < 1)
 =>  
     (set-strategic-number sn-total-number-explorers 4) 
     (set-strategic-number sn-number-explore-groups 4)  
@@ -309,7 +309,7 @@
 )
 
 (defrule 
-    (unit-type-count villager > 11)(building-type-count lumber-camp < 2)
+    (unit-type-count villager > 11)(building-type-count lumber-camp < 1)
 =>  
     (set-strategic-number sn-total-number-explorers 5) 
     (set-strategic-number sn-number-explore-groups 5)  
@@ -3831,9 +3831,9 @@
 (defrule
     (current-age == dark-age)
     (can-train militiaman-line)
-    (unit-type-count-total militiaman-line < 1) ;explorer
+    (unit-type-count-total militiaman-line < 2) ;explorer
 =>
-    (train militiaman-line)(disable-self)
+    (train militiaman-line)
 )
 
 (defrule
