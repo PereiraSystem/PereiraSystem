@@ -410,34 +410,7 @@
     (disable-self)
 )
 
-; DROP DISTANCE INICIO
-(defrule 
-    (true)
-=>  
-    (set-strategic-number sn-maximum-hunt-drop-distance 16)
-    (set-strategic-number sn-maximum-food-drop-distance 9)
-    (set-strategic-number sn-maximum-wood-drop-distance 9)
-    (set-strategic-number sn-maximum-gold-drop-distance 9)
-    (set-strategic-number sn-maximum-stone-drop-distance 9)
-    (disable-self)
-)
 
-
-
-
-; DROP DISTANCE CASTILLOS
-(defrule 
-    (current-age == castle-age)
-=>  
-    (set-strategic-number sn-enable-boar-hunting 0); no more hunting
-    (set-strategic-number sn-minimum-number-hunters 0)
-    (set-strategic-number sn-maximum-hunt-drop-distance 0)
-    (set-strategic-number sn-maximum-wood-drop-distance 11) 
-    (set-strategic-number sn-maximum-gold-drop-distance 9)
-    (set-strategic-number sn-maximum-stone-drop-distance 9)    
-    (up-assign-builders c: house c:+ 2)
-    (disable-self)
-)
 
 ; MADERA MODO INDUSTRIAL
 (defrule 
@@ -460,7 +433,7 @@
     (disable-self)
 )    
 
-; PORCENTAJE OBREROS EN CADA RECURSO
+; PERCENT GATHERERS AND DROP DISTANCES
 
 (defrule
     (current-age == dark-age)
@@ -472,13 +445,72 @@
     (disable-self)
 )
 
+(defrule 
+    (current-age == dark-age)
+=>  
+    (set-strategic-number sn-maximum-hunt-drop-distance 16)
+    (set-strategic-number sn-maximum-food-drop-distance 9)
+    (set-strategic-number sn-maximum-wood-drop-distance 9)
+    (set-strategic-number sn-maximum-gold-drop-distance 0)
+    (set-strategic-number sn-maximum-stone-drop-distance 0)
+    (disable-self)
+)
+
 (defrule
     (current-age == feudal-age)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 60)
-    (set-strategic-number sn-wood-gatherer-percentage 28)
-    (set-strategic-number sn-gold-gatherer-percentage 7) ;
-    (set-strategic-number sn-stone-gatherer-percentage 5)
+    (set-strategic-number sn-food-gatherer-percentage 64)
+    (set-strategic-number sn-wood-gatherer-percentage 36)
+    (set-strategic-number sn-gold-gatherer-percentage 0) ;
+    (set-strategic-number sn-stone-gatherer-percentage 0)
+    (disable-self)
+)
+
+(defrule 
+    (current-age == feudal-age)
+=>  
+    (set-strategic-number sn-maximum-hunt-drop-distance 16)
+    (set-strategic-number sn-maximum-food-drop-distance 9)
+    (set-strategic-number sn-maximum-wood-drop-distance 9)
+    (set-strategic-number sn-maximum-gold-drop-distance 0)
+    (set-strategic-number sn-maximum-stone-drop-distance 0)
+    (disable-self)
+)
+
+(defrule
+    (current-age == feudal-age)
+    (building-type-count archery-range > 0)
+    (building-type-count blacksmith > 0)    
+=>
+    (set-strategic-number sn-food-gatherer-percentage 64)
+    (set-strategic-number sn-wood-gatherer-percentage 22)
+    (set-strategic-number sn-gold-gatherer-percentage 14) ;
+    (set-strategic-number sn-stone-gatherer-percentage 0)
+    (disable-self)
+)
+
+(defrule 
+    (current-age == feudal-age)
+=>  
+    (set-strategic-number sn-maximum-hunt-drop-distance 16)
+    (set-strategic-number sn-maximum-food-drop-distance 9)
+    (set-strategic-number sn-maximum-wood-drop-distance 9)
+    (set-strategic-number sn-maximum-gold-drop-distance 0)
+    (set-strategic-number sn-maximum-stone-drop-distance 0)
+    (disable-self)
+)
+
+; DROP DISTANCE CASTILLOS
+(defrule 
+    (current-age == castle-age)
+=>  
+    (set-strategic-number sn-enable-boar-hunting 0); no more hunting
+    (set-strategic-number sn-minimum-number-hunters 0)
+    (set-strategic-number sn-maximum-hunt-drop-distance 0)
+    (set-strategic-number sn-maximum-wood-drop-distance 11) 
+    (set-strategic-number sn-maximum-gold-drop-distance 9)
+    (set-strategic-number sn-maximum-stone-drop-distance 9)    
+    (up-assign-builders c: house c:+ 2)
     (disable-self)
 )
 
