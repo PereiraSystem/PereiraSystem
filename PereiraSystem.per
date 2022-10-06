@@ -778,6 +778,7 @@
 ; MINAS
  (defrule
     (can-research ri-gold-mining)(wood-amount > 100)
+    (building-count-total market > 0)
     (research-completed ri-double-bit-axe)
 =>
     (research ri-gold-mining)
