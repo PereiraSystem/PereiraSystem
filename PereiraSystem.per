@@ -2484,8 +2484,8 @@
 ; ORO
 (defrule 
     (current-age == feudal-age)
-    (wood-amount > 101)
-    ;(research-completed ri-wheel-barrow)
+    (wood-amount > 200)
+    (or(building-type-count archery-range > 0)(building-type-count market > 0))
     (research-completed ri-double-bit-axe)
     (resource-found gold) 
     (dropsite-min-distance gold > 3)
