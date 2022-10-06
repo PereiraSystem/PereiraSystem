@@ -479,8 +479,8 @@
 (defrule
     (current-age == feudal-age)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 56)
-    (set-strategic-number sn-wood-gatherer-percentage 34)
+    (set-strategic-number sn-food-gatherer-percentage 60)
+    (set-strategic-number sn-wood-gatherer-percentage 30)
     (set-strategic-number sn-gold-gatherer-percentage 5) ;
     (set-strategic-number sn-stone-gatherer-percentage 5)
     (disable-self)
@@ -3960,6 +3960,7 @@
     (or(up-compare-goal gl-dudeHasArchers > 0)
     (up-compare-goal gl-dudeHasSkirmishers > 0))
     (unit-type-count-total eagle-warrior-line g:< gl-cantScouts)
+    (gold-amount > 251)
     =>
     (train eagle-warrior-line)
 )
