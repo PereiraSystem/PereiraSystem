@@ -648,6 +648,22 @@
 )
 
 (defrule
+    (game-time >= 800)
+    (current-age == feudal-age)
+=>
+    (set-escrow-percentage food 70)
+    (set-escrow-percentage gold 90)
+)
+
+(defrule
+    (can-research-with-escrow feudal-age)
+=>
+    (release-escrow wood)
+    (set-escrow-percentage wood 0)
+    (build barracks)
+)
+
+(defrule
     (can-research castle-age)
     (civilian-population > 16)
 =>
