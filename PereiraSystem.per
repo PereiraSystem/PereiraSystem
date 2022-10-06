@@ -277,6 +277,14 @@
 ; EXPLORE
 
 (defrule 
+    (true)
+=>  
+    (set-strategic-number sn-total-number-explorers 1) 
+    (set-strategic-number sn-number-explore-groups 1)  
+    (disable-self)
+)
+
+(defrule 
     (unit-type-count villager > 4)(building-type-count lumber-camp < 2)
 =>  
     (set-strategic-number sn-total-number-explorers 2) 
