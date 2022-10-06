@@ -417,8 +417,8 @@
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
     (set-strategic-number sn-maximum-wood-drop-distance 9)
-    (set-strategic-number sn-maximum-gold-drop-distance 0)
-    (set-strategic-number sn-maximum-stone-drop-distance 0)
+    (set-strategic-number sn-maximum-gold-drop-distance 9)
+    (set-strategic-number sn-maximum-stone-drop-distance 9)
     (disable-self)
 )
 
@@ -433,8 +433,8 @@
     (set-strategic-number sn-minimum-number-hunters 0)
     (set-strategic-number sn-maximum-hunt-drop-distance 0)
     (set-strategic-number sn-maximum-wood-drop-distance 11) 
-    (set-strategic-number sn-maximum-gold-drop-distance 8)
-    (set-strategic-number sn-maximum-stone-drop-distance 8)    
+    (set-strategic-number sn-maximum-gold-drop-distance 9)
+    (set-strategic-number sn-maximum-stone-drop-distance 9)    
     (up-assign-builders c: house c:+ 2)
     (disable-self)
 )
@@ -477,20 +477,20 @@
 (defrule
     (current-age == dark-age)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 71)
-    (set-strategic-number sn-wood-gatherer-percentage 29)
-    (set-strategic-number sn-gold-gatherer-percentage 0)
-    (set-strategic-number sn-stone-gatherer-percentage 0)
+    (set-strategic-number sn-food-gatherer-percentage 69)
+    (set-strategic-number sn-wood-gatherer-percentage 27)
+    (set-strategic-number sn-gold-gatherer-percentage 2)
+    (set-strategic-number sn-stone-gatherer-percentage 2)
     (disable-self)
 )
 
 (defrule
     (current-age == feudal-age)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 61)
-    (set-strategic-number sn-wood-gatherer-percentage 39)
-    (set-strategic-number sn-gold-gatherer-percentage 0)
-    (set-strategic-number sn-stone-gatherer-percentage 0)
+    (set-strategic-number sn-food-gatherer-percentage 59)
+    (set-strategic-number sn-wood-gatherer-percentage 37)
+    (set-strategic-number sn-gold-gatherer-percentage 2)
+    (set-strategic-number sn-stone-gatherer-percentage 2)
     (disable-self)
 )
 
@@ -3907,7 +3907,7 @@
 (defrule
     (current-age == feudal-age)
     (wood-amount > 125)
-    (unit-type-count-total spearman-line < 2)    
+    (unit-type-count-total spearman-line < 2)
     (can-train spearman-line)
 =>
     (train spearman-line)
