@@ -469,10 +469,10 @@
 (defrule
     (current-age == dark-age)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 60)
+    (set-strategic-number sn-food-gatherer-percentage 68)
     (set-strategic-number sn-wood-gatherer-percentage 20)
-    (set-strategic-number sn-gold-gatherer-percentage 10)
-    (set-strategic-number sn-stone-gatherer-percentage 10)
+    (set-strategic-number sn-gold-gatherer-percentage 6) ;
+    (set-strategic-number sn-stone-gatherer-percentage 6)
     (disable-self)
 )
 
@@ -2538,9 +2538,7 @@
     (wood-amount > 275)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 1)
-    (build market)(chat-to-player my-player-number "MARKET 1")
-        (set-strategic-number sn-maximum-gold-drop-distance 9)
-    (set-strategic-number sn-maximum-stone-drop-distance 9)  
+    (build market)(chat-to-player my-player-number "MARKET 1") 
 )
 
 (defrule
