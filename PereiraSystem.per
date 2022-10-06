@@ -3023,6 +3023,10 @@
 ;NORMAL
 
 (defrule
+    (or
+        (current-age < castle-age)
+        (building-type-count castle > 0)
+    )
     (can-build watch-tower-line)
     (building-type-count-total market > 0)    
 =>
