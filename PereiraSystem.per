@@ -478,6 +478,16 @@
 
 (defrule
     (current-age == feudal-age)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 56)
+    (set-strategic-number sn-wood-gatherer-percentage 34)
+    (set-strategic-number sn-gold-gatherer-percentage 5) ;
+    (set-strategic-number sn-stone-gatherer-percentage 5)
+    (disable-self)
+)
+
+(defrule
+    (current-age == feudal-age)
     (stone-amount > 650)
 =>
     (set-strategic-number sn-stone-gatherer-percentage 0)
@@ -487,7 +497,7 @@
 
 (defrule
     (current-age == feudal-age)
-    (gold-amount > 200)
+    (gold-amount > 300)
 =>
     (set-strategic-number sn-gold-gatherer-percentage 0)
     (set-strategic-number sn-maximum-gold-drop-distance 0)    
