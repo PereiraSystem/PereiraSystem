@@ -389,7 +389,7 @@
 =>
     (set-strategic-number sn-dropsite-separation-distance 3) ; NF
     (set-strategic-number sn-allow-adjacent-dropsites 0) ; CAMBIA CON 3 CAMPAMENTOS
-    (set-strategic-number sn-required-forest-tiles 4)
+    (set-strategic-number sn-required-forest-tiles 0)
     (disable-self)
 )
 
@@ -2410,31 +2410,13 @@
 )
 
 ; MADERA                       
-(defrule
-    (building-type-count-total lumber-camp == 0)
-    ;(or(enemy-buildings-in-town)(town-under-attack))
-    (unit-type-count-total villager > 6)
-    (can-build lumber-camp)
-    (resource-found wood)
-    (dropsite-min-distance wood > 8)
-    (or
-        (building-type-count house > 0)
-        (civ-selected hun)
-    )
-=>
-    (build lumber-camp)
-    ;(delete-building town-center)(delete-building mill)(delete-building barracks)
-    ;(delete-building farm)(delete-building farm)(delete-building farm) 
-    (set-strategic-number sn-maximum-wood-drop-distance 3)        
-    (chat-to-player my-player-number "LUMBER CAMP 1  - not deleting city")    
-)
+
 
 (defrule
     (building-type-count-total lumber-camp == 0)
-    (unit-type-count-total villager > 6)
     (can-build lumber-camp)
     (resource-found wood)
-    (dropsite-min-distance wood > 8)
+    (dropsite-min-distance wood > 7)
     (or
         (building-type-count house > 0)
         (civ-selected hun)
