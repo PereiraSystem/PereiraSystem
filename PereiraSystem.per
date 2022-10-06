@@ -476,6 +476,24 @@
     (disable-self)
 )
 
+(defrule
+    (current-age == feudal-age)
+    (stone-amount > 650)
+=>
+    (set-strategic-number sn-stone-gatherer-percentage 0)
+    (set-strategic-number sn-maximum-stone-drop-distance 0)    
+    (disable-self)
+)
+
+(defrule
+    (current-age == feudal-age)
+    (gold-amount > 200)
+=>
+    (set-strategic-number sn-gold-gatherer-percentage 0)
+    (set-strategic-number sn-maximum-gold-drop-distance 0)    
+    (disable-self)
+)
+
 
 (defrule
     (current-age == castle-age)(building-type-count-total monastery > 0)
@@ -2260,7 +2278,18 @@
     (build town-center) (chat-to-player my-player-number "TOWN CENTER")
 )
 
-; MOLINO                
+; MOLINO    
+
+(defrule  
+    (building-type-count-total mill < 1)
+    (building-type-count-total lumber-camp < 1)
+    (building-type-count-total dock < 1)    
+    (game-time > 270)
+    (wood-amount > 200)
+=>
+    (build mill)(chat-to-player my-player-number "MILL 1")
+)
+
 (defrule  
     (building-type-count-total mill < 1)
     (can-build mill)
