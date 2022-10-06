@@ -2807,9 +2807,9 @@
 
 ; ESTABLOS
 (defrule
-    (current-age == feudal-age)
+    (current-age > feudal-age)
     (can-build stable)(building-type-count-total stable < 1)
-    (not(civ-selected sicilians))
+    
 =>
     (build stable)
     (chat-to-player my-player-number "STABLE 1") 
