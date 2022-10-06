@@ -456,6 +456,17 @@
     (disable-self)
 )
 
+(defrule 
+    (current-age == dark-age)(game-time > 720)
+=>  
+    (set-strategic-number sn-maximum-hunt-drop-distance 16)
+    (set-strategic-number sn-maximum-food-drop-distance 9)
+    (set-strategic-number sn-maximum-wood-drop-distance 9)
+    (set-strategic-number sn-maximum-gold-drop-distance 9)
+    (set-strategic-number sn-maximum-stone-drop-distance 9)
+    (disable-self)
+)
+
 (defrule
     (current-age == feudal-age)
 =>
