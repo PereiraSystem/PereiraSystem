@@ -2717,15 +2717,19 @@
 
 ; CASTILLO             
 (defrule
-	(current-age >= castle-age)
     (can-build castle)
-    (building-type-count-total castle == 0)(building-type-count-total barracks > 0)
+    (building-type-count-total castle == 0)
 =>
-    
-    (chat-to-player my-player-number "CASTLE 1")
+    (chat-to-player my-player-number "TRYING TO BUILD CASTLE 1")
+    (build castle) 
+)
+
+(defrule
+    (building-type-count castle > 0)
+=>
+    (chat-to-player my-player-number "CASTLE 1 BUILT")
     (up-modify-sn sn-maximum-town-size c:+ 34)
     (up-modify-sn sn-minimum-town-size c:+ 34)
-    (build castle) 
 )
 
 (defrule
