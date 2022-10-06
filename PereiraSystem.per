@@ -462,62 +462,20 @@
 
 ; PORCENTAJE OBREROS EN CADA RECURSO
 
-(defrule
-    (game-time > 300)(building-type-count-total town-center < 0)
-    (or(wood-amount < 275)(stone-amount < 100))
-=>
-    (set-strategic-number sn-food-gatherer-percentage 25)
-    (set-strategic-number sn-wood-gatherer-percentage 25)
-    (set-strategic-number sn-gold-gatherer-percentage 25)
-    (set-strategic-number sn-stone-gatherer-percentage 25)
-)
+
 
 
 
 (defrule
     (current-age == dark-age)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 69)
-    (set-strategic-number sn-wood-gatherer-percentage 27)
-    (set-strategic-number sn-gold-gatherer-percentage 2)
-    (set-strategic-number sn-stone-gatherer-percentage 2)
+    (set-strategic-number sn-food-gatherer-percentage 60)
+    (set-strategic-number sn-wood-gatherer-percentage 20)
+    (set-strategic-number sn-gold-gatherer-percentage 10)
+    (set-strategic-number sn-stone-gatherer-percentage 10)
     (disable-self)
 )
 
-(defrule
-    (current-age == feudal-age)
-=>
-    (set-strategic-number sn-food-gatherer-percentage 59)
-    (set-strategic-number sn-wood-gatherer-percentage 37)
-    (set-strategic-number sn-gold-gatherer-percentage 2)
-    (set-strategic-number sn-stone-gatherer-percentage 2)
-    (disable-self)
-)
-
-(defrule
-    (current-age == feudal-age)
-    (or(building-type-count-total market > 0)
-    (building-type-count-total archery-range > 0))
-
-=>
-    (set-strategic-number sn-food-gatherer-percentage 62)
-    (set-strategic-number sn-wood-gatherer-percentage 32)
-    (set-strategic-number sn-gold-gatherer-percentage 6)
-    (set-strategic-number sn-stone-gatherer-percentage 0)
-
-    (set-strategic-number sn-maximum-gold-drop-distance 8)
-    (disable-self)
-)
-
-(defrule
-    (current-age == castle-age)
-=>
-    (set-strategic-number sn-food-gatherer-percentage 66)
-    (set-strategic-number sn-wood-gatherer-percentage 17)
-    (set-strategic-number sn-gold-gatherer-percentage 14)
-    (set-strategic-number sn-stone-gatherer-percentage 3)
-    (disable-self)
-)
 
 (defrule
     (current-age == castle-age)(building-type-count-total monastery > 0)
@@ -3837,7 +3795,7 @@
 
 (defrule
     (current-age == feudal-age)
-    (town-under-attack)
+    (enemy-buildings-in-town)
     (can-train militiaman-line)(not(can-train eagle-warrior))
     (not(can-train archer-line))(not(can-train camel-line))
 =>
