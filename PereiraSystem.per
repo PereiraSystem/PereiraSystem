@@ -2607,7 +2607,8 @@
     ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
     (can-build blacksmith)
 =>
-    (build blacksmith)(chat-to-player my-player-number "BLACKSMITH")
+    (up-modify-sn sn-maximum-town-size c:+ 1)(build blacksmith)
+    (chat-to-player my-player-number "BLACKSMITH")
 )
 
 ; MERCADO
