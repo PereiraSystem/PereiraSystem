@@ -2588,8 +2588,10 @@
 
 ; PIEDRA
 (defrule 
-    (or(building-type-count-total town-center < 0)
-    (stone-amount < 100))
+    (or
+        (building-type-count monastery > 0)
+        (building-type-count-total town-center < 0)       
+    )
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
@@ -2644,7 +2646,7 @@
 ; MERCADO
 (defrule
     (building-type-count-total market == 0)
-    (or(gold-amount > 500)(building-type-count-total monastery > 0)
+    (or(gold-amount > 500)(building-type-count-total monastery > 0))
     ;(research-completed ri-double-bit-axe)
     (can-build market)
     (wood-amount > 275)
