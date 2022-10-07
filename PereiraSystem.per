@@ -2313,7 +2313,8 @@
     (can-build town-center)
 	(building-type-count-total town-center < 2)
 =>
-    (build town-center)(chat-to-player my-player-number "TOWN CENTER 2")
+    (build town-center)(up-modify-sn sn-mill-max-distance c:+ 12)
+    (chat-to-player my-player-number "TOWN CENTER 2")
 )
 (defrule
     (can-build town-center)(current-age == imperial-age)(food-amount > 400)
