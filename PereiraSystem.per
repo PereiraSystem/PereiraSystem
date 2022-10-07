@@ -2373,8 +2373,9 @@
 ; EDAD 1
 (defrule
     (current-age == dark-age)
-    (building-type-count-total barracks > 0)(wood-amount > 125)
-	(can-build farm)(or(building-type-count-total lumber-camp > 0)(wood-amount > 175)) 
+    (building-type-count-total barracks > 0)(wood-amount > 160)
+	(can-build farm)
+    (building-type-count-total lumber-camp > 0)
 	(idle-farm-count < 2)
 =>
 	(build farm)
@@ -2394,7 +2395,7 @@
 (defrule
 	(current-age == castle-age)   
 	(building-type-count-total farm < 20)
-    (food-amount < 1200)(wood-amount > 100)
+    (food-amount < 1200)(wood-amount > 160)
     (building-type-count-total monastery > 0)
 	(can-build farm)
 	(idle-farm-count < 1)
@@ -2435,7 +2436,7 @@
     (or(building-type-count barracks > 0)(building-type-count mill > 0))
     (unit-type-count-total villager > 10) 
     (building-type-count-total house < 3)
-    (can-build house)
+    (can-build house)    (wood-amount > 125)
 =>
     (build house)(chat-to-player my-player-number "HOUSE 3") 
 )
@@ -2451,7 +2452,7 @@
 )
 
 (defrule
-    (current-age >= castle-age)(wood-amount > 121)
+    (current-age >= castle-age)    (wood-amount > 125)
     ;(research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
     (housing-headroom < 4)
     (population-headroom > 0)
