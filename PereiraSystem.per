@@ -2222,6 +2222,9 @@
 
 (defrule
 	(town-under-attack)
+    (or(building-type-count-total castle > 0)
+        (building-type-count-total watch-tower > 1)
+    )
     (can-research ri-murder-holes)
 =>
     (research ri-murder-holes)
@@ -2397,7 +2400,7 @@
     (food-amount < 1200)(wood-amount > 160)
     (building-type-count-total monastery > 0)
     (or(building-type-count-total siege-workshop > 0)
-    (civ-selected gothic)
+    (civ-selected gothic))
 	(can-build farm)
 	(idle-farm-count < 1)
 =>
@@ -3441,7 +3444,7 @@
 
 (defrule
     (current-age == castle-age)
-    (can-train scorpion-line)(wood-amount > 100)
+    (can-train scorpion-line)
     (unit-type-count-total scorpion-line g:< gl-cantEscorpiones)
     (or
       (civ-selected khmer)
