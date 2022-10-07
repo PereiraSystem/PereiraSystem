@@ -1959,11 +1959,14 @@
 ; FLECHAS ATAQUE 
 
 (defrule
-    ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
     (can-research ri-fletching)
-    (or(town-under-attack)(current-age == imperial-age))
+    (or
+        (or(town-under-attack)(current-age == imperial-age))    
+        (enemy-buildings-in-town)
+    )
 =>
     (research ri-fletching)
+    (chat-to-player my-player-number "WE GOT THE FLETCHING THING!")
 )
 
 (defrule
