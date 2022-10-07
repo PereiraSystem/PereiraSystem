@@ -457,7 +457,7 @@
 )
 
 (defrule 
-    (current-age == dark-age)(game-time > 420)
+    (current-age == dark-age)(game-time > 480)
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
@@ -649,6 +649,7 @@
 
 (defrule
     (or(game-time >= 900)(civilian-population > 19))
+    (food-amount > 700)
     (current-age == feudal-age)
 =>
     (set-escrow-percentage food 95)
