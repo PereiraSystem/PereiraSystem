@@ -2385,6 +2385,8 @@
 ; EDAD 2
 (defrule
 	(current-age == feudal-age)
+    (or(building-type-count-total archery-range > 0)    
+    (or(building-type-count-total stable > 0)        
     (wood-amount > 160)
 	(idle-farm-count < 2)
 	(can-build farm)
