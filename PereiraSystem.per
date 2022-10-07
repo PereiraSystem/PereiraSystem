@@ -3658,8 +3658,7 @@
 (defrule
 	(current-age == castle-age)
     (town-under-attack)
-    (wood-amount < 300)(gold-amount < 300)
-    (food-amount > 600)
+    (food-amount > 400)
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
