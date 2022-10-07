@@ -2311,14 +2311,9 @@
 
 (defrule
     (can-build town-center)
-    (or
-        (not(town-under-attack))
-        (current-age > castle-age)
-    )
-	(building-type-count-total town-center < 2) (military-population > 25)
-    ;(building-type-count-total monastery > 0)(building-type-count-total castle > 0)(building-type-count-total university > 0)  
+	(building-type-count-total town-center < 2)
 =>
-    (build town-center)   (chat-to-player my-player-number "TOWN CENTER 2")
+    (build town-center)(chat-to-player my-player-number "TOWN CENTER 2")
 )
 (defrule
     (can-build town-center)(current-age == imperial-age)(food-amount > 400)
