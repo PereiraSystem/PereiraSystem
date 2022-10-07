@@ -93,7 +93,7 @@
 (defrule
     (true)
 =>
-    (set-goal gl-cantLancerosMinima 7)
+    (set-goal gl-cantLancerosMinima 5)
     (set-goal gl-cantLancerosMedia 40)
     (set-goal gl-cantLanceros 60)
     (set-goal gl-cantMilicia 45)
@@ -3950,10 +3950,8 @@
 (defrule
     (current-age == feudal-age)
     (wood-amount > 125)
-    ;(goal gl-dudeHasScouts 1)
     (up-compare-goal gl-dudeHasScouts > 0)
-    (unit-type-count-total spearman-line g:< gl-cantLancerosMinima)
-    ;(unit-type-count-total spearman-line < 4)    
+    (unit-type-count-total spearman-line g:< gl-dudeHasScouts)
     (can-train spearman-line)
 =>
     (train spearman-line)
