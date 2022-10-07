@@ -3657,12 +3657,10 @@
 
 (defrule
 	(current-age == castle-age)
-    (research-completed ri-wheel-barrow)
-    (research-completed ri-double-bit-axe)
-    (or(up-compare-goal gl-dudeHasArchers > 0)
-    (up-compare-goal gl-dudeHasSkirmishers > 0))
+    (town-under-attack)
+    (wood-amount < 300)(gold-amount < 300)
+    (food-amount > 600)
 	(can-train scout-cavalry-line)
-	(unit-type-count-total scout-cavalry-line g:< gl-cantScouts)
 =>
     (train scout-cavalry-line)
 )
