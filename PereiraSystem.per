@@ -2465,7 +2465,19 @@
 )
 
 ; MADERA                       
-
+(defrule
+    (building-type-count-total lumber-camp == 0)
+    (can-build lumber-camp)(can-build watch-tower)
+    (resource-found wood)
+    (dropsite-min-distance wood > 15)
+    (or
+        (building-type-count house > 0)
+        (civ-selected hun)
+    )
+=>
+    (build watch-tower)
+    (chat-to-player my-player-number "LUMBER TOWER? 1")    
+)
 
 (defrule
     (building-type-count-total lumber-camp == 0)
