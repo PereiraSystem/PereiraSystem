@@ -648,11 +648,12 @@
 )
 
 (defrule
-    (or(game-time >= 800)(civilian-population > 19))
+    (or(game-time >= 1080)(civilian-population > 19))
     (current-age == feudal-age)
 =>
-    (set-escrow-percentage food 60)
+    (set-escrow-percentage food 40)
     (set-escrow-percentage gold 90)
+    (chat-to-player my-player-number "SAVING FOR CASTLE AGE)
 )
 
 (defrule
