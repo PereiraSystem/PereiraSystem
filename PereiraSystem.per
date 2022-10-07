@@ -2644,7 +2644,7 @@
 ; MERCADO
 (defrule
     (building-type-count-total market == 0)
-     (building-type-count-total monastery > 0)
+    (or(gold-amount > 500)(building-type-count-total monastery > 0)
     ;(research-completed ri-double-bit-axe)
     (can-build market)
     (wood-amount > 275)
@@ -3902,15 +3902,16 @@
 ; MILICIA
 (defrule
     (current-age == dark-age)
-    (can-train militiaman-line)
-    (unit-type-count-total militiaman-line < 2) ;explorer
+    (can-train militiaman-line)(gold-amount > 220)
+    ;(unit-type-count-total militiaman-line < 2) ;explorer
 =>
     (train militiaman-line)
+    (disable-self)
 )
 
 (defrule
     (current-age == feudal-age)
-    (enemy-buildings-in-town)
+    (enemy-buildings-in-town)(gold-amount > 250)
     (can-train militiaman-line)(not(can-train eagle-warrior))
     (not(can-train archer-line))(not(can-train camel-line))
 =>
