@@ -3886,8 +3886,9 @@
 ; MILICIA
 (defrule
     (current-age == dark-age)
-    (can-train militiaman-line)(gold-amount > 220)
-    ;(unit-type-count-total militiaman-line < 2) ;explorer
+    (can-train militiaman-line)
+    ;(gold-amount > 220)
+    (unit-type-count-total militiaman-line < 2) ;explorer
 =>
     (train militiaman-line)
     (disable-self)
