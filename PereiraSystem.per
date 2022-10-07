@@ -648,7 +648,7 @@
 )
 
 (defrule
-    (or(game-time >= 1080)(civilian-population > 19))
+    (or(game-time >= 600)(civilian-population > 19))
     (current-age == feudal-age)
 =>
     (set-escrow-percentage food 40)
