@@ -658,23 +658,7 @@
     (research feudal-age) 
 )
 
-(defrule
-    (or(game-time >= 900)(civilian-population > 19))
-    (food-amount > 700)
-    (current-age == feudal-age)
-=>
-    (set-escrow-percentage food 95)
-    (set-escrow-percentage gold 100)
-    (chat-to-player my-player-number "SAVING FOR CASTLE AGE")
-)
 
-(defrule
-    (can-research-with-escrow castle-age)
-=>
-    (release-escrow food)(set-escrow-percentage food 0)
-    (release-escrow gold)(set-escrow-percentage gold 0)    
-    (research castle-age) 
-)
 
 (defrule
     (can-research castle-age)
