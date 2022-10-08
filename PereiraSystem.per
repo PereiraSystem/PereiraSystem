@@ -457,7 +457,7 @@
 )
 
 (defrule 
-    (current-age == dark-age)(game-time > 640)
+    (current-age == dark-age)(game-time > 330)
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
@@ -468,7 +468,7 @@
 )
 
 (defrule 
-    (current-age == dark-age)(game-time > 700)
+    (current-age == dark-age)(game-time > 360)
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
@@ -3021,10 +3021,11 @@
     (building-type-count-total siege-workshop == 0)
 	(not(civ-selected gothic))
 =>
-    (build siege-workshop)
+
     (chat-to-player my-player-number "SIEGE WORKSHOP 1")
     (up-modify-sn sn-maximum-town-size c:+ 2)
-    (up-modify-sn sn-minimum-town-size c:+ 2)   
+
+        (build siege-workshop)  
 )
 
 (defrule
