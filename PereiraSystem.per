@@ -2959,13 +2959,14 @@
 ; CONSTRUIR ARQUERIA
 (defrule
 	(building-type-count-total archery-range == 0) 
-    (research-completed ri-double-bit-axe)   
+    ;(research-completed ri-double-bit-axe)   
     (can-build archery-range)
 =>
-    (build archery-range)
+    
     (chat-to-player my-player-number "ARCHERY RANGE 1")
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (up-modify-sn sn-minimum-town-size c:+ 2)
+    (build archery-range)
 )
 
 (defrule
