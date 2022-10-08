@@ -1725,7 +1725,7 @@
 ; CABALLERIA LIGERA   
 (defrule
     (can-research ri-light-cavalry)
-    (or(current-age == imperial-age)(unit-type-count scout-cavalry-line > 6)
+    (or(current-age == imperial-age)(unit-type-count scout-cavalry-line > 6))
 =>
     (research ri-light-cavalry)
 )
