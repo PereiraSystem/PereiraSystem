@@ -3005,10 +3005,6 @@
     (can-build siege-workshop)
     (building-type-count-total siege-workshop == 0)
 	(not(civ-selected gothic))
-    (or
-        (building-type-count-total house > 4)
-        (wood-amount > 400)
-    )
 =>
     (build siege-workshop)
     (chat-to-player my-player-number "SIEGE WORKSHOP 1")
