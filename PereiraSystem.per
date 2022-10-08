@@ -2802,6 +2802,7 @@
     (building-type-count-total castle == 0)
 =>
     (chat-to-player my-player-number "TRYING TO BUILD CASTLE 1")
+    (up-modify-sn sn-maximum-town-size c:+ 3)    
     (build castle) 
 )
 
@@ -2809,8 +2810,8 @@
     (building-type-count castle > 0)
 =>
     (chat-to-player my-player-number "CASTLE 1 BUILT!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    (up-modify-sn sn-maximum-town-size c:+ 34)
-    (up-modify-sn sn-minimum-town-size c:+ 34)
+    (up-modify-sn sn-maximum-town-size c:+ 30)
+    (up-modify-sn sn-minimum-town-size c:+ 30)
     (disable-self)
 )
 
