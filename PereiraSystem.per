@@ -3114,6 +3114,7 @@
 
 (defrule
     (or(current-age < castle-age)(building-type-count castle > 0))
+    (stone-amount > 260)
     (can-build watch-tower-line)   
 =>
     (build watch-tower-line)  
