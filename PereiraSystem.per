@@ -3442,10 +3442,18 @@
 
 ; ARIETES
 (defrule
+    (current-age == feudal-age)(civ-selected cumans)
+    (can-train battering-ram-line)    
+=>
+	(train battering-ram-line)
+)
+
+(defrule
     (current-age == imperial-age)
 	(unit-type-count-total battering-ram-line < 2)
     (not(civ-selected gothic))
     (not(civ-selected vietnamese)) 
+    (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
 )
