@@ -4157,11 +4157,19 @@
     (sell-commodity food)
 )
 
-; EXCESO DE ORO
+; TOO MUCH GOLD
 (defrule
 	(current-age == feudal-age)
 	(can-buy-commodity food)
     (gold-amount > 300)(food-amount < 800)
+=>
+    (buy-commodity food)
+)
+
+(defrule
+	(current-age == castle-age)
+	(can-buy-commodity food)
+    (gold-amount > 1300)(food-amount < 800)
 =>
     (buy-commodity food)
 )
