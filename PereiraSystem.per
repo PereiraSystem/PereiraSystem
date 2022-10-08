@@ -2805,9 +2805,10 @@
 (defrule
     (building-type-count castle > 0)
 =>
-    (chat-to-player my-player-number "CASTLE 1 BUILT")
+    (chat-to-player my-player-number "CASTLE 1 BUILT!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     (up-modify-sn sn-maximum-town-size c:+ 34)
     (up-modify-sn sn-minimum-town-size c:+ 34)
+    (disable-self)
 )
 
 (defrule
