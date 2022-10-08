@@ -2621,7 +2621,7 @@
 ; HERRERIA
 (defrule
     (building-type-count-total blacksmith == 0)
-    (building-type-count-total archery-range > 0)    
+    (or(building-type-count-total archery-range > 0)(civ-selected cumans)
     ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
     (can-build blacksmith)
 =>
