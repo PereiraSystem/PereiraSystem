@@ -4268,30 +4268,54 @@
     (players-unit-type-count any-enemy scout-cavalry-line > 2)
 =>  
     (set-goal gl-dudeHasScouts 1)    
-    (up-chat-data-to-self "DUDE HAS HORSIES = TRUE %d" g: gl-dudeHasScouts)
-    (disable-self)  
+    (chat-to-player my-player-number "DUDE HAS LIGHT CAVALRY!")     
+)
+
+(defrule
+    (players-unit-type-count any-enemy scout-cavalry-line < 2) 
+=>  
+    (set-goal gl-dudeHasScouts 0)    
+    (chat-to-player my-player-number "DUDE HAS NO LIGHT CAVALRY!")
 )
 
 (defrule
     (players-unit-type-count any-enemy skirmisher-line > 1)
 =>  
     (set-goal gl-dudeHasSkirmishers 1)    
-    (up-chat-data-to-self "DUDE HAS POOR MAN´S ARCHERS = TRUE %d" g: gl-dudeHasSkirmishers)
-    (disable-self)  
+    (chat-to-player my-player-number "DUDE HAS SKIRMISHERS!")
+)
+
+(defrule
+    (players-unit-type-count any-enemy skirmisher-line < 1)
+=>  
+    (set-goal gl-dudeHasSkirmishers 0)    
+    (chat-to-player my-player-number "DUDE HAS NO SKIRMISHERS!")
 )
 
 (defrule
     (players-unit-type-count any-enemy archer-line > 1)
 =>  
     (set-goal gl-dudeHasArchers 1)    
-    (up-chat-data-to-self "DUDE HAS ARCHERS = TRUE %d" g: gl-dudeHasArchers)
-    (disable-self)  
+    (chat-to-player my-player-number "DUDE HAS ARCHERS!")
+)
+
+(defrule
+    (players-unit-type-count any-enemy archer-line < 1)
+=>  
+    (set-goal gl-dudeHasArchers 0)    
+    (chat-to-player my-player-number "DUDE HAS NO ARCHERS!")
 )
 
 (defrule
     (players-unit-type-count any-enemy spearman-line > 1)
 =>  
     (set-goal gl-dudeHasSpearmen 1)    
-    (up-chat-data-to-self "DUDE HAS SPEARMEN = TRUE %d" g: gl-dudeHasSpearmen)
-    (disable-self)  
+    (chat-to-player my-player-number "DUDE HAS SPEARMEN!")
+)
+
+(defrule
+    (players-unit-type-count any-enemy spearman-line < 1)
+=>  
+    (set-goal gl-dudeHasSpearmen 0)    
+    (chat-to-player my-player-number "DUDE HAS NO SPEARMEN!")
 )
