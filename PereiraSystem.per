@@ -2335,32 +2335,41 @@
 
 (defrule  
     (building-type-count-total mill < 1)
+    (can-build mill)
+    (resource-found food) ;wtf
+    (wood-amount > 200)
+=>
+    (build mill)(chat-to-player my-player-number "MILL 1 (FOOD FOUND)")
+)
+
+(defrule  
+    (building-type-count-total mill < 1)
     (building-type-count-total lumber-camp < 1)
     (building-type-count-total dock < 1)    
     (game-time > 270)
     (wood-amount > 200)
 =>
-    (build mill)(chat-to-player my-player-number "MILL 1")
+    (build mill)(chat-to-player my-player-number "MILL 1 (FORCED)")
 )
 
+
+
 (defrule  
+    (current-age == feudal-age)
     (building-type-count-total mill < 1)
-    (can-build mill)
-    (resource-found food) ;wtf
     (wood-amount > 200)
 =>
-    (build mill)(chat-to-player my-player-number "MILL 1")
+    (build mill)(chat-to-player my-player-number "MILL 1 (FORCED - FEUDAL)")
 )
 
 (defrule  
-    (building-type-count-total mill < 2)(current-age > dark-age)
+    (building-type-count-total mill < 2)(current-age >= feudal-age)
     (can-build mill)(resource-found food)(wood-amount > 200)
     (building-type-count-total lumber-camp > 0)(dropsite-min-distance food > 6)
     (not(civ-selected khmer))
 =>
     (build mill)(chat-to-player my-player-number "MILL 2")(up-modify-sn sn-mill-max-distance c:+ 12)
 )
-
 
 (defrule
 	(current-age == imperial-age)(military-population > 40) 
