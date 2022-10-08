@@ -2812,6 +2812,14 @@
 )
 
 (defrule
+    (can-build castle)(current-age == castle-age)
+    (building-type-count-total castle == 1)
+=>
+    (chat-to-player my-player-number "TRYING TO BUILD FORWARD CASTLE 2")
+    (build-forward castle) 
+)
+
+(defrule
     (can-build castle)
     (building-type-count-total castle == 1)
 =>
