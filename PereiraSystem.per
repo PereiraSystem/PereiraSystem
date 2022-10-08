@@ -2910,8 +2910,17 @@
 
 ; ESTABLOS
 (defrule
-    (can-build stable)(building-type-count-total stable < 1)
-    
+    (can-build stable)(not(civ-selected cumans))
+    (building-type-count-total stable < 1) 
+=>
+    (build stable)
+    (chat-to-player my-player-number "STABLE 1") 
+)
+
+(defrule
+    (can-build stable)(not(civ-selected cumans))
+    (building-type-count-total stable < 1)
+    (building-type-count-total siege-workshop > 0)      
 =>
     (build stable)
     (chat-to-player my-player-number "STABLE 1") 
