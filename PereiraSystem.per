@@ -501,7 +501,7 @@
 
 (defrule
     (current-age == feudal-age)
-    (building-type-count archery-range > 0)
+    (or(building-type-count archery-range > 0)(building-type-count siege-workshop))
     (building-type-count blacksmith > 0)    
 =>
     (set-strategic-number sn-food-gatherer-percentage 64)
