@@ -258,7 +258,7 @@
 
 (defrule
     (civ-selected cumans)
-    (unit-type-count battering-ram > 3)
+    (unit-type-count battering-ram > 2)
 =>
     (attack-now)   
 )
@@ -3450,6 +3450,15 @@
 ; ARIETES
 (defrule
     (current-age == feudal-age)(civ-selected cumans)
+    (unit-type-count-total battering-ram-line < 2)
+    (can-train battering-ram-line)    
+=>
+	(train battering-ram-line)
+)
+
+(defrule
+    (current-age == feudal-age)(civ-selected cumans)
+    (building-type-count stable > 0)
     (can-train battering-ram-line)    
 =>
 	(train battering-ram-line)
