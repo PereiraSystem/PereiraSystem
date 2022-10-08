@@ -2474,19 +2474,7 @@
 )
 
 ; MADERA                       
-(defrule
-    (building-type-count-total lumber-camp == 0)
-    (can-build lumber-camp)(can-build watch-tower)
-    (resource-found wood)
-    (dropsite-min-distance wood > 15)
-    (or
-        (building-type-count house > 0)
-        (civ-selected hun)
-    )
-=>
-    (build watch-tower)
-    (chat-to-player my-player-number "LUMBER TOWER? 1")    
-)
+
 
 (defrule
     (building-type-count-total lumber-camp == 0)
@@ -3124,20 +3112,6 @@
     (or(current-age < castle-age)(building-type-count castle > 0))
     (stone-amount > 260)
     (can-build watch-tower-line)   
-=>
-    (build watch-tower-line)  
-)
-
-(defrule
-    (can-build watch-tower-line)
-    
-    (unit-type-count-total villager > 26)
-    (building-type-count-total watch-tower-line < 3)
-    (building-type-count-total monastery > 0)
-    (building-type-count-total stable > 0)
-    (food-amount > 200)(gold-amount > 200)
-    (unit-type-count-total camel-line < 1)
-    (not(can-train camel-line))
 =>
     (build watch-tower-line)  
 )
