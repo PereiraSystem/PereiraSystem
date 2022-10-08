@@ -257,6 +257,13 @@
 )
 
 (defrule
+    (civ-selected cumans)
+    (unit-type-count battering-ram > 3)
+=>
+    (attack-now)   
+)
+
+(defrule
     (food-amount > 5000)
     (gold-amount > 1700)
     (wood-amount > 5000)                
