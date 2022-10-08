@@ -2812,20 +2812,20 @@
 )
 
 (defrule
-	(current-age == imperial-age)(military-population > 40)
-    (can-build castle)(building-type-count-total castle == 1)(building-type-count-total university > 0)(building-type-count-total monastery > 0)(building-type-count-total siege-workshop > 0)
+    (can-build castle)
+    (building-type-count-total castle == 1)
 =>
-    (build castle)(chat-to-player my-player-number "CASTLE 2")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
-    (up-modify-sn sn-minimum-town-size c:+ 1)
+    (chat-to-player my-player-number "TRYING TO BUILD CASTLE 2")
+    (build castle) 
 )
 
 (defrule
-    (current-age == imperial-age)(can-build castle)
-    (building-type-count-total monastery > 0)(building-type-count-total university > 0)  
-    (not(civ-selected korean))
+    (building-type-count castle > 0)
 =>
-    (build castle)(up-modify-sn sn-maximum-town-size c:+ 1)(chat-to-player my-player-number "CASTLE")
+    (chat-to-player my-player-number "CASTLE 2 BUILT!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    (up-modify-sn sn-maximum-town-size c:+ 4)
+    (up-modify-sn sn-minimum-town-size c:+ 4)
+    (disable-self)
 )
 
 
