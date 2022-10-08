@@ -4275,7 +4275,7 @@
     (players-unit-type-count any-enemy scout-cavalry-line < 2) 
 =>  
     (set-goal gl-dudeHasScouts 0)    
-    (chat-to-player my-player-number "DUDE HAS NO LIGHT CAVALRY!")
+    ;(chat-to-player my-player-number "DUDE HAS NO LIGHT CAVALRY!")
 )
 
 (defrule
@@ -4289,7 +4289,7 @@
     (players-unit-type-count any-enemy skirmisher-line < 1)
 =>  
     (set-goal gl-dudeHasSkirmishers 0)    
-    (chat-to-player my-player-number "DUDE HAS NO SKIRMISHERS!")
+    ;(chat-to-player my-player-number "DUDE HAS NO SKIRMISHERS!")
 )
 
 (defrule
@@ -4303,7 +4303,7 @@
     (players-unit-type-count any-enemy archer-line < 1)
 =>  
     (set-goal gl-dudeHasArchers 0)    
-    (chat-to-player my-player-number "DUDE HAS NO ARCHERS!")
+    ;(chat-to-player my-player-number "DUDE HAS NO ARCHERS!")
 )
 
 (defrule
@@ -4317,5 +4317,5 @@
     (players-unit-type-count any-enemy spearman-line < 1)
 =>  
     (set-goal gl-dudeHasSpearmen 0)    
-    (chat-to-player my-player-number "DUDE HAS NO SPEARMEN!")
+    ;(chat-to-player my-player-number "DUDE HAS NO SPEARMEN!")
 )
