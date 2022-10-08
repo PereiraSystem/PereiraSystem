@@ -2960,6 +2960,21 @@
 	(building-type-count-total archery-range == 0) 
     ;(research-completed ri-double-bit-axe)   
     (can-build archery-range)
+    (not(civ-selected cumans))
+=>
+    
+    (chat-to-player my-player-number "ARCHERY RANGE 1")
+    (up-modify-sn sn-maximum-town-size c:+ 2)
+    (up-modify-sn sn-minimum-town-size c:+ 2)
+    (build archery-range)
+)
+
+(defrule
+	(building-type-count-total archery-range == 0)
+    (building-type-count siege-workshop > 0)      
+    ;(research-completed ri-double-bit-axe)   
+    (can-build archery-range)
+    (civ-selected cumans)
 =>
     
     (chat-to-player my-player-number "ARCHERY RANGE 1")
