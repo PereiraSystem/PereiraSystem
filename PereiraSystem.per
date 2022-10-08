@@ -2336,10 +2336,17 @@
 (defrule  
     (building-type-count-total mill < 1)
     (can-build mill)
-    (resource-found food) ;wtf
+    (resource-found food)
     (wood-amount > 200)
 =>
     (build mill)(chat-to-player my-player-number "MILL 1 (FOOD FOUND)")
+)
+
+(defrule  
+    (building-type-count-total mill < 1)
+    (wood-amount > 400)
+=>
+    (build mill)(chat-to-player my-player-number "MILL 1 (EXCESS WOOD)")
 )
 
 (defrule  
@@ -2351,8 +2358,6 @@
 =>
     (build mill)(chat-to-player my-player-number "MILL 1 (FORCED)")
 )
-
-
 
 (defrule  
     (current-age == feudal-age)
