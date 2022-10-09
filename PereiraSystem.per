@@ -3208,7 +3208,7 @@
 (defrule
     (unit-type-count-total monk-set g:< gl-cantMonjes)
     (can-train monk)(not(hold-relics))
-    (not(enemy-buildings-in-town)
+    (not(enemy-buildings-in-town))
 =>
     (train monk)
 )
