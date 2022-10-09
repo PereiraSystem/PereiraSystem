@@ -3198,10 +3198,17 @@
 )
 
 ; UNIDADES MILITARES                                                                        
-; MONASTERIO                                  
+; MONASTERIO   
+(defrule
+    (can-train monk)
+=>
+    (train monk)(disable-self)
+)
+
 (defrule
     (unit-type-count-total monk-set g:< gl-cantMonjes)
     (can-train monk)(not(hold-relics))
+    (not(enemy-buildings-in-town)
 =>
     (train monk)
 )
