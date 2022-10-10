@@ -2769,6 +2769,7 @@
     (defrule
         (can-build dock)(not(up-research-status c: feudal-age == research-pending))
         (building-type-count-total lumber-camp > 0)
+        (wood-amount > 250)
         (building-type-count-total dock < 1)
     =>
         (build dock)(delete-building town-center)(delete-building mill)
@@ -2780,6 +2781,16 @@
         (up-compare-goal gl-weMovedPlace > 0)  
     =>  
         (enable-wall-placement 1)
+    )
+
+    (defrule
+        (can-build dock)
+        (building-type-count-total lumber-camp > 0)
+        (wood-amount > 250)
+        (building-type-count-total dock < 2)
+    =>
+        (build dock)
+        (chat-to-player my-player-number "DOCK 2")
     )
 
     (defrule
