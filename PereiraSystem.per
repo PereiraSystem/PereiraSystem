@@ -2779,6 +2779,7 @@
 
     (defrule ;wall in new city around dock
         (up-compare-goal gl-weMovedPlace > 0)  
+(building-type-count-total town-center > 0)        
     =>  
         (enable-wall-placement 1)
     )
