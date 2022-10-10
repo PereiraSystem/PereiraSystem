@@ -2777,7 +2777,7 @@
     =>
         (build dock)(delete-building town-center)
         (chat-to-player my-player-number "DOCK")(build town-center)
-        (set-strategic-number enable-wall-placement 1)
+        (enable-wall-placement 1)
     )
 
     (defrule
@@ -2797,7 +2797,7 @@
 ; GATES
 
 ; PERMITIR MURALLA PREVIAMENTE
-(defrule(true)=>(enable-wall-placement 1)(disable-self))
+;(defrule(true)=>(enable-wall-placement 1)(disable-self))
 
 (defrule(civ-selected gothic)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
 
