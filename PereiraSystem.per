@@ -8,6 +8,15 @@
 ; 6. Trade
 ; 7. Taunts 
 
+  (defrule
+        (can-build dock)
+        ;(building-type-count-total lumber-camp > 0)
+        (building-type-count-total dock < 1)
+    =>
+        (build dock)
+        (chat-to-player my-player-number "WHY NOT DOCK!!")
+    )
+
 ; 1. CONSTANTS AND TIMERS
 
 (load "Constants\Constants for AoFE")
@@ -386,7 +395,14 @@
 )
 
 ; CONSTRUIR
-(defrule(true)=>(set-strategic-number sn-initial-exploration-required 0)(disable-self))
+(defrule
+    (true)
+=>
+    (set-strategic-number sn-initial-exploration-required 0)
+    (set-strategic-number sn-minimum-water-body-size-for-dock 0)
+    (set-strategic-number sn-dock-avoidance-factor 1)
+    (disable-self)
+)
 
 ; CONSTRUCTORES EXTRA
 (defrule
