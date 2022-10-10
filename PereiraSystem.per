@@ -2733,6 +2733,15 @@
 
 ; PUERTO
 
+  (defrule
+        (can-build dock)
+        (building-type-count-total lumber-camp > 0)
+        (building-type-count-total dock < 1)
+    =>
+        (build dock)
+        (chat-to-player my-player-number "DOCK")
+    )
+
 #load-if-not-defined KILIMANJARO-MAP 
 #load-if-not-defined ACROPOLIS-MAP 
 #load-if-not-defined VALLEY-MAP 
