@@ -3654,7 +3654,8 @@
 
 ; GALLEY
 (defrule
-    (unit-type-count-total galley-line < 1)
+    (unit-type-count-total galley-line < 4)
+    (wood-amount > 190)
     (can-train galley-line)
 =>
     (train galley-line)
