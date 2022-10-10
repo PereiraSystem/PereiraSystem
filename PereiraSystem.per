@@ -2695,7 +2695,7 @@
 
 ; HERRERIA
 (defrule
-    (building-type-count-total blacksmith == 0)
+    (building-type-count-total blacksmith == 0)(wood-amount > 275)
     (or(building-type-count-total archery-range > 0)(civ-selected cumans))
     ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
     (can-build blacksmith)
@@ -3002,7 +3002,8 @@
 
 ; ESTABLOS
 (defrule
-    (can-build stable)(not(civ-selected cumans))
+    (can-build stable)(wood-amount > 275)
+    (not(civ-selected cumans))
     (building-type-count-total stable < 1) 
 =>
     (build stable)
@@ -3010,7 +3011,7 @@
 )
 
 (defrule
-    (can-build stable)(not(civ-selected cumans))
+    (can-build stable)(civ-selected cumans)(wood-amount > 275)
     (building-type-count-total stable < 1)
     (building-type-count-total siege-workshop > 0)      
 =>
