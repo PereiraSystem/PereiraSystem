@@ -2775,7 +2775,7 @@
         (building-type-count-total lumber-camp > 0)
         (building-type-count-total dock < 1)
     =>
-        (build dock)(delete-building town-center)
+        (build dock)(delete-building town-center)(delete-building mill)
         (chat-to-player my-player-number "DOCK")(build town-center)
         (enable-wall-placement 1)
     )
