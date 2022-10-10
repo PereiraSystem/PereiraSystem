@@ -396,7 +396,7 @@
 =>
     (set-strategic-number sn-initial-exploration-required 0)
     (set-strategic-number sn-minimum-water-body-size-for-dock 0)
-    (set-strategic-number sn-dock-avoidance-factor 1)
+    (set-strategic-number sn-dock-avoidance-factor 10)
     (disable-self)
 )
 
@@ -2789,6 +2789,7 @@
     (defrule
         (can-build dock)
         (building-type-count-total lumber-camp > 0)
+        (building-type-count-total town-center > 0)        
         (wood-amount > 250)
         (building-type-count-total dock < 2)
     =>
