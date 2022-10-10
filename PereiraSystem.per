@@ -2769,7 +2769,7 @@
     (defrule
         (can-build dock)(not(up-research-status c: feudal-age == research-pending))
         (building-type-count-total lumber-camp > 0)
-        (wood-amount > 250)
+
         (building-type-count-total dock < 1)
     =>
         (build dock)(delete-building town-center)(delete-building mill)
