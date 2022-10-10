@@ -2776,7 +2776,7 @@
         (building-type-count-total dock < 1)
     =>
         (build dock)(delete-building town-center)
-        (chat-to-player my-player-number "DOCK")
+        (chat-to-player my-player-number "DOCK")(build town-center)
     )
 
     (defrule
