@@ -2417,11 +2417,14 @@
 
 (defrule  
     (building-type-count-total mill < 2)(current-age >= feudal-age)
-    (can-build mill)(resource-found food)(wood-amount > 200)
-    (building-type-count-total lumber-camp > 0)(dropsite-min-distance food > 6)
+    (can-build mill)
+    (wood-amount > 200)
+    (building-type-count-total lumber-camp > 0)
+    (dropsite-min-distance food > 6)
     (not(civ-selected khmer))
 =>
-    (build mill)(chat-to-player my-player-number "MILL 2")(up-modify-sn sn-mill-max-distance c:+ 12)
+    (build mill)(chat-to-player my-player-number "MILL 2")
+    (up-modify-sn sn-mill-max-distance c:+ 12)
 )
 
 (defrule
