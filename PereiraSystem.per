@@ -1709,9 +1709,8 @@
 ; COMUNES 
 (defrule
     (can-research ri-bloodlines)
-    (research-completed ri-wheel-barrow)
-    (or(current-age > castle-age)(food-amount > 1000))
-    (not(civ-selected gothic))
+    ;(research-completed ri-wheel-barrow)
+    (unit-type-count-total scout-cavalry-line > 1)    
 =>
     (research ri-bloodlines)
 )
