@@ -1965,12 +1965,15 @@
     (research ri-scale-mail)
 )
 
+
 (defrule
     (can-research ri-chain-mail)
-    (or(town-under-attack)(current-age == imperial-age))   
+    (or(town-under-attack)
+    (current-age == imperial-age))   
 =>
     (research ri-chain-mail)
 )
+
 
 (defrule
     (can-research ri-plate-mail)
@@ -2700,7 +2703,8 @@
     (building-type-count-total market == 1)(can-build market)
     (current-age == imperial-age)
     (building-type-count-total university > 0)
-    (building-type-count-total castle > 0)(building-type-count-total barracks > 1)
+    (building-type-count-total castle > 0)
+    (building-type-count-total barracks > 1)
 =>
     (build market)(chat-to-player my-player-number "MARKET 2")  
 )
