@@ -2777,7 +2777,7 @@
     )
 
     (defrule ;wall in new city around dock
-        (up-compare-goal gl-weMovedPlace g:> 0)  
+        (up-compare-goal gl-weMovedPlace > 0)  
     =>  
         (enable-wall-placement 1)
     )
