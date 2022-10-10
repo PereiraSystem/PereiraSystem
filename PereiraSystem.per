@@ -237,7 +237,7 @@
 	(timer-triggered 4)
 =>
 	(disable-timer 4)
-    (enable-timer 4 10)    
+    (enable-timer 4 1)    
     (up-modify-sn sn-camp-max-distance c:+ 1) 
     (up-chat-data-to-self "LUMBER CAMPS MAX DISTANCE INCREASED! = %d" s: sn-camp-max-distance)
 )
@@ -2538,7 +2538,7 @@
     (building-type-count-total lumber-camp == 0)
     (can-build lumber-camp)
     (resource-found wood)
-    ;(dropsite-min-distance wood > 17)
+    (dropsite-min-distance wood > 17)
     (dropsite-min-distance wood > 3)    
     (or
         (building-type-count house > 0)
