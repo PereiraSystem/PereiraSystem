@@ -1677,6 +1677,13 @@
     (research ri-man-at-arms)
 )
 
+ (defrule
+ 	(unit-type-count-total militiaman-line > 2) 	
+    (can-research ri-supplies)
+=>
+    (research ri-supplies)
+)
+
 (defrule
     (can-research ri-long-swordsman)
     (unit-type-count-total militiaman-line > 2) 	
