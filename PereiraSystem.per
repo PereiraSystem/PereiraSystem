@@ -2412,14 +2412,27 @@
 )
 
 (defrule  
-    (building-type-count-total mill < 2)(current-age >= feudal-age)
+    (building-type-count-total mill < 2)
+    (current-age >= feudal-age)
     (can-build mill)
     (wood-amount > 200)
     (building-type-count-total lumber-camp > 0)
-    (dropsite-min-distance food > 6)
     (not(civ-selected khmer))
 =>
     (build mill)(chat-to-player my-player-number "MILL 2")
+    (up-modify-sn sn-mill-max-distance c:+ 12)
+)
+
+
+(defrule  
+    (building-type-count-total mill < 3)
+    (current-age >= feudal-age)
+    (can-build mill)
+    (wood-amount > 400)
+    (building-type-count-total lumber-camp > 0)
+    (not(civ-selected khmer))
+=>
+    (build mill)(chat-to-player my-player-number "MILL 3")
     (up-modify-sn sn-mill-max-distance c:+ 12)
 )
 
@@ -2549,7 +2562,8 @@
     )
 =>
     (build lumber-camp)
-    (chat-to-player my-player-number "LUMBER CAMP 1")    
+    (chat-to-player my-player-number "LUMBER CAMP 1")
+    (up-modify-sn sn-camp-max-distance c:+ 12)        
 )
 
 
@@ -2566,7 +2580,7 @@
 =>
     (build lumber-camp)
     (chat-to-player my-player-number "LUMBER CAMP 2")
-    (up-modify-sn sn-camp-max-distance c:+ 4)     
+    (up-modify-sn sn-camp-max-distance c:+ 12)     
 )
 
 (defrule
@@ -2581,7 +2595,7 @@
 =>
     (build lumber-camp)
     (chat-to-player my-player-number "LUMBER CAMP 3")
-    (up-modify-sn sn-camp-max-distance c:+ 4)     
+    (up-modify-sn sn-camp-max-distance c:+ 12)     
 )
 
 (defrule
@@ -2593,7 +2607,7 @@
 =>
     (build lumber-camp)
     (chat-to-player my-player-number "LUMBER CAMP")
-    (up-modify-sn sn-camp-max-distance c:+ 8)               
+    (up-modify-sn sn-camp-max-distance c:+ 12)               
 )
 
 ; MINAS                       
