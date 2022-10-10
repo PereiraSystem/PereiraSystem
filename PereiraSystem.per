@@ -2772,7 +2772,7 @@
 
         (building-type-count-total dock < 1)
     =>
-        (set-strategic-number sn-town-center-placement dock)
+        (set-strategic-number sn-town-center-placement mining-camp)
         (up-assign-builders c: town-center-foundation c: 5)
         (build dock)(delete-building town-center)(delete-building mill)
         (chat-to-player my-player-number "DOCK")(build town-center)
