@@ -666,11 +666,8 @@
     (research feudal-age) 
 )
 
-
-
 (defrule
     (can-research castle-age)
-    
 =>
     (research castle-age)  
 )
@@ -802,7 +799,7 @@
 )
 
 (defrule
-    (can-research ri-crop-rotation)
+    (can-research ri-crop-rotation)(wood-amount > 350)
 =>
     (research ri-crop-rotation)
 )
@@ -2520,11 +2517,11 @@
 =>
     (build lumber-camp)
     (chat-to-player my-player-number "LUMBER CAMP 2")
-    (up-modify-sn sn-camp-max-distance c:+ 8)     
+    (up-modify-sn sn-camp-max-distance c:+ 4)     
 )
 
 (defrule
-    (building-type-count-total lumber-camp == 3)
+    (building-type-count-total lumber-camp == 2)
     (or
         (current-age > dark-age)
         (food-amount > 600)
