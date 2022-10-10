@@ -235,8 +235,8 @@
 	(timer-triggered 4)
 =>
 	(disable-timer 4)
-    (enable-timer 4 2)    
-    (up-modify-sn sn-camp-max-distance c: +1) 
+    (enable-timer 4 10)    
+    (up-modify-sn sn-camp-max-distance c:+ 1) 
     (up-chat-data-to-self "LUMBER CAMPS MAX DISTANCE INCREASED! = %d" s: sn-camp-max-distance)
 )
 
@@ -440,7 +440,7 @@
 (defrule 
     (true)
 =>  
-    (set-strategic-number sn-camp-max-distance 20); 
+    (set-strategic-number sn-camp-max-distance 24); 
     (set-strategic-number sn-mill-max-distance 19)  
     (disable-self)
 )
