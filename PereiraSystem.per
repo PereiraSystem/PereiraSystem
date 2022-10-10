@@ -232,12 +232,12 @@
 )
 
 ; TIMER 4 INCREASES LUMBER CAMPS DISTANCE
-(defrule(true)=>(enable-timer 4 240)(disable-self))
+(defrule(true)=>(enable-timer 4 270)(disable-self))
 (defrule
 	(timer-triggered 4)
 =>
 	(disable-timer 4)
-    (enable-timer 4 2)    
+    (enable-timer 4 5)    
     (up-modify-sn sn-camp-max-distance c:+ 1) 
     (up-chat-data-to-self "LUMBER CAMPS MAX DISTANCE INCREASED! = %d" s: sn-camp-max-distance)
 )
