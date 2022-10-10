@@ -27,6 +27,8 @@
 (defconst gl-dudeHasSkirmishers 56)
 (defconst gl-dudeHasSpearmen 57)
 
+(defconst gl-weMovedPlace 90)
+
 (defconst gl-maximoCasasAntesBorrar 101)    
 (defconst gl-maximoCasasNecesarias 102)
 (defconst gl-cantGranjasImperial 103)
@@ -192,7 +194,8 @@
     (set-goal gl-dudeHasCamels 0)
     (set-goal gl-dudeHasElephants 0)
     (set-goal gl-dudeHasArchers 0)
-    (set-goal gl-dudeHasSkirmishers 0) 
+    (set-goal gl-dudeHasSkirmishers 0)
+    (set-goal gl-weMovedPlace 0)        
     (disable-self)	    
 )
 
@@ -2763,13 +2766,6 @@
 
 ; PUERTO
 
-
-#load-if-not-defined KILIMANJARO-MAP 
-#load-if-not-defined ACROPOLIS-MAP 
-#load-if-not-defined VALLEY-MAP 
-#load-if-not-defined CENOTES-MAP
-#load-if-not-defined OASIS-MAP 
-
     (defrule
         (can-build dock)
         (building-type-count-total lumber-camp > 0)
@@ -2777,20 +2773,22 @@
     =>
         (build dock)(delete-building town-center)(delete-building mill)
         (chat-to-player my-player-number "DOCK")(build town-center)
+        (set-goal gl-weMovedPlace 0)  
+    )
+
+    (defrule ;wall in new city around dock
+        (up-compare-goal gl-weMovedPlace g:> 0)  
+    =>  
         (enable-wall-placement 1)
     )
 
     (defrule
-        (current-age == imperial-age)
+        
         (civ-selected malay)(building-type-count-total dock < 24)
         (can-build dock)    
     =>  
         (build dock)
     )
-
-#end-if #end-if #end-if #end-if #end-if
-
-
 
 ; MILITARES
 ; MURALLA - EMPALIZADA
