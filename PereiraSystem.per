@@ -259,8 +259,7 @@
 ; ATTACK!!!
 
 (defrule
-    (enemy-buildings-in-town)
-    (military-population > 0)
+    (building-type-count lumber-camp > 0)
 =>
     (attack-now)   
 )
