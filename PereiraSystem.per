@@ -718,9 +718,9 @@
 )
 
 (defrule
-    (can-research ri-hand-cart )(building-type-count-total monastery > 0)
+    (can-research ri-hand-cart)(building-type-count-total monastery > 0)
 =>
-    (research ri-hand-cart )
+    (research ri-hand-cart)
 )
 
 ; MEJORAR VISION
@@ -788,12 +788,13 @@
         )
     (building-type-count-total farm > 3)
     (research-completed ri-double-bit-axe)
+    (wood-amount > 175)
 =>
     (research ri-horse-collar)
 )
 
 (defrule
-    (can-research ri-heavy-plow)(wood-amount > 101)
+    (can-research ri-heavy-plow)(wood-amount > 225)
  	(research-completed ri-hand-cart) 
  	(research-completed ri-bow-saw)   
 =>
