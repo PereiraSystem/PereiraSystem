@@ -2771,11 +2771,11 @@
 #load-if-not-defined OASIS-MAP 
 
     (defrule
-        (can-build dock)(can-build watch-tower-line)
+        (can-build dock)
         (building-type-count-total lumber-camp > 0)
         (building-type-count-total dock < 1)
     =>
-        (build dock)(build watch-tower-line)
+        (build dock)(delete-building town-center)
         (chat-to-player my-player-number "DOCK")
     )
 
