@@ -2457,7 +2457,7 @@
     (building-type-count-total barracks > 0)(wood-amount > 160)
 	(can-build farm)
     (building-type-count-total lumber-camp > 0)
-	(idle-farm-count < 2)
+	(idle-farm-count < 3)
 =>
 	(build farm)
 )
@@ -2473,7 +2473,7 @@
         )
     )
     (wood-amount > 160)
-	(idle-farm-count < 2)
+	(idle-farm-count < 3)
 	(can-build farm)
 =>
     (build farm)
@@ -2488,7 +2488,7 @@
     (or(building-type-count-total siege-workshop > 0)
     (civ-selected gothic))
 	(can-build farm)
-	(idle-farm-count < 2)
+	(idle-farm-count < 3)
 =>
 	(build farm)
 )
@@ -2782,12 +2782,7 @@
         (set-goal gl-weMovedPlace 1)  
     )
 
-    (defrule ;wall in new city around dock
-        (up-compare-goal gl-weMovedPlace > 0)  
-        (building-type-count town-center > 0) (game-time > 600)       
-    =>  
-        (enable-wall-placement 1)
-    )
+
 
     (defrule
         (can-build dock)
