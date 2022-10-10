@@ -8,14 +8,7 @@
 ; 6. Trade
 ; 7. Taunts 
 
-  (defrule
-        (can-build dock)
-        ;(building-type-count-total lumber-camp > 0)
-        (building-type-count-total dock < 1)
-    =>
-        (build dock)
-        (chat-to-player my-player-number "WHY NOT DOCK!!")
-    )
+
 
 ; 1. CONSTANTS AND TIMERS
 
@@ -2752,14 +2745,6 @@
 
 ; PUERTO
 
-  (defrule
-        (can-build dock)
-        (building-type-count-total lumber-camp > 0)
-        (building-type-count-total dock < 1)
-    =>
-        (build dock)
-        (chat-to-player my-player-number "DOCK")
-    )
 
 #load-if-not-defined KILIMANJARO-MAP 
 #load-if-not-defined ACROPOLIS-MAP 
@@ -2773,7 +2758,7 @@
         (building-type-count-total dock < 1)
     =>
         (build dock)
-        (chat-to-player my-player-number "DOCK?")
+        (chat-to-player my-player-number "DOCK")
     )
 
     (defrule
