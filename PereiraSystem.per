@@ -194,6 +194,7 @@
     (disable-self)	    
 )
 
+; TIMER 1 INCREASES TOWN SIZE
 (defrule(true)=>(enable-timer 1 720)(disable-self)) 
 (defrule
 	(timer-triggered 1)
@@ -206,6 +207,7 @@
     (up-chat-data-to-self "TOWN SIZE MIN INCREASED! = %d" s: sn-minimum-town-size)
 )
 
+; TIMER 2 INCREASES LUMBER CAMPS QUANTITY
 (defrule(true)=>(enable-timer 2 300)(disable-self))
 (defrule
 	(timer-triggered 2)
@@ -213,9 +215,10 @@
 	(disable-timer 2)
     (enable-timer 2 300)    
     (up-modify-goal gl-max-lumber-camps-qty c:+ 1) 
-    (up-chat-data-to-self "LUMBER CAMPS MAX INCREASED! = %d" g: gl-max-lumber-camps-qty)
+    (up-chat-data-to-self "LUMBER CAMPS MAX QTY INCREASED! = %d" g: gl-max-lumber-camps-qty)
 )
 
+; TIMER 3 INCREASES MINING CAMPS QUANTITY
 (defrule(true)=>(enable-timer 3 480)(disable-self)) 
 (defrule
 	(timer-triggered 3)
@@ -223,23 +226,40 @@
 	(disable-timer 3)
     (enable-timer 3 480)      
     (up-modify-goal gl-max-mining-camps-qty c:+ 1)    
-    (up-chat-data-to-self "MINING CAMPS MAX INCREASED! = %d" g: gl-max-mining-camps-qty)	
+    (up-chat-data-to-self "MINING CAMPS MAX QTY INCREASED! = %d" g: gl-max-mining-camps-qty)	
 )
 
-(defrule(true)=>(enable-timer 4 1800)(disable-self)) 
+; TIMER 4 INCREASES LUMBER CAMPS DISTANCE
+(defrule(true)=>(enable-timer 4 300)(disable-self))
 (defrule
 	(timer-triggered 4)
+=>
+	(disable-timer 4)
+    (enable-timer 4 2)    
+    (up-modify-strategic-number sn-camp-max-distance c: +1) 
+    (up-chat-data-to-self "LUMBER CAMPS MAX DISTANCE INCREASED! = %d" s: sn-camp-max-distance)
+)
+
+(defrule
+	(building-type-count-total lumber-camp > 0)
+=>
+	(disable-timer 4)
+)
+
+(defrule(true)=>(enable-timer 10 1800)(disable-self)) 
+(defrule
+	(timer-triggered 10)
     (current-age == imperial-age)
 =>
 	(chat-to-player my-player-number "DELETING IDLE VILLAGERS!")
-	(disable-timer 4)
-    (enable-timer 4 600)    
+	(disable-timer 10)
+    (enable-timer 10 600)    
     (up-delete-idle-units idle-type-villager)
 )
 
-(defrule(true)=>(enable-timer 5 2700)(disable-self)) 
+(defrule(true)=>(enable-timer 20 2700)(disable-self)) 
 (defrule
-        (timer-triggered 5)
+        (timer-triggered 20)
         (and
             (food-amount > 5000)
             (and
@@ -249,8 +269,8 @@
         )
     (current-age == imperial-age)
 =>
-	(disable-timer 5)
-    (enable-timer 5 1)
+	(disable-timer 20)
+    (enable-timer 20 1)
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
     (chat-to-player my-player-number "TIME HAS PASSED, TIME TO ATTACK!!!!")       
