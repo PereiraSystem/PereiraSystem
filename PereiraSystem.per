@@ -256,6 +256,15 @@
     (chat-to-player my-player-number "TIME HAS PASSED, TIME TO ATTACK!!!!")       
 )
 
+; ATTACK!!!
+
+(defrule
+    (enemy-buildings-in-town)
+    (military-population > 0)
+=>
+    (attack-now)   
+)
+
 (defrule
     (civ-selected cumans)
     (unit-type-count battering-ram > 2)
