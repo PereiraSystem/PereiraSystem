@@ -2639,7 +2639,14 @@
 )
 
 (defrule
-	(or(current-age > castle-age)(building-type-count-total monastery > 0))
+	(or
+        (or
+            (current-age > castle-age)
+            (building-type-count-total monastery > 0)
+        )
+        (wood-amount > 700)
+    )
+
     (building-type-count-total lumber-camp g:< gl-max-lumber-camps-qty) 	
     (resource-found wood)
     (dropsite-min-distance wood > 3)
@@ -2883,9 +2890,20 @@
     )
 
     (defrule
+        (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+        (building-type-count lumber-camp > 0)
+        (building-type-count town-center > 0)        
+        (wood-amount > 350)
+        (building-type-count-total dock < 5)
+    =>
+        (build dock)
+        (chat-to-player my-player-number "DOCK 5")
+    )    
+
+    (defrule
         
-        (civ-selected malay)(building-type-count-total dock < 24)
-        (current-age == imperial-age)
+        (wood-amount > 1450)
+        (building-type-count-total dock < 24)
         (can-build dock)    
     =>  
         (build dock)
