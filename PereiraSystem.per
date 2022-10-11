@@ -3772,6 +3772,13 @@
 )
 
 (defrule
+    (unit-type-count-total fire-ship-line < 3)
+    (can-train fire-ship-line)
+=>
+    (train fire-ship-line)
+)
+
+(defrule
     (current-age == imperial-age)
     (research-completed ri-careening)
     (unit-type-count-total fire-ship-line < 4)
