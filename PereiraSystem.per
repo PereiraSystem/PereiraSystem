@@ -2384,7 +2384,7 @@
 ; MOLINO    
 
 (defrule  
-    (building-type-count-total mill < 1)(building-type-count-total town-center > 0)
+    (building-type-count-total mill < 1)(building-type-count town-center > 0)
     (can-build mill)
     (resource-found food)
     (wood-amount > 200)
@@ -2393,14 +2393,14 @@
 )
 
 (defrule  
-    (building-type-count-total mill < 1)(building-type-count-total town-center > 0)
+    (building-type-count-total mill < 1)(building-type-count town-center > 0)
     (wood-amount > 400)
 =>
     (build mill)(chat-to-player my-player-number "MILL 1 (EXCESS WOOD)")
 )
 
 (defrule  
-    (building-type-count-total mill < 1)(building-type-count-total town-center > 0)
+    (building-type-count-total mill < 1)(building-type-count town-center > 0)
     (building-type-count-total lumber-camp < 1)
     (building-type-count-total dock < 1)    
     (game-time > 270)
@@ -2410,16 +2410,16 @@
 )
 
 (defrule  
-    (current-age == feudal-age)(building-type-count-total town-center > 0)
-    (building-type-count-total mill < 1)
+    (current-age == feudal-age)(building-type-count town-center > 0)
+    (building-type-count-total mill < 1)(set-strategic-number sn-maximum-food-drop-distance 9) 
     (wood-amount > 200)
 =>
     (build mill)(chat-to-player my-player-number "MILL 1 (FORCED - FEUDAL)")
 )
 
 (defrule  
-    (building-type-count-total mill < 2)(building-type-count-total town-center > 0)
-    (current-age >= feudal-age)
+    (building-type-count-total mill < 2)(building-type-count town-center > 0)
+    (current-age >= feudal-age)(set-strategic-number sn-maximum-food-drop-distance 9) 
     (can-build mill)
     (wood-amount > 200)
     (building-type-count-total lumber-camp > 0)
@@ -2793,7 +2793,7 @@
         (build dock)(delete-building town-center)(delete-building mill)
         (delete-building farm)(delete-building farm)(delete-building farm)        
         (chat-to-player my-player-number "DOCK")(build town-center)
-        (set-goal gl-weMovedPlace 1) 
+        (set-goal gl-weMovedPlace 1)(set-strategic-number sn-maximum-food-drop-distance 0) 
         (delete-building farm)(delete-building farm)(delete-building farm) 
     )
 
