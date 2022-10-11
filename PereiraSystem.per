@@ -3810,7 +3810,43 @@
 
 ; GALLEY
 (defrule
-    (unit-type-count-total galley-line < 4)
+    (unit-type-count-total galley-line < 3)
+    (wood-amount > 190)
+    (can-train galley-line)
+=>
+    (train galley-line)
+)
+
+(defrule
+    (unit-type-count-total galley-line < 5)
+    (building-type-count dock > 1)    
+    (wood-amount > 190)
+    (can-train galley-line)
+=>
+    (train galley-line)
+)
+
+(defrule
+    (unit-type-count-total galley-line < 7)
+    (building-type-count dock > 2)    
+    (wood-amount > 190)
+    (can-train galley-line)
+=>
+    (train galley-line)
+)
+
+(defrule
+    (unit-type-count-total galley-line < 9)
+    (building-type-count dock > 3)    
+    (wood-amount > 190)
+    (can-train galley-line)
+=>
+    (train galley-line)
+)
+
+(defrule
+    (unit-type-count-total galley-line < 11)
+    (building-type-count dock > 4)    
     (wood-amount > 190)
     (can-train galley-line)
 =>
@@ -3826,8 +3862,47 @@
     (train galley-line)
 )
 
+; FIRE SHIP
+
 (defrule
     (unit-type-count-total fire-ship-line < 3)
+    (wood-amount > 190)
+    (can-train fire-ship-line)
+=>
+    (train fire-ship-line)
+)
+
+(defrule
+    (unit-type-count-total fire-ship-line < 5)
+    (building-type-count dock > 1)    
+    (wood-amount > 190)
+    (can-train fire-ship-line)
+=>
+    (train fire-ship-line)
+)
+
+(defrule
+    (unit-type-count-total fire-ship-line < 7)
+    (building-type-count dock > 2)    
+    (wood-amount > 190)
+    (can-train fire-ship-line)
+=>
+    (train fire-ship-line)
+)
+
+(defrule
+    (unit-type-count-total fire-ship-line < 9)
+    (building-type-count dock > 3)    
+    (wood-amount > 190)
+    (can-train fire-ship-line)
+=>
+    (train fire-ship-line)
+)
+
+(defrule
+    (unit-type-count-total fire-ship-line < 11)
+    (building-type-count dock > 4)    
+    (wood-amount > 190)
     (can-train fire-ship-line)
 =>
     (train fire-ship-line)
