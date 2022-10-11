@@ -2983,7 +2983,26 @@
 )
 
 ; PROD MILITAR
-; CONSTRUIR BARRACAS                     
+; CONSTRUIR BARRACAS    
+
+(defrule
+    (current-age < imperial-age)
+    (wood-amount > 1000)
+	(can-build barracks)
+=>
+	(build barracks)(up-modify-sn sn-maximum-town-size c: +1)
+    (chat-to-player my-player-number "BARRACKS (EXCESS WOOD)") 
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 10000)
+	(can-build barracks)
+=>
+	(build barracks)(up-modify-sn sn-maximum-town-size c: +1)
+    (chat-to-player my-player-number "BARRACKS (EXCESS WOOD)") 
+)
+
 (defrule ;four nested conditionals, the japanese would do it for you
 	(building-type-count-total barracks < 1)
     (or
