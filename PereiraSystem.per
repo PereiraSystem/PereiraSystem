@@ -2769,7 +2769,8 @@
 
     (defrule
         (can-build dock)(not(up-research-status c: feudal-age == research-pending))
-        (building-type-count-total lumber-camp > 0)
+
+        (building-type-count lumber-camp > 0)
 
         (building-type-count-total dock < 1)
     =>
