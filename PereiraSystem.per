@@ -2843,6 +2843,28 @@
     )
 
     (defrule
+        (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+        (building-type-count lumber-camp > 0)
+        (building-type-count town-center > 0)        
+        (wood-amount > 350)
+        (building-type-count-total dock < 3)
+    =>
+        (build dock)
+        (chat-to-player my-player-number "DOCK 3")
+    )
+
+    (defrule
+        (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+        (building-type-count lumber-camp > 0)
+        (building-type-count town-center > 0)        
+        (wood-amount > 350)
+        (building-type-count-total dock < 4)
+    =>
+        (build dock)
+        (chat-to-player my-player-number "DOCK 4")
+    )
+
+    (defrule
         
         (civ-selected malay)(building-type-count-total dock < 24)
         (current-age == imperial-age)
