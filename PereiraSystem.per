@@ -2456,6 +2456,8 @@
 )
 
 ; GRANJAS
+
+
 ; EDAD 1
 (defrule
     (current-age == dark-age)(building-type-count town-center > 0)
@@ -2516,6 +2518,25 @@
 )
 
 ; CASAS
+
+(defrule
+    (current-age < imperial-age)
+    (wood-amount > 1000)
+	(can-build house)
+=>
+	(build house)(up-modify-sn sn-maximum-town-size c: +1)
+    (chat-to-player my-player-number "HOUSE (EXCESS WOOD)") 
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 10000)
+	(can-build house)
+=>
+	(build house)(up-modify-sn sn-maximum-town-size c: +1)
+    (chat-to-player my-player-number "HOUSE (EXCESS WOOD)") 
+)
+
 (defrule
     (current-age == dark-age)
     (wood-amount > 125)
