@@ -394,11 +394,11 @@
 (defrule
     (true)
 =>
-    (set-strategic-number sn-initial-exploration-required 0)
+    (set-strategic-number sn-initial-exploration-required 1)
     (set-strategic-number sn-minimum-water-body-size-for-dock 0)
     (set-strategic-number sn-dock-avoidance-factor 1000)
     (set-strategic-number sn-dock-proximity-factor 10)
-    (set-strategic-number sn-dock-placement-mode 1)
+    (set-strategic-number sn-dock-placement-mode 10)
     (disable-self)
 )
 
@@ -428,6 +428,7 @@
 =>
     (set-strategic-number sn-minimum-town-size 0)
     (set-strategic-number sn-maximum-town-size 8)
+    (set-strategic-number sn-mining-camp-max-distance 32)    
     (disable-self)
 )
 
@@ -2775,7 +2776,7 @@
 
         (building-type-count-total dock < 1)
     =>
-        (set-strategic-number sn-town-center-placement mill)
+        (set-strategic-number sn-town-center-placement mining-camp)
         (set-strategic-number sn-gate-type-for-wall 1)
         (up-modify-sn sn-maximum-town-size c: +40)         
         (up-assign-builders c: town-center-foundation c: 5)
