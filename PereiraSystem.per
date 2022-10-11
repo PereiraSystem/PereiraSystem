@@ -256,7 +256,7 @@
 	(timer-triggered 10)
     (current-age == imperial-age)
 =>
-	(chat-to-player my-player-number "DELETING IDLE VILLAGERS!")
+	(chat-local-to-self my-player-number "DELETING IDLE VILLAGERS!")
 	(disable-timer 10)
     (enable-timer 10 600)    
     (up-delete-idle-units idle-type-villager)
@@ -278,7 +278,7 @@
     (enable-timer 20 1)
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-to-player my-player-number "TIME HAS PASSED, TIME TO ATTACK!!!!")       
+    (chat-local-to-self my-player-number "TIME HAS PASSED, TIME TO ATTACK!!!!")       
 )
 
 ; ATTACK!!!
@@ -304,13 +304,13 @@
 =>
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-to-player my-player-number "WE ARE RICH, TIME TO ATTACK!!!!")    
+    (chat-local-to-self my-player-number "WE ARE RICH, TIME TO ATTACK!!!!")    
 )
 
 ;(defrule(players-unit-type-count any-ally villager  > 0)
 ;=>(up-modify-sn sn-maximum-town-size c:+ 8)
 ;(up-modify-sn sn-enemy-sighted-response-distance c:+ 24)
-;(chat-to-player my-player-number "WE HAVE ALLIES, TOWN SIZE +8, RESPONSE DISTANCE +24")
+;(chat-local-to-self my-player-number "WE HAVE ALLIES, TOWN SIZE +8, RESPONSE DISTANCE +24")
 ;(disable-self))
 
 ; 2. STRATEGIC NUMBERS
@@ -594,7 +594,7 @@
     (set-strategic-number sn-wood-gatherer-percentage 18)
     (set-strategic-number sn-gold-gatherer-percentage 8)
     (set-strategic-number sn-stone-gatherer-percentage 6)
-    (chat-to-player my-player-number "MONASTERY BUILT: SENDING SOME GOLD VILLAGERS FOR STONE")
+    (chat-local-to-self my-player-number "MONASTERY BUILT: SENDING SOME GOLD VILLAGERS FOR STONE")
     (disable-self)
 )
 
@@ -605,7 +605,7 @@
     (set-strategic-number sn-wood-gatherer-percentage 18)
     (set-strategic-number sn-gold-gatherer-percentage 4)
     (set-strategic-number sn-stone-gatherer-percentage 10)
-    (chat-to-player my-player-number "CASTLE AGE WITH ALL RELICS - SENDING LESS VILLAGERS FOR GOLD")    
+    (chat-local-to-self my-player-number "CASTLE AGE WITH ALL RELICS - SENDING LESS VILLAGERS FOR GOLD")    
     (disable-self)
 )
 
@@ -616,7 +616,7 @@
     (set-strategic-number sn-wood-gatherer-percentage 9)
     (set-strategic-number sn-gold-gatherer-percentage 10)
     (set-strategic-number sn-stone-gatherer-percentage 6)
-(chat-to-player my-player-number "IMPERIAL AGE WITH NO RELICS - SENDING MORE VILLAGERS FOR GOLD")     
+(chat-local-to-self my-player-number "IMPERIAL AGE WITH NO RELICS - SENDING MORE VILLAGERS FOR GOLD")     
     (disable-self)
 )
 
@@ -627,7 +627,7 @@
     (set-strategic-number sn-wood-gatherer-percentage 13)
     (set-strategic-number sn-gold-gatherer-percentage 4)
     (set-strategic-number sn-stone-gatherer-percentage 6)
-    (chat-to-player my-player-number "IMPERIAL AGE WITH ALL RELICS - SENDING LESS VILLAGERS FOR GOLD")     
+    (chat-local-to-self my-player-number "IMPERIAL AGE WITH ALL RELICS - SENDING LESS VILLAGERS FOR GOLD")     
     (disable-self)
 )
 
@@ -895,7 +895,7 @@
     (civ-selected byzantine)(unit-type-count-total my-unique-unit-line > 0)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "CATAFRACTROFICO")
+    (chat-local-to-self my-player-number "CATAFRACTROFICO")
     (disable-self)
 )
 
@@ -911,14 +911,14 @@
         (town-under-attack)
     )
 =>
-    (research ri-stronghold)(chat-to-player my-player-number "TORRES Y CASTILLOS DISPARAN 25% MÁS RÁPIDO!") 
+    (research ri-stronghold)(chat-local-to-self my-player-number "TORRES Y CASTILLOS DISPARAN 25% MÁS RÁPIDO!") 
 )
 
 (defrule
     (can-research my-unique-research)
     (civ-selected celtic)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "ARMAS DE ASEDIO +40% HP!")
+    (research my-unique-research)(chat-local-to-self my-player-number "ARMAS DE ASEDIO +40% HP!")
 )
 
 ; CHINOS
@@ -933,14 +933,14 @@
     )
     (can-research my-second-unique-research )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "MUROS Y TORRES +30% HP!") 
+    (research my-second-unique-research)(chat-local-to-self my-player-number "MUROS Y TORRES +30% HP!") 
 )
 
 (defrule
     (civ-selected chinese)
     (can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "ARQUEROS ÚNICOS +2 ATAQUE, ESCORPIONES +4 ATAQUE!")
+    (research my-unique-research)(chat-local-to-self my-player-number "ARQUEROS ÚNICOS +2 ATAQUE, ESCORPIONES +4 ATAQUE!")
 )
 
 ; FRANCOS ESTA AL REVES
@@ -948,7 +948,7 @@
     (civ-selected frankish)(unit-type-count-total my-unique-unit-line > 0)
     (can-research my-unique-research )
 =>
-    (research my-unique-research)(chat-to-player my-player-number "LANZADORES DE HACHA +1 ALCANCE!") 
+    (research my-unique-research)(chat-local-to-self my-player-number "LANZADORES DE HACHA +1 ALCANCE!") 
 )
 
 (defrule
@@ -956,7 +956,7 @@
     (can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
-    (chat-to-player my-player-number "ESTABLOS PRODUCEN 40% MÁS RÁPIDO!") 
+    (chat-local-to-self my-player-number "ESTABLOS PRODUCEN 40% MÁS RÁPIDO!") 
 )
 
 ; GODOS AL REVES
@@ -965,14 +965,14 @@
     (can-research my-unique-research)
     (current-age == imperial-age)
 =>
-    (research  my-unique-research)(chat-to-player my-player-number "CREA HUSCARLES EN LAS BARRACAS!") 
+    (research  my-unique-research)(chat-local-to-self my-player-number "CREA HUSCARLES EN LAS BARRACAS!") 
 )
 
 (defrule
     (civ-selected gothic)
     (can-research my-second-unique-research)
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "BARRACAS PRODUCEN 100% MÁS RÁPIDO!") 
+    (research my-second-unique-research)(chat-local-to-self my-player-number "BARRACAS PRODUCEN 100% MÁS RÁPIDO!") 
 )
 
 ; INGLESES
@@ -980,14 +980,14 @@
     (civ-selected briton)
     (can-research my-second-unique-research )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "ARQUEROS +1 ALCANCE, TORRES + 2 ATAQUE!") 
+    (research my-second-unique-research)(chat-local-to-self my-player-number "ARQUEROS +1 ALCANCE, TORRES + 2 ATAQUE!") 
 )
 
 (defrule
     (can-research my-unique-research)
     (civ-selected briton)(unit-type-count-total trebuchet > 0)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "TREBUCHETS HACEN DAÑO DE ÁREA!")
+    (research my-unique-research)(chat-local-to-self my-player-number "TREBUCHETS HACEN DAÑO DE ÁREA!")
 )
 
 ; JAPONESES
@@ -995,26 +995,26 @@
     (can-research 484)
     (building-type-count-total watch-tower-line > 2)
 =>
-    (research 484 )(chat-to-player my-player-number "TORRES DISPARAN FLECHAS EXTRA!") 
+    (research 484 )(chat-local-to-self my-player-number "TORRES DISPARAN FLECHAS EXTRA!") 
 )
 
 (defrule
     (civ-selected japanese)(can-research my-unique-research)(unit-type-count-total trebuchet > 0)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "TREBUCHETS RÁPIDOS!")
+    (research my-unique-research)(chat-local-to-self my-player-number "TREBUCHETS RÁPIDOS!")
 )
 
 ; MONGOLES
 (defrule
     (can-research 487)
 =>
-    (research 487)(chat-to-player my-player-number "PODEMOS VIVIR SIN CASAS COMO LOS HUNOS!")
+    (research 487)(chat-local-to-self my-player-number "PODEMOS VIVIR SIN CASAS COMO LOS HUNOS!")
 )
 
 (defrule
     (civ-selected mongol)(can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "MÁQUINAS DE ASEDIO 50% MÁS RÁPIDAS!") 
+    (research my-unique-research)(chat-local-to-self my-player-number "MÁQUINAS DE ASEDIO 50% MÁS RÁPIDAS!") 
 )
 
 ; PERSAS
@@ -1022,21 +1022,21 @@
     (civ-selected persian)
     (can-research my-second-unique-research)
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "ARQUEROS NO CUESTAN ORO!")  
+    (research my-second-unique-research)(chat-local-to-self my-player-number "ARQUEROS NO CUESTAN ORO!")  
 )
 
 (defrule
     (civ-selected persian)(can-research my-unique-research)
     (unit-type-count-total my-unique-unit-line > 0)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "ELEFANTES 30% MÁS RÁPIDOS!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "ELEFANTES 30% MÁS RÁPIDOS!")  
 )
 
 ; SARRACENOS
 (defrule
     (can-research ri-madrasah)(unit-type-count monk > 0)
 =>
-    (research ri-madrasah)(chat-to-player my-player-number "MONJES DEVUELVEN 33% ORO AL MORIR!")
+    (research ri-madrasah)(chat-local-to-self my-player-number "MONJES DEVUELVEN 33% ORO AL MORIR!")
 )
 
 (defrule
@@ -1048,47 +1048,47 @@
     (civ-selected saracen)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "LA ESQUINA ES EL SITIO TIPICO DEL CAMELLO PERO YO LAS COSTUMBRES ME LAS PASO POR LOS HUEVOS. CAMELLOS +20% HP!")
+    (chat-local-to-self my-player-number "LA ESQUINA ES EL SITIO TIPICO DEL CAMELLO PERO YO LAS COSTUMBRES ME LAS PASO POR LOS HUEVOS. CAMELLOS +20% HP!")
 )   
 
 ; TEUTONES
 (defrule
     (civ-selected teutonic)(can-research my-second-unique-research )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "MÁQUINAS DE ASEDIO +4 DEFENSA CUERPO A CUERPO!") 
+    (research my-second-unique-research)(chat-local-to-self my-player-number "MÁQUINAS DE ASEDIO +4 DEFENSA CUERPO A CUERPO!") 
 )
 
 (defrule
     (civ-selected teutonic)(can-research my-unique-research)
     (building-type-count-total castle > 0)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "CASTILLOS + 3 ALCANCE. INFANTERÍA GUARNECIDA DISPARA FLECHAS!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "CASTILLOS + 3 ALCANCE. INFANTERÍA GUARNECIDA DISPARA FLECHAS!")  
 )
 
 ; TURCOS
 (defrule
     (can-research ri-sipahi)(unit-type-count-total cavalry-archer > 0)
 =>
-    (research ri-sipahi)(chat-to-player my-player-number "ARQUEROS A CABALLO +20 HP!")  
+    (research ri-sipahi)(chat-local-to-self my-player-number "ARQUEROS A CABALLO +20 HP!")  
 )
 
 (defrule
     (civ-selected turkish)(can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "CAÑONES DE TODO TIPO +3 ALCANCE!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "CAÑONES DE TODO TIPO +3 ALCANCE!")  
 )
 
 ; VIKINGOS
 (defrule
     (can-research ri-chieftains)
 =>
-    (research ri-chieftains)(chat-to-player my-player-number "INFANTERÍA CAUSA DAÑO EXTRA A CABALLERÍA!")  
+    (research ri-chieftains)(chat-local-to-self my-player-number "INFANTERÍA CAUSA DAÑO EXTRA A CABALLERÍA!")  
 )
 
 (defrule
     (civ-selected viking)(can-research my-unique-research)(unit-type-count-total my-unique-unit-line > 0)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "BERSERKERS SE REGENERAN!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "BERSERKERS SE REGENERAN!")  
 )
 
 ; AOC
@@ -1103,14 +1103,14 @@
         )     
     )
 =>
-    (research ri-atlatl)(chat-to-player my-player-number "JAVALINAS +1 ATAQUE +1 ALCANCE")    
+    (research ri-atlatl)(chat-local-to-self my-player-number "JAVALINAS +1 ATAQUE +1 ALCANCE")    
 )
 
 (defrule
     (civ-selected aztec)
     (can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "INFANTERIA +4 ATAQUE")   
+    (research my-unique-research)(chat-local-to-self my-player-number "INFANTERIA +4 ATAQUE")   
 )
 
 ; COREANOS
@@ -1119,7 +1119,7 @@
     (building-type-count-total watch-tower-line > 3)
     (can-research my-second-unique-research )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "TORRES +2 ALCANCE!")  
+    (research my-second-unique-research)(chat-local-to-self my-player-number "TORRES +2 ALCANCE!")  
 )
 
 (defrule
@@ -1127,7 +1127,7 @@
     (unit-type-count-total mangonel-line > 0)
     (can-research my-unique-research )
 =>
-    (research my-unique-research)(chat-to-player my-player-number "CATAPULTAS +1 RANGO!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "CATAPULTAS +1 RANGO!")  
 )
 
 ; ESPANYOLES
@@ -1135,7 +1135,7 @@
     (can-research ri-inquisition)
     (current-age == imperial-age)
 =>
-    (research ri-inquisition)(chat-to-player my-player-number "CONVERTIREMOS AL HEREJE!") 
+    (research ri-inquisition)(chat-local-to-self my-player-number "CONVERTIREMOS AL HEREJE!") 
 )
 
 (defrule
@@ -1143,21 +1143,21 @@
     (can-research my-unique-research)
     (research-completed ri-sappers)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "QUE NO VA SABE NI ONDE SA METÍO!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "QUE NO VA SABE NI ONDE SA METÍO!")  
 )
 
 ; HUNOS
 (defrule
     (can-research 483) ;saqueadores
 =>
-    (research 483)(chat-to-player my-player-number "CREAR TARCANOS EN ESTABLOS!") 
+    (research 483)(chat-local-to-self my-player-number "CREAR TARCANOS EN ESTABLOS!") 
 )
 
 (defrule
     (civ-selected hun)
     (can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "RELIQUIAS ENEMIGAS PRODUCEN LA MITAD!")   
+    (research my-unique-research)(chat-local-to-self my-player-number "RELIQUIAS ENEMIGAS PRODUCEN LA MITAD!")   
 )
 
 ; MAYAS
@@ -1165,14 +1165,14 @@
     (civ-selected mayan)(unit-type-count-total skirmisher-line > 0) 
     (can-research my-second-unique-research)
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "JAVALINEROS X2 PROYECTILES!")  
+    (research my-second-unique-research)(chat-local-to-self my-player-number "JAVALINEROS X2 PROYECTILES!")  
 )
 
 (defrule
     (civ-selected mayan)(unit-type-count-total eagle-warrior-line > 0)  
     (can-research my-unique-research )
 =>
-    (research my-unique-research)(chat-to-player my-player-number "GUERREROS ÁGUILA +40 HP!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "GUERREROS ÁGUILA +40 HP!")  
 )
 
 ; FORGOTTEN
@@ -1182,13 +1182,13 @@
     (can-research ri-orthodoxy )
     (current-age == imperial-age)
 =>
-    (research ri-orthodoxy)(chat-to-player my-player-number "MONJES +3 DEFENSA CUERPO A CUERPO, +3 DEFENSA A DISTANCIA!")  
+    (research ri-orthodoxy)(chat-local-to-self my-player-number "MONJES +3 DEFENSA CUERPO A CUERPO, +3 DEFENSA A DISTANCIA!")  
 )
 
 (defrule
     (can-research ri-druzhina)
 =>
-    (research ri-druzhina)(chat-to-player my-player-number "INFANTERÍA ATACA CON ÁREA DE EFECTO!")  
+    (research ri-druzhina)(chat-local-to-self my-player-number "INFANTERÍA ATACA CON ÁREA DE EFECTO!")  
 )
 
 ; HUNGAROS
@@ -1196,14 +1196,14 @@
     (civ-selected magyar)
     (can-research my-second-unique-research)
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "UNIDAD ÚNICA YA NO CUESTA ORO!")  
+    (research my-second-unique-research)(chat-local-to-self my-player-number "UNIDAD ÚNICA YA NO CUESTA ORO!")  
 )
 
 (defrule
     (civ-selected magyar)(unit-type-count-total cavalry-archer-line > 0)  
     (can-research my-unique-research )
 =>
-    (research my-unique-research)(chat-to-player my-player-number "ARQUEROS A CABALLO +1 ATAQUE, +1 ALCANCE!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "ARQUEROS A CABALLO +1 ATAQUE, +1 ALCANCE!")  
 )
 
 ; INCAS
@@ -1214,13 +1214,13 @@
         (unit-type-count-total slinger > 0)        
     )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "JAVALINEROS Y HONDEROS SIN ALCANCE MÍNIMO!")    
+    (research my-second-unique-research)(chat-local-to-self my-player-number "JAVALINEROS Y HONDEROS SIN ALCANCE MÍNIMO!")    
 )
 
 (defrule
     (civ-selected incan)(can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "UNIDADES UNICAS, HONDEROS Y GUERREROS ÁGUILA +1 DEFENSA CUERPO A CUERPO, + 2 DEFENSA A DISTANCIA!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "UNIDADES UNICAS, HONDEROS Y GUERREROS ÁGUILA +1 DEFENSA CUERPO A CUERPO, + 2 DEFENSA A DISTANCIA!")  
 )
 
 ; INDIOS
@@ -1228,7 +1228,7 @@
     (civ-selected indian)
     (can-research my-second-unique-research )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "INGRESOS DE ORO 10% MÁS RÁPIDOS!")  
+    (research my-second-unique-research)(chat-local-to-self my-player-number "INGRESOS DE ORO 10% MÁS RÁPIDOS!")  
 )
 
 (defrule
@@ -1236,7 +1236,7 @@
     (current-age == imperial-age)
     (unit-type-count-total hand-cannoneer > 0)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "MOSQUETEROS +1 ALCANCE!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "MOSQUETEROS +1 ALCANCE!")  
 )
 
 ; ITALIANOS
@@ -1252,7 +1252,7 @@
         (unit-type-count-total my-unique-unit-line > 0)
     )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "ARQUEROS A PIE Y CONDOTTIERO + 1 ARMADURA CUERPO A CUERPO, +1 ARMADURA A DISTANCIA!")  
+    (research my-second-unique-research)(chat-local-to-self my-player-number "ARQUEROS A PIE Y CONDOTTIERO + 1 ARMADURA CUERPO A CUERPO, +1 ARMADURA A DISTANCIA!")  
 )
 
 (defrule
@@ -1263,7 +1263,7 @@
         (unit-type-count-total trade-cog > 0)
     )
 =>
-    (research my-unique-research)(chat-to-player my-player-number "UNIDADES COMERCIALES A MITAD DE PRECIO!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "UNIDADES COMERCIALES A MITAD DE PRECIO!")  
 )
 
 ; PORTUGUESES
@@ -1271,14 +1271,14 @@
     (can-research ri-carrack)
     (current-age == imperial-age)(building-type-count-total dock > 0)
 =>
-    (research ri-carrack)  (chat-to-player my-player-number "BARCOS +1 ARMADURA CUERPO A CUERPO, 1 ARMADURA A DISTANCIA!") 
+    (research ri-carrack)  (chat-local-to-self my-player-number "BARCOS +1 ARMADURA CUERPO A CUERPO, 1 ARMADURA A DISTANCIA!") 
 )
 
 (defrule
     (can-research ri-arquebus )
     (current-age == imperial-age)
 =>
-    (research ri-arquebus) (chat-to-player my-player-number "UNIDADES DE PÓLVORA TIENEN MÁS PUNTERÍA!")
+    (research ri-arquebus) (chat-local-to-self my-player-number "UNIDADES DE PÓLVORA TIENEN MÁS PUNTERÍA!")
 )
 
 ; AFRICAN KINGDOMS        
@@ -1287,13 +1287,13 @@
     (can-research ri-tigui )
     (current-age == imperial-age) (building-type-count-total town-center > 1)
 =>
-    (research ri-tigui)(chat-to-player my-player-number "CENTROS DE CIUDAD DISPARAN SOLOS!") 
+    (research ri-tigui)(chat-local-to-self my-player-number "CENTROS DE CIUDAD DISPARAN SOLOS!") 
 )
 
 (defrule
     (can-research my-unique-research)(civ-selected malian)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "CABALLERÍA +5 ATAQUE!")
+    (research my-unique-research)(chat-local-to-self my-player-number "CABALLERÍA +5 ATAQUE!")
 )
 
 ;ETIOPES
@@ -1301,14 +1301,14 @@
     (can-research 574); ethiop, royal
     (unit-type-count-total my-unique-unit-line > 0)
 =>
-    (research 574)(chat-to-player my-player-number "UNIDADES ÚNICAS SE PRODUCEN MÁS RÁPIDO!") 
+    (research 574)(chat-local-to-self my-player-number "UNIDADES ÚNICAS SE PRODUCEN MÁS RÁPIDO!") 
 )
 
 (defrule
     (can-research my-unique-research)
     (civ-selected ethiopian)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "AUMENTA ÁREA DE DAÑO DE ARMAS DE ASEDIO!")
+    (research my-unique-research)(chat-local-to-self my-player-number "AUMENTA ÁREA DE DAÑO DE ARMAS DE ASEDIO!")
 )
 
 ; BEREBERES
@@ -1327,7 +1327,7 @@
     )
     (civ-selected berbers)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "CAMELLOS REGENERAN VIDA!")
+    (research my-unique-research)(chat-local-to-self my-player-number "CAMELLOS REGENERAN VIDA!")
 )
 
 ; RISE OF THE RAJAS   
@@ -1337,14 +1337,14 @@
     (civ-selected burmese)
     (unit-type-count-total battle-elephant-line > 0)
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "ELEFANTES +1 DEFENSA CUERPO A CUERPO, +2 DEFENSA A DISTANCIA!") 
+    (research my-second-unique-research)(chat-local-to-self my-player-number "ELEFANTES +1 DEFENSA CUERPO A CUERPO, +2 DEFENSA A DISTANCIA!") 
 )
 
 (defrule
     (can-research my-unique-research)
     (civ-selected burmese)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "CABALLERÍA +6 ATAQUE CONTRA EDIFICIOS!")
+    (research my-unique-research)(chat-local-to-self my-player-number "CABALLERÍA +6 ATAQUE CONTRA EDIFICIOS!")
 )
 
 ; KHMER
@@ -1352,14 +1352,14 @@
     (civ-selected khmer)(can-research my-second-unique-research )
     (unit-type-count-total battle-elephant-line > 0)
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "ELEFANTES +3 ATAQUE!") 
+    (research my-second-unique-research)(chat-local-to-self my-player-number "ELEFANTES +3 ATAQUE!") 
 )
 
 (defrule
     (civ-selected khmer)(can-research my-unique-research)
     (or(unit-type-count-total my-unique-unit-line > 0)(unit-type-count-total scorpion-line > 0))
 =>
-    (research my-unique-research)(chat-to-player my-player-number "ELEFANTES CON BALLESTA Y ESCORPIONES X2 PROYECTILES!")
+    (research my-unique-research)(chat-local-to-self my-player-number "ELEFANTES CON BALLESTA Y ESCORPIONES X2 PROYECTILES!")
 )
 ; MALAYOS
 (defrule
@@ -1367,26 +1367,26 @@
     (building-type-count-total dock > 0)
     (current-age == imperial-age)
 =>
-    (research 624)(chat-to-player my-player-number "LOS PUERTOS DISPARAN FLECHAS!") 
+    (research 624)(chat-local-to-self my-player-number "LOS PUERTOS DISPARAN FLECHAS!") 
 )
 (defrule
     (civ-selected malay)(can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "MILICIA NO CUESTA ORO!")
+    (research my-unique-research)(chat-local-to-self my-player-number "MILICIA NO CUESTA ORO!")
 )
 
 ; VIETNAMITAS
 (defrule
     (can-research my-second-unique-research)(unit-type-count-total battle-elephant-line > 0)
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "ELEFANTES + 50 HP!") 
+    (research my-second-unique-research)(chat-local-to-self my-player-number "ELEFANTES + 50 HP!") 
 )
 
 (defrule
     (civ-selected vietnamese)(can-research my-unique-research)(gold-amount < 2000)(food-amount > 2000)(wood-amount > 500)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "500 DE ORO -GRATIS-!") 
+    (chat-local-to-self my-player-number "500 DE ORO -GRATIS-!") 
 )
 
 ; DEFINITIVE   
@@ -1396,14 +1396,14 @@
     (civ-selected bulgarians)
     (can-research my-second-unique-research )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "CABALLERÍA ATACA 33% MÁS RÁPIDO!") 
+    (research my-second-unique-research)(chat-local-to-self my-player-number "CABALLERÍA ATACA 33% MÁS RÁPIDO!") 
 )
 
 (defrule
     (civ-selected bulgarians)(unit-type-count-total militiaman-line > 0)
     (can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "MILICIA +5 DEFENSA CUERPO A CUERPO!") 
+    (research my-unique-research)(chat-local-to-self my-player-number "MILICIA +5 DEFENSA CUERPO A CUERPO!") 
 )
 
 ; CUMANOS
@@ -1411,14 +1411,14 @@
     (civ-selected cumans)
     (can-research my-second-unique-research )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "CABALLERÍA (MENOS PALADINES) PRODUCIDA 100% MÁS RÁPIDO!")  
+    (research my-second-unique-research)(chat-local-to-self my-player-number "CABALLERÍA (MENOS PALADINES) PRODUCIDA 100% MÁS RÁPIDO!")  
 )
 
 (defrule
     (civ-selected cumans)(players-building-type-count any-ally castle > 0)
     (can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "ALIADOS TIENEN 10 MERCENARIOS GRATIS EN CASTILLO!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "ALIADOS TIENEN 10 MERCENARIOS GRATIS EN CASTILLO!")  
 )
 ; LITUANOS
 (defrule
@@ -1428,7 +1428,7 @@
         (town-under-attack)
     )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "CENTROS DE CIUDAD +3 ALCANCE!")  
+    (research my-second-unique-research)(chat-local-to-self my-player-number "CENTROS DE CIUDAD +3 ALCANCE!")  
 )
 
 (defrule
@@ -1438,7 +1438,7 @@
         (unit-type-count-total skirmisher-line > 0)  
     )    
 =>
-    (research my-unique-research)(chat-to-player my-player-number "LANCEROS Y JAVALINEROS +2 ARMADURA A DISTANCIA!")  
+    (research my-unique-research)(chat-local-to-self my-player-number "LANCEROS Y JAVALINEROS +2 ARMADURA A DISTANCIA!")  
 )
 
 ; TARTAROS
@@ -1446,13 +1446,13 @@
 (defrule
     (civ-selected tatars)(can-research my-second-unique-research )
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "CABALLERIA EXCEPTO C. PESADA +1 DEFENSA CUERPO A CUERPO, +1 DEFENSA A DISTANCIA!")   
+    (research my-second-unique-research)(chat-local-to-self my-player-number "CABALLERIA EXCEPTO C. PESADA +1 DEFENSA CUERPO A CUERPO, +1 DEFENSA A DISTANCIA!")   
 )
 
 (defrule
     (civ-selected tatars)(can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "TREBUCHETS + 3 ALCANCE!") 
+    (research my-unique-research)(chat-local-to-self my-player-number "TREBUCHETS + 3 ALCANCE!") 
 )
 
 ; LORDS OF THE WEST   
@@ -1474,7 +1474,7 @@
     )
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "REVOLUSION")(attack-now)
+    (chat-local-to-self my-player-number "REVOLUSION")(attack-now)
     (disable-self)
 )
 
@@ -1487,14 +1487,14 @@
     )
     (current-age == imperial-age)
 =>
-    (research ri-first-crusade)(chat-to-player my-player-number "5 SARGENTOS GRATIS POR CENTRO DE CIUDAD!") 
+    (research ri-first-crusade)(chat-local-to-self my-player-number "5 SARGENTOS GRATIS POR CENTRO DE CIUDAD!") 
 )
 
 (defrule
     (civ-selected sicilians)(can-research my-unique-research)
     (unit-type-count-total knight-line > 0)    
 =>
-    (research my-unique-research)(chat-to-player my-player-number "CABALLEROS +1 ARMADURA CUERPO A CUERPO, +2 ARMADURA DISTANCIA!") 
+    (research my-unique-research)(chat-local-to-self my-player-number "CABALLEROS +1 ARMADURA CUERPO A CUERPO, +2 ARMADURA DISTANCIA!") 
 )
 
 ; DAWN OF DUKES   
@@ -1504,28 +1504,28 @@
     (civ-selected bohemians)
     (can-research my-second-unique-research)
 =>
-    (research my-second-unique-research)(chat-to-player my-player-number "UNIDADES DE POLVORA SE MUEVEN MÁS RAPIDO") 
+    (research my-second-unique-research)(chat-local-to-self my-player-number "UNIDADES DE POLVORA SE MUEVEN MÁS RAPIDO") 
 )
 
 (defrule
     (civ-selected bohemians)(food-amount > 20000)
     (can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "TECNOLOGÍAS DE MONASTERIO NO VALEN ORO SINO COMIDA") 
+    (research my-unique-research)(chat-local-to-self my-player-number "TECNOLOGÍAS DE MONASTERIO NO VALEN ORO SINO COMIDA") 
 )
 
 ; POLACOS
 (defrule 
     (can-research ri-szlachta-privileges)
 =>
-    (research ri-szlachta-privileges)(chat-to-player my-player-number "CABALLEROS CUESTAN 60% MENOS ORO!")  
+    (research ri-szlachta-privileges)(chat-local-to-self my-player-number "CABALLEROS CUESTAN 60% MENOS ORO!")  
 )
 
 (defrule
     (civ-selected poles)(unit-type-count-total knight-line > 0)
     (can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-to-player my-player-number "CABALLEROS HACEN DAÑO DE ÁREA!") 
+    (research my-unique-research)(chat-local-to-self my-player-number "CABALLEROS HACEN DAÑO DE ÁREA!") 
 )
 
 
@@ -1560,7 +1560,7 @@
     )
 	(can-research ri-careening)
 =>
-	(chat-to-player my-player-number "ESTO ES UN EJERCITIO DE PIRATERIA!!!!")
+	(chat-local-to-self my-player-number "ESTO ES UN EJERCITIO DE PIRATERIA!!!!")
 	(research ri-careening)
     (disable-self)
 )
@@ -1909,7 +1909,7 @@
     (current-age == imperial-age)(not(civ-selected ethiopian))
 =>
     (research my-unique-unit-upgrade)
-    (chat-to-player my-player-number "UNIDAD UNICA MEJORADA ")
+    (chat-local-to-self my-player-number "UNIDAD UNICA MEJORADA ")
 )
 
 (defrule
@@ -2021,7 +2021,7 @@
     )
 =>
     (research ri-fletching)
-    (chat-to-player my-player-number "WE GOT THE FLETCHING THING!")
+    (chat-local-to-self my-player-number "WE GOT THE FLETCHING THING!")
 )
 
 (defrule
@@ -2274,7 +2274,7 @@
     )
 	(can-research ri-heated-shot)
 =>
-	(chat-to-player my-player-number "ESTO ES UN EJERCITIO DE PIRATERIA!!!!")
+	(chat-local-to-self my-player-number "ESTO ES UN EJERCITIO DE PIRATERIA!!!!")
 	(research ri-heated-shot)
 )
 
@@ -2359,7 +2359,7 @@
 	(building-type-count-total town-center < 2)
 =>
     (build town-center)(up-modify-sn sn-mill-max-distance c:+ 12)
-    (chat-to-player my-player-number "TOWN CENTER 2")
+    (chat-local-to-self my-player-number "TOWN CENTER 2")
 )
 (defrule
     (can-build town-center)(current-age == imperial-age)(food-amount > 400)
@@ -2368,7 +2368,7 @@
     ;(building-type-count-total university > 0)  
     (building-type-count-total castle > 0)(military-population > 40)
 =>
-    (build town-center)   (chat-to-player my-player-number "TOWN CENTER 3")
+    (build town-center)   (chat-local-to-self my-player-number "TOWN CENTER 3")
 )
 
 (defrule
@@ -2378,7 +2378,7 @@
     (building-type-count-total castle > 0)(building-type-count-total university > 0)  
     (building-type-count-total town-center < 6) (building-type-count-total town-center > 2)
 =>
-    (build town-center) (chat-to-player my-player-number "TOWN CENTER")
+    (build town-center) (chat-local-to-self my-player-number "TOWN CENTER")
 )
 
 ; MOLINO    
@@ -2389,14 +2389,14 @@
     (resource-found food)
     (wood-amount > 200)
 =>
-    (build mill)(chat-to-player my-player-number "MILL 1 (FOOD FOUND)")
+    (build mill)(chat-local-to-self my-player-number "MILL 1 (FOOD FOUND)")
 )
 
 (defrule  
     (building-type-count-total mill < 1)(building-type-count town-center > 0)
     (wood-amount > 400)
 =>
-    (build mill)(chat-to-player my-player-number "MILL 1 (EXCESS WOOD)")
+    (build mill)(chat-local-to-self my-player-number "MILL 1 (EXCESS WOOD)")
 )
 
 (defrule  
@@ -2406,7 +2406,7 @@
     (game-time > 270)
     (wood-amount > 200)
 =>
-    (build mill)(chat-to-player my-player-number "MILL 1 (FORCED)")
+    (build mill)(chat-local-to-self my-player-number "MILL 1 (FORCED)")
 )
 
 (defrule  
@@ -2416,7 +2416,7 @@
     (wood-amount > 200)
 =>
     (build mill)
-    (set-strategic-number sn-maximum-food-drop-distance 9) (chat-to-player my-player-number "MILL 1 (FORCED - FEUDAL)")
+    (set-strategic-number sn-maximum-food-drop-distance 9) (chat-local-to-self my-player-number "MILL 1 (FORCED - FEUDAL)")
 )
 
 (defrule  
@@ -2428,7 +2428,7 @@
     (building-type-count lumber-camp > 0)
     (not(civ-selected khmer))
 =>
-    (build mill)(chat-to-player my-player-number "MILL 2")
+    (build mill)(chat-local-to-self my-player-number "MILL 2")
     (up-modify-sn sn-mill-max-distance c:+ 12)
     (set-strategic-number sn-maximum-food-drop-distance 9) 
 )
@@ -2443,7 +2443,7 @@
     (building-type-count town-center > 0)    
     (not(civ-selected khmer))
 =>
-    (build mill)(chat-to-player my-player-number "MILL 3")
+    (build mill)(chat-local-to-self my-player-number "MILL 3")
     (up-modify-sn sn-mill-max-distance c:+ 12)
 )
 
@@ -2454,7 +2454,7 @@
     (can-build mill)(not(civ-selected khmer))
 =>
     (build mill)
-    (up-modify-sn sn-mill-max-distance c:+ 8)(chat-to-player my-player-number "MILL")
+    (up-modify-sn sn-mill-max-distance c:+ 8)(chat-local-to-self my-player-number "MILL")
 )
 
 ; GRANJAS
@@ -2527,7 +2527,7 @@
 	(can-build house)
 =>
 	(build house)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-to-player my-player-number "HOUSE (EXCESS WOOD)") 
+    (chat-local-to-self my-player-number "HOUSE (EXCESS WOOD)") 
 )
 
 (defrule
@@ -2536,7 +2536,7 @@
 	(can-build house)
 =>
 	(build house)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-to-player my-player-number "HOUSE (EXCESS WOOD)") 
+    (chat-local-to-self my-player-number "HOUSE (EXCESS WOOD)") 
 )
 
 (defrule
@@ -2548,7 +2548,7 @@
     (building-type-count-total house < 1)
     (can-build house)
 =>
-    (build house)(chat-to-player my-player-number "HOUSE 1") 
+    (build house)(chat-local-to-self my-player-number "HOUSE 1") 
 )
 
 (defrule
@@ -2557,7 +2557,7 @@
     (building-type-count-total house < 2)
     (can-build house)
 =>
-    (build house)(chat-to-player my-player-number "HOUSE 2") 
+    (build house)(chat-local-to-self my-player-number "HOUSE 2") 
 )
 
 (defrule
@@ -2567,7 +2567,7 @@
     (building-type-count-total house < 3)
     (can-build house)    (wood-amount > 125)
 =>
-    (build house)(chat-to-player my-player-number "HOUSE 3") 
+    (build house)(chat-local-to-self my-player-number "HOUSE 3") 
 )
 
 (defrule
@@ -2605,7 +2605,7 @@
     )
 =>
     (build lumber-camp)
-    (chat-to-player my-player-number "LUMBER CAMP 1")
+    (chat-local-to-self my-player-number "LUMBER CAMP 1")
     (up-modify-sn sn-camp-max-distance c:+ 8)        
 )
 
@@ -2622,7 +2622,7 @@
     (dropsite-min-distance wood > 3)
 =>
     (build lumber-camp)
-    (chat-to-player my-player-number "LUMBER CAMP 2")
+    (chat-local-to-self my-player-number "LUMBER CAMP 2")
     (up-modify-sn sn-camp-max-distance c:+ 8)     
 )
 
@@ -2637,7 +2637,7 @@
     (dropsite-min-distance wood > 3)
 =>
     (build lumber-camp)
-    (chat-to-player my-player-number "LUMBER CAMP 3")
+    (chat-local-to-self my-player-number "LUMBER CAMP 3")
     (up-modify-sn sn-camp-max-distance c:+ 8)     
 )
 
@@ -2656,7 +2656,7 @@
     (can-build lumber-camp)
 =>
     (build lumber-camp)
-    (chat-to-player my-player-number "LUMBER CAMP")
+    (chat-local-to-self my-player-number "LUMBER CAMP")
     (up-modify-sn sn-camp-max-distance c:+ 12)               
 )
 
@@ -2674,7 +2674,7 @@
 =>
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    ;(chat-to-player my-player-number "MINING CAMP - GOLD 1")
+    ;(chat-local-to-self my-player-number "MINING CAMP - GOLD 1")
     (up-chat-data-to-self "MINING CAMP - GOLD 1 - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
 )
 
@@ -2688,7 +2688,7 @@
     (can-build mining-camp)
 =>
     (build mining-camp)
-    ;(chat-to-player my-player-number "MINING CAMP - GOLD")
+    ;(chat-local-to-self my-player-number "MINING CAMP - GOLD")
     (up-modify-sn sn-mining-camp-max-distance c:+ 8)  
     (up-chat-data-to-self "MINING CAMP - STONE - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
 )
@@ -2704,7 +2704,7 @@
     (can-build mining-camp)
 =>
     (build mining-camp)
-    ;(chat-to-player my-player-number "MINING CAMP - STONE ")
+    ;(chat-local-to-self my-player-number "MINING CAMP - STONE ")
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
     (up-chat-data-to-self "MINING CAMP - STONE  - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
 )
@@ -2719,7 +2719,7 @@
     (can-build mining-camp)
 =>
     (build mining-camp)
-    ;(chat-to-player my-player-number "MINING CAMP - STONE 1")
+    ;(chat-local-to-self my-player-number "MINING CAMP - STONE 1")
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
     (up-chat-data-to-self "MINING CAMP - STONE 1 - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
 )
@@ -2734,7 +2734,7 @@
     (can-build mining-camp)
 =>
     (build mining-camp)
-    ;(chat-to-player my-player-number "MINING CAMP - STONE")
+    ;(chat-local-to-self my-player-number "MINING CAMP - STONE")
     (up-modify-sn sn-mining-camp-max-distance c:+ 8)  
     (up-chat-data-to-self "MINING CAMP - STONE - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
 )
@@ -2747,7 +2747,7 @@
     (can-build blacksmith)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 1)(build blacksmith)
-    (chat-to-player my-player-number "BLACKSMITH")
+    (chat-local-to-self my-player-number "BLACKSMITH")
 )
 
 ; MERCADO
@@ -2759,7 +2759,7 @@
     (wood-amount > 275)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 2)
-    (build market)(chat-to-player my-player-number "MARKET 1") 
+    (build market)(chat-local-to-self my-player-number "MARKET 1") 
 )
 
 (defrule
@@ -2770,7 +2770,7 @@
     (building-type-count-total castle > 0)
     (building-type-count-total barracks > 1)
 =>
-    (build market)(chat-to-player my-player-number "MARKET 2")  
+    (build market)(chat-local-to-self my-player-number "MARKET 2")  
 )
 
 (defrule
@@ -2781,7 +2781,7 @@
     (building-type-count-total castle > 0)
     (building-type-count-total barracks > 1)(military-population > 60)
 =>
-    (build market)(chat-to-player my-player-number "MARKET 3")  
+    (build market)(chat-local-to-self my-player-number "MARKET 3")  
 )
 
 (defrule
@@ -2791,7 +2791,7 @@
     (building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total barracks > 1)(military-population > 65)
 =>
-    (build market)(chat-to-player my-player-number "MARKET 4")  
+    (build market)(chat-local-to-self my-player-number "MARKET 4")  
 )
 
 
@@ -2807,7 +2807,7 @@
         (civ-selected hun)
     )
 =>
-    (build university)(chat-to-player my-player-number "UNIVERSITY")
+    (build university)(chat-local-to-self my-player-number "UNIVERSITY")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -2827,7 +2827,7 @@
         ;(up-modify-sn sn-maximum-town-size c:+ 40)                
         (build dock)(delete-building town-center)(delete-building mill)
         (delete-building farm)(delete-building farm)(delete-building farm)        
-        (chat-to-player my-player-number "DOCK AND DELETE")(build town-center)
+        (chat-local-to-self my-player-number "DOCK AND DELETE")(build town-center)
         (set-goal gl-weMovedPlace 1)
         (delete-building farm)(delete-building farm)(delete-building farm) 
     )
@@ -2866,7 +2866,7 @@
         (building-type-count-total dock == 1)
     =>
         (build dock)
-        (chat-to-player my-player-number "DOCK 2")
+        (chat-local-to-self my-player-number "DOCK 2")
     )
 
     (defrule
@@ -2877,7 +2877,7 @@
         (building-type-count-total dock == 2)
     =>
         (build dock)
-        (chat-to-player my-player-number "DOCK 3")
+        (chat-local-to-self my-player-number "DOCK 3")
     )
 
     (defrule
@@ -2888,7 +2888,7 @@
         (building-type-count-total dock < 4)
     =>
         (build dock)
-        (chat-to-player my-player-number "DOCK 4")
+        (chat-local-to-self my-player-number "DOCK 4")
     )
 
     (defrule
@@ -2899,7 +2899,7 @@
         (building-type-count-total dock < 5)
     =>
         (build dock)
-        (chat-to-player my-player-number "DOCK 5")
+        (chat-local-to-self my-player-number "DOCK 5")
     )    
 
     (defrule
@@ -2908,7 +2908,7 @@
         (building-type-count-total dock < 24)
         (can-build dock)    
     =>  
-        (build dock)(chat-to-player my-player-number "DOCK (EXCESS WOOD)")
+        (build dock)(chat-local-to-self my-player-number "DOCK (EXCESS WOOD)")
     )
 
 ; MILITARES
@@ -2981,7 +2981,7 @@
     (can-build castle)
     (building-type-count-total castle == 0)
 =>
-    (chat-to-player my-player-number "TRYING TO BUILD CASTLE 1")
+    (chat-local-to-self my-player-number "TRYING TO BUILD CASTLE 1")
     (up-modify-sn sn-maximum-town-size c:+ 3)    
     (build castle) 
 )
@@ -2989,7 +2989,7 @@
 (defrule
     (building-type-count castle > 0)
 =>
-    (chat-to-player my-player-number "CASTLE 1 BUILT!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    (chat-local-to-self my-player-number "CASTLE 1 BUILT!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     (up-modify-sn sn-maximum-town-size c:+ 30)
     (up-modify-sn sn-minimum-town-size c:+ 30)
     (disable-self)
@@ -2999,7 +2999,7 @@
     (can-build castle)(current-age == castle-age)
     (building-type-count-total castle == 1)
 =>
-    (chat-to-player my-player-number "TRYING TO BUILD FORWARD CASTLE 2")
+    (chat-local-to-self my-player-number "TRYING TO BUILD FORWARD CASTLE 2")
     (build-forward castle) 
 )
 
@@ -3007,14 +3007,14 @@
     (can-build castle)
     (building-type-count-total castle == 1)
 =>
-    (chat-to-player my-player-number "TRYING TO BUILD CASTLE 2")
+    (chat-local-to-self my-player-number "TRYING TO BUILD CASTLE 2")
     (build castle) 
 )
 
 (defrule
     (building-type-count castle > 0)
 =>
-    (chat-to-player my-player-number "CASTLE 2 BUILT!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    (chat-local-to-self my-player-number "CASTLE 2 BUILT!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     (up-modify-sn sn-maximum-town-size c:+ 4)
     (up-modify-sn sn-minimum-town-size c:+ 4)
     (disable-self)
@@ -3051,7 +3051,7 @@
 	(can-build barracks)
 =>
 	(build barracks)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-to-player my-player-number "BARRACKS (EXCESS WOOD)") 
+    (chat-local-to-self my-player-number "BARRACKS (EXCESS WOOD)") 
 )
 
 (defrule
@@ -3060,7 +3060,7 @@
 	(can-build barracks)
 =>
 	(build barracks)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-to-player my-player-number "BARRACKS (EXCESS WOOD)") 
+    (chat-local-to-self my-player-number "BARRACKS (EXCESS WOOD)") 
 )
 
 (defrule ;four nested conditionals, the japanese would do it for you
@@ -3078,7 +3078,7 @@
     (can-build barracks)
 =>
     (build barracks)
-    (chat-to-player my-player-number "BARRACKS 1")
+    (chat-local-to-self my-player-number "BARRACKS 1")
 )
 
 (defrule
@@ -3091,7 +3091,7 @@
     (can-build barracks)(military-population > 40)
 =>  
     
-    (build barracks)(chat-to-player my-player-number "BARRACKS 2")
+    (build barracks)(chat-local-to-self my-player-number "BARRACKS 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)
 )
@@ -3105,7 +3105,7 @@
     )
     (can-build barracks)(military-population > 40)
 =>
-    (build barracks)(chat-to-player my-player-number "BARRACKS 3")
+    (build barracks)(chat-local-to-self my-player-number "BARRACKS 3")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3113,7 +3113,7 @@
 	(current-age == imperial-age)(building-type-count-total barracks < 8)
     (can-build barracks)(wood-amount > 2000)(food-amount > 400)
 =>
-    (build barracks)(chat-to-player my-player-number "BARRACKS")
+    (build barracks)(chat-local-to-self my-player-number "BARRACKS")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3123,7 +3123,7 @@
     (wood-amount > 3000)
     (can-build barracks)
 =>
-    (build barracks)(chat-to-player my-player-number "GOTHIC BARRACKS")
+    (build barracks)(chat-local-to-self my-player-number "GOTHIC BARRACKS")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3134,7 +3134,7 @@
     (building-type-count-total stable < 1) 
 =>
     (build stable)
-    (chat-to-player my-player-number "STABLE 1") 
+    (chat-local-to-self my-player-number "STABLE 1") 
 )
 
 (defrule
@@ -3143,7 +3143,7 @@
     (building-type-count-total siege-workshop > 0)      
 =>
     (build stable)
-    (chat-to-player my-player-number "STABLE 1") 
+    (chat-local-to-self my-player-number "STABLE 1") 
 )
 
 (defrule
@@ -3151,7 +3151,7 @@
     (can-build stable)(building-type-count-total stable < 1)
 =>
     (build stable)
-    (chat-to-player my-player-number "STABLE 1") 
+    (chat-local-to-self my-player-number "STABLE 1") 
 )
 
 (defrule
@@ -3161,7 +3161,7 @@
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>
-    (build stable)(chat-to-player my-player-number "STABLE 2")
+    (build stable)(chat-local-to-self my-player-number "STABLE 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3172,7 +3172,7 @@
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>
-    (build stable)(chat-to-player my-player-number "STABLE 3")
+    (build stable)(chat-local-to-self my-player-number "STABLE 3")
     (up-modify-sn sn-maximum-town-size c:+ 1) 
 )
 
@@ -3181,7 +3181,7 @@
     (can-build stable)(wood-amount > 2000)
     (not(civ-selected gothic))
 =>
-    (build stable)(chat-to-player my-player-number "STABLE")
+    (build stable)(chat-local-to-self my-player-number "STABLE")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3194,7 +3194,7 @@
     (not(civ-selected cumans))
 =>
     
-    (chat-to-player my-player-number "ARCHERY RANGE 1")
+    (chat-local-to-self my-player-number "ARCHERY RANGE 1")
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (up-modify-sn sn-minimum-town-size c:+ 2)
     (build archery-range)
@@ -3209,7 +3209,7 @@
     (civ-selected cumans)
 =>
     
-    (chat-to-player my-player-number "ARCHERY RANGE 1")
+    (chat-local-to-self my-player-number "ARCHERY RANGE 1")
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (up-modify-sn sn-minimum-town-size c:+ 2)
     (build archery-range)
@@ -3222,7 +3222,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
-    (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE 2")
+    (build archery-range)(chat-local-to-self my-player-number "ARCHERY RANGE 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)
 )
@@ -3234,7 +3234,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
-    (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE 3")
+    (build archery-range)(chat-local-to-self my-player-number "ARCHERY RANGE 3")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3243,7 +3243,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 2000)
 =>
-    (build archery-range)(chat-to-player my-player-number "ARCHERY RANGE")
+    (build archery-range)(chat-local-to-self my-player-number "ARCHERY RANGE")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3254,7 +3254,7 @@
 	(not(civ-selected gothic))
 =>
 
-    (chat-to-player my-player-number "SIEGE WORKSHOP 1")
+    (chat-local-to-self my-player-number "SIEGE WORKSHOP 1")
     (up-modify-sn sn-maximum-town-size c:+ 2)
 
         (build siege-workshop)  
@@ -3265,7 +3265,7 @@
     (current-age == imperial-age)(building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total siege-workshop == 1)
 =>
-    (build siege-workshop)(chat-to-player my-player-number "SIEGE WORKSHOP 2")
+    (build siege-workshop)(chat-local-to-self my-player-number "SIEGE WORKSHOP 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)
 )
@@ -3276,7 +3276,7 @@
     (building-type-count-total university > 0)(building-type-count-total castle > 0)
     (can-build siege-workshop)(wood-amount > 2000)(not(civ-selected gothic)) 
 =>
-    (build siege-workshop)(chat-to-player my-player-number "SIEGE WORKSHOP")
+    (build siege-workshop)(chat-local-to-self my-player-number "SIEGE WORKSHOP")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3290,7 +3290,7 @@
     )
 => 
     (build monastery)
-    (chat-to-player my-player-number "MONASTERY 1") 
+    (chat-local-to-self my-player-number "MONASTERY 1") 
 )
 
 
@@ -3302,7 +3302,7 @@
     (civ-selected saracen)
 => 
     (build monastery)
-    (chat-to-player my-player-number "MONASTERY 2") 
+    (chat-local-to-self my-player-number "MONASTERY 2") 
 )
 
 ; TORRE 
@@ -3440,7 +3440,7 @@
 (defrule
     (unit-type-count-total monk > 0)
 =>
-    (chat-to-player my-player-number "FIRST MONK!!!!!!!!!!")
+    (chat-local-to-self my-player-number "FIRST MONK!!!!!!!!!!")
     (disable-self)
 )
 
@@ -4625,54 +4625,54 @@
     (players-unit-type-count any-enemy scout-cavalry-line > 2)
 =>  
     (set-goal gl-dudeHasScouts 1)    
-    ;(chat-to-player my-player-number "DUDE HAS LIGHT CAVALRY!")     
+    ;(chat-local-to-self my-player-number "DUDE HAS LIGHT CAVALRY!")     
 )
 
 (defrule
     (players-unit-type-count any-enemy scout-cavalry-line < 2) 
 =>  
     (set-goal gl-dudeHasScouts 0)    
-    ;(chat-to-player my-player-number "DUDE HAS NO LIGHT CAVALRY!")
+    ;(chat-local-to-self my-player-number "DUDE HAS NO LIGHT CAVALRY!")
 )
 
 (defrule
     (players-unit-type-count any-enemy skirmisher-line > 1)
 =>  
     (set-goal gl-dudeHasSkirmishers 1)    
-    ;(chat-to-player my-player-number "DUDE HAS SKIRMISHERS!")
+    ;(chat-local-to-self my-player-number "DUDE HAS SKIRMISHERS!")
 )
 
 (defrule
     (players-unit-type-count any-enemy skirmisher-line < 1)
 =>  
     (set-goal gl-dudeHasSkirmishers 0)    
-    ;(chat-to-player my-player-number "DUDE HAS NO SKIRMISHERS!")
+    ;(chat-local-to-self my-player-number "DUDE HAS NO SKIRMISHERS!")
 )
 
 (defrule
     (players-unit-type-count any-enemy archer-line > 1)
 =>  
     (set-goal gl-dudeHasArchers 1)    
-    ;(chat-to-player my-player-number "DUDE HAS ARCHERS!")
+    ;(chat-local-to-self my-player-number "DUDE HAS ARCHERS!")
 )
 
 (defrule
     (players-unit-type-count any-enemy archer-line < 1)
 =>  
     (set-goal gl-dudeHasArchers 0)    
-    ;(chat-to-player my-player-number "DUDE HAS NO ARCHERS!")
+    ;(chat-local-to-self my-player-number "DUDE HAS NO ARCHERS!")
 )
 
 (defrule
     (players-unit-type-count any-enemy spearman-line > 1)
 =>  
     (set-goal gl-dudeHasSpearmen 1)    
-    ;(chat-to-player my-player-number "DUDE HAS SPEARMEN!")
+    ;(chat-local-to-self my-player-number "DUDE HAS SPEARMEN!")
 )
 
 (defrule
     (players-unit-type-count any-enemy spearman-line < 1)
 =>  
     (set-goal gl-dudeHasSpearmen 0)    
-    ;(chat-to-player my-player-number "DUDE HAS NO SPEARMEN!")
+    ;(chat-local-to-self my-player-number "DUDE HAS NO SPEARMEN!")
 )
