@@ -3401,6 +3401,15 @@
 	(train trade-cart)
 )
 
+; FISH TRAP
+
+(defrule 
+    (can-build fish-trap)(civ-selected malay)
+    (building-type-count-total fish-trap < 8)
+=>
+	(build fish-trap)
+)
+
 ; UNIDADES MILITARES                                                                        
 ; MONASTERIO   
 (defrule
