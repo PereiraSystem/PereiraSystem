@@ -2526,7 +2526,7 @@
 ; EDAD 1
 (defrule
     (current-age == dark-age)(building-type-count town-center > 0)
-    (building-type-count-total barracks > 0)(wood-amount > 160)
+    (building-type-count-total barracks > 0)(wood-amount > 176)
 	(can-build farm)
     (building-type-count-total lumber-camp > 0)
 	(idle-farm-count < 3)
@@ -2545,7 +2545,7 @@
             (building-type-count-total stable > 0)
         )
     )
-    (wood-amount > 160)(food-amount < 2000)
+    (wood-amount > 276)(food-amount < 2000)
 	(idle-farm-count < 5)
 	(can-build farm)
 =>
@@ -2556,7 +2556,7 @@
 (defrule
 	(current-age == castle-age)(building-type-count town-center > 0)   
 	(building-type-count-total farm < 20)
-    (food-amount < 1200)(wood-amount > 160)
+    (food-amount < 1200)(wood-amount > 276)
     (or
         (building-type-count monastery > 0)
         (building-type-count siege-workshop > 0)
