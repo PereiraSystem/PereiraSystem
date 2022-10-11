@@ -2806,7 +2806,10 @@
     (defrule
         (can-build dock)(not(up-research-status c: feudal-age == research-pending))
         (building-type-count lumber-camp > 0)
-        (or(enemy-buildings-in-town)(town-under-attack))
+        (or
+            (or(enemy-buildings-in-town)(town-under-attack))    
+            (civ-selected malay)
+        )
         (building-type-count-total dock < 1)
     =>
         (delete-building farm)(delete-building farm)(delete-building farm)
