@@ -3944,7 +3944,8 @@
 
 (defrule
     (unit-type-count-total fire-ship-line < 1)
-    (wood-amount > 190)
+    (wood-amount > 190)    
+    (players-building-type-count any-enemy warship-class > 0)
     (can-train fire-ship-line)
 =>
     (train fire-ship-line)
@@ -3954,6 +3955,7 @@
     (unit-type-count-total fire-ship-line < 5)
     (building-type-count dock > 1)    
     (wood-amount > 190)
+    (players-building-type-count any-enemy warship-class > 0)    
     (can-train fire-ship-line)
 =>
     (train fire-ship-line)
@@ -3963,6 +3965,7 @@
     (unit-type-count-total fire-ship-line < 7)
     (building-type-count dock > 2)    
     (wood-amount > 190)
+    (players-building-type-count any-enemy warship-class > 0)    
     (can-train fire-ship-line)
 =>
     (train fire-ship-line)
@@ -3972,6 +3975,7 @@
     (unit-type-count-total fire-ship-line < 9)
     (building-type-count dock > 3)    
     (wood-amount > 190)
+    (players-building-type-count any-enemy warship-class > 0)    
     (can-train fire-ship-line)
 =>
     (train fire-ship-line)
@@ -3981,6 +3985,7 @@
     (unit-type-count-total fire-ship-line < 11)
     (building-type-count dock > 4)    
     (wood-amount > 190)
+    (players-building-type-count any-enemy warship-class > 0)    
     (can-train fire-ship-line)
 =>
     (train fire-ship-line)
@@ -3989,6 +3994,7 @@
 (defrule
     (current-age == imperial-age)
     (research-completed ri-careening)
+    (players-building-type-count any-enemy warship-class > 0)    
     (unit-type-count-total fire-ship-line < 4)
     (can-train fire-ship-line)
 =>
