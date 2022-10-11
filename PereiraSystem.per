@@ -2861,7 +2861,7 @@
         (building-type-count lumber-camp > 0)
         (building-type-count town-center > 0)        
         (wood-amount > 250)
-        (building-type-count-total dock < 2)
+        (building-type-count-total dock == 1)
     =>
         (build dock)
         (chat-to-player my-player-number "DOCK 2")
@@ -2872,7 +2872,7 @@
         (building-type-count lumber-camp > 0)
         (building-type-count town-center > 0)        
         (wood-amount > 350)
-        (building-type-count-total dock < 3)
+        (building-type-count-total dock == 2)
     =>
         (build dock)
         (chat-to-player my-player-number "DOCK 3")
