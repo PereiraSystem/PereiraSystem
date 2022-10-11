@@ -2821,15 +2821,11 @@
     =>
         (delete-building farm)(delete-building farm)(delete-building farm)
         (set-strategic-number sn-town-center-placement lumber-camp)
-        (set-strategic-number sn-gate-type-for-wall 1)
-        (up-modify-sn sn-maximum-town-size c: +40)         
-        (up-assign-builders c: town-center-foundation c: 3)
-        (up-modify-sn sn-mining-camp-max-distance c:+ 64)          
+        (up-modify-sn sn-maximum-town-size c: +40)                
         (build dock)(delete-building town-center)(delete-building mill)
         (delete-building farm)(delete-building farm)(delete-building farm)        
         (chat-to-player my-player-number "DOCK AND DELETE")(build town-center)
         (set-goal gl-weMovedPlace 1)
-        (set-strategic-number sn-maximum-food-drop-distance 0) 
         (delete-building farm)(delete-building farm)(delete-building farm) 
     )
 
@@ -2838,10 +2834,11 @@
     =>
         (delete-building farm)(delete-building farm)(delete-building farm) 
         (delete-building farm)(delete-building farm)(delete-building farm) 
-        (up-modify-sn sn-food-gatherer-percentage c: -12)
-        (up-modify-sn sn-gold-gatherer-percentage c: +8)
-        (set-strategic-number sn-maximum-gold-drop-distance 6)
-        (up-modify-sn sn-stone-gatherer-percentage c: +4)               
+        ;(up-modify-sn sn-food-gatherer-percentage c: -12)
+        ;(up-modify-sn sn-gold-gatherer-percentage c: +8)
+        ;(set-strategic-number sn-maximum-gold-drop-distance 6)
+        ;(up-modify-sn sn-stone-gatherer-percentage c: +4)
+        (chat-local-to-self "DELETING MORE FARMS")                
         (disable-self)
     )
 
