@@ -2420,11 +2420,12 @@
 )
 
 (defrule  
-    (building-type-count-total mill < 2)(building-type-count town-center > 0)
+    (building-type-count-total mill < 2)
     (current-age >= feudal-age)
     (can-build mill)
     (wood-amount > 200)
-    (building-type-count-total lumber-camp > 0)
+    (building-type-count town-center > 0)    
+    (building-type-count lumber-camp > 0)
     (not(civ-selected khmer))
 =>
     (build mill)(chat-to-player my-player-number "MILL 2")
@@ -2434,11 +2435,12 @@
 
 
 (defrule  
-    (building-type-count-total mill < 3)
+    (building-type-count-total mill == 2)
     (current-age >= feudal-age)
     (can-build mill)
     (wood-amount > 400)
-    (building-type-count-total lumber-camp > 0)
+    (building-type-count lumber-camp > 0)
+    (building-type-count town-center > 0)    
     (not(civ-selected khmer))
 =>
     (build mill)(chat-to-player my-player-number "MILL 3")
