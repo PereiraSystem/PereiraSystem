@@ -588,12 +588,22 @@
 )
 
 (defrule
+    (current-age == castle-age)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 55)
+    (set-strategic-number sn-wood-gatherer-percentage 20)
+    (set-strategic-number sn-gold-gatherer-percentage 15)
+    (set-strategic-number sn-stone-gatherer-percentage 10)
+    (disable-self)
+)
+
+(defrule
     (current-age == castle-age)(building-type-count-total monastery > 0)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 68)
-    (set-strategic-number sn-wood-gatherer-percentage 18)
-    (set-strategic-number sn-gold-gatherer-percentage 8)
-    (set-strategic-number sn-stone-gatherer-percentage 6)
+    (set-strategic-number sn-food-gatherer-percentage 55)
+    (set-strategic-number sn-wood-gatherer-percentage 15)
+    (set-strategic-number sn-gold-gatherer-percentage 15)
+    (set-strategic-number sn-stone-gatherer-percentage 15)
     (chat-local-to-self  "MONASTERY BUILT: SENDING SOME GOLD VILLAGERS FOR STONE")
     (disable-self)
 )
