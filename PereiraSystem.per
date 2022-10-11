@@ -3065,9 +3065,10 @@
 
 ; CONSTRUIR ARQUERIA
 (defrule
-	(building-type-count-total archery-range == 0) 
+	(building-type-count-total archery-range == 0)(wood-amount > 275) 
     ;(research-completed ri-double-bit-axe)   
-    (can-build archery-range)
+    (can-build archery-range)(building-type-count town-center > 0)
+    (building-type-count lumber-camp > 0)
     (not(civ-selected cumans))
 =>
     
@@ -3079,6 +3080,7 @@
 
 (defrule
 	(building-type-count-total archery-range == 0)
+    (building-type-count lumber-camp > 0)(building-type-count town-center > 0)
     (building-type-count siege-workshop > 0)      
     ;(research-completed ri-double-bit-axe)   
     (can-build archery-range)
