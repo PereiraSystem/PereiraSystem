@@ -2760,7 +2760,7 @@
 (defrule 
     (wood-amount > 276)
     (or(current-age > castle-age)
-    (and(building-type-count town-center < 0)(stone-amount < 100))    
+    (and(building-type-count town-center < 0)(stone-amount < 100)))    
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
