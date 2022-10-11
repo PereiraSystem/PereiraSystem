@@ -2776,15 +2776,17 @@
 
         (building-type-count-total dock < 1)
     =>
+            (delete-building farm)(delete-building farm)(delete-building farm)
         (set-strategic-number sn-town-center-placement mining-camp)
         (set-strategic-number sn-gate-type-for-wall 1)
         (up-modify-sn sn-maximum-town-size c: +40)         
         (up-assign-builders c: town-center-foundation c: 5)
         (build dock)(delete-building town-center)(delete-building mill)
-        (delete-building farm)(delete-building farm)(delete-building farm)
+
         (delete-building farm)(delete-building farm)(delete-building farm)        
         (chat-to-player my-player-number "DOCK")(build town-center)
-        (set-goal gl-weMovedPlace 1)  
+        (set-goal gl-weMovedPlace 1) 
+                (delete-building farm)(delete-building farm)(delete-building farm) 
     )
 
 
