@@ -2541,7 +2541,7 @@
 
 (defrule
     (current-age == dark-age)
-    (wood-amount > 125)
+    (or(wood-amount > 125)(and(civ-selected japanese)(wood-amount > 75))
     (building-type-count-total house < 1)
     (can-build house)
 =>
@@ -3323,7 +3323,8 @@
 
 (defrule
     (or(current-age < castle-age)(building-type-count castle > 0))
-    (stone-amount > 260)(wood-amount > 150)
+    (stone-amount > 260)
+    (or(wood-amount > 150)(and(civ-selected japanese)(wood-amount > 100))
     (can-build watch-tower-line)   
 =>
     (build watch-tower-line)  
