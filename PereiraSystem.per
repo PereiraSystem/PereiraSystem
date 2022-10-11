@@ -3323,7 +3323,7 @@
 
 (defrule
     (or(current-age < castle-age)(building-type-count castle > 0))
-    (stone-amount > 260)
+    (stone-amount > 260)(wood-amount > 150)
     (can-build watch-tower-line)   
 =>
     (build watch-tower-line)  
