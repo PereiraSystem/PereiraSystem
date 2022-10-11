@@ -631,6 +631,60 @@
     (disable-self)
 )
 
+(defrule
+    (food-amount > 2500)(wood-amount < 500)
+=>
+    (up-modify-sn sn-food-gatherer-percentage c: -16)
+    (up-modify-sn sn-wood-gatherer-percentage c: +16)
+    (chat-local-to-self  "WE NEED MORE WOOD, LESS FOOD")     
+    (disable-self)
+)
+
+(defrule
+    (food-amount > 2600)(gold-amount < 500)
+=>
+    (up-modify-sn sn-food-gatherer-percentage c: -16)
+    (up-modify-sn sn-gold-gatherer-percentage c: +16)
+    (chat-local-to-self  "WE NEED MORE GOLD, LESS FOOD")     
+    (disable-self)
+)
+
+(defrule
+    (wood-amount > 2500)(food-amount < 500)
+=>
+    (up-modify-sn sn-wood-gatherer-percentage c: -16)
+    (up-modify-sn sn-food-gatherer-percentage c: +16)
+    (chat-local-to-self  "WE NEED MORE FOOD, LESS WOOD")     
+    (disable-self)
+)
+
+(defrule
+    (wood-amount > 2600)(gold-amount < 500)
+=>
+    (up-modify-sn sn-wood-gatherer-percentage c: -16)
+    (up-modify-sn sn-gold-gatherer-percentage c: +16)
+    (chat-local-to-self  "WE NEED MORE GOLD, LESS WOOD")     
+    (disable-self)
+)
+
+(defrule
+    (gold-amount > 1300)(food-amount < 500)
+=>
+    (up-modify-sn sn-gold-gatherer-percentage c: -16)
+    (up-modify-sn sn-food-gatherer-percentage c: +16)    
+    (chat-local-to-self  "WE NEED MORE FOOD, LESS GOLD")     
+    (disable-self)
+)
+
+(defrule
+    (gold-amount > 1300)(food-amount < 500)
+=>
+    (up-modify-sn sn-gold-gatherer-percentage c: -16)
+    (up-modify-sn sn-wood-gatherer-percentage c: +16)    
+    (chat-local-to-self  "WE NEED MORE WOOD, LESS GOLD")     
+    (disable-self)
+)
+
 ; COMBATE                               
 ; DEFENSA                      
 (defrule 
