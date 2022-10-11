@@ -2411,7 +2411,8 @@
 
 (defrule  
     (current-age == feudal-age)(building-type-count town-center > 0)
-    (building-type-count-total mill < 1)(set-strategic-number sn-maximum-food-drop-distance 9) 
+    (building-type-count-total mill < 1)
+    (set-strategic-number sn-maximum-food-drop-distance 9) 
     (wood-amount > 200)
 =>
     (build mill)(chat-to-player my-player-number "MILL 1 (FORCED - FEUDAL)")
