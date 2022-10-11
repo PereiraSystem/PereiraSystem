@@ -2382,7 +2382,7 @@
 ; MOLINO    
 
 (defrule  
-    (building-type-count-total mill < 1)
+    (building-type-count-total mill < 1)(building-type-count-total town-center > 0)
     (can-build mill)
     (resource-found food)
     (wood-amount > 200)
@@ -2391,14 +2391,14 @@
 )
 
 (defrule  
-    (building-type-count-total mill < 1)
+    (building-type-count-total mill < 1)(building-type-count-total town-center > 0)
     (wood-amount > 400)
 =>
     (build mill)(chat-to-player my-player-number "MILL 1 (EXCESS WOOD)")
 )
 
 (defrule  
-    (building-type-count-total mill < 1)
+    (building-type-count-total mill < 1)(building-type-count-total town-center > 0)
     (building-type-count-total lumber-camp < 1)
     (building-type-count-total dock < 1)    
     (game-time > 270)
@@ -2408,7 +2408,7 @@
 )
 
 (defrule  
-    (current-age == feudal-age)
+    (current-age == feudal-age)(building-type-count-total town-center > 0)
     (building-type-count-total mill < 1)
     (wood-amount > 200)
 =>
@@ -2416,7 +2416,7 @@
 )
 
 (defrule  
-    (building-type-count-total mill < 2)
+    (building-type-count-total mill < 2)(building-type-count-total town-center > 0)
     (current-age >= feudal-age)
     (can-build mill)
     (wood-amount > 200)
