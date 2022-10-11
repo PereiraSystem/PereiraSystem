@@ -2541,7 +2541,10 @@
 
 (defrule
     (current-age == dark-age)
-    (or(wood-amount > 125)(and(civ-selected japanese)(wood-amount > 75))
+    (or
+        (wood-amount > 125)
+        (and(civ-selected japanese)(wood-amount > 75))
+    )
     (building-type-count-total house < 1)
     (can-build house)
 =>
