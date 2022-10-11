@@ -2500,9 +2500,10 @@
 (defrule
 	(current-age == castle-age)(building-type-count town-center > 0)   
 	(building-type-count-total farm < 20)
-    (food-amount < 1200)(wood-amount > 160)
-    (or(building-type-count-total monastery > 0)(wood-amount > 500)
-    (or(building-type-count-total siege-workshop > 0)
+    (food-amount < 1200)(wood-amount > 260)
+    (or(building-type-count-total monastery > 0)
+        (building-type-count-total siege-workshop > 0)
+    )
     (civ-selected gothic))
 	(can-build farm)
 =>
