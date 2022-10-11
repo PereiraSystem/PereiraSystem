@@ -2743,40 +2743,49 @@
 
 ; PIEDRA
 (defrule 
-    (or
-        (building-type-count monastery > 0)
-        (building-type-count-total town-center < 0)       
-    )
+    (wood-amount > 276)
+    (or(current-age >= castle-age)
+    (and(building-type-count town-center < 0)(stone-amount < 100))    
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
 =>
     (build mining-camp)
-    ;(chat-local-to-self  "MINING CAMP - STONE ")
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    (up-chat-data-to-self "MINING CAMP - STONE  - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "MINING CAMP - STONE 1 - MAX DISTANCE = %d" s: sn-mining-camp-max-distance)  
 )
 
 (defrule 
-    (current-age >= castle-age)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)            
-    (building-type-count-total monastery > 0)
-    (building-type-count-total mining-camp == 0)
+    (wood-amount > 276)
+    (or(current-age > castle-age)
+    (and(building-type-count town-center < 0)(stone-amount < 100))    
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
 =>
     (build mining-camp)
-    ;(chat-local-to-self  "MINING CAMP - STONE 1")
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    (up-chat-data-to-self "MINING CAMP - STONE 1 - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "MINING CAMP - STONE 2 - MAX DISTANCE = %d" s: sn-mining-camp-max-distance)  
+)
+
+(defrule 
+    (current-age > castle-age)
+    (building-type-count-total monastery > 0)
+    (building-type-count-total mining-camp g:< gl-)    
+    (resource-found stone) 
+    (dropsite-min-distance stone > 3)
+    (can-build mining-camp)
+=>
+    (build mining-camp)
+    (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
+    (up-chat-data-to-self "MINING CAMP - STONE - MAX DISTANCE = %d" s: sn-mining-camp-max-distance)  
 )
 
 (defrule 
     (current-age > castle-age)
     (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)            
     (building-type-count-total monastery > 0)
-    (building-type-count-total mining-camp < gl-max-mining-camps-qty)
+    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
@@ -2784,7 +2793,7 @@
     (build mining-camp)
     ;(chat-local-to-self  "MINING CAMP - STONE")
     (up-modify-sn sn-mining-camp-max-distance c:+ 8)  
-    (up-chat-data-to-self "MINING CAMP - STONE - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "MINING CAMP - STONE - MAX DISTANCE = %d" s: sn-mining-camp-max-distance)  
 )
 
 ; HERRERIA
