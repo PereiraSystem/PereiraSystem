@@ -2827,7 +2827,7 @@
         (up-modify-sn sn-mining-camp-max-distance c:+ 64)          
         (build dock)(delete-building town-center)(delete-building mill)
         (delete-building farm)(delete-building farm)(delete-building farm)        
-        (chat-to-player my-player-number "DOCK")(build town-center)
+        (chat-to-player my-player-number "DOCK AND DELETE")(build town-center)
         (set-goal gl-weMovedPlace 1)
         (set-strategic-number sn-maximum-food-drop-distance 0) 
         (delete-building farm)(delete-building farm)(delete-building farm) 
@@ -2882,7 +2882,7 @@
         (can-build dock)(not(up-research-status c: feudal-age == research-pending))
         (building-type-count lumber-camp > 0)
         (building-type-count town-center > 0)        
-        (wood-amount > 350)
+        (wood-amount > 450)
         (building-type-count-total dock < 4)
     =>
         (build dock)
@@ -2893,7 +2893,7 @@
         (can-build dock)(not(up-research-status c: feudal-age == research-pending))
         (building-type-count lumber-camp > 0)
         (building-type-count town-center > 0)        
-        (wood-amount > 350)
+        (wood-amount > 550)
         (building-type-count-total dock < 5)
     =>
         (build dock)
@@ -2906,7 +2906,7 @@
         (building-type-count-total dock < 24)
         (can-build dock)    
     =>  
-        (build dock)
+        (build dock)(chat-to-player my-player-number "DOCK (EXCESS WOOD)")
     )
 
 ; MILITARES
