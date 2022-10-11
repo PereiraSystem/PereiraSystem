@@ -2776,10 +2776,12 @@
         (building-type-count-total dock < 1)
     =>
         (set-strategic-number sn-town-center-placement outpost)
-        (set-strategic-number sn-gate-type-for-wall 1)        
+        (set-strategic-number sn-gate-type-for-wall 1)
+        (up-modify-sn sn-maximum-town-size c: +40)         
         (up-assign-builders c: town-center-foundation c: 5)
         (build dock)(delete-building town-center)(delete-building mill)
         (delete-building farm)(delete-building farm)(delete-building farm)
+        (delete-building farm)(delete-building farm)(delete-building farm)        
         (chat-to-player my-player-number "DOCK")(build town-center)
         (set-goal gl-weMovedPlace 1)  
     )
