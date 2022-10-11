@@ -2821,7 +2821,8 @@
         (build dock)(delete-building town-center)(delete-building mill)
         (delete-building farm)(delete-building farm)(delete-building farm)        
         (chat-to-player my-player-number "DOCK")(build town-center)
-        (set-goal gl-weMovedPlace 1)(set-strategic-number sn-maximum-food-drop-distance 0) 
+        (set-goal gl-weMovedPlace 1)
+        (set-strategic-number sn-maximum-food-drop-distance 0) 
         (delete-building farm)(delete-building farm)(delete-building farm) 
     )
 
@@ -2830,10 +2831,21 @@
     =>
         (delete-building farm)(delete-building farm)(delete-building farm) 
         (delete-building farm)(delete-building farm)(delete-building farm) 
-        (up-modify-sn sn-food-gatherer-percentage c: -16)
-        (up-modify-sn sn-gold-gatherer-percentage c: +12)
+        (up-modify-sn sn-food-gatherer-percentage c: -12)
+        (up-modify-sn sn-gold-gatherer-percentage c: +8)
         (set-strategic-number sn-maximum-gold-drop-distance 6)
         (up-modify-sn sn-stone-gatherer-percentage c: +4)               
+        (disable-self)
+    )
+
+    (defrule
+        (up-compare-goal gl-weMovedPlace > 0)
+        (building-type-count town-center > 0)
+        (building-type-count dock > 0)
+        (building-type-count lumber-camp > 0)                
+    =>
+        (set-strategic-number sn-maximum-food-drop-distance 9)
+        (chat-local-to-self "FOOD DROP DISTANCE = 9")           
         (disable-self)
     )
 
