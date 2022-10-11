@@ -2919,6 +2919,7 @@
         (wood-amount > 250)
         (building-type-count-total dock == 1)
     =>
+        (up-assign-builders c: dock c:- 18)
         (build dock)
         (chat-local-to-self  "DOCK 2")
     )
