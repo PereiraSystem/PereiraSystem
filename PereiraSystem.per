@@ -2534,7 +2534,7 @@
 
 (defrule
     (current-age == feudal-age)(wood-amount > 125)
-    (research-completed ri-double-bit-axe)
+    (research-completed ri-double-bit-axe)(building-type-count town-center > 0)
     (housing-headroom < 3)
     (population-headroom > 0)
     (can-build house)
