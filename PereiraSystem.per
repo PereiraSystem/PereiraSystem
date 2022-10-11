@@ -2467,6 +2467,16 @@
 ; EDAD 2
 (defrule
 	(current-age == feudal-age)(building-type-count town-center > 0)
+    (building-type-count farm < 4)
+    (wood-amount > 160)
+	(idle-farm-count < 4)
+	(can-build farm)
+=>
+    (build farm)
+)
+
+(defrule
+	(current-age == feudal-age)(building-type-count town-center > 0)
     (or
         (civ-selected gothic)
         (or
