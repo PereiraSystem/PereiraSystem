@@ -2678,18 +2678,17 @@
 )
 
 (defrule 
-    (current-age > castle-age)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)            
-    (building-type-count-total monastery > 0)
+    (current-age >= castle-age)  
+    (or(building-type-count-total monastery > 0)
+    (building-type-count-total dock > 1))
     (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
     (resource-found gold) 
     (dropsite-min-distance gold > 3)
     (can-build mining-camp)
 =>
     (build mining-camp)
-    ;(chat-local-to-self my-player-number "MINING CAMP - GOLD")
     (up-modify-sn sn-mining-camp-max-distance c:+ 8)  
-    (up-chat-data-to-self "MINING CAMP - STONE - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "MINING CAMP - GOLD - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
 )
 
 ; PIEDRA
