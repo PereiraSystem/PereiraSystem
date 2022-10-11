@@ -2792,11 +2792,16 @@
     (defrule
         (up-compare-goal gl-weMovedPlace > 0)
     =>
-  (delete-building farm)(delete-building farm)(delete-building farm) 
-    (delete-building farm)(delete-building farm)(delete-building farm) 
-    (up-modify-sn sn-food-gatherer-percentage c: -12)
-     (up-modify-sn sn-gold-gatherer-percentage c: +12)   
-    (disable-self)
+        (delete-building farm)(delete-building farm)(delete-building farm) 
+        (delete-building farm)(delete-building farm)(delete-building farm) 
+        (up-modify-sn sn-food-gatherer-percentage c: -16)
+        (up-modify-sn sn-gold-gatherer-percentage c: +12)
+        (up-modify-sn sn-stone-gatherer-percentage c: +4)        
+        (set-strategic-number sn-gold-modifier-percentage 33)
+        (set-strategic-number sn-wood-modifier-percentage 33)    
+        (set-strategic-number sn-food-modifier-percentage 21) 
+        (set-strategic-number sn-stone-modifier-percentage 12)        
+        (disable-self)
     )
 
     (defrule
