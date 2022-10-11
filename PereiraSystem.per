@@ -2773,7 +2773,7 @@
 (defrule 
     (current-age > castle-age)
     (building-type-count-total monastery > 0)
-    (building-type-count-total mining-camp g:< gl-mining-camps-max-qty)    
+    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)    
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
