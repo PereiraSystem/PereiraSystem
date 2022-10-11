@@ -3185,6 +3185,7 @@
 ; ESTABLOS
 (defrule
     (can-build stable)(wood-amount > 275)
+    (research-completed ri-double-bit-axe)(food-amount > 100)
     (not(civ-selected cumans))
     (building-type-count-total stable < 1) 
 =>
