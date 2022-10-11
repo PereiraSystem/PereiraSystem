@@ -2695,14 +2695,7 @@
 )
 
 (defrule
-	(or
-        (or
-            (current-age > castle-age)
-            (building-type-count-total monastery > 0)
-        )
-        (wood-amount > 700)
-    )
-
+    (current-age >= feudal-age)
     (building-type-count-total lumber-camp g:< gl-max-lumber-camps-qty) 	
     (resource-found wood)
     (dropsite-min-distance wood > 3)
@@ -2710,7 +2703,7 @@
 =>
     (build lumber-camp)
     (chat-local-to-self  "LUMBER CAMP")
-    (up-modify-sn sn-camp-max-distance c:+ 12)               
+    (up-modify-sn sn-camp-max-distance c:+ 4)               
 )
 
 ; MINAS                       
@@ -2805,8 +2798,8 @@
 ; MERCADO
 (defrule
     (building-type-count-total market == 0)
-    (or(gold-amount > 500)(building-type-count-total monastery > 0))
-    ;(research-completed ri-double-bit-axe)
+    (unit-type-count-total any-ally villager > 0)
+    (research-completed ri-double-bit-axe)
     (can-build market)
     (wood-amount > 275)
 =>
