@@ -887,7 +887,11 @@
                 (food-amount > 875)
                 (not(town-under-attack))
             )
-            (current-age == imperial-age)
+            (or
+                (current-age == imperial-age)
+                (building-type-count farm > 5)                            
+            )
+            
         )
     (building-type-count-total farm > 3)
     (research-completed ri-double-bit-axe)
