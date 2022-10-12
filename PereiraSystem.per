@@ -2929,7 +2929,7 @@
     )
 
     (defrule
-        ;(up-compare-goal gl-weMovedPlace > 0)
+        (up-compare-goal gl-weMovedPlace > 0)
         (building-type-count town-center < 1)
         (building-type-count farm > 0)
     =>
@@ -2940,7 +2940,6 @@
         ;(set-strategic-number sn-maximum-gold-drop-distance 6)
         ;(up-modify-sn sn-stone-gatherer-percentage c: +4)
         (chat-local-to-self "DELETING MORE FARMS")                
-        (disable-self)
     )
 
     (defrule
