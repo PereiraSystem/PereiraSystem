@@ -2927,10 +2927,7 @@
                 )                
             )           
         )
-        (or
-            (or(enemy-buildings-in-town)(town-under-attack))    
-            
-        )
+        (enemy-buildings-in-town)
         (building-type-count-total dock < 1)
     =>
         (set-strategic-number sn-town-center-placement mining-camp)
