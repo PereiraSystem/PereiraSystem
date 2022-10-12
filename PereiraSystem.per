@@ -4264,6 +4264,7 @@
     (unit-type-count-total skirmisher-line < 8) 
     (up-compare-goal gl-dudeHasArchers > 0)
     (can-train skirmisher-line)
+    (or(wood-amount > 275)(building-type-count town-center > 0))
     (not(can-train genitour))   
 =>
     (train skirmisher-line)
@@ -4274,6 +4275,7 @@
     (unit-type-count-total skirmisher-line < 20)
     (up-compare-goal gl-dudeHasArchers > 0)        
     (research-completed ri-padded-archer-armor)
+    (or(wood-amount > 275)(building-type-count town-center > 0))    
     (can-train skirmisher-line)
     (not(can-train genitour))   
 =>
@@ -4281,7 +4283,9 @@
 )
 
 (defrule
-    (current-age == castle-age)(unit-type-count-total villager > 35)
+    (current-age == castle-age)
+    (or(wood-amount > 275)(building-type-count town-center > 0))    
+    ;(unit-type-count-total villager > 35)
     (unit-type-count-total skirmisher-line < 8)
         (or
         (players-unit-type-count any-enemy 936 > 4)
