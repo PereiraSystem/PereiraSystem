@@ -2492,8 +2492,9 @@
     (can-build mill)
     (wood-amount > 200)
     (building-type-count town-center > 0)    
-    (building-type-count lumber-camp > 0)
-    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
+    (building-type-count lumber-camp > 1)
+    (or(up-compare-goal gl-weMovedPlace == 0)
+    (building-type-count dock > 0))
     (not(civ-selected khmer))
 =>
     (build mill)(chat-local-to-self  "MILL 2")
