@@ -2721,7 +2721,9 @@
 (defrule 
     (current-age == feudal-age)
     (wood-amount > 200)
-    (or(building-type-count archery-range > 0)(building-type-count market > 0))
+    (or(wood-amount > 275)(building-type-count town-center > 0))    
+    (or(building-type-count archery-range > 0)
+    (building-type-count market > 0))
     (research-completed ri-double-bit-axe)
     (resource-found gold) 
     (dropsite-min-distance gold > 3)
@@ -2735,7 +2737,9 @@
 )
 
 (defrule 
-    (current-age >= castle-age)  
+    (current-age >= castle-age)
+    (wood-amount > 200)    
+    (or(wood-amount > 275)(building-type-count town-center > 0))      
     (or(building-type-count-total monastery > 0)
     (building-type-count-total dock > 1))
     (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
