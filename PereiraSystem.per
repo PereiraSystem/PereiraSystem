@@ -2917,6 +2917,7 @@
         (up-modify-sn sn-lumber-camp-max-distance c:+ 64)                
             (up-assign-builders c: dock c:+ 20)
         (build dock)(delete-building town-center)(delete-building mill)
+        (delete-building archery-range)(delete-building barracks)        
         (delete-building farm)(delete-building farm)(delete-building farm)        
         (chat-local-to-self  "DOCK AND DELETE - FOOD STOPPED")(build town-center)
         (set-strategic-number sn-maximum-food-drop-distance 0)
