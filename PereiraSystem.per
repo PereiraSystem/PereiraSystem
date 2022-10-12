@@ -2672,7 +2672,16 @@
     (up-modify-sn sn-camp-max-distance c:+ 8)        
 )
 
-
+(defrule
+    (building-type-count-total lumber-camp == 1)
+    (up-compare-goal gl-weMovedPlace == 1)
+    (can-build lumber-camp)(resource-found wood)
+        (dropsite-min-distance wood > 30) 
+=>
+    (build lumber-camp)
+    (chat-local-to-self  "LUMBER CAMP 2")
+    (up-modify-sn sn-camp-max-distance c:+ 8)     
+)
 
 (defrule
     (building-type-count-total lumber-camp == 1)
@@ -2897,7 +2906,8 @@
     =>
         (delete-building farm)(delete-building farm)(delete-building farm)
         (set-strategic-number sn-town-center-placement watch-tower)
-        (up-modify-sn sn-mining-camp-max-distance c:+ 64)                
+        (up-modify-sn sn-mining-camp-max-distance c:+ 64)
+        (up-modify-sn sn-lumber-camp-max-distance c:+ 64)                
             (up-assign-builders c: dock c:+ 20)
         (build dock)(delete-building town-center)(delete-building mill)
         (delete-building farm)(delete-building farm)(delete-building farm)        
