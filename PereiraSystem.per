@@ -4204,6 +4204,7 @@
 
 (defrule
     (current-age == feudal-age)
+    (gold-amount > 245)
     (up-compare-goal gl-dudeHasSpearmen > 0)    
     (unit-type-count-total archer-line g:< gl-cantArqueros)    
     (can-train archer-line)
