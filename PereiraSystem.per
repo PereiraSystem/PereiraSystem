@@ -2911,13 +2911,11 @@
         (building-type-count lumber-camp > 0)
         (or
             (or
-                (or
-                    (civ-selected portuguese)(civ-selected italian)
-                )
-                (or
-                    (civ-selected spanish)(civ-selected malay)
-                )                
+                (civ-selected portuguese)(civ-selected italian)
             )
+            (or
+                (civ-selected spanish)(civ-selected malay)
+            )                
         )
         (enemy-buildings-in-town)
         (building-type-count-total dock < 1)
