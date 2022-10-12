@@ -2491,13 +2491,15 @@
 (defrule  
     (building-type-count-total mill < 2)
     (current-age >= feudal-age)
-    (can-build mill)
+
     (wood-amount > 200)
     (building-type-count town-center > 0)    
     (building-type-count lumber-camp > 1)
     (or(up-compare-goal gl-weMovedPlace == 0)
     (building-type-count dock > 0))
     (not(civ-selected khmer))
+    (dropsite-min-distance food > 12)
+    (can-build mill)
 =>
     (build mill)(chat-local-to-self  "MILL 2")
     (up-modify-sn sn-mill-max-distance c:+ 12)
@@ -2508,7 +2510,7 @@
 (defrule  
     (building-type-count-total mill == 2)
     (current-age >= feudal-age)
-    (can-build mill)
+    (can-build mill)    (dropsite-min-distance food > 12)
     (wood-amount > 400)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)
