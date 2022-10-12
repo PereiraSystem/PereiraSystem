@@ -2830,8 +2830,9 @@
     (can-build blacksmith)
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
 =>
-    (up-modify-sn sn-maximum-town-size c:+ 1)(build blacksmith)
-    (chat-local-to-self  "BLACKSMITH")
+    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (chat-local-to-self  "Trying to build blacksmith")
+    (build blacksmith)    
 )
 
 ; MERCADO
