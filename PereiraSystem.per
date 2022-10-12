@@ -2411,6 +2411,7 @@
     (resource-found gold)(resource-found stone)
     (building-type-count-total town-center == 0) 
 =>
+    (chat-local-to-self  "- Trying to build town center 1... -")
     (build town-center)
 )
 
@@ -2425,8 +2426,9 @@
     (can-build town-center)
 	(building-type-count-total town-center < 2)
 =>
-    (build town-center)(up-modify-sn sn-mill-max-distance c:+ 12)
-    (chat-local-to-self  "TOWN CENTER 2")
+    (chat-local-to-self  "- Trying to build town center 2... -")
+    (up-modify-sn sn-mill-max-distance c:+ 12)    
+    (build town-center)
 )
 (defrule
     (can-build town-center)(current-age == imperial-age)(food-amount > 400)
