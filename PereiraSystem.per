@@ -2489,6 +2489,7 @@
     (wood-amount > 200)
     (building-type-count town-center > 0)    
     (building-type-count lumber-camp > 0)
+    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
     (not(civ-selected khmer))
 =>
     (build mill)(chat-local-to-self  "MILL 2")
@@ -2503,7 +2504,8 @@
     (can-build mill)
     (wood-amount > 400)
     (building-type-count lumber-camp > 0)
-    (building-type-count town-center > 0)    
+    (building-type-count town-center > 0)
+    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))        
     (not(civ-selected khmer))
 =>
     (build mill)(chat-local-to-self  "MILL 3")
@@ -2514,6 +2516,7 @@
 	(current-age == imperial-age)(military-population > 40) 
     (resource-found food)(building-type-count-total mill < 8) 
     (dropsite-min-distance food > 3)(wood-amount > 800)
+    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))    
     (can-build mill)(not(civ-selected khmer))
 =>
     (build mill)
@@ -2804,6 +2807,7 @@
     (or(building-type-count-total archery-range > 0)(civ-selected cumans))
     ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
     (can-build blacksmith)
+    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
 =>
     (up-modify-sn sn-maximum-town-size c:+ 1)(build blacksmith)
     (chat-local-to-self  "BLACKSMITH")
@@ -3195,7 +3199,8 @@
     (can-build stable)(wood-amount > 275)
     (research-completed ri-double-bit-axe)(food-amount > 100)
     (not(civ-selected cumans))
-    (building-type-count-total stable < 1) 
+    (building-type-count-total stable < 1)
+    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0)) 
 =>
     (build stable)
     (chat-local-to-self  "STABLE 1") 
