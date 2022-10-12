@@ -2812,6 +2812,7 @@
 ; HERRERIA
 (defrule
     (building-type-count-total blacksmith == 0)(wood-amount > 275)
+    (building-type-count town-center > 0)    
     (or(building-type-count-total archery-range > 0)(civ-selected cumans))
     ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
     (can-build blacksmith)
@@ -2823,11 +2824,12 @@
 
 ; MERCADO
 (defrule
+    (building-type-count town-center > 0)
+    (or(wood-amount > 275)(and(civ-selected japanese)(wood-amount > 225)))   
     (building-type-count-total market == 0)
     (players-building-type-count any-ally villager > 0)
     (research-completed ri-double-bit-axe)
     (can-build market)
-    (wood-amount > 275)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (build market)(chat-local-to-self "MARKET 1") 
