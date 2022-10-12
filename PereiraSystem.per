@@ -3607,14 +3607,15 @@
 
 
 
-(defrule(town-under-attack)(can-train my-unique-unit-line)=>(train my-unique-unit-line))
+(defrule
 
 ;(defrule(can-train donjon-serjeant-line)=>(train donjon-serjeant-line))
 
 
 (defrule
-    (current-age == castle-age)(town-under-attack)
-    (unit-type-count-total my-unique-unit-line < 30)(gold-amount > 160)
+    (current-age == castle-age)
+    (town-under-attack)
+    (gold-amount > 860)
     (can-train my-unique-unit-line)(not(civ-selected korean))(not(civ-selected celtic))
     (not(civ-selected ethiopian))(not(civ-selected khmer))(not(civ-selected chinese))
 =>
