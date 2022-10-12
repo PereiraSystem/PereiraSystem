@@ -2910,8 +2910,26 @@
         (wood-amount > 250)
         (building-type-count lumber-camp > 0)
         (or
+            (or
+                (or
+                    (civ-selected portuguese)(civ-selected italian)
+                )
+                (or
+                    (civ-selected spanish)(civ-selected turkish)
+                )                
+            )
+            (or
+                (or
+                    (civ-selected malay)(civ-selected viking)
+                )
+                (or
+                    (civ-selected japanese)(civ-selected mongol)
+                )                
+            )           
+        )
+        (or
             (or(enemy-buildings-in-town)(town-under-attack))    
-            (civ-selected malay)
+            
         )
         (building-type-count-total dock < 1)
     =>
@@ -2920,8 +2938,7 @@
         (up-modify-sn sn-lumber-camp-max-distance c:+ 64)                
         (up-assign-builders c: dock c:+ 3)
         (build dock)(delete-building town-center)(delete-building mill)
-        (delete-building archery-range)(delete-building barracks)        
-        (delete-building farm)(delete-building farm)(delete-building farm)        
+        (delete-building archery-range)(delete-building barracks)               
         (chat-local-to-self  "DOCK AND DELETE - FOOD STOPPED")(build town-center)
         (set-strategic-number sn-maximum-food-drop-distance 0)
         (set-goal gl-weMovedPlace 1)
