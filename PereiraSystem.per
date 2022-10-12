@@ -3344,15 +3344,13 @@
 
 ; CONSTRUIR TALLER ASEDIO
 (defrule
-    (can-build siege-workshop)
     (building-type-count-total siege-workshop == 0)
 	(not(civ-selected gothic))
+    (can-build siege-workshop)    
 =>
-
-    (chat-local-to-self  "SIEGE WORKSHOP 1")
+    (chat-local-to-self "Trying to build siege workshop 1")     
     (up-modify-sn sn-maximum-town-size c:+ 2)
-
-        (build siege-workshop)  
+    (build siege-workshop)  
 )
 
 (defrule
@@ -3371,24 +3369,19 @@
     (building-type-count-total university > 0)(building-type-count-total castle > 0)
     (can-build siege-workshop)(wood-amount > 2000)(not(civ-selected gothic)) 
 =>
+    
     (build siege-workshop)(chat-local-to-self  "SIEGE WORKSHOP")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
 ; MONASTERIO              
 (defrule
-    (building-type-count-total monastery == 0)
-    (can-build monastery)
-    (or
-        (building-type-count-total house > 3)
-        (civ-selected hun)
-    )
+    (or(building-type-count-total house > 3)(civ-selected hun))
+    (building-type-count-total monastery == 0)(can-build monastery)
 => 
+    (chat-local-to-self "Trying to build monastery 1")     
     (build monastery)
-    (chat-local-to-self  "MONASTERY 1") 
 )
-
-
 
 (defrule
     (building-type-count-total monastery == 2)(building-type-count-total castle > 0)(building-type-count-total town-center > 1)
@@ -3396,8 +3389,8 @@
     (building-type-count-total house > 25)
     (civ-selected saracen)
 => 
+    (chat-local-to-self "Trying to build monastery 2")         
     (build monastery)
-    (chat-local-to-self  "MONASTERY 2") 
 )
 
 ; TORRE 
