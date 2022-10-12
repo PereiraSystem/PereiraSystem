@@ -2674,9 +2674,11 @@
 
 (defrule
     (building-type-count-total lumber-camp == 1)
+    (building-type-count dock > 0)    
     (up-compare-goal gl-weMovedPlace == 1)
-    (can-build lumber-camp)(resource-found wood)
-        (dropsite-min-distance wood > 30) 
+    (can-build lumber-camp)
+    ;(resource-found wood)
+        (dropsite-min-distance wood > 3) 
 =>
     (build lumber-camp)
     (chat-local-to-self  "LUMBER CAMP 2")
