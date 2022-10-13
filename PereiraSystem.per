@@ -4483,13 +4483,12 @@
     (current-age == castle-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (building-type-count-total monastery > 0)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)
+    (research-completed ri-heavy-plow)
     (unit-type-count-total spearman-line g:< gl-cantLancerosMedia)
-    (building-type-count-total monastery > 0)
     (can-train spearman-line)
 =>
-    ;(train spearman-line)
-    (do-nothing)
+    (train spearman-line)
 )
 
 (defrule
