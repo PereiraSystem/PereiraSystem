@@ -3735,7 +3735,7 @@
 (defrule
     (current-age == feudal-age)
     (town-under-attack)
-    (unit-type-count-total mangonel-line < 10)
+    (unit-type-count-total mangonel-line < 1)
    
 	(can-train mangonel-line)
 =>
@@ -3744,8 +3744,9 @@
 
 (defrule
     (current-age == castle-age)
-    (unit-type-count-total mangonel-line < 10)
+    (unit-type-count-total mangonel-line < 1)
     (town-under-attack)
+    (up-compare-goal gl-dudeHasScouts == 0)
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
