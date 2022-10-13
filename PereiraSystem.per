@@ -182,7 +182,7 @@
     (set-goal gl-max-lumber-camps-qty 4)
     (set-goal gl-max-mining-camps-qty 1)
     (up-chat-data-to-self "LUMBER CAMPS MAX QTY = %d" g: gl-max-lumber-camps-qty)
-    (chat-local-to-self "MINING CAMPS MAX QTY = %d" g: gl-max-mining-camps-qty)
+    (up-chat-data-to-self "MINING CAMPS MAX QTY = %d" g: gl-max-mining-camps-qty)
     (disable-self)	    
 )
 
@@ -242,7 +242,7 @@
 	(disable-timer 4)
     (enable-timer 4 11)    
     (up-modify-sn sn-camp-max-distance c:+ 1) 
-    (up-chat-data-to-self "LUMBER CAMPS MAX DISTANCE INCREASED! = %d" s: sn-camp-max-distance)
+    (up-chat-data-to-self "Lumber camps max distance increased! = %d" s: sn-camp-max-distance)
 )
 
 (defrule
@@ -256,7 +256,7 @@
 	(timer-triggered 10)
     (current-age == imperial-age)
 =>
-	(chat-local-to-self "DELETING IDLE VILLAGERS!")
+	(chat-local-to-self "Deleting idle villagers")
 	(disable-timer 10)
     (enable-timer 10 600)    
     (up-delete-idle-units idle-type-villager)
