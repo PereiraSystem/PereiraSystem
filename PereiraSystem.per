@@ -8,13 +8,9 @@
 ; 6. Trade
 ; 7. Taunts 
 
-
-
 ; 1. CONSTANTS AND TIMERS
 
 (load "Constants\Constants for AoFE")
-
-
 
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
@@ -29,7 +25,7 @@
 
 (defconst gl-weMovedPlace 90)
 
-(defconst gl-maximoCasasAntesBorrar 101)    
+(defconst gl-maxHousesBeforeDeleting 101)    
 (defconst gl-maximoCasasNecesarias 102)
 (defconst gl-cantGranjasImperial 103)
 
@@ -57,8 +53,8 @@
 (defconst gl-cantScouts 121)
 (defconst gl-camelQtyLow 138)
 
-(defconst gl-cantMonjes 122)
-(defconst gl-cantMonjesAlta 123)
+(defconst gl-monkQty 122)
+(defconst gl-monkQtyHigh 123)
 
 (defconst gl-cantArietesBaja 124)
 (defconst gl-cantArietes 125)
@@ -81,7 +77,7 @@
 (defrule
     (true)
 =>
-    (set-goal gl-maximoCasasAntesBorrar 21)    
+    (set-goal gl-maxHousesBeforeDeleting 21)    
     (set-goal gl-maximoCasasNecesarias 30)
     (set-goal gl-cantGranjasImperial 20)
 
@@ -117,8 +113,8 @@
 (defrule
     (true)
 =>
-    (set-goal gl-cantMonjes 5)
-    (set-goal gl-cantMonjesAlta 16)
+    (set-goal gl-monkQty 5)
+    (set-goal gl-monkQtyHigh 16)
 
     (set-goal gl-cantArietesBaja 2)
     (set-goal gl-cantArietes 6)
@@ -251,14 +247,25 @@
 	(disable-timer 4)
 )
 
-(defrule(true)=>(enable-timer 10 1800)(disable-self)) 
+; TIMER 10 REPORT
+(defrule(true)=>(enable-timer 10 60)(disable-self)) 
 (defrule
 	(timer-triggered 10)
+=>
+	(disable-timer 10)
+    (enable-timer 10 60)    
+    (up-chat-data-to-self "Time: %d" c: game-time)
+)
+
+; TIMER 11 DELETES VILLAGERS
+(defrule(true)=>(enable-timer 11 1800)(disable-self)) 
+(defrule
+	(timer-triggered 11)
     (current-age == imperial-age)
 =>
 	(chat-local-to-self "Deleting idle villagers")
-	(disable-timer 10)
-    (enable-timer 10 600)    
+	(disable-timer 11)
+    (enable-timer 11 600)    
     (up-delete-idle-units idle-type-villager)
 )
 
@@ -733,25 +740,27 @@
     (set-strategic-number sn-minimum-attack-group-size 4)
     (set-strategic-number sn-maximum-attack-group-size 150)
     (set-strategic-number sn-number-attack-groups 0)  
-    (set-strategic-number sn-percent-attack-soldiers 100)           
+    (set-strategic-number sn-percent-attack-soldiers 100)
+               
     (disable-self)
 )
 
+; BOATS
 (defrule 
     (true)
 =>
     (set-strategic-number sn-minimum-boat-attack-group-size 5)
     (set-strategic-number sn-maximum-boat-attack-group-size 18)
-    (set-strategic-number sn-free-siege-targeting 0)
     (set-strategic-number sn-enemy-sighted-response-distance 25)    
     (set-strategic-number sn-number-boat-attack-groups 1) 
     (disable-self)
 )
 
-; ESCOGER OBJETIVO ATAQUE    
+; CHOOSING TARGET 
 (defrule 
     (true)
 =>
+    (set-strategic-number sn-free-siege-targeting 0)
     (set-strategic-number sn-wall-targeting-mode 1)
     (set-strategic-number sn-attack-intelligence 1)
     (set-strategic-number sn-target-evaluation-distance 10)
@@ -760,8 +769,8 @@
     (disable-self)
 )
 
-; 3 MEJORAS
-; CAMBIO DE ERA
+; 3 RESEARCHING
+; ADVANCING AGE
 (defrule
     (can-research feudal-age)
     (unit-type-count-total villager > 11)
@@ -782,7 +791,7 @@
 
 )
 
-; LEnADORES
+; LUMBERJACKS
 (defrule(can-research ri-double-bit-axe)=>(research ri-double-bit-axe))
 (defrule(can-research ri-bow-saw)=>(research ri-bow-saw))
 (defrule(can-research ri-two-man-saw)=>(research ri-two-man-saw))
@@ -795,7 +804,7 @@
     (or
         (or
             (enemy-buildings-in-town)
-            (unit-type-count-total monk-set g:>= gl-cantMonjes)
+            (unit-type-count-total monk-set g:>= gl-monkQty)
         )
         (or
             (current-age == imperial-age)
@@ -974,7 +983,8 @@
         (town-under-attack)
     )
 =>
-    (research ri-stronghold)(chat-local-to-self  "TORRES Y CASTILLOS DISPARAN 25% MÁS RÁPIDO!") 
+    (research ri-stronghold)
+    (chat-local-to-self "Towers and castles shoot 25% faster!") 
 )
 
 (defrule
@@ -1972,7 +1982,7 @@
     (current-age == imperial-age)(not(civ-selected ethiopian))
 =>
     (research my-unique-unit-upgrade)
-    (chat-local-to-self  "UNIDAD UNICA MEJORADA ")
+    (chat-local-to-self  "Unique unit upgraded")
 )
 
 (defrule
@@ -1992,7 +2002,7 @@
     (gold-amount > 1000)
 =>
     (research ri-sappers)(set-strategic-number sn-allow-civilian-offense 2)
-    (chat-to-all "SE VA A HABE UN FOLLON")   
+    (chat-to-all "Respect the code of the streets!")   
 )
 
 ; MEJORAS HERRERIA                             
@@ -2034,7 +2044,6 @@
     (research ri-scale-mail)
 )
 
-
 (defrule
     (can-research ri-chain-mail)
     (or(town-under-attack)
@@ -2042,7 +2051,6 @@
 =>
     (research ri-chain-mail)
 )
-
 
 (defrule
     (can-research ri-plate-mail)
@@ -2075,7 +2083,6 @@
 )
 
 ; FLECHAS ATAQUE 
-
 (defrule
     (can-research ri-fletching)
     (or
@@ -2099,7 +2106,7 @@
     (research ri-bracer)
 )
 
-; DEFENSA ARQUEROS      
+; ARCHER ARMOR      
 (defrule
     (can-research ri-padded-archer-armor )
     (or(unit-type-count-total skirmisher-line > 0)(current-age == imperial-age))
@@ -2197,13 +2204,13 @@
 )
 
 (defrule
-    (can-research ri-fervor )(unit-type-count-total monk-set g:>= gl-cantMonjes)
+    (can-research ri-fervor )(unit-type-count-total monk-set g:>= gl-monkQty)
 =>
     (research ri-fervor )
 )
 
 (defrule
-    (unit-type-count-total monk g:>= gl-cantMonjes)
+    (unit-type-count-total monk g:>= gl-monkQty)
 	(research-completed ri-fervor)
     (can-research ri-sanctity )
 =>
@@ -2337,7 +2344,7 @@
     )
 	(can-research ri-heated-shot)
 =>
-	(chat-local-to-self  "ESTO ES UN EJERCITIO DE PIRATERIA!!!!")
+	(chat-local-to-self  "Pirate activity detected!")
 	(research ri-heated-shot)
 )
 
@@ -2352,7 +2359,6 @@
 )
 
 ; E. IMPERIAL
-
 (defrule
     (building-type-count-total castle > 1)
     (can-research ri-architecture)
@@ -2388,10 +2394,10 @@
     (research ri-bombard-tower )
 )
 
-; 4. CONSTRUIR EDIFICIOS
-; CIVILES
+; 4. BUILDING
+; CIVILIAN BUILDINGS
 
-; CENTRO CIUDAD                               
+; WONDER                          
 (defrule
     (can-build wonder)
     (building-type-count-total wonder == 0) 
@@ -2399,69 +2405,61 @@
     (build wonder)
 )
 
-; CENTRO CIUDAD    
-
-
+; TOWN CENTER  
 (defrule
-    (can-build town-center)(resource-found wood)
-    (resource-found gold)(resource-found stone)
     (building-type-count-total town-center == 0) 
+    (can-build town-center)    
 =>
-    (chat-local-to-self  "- Trying to build town center 1... -")
+    (chat-local-to-self "Trying to build town center 1")
     (build town-center)
 )
 
 (defrule
-    (can-build town-center)(civ-selected cumans)
-    (building-type-count-total town-center == 1) 
+	(building-type-count-total town-center == 1)
+    (can-build town-center)    
 =>
-    (build town-center)
-)
-
-(defrule
-    (can-build town-center)
-	(building-type-count-total town-center < 2)
-=>
-    (chat-local-to-self  "- Trying to build town center 2... -")
+    (chat-local-to-self "Trying to build town center 2")
     (up-modify-sn sn-mill-max-distance c:+ 12)    
     (build town-center)
 )
+
 (defrule
-    (can-build town-center)(current-age == imperial-age)(food-amount > 400)
-	(building-type-count-total town-center < 3) 
+    (current-age == imperial-age)(food-amount > 400)
+	(building-type-count-total town-center == 2) 
     (building-type-count-total monastery > 0)
-    ;(building-type-count-total university > 0)  
-    (building-type-count-total castle > 0)(military-population > 40)
+    (building-type-count-total university > 0)  
+    (building-type-count-total castle > 0)
+    (military-population > 10)
+    (can-build town-center)    
 =>
-    (build town-center)   (chat-local-to-self  "TOWN CENTER 3")
+    (build town-center)(chat-local-to-self  "Trying to build town center 3")
 )
 
 (defrule
 	(current-age == imperial-age)(military-population > 60)(food-amount > 400)
-    (can-build town-center)
     (building-type-count-total monastery > 0) 
     (building-type-count-total castle > 0)(building-type-count-total university > 0)  
-    (building-type-count-total town-center < 6) (building-type-count-total town-center > 2)
+    (building-type-count-total town-center < 6) 
+    (can-build town-center)
 =>
-    (build town-center) (chat-local-to-self  "TOWN CENTER")
+    (build town-center) (chat-local-to-self "Trying to build town center")
 )
 
-; MOLINO    
-
+; MILL   
 (defrule  
-    (building-type-count-total mill < 1)(building-type-count town-center > 0)
-    (can-build mill)
+    (building-type-count-total mill == 0)(building-type-count town-center > 0)
     (resource-found food)
     (wood-amount > 200)
+    (can-build mill)    
 =>
-    (build mill)(chat-local-to-self  "MILL 1 (FOOD FOUND)")
+    (build mill)(chat-local-to-self  "Trying to build mill 1 (food found)")
 )
 
 (defrule  
     (building-type-count-total mill < 1)(building-type-count town-center > 0)
-    (wood-amount > 400)
+    (wood-amount > 400)(can-build mill)
 =>
-    (build mill)(chat-local-to-self  "MILL 1 (EXCESS WOOD)")
+    (build mill)(chat-local-to-self  "Trying to build mill 1 (excess wood)")
 )
 
 (defrule  
@@ -2470,24 +2468,25 @@
     (building-type-count-total dock < 1)    
     (game-time > 270)
     (wood-amount > 200)(not(civ-selected khmer))
+    (can-build mill)    
 =>
-    (build mill)(chat-local-to-self  "MILL 1 (FORCED)")
+    (build mill)(chat-local-to-self  "Trying to build mill 1 (forced)")
 )
 
 (defrule  
     (current-age == feudal-age)(building-type-count town-center > 0)
     (building-type-count-total mill < 1)
-
     (wood-amount > 200)
+    (can-build mill)
 =>
     (build mill)
-    (set-strategic-number sn-maximum-food-drop-distance 9) (chat-local-to-self  "MILL 1 (FORCED - FEUDAL)")
+    (set-strategic-number sn-maximum-food-drop-distance 9)
+    (chat-local-to-self  "Trying to build mill 1 (forced - feudal)")
 )
 
 (defrule  
-    (building-type-count-total mill < 2)
+    (building-type-count-total mill == 1)
     (current-age >= feudal-age)
-
     (wood-amount > 200)
     (building-type-count town-center > 0)    
     (building-type-count lumber-camp > 1)
@@ -2497,7 +2496,7 @@
     (dropsite-min-distance food > 12)
     (can-build mill)
 =>
-    (build mill)(chat-local-to-self  "MILL 2")
+    (build mill)(chat-local-to-self "Trying to build mill 2")
     (up-modify-sn sn-mill-max-distance c:+ 12)
     (set-strategic-number sn-maximum-food-drop-distance 9) 
 )
@@ -2591,7 +2590,7 @@
 	(can-build house)
 =>
 	(build house)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-local-to-self  "HOUSE (EXCESS WOOD)") 
+    (chat-local-to-self  "Trying to build house (excess wood)") 
 )
 
 (defrule
@@ -2600,7 +2599,7 @@
 	(can-build house)
 =>
 	(build house)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-local-to-self  "HOUSE (EXCESS WOOD)") 
+    (chat-local-to-self  "Trying to build house (excess wood)") 
 )
 
 (defrule
@@ -2612,7 +2611,7 @@
     (building-type-count-total house < 1)
     (can-build house)
 =>
-    (build house)(chat-local-to-self  "HOUSE 1") 
+    (build house)(chat-local-to-self "Trying to build house 1") 
 )
 
 (defrule
@@ -2621,7 +2620,7 @@
     (building-type-count-total house < 2)
     (can-build house)
 =>
-    (build house)(chat-local-to-self  "HOUSE 2") 
+    (build house)(chat-local-to-self "Trying to build house 2") 
 )
 
 (defrule
@@ -2631,7 +2630,7 @@
     (building-type-count-total house < 3)
     (can-build house)    (wood-amount > 125)
 =>
-    (build house)(chat-local-to-self  "HOUSE 3") 
+    (build house)(chat-local-to-self "Trying to build house 3") 
 )
 
 (defrule
@@ -2645,7 +2644,7 @@
 )
 
 (defrule
-    (current-age >= castle-age)    (wood-amount > 125)
+    (current-age >= castle-age)(wood-amount > 125)
     ;(research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
     (housing-headroom < 4)
     (population-headroom > 0)
@@ -2655,8 +2654,6 @@
 )
 
 ; MADERA                       
-
-
 (defrule
     (building-type-count-total lumber-camp == 0)
     (can-build lumber-camp)
@@ -2669,7 +2666,7 @@
     )
 =>
     (build lumber-camp)
-    (chat-local-to-self  "Trying to build lumber camp nº 1")
+    (chat-local-to-self "Trying to build lumber camp 1")
     (up-modify-sn sn-camp-max-distance c:+ 8)        
 )
 
@@ -2682,7 +2679,7 @@
         (dropsite-min-distance wood > 3) 
 =>
     (build lumber-camp)
-    (chat-local-to-self  "LUMBER CAMP 2")
+    (chat-local-to-self "Trying to build lumber camp 2")
     (up-modify-sn sn-camp-max-distance c:+ 8)     
 )
 
@@ -2697,7 +2694,7 @@
     (dropsite-min-distance wood > 3)
 =>
     (build lumber-camp)
-    (chat-local-to-self  "LUMBER CAMP 2")
+    (chat-local-to-self "Trying to build lumber camp 2")
     (up-modify-sn sn-camp-max-distance c:+ 8)     
 )
 
@@ -2712,7 +2709,7 @@
     (dropsite-min-distance wood > 3)
 =>
     (build lumber-camp)
-    (chat-local-to-self  "LUMBER CAMP 3")
+    (chat-local-to-self "Trying to build lumber camp 3")
     (up-modify-sn sn-camp-max-distance c:+ 8)     
 )
 
@@ -2723,8 +2720,8 @@
     (dropsite-min-distance wood > 3)
     (can-build lumber-camp)
 =>
+    (chat-local-to-self "Trying to build lumber camp")
     (build lumber-camp)
-    (chat-local-to-self  "LUMBER CAMP")
     (up-modify-sn sn-camp-max-distance c:+ 4)               
 )
 
@@ -2745,7 +2742,7 @@
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
     ;(chat-local-to-self  "MINING CAMP - GOLD 1")
-    (up-chat-data-to-self "MINING CAMP - GOLD 1 - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "Mining camp - gold 1 - max distance = %d" s: sn-mining-camp-max-distance)  
 )
 
 (defrule 
@@ -2761,7 +2758,7 @@
 =>
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 8)  
-    (up-chat-data-to-self "MINING CAMP - GOLD - MAX MINING CAMP DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "Mining camp - gold - max mining camp distance = %d" s: sn-mining-camp-max-distance)  
 )
 
 ; PIEDRA
@@ -2777,7 +2774,7 @@
 =>
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    (up-chat-data-to-self "MINING CAMP - STONE 1 - MAX DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "Mining camp (stone 1) - max distance = %d" s: sn-mining-camp-max-distance)  
 )
 
 (defrule 
@@ -2790,7 +2787,7 @@
 =>
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    (up-chat-data-to-self "MINING CAMP - STONE 2 - MAX DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "Mining camp (stone 2) - max distance = %d" s: sn-mining-camp-max-distance)  
 )
 
 (defrule 
@@ -2803,7 +2800,7 @@
 =>
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    (up-chat-data-to-self "MINING CAMP - STONE - MAX DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "Mining camp (stone) - max distance = %d" s: sn-mining-camp-max-distance)  
 )
 
 (defrule 
@@ -2818,7 +2815,7 @@
     (build mining-camp)
     ;(chat-local-to-self  "MINING CAMP - STONE")
     (up-modify-sn sn-mining-camp-max-distance c:+ 8)  
-    (up-chat-data-to-self "MINING CAMP - STONE - MAX DISTANCE = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "Mining camp (stone) - max distance = %d" s: sn-mining-camp-max-distance)  
 )
 
 ; HERRERIA
@@ -2835,7 +2832,7 @@
     (build blacksmith)    
 )
 
-; MERCADO
+; MARKET
 (defrule
     (building-type-count town-center > 0)
     (or(wood-amount > 275)(and(civ-selected japanese)(wood-amount > 225)))   
@@ -2844,8 +2841,9 @@
     (research-completed ri-double-bit-axe)
     (can-build market)
 =>
+    (chat-local-to-self "Trying to build market 1") 
     (up-modify-sn sn-maximum-town-size c:+ 2)
-    (build market)(chat-local-to-self "MARKET 1") 
+    (build market)
 )
 
 (defrule
@@ -2856,7 +2854,7 @@
     (building-type-count-total castle > 0)
     (building-type-count-total barracks > 1)
 =>
-    (build market)(chat-local-to-self  "MARKET 2")  
+    (chat-local-to-self "Trying to build market 2")(build market)  
 )
 
 (defrule
@@ -2867,7 +2865,7 @@
     (building-type-count-total castle > 0)
     (building-type-count-total barracks > 1)(military-population > 60)
 =>
-    (build market)(chat-local-to-self  "MARKET 3")  
+    (chat-local-to-self "Trying to build market 3")(build market)  
 )
 
 (defrule
@@ -2877,12 +2875,10 @@
     (building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total barracks > 1)(military-population > 65)
 =>
-    (build market)(chat-local-to-self  "MARKET 4")  
+    (chat-local-to-self "Trying to build market 4") (build market) 
 )
 
-
-
-; UNIV
+; UNIVERSITY
 (defrule
     (building-type-count-total university == 0)
     (building-type-count-total monastery > 0)  
@@ -2893,120 +2889,117 @@
         (civ-selected hun)
     )
 =>
-    (build university)(chat-local-to-self  "UNIVERSITY")
+    (build university)(chat-local-to-self  "Trying to build university")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
-; PUERTO
-
-    (defrule
-        (can-build dock)(not(up-research-status c: feudal-age == research-pending))
-        (not(up-research-status c: ri-wheel-barrow == research-pending))
-        (wood-amount > 325)
-        (building-type-count lumber-camp > 0)
+; DOCK
+(defrule
+    (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+    (not(up-research-status c: ri-wheel-barrow == research-pending))
+    (wood-amount > 325)
+    (building-type-count lumber-camp > 0)
+    (or
         (or
-            (or
-                (civ-selected portuguese)(civ-selected italian)
-            )
-            (or
-                (civ-selected spanish)(civ-selected malay)
-            )                
+            (civ-selected portuguese)(civ-selected italian)
         )
-        (enemy-buildings-in-town)
-        (building-type-count-total dock < 1)
-    =>
-        (set-strategic-number sn-town-center-placement dock)
-        (up-modify-sn sn-mining-camp-max-distance c:+ 64)
-        (up-modify-sn sn-lumber-camp-max-distance c:+ 64)                
-        (up-assign-builders c: dock c:+ 3)
-        (build dock)(delete-building town-center)              
-        (chat-local-to-self  "DOCK AND DELETE - FOOD STOPPED")(build town-center)
-        (set-strategic-number sn-maximum-food-drop-distance 0)
-        (set-goal gl-weMovedPlace 1)
-        (delete-building farm)(delete-building farm)(delete-building farm)
-        (disable-self) 
+        (or
+            (civ-selected spanish)(civ-selected malay)
+        )                
     )
+    (enemy-buildings-in-town)
+    (building-type-count-total dock < 1)
+=>
+    (set-strategic-number sn-town-center-placement dock)
+    (up-modify-sn sn-mining-camp-max-distance c:+ 64)
+    (up-modify-sn sn-lumber-camp-max-distance c:+ 64)                
+    (up-assign-builders c: dock c:+ 3)
+    (build dock)(delete-building town-center)              
+    (chat-local-to-self  "DOCK AND DELETE - FOOD STOPPED")(build town-center)
+    (set-strategic-number sn-maximum-food-drop-distance 0)
+    (set-goal gl-weMovedPlace 1)
+    (delete-building farm)(delete-building farm)(delete-building farm)
+    (disable-self) 
+)
 
-    (defrule
-        (up-compare-goal gl-weMovedPlace > 0)
-        (building-type-count town-center < 1)
-        (building-type-count farm > 0)
-    =>
-        (delete-building farm)(delete-building farm)(delete-building farm) 
-        (delete-building farm)(delete-building farm)(delete-building farm)
-(delete-building mill)
-        (delete-building archery-range)(delete-building barracks)          
-        ;(up-modify-sn sn-food-gatherer-percentage c: -12)
-        ;(up-modify-sn sn-gold-gatherer-percentage c: +8)
-        ;(set-strategic-number sn-maximum-gold-drop-distance 6)
-        ;(up-modify-sn sn-stone-gatherer-percentage c: +4)
-        (chat-local-to-self "DELETING MORE FARMS")                
-    )
+(defrule
+    (up-compare-goal gl-weMovedPlace > 0)
+    (building-type-count town-center < 1)
+    (building-type-count farm > 0)
+=>
+    (delete-building farm)(delete-building mill)
+    (delete-building archery-range)(delete-building barracks)          
+    ;(up-modify-sn sn-food-gatherer-percentage c: -12)
+    ;(up-modify-sn sn-gold-gatherer-percentage c: +8)
+    ;(set-strategic-number sn-maximum-gold-drop-distance 6)
+    ;(up-modify-sn sn-stone-gatherer-percentage c: +4)
+    (chat-local-to-self "DELETING MORE FARMS")                
+)
 
-    (defrule
-        (up-compare-goal gl-weMovedPlace > 0)
-        (building-type-count town-center > 0)
-        (building-type-count dock > 0)
-        (building-type-count lumber-camp > 0)                
-    =>
-        (set-strategic-number sn-maximum-food-drop-distance 19)
-        (chat-local-to-self "FOOD DROP DISTANCE = 19")           
-        (disable-self)
-    )
+(defrule
+    (up-compare-goal gl-weMovedPlace > 0)
+    (building-type-count town-center > 0)
+    (building-type-count dock > 0)
+    (building-type-count lumber-camp > 0)                
+=>
+    (set-strategic-number sn-maximum-food-drop-distance 19)
+    (chat-local-to-self "FOOD DROP DISTANCE = 19")           
+    (disable-self)
+)
 
-    (defrule
-        (can-build dock)(not(up-research-status c: feudal-age == research-pending))
-        (building-type-count lumber-camp > 0)
-        (building-type-count town-center > 0)        
-        (wood-amount > 275)
-        (building-type-count-total dock == 1)
-    =>
-        (up-assign-builders c: dock c:+ 2)
-        (build dock)
-        (chat-local-to-self  "DOCK 2")
-    )
+(defrule
+    (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+    (building-type-count lumber-camp > 0)
+    (building-type-count town-center > 0)        
+    (wood-amount > 275)
+    (building-type-count-total dock == 1)
+=>
+    (up-assign-builders c: dock c:+ 2)
+    (build dock)
+    (chat-local-to-self  "DOCK 2")
+)
 
-    (defrule
-        (can-build dock)(not(up-research-status c: feudal-age == research-pending))
-        (building-type-count lumber-camp > 0)
-        (building-type-count town-center > 0)        
-        (wood-amount > 275)
-        (building-type-count-total dock == 2)
-    =>
-        (build dock)
-        (chat-local-to-self  "DOCK 3")
-    )
+(defrule
+    (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+    (building-type-count lumber-camp > 0)
+    (building-type-count town-center > 0)        
+    (wood-amount > 275)
+    (building-type-count-total dock == 2)
+=>
+    (build dock)
+    (chat-local-to-self  "DOCK 3")
+)
 
-    (defrule
-        (can-build dock)(not(up-research-status c: feudal-age == research-pending))
-        (building-type-count lumber-camp > 0)
-        (building-type-count town-center > 0)        
-        (wood-amount > 275)
-        (building-type-count-total dock == 3)
-    =>
-        (build dock)
-        (chat-local-to-self  "DOCK 4")
-    )
+(defrule
+    (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+    (building-type-count lumber-camp > 0)
+    (building-type-count town-center > 0)        
+    (wood-amount > 275)
+    (building-type-count-total dock == 3)
+=>
+    (build dock)
+    (chat-local-to-self  "DOCK 4")
+)
 
-    (defrule
-        (can-build dock)(not(up-research-status c: feudal-age == research-pending))
-        (building-type-count lumber-camp > 0)
-        (building-type-count town-center > 0)        
-        (wood-amount > 275)
-        (building-type-count-total dock == 4)
-    =>
-        (build dock)
-        (chat-local-to-self  "DOCK 5")
-    )    
+(defrule
+    (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+    (building-type-count lumber-camp > 0)
+    (building-type-count town-center > 0)        
+    (wood-amount > 275)
+    (building-type-count-total dock == 4)
+=>
+    (build dock)
+    (chat-local-to-self  "DOCK 5")
+)    
 
-    (defrule
-        
-        (wood-amount > 1450)
-        (building-type-count-total dock < 24)
-        (can-build dock)    
-    =>  
-        (build dock)(chat-local-to-self  "DOCK (EXCESS WOOD)")
-    )
+(defrule
+    
+    (wood-amount > 1450)
+    (building-type-count-total dock < 24)
+    (can-build dock)    
+=>  
+    (build dock)(chat-local-to-self  "DOCK (EXCESS WOOD)")
+)
 
 ; MILITARES
 ; MURALLA - EMPALIZADA
@@ -3016,7 +3009,6 @@
 ;(defrule(true)=>(enable-wall-placement 1)(disable-self))
 
 (defrule(civ-selected gothic)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
-
 
 (defrule 
     (or
@@ -3057,15 +3049,14 @@
 )
 
 ;STONE 2
-
 (defrule 
 	(can-build-wall 2 stone-wall-line)
     (building-type-count-total castle > 0)(current-age == imperial-age)
 =>
 	(build-wall 2  stone-wall-line)
 )
-;WOOD 2
 
+;WOOD 2
 (defrule 
 	(can-build-wall 2 72)
     (building-type-count-total castle > 0)(current-age == imperial-age)
@@ -3073,61 +3064,40 @@
 	(build-wall 2 72)
 )
 
-; CASTILLO             
+; CASTLE            
 (defrule
     (can-build castle)
     (building-type-count-total castle == 0)
 =>
-    (chat-local-to-self  "TRYING TO BUILD CASTLE 1")
+    (chat-local-to-self  "Trying to build castle 1")
     (up-modify-sn sn-maximum-town-size c:+ 3)    
     (build castle) 
-)
-
-(defrule
-    (building-type-count castle > 0)
-=>
-    (chat-local-to-self  "CASTLE 1 BUILT!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    (up-modify-sn sn-maximum-town-size c:+ 30)
-    (up-modify-sn sn-minimum-town-size c:+ 30)
-    (disable-self)
 )
 
 (defrule
     (can-build castle)(current-age == castle-age)
     (building-type-count-total castle == 1)
 =>
-    (chat-local-to-self  "TRYING TO BUILD FORWARD CASTLE 2")
-    (build-forward castle) 
+    (chat-local-to-self "Trying to build forward castle 2")(build-forward castle) 
 )
 
 (defrule
-    (can-build castle)
-    (building-type-count-total castle == 1)
+    (building-type-count-total castle == 1)(can-build castle)
 =>
-    (chat-local-to-self  "TRYING TO BUILD CASTLE 2")
-    (build castle) 
+    (chat-local-to-self "Trying to build castle 2")(build castle) 
 )
-
-(defrule
-    (building-type-count castle > 0)
-=>
-    (chat-local-to-self  "CASTLE 2 BUILT!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    (up-modify-sn sn-maximum-town-size c:+ 4)
-    (up-modify-sn sn-minimum-town-size c:+ 4)
-    (disable-self)
-)
-
-
 
 (defrule ; MINI CASTILLO HUNGARO
-    (can-build krepost) (building-type-count-total castle > 1)(building-type-count-total krepost < 4)
+    (building-type-count-total castle > 1)(building-type-count-total krepost < 4)
+    (can-build krepost)
 =>
-    (build krepost)(up-modify-sn sn-maximum-town-size c:+ 1)   
+    (up-modify-sn sn-maximum-town-size c:+ 1)(build krepost)   
 )
 
 (defrule ; SICILIANS
-    (can-build donjon)(building-type-count-total market > 0) 
+    (building-type-count-total market > 0) 
     (building-type-count-total donjon < 1)
+    (can-build donjon)
 =>
     (build donjon)
 )
@@ -3144,11 +3114,11 @@
 
 (defrule
     (current-age < imperial-age)
-    (wood-amount > 1000)
+    (wood-amount > 1300)
 	(can-build barracks)
 =>
 	(build barracks)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-local-to-self  "BARRACKS (EXCESS WOOD)") 
+    (chat-local-to-self "Trying to build barracks (excess wood)") 
 )
 
 (defrule
@@ -3157,7 +3127,7 @@
 	(can-build barracks)
 =>
 	(build barracks)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-local-to-self  "BARRACKS (EXCESS WOOD)") 
+    (chat-local-to-self "Trying to build barracks (excess wood)") 
 )
 
 (defrule ;four nested conditionals, the japanese would do it for you
@@ -3174,7 +3144,7 @@
     )
     (can-build barracks)
 =>
-    (chat-local-to-self  "Trying to build barracks 1")
+    (chat-local-to-self "Trying to build barracks 1")
     (build barracks)
 )
 
@@ -3188,7 +3158,7 @@
     (military-population > 40)    
     (can-build barracks)
 =>  
-    (chat-local-to-self  "Trying to build barracks 2")
+    (chat-local-to-self "Trying to build barracks 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)        
     (build barracks)
@@ -3203,7 +3173,7 @@
     )
     (can-build barracks)(military-population > 40)
 =>
-    (build barracks)(chat-local-to-self  "BARRACKS 3")
+    (build barracks)(chat-local-to-self "Trying to build barracks 3")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3211,8 +3181,8 @@
 	(current-age == imperial-age)(building-type-count-total barracks < 8)
     (can-build barracks)(wood-amount > 2000)(food-amount > 400)
 =>
-    (build barracks)(chat-local-to-self  "BARRACKS")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (chat-local-to-self "Trying to build barracks")
+    (up-modify-sn sn-maximum-town-size c:+ 1)(build barracks)
 )
 
 (defrule
@@ -3221,7 +3191,7 @@
     (wood-amount > 3000)
     (can-build barracks)
 =>
-    (build barracks)(chat-local-to-self  "GOTHIC BARRACKS")
+    (build barracks)(chat-local-to-self "GOTHIC BARRACKS")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3261,7 +3231,7 @@
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>
-    (build stable)(chat-local-to-self  "STABLE 2")
+    (build stable)(chat-local-to-self "STABLE 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3281,7 +3251,7 @@
     (can-build stable)(wood-amount > 2000)
     (not(civ-selected gothic))
 =>
-    (build stable)(chat-local-to-self  "STABLE")
+    (build stable)(chat-local-to-self "STABLE")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3418,7 +3388,6 @@
 )
 
 ;NORMAL
-
 (defrule
     (or(current-age < castle-age)(building-type-count castle > 0))
     (stone-amount > 260)
@@ -3489,7 +3458,6 @@
 )
 
 ; CARRETAS
-
 (defrule 
     (gold-amount < 200)
     (current-age == feudal-age)
@@ -3520,7 +3488,6 @@
 )
 
 ; FISH TRAP
-
 (defrule 
     (can-build fish-trap)(civ-selected malay)
     (building-type-count-total fish-trap < 8)
@@ -3549,29 +3516,11 @@
 )
 
 (defrule
-    (unit-type-count-total monk-set g:< gl-cantMonjes)
+    (unit-type-count-total monk-set g:< gl-monkQty)
     (can-train monk)(not(hold-relics))
     (not(enemy-buildings-in-town))
 =>
     (train monk)
-)
-
-#load-if-defined DEBUG
-
- (defrule
-    (unit-type-count-total monk-set g:< gl-cantMonjes)
-    (can-train monk)(not(hold-relics))
-=>
-    (train monk)(up-guard-unit monk c: spearman-line)
-)
-
-#end-if
-
-(defrule
-    (unit-type-count-total monk > 0)
-=>
-    (chat-local-to-self  "FIRST MONK!!!!!!!!!!")
-    (disable-self)
 )
 
 (defrule
@@ -3586,7 +3535,7 @@
         )     
     )
     (current-age == imperial-age)(gold-amount > 400)
-    (unit-type-count-total monk g:< gl-cantMonjesAlta) 
+    (unit-type-count-total monk g:< gl-monkQtyHigh) 
     (can-train monk)
 =>
     (train monk)
@@ -4583,7 +4532,7 @@
     (can-sell-commodity food)
     (food-amount > 300)
 	(gold-amount < 100)
-    (unit-type-count-total monk-set g:< gl-cantMonjes)
+    (unit-type-count-total monk-set g:< gl-monkQty)
 =>
     (sell-commodity food)
 )
@@ -4767,59 +4716,50 @@
 
 
 ; 8. DETECT THINGS
-
 (defrule
     (players-unit-type-count any-enemy scout-cavalry-line > 2)
 =>  
-    (set-goal gl-dudeHasScouts 1)    
-    ;(chat-local-to-self  "DUDE HAS LIGHT CAVALRY!")     
+    (set-goal gl-dudeHasScouts 1)
 )
 
 (defrule
     (players-unit-type-count any-enemy scout-cavalry-line < 2) 
 =>  
-    (set-goal gl-dudeHasScouts 0)    
-    ;(chat-local-to-self  "DUDE HAS NO LIGHT CAVALRY!")
+    (set-goal gl-dudeHasScouts 0)
 )
 
 (defrule
     (players-unit-type-count any-enemy skirmisher-line > 1)
 =>  
-    (set-goal gl-dudeHasSkirmishers 1)    
-    ;(chat-local-to-self  "DUDE HAS SKIRMISHERS!")
+    (set-goal gl-dudeHasSkirmishers 1)
 )
 
 (defrule
     (players-unit-type-count any-enemy skirmisher-line < 1)
 =>  
     (set-goal gl-dudeHasSkirmishers 0)    
-    ;(chat-local-to-self  "DUDE HAS NO SKIRMISHERS!")
 )
 
 (defrule
     (players-unit-type-count any-enemy archer-line > 1)
 =>  
     (set-goal gl-dudeHasArchers 1)    
-    ;(chat-local-to-self  "DUDE HAS ARCHERS!")
 )
 
 (defrule
     (players-unit-type-count any-enemy archer-line < 1)
 =>  
     (set-goal gl-dudeHasArchers 0)    
-    ;(chat-local-to-self  "DUDE HAS NO ARCHERS!")
 )
 
 (defrule
     (players-unit-type-count any-enemy spearman-line > 1)
 =>  
     (set-goal gl-dudeHasSpearmen 1)    
-    ;(chat-local-to-self  "DUDE HAS SPEARMEN!")
 )
 
 (defrule
     (players-unit-type-count any-enemy spearman-line < 1)
 =>  
     (set-goal gl-dudeHasSpearmen 0)    
-    ;(chat-local-to-self  "DUDE HAS NO SPEARMEN!")
 )
