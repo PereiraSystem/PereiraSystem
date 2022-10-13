@@ -220,7 +220,7 @@
 	(disable-timer 2)
     (enable-timer 2 300)    
     (up-modify-goal gl-max-lumber-camps-qty c:+ 1) 
-    (up-chat-data-to-self "LUMBER CAMPS MAX QTY INCREASED! = %d" g: gl-max-lumber-camps-qty)
+    (up-chat-data-to-self "Lumber camps max qty increased: %d" g: gl-max-lumber-camps-qty)
 )
 
 ; TIMER 3 INCREASES MINING CAMPS QUANTITY
@@ -231,7 +231,7 @@
 	(disable-timer 3)
     (enable-timer 3 480)      
     (up-modify-goal gl-max-mining-camps-qty c:+ 1)    
-    (up-chat-data-to-self "MINING CAMPS MAX QTY INCREASED! = %d" g: gl-max-mining-camps-qty)	
+    (up-chat-data-to-self "Mining camps max qty increased: %d" g: gl-max-mining-camps-qty)	
 )
 
 ; TIMER 4 INCREASES LUMBER CAMPS DISTANCE
@@ -242,7 +242,7 @@
 	(disable-timer 4)
     (enable-timer 4 11)    
     (up-modify-sn sn-camp-max-distance c:+ 1) 
-    (up-chat-data-to-self "Lumber camps max distance increased! = %d" s: sn-camp-max-distance)
+    (up-chat-data-to-self "Lumber camps max distance increased: %d" s: sn-camp-max-distance)
 )
 
 (defrule
@@ -278,7 +278,7 @@
     (enable-timer 20 1)
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-local-to-self  "TIME HAS PASSED, TIME TO ATTACK!!!!")       
+    (chat-local-to-self  "Time has passed, time to attack!!!!")       
 )
 
 ; ATTACK!!!
@@ -599,13 +599,13 @@
 )
 
 (defrule
-    (current-age == castle-age)(building-type-count-total monastery > 0)
+    (current-age == castle-age)(building-type-count monastery > 0)
 =>
     (set-strategic-number sn-food-gatherer-percentage 55)
     (set-strategic-number sn-wood-gatherer-percentage 15)
     (set-strategic-number sn-gold-gatherer-percentage 15)
     (set-strategic-number sn-stone-gatherer-percentage 15)
-    (chat-local-to-self  "MONASTERY BUILT: SENDING SOME GOLD VILLAGERS FOR STONE")
+    (chat-local-to-self "Monastery 1 built: sending some gold villagers for stone")
     (disable-self)
 )
 
@@ -616,7 +616,7 @@
     (set-strategic-number sn-wood-gatherer-percentage 18)
     (set-strategic-number sn-gold-gatherer-percentage 4)
     (set-strategic-number sn-stone-gatherer-percentage 10)
-    (chat-local-to-self  "CASTLE AGE WITH ALL RELICS - SENDING LESS VILLAGERS FOR GOLD")    
+    (chat-local-to-self "Castle age with all relics - sending less villagers for gold")    
     (disable-self)
 )
 
@@ -627,7 +627,7 @@
     (set-strategic-number sn-wood-gatherer-percentage 9)
     (set-strategic-number sn-gold-gatherer-percentage 10)
     (set-strategic-number sn-stone-gatherer-percentage 6)
-(chat-local-to-self  "IMPERIAL AGE WITH NO RELICS - SENDING MORE VILLAGERS FOR GOLD")     
+    (chat-local-to-self  "Imperial age with no relics - sending more villagers for gold")     
     (disable-self)
 )
 
@@ -638,7 +638,7 @@
     (set-strategic-number sn-wood-gatherer-percentage 13)
     (set-strategic-number sn-gold-gatherer-percentage 4)
     (set-strategic-number sn-stone-gatherer-percentage 6)
-    (chat-local-to-self  "IMPERIAL AGE WITH ALL RELICS - SENDING LESS VILLAGERS FOR GOLD")     
+    (chat-local-to-self "Imperial age with all relics - sending less villagers for gold")     
     (disable-self)
 )
 
@@ -647,7 +647,7 @@
 =>
     (up-modify-sn sn-food-gatherer-percentage c: -16)
     (up-modify-sn sn-wood-gatherer-percentage c: +16)
-    (chat-local-to-self  "WE NEED MORE WOOD, LESS FOOD")     
+    (chat-local-to-self  "We need more wood, less food")     
     (disable-self)
 )
 
@@ -656,7 +656,7 @@
 =>
     (up-modify-sn sn-food-gatherer-percentage c: -16)
     (up-modify-sn sn-gold-gatherer-percentage c: +16)
-    (chat-local-to-self  "WE NEED MORE GOLD, LESS FOOD")     
+    (chat-local-to-self  "We need more gold, less food")     
     (disable-self)
 )
 
@@ -665,7 +665,7 @@
 =>
     (up-modify-sn sn-wood-gatherer-percentage c: -16)
     (up-modify-sn sn-food-gatherer-percentage c: +16)
-    (chat-local-to-self  "WE NEED MORE FOOD, LESS WOOD")     
+    (chat-local-to-self  "We need more food, less wood")     
     (disable-self)
 )
 
@@ -674,7 +674,7 @@
 =>
     (up-modify-sn sn-wood-gatherer-percentage c: -16)
     (up-modify-sn sn-gold-gatherer-percentage c: +16)
-    (chat-local-to-self  "WE NEED MORE GOLD, LESS WOOD")     
+    (chat-local-to-self  "We need more gold, less wood")     
     (disable-self)
 )
 
@@ -683,7 +683,7 @@
 =>
     (up-modify-sn sn-gold-gatherer-percentage c: -16)
     (up-modify-sn sn-food-gatherer-percentage c: +16)    
-    (chat-local-to-self  "WE NEED MORE FOOD, LESS GOLD")     
+    (chat-local-to-self "We need more food, less gold")     
     (disable-self)
 )
 
@@ -692,29 +692,23 @@
 =>
     (up-modify-sn sn-gold-gatherer-percentage c: -16)
     (up-modify-sn sn-wood-gatherer-percentage c: +16)    
-    (chat-local-to-self  "WE NEED MORE WOOD, LESS GOLD")     
+    (chat-local-to-self "We need more wood, less gold")     
     (disable-self)
 )
 
-; COMBATE                               
-; DEFENSA                      
-(defrule 
-    (true)
-=>
-    (set-strategic-number sn-allow-civilian-defense 1)   
-    (set-strategic-number sn-defense-distance 20)     
-    (disable-self)
-)
-; ATAQUE                               
-
+; COMBAT                             
+; DEFENSE                    
 (defrule 
     (true)
 =>
     (set-difficulty-parameter ability-to-dodge-missiles 0)
 	(set-difficulty-parameter ability-to-maintain-distance 0)
-    (set-strategic-number sn-gather-idle-soldiers-at-center 1)
+    (set-strategic-number sn-allow-civilian-defense 1)   
+    (set-strategic-number sn-defense-distance 20)     
+    (disable-self)
 )
 
+; ATTACK                              
 
 (defrule 
     (true)
@@ -726,7 +720,8 @@
     (set-strategic-number sn-relic-return-distance 999)
     (set-strategic-number sn-allow-civilian-offense 1)  
     ;(set-strategic-number sn-number-civilian-militia 100) 
-	(set-strategic-number sn-garrison-rams 1)   	
+	(set-strategic-number sn-garrison-rams 1)  
+    (set-strategic-number sn-gather-idle-soldiers-at-center 1)     	
     (disable-self)
 )
 
