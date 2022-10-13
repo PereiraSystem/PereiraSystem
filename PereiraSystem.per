@@ -203,11 +203,18 @@
 	(up-get-fact civilian-population 0 gl-civPop)
 )
 
-(defconst gl-milPop 301)
+(defconst gl-milPop 331)
 (defrule
 	(true)
 =>
 	(up-get-fact military-population 0 gl-milPop)
+)
+
+(defconst gl-kills 332)
+(defrule
+	(true)
+=>
+	(up-get-fact amount-kils 0 gl-kills)
 )
 
 ; TIMER 1 INCREASES TOWN SIZE
@@ -269,7 +276,9 @@
 =>
 	(disable-timer 10)
     (enable-timer 10 60)    
-    (up-chat-data-to-self "Civs: %d" g: gl-civPop)
+    (up-chat-data-to-self "Civilians: %d" g: gl-civPop)
+    (up-chat-data-to-self "Military: %d" g: gl-civPop)
+    (up-chat-data-to-self "Enemies deceased: %d" g: gl-kills)        
 )
 
 ; TIMER 11 DELETES VILLAGERS
