@@ -172,6 +172,7 @@
 
 #end-if
 
+
 (defrule
     (true)
 =>    
@@ -193,6 +194,20 @@
     (set-goal gl-dudeHasSkirmishers 0)
     (set-goal gl-weMovedPlace 0)        
     (disable-self)	    
+)
+
+(defconst gl-civPop 300)
+(defrule
+	(true)
+=>
+	(up-get-fact civilian-population-population 0 gl-civPop)
+)
+
+(defconst gl-milPop 301)
+(defrule
+	(true)
+=>
+	(up-get-fact military-population 0 gl-milPop)
 )
 
 ; TIMER 1 INCREASES TOWN SIZE
@@ -254,7 +269,7 @@
 =>
 	(disable-timer 10)
     (enable-timer 10 60)    
-    (up-chat-data-to-self "Time: %d" c: civilian-population)
+    (up-chat-data-to-self "Civs: %d" g: -gl-civPop)
 )
 
 ; TIMER 11 DELETES VILLAGERS
@@ -321,6 +336,11 @@
 ;(disable-self))
 
 ; 2. STRATEGIC NUMBERS
+
+(defrule 
+    (true)
+=>  (set-strategic-number sn-do-not-scale-for-difficulty-level 1) (disable-self)
+)
 ; EXPLORE
 
 (defrule 
