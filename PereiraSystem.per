@@ -1778,7 +1778,8 @@
 ; DOCK UPGRADES
 (defrule
 	(unit-type-count-total fishing-ship > 9)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow) 
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)
+    (research-completed ri-heavy-plow) 
     (can-research ri-gillnets)
 =>
     (research ri-gillnets)
@@ -1806,131 +1807,128 @@
     )
 	(can-research ri-careening)
 =>
-	(chat-local-to-self  "ESTO ES UN EJERCITIO DE PIRATERIA!!!!")
+	(chat-local-to-self  "PIRATE ACTIVITY DETECTED!")
 	(research ri-careening)
-    (disable-self)
 )
 
 (defrule
     (can-research ri-dry-dock)
 =>
     (research ri-dry-dock)
-    (disable-self)
 )
 
-(defrule
-	(can-research ri-war-galley)
+(defrule	
 	(unit-type-count-total galley-line > 1)
+    (can-research ri-war-galley)    
 =>
 	(research ri-war-galley)
-    (disable-self)
 )
 
 (defrule
-    (can-research ri-fast-fire-ship)
     (unit-type-count-total fire-ship-line > 1)
+    (can-research ri-fast-fire-ship)    
 =>
     (research ri-fast-fire-ship)
-    (disable-self)
 )
 
 (defrule
 	(can-research ri-galleon)
 =>
 	(research ri-galleon)
-    (disable-self)
 )
 
 (defrule
 	(can-research ri-cannon-galleon)
 =>
 	(research ri-cannon-galleon)
-    (disable-self)
 )
 
-(defrule
-	(can-research ri-deck-guns)
-	(unit-type-count-total cannon-galleon-line > 1)	
+(defrule	
+	(unit-type-count-total cannon-galleon-line > 1)
+    (can-research ri-deck-guns)    
 =>
 	(research ri-deck-guns)
-    (disable-self)
 )
 
-(defrule
-	(can-research ri-shipwright)
+(defrule	
 	(or
 		(unit-type-count-total galley-line > 0)
 		(unit-type-count-total cannon-galleon-line > 0)	
 	)
+    (can-research ri-shipwright)    
 =>
 	(research ri-shipwright)
-    (disable-self)
 )
 
 (defrule
-    (can-research ri-elite-turtle-ship)(unit-type-count-total turtle-ship-line > 0)
+    (unit-type-count-total turtle-ship-line > 0)
+    (can-research ri-elite-turtle-ship)    
 =>
     (research ri-elite-turtle-ship)
-    (disable-self)
 )   
 
 (defrule
-    (can-research ri-elite-caravel)(unit-type-count-total caravel-line > 0)
+    (unit-type-count-total caravel-line > 0)
+    (can-research ri-elite-caravel)
 =>
     (research ri-elite-caravel)
-    (disable-self)
 )   
 
 (defrule
-    (can-research ri-elite-longboat)(unit-type-count-total longboat-line > 0)
+    (unit-type-count-total longboat-line > 0)
+    (can-research ri-elite-longboat)    
 =>
     (research ri-elite-longboat)
-    (disable-self)
 )   
 
-; MEJORAS MILITARES           
-; MEJORAS BARRACAS
-; COMUNES
+; MILTARY UPGRADES
+; BARRACKS UPGRADES
+; COMMON
 (defrule
-    (can-research ri-tracking  ) 
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
- ;MAS VISION INFANTERIA
+    (research-completed ri-hand-cart)
+    (research-completed ri-bow-saw)
+    (research-completed ri-heavy-plow)
+    (can-research ri-tracking) 
 =>
     (research ri-tracking)
 )
 
 (defrule
+    (research-completed ri-hand-cart)
+    (research-completed ri-bow-saw)
+    (research-completed ri-heavy-plow)
     (can-research ri-squires)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
 =>
-    (research ri-squires) ; MAS VELOCIDAD
+    (research ri-squires)
 )
 
-(defconst incendiarismo 602)
-
-(defrule ;arson
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
-    (can-research incendiarismo)(or(current-age == imperial-age)(gold-amount > 1200))
+(defconst arson 602)
+(defrule
+    (or
+        (current-age == imperial-age)
+        (and(enemy-buildings-in-town)(unit-type-count infantry-class > 1))
+    )
+    (can-research arson)    
 =>
-    (research incendiarismo ) ; MAS ATAQUE EDIFICIOS
+    (research arson )
 )
 
 ; G. AGUILA
 (defrule
-    (can-research ri-eagle-warrior)
-    (unit-type-count-total eagle-warrior-line > 0)     
+    (unit-type-count-total eagle-warrior-line > 2)     
+    (can-research ri-eagle-warrior)    
 =>
     (research ri-eagle-warrior)
 )
 
 (defrule
-    (can-research ri-elite-eagle-warrior)
-    (unit-type-count-total eagle-warrior-line > 0)     
+    (unit-type-count-total eagle-warrior-line > 2)     
+    (can-research ri-elite-eagle-warrior)    
 =>
     (research ri-elite-eagle-warrior)
 )
 
-; MILICIA
+; MILITIA
  (defrule
  	(unit-type-count-total militiaman-line > 2) 	
     (can-research ri-man-at-arms)
@@ -1946,14 +1944,15 @@
 )
 
 (defrule
-    (can-research ri-long-swordsman)
-    (unit-type-count-total militiaman-line > 2) 	
+    (unit-type-count-total militiaman-line > 2)	
+    (can-research ri-long-swordsman)    
 =>
     (research ri-long-swordsman)
 )
 
 (defrule
-    (can-research ri-two-handed-swordsman)(unit-type-count-total militiaman-line > 6)
+    (unit-type-count-total militiaman-line > 6)
+    (can-research ri-two-handed-swordsman)    
 =>
     (research ri-two-handed-swordsman)
 )
@@ -1975,7 +1974,7 @@
     (research ri-supplies) ; MAS VELOCIDAD
 )
 
-; PIQUERO
+; SPEARMEN
 (defrule
     (can-research ri-pikeman)
     (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow) 
@@ -1993,12 +1992,12 @@
     (research ri-halberdier)
 )
 
-; MEJORAS ESTABLOS                     
-; COMUNES 
+; STABLES UPGRADES                 
+; COMMON
 (defrule
-    (can-research ri-bloodlines)
     ;(research-completed ri-wheel-barrow)
     (unit-type-count-total scout-cavalry-line > 1)    
+    (can-research ri-bloodlines)    
 =>
     (research ri-bloodlines)
 )
@@ -2015,56 +2014,56 @@
     (research ri-stirrups)
 )
 
-; CABALLERIA LIGERA   
+; LIGHT CAVALRY  
 (defrule
-    (can-research ri-light-cavalry)
     (or(current-age == imperial-age)(unit-type-count scout-cavalry-line > 6))
+    (can-research ri-light-cavalry)    
 =>
     (research ri-light-cavalry)
 )
 
 (defrule
-    (can-research ri-hussar)
     (current-age == imperial-age)
+    (can-research ri-hussar)    
 =>
     (research ri-hussar)
 )
 
-; definitive husar alado
+; WINGED HUSSAR
 (defrule
-    (can-research 786)
     (current-age == imperial-age)
+    (can-research 786)    
 =>
     (research 786)
 )
 (defrule
-    (can-research 788)
     (current-age == imperial-age)
+    (can-research 788)    
 =>
     (research 788)
 )(defrule
-    (can-research 789)
     (current-age == imperial-age)
+    (can-research 789)    
 =>
     (research 789)
 )
 
-; CAMELLOS
+; CAMELS
 (defrule
-    (can-research ri-heavy-camel)
     (current-age == imperial-age)
+    (can-research ri-heavy-camel)    
 =>
     (research ri-heavy-camel)
 )
 
 (defrule
-    (can-research ri-imperial-camel)
     (current-age == imperial-age)
+    (can-research ri-imperial-camel)    
 =>
     (research ri-imperial-camel)
 )
 
-; ELEFANTES
+; ELEPHANTS
 (defrule
     (can-research ri-elite-battle-elephant)
     (current-age == imperial-age)
@@ -2072,7 +2071,7 @@
     (research ri-elite-battle-elephant)
 )
 
-; CABALLERIA PESADA
+; HEAVY CAVALRY
 (defrule
     (can-research ri-cavalier)(not(civ-selected byzantine))(unit-type-count-total knight-line > 5)	
     (current-age == imperial-age)
@@ -2094,8 +2093,8 @@
     (research ri-elite-steppe-lancer)
 )
 
-; ARQUERIA          
-; COMUNES
+; ARCHERY RANGE UPGRADES        
+; COMMON
 (defrule
  	(research-completed ri-hand-cart)
  	(research-completed ri-two-man-saw)
@@ -2104,7 +2103,7 @@
     (research ri-thumb-ring )
 )
 
-; ARQUERO 
+; ARCHER
 (defrule
     (can-research ri-crossbow )
  	(research-completed ri-hand-cart)
@@ -2121,28 +2120,47 @@
     (research ri-arbalest )
 )
 
-; javalinas
+; SKIRMISHER AND GENITOUR
 (defrule
+    (unit-type-count-total genitour > 1)
     (can-research ri-elite-genitour)
-    (unit-type-count-total genitour > 0)
 =>
-    (research ri-elite-genitour )
+    (research ri-elite-genitour)
 )
 
 (defrule
-    (can-research ri-elite-skirmisher)(research-completed ri-hand-cart)
+    (research-completed ri-hand-cart)
     (unit-type-count-total skirmisher-line > 1)
+    (can-research ri-elite-skirmisher)    
 =>
     (research ri-elite-skirmisher)
 )
 
 (defrule
-    (can-research ri-imperial-skirmisher)(unit-type-count-total skirmisher-line > 1)
+    (unit-type-count-total skirmisher-line > 1)
+    (can-research ri-imperial-skirmisher)
 =>
     (research ri-imperial-skirmisher)
 )
 
-; MEJORAS CASTILLO
+; CAVALRY ARCHERS UPGRADES
+(defrule
+    (can-research ri-parthian-tactics)
+    (current-age == imperial-age)
+    (unit-type-count-total cavalry-archer-line > 4)
+=>
+    (research ri-parthian-tactics )
+)
+
+(defrule
+    (can-research ri-heavy-cavalry-archer)
+    (current-age == imperial-age)
+    (unit-type-count-total cavalry-archer-line > 4)
+=>
+    (research ri-heavy-cavalry-archer)
+)
+
+; CASTLE UPGRADES
 (defrule
     (can-research ri-conscription)
     (current-age == imperial-age)
@@ -2155,7 +2173,7 @@
     (current-age == imperial-age)(not(civ-selected ethiopian))
 =>
     (research my-unique-unit-upgrade)
-    (chat-local-to-self  "Unique unit upgraded")
+    (chat-to-player my-player-number "UNIQUE UNIT UPGRADED!")
 )
 
 (defrule
@@ -2174,53 +2192,51 @@
     (food-amount > 2000)
     (gold-amount > 1000)
 =>
-    (research ri-sappers)(set-strategic-number sn-allow-civilian-offense 2)
-    (chat-to-all "Respect the code of the streets!")   
+    (research ri-sappers)
+    (chat-to-player my-player-number "SAPPERS!")   
 )
 
-; MEJORAS HERRERIA                             
-; ATAQUE INFANTERIA Y CABALLERIA       
-
+; BLACKSMITH UPGRADES                          
+; INFANTRY AND CAVALRY ATTACK      
  (defrule
-    (can-research ri-forging)
     (or(unit-type-count infantry-class > 2)(unit-type-count cavalry-class > 2))
     ;(research-completed ri-hand-cart)
     ;(research-completed ri-bow-saw)
     ;(research-completed ri-heavy-plow)
     (or(town-under-attack)(current-age == imperial-age))
+    (can-research ri-forging)
 =>
     (research ri-forging)
 )
 
 (defrule
 	(research-completed ri-hand-cart)(research-completed ri-bow-saw)    
-    (can-research ri-iron-casting)
     (or(town-under-attack)(current-age == imperial-age))
+    (can-research ri-iron-casting)
 =>
     (research ri-iron-casting)
 )
 
 (defrule
-    (can-research ri-blast-furnace)
     (or(town-under-attack)(current-age == imperial-age))
+    (can-research ri-blast-furnace)    
 =>
     (research ri-blast-furnace)
 )
 
-; DEFENSA INFANTERIA
-
+; INFANTRY DEFENSE
 (defrule
-    (can-research ri-scale-mail) 
     (or(town-under-attack)
-    (current-age == imperial-age))  
+    (current-age == imperial-age))
+    (can-research ri-scale-mail)       
 =>
     (research ri-scale-mail)
 )
 
 (defrule
-    (can-research ri-chain-mail)
     (or(town-under-attack)
     (current-age == imperial-age))   
+    (can-research ri-chain-mail)    
 =>
     (research ri-chain-mail)
 )
@@ -2231,14 +2247,13 @@
     (research ri-plate-mail)
 )
 
-; DEFENSA CABALLERIA                
-
+; CAVALRY DEFENSE            
 (defrule
-    (can-research ri-scale-barding)
     (or
-        (unit-type-count-total camel-line > 3)
+        (unit-type-count-total cavalry-class > 4)
         (current-age == imperial-age)
     )
+    (can-research ri-scale-barding)    
 =>
     (research ri-scale-barding)
 )
@@ -2255,13 +2270,13 @@
     (research ri-plate-barding)
 )
 
-; FLECHAS ATAQUE 
-(defrule
-    (can-research ri-fletching)
+; ARCHER / TOWER / TC / BOAT ATTACK 
+(defrule    
     (or
         (or(town-under-attack)(current-age == imperial-age))    
         (enemy-buildings-in-town)
     )
+    (can-research ri-fletching)    
 =>
     (research ri-fletching)
 )
@@ -2298,26 +2313,9 @@
     (research ri-ring-archer-armor )
 )
 
-; ARQUEROS CABALLO
-(defrule
-    (can-research ri-parthian-tactics)
-    (current-age == imperial-age)
-    (unit-type-count-total cavalry-archer-line > 4)
-=>
-    (research ri-parthian-tactics )
-)
 
-(defrule
-    (can-research ri-heavy-cavalry-archer)
-    (current-age == imperial-age)
-    (unit-type-count-total cavalry-archer-line > 4)
-=>
-    (research ri-heavy-cavalry-archer)
-)
-
-; MEJORAS TALLER MAQUINARIA ASEDIO
-; CATAPULTA
-
+; SIEGE WORKSHOP UPGRADES
+; MANGONEL
 (defrule
 	(unit-type-count-total mangonel-line > 2)
     (can-research ri-onager )
@@ -2333,7 +2331,7 @@
     (research ri-siege-onager )
 )
 
-; BALLESTA (ESCORPION)
+; SCORPION
 (defrule
     (or
         (unit-type-count-total scorpion-line > 3)
@@ -2344,7 +2342,7 @@
     (research ri-heavy-scorpion )
 )
 
-; ARIETE
+; RAM
 (defrule
 	(unit-type-count-total battering-ram-line > 1)
     (food-amount > 700)
@@ -2360,7 +2358,7 @@
     (research ri-siege-ram )
 )
 
-; OBUSES (BOHEMIOS)
+; HOUFNICE
 (defrule
 	;(unit-type-count-total bombard-cannon > 0)
     (can-research 787)
@@ -2368,7 +2366,7 @@
     (research 787)
 )
 
-; MONASTERIO
+; MONASTERY
 (defrule ;herbs
     (town-under-attack)(research-completed ri-atonement)
 =>
