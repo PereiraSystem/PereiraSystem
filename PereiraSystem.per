@@ -1188,7 +1188,7 @@
     (chat-local-to-self "ELEFANTES 30% MÁS RÁPIDOS!")  
 )
 
-; SARRACENOS
+; SARACEN
 (defrule
     (can-research ri-madrasah)(unit-type-count monk > 0)
 =>
@@ -1729,7 +1729,7 @@
 )
 
 (defrule
-    (civ-selected poles)(unit-type-count-total scout-line > 0)
+    (civ-selected poles)(unit-type-count-total scout-cavalry-line > 0)
     (can-research my-unique-research)
 =>
     (research my-unique-research)
