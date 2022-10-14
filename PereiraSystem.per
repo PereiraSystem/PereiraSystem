@@ -211,6 +211,13 @@
 	(up-get-fact civilian-population 0 gl-civPop)
 )
 
+(defconst gl-buildCount 301)
+(defrule
+	(true)
+=>
+	(up-get-fact building-count 0 gl-buildCount)
+)
+
 (defconst gl-milPop 330)
 (defrule
 	(true)
@@ -277,7 +284,8 @@
 =>
 	(disable-timer 10)
     (enable-timer 10 120)  
-    (up-chat-data-to-self "Civilians: %d" g: gl-civPop)          
+    (up-chat-data-to-self "Civilians: %d" g: gl-civPop)      
+    (up-chat-data-to-self "Buildingss: %d" g: gl-buildCount)    
 )
 
 ; TIMER 11 MILITARY REPORT
