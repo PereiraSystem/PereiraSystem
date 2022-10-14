@@ -4585,6 +4585,14 @@
 )
 
 (defrule
+    (current-age == castle-age)
+    (can-sell-commodity wood)
+    (wood-amount > 600)
+=>
+    (sell-commodity wood)
+)
+
+(defrule
     (can-sell-commodity wood)
     (wood-amount > 2000)
     (gold-amount < 1000)
