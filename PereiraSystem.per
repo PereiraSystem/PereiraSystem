@@ -4113,12 +4113,11 @@
 
 (defrule
 	(current-age == feudal-age)
-    ;(research-completed ri-wheel-barrow)
-    ;(research-completed ri-double-bit-axe)
-    (or(up-compare-goal gl-dudeHasArchers > 0)
-    (up-compare-goal gl-dudeHasSkirmishers > 0))
-	(can-train scout-cavalry-line)
+    (town-under-attack)
+    (or(up-compare-goal gl-dudeHasArchers == 1)
+    (up-compare-goal gl-dudeHasSkirmishers == 1))
 	(unit-type-count-total scout-cavalry-line g:< gl-cantScouts)
+	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
 )
@@ -4126,6 +4125,8 @@
 (defrule
 	(current-age == castle-age)
     (town-under-attack)
+    (or(up-compare-goal gl-dudeHasArchers == 1)
+    (up-compare-goal gl-dudeHasSkirmishers == 1))    
     (up-compare-goal dudeHasSpearmen == 0)
 	(can-train scout-cavalry-line)
 =>
@@ -4133,12 +4134,13 @@
 )
 
 (defrule
-	(current-age == imperial-age)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+	(current-age == imperial-age)(gold-amount < 1400)
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)
+    (research-completed ri-heavy-plow)
     (research-completed ri-light-cavalry)          
-	(can-train scout-cavalry-line)
-    (not(civ-selected japanese))(not(civ-selected viking))  
-    (unit-type-count-total scout-cavalry-line < 8)(gold-amount < 1400)
+    (unit-type-count-total scout-cavalry-line g:< gl-cantScouts)
+    (not(civ-selected japanese))(not(civ-selected viking))     
+	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
 )
@@ -4153,19 +4155,19 @@
 
 ; CAMEL 
 (defrule
-	(current-age == castle-age)
-    (research-completed ri-hand-cart)
-    (research-completed ri-bow-saw)(research-completed ri-heavy-plow)  
-	(can-train camel-line)
+    (or(up-compare-goal gl-dudeHasScouts == 1)
+    (up-compare-goal gl-dudeHasKnights == 1))   
 	(unit-type-count-total camel-line g:< gl-camelQtyLow)
+	(can-train camel-line)    
 =>
     (train camel-line)
 )
 
 (defrule
 	(current-age == imperial-age)
-    (gold-amount > 201)
+    (gold-amount > 260)
 	(unit-type-count-total camel-line g:< gl-cantCaballeros)
+	(can-train camel-line)    
 =>
     (train camel-line)
 )
@@ -4757,6 +4759,18 @@
     (players-unit-type-count any-enemy scout-cavalry-line < 2) 
 =>  
     (set-goal gl-dudeHasScouts 0)
+)
+
+(defrule
+    (players-unit-type-count any-enemy knight-line > 2)
+=>  
+    (set-goal gl-dudeHasKnights 1)
+)
+
+(defrule
+    (players-unit-type-count any-enemy knight-line < 2) 
+=>  
+    (set-goal gl-dudeHasKnights 0)
 )
 
 (defrule
