@@ -2489,7 +2489,7 @@
     (building-type-count-total town-center == 0) 
     (can-build town-center)    
 =>
-    (chat-local-to-self "Trying to build town center 1")
+    (chat-local-to-self "Trying To Build Town Center 1")
     (build town-center)
 )
 
@@ -2497,7 +2497,7 @@
 	(building-type-count-total town-center == 1)
     (can-build town-center)    
 =>
-    (chat-local-to-self "Trying to build town center 2")
+    (chat-local-to-self "Trying To Build Town Center 2")
     (up-modify-sn sn-mill-max-distance c:+ 12)    
     (build town-center)
 )
@@ -2511,7 +2511,7 @@
     (military-population > 10)
     (can-build town-center)    
 =>
-    (build town-center)(chat-local-to-self  "Trying to build town center 3")
+    (build town-center)(chat-local-to-self  "Trying To Build Town Center 3")
 )
 
 (defrule
@@ -2521,7 +2521,7 @@
     (building-type-count-total town-center < 6) 
     (can-build town-center)
 =>
-    (build town-center) (chat-local-to-self "Trying to build town center")
+    (build town-center) (chat-local-to-self "Trying To Build Town Center")
 )
 
 ; MILL   
@@ -2531,14 +2531,14 @@
     (wood-amount > 200)
     (can-build mill)    
 =>
-    (build mill)(chat-local-to-self  "Trying to build mill 1 (food found)")
+    (build mill)(chat-local-to-self  "Trying To Build Mill 1 (Food Found)")
 )
 
 (defrule  
     (building-type-count-total mill < 1)(building-type-count town-center > 0)
     (wood-amount > 400)(can-build mill)
 =>
-    (build mill)(chat-local-to-self  "Trying to build mill 1 (excess wood)")
+    (build mill)(chat-local-to-self  "Trying To Build Mill 1 (Excess Wood)")
 )
 
 (defrule  
@@ -2549,7 +2549,7 @@
     (wood-amount > 200)(not(civ-selected khmer))
     (can-build mill)    
 =>
-    (build mill)(chat-local-to-self  "Trying to build mill 1 (forced)")
+    (build mill)(chat-local-to-self  "Trying To Build Mill 1 (Forced)")
 )
 
 (defrule  
@@ -2560,7 +2560,7 @@
 =>
     (build mill)
     (set-strategic-number sn-maximum-food-drop-distance 9)
-    (chat-local-to-self  "Trying to build mill 1 (forced - feudal)")
+    (chat-local-to-self  "Trying To Build Mill 1 (Forced - Feudal)")
 )
 
 (defrule  
@@ -2575,7 +2575,7 @@
     (dropsite-min-distance food > 12)
     (can-build mill)
 =>
-    (build mill)(chat-local-to-self "Trying to build mill 2")
+    (build mill)(chat-local-to-self "Trying To Build Mill 2")
     (up-modify-sn sn-mill-max-distance c:+ 12)
     (set-strategic-number sn-maximum-food-drop-distance 9) 
 )
@@ -2591,7 +2591,7 @@
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))        
     (not(civ-selected khmer))
 =>
-    (build mill)(chat-local-to-self  "MILL 3")
+    (build mill)(chat-local-to-self "Trying To Build Mill 3")
     (up-modify-sn sn-mill-max-distance c:+ 12)
 )
 
@@ -2602,26 +2602,24 @@
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))    
     (can-build mill)(not(civ-selected khmer))
 =>
+    (chat-local-to-self "Trying To Build Mill")   
+    (up-modify-sn sn-mill-max-distance c:+ 8)
     (build mill)
-    (up-modify-sn sn-mill-max-distance c:+ 8)(chat-local-to-self  "MILL")
-)
+ )
 
-; GRANJAS
-
-
-; EDAD 1
+; FARMS
+; DARK AGE
 (defrule
     (current-age == dark-age)(building-type-count town-center > 0)
     (building-type-count-total barracks > 0)(wood-amount > 176)
-	(can-build farm)
     (building-type-count-total lumber-camp > 0)
 	(idle-farm-count < 3)
+	(can-build farm)    
 =>
 	(build farm)
 )
 
-; EDAD 2
-
+; FEUDAL AGE
 (defrule
 	(current-age == feudal-age)(building-type-count town-center > 0)
     (or
@@ -2638,38 +2636,39 @@
     (build farm)
 )
 
-; EDAD 3
+; CASTLE AGE
 (defrule
 	(current-age == castle-age)(building-type-count town-center > 0)   
-	(building-type-count-total farm < 20)
+
     (food-amount < 1200)(wood-amount > 276)
     (or
         (building-type-count monastery > 0)
         (building-type-count siege-workshop > 0)
     )
+	(building-type-count-total farm < 20)    
 	(can-build farm)
 =>
 	(build farm)
 )
 
-; EDAD 4
+; IMPERIAL AGE
 (defrule
-	(current-age == imperial-age)(food-amount < 5000)(wood-amount > 300)
-	(can-build farm)
-	(building-type-count-total farm < 32) ; no miramos si granjas inactivas
+	(current-age == imperial-age)
+    (food-amount < 5000)(wood-amount > 300)
+	(building-type-count-total farm < 32)
+    (can-build farm)
 =>
     (build farm)
 )
 
-; CASAS
-
+; HOUSES
 (defrule
     (current-age < imperial-age)
     (wood-amount > 1000)
 	(can-build house)
 =>
-	(build house)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-local-to-self  "Trying to build house (excess wood)") 
+    (chat-local-to-self "Trying To Build House (Excess Wood)") 
+	(up-modify-sn sn-maximum-town-size c: +1)(build house)
 )
 
 (defrule
@@ -2677,8 +2676,8 @@
     (wood-amount > 10000)
 	(can-build house)
 =>
-	(build house)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-local-to-self  "Trying to build house (excess wood)") 
+	(chat-local-to-self "Trying To Build House (Excess Wood)") 
+    (up-modify-sn sn-maximum-town-size c: +1)(build house)
 )
 
 (defrule
@@ -2690,7 +2689,7 @@
     (building-type-count-total house < 1)
     (can-build house)
 =>
-    (build house)(chat-local-to-self "Trying to build house 1") 
+    (chat-local-to-self "Trying To Build House 1")(build house) 
 )
 
 (defrule
@@ -2699,17 +2698,16 @@
     (building-type-count-total house < 2)
     (can-build house)
 =>
-    (build house)(chat-local-to-self "Trying to build house 2") 
+    (chat-local-to-self "Trying To Build House 2")(build house)
 )
 
 (defrule
-    (current-age == dark-age)
+    (current-age == dark-age)(wood-amount > 125)
     (or(building-type-count barracks > 0)(building-type-count mill > 0))
     (unit-type-count-total villager > 10) 
-    (building-type-count-total house < 3)
-    (can-build house)    (wood-amount > 125)
+    (building-type-count-total house < 3)(can-build house)
 =>
-    (build house)(chat-local-to-self "Trying to build house 3") 
+    (chat-local-to-self "Trying to build house 3")(build house) 
 )
 
 (defrule
@@ -2732,7 +2730,7 @@
     (build house)
 )
 
-; MADERA                       
+; LUMBER                       
 (defrule
     (building-type-count-total lumber-camp == 0)
     (can-build lumber-camp)
@@ -2744,8 +2742,8 @@
         (civ-selected hun)
     )
 =>
+    (chat-local-to-self "Trying To Build Lumber Camp 1")
     (build lumber-camp)
-    (chat-local-to-self "Trying to build lumber camp 1")
     (up-modify-sn sn-camp-max-distance c:+ 8)        
 )
 
@@ -2757,8 +2755,8 @@
     ;(resource-found wood)
         (dropsite-min-distance wood > 3) 
 =>
+    (chat-local-to-self "Trying To Build Lumber Camp 2")    
     (build lumber-camp)
-    (chat-local-to-self "Trying to build lumber camp 2")
     (up-modify-sn sn-camp-max-distance c:+ 8)     
 )
 
@@ -2772,8 +2770,8 @@
     (resource-found wood)
     (dropsite-min-distance wood > 3)
 =>
+    (chat-local-to-self "Trying To Build Lumber Camp 2")    
     (build lumber-camp)
-    (chat-local-to-self "Trying to build lumber camp 2")
     (up-modify-sn sn-camp-max-distance c:+ 8)     
 )
 
@@ -2787,8 +2785,8 @@
     (resource-found wood)
     (dropsite-min-distance wood > 3)
 =>
+    (chat-local-to-self "Trying To Build Lumber Camp 3")    
     (build lumber-camp)
-    (chat-local-to-self "Trying to build lumber camp 3")
     (up-modify-sn sn-camp-max-distance c:+ 8)     
 )
 
@@ -2799,29 +2797,28 @@
     (dropsite-min-distance wood > 3)
     (can-build lumber-camp)
 =>
-    (chat-local-to-self "Trying to build lumber camp")
+    (chat-local-to-self "Trying To Build Lumber Camp")
     (build lumber-camp)
     (up-modify-sn sn-camp-max-distance c:+ 4)               
 )
 
 ; MINAS                       
 ; ORO
+
 (defrule 
     (current-age == feudal-age)
     (wood-amount > 200)
     (or(wood-amount > 275)(building-type-count town-center > 0))    
-    (or(building-type-count archery-range > 0)
-    (building-type-count market > 0))
+    (or(building-type-count archery-range > 0)(building-type-count market > 0))
     (research-completed ri-double-bit-axe)
+    (building-type-count-total mining-camp == 0) 
     (resource-found gold) 
     (dropsite-min-distance gold > 3)
-    (building-type-count-total mining-camp == 0)  
     (can-build mining-camp)
 =>
+    (up-chat-data-to-self "Trying To Build Mining Camp (Gold 1) - Max Distance = %d" s: sn-mining-camp-max-distance)      
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    ;(chat-local-to-self  "MINING CAMP - GOLD 1")
-    (up-chat-data-to-self "Mining camp - gold 1 - max distance = %d" s: sn-mining-camp-max-distance)  
 )
 
 (defrule 
@@ -2837,36 +2834,36 @@
 =>
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 8)  
-    (up-chat-data-to-self "Mining camp - gold - max mining camp distance = %d" s: sn-mining-camp-max-distance)  
+    (up-chat-data-to-self "Trying To Build Mining Camp (Gold) - Max Distance = %d" s: sn-mining-camp-max-distance)  
 )
 
-; PIEDRA
+; STONE MINING CAMP
 (defrule 
-    (wood-amount > 276)
     (or
         (current-age >= castle-age)
         (and(building-type-count town-center < 0)(stone-amount < 100))
-    )    
+    )
+    (wood-amount > 276)    
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
 =>
+    (up-chat-data-to-self "Trying To Build Mining Camp (Stone 1) - Max Distance = %d" s: sn-mining-camp-max-distance)      
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    (up-chat-data-to-self "Mining camp (stone 1) - max distance = %d" s: sn-mining-camp-max-distance)  
 )
 
 (defrule 
-    (wood-amount > 276)
     (or(current-age > castle-age)
     (and(building-type-count town-center < 0)(stone-amount < 100)))    
+    (wood-amount > 276)
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
 =>
+    (up-chat-data-to-self "Trying To Build Mining Camp (Stone 2) - Max Distance = %d" s: sn-mining-camp-max-distance)      
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    (up-chat-data-to-self "Mining camp (stone 2) - max distance = %d" s: sn-mining-camp-max-distance)  
 )
 
 (defrule 
@@ -2877,27 +2874,12 @@
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
 =>
+    (up-chat-data-to-self "Trying To Build Mining Camp (Stone) - Max Distance = %d" s: sn-mining-camp-max-distance)  
     (build mining-camp)
     (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
-    (up-chat-data-to-self "Mining camp (stone) - max distance = %d" s: sn-mining-camp-max-distance)  
 )
 
-(defrule 
-    (current-age > castle-age)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)            
-    (building-type-count-total monastery > 0)
-    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
-    (resource-found stone) 
-    (dropsite-min-distance stone > 3)
-    (can-build mining-camp)
-=>
-    (build mining-camp)
-    ;(chat-local-to-self  "MINING CAMP - STONE")
-    (up-modify-sn sn-mining-camp-max-distance c:+ 8)  
-    (up-chat-data-to-self "Mining camp (stone) - max distance = %d" s: sn-mining-camp-max-distance)  
-)
-
-; HERRERIA
+; BLACKSMITH
 (defrule
     (building-type-count-total blacksmith == 0)(wood-amount > 275)
     (building-type-count town-center > 0)    
@@ -2906,70 +2888,73 @@
     (can-build blacksmith)
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
 =>
-    (up-modify-sn sn-maximum-town-size c:+ 1)
-    (chat-local-to-self  "Trying to build blacksmith")
-    (build blacksmith)    
+    (chat-local-to-self "Trying to build blacksmith")
+    (build blacksmith)(up-modify-sn sn-maximum-town-size c:+ 1)    
 )
 
 ; MARKET
 (defrule
     (building-type-count town-center > 0)
     (or(wood-amount > 275)(and(civ-selected japanese)(wood-amount > 225)))   
-    (building-type-count-total market == 0)
     (players-building-type-count any-ally villager > 0)
     (research-completed ri-double-bit-axe)
+    (building-type-count-total market == 0)    
     (can-build market)
 =>
-    (chat-local-to-self "Trying to build market 1") 
+    (chat-local-to-self "Trying To Build Market 1") 
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (build market)
 )
 
 (defrule
     (players-building-type-count any-ally market > 0)
-    (building-type-count-total market == 1)(can-build market)
     (current-age == imperial-age)
     (building-type-count-total university > 0)
     (building-type-count-total castle > 0)
     (building-type-count-total barracks > 1)
+    (building-type-count-total market == 1)    
+    (can-build market)    
 =>
-    (chat-local-to-self "Trying to build market 2")(build market)  
+    (chat-local-to-self "Trying To Build Market 2")(build market)  
 )
 
 (defrule
     (players-building-type-count any-ally market > 0)
-    (building-type-count-total market == 2)(can-build market)
     (current-age == imperial-age)
     (building-type-count-total university > 0)
     (building-type-count-total castle > 0)
     (building-type-count-total barracks > 1)(military-population > 60)
+    (building-type-count-total market == 2)    
+    (can-build market)
 =>
-    (chat-local-to-self "Trying to build market 3")(build market)  
+    (chat-local-to-self "Trying To Build Market 3")(build market)  
 )
 
 (defrule
     (players-building-type-count any-ally market > 0)
-    (building-type-count-total market == 3)(can-build market)
+    (building-type-count-total market == 3)
     (current-age == imperial-age)
     (building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total barracks > 1)(military-population > 65)
+    (can-build market)
 =>
-    (chat-local-to-self "Trying to build market 4") (build market) 
+    (chat-local-to-self "Trying To Build Market 4")(build market) 
 )
 
 ; UNIVERSITY
 (defrule
-    (building-type-count-total university == 0)
+
     (building-type-count-total monastery > 0)  
     (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)    
-    (can-build university)
     (or
         (building-type-count-total house > 10)
         (civ-selected hun)
     )
+    (building-type-count-total university < 1)    
+    (can-build university)
 =>
-    (build university)(chat-local-to-self  "Trying to build university")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (chat-local-to-self "Trying To Build University")
+    (up-modify-sn sn-maximum-town-size c:+ 1)(build university)    
 )
 
 ; DOCK
@@ -3036,7 +3021,7 @@
 =>
     (up-assign-builders c: dock c:+ 2)
     (build dock)
-    (chat-local-to-self  "DOCK 2")
+    (chat-local-to-self "DOCK 2")
 )
 
 (defrule
@@ -3047,7 +3032,7 @@
     (building-type-count-total dock == 2)
 =>
     (build dock)
-    (chat-local-to-self  "DOCK 3")
+    (chat-local-to-self "DOCK 3")
 )
 
 (defrule
@@ -3058,7 +3043,7 @@
     (building-type-count-total dock == 3)
 =>
     (build dock)
-    (chat-local-to-self  "DOCK 4")
+    (chat-local-to-self "DOCK 4")
 )
 
 (defrule
@@ -3069,7 +3054,7 @@
     (building-type-count-total dock == 4)
 =>
     (build dock)
-    (chat-local-to-self  "DOCK 5")
+    (chat-local-to-self "DOCK 5")
 )    
 
 (defrule
@@ -3078,7 +3063,7 @@
     (building-type-count-total dock < 24)
     (can-build dock)    
 =>  
-    (build dock)(chat-local-to-self  "DOCK (EXCESS WOOD)")
+    (build dock)(chat-local-to-self "DOCK (EXCESS WOOD)")
 )
 
 ; MILITARES
@@ -3111,24 +3096,24 @@
 )
 
 ; WALL
-;STONE
+; STONE
 (defrule 
 	(can-build-wall 1 stone-wall-line)
     (building-type-count castle > 0)(current-age == imperial-age)
     (military-population > 75)(unit-type-count-total villager > 65)
     (food-amount > 1300)(gold-amount > 1300)(wood-amount > 1300)
 =>
-	(build-wall 1  stone-wall-line) 
+	(build-wall 1 stone-wall-line) 
 )
 
-;WOOD
+; WOOD
 (defrule 
 	(can-build-wall 1 72)  
 =>
 	(build-wall 1 72)
 )
 
-;STONE 2
+; STONE 2
 (defrule 
 	(can-build-wall 2 stone-wall-line)
     (building-type-count-total castle > 0)(current-age == imperial-age)
@@ -3136,7 +3121,7 @@
 	(build-wall 2  stone-wall-line)
 )
 
-;WOOD 2
+; WOOD 2
 (defrule 
 	(can-build-wall 2 72)
     (building-type-count-total castle > 0)(current-age == imperial-age)
@@ -3149,7 +3134,7 @@
     (can-build castle)
     (building-type-count-total castle == 0)
 =>
-    (chat-local-to-self  "Trying to build castle 1")
+    (chat-local-to-self "Trying To Build Castle 1")
     (up-modify-sn sn-maximum-town-size c:+ 3)    
     (build castle) 
 )
@@ -3158,13 +3143,13 @@
     (can-build castle)(current-age == castle-age)
     (building-type-count-total castle == 1)
 =>
-    (chat-local-to-self "Trying to build forward castle 2")(build-forward castle) 
+    (chat-local-to-self "Trying To Build Forward Castle 2")(build-forward castle) 
 )
 
 (defrule
     (building-type-count-total castle == 1)(can-build castle)
 =>
-    (chat-local-to-self "Trying to build castle 2")(build castle) 
+    (chat-local-to-self "Trying To Build Castle 2")(build castle) 
 )
 
 (defrule ; MINI CASTILLO HUNGARO
@@ -3189,16 +3174,15 @@
     (build donjon)(up-modify-sn sn-maximum-town-size c:+ 1)   
 )
 
-; PROD MILITAR
-; CONSTRUIR BARRACAS    
-
+; MILITARY PRODUCTION BUILDINGS
+; BARRACKS   
 (defrule
     (current-age < imperial-age)
     (wood-amount > 1300)
 	(can-build barracks)
 =>
 	(build barracks)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-local-to-self "Trying to build barracks (excess wood)") 
+    (chat-local-to-self "Trying To Build Barracks (Excess Wood)") 
 )
 
 (defrule
@@ -3207,7 +3191,7 @@
 	(can-build barracks)
 =>
 	(build barracks)(up-modify-sn sn-maximum-town-size c: +1)
-    (chat-local-to-self "Trying to build barracks (excess wood)") 
+    (chat-local-to-self "Trying To Build Barracks (Excess Wood)") 
 )
 
 (defrule ;four nested conditionals, the japanese would do it for you
@@ -3225,7 +3209,7 @@
     )
     (can-build barracks)
 =>
-    (chat-local-to-self "Trying to build barracks 1")
+    (chat-local-to-self "Trying To Build Barracks 1")
     (build barracks)
 )
 
@@ -3241,7 +3225,7 @@
     (military-population > 40)    
     (can-build barracks)
 =>  
-    (chat-local-to-self "Trying to build barracks 2")
+    (chat-local-to-self "Trying To Build Barracks 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)        
     (build barracks)
@@ -3258,7 +3242,7 @@
     )
     (can-build barracks)(military-population > 40)
 =>
-    (build barracks)(chat-local-to-self "Trying to build barracks 3")
+    (build barracks)(chat-local-to-self "Trying To Build Barracks 3")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3266,7 +3250,7 @@
 	(current-age == imperial-age)(building-type-count-total barracks < 8)
     (can-build barracks)(wood-amount > 2000)(food-amount > 400)
 =>
-    (chat-local-to-self "Trying to build barracks")
+    (chat-local-to-self "Trying To Build Barracks")
     (up-modify-sn sn-maximum-town-size c:+ 1)(build barracks)
 )
 
@@ -3289,7 +3273,7 @@
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0)) 
 =>
     (build stable)
-    (chat-local-to-self "Trying to build stable 1") 
+    (chat-local-to-self "Trying To Build Stable 1") 
 )
 
 (defrule
@@ -3298,7 +3282,7 @@
     (building-type-count-total siege-workshop > 0)      
 =>
     (build stable)
-    (chat-local-to-self "Trying to build stable 1") 
+    (chat-local-to-self "Trying To Build Stable 1") 
 )
 
 (defrule
@@ -3306,7 +3290,7 @@
     (can-build stable)(building-type-count-total stable < 1)
 =>
     (build stable)
-    (chat-local-to-self "Trying to build stable 1") 
+    (chat-local-to-self "Trying To Build Stable 1") 
 )
 
 (defrule
@@ -3316,7 +3300,7 @@
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>
-    (build stable)(chat-local-to-self "Trying to build stable 2")
+    (build stable)(chat-local-to-self "Trying To Build Stable 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3327,7 +3311,7 @@
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>
-    (build stable)(chat-local-to-self "Trying to build stable 3")
+    (build stable)(chat-local-to-self "Trying To Build Stable 3")
     (up-modify-sn sn-maximum-town-size c:+ 1) 
 )
 
@@ -3336,7 +3320,7 @@
     (can-build stable)(wood-amount > 2000)
     (not(civ-selected gothic))
 =>
-    (build stable)(chat-local-to-self "Trying to build stable")
+    (build stable)(chat-local-to-self "Trying To Build Stable")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3348,7 +3332,7 @@
     (building-type-count lumber-camp > 0)
     (not(civ-selected cumans))
 =>
-    (chat-local-to-self "Trying to build archery range 1")
+    (chat-local-to-self "Trying To Build Archery Range 1")
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (up-modify-sn sn-minimum-town-size c:+ 2)
     (build archery-range)
@@ -3362,7 +3346,7 @@
     (can-build archery-range)
     (civ-selected cumans)
 =>
-    (chat-local-to-self "Trying to build archery range 1")
+    (chat-local-to-self "Trying To Build Archery Range 1")
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (up-modify-sn sn-minimum-town-size c:+ 2)
     (build archery-range)
@@ -3375,7 +3359,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
-    (build archery-range)(chat-local-to-self "Trying to build archery range 2")
+    (build archery-range)(chat-local-to-self "Trying To Build Archery Range 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)
 )
@@ -3387,7 +3371,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
-    (build archery-range)(chat-local-to-self "Trying to build archery range 3")
+    (build archery-range)(chat-local-to-self "Trying To Build Archery Range 3")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3396,7 +3380,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 2000)
 =>
-    (build archery-range)(chat-local-to-self "Trying to build archery range")
+    (build archery-range)(chat-local-to-self "Trying To Build Archery Range")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3406,7 +3390,7 @@
 	(not(civ-selected gothic))
     (can-build siege-workshop)    
 =>
-    (chat-local-to-self "Trying to build siege workshop 1")     
+    (chat-local-to-self "Trying To Build Siege Workshop 1")     
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (build siege-workshop)  
 )
@@ -3416,7 +3400,7 @@
     (current-age == imperial-age)(building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total siege-workshop == 1)
 =>
-    (build siege-workshop)(chat-local-to-self  "Trying to build siege workshop 2")
+    (build siege-workshop)(chat-local-to-self  "Trying To Build Siege Workshop 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)
 )
@@ -3428,7 +3412,7 @@
     (can-build siege-workshop)(wood-amount > 2000)(not(civ-selected gothic)) 
 =>
     
-    (build siege-workshop)(chat-local-to-self "Trying to build siege workshop")
+    (build siege-workshop)(chat-local-to-self "Trying To Build Siege Workshop")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3437,7 +3421,7 @@
     (or(building-type-count-total house > 3)(civ-selected hun))
     (building-type-count-total monastery == 0)(can-build monastery)
 => 
-    (chat-local-to-self "Trying to build monastery 1")     
+    (chat-local-to-self "Trying To Build Monastery 1")     
     (build monastery)
 )
 
@@ -3447,7 +3431,7 @@
     (building-type-count-total house > 25)
     (civ-selected saracen)
 => 
-    (chat-local-to-self "Trying to build monastery 2")         
+    (chat-local-to-self "Trying To Build Monastery 2")         
     (build monastery)
 )
 
