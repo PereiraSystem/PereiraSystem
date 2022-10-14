@@ -4596,7 +4596,7 @@
 (defrule
     (current-age == feudal-age)
     (can-sell-commodity food)
-    (food-amount > 1300)
+    (food-amount > 900)
     (or
          (wood-amount < 200)
          (stone-amount < 200)
@@ -4708,7 +4708,7 @@
 
 (defrule
     (current-age == feudal-age)
-    (food-amount > 1000)
+    (food-amount > 1200)
 =>
     (tribute-to-player any-ally food 100)
 )
