@@ -3790,6 +3790,17 @@
 )
 
 (defrule
+    (current-age == castle-age)(gold-amount > 300)
+	(unit-type-count-total battering-ram-line < 3)
+    (or(enemy-buildings-in-town)(military-population > 20))
+    (not(civ-selected gothic))
+    (not(civ-selected vietnamese)) 
+    (can-train battering-ram-line)
+=>
+	(train battering-ram-line)
+)
+
+(defrule
     (current-age == imperial-age)
 	(unit-type-count-total battering-ram-line < 2)
     (not(civ-selected gothic))
