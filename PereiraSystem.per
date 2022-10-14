@@ -338,7 +338,7 @@
 	(timer-triggered 15)
     (current-age == imperial-age)(building-type-count town-center > 0)
 =>
-	(chat-local-to-self "Deleting idle villagers")
+	(chat-local-to-self "Deleting Idle Villagers!!!")
 	(disable-timer 15)
     (enable-timer 15 600)    
     (up-delete-idle-units idle-type-villager)
@@ -360,11 +360,10 @@
     (enable-timer 20 1)
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-local-to-self  "Time has passed, time to attack!!!!")       
+    (chat-to-player my-player-number "Time Has Passed, Time To Attack!!!!")       
 )
 
 ; ATTACK!!!
-
 (defrule
     (building-type-count lumber-camp > 0)
 =>
@@ -386,17 +385,10 @@
 =>
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-local-to-self "WE ARE RICH, TIME TO ATTACK!!!!")    
+    (chat-to-player my-player-number "We Are Rich, Time To Attack!!!!")    
 )
 
-;(defrule(players-unit-type-count any-ally villager  > 0)
-;=>(up-modify-sn sn-maximum-town-size c:+ 8)
-;(up-modify-sn sn-enemy-sighted-response-distance c:+ 24)
-;(chat-local-to-self  "WE HAVE ALLIES, TOWN SIZE +8, RESPONSE DISTANCE +24")
-;(disable-self))
-
 ; 2. STRATEGIC NUMBERS
-
 (defrule 
     (true)
 =>  (set-strategic-number sn-do-not-scale-for-difficulty-level 1) (disable-self)
@@ -489,7 +481,7 @@
     (disable-self)
 )
 
-; CONSTRUCTORES EXTRA
+; EXTRA BUILDERS
 (defrule
     (true)
 =>
@@ -539,7 +531,7 @@
     (disable-self)
 )
 
-; CAMP MAX DISTANCE INICIO (AUMENTARAN SOLOS AL CONSTRUIR)
+; CAMP MAX DISTANCES AT THE START
 (defrule 
     (true)
 =>  
@@ -548,20 +540,18 @@
     (disable-self)
 )
 
-
-
-; MADERA MODO INDUSTRIAL
+; INDUSTRIAL MODE LUMBER
 (defrule 
-    (building-type-count-total lumber-camp > 3)
+    (building-type-count-total lumber-camp > 2)
 =>  
+    (up-chat-data-to-self "Industrial lumber mode activated: Adjacent sites allowed. Max drop distance = %d" s: sn-maximum-wood-drop-distance)
     (set-strategic-number sn-maximum-wood-drop-distance 3)
-    (up-chat-data-to-self "+3 LUMBER CAMPS. ADJACENT DROPSITES ALLOWED.: MAX WOOD DROP DISTANCE = %d" s: sn-maximum-wood-drop-distance)
     (set-strategic-number sn-required-forest-tiles 8)
     (set-strategic-number sn-allow-adjacent-dropsites 1)     
     (disable-self)
 )
 
-; PORCENTAJE OBREROS QUE CONSTRUYEN
+; PERCENT VILLAGER BUILDERS
 (defrule
     (current-age == dark-age)
 =>
@@ -1047,11 +1037,11 @@
     (civ-selected byzantine)(unit-type-count-total my-unique-unit-line > 0)
 =>
     (research my-unique-research)
-    (chat-local-to-self  "CATAFRACTROFICO")
+    (chat-local-to-self "CATAFRACTROFICO")
     (disable-self)
 )
 
-; CELTAS
+; CELTS
 (defrule
     (can-research ri-stronghold)
     (or
@@ -1064,17 +1054,18 @@
     )
 =>
     (research ri-stronghold)
-    (chat-local-to-self "Towers and castles shoot 25% faster!") 
+    (chat-to-player my-player-number "TOWERS AND CASTLES SHOOT 25% FASTER!") 
 )
 
 (defrule
     (can-research my-unique-research)
     (civ-selected celtic)
 =>
-    (research my-unique-research)(chat-local-to-self  "ARMAS DE ASEDIO +40% HP!")
+    (research my-unique-research)
+    (chat-to-player my-player-number "SIEGE WEAPONS +40% HP!")
 )
 
-; CHINOS
+; CHINESE
 (defrule
     (civ-selected chinese)
     (or
@@ -1086,14 +1077,16 @@
     )
     (can-research my-second-unique-research )
 =>
-    (research my-second-unique-research)(chat-local-to-self  "MUROS Y TORRES +30% HP!") 
+    (research my-second-unique-research)
+    (chat-to-player my-player-number "WALLS AND TOWERS +30% HP!") 
 )
 
 (defrule
     (civ-selected chinese)
     (can-research my-unique-research)
 =>
-    (research my-unique-research)(chat-local-to-self  "ARQUEROS ÚNICOS +2 ATAQUE, ESCORPIONES +4 ATAQUE!")
+    (research my-unique-research)
+    (chat-to-player my-player-number "UNIQUE ARCHERS +2 ATTACK, SCORPIONS +4 ATTACK!")
 )
 
 ; FRANCOS ESTA AL REVES
@@ -1109,38 +1102,42 @@
     (can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
-    (chat-local-to-self  "ESTABLOS PRODUCEN 40% MÁS RÁPIDO!") 
+    (chat-to-player my-player-number "STABLES WORK 40% FASTER!") 
 )
 
-; GODOS AL REVES
+; GOTHS
 (defrule
     (civ-selected gothic)
     (can-research my-unique-research)
     (current-age == imperial-age)
 =>
-    (research  my-unique-research)(chat-local-to-self  "CREA HUSCARLES EN LAS BARRACAS!") 
+    (research my-unique-research)
+    (chat-to-player my-player-number "HUSKARLS AVAILABLE AT BARRACKS!") 
 )
 
 (defrule
     (civ-selected gothic)
     (can-research my-second-unique-research)
 =>
-    (research my-second-unique-research)(chat-local-to-self  "BARRACAS PRODUCEN 100% MÁS RÁPIDO!") 
+    (research my-second-unique-research)
+    (chat-to-player my-player-number "BARRACKS SPEED DOUBLED!") 
 )
 
-; INGLESES
+; BRITONS
 (defrule
     (civ-selected briton)
     (can-research my-second-unique-research )
 =>
-    (research my-second-unique-research)(chat-local-to-self  "ARQUEROS +1 ALCANCE, TORRES + 2 ATAQUE!") 
+    (research my-second-unique-research)
+    (chat-to-player my-player-number "ARQUEROS +1 ALCANCE, TORRES + 2 ATAQUE!") 
 )
 
 (defrule
     (can-research my-unique-research)
     (civ-selected briton)(unit-type-count-total trebuchet > 0)
 =>
-    (research my-unique-research)(chat-local-to-self  "TREBUCHETS HACEN DAÑO DE ÁREA!")
+    (research my-unique-research)
+    (chat-to-player my-player-number "TREBUCHETS HACEN DAÑO DE ÁREA!")
 )
 
 ; JAPONESES
@@ -3524,7 +3521,7 @@
     (train villager)
 )
 
-; CARRETAS
+; TRADE CARTS
 (defrule 
     (gold-amount < 200)
     (current-age == feudal-age)
@@ -3554,7 +3551,7 @@
 	(train trade-cart)
 )
 
-; FISH TRAP
+; FISH TRAPS
 (defrule 
     (can-build fish-trap)(civ-selected malay)
     (building-type-count-total fish-trap < 8)
@@ -3564,23 +3561,11 @@
 
 ; MILITARY UNITS
 ; MONASTERY  
-(defrule
-    (can-train monk)
-=>
-    (train monk)(disable-self)
-)(defrule
-    (can-train monk)
-=>
-    (train monk)(disable-self)
-)(defrule
-    (can-train monk)
-=>
-    (train monk)(disable-self)
-)(defrule
-    (can-train monk)
-=>
-    (train monk)(disable-self)
-)
+(defrule(can-train monk)=>(train monk)(disable-self))
+(defrule(can-train monk)=>(train monk)(disable-self))
+(defrule(can-train monk)=>(train monk)(disable-self))
+(defrule(can-train monk)=>(train monk)(disable-self))
+(defrule(can-train monk)=>(train monk)(disable-self))
 
 (defrule
     (unit-type-count-total monk-set g:< gl-monkQty)
