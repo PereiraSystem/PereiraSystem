@@ -27,87 +27,87 @@
 (defconst gl-weMovedPlace 90)
 
 (defconst gl-maxHousesBeforeDeleting 101)    
-(defconst gl-maximoCasasNecesarias 102)
-(defconst gl-cantGranjasImperial 103)
+(defconst gl-maxHousesNeeded 102)
+(defconst gl-farmQtyImperial103)
 
-(defconst gl-maxCivilesEdadMedia 104)
-(defconst gl-maxCivilesEdadFeudal 105)
-(defconst gl-maxCivilesEdadCastillos 106)
-(defconst gl-maxCivilesEdadImperial 107)
+(defconst gl-maxCiviliansDarkAge 104)
+(defconst gl-maxCiviliansFeudalAge 105)
+(defconst gl-maxCiviliansCastleAge 106)
+(defconst gl-maxCiviliansImperialAge 107)
 
-(defconst gl-cantCarretas 108)
-(defconst gl-cantBarcosComercio 109)
+(defconst gl-tradeCartsQty 108)
+(defconst gl-tradeShipsQty 109)
 
-(defconst gl-cantLancerosMinima 110)
-(defconst gl-spearmanQtyMedium 111)
-(defconst gl-spearmanQtyHigh 112)
-(defconst gl-cantMilicia 113)
+(defconst gl-spearmenQtyLow 110)
+(defconst gl-spearmenQtyMedium 111)
+(defconst gl-spearmenQtyHigh 112)
+(defconst gl-militiaQty 113)
 
-(defconst gl-cantArqueros 114)
-(defconst gl-cantJavalineros 115)
-(defconst gl-cantArquerosCaballo 116)
-(defconst gl-cantMosqueteros 117)
+(defconst gl-archerQty 114)
+(defconst gl-skirmisherQty 115)
+(defconst gl-cavalryArcherQty 116)
+(defconst gl-handCannoneerQty 117)
 
-(defconst gl-cantCaballerosBaja 118)
-(defconst gl-cantCaballeros 119)
-(defconst gl-cantScoutsBaja 120)
-(defconst gl-cantScouts 121)
+(defconst gl-knightsQtyLow 118)
+(defconst gl-knightsQtyMedium 119)
+(defconst gl-scoutsQtyLow 120)
+(defconst gl-scoutsQtyMedium 121)
 (defconst gl-camelQtyLow 138)
 
 (defconst gl-monkQty 122)
 (defconst gl-monkQtyHigh 123)
 
-(defconst gl-cantArietesBaja 124)
-(defconst gl-cantArietes 125)
-(defconst gl-cantEscorpiones 126)
-(defconst gl-cantCatapultas 127)
-(defconst gl-cantBombardos 128)
+(defconst gl-ramQtyLow 124)
+(defconst gl-ramQtyMedium 125)
+(defconst gl-scorpionQty 126)
+(defconst gl-mangonelQty 127)
+(defconst gl-bombardCannonsQty 128)
 
-(defconst gl-cantUnicosBaja 129)
-(defconst gl-cantUnicos 130)
-(defconst gl-cantTrebuchets 131)
-(defconst gl-cantTrebuchetsAlta 132)
+(defconst gl-uniqueUnitQtyLow 129)
+(defconst gl-uniqueUnitQtyMedium 130)
+(defconst gl-trebuchetsQtyLow 131)
+(defconst gl-trebuchetsQtyHigh 132)
 
-(defconst gl-cantBarcoNormal 133)
-(defconst gl-cantBarcoCanyones 134)
-(defconst gl-cantBarcoFuego 135)
-(defconst gl-cantBarcoDemolicion 136)
-(defconst gl-cantBarcoEspecial 137)
+(defconst gl-galleyQty 133)
+(defconst gl-galleonQty 134)
+(defconst gl-fireshipQty 135)
+(defconst gl-demolitionShipQty 136)
+(defconst gl-specialShipQty 137)
 
 #load-if-defined POPULATION-CAP-150
 (defrule
     (true)
 =>
     (set-goal gl-maxHousesBeforeDeleting 21)    
-    (set-goal gl-maximoCasasNecesarias 30)
-    (set-goal gl-cantGranjasImperial 20)
+    (set-goal gl-maxHousesNeeded 30)
+    (set-goal gl-farmQtyImperial20)
 
-    (set-goal gl-maxCivilesEdadMedia 16)
-    (set-goal gl-maxCivilesEdadFeudal 18)
-    (set-goal gl-maxCivilesEdadCastillos 53)
-    (set-goal gl-maxCivilesEdadImperial 85)
+    (set-goal gl-maxCiviiansDarkAgea 16)
+    (set-goal gl-maxCiviliansFeudalAge 18)
+    (set-goal gl-maxCiviliansCastleAge 53)
+    (set-goal gl-maxCiviliansImperialAge 85)
 
-    (set-goal gl-cantCarretas 14)
-    (set-goal gl-cantBarcosComercio 20)
+    (set-goal gl-tradeCartsQty 14)
+    (set-goal gl-tradeShipsQty 20)
 )
 
 (defrule
     (true)
 =>
-    (set-goal gl-cantLancerosMinima 5)
-    (set-goal gl-spearmanQtyMedium 40)
-    (set-goal gl-spearmanQtyHigh 60)
-    (set-goal gl-cantMilicia 45)
+    (set-goal gl-spearmenQtyLow 5)
+    (set-goal gl-spearmenQtyMedium 40)
+    (set-goal gl-spearmenQtyHigh 60)
+    (set-goal gl-militiaQty 45)
 
-    (set-goal gl-cantArqueros 40)
-    (set-goal gl-cantJavalineros 25)
-    (set-goal gl-cantArquerosCaballo 30)
-    (set-goal gl-cantMosqueteros 30)
+    (set-goal gl-archerQty 40)
+    (set-goal gl-skirmisherQty 25)
+    (set-goal gl-cavalryArcherQty 30)
+    (set-goal gl-handCannoneerQty 30)
 
-    (set-goal gl-cantCaballerosBaja 5)
-    (set-goal gl-cantCaballeros 40)
-    (set-goal gl-cantScoutsBaja 8)
-    (set-goal gl-cantScouts 40)
+    (set-goal gl-s 5)
+    (set-goal gl-knightsQtyMedium 40)
+    (set-goal gl-scoutsQtyLow 8)
+    (set-goal gl-scoutsQtyMedium 40)
     (set-goal gl-camelQtyLow 4)
 )
 
@@ -117,26 +117,26 @@
     (set-goal gl-monkQty 5)
     (set-goal gl-monkQtyHigh 16)
 
-    (set-goal gl-cantArietesBaja 2)
-    (set-goal gl-cantArietes 6)
-    (set-goal gl-cantEscorpiones 8)
-    (set-goal gl-cantCatapultas 8)
-    (set-goal gl-cantBombardos 8)
+    (set-goal gl-ramQtyLow 2)
+    (set-goal gl-ramQtyMedium 6)
+    (set-goal gl-scorpionQty 8)
+    (set-goal gl-mangonelQty 8)
+    (set-goal gl-bombardCannonsQty 8)
 
-    (set-goal gl-cantUnicosBaja 10)
-    (set-goal gl-cantUnicos 40)
-    (set-goal gl-cantTrebuchets 4)
-    (set-goal gl-cantTrebuchetsAlta 8)
+    (set-goal gl-uniqueUnitQtyLow 10)
+    (set-goal gl-uniqueUnitQtyMedium 40)
+    (set-goal gl-trebuchetsQtyLow 4)
+    (set-goal gl-trebuchetsQtyHigh 8)
 )
 
 (defrule
     (true)
 =>
-    (set-goal gl-cantBarcoNormal 20)
-    (set-goal gl-cantBarcoCanyones 20)
-    (set-goal gl-cantBarcoFuego 20)
-    (set-goal gl-cantBarcoDemolicion 20)
-    (set-goal gl-cantBarcoEspecial 20)
+    (set-goal gl-galleyQty 20)
+    (set-goal gl-galleonQty 20)
+    (set-goal gl-fireshipQty 20)
+    (set-goal gl-demolitionShipQty 20)
+    (set-goal gl-specialShipQty 20)
 )
 
 #end-if
@@ -1576,8 +1576,8 @@
 (defrule
     (civ-selected burgundians)
     (can-research my-unique-research)(food-amount > 1500)
-    (unit-type-count-total villager g:> gl-cantCaballeros)
-    (military-population g:> gl-cantCaballeros)
+    (unit-type-count-total villager g:> gl-knightsQtyMedium)
+    (military-population g:> gl-knightsQtyMedium)
     (or
         (unit-type-count-total battering-ram > 4)    
         (unit-type-count-total trebuchet > 4)        
@@ -3457,7 +3457,7 @@
 
 (defrule
     (current-age == dark-age)
-    (civilian-population  g:< gl-maxCivilesEdadMedia)
+    (civilian-population  g:< gl-maxCiansDarkAgeedia)
     (can-train villager)
 =>
     (train villager)
@@ -3467,7 +3467,7 @@
     (current-age == feudal-age)
     (or(research-completed ri-wheel-barrow)(food-amount > 150)) 
 
-    ;(civilian-population g:< gl-maxCivilesEdadFeudal)
+    ;(civilian-population g:< gl-maxCiviliansFeudalAge)
     (can-train villager)
 =>
     (train villager)
@@ -3476,7 +3476,7 @@
 (defrule
     (current-age == castle-age)
     (or(research-completed ri-hand-cart)(food-amount > 350))  
-    (civilian-population g:< gl-maxCivilesEdadCastillos)
+    (civilian-population g:< gl-maxCiviliansCastleAge)
     (can-train villager)
 =>
     (train villager)
@@ -3484,7 +3484,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (civilian-population g:< gl-maxCivilesEdadImperial)
+    (civilian-population g:< gl-maxCiviliansImperialAge)
     (food-amount < 1000)(wood-amount < 1000)(gold-amount < 500)
     (can-train villager)
 =>
@@ -3515,7 +3515,7 @@
 (defrule 
     (current-age == imperial-age)
     (players-building-type-count any-ally market  > 0)
-    (unit-type-count-total trade-cart g:< gl-cantCarretas)    
+    (unit-type-count-total trade-cart g:< gl-tradeCartsQty)    
     (civilian-population < 100)(military-population > 50)
 =>
 	(train trade-cart)
@@ -3587,12 +3587,12 @@
 ; TREBUCHET
 (defrule
     (and
-        (unit-type-count-total trebuchet g:< gl-cantTrebuchets)
-        (unit-type-count-total 954 g:< gl-cantTrebuchets)
+        (unit-type-count-total trebuchet g:< gl-trebuchetsQtyLow)
+        (unit-type-count-total 954 g:< gl-trebuchetsQtyLow)
     )
     (not(civ-selected tatars))(not(civ-selected gothic)) 
     (not(civ-selected japanese))
-    (military-population g:> gl-cantCaballeros) 
+    (military-population g:> gl-knightsQtyMedium) 
     (can-train trebuchet)   
 =>
     (train trebuchet)
@@ -3603,7 +3603,7 @@
         (civ-selected tatars)
         (civ-selected japanese)
     )
-    (unit-type-count-total trebuchet g:< gl-cantTrebuchetsAlta)
+    (unit-type-count-total trebuchet g:< gl-trebuchetsQtyHigh)
     (can-train trebuchet)
 =>
     (train trebuchet)
@@ -3650,7 +3650,7 @@
 
 (defrule
 	(current-age == imperial-age)(research-completed my-unique-unit-upgrade)
-	(unit-type-count-total my-unique-unit-line g:< gl-cantUnicos)
+	(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
     (or
         (gold-amount > 401)
         (civ-selected magyar)
@@ -3671,7 +3671,7 @@
 
 (defrule
 	(current-age == imperial-age)
-	(unit-type-count-total my-unique-unit-line g:< gl-cantUnicos)
+	(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
     (gold-amount > 201)
 	(civ-selected tatars)
 	(can-train my-unique-unit-line)
@@ -3761,7 +3761,7 @@
             (civ-selected teutonic)
         )   
     )
-    (unit-type-count-total mangonel-line g:< gl-cantCatapultas)
+    (unit-type-count-total mangonel-line g:< gl-mangonelQty)
 =>
     (train mangonel-line)
 )
@@ -3832,7 +3832,7 @@
 (defrule
     (current-age == castle-age)
     (can-train scorpion-line)
-    (unit-type-count-total scorpion-line g:< gl-cantEscorpiones)
+    (unit-type-count-total scorpion-line g:< gl-scorpionQty)
     (or
       (civ-selected khmer)
       (civ-selected chinese)  
@@ -3845,7 +3845,7 @@
     (current-age == imperial-age)
     (gold-amount > 245)
     (can-train scorpion-line)
-    (unit-type-count-total scorpion-line g:< gl-cantEscorpiones)
+    (unit-type-count-total scorpion-line g:< gl-scorpionQty)
     (or
         (or
             (or
@@ -4069,7 +4069,7 @@
 ; STABLE
 ; STEPPE LANCER
 (defrule ;steppe lancer
-    (unit-type-count-total 1370 g:< gl-cantCaballeros)
+    (unit-type-count-total 1370 g:< gl-knightsQtyMedium)
     (or
         (current-age == imperial-age)
         (and(food-amount > 1071)(gold-amount > 841))
@@ -4080,7 +4080,7 @@
 )
 
 (defrule ;steppe lancer
-    (unit-type-count-total 1372 g:< gl-cantCaballeros)
+    (unit-type-count-total 1372 g:< gl-knightsQtyMedium)
     (or
         (current-age == imperial-age)
         (and(food-amount > 1070)(gold-amount > 840))
@@ -4116,7 +4116,7 @@
     (town-under-attack)
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasSkirmishers == 1))
-	(unit-type-count-total scout-cavalry-line g:< gl-cantScouts)
+	(unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
 	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
@@ -4138,7 +4138,7 @@
     (research-completed ri-hand-cart)(research-completed ri-bow-saw)
     (research-completed ri-heavy-plow)
     (research-completed ri-light-cavalry)          
-    (unit-type-count-total scout-cavalry-line g:< gl-cantScouts)
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
     (not(civ-selected japanese))(not(civ-selected viking))     
 	(can-train scout-cavalry-line)    
 =>
@@ -4166,7 +4166,7 @@
 (defrule
 	(current-age == imperial-age)
     (gold-amount > 260)
-	(unit-type-count-total camel-line g:< gl-cantCaballeros)
+	(unit-type-count-total camel-line g:< gl-knightsQtyMedium)
 	(can-train camel-line)    
 =>
     (train camel-line)
@@ -4178,7 +4178,7 @@
         (and(current-age == imperial-age)(gold-amount > 400))
         (and(food-amount > 1060)(gold-amount > 875))
     )
-	(unit-type-count-total knight-line g:< gl-cantCaballeros)
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (up-compare-goal gl-dudeHasSpearmen == 0)
     (or
         (or
@@ -4208,7 +4208,7 @@
     (gold-amount > 245)
     (up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasScouts == 0)     
-    (unit-type-count-total archer-line g:< gl-cantArqueros)    
+    (unit-type-count-total archer-line g:< gl-archerQty)    
     (can-train archer-line)
 =>
     (train archer-line)
@@ -4216,7 +4216,7 @@
 
 (defrule
     (current-age == castle-age)
-	(unit-type-count-total archer-line g:< gl-cantArqueros)
+	(unit-type-count-total archer-line g:< gl-archerQty)
     (gold-amount > 1200)(wood-amount > 400)
 	(can-train archer-line)(not(civ-selected gothic)) 
 =>
@@ -4226,7 +4226,7 @@
 (defrule
     (current-age == imperial-age)
     (wood-amount > 200)(gold-amount > 200)
-	(unit-type-count-total archer-line g:< gl-cantArqueros)
+	(unit-type-count-total archer-line g:< gl-archerQty)
     (or
         (or(civ-selected sicilians)(civ-selected mayan))
         (or(civ-selected ethiopian)(civ-selected viking))    
@@ -4239,7 +4239,7 @@
 
 (defrule
     (wood-amount > 200)
-	(unit-type-count-total archer-line g:< gl-cantArqueros)
+	(unit-type-count-total archer-line g:< gl-archerQty)
     (civ-selected persian)
     (research-completed my-second-unique-research)
 	(can-train archer-line)
@@ -4251,7 +4251,7 @@
 (defrule
 (current-age == imperial-age)
     (wood-amount > 200)(gold-amount > 200)
-	(unit-type-count-total cavalry-archer-line g:< gl-cantArquerosCaballo)
+	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQty)
     (or
         (or(civ-selected tatars)(civ-selected mongol))
         (civ-selected hun) 
@@ -4265,7 +4265,7 @@
 ; GENITOUR
 (defrule
     (current-age == castle-age)
-    (unit-type-count-total elite-genitour g:< gl-cantJavalineros)
+    (unit-type-count-total elite-genitour g:< gl-skirmisherQty)
     (or(food-amount > 900)(town-under-attack))
     (or
             (players-unit-type-count any-enemy archer-line > 4)
@@ -4278,7 +4278,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total genitour g:< gl-cantJavalineros)
+    (unit-type-count-total genitour g:< gl-skirmisherQty)
 
     (can-train genitour)
 =>
@@ -4328,7 +4328,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total skirmisher-line g:< gl-cantJavalineros)    
+    (unit-type-count-total skirmisher-line g:< gl-skirmisherQty)    
     (research-completed ri-leather-archer-armor)    
     (or
         (players-unit-type-count any-enemy archer-line > 4)
@@ -4344,7 +4344,7 @@
 
 ; HAND CANNONEER
 (defrule
-    (unit-type-count-total hand-cannoneer g:< gl-cantMosqueteros)
+    (unit-type-count-total hand-cannoneer g:< gl-handCannoneerQty)
     (can-train hand-cannoneer)(not(can-train conquistador))(not(can-train elite-conquistador))
     (not(civ-selected tatars))(not(civ-selected saracen))(not(civ-selected persian))(not(civ-selected khmer))
     (not(civ-selected berbers))(not(civ-selected turkish))(not(civ-selected korean))    
@@ -4356,7 +4356,7 @@
 ; HONDEROS INCAS
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total slinger g:< gl-cantJavalineros)
+    (unit-type-count-total slinger g:< gl-skirmisherQty)
     (can-train slinger)
 =>
     (train slinger)
@@ -4385,7 +4385,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total militiaman-line g:< gl-cantMilicia)
+    (unit-type-count-total militiaman-line g:< gl-militiaQty)
     (gold-amount > 400)
     (can-train militiaman-line)
     (or
@@ -4416,7 +4416,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total militiaman-line g:< gl-cantMilicia)
+    (unit-type-count-total militiaman-line g:< gl-militiaQty)
     (gold-amount > 800)
     (can-train militiaman-line)
     (or
@@ -4435,7 +4435,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total militiaman-line g:< gl-cantMilicia)
+    (unit-type-count-total militiaman-line g:< gl-militiaQty)
     (research-completed my-unique-research)
     (can-train militiaman-line)
     (civ-selected malay)
@@ -4449,7 +4449,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (wood-amount > 125)
     (up-compare-goal gl-dudeHasCavalry == 1)
-    (unit-type-count-total spearman-line g:< gl-spearmanQtyMedium)
+    (unit-type-count-total spearman-line g:< gl-spearmenQtyMedium)
     (can-train spearman-line)
 =>
     (train spearman-line)
@@ -4461,7 +4461,7 @@
     (building-type-count-total monastery > 0)
     (wood-amount > 125)
     (up-compare-goal gl-dudeHasCavalry == 1)
-    (unit-type-count-total spearman-line g:< gl-spearmanQtyMedium)
+    (unit-type-count-total spearman-line g:< gl-spearmenQtyMedium)
     (can-train spearman-line)
 =>
     (train spearman-line)
@@ -4472,7 +4472,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 125)    
     (up-compare-goal gl-dudeHasCavalry == 1)    
-    (unit-type-count-total spearman-line g:< gl-spearmanQtyHigh)
+    (unit-type-count-total spearman-line g:< gl-spearmenQtyHigh)
     (not(civ-selected cumans))     
     (can-train spearman-line)     
 =>
@@ -4494,7 +4494,7 @@
     (current-age == feudal-age)
     (or(up-compare-goal gl-dudeHasArchers > 0)
     (up-compare-goal gl-dudeHasSkirmishers > 0))
-    (unit-type-count-total eagle-warrior-line g:< gl-cantScouts)
+    (unit-type-count-total eagle-warrior-line g:< gl-scoutsQtyMedium)
     (gold-amount > 251)
     =>
     (train eagle-warrior-line)
@@ -4519,7 +4519,7 @@
 
 ; MERCENARIO ITALIANO
 (defrule
-    (unit-type-count-total condottiero g:< gl-cantMilicia)
+    (unit-type-count-total condottiero g:< gl-militiaQty)
     (players-unit-type-count any-enemy hand-cannoneer > 3)   
     (can-train condottiero)
 =>
@@ -4742,7 +4742,7 @@
         (food-amount > 5000)
         (gold-amount > 2500)
         (military-population > 60)
-        (unit-type-count-total villager g:> gl-maxCivilesEdadFeudal)   
+        (unit-type-count-total villager g:> gl-maxCiviliansFeudalAge)   
     =>
         (do-nothing)
     )
