@@ -3726,7 +3726,7 @@
 )
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(gold-amount > 250)
     (can-train mangonel-line)
     (or
         (or
@@ -3827,6 +3827,7 @@
 
 (defrule
     (current-age == imperial-age)
+    (gold-amount > 245)
     (can-train scorpion-line)
     (unit-type-count-total scorpion-line g:< gl-cantEscorpiones)
     (or
