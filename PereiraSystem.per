@@ -213,12 +213,7 @@
 	(up-get-fact military-population 0 gl-milPop)
 )
 
-(defconst gl-infantryAmount 331)
-(defrule
-	(true)
-=>
-	(up-get-fact players-unit-type-count my-player-number infantry-class 0 gl-infantryAmount)
-)
+
 
 
 
@@ -2133,7 +2128,6 @@
     )
 =>
     (research ri-fletching)
-    (chat-local-to-self  "WE GOT THE FLETCHING THING!")
 )
 
 (defrule
