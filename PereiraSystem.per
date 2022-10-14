@@ -291,23 +291,23 @@
 )
 
 ; TIMER 10 CIVILIAN REPORT
-(defrule(true)=>(enable-timer 10 30)(disable-self)) 
+(defrule(true)=>(enable-timer 10 90)(disable-self)) 
 (defrule
 	(timer-triggered 10)
 =>
 	(disable-timer 10)
-    (enable-timer 10 60)
+    (enable-timer 10 120)
     (chat-to-player my-player-number "............")    
     (up-chat-data-to-self "Civilians: %d" g: gl-civPop)          
 )
 
 ; TIMER 11 MILITARY REPORT
-(defrule(true)=>(enable-timer 11 60)(disable-self)) 
+(defrule(true)=>(enable-timer 11 120)(disable-self)) 
 (defrule
 	(timer-triggered 11)
 =>
 	(disable-timer 11)
-    (enable-timer 11 60)    
+    (enable-timer 11 120)    
     ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)
     (chat-to-player my-player-number "............")       
     (up-chat-data-to-self "Military: %d" g: gl-milPop)
