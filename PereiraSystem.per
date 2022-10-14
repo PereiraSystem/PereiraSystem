@@ -4390,10 +4390,8 @@
 )
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(gold-amount > 400)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
-    (gold-amount > 400)
-    (can-train militiaman-line)
     (or
         (or
             (or 
@@ -4416,32 +4414,31 @@
             )
         )       
     )
+    (can-train militiaman-line)    
 =>
     (train militiaman-line)
 )
 
 (defrule
-    (current-age == imperial-age)
-    (unit-type-count-total militiaman-line g:< gl-militiaQty)
-    (gold-amount > 800)
-    (can-train militiaman-line)
+    (current-age == imperial-age)(gold-amount > 600)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
     (or
         (or
-        (civ-selected japanese)   (civ-selected sicilians)   
-        )
-                     
+            (civ-selected japanese)(civ-selected sicilians)   
+        )                     
         (or        
             (civ-selected teutonic)                
             (civ-selected viking)                
         )      
     )
+    (can-train militiaman-line)    
 =>
     (train militiaman-line)
 )
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total militiaman-line g:< gl-militiaQty)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
     (research-completed my-unique-research)
     (can-train militiaman-line)
     (civ-selected malay)
