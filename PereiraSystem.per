@@ -213,6 +213,13 @@
 	(up-get-fact military-population 0 gl-milPop)
 )
 
+(defconst gl-infantryAmount 331)
+(defrule
+	(true)
+=>
+	(up-get-fact players-unit-type-count-total my-player-number infantry-class 0 gl-infantryAmount)
+)
+
 
 
 ; TIMER 1 INCREASES TOWN SIZE
@@ -3239,7 +3246,7 @@
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0)) 
 =>
     (build stable)
-    (chat-local-to-self  "STABLE 1") 
+    (chat-local-to-self "Trying to build stable 1") 
 )
 
 (defrule
@@ -3248,7 +3255,7 @@
     (building-type-count-total siege-workshop > 0)      
 =>
     (build stable)
-    (chat-local-to-self  "STABLE 1") 
+    (chat-local-to-self "Trying to build stable 1") 
 )
 
 (defrule
@@ -3256,28 +3263,28 @@
     (can-build stable)(building-type-count-total stable < 1)
 =>
     (build stable)
-    (chat-local-to-self  "STABLE 1") 
+    (chat-local-to-self "Trying to build stable 1") 
 )
 
 (defrule
 	(current-age == imperial-age)(food-amount > 400)
-	(building-type-count-total stable < 2)
+	(building-type-count-total stable == 1)
     (building-type-count-total university > 0)
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>
-    (build stable)(chat-local-to-self "STABLE 2")
+    (build stable)(chat-local-to-self "Trying to build stable 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
 (defrule
 	(current-age == imperial-age)(food-amount > 400)
-	(building-type-count-total stable < 3)
+	(building-type-count-total stable == 2)
     (building-type-count-total university > 0)
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>
-    (build stable)(chat-local-to-self  "STABLE 3")
+    (build stable)(chat-local-to-self "Trying to build stable 3")
     (up-modify-sn sn-maximum-town-size c:+ 1) 
 )
 
@@ -3286,7 +3293,7 @@
     (can-build stable)(wood-amount > 2000)
     (not(civ-selected gothic))
 =>
-    (build stable)(chat-local-to-self "STABLE")
+    (build stable)(chat-local-to-self "Trying to build stable")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3298,8 +3305,7 @@
     (building-type-count lumber-camp > 0)
     (not(civ-selected cumans))
 =>
-    
-    (chat-local-to-self  "ARCHERY RANGE 1")
+    (chat-local-to-self "Trying to build archery range 1")
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (up-modify-sn sn-minimum-town-size c:+ 2)
     (build archery-range)
@@ -3313,8 +3319,7 @@
     (can-build archery-range)
     (civ-selected cumans)
 =>
-    
-    (chat-local-to-self  "ARCHERY RANGE 1")
+    (chat-local-to-self "Trying to build archery range 1")
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (up-modify-sn sn-minimum-town-size c:+ 2)
     (build archery-range)
@@ -3327,7 +3332,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
-    (build archery-range)(chat-local-to-self  "ARCHERY RANGE 2")
+    (build archery-range)(chat-local-to-self "Trying to build archery range 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)
 )
@@ -3339,7 +3344,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
-    (build archery-range)(chat-local-to-self  "ARCHERY RANGE 3")
+    (build archery-range)(chat-local-to-self "Trying to build archery range 3")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3348,7 +3353,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 2000)
 =>
-    (build archery-range)(chat-local-to-self  "ARCHERY RANGE")
+    (build archery-range)(chat-local-to-self "Trying to build archery range")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3368,7 +3373,7 @@
     (current-age == imperial-age)(building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total siege-workshop == 1)
 =>
-    (build siege-workshop)(chat-local-to-self  "SIEGE WORKSHOP 2")
+    (build siege-workshop)(chat-local-to-self  "Trying to build siege workshop 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)
 )
@@ -3380,7 +3385,7 @@
     (can-build siege-workshop)(wood-amount > 2000)(not(civ-selected gothic)) 
 =>
     
-    (build siege-workshop)(chat-local-to-self  "SIEGE WORKSHOP")
+    (build siege-workshop)(chat-local-to-self "Trying to build siege workshop")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
@@ -3530,8 +3535,8 @@
 	(build fish-trap)
 )
 
-; UNIDADES MILITARES                                                                        
-; MONASTERIO   
+; MILITARY UNITS
+; MONASTERY  
 (defrule
     (can-train monk)
 =>
@@ -3584,7 +3589,7 @@
     (train missionary)
 )
 
-; CASTILLO
+; CASTLE
 ; TREBUCHET
 (defrule
     (and
@@ -3610,7 +3615,7 @@
     (train trebuchet)
 )
 
-; PETARDOS        
+; PETARD    
 (defrule
     (current-age == imperial-age)
     (civ-selected saracen)
@@ -3670,7 +3675,7 @@
     (train my-unique-unit-line)
 )
 
-(defrule ;TARTAROS
+(defrule
 	(current-age == imperial-age)
 	(unit-type-count-total my-unique-unit-line g:< gl-cantUnicos)
     (gold-amount > 201)
@@ -3680,22 +3685,22 @@
 	(train my-unique-unit-line)
 )
 
-(defrule ;GODOS
+(defrule
 	(civ-selected gothic)
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
 )
 
-(defrule ;HUNOS
+(defrule
     (current-age == imperial-age)
     (can-train stable-tarkan)
 =>
     (train stable-tarkan)
 )
 
-; TALLER ASEDIO
-; CANYONES BOMBARDEO
+; SIEGE WORKSHOP
+; BOMBARD CANNON
 (defrule
 	(unit-type-count-total houfnice < 8)
 	(can-train houfnice)
@@ -3710,7 +3715,7 @@
 	(train bombard-cannon)
 )
 
-; CATAPULTAS
+; MANGONEL
 (defrule
     (current-age == feudal-age)
     (town-under-attack)
@@ -3778,7 +3783,7 @@
     (train mangonel-line)
 )
 
-; ARIETES
+; RAM
 (defrule
     (current-age == feudal-age)(civ-selected cumans)
     (unit-type-count-total battering-ram-line < 2)
@@ -3828,7 +3833,7 @@
 	(train battering-ram-line)
 )
 
-; BALLESTAS O ESCORPIONES   
+; SCORPIONS 
 
 (defrule
     (current-age == castle-age)
@@ -4008,7 +4013,6 @@
 )
 
 ; FIRE SHIP
-
 (defrule
     (unit-type-count-total fire-ship-line < 1)
     (wood-amount > 190)    
@@ -4068,8 +4072,8 @@
     (train fire-ship-line)
 )
 
-; ESTABLO
-; LANCERO ESTEPA
+; STABLE
+; STEPPE LANCER
 (defrule ;steppe lancer
 	(can-train 1370)
     (unit-type-count-total 1370 < gl-cantCaballeros)
@@ -4092,7 +4096,7 @@
     (train 1372)
 )
 
-; ELEFANTES 
+; ELEPHANTS
 (defrule
 	(current-age == imperial-age)(gold-amount > 600)
 	(can-train battle-elephant-line)(not(civ-selected khmer))    
@@ -4156,7 +4160,7 @@
     (train scout-cavalry-line)
 )
 
-; CAMELLOS
+; CAMEL
 (defrule
 	(current-age == castle-age)
     (research-completed ri-hand-cart)
@@ -4176,7 +4180,6 @@
 )
 
 ; KNIGHT LINE
-
 (defrule
 	(current-age == imperial-age)
 	(can-train knight-line)
@@ -4211,9 +4214,8 @@
     (train knight-line)
 )
 
-; ARQUERIA
-; ARQUERO 
-
+; ARCHERY RANGE
+; ARCHER
 (defrule
     (current-age == feudal-age)
     (gold-amount > 245)
@@ -4257,7 +4259,8 @@
 =>
 	(train archer-line)
 )
-; ARQUERO CABALLO
+
+; CAVALRY ARCHER
 (defrule
 (current-age == imperial-age)
     (wood-amount > 200)(gold-amount > 200)
@@ -4271,8 +4274,8 @@
 	(train cavalry-archer-line)
 )
 
-; JAVALINERO
-; JAV A CABALLO
+; SKIRMISHERS AND GENITOURS
+; GENITOUR
 (defrule
     (current-age == castle-age)
     (unit-type-count-total elite-genitour g:< gl-cantJavalineros)
@@ -4295,7 +4298,7 @@
     (train genitour)
 )
 
-;JAVALINERO NORMAL
+; SKIRMISHER
 (defrule
     (current-age == feudal-age)
     (unit-type-count-total skirmisher-line < 8) 
@@ -4352,7 +4355,7 @@
     (train skirmisher-line)
 )
 
-; MOSQUETEROS
+; HAND CANNONEER
 (defrule
     (unit-type-count-total hand-cannoneer g:< gl-cantMosqueteros)
     (can-train hand-cannoneer)(not(can-train conquistador))(not(can-train elite-conquistador))
