@@ -247,6 +247,14 @@
 =>
 	(up-get-fact attack-soldier-count 0 gl-attackSoldierAmount)
 )
+
+(defconst gl-defendSoldierAmount 335)
+(defrule
+	(true)
+=>
+	(up-get-fact defend-soldier-count 0 gl-defendSoldierAmount)
+)
+
 ; TIMER 1 INCREASES TOWN SIZE
 (defrule(true)=>(enable-timer 1 720)(disable-self)) 
 (defrule
@@ -321,6 +329,7 @@
     (up-chat-data-to-self "Military: %d" g: gl-milPop)
     (up-chat-data-to-self "Land soldiers: %d" g: gl-infantrySoldierAmount)    
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)              
+    (up-chat-data-to-self "Defend: %d" g: gl-defendSoldierAmount)      
 )
 
 ; TIMER 15 DELETES VILLAGERS
