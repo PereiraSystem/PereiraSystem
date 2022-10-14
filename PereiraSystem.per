@@ -4068,24 +4068,25 @@
 
 ; STABLE
 ; STEPPE LANCER
+
 (defrule ;steppe lancer
-	(can-train 1370)
-    (unit-type-count-total 1370 < gl-cantCaballeros)
+    (unit-type-count-total 1370 g:< gl-cantCaballeros)
     (or
         (current-age == imperial-age)
         (and(food-amount > 1071)(gold-amount > 841))
     )
+	(can-train 1370)    
 =>
     (train 1370)
 )
 
 (defrule ;steppe lancer
-	(can-train 1372)
-    (unit-type-count-total 1372 < gl-cantCaballeros)
+    (unit-type-count-total 1372 g:< gl-cantCaballeros)
     (or
         (current-age == imperial-age)
         (and(food-amount > 1071)(gold-amount > 841))
     )
+	(can-train 1372)    
 =>
     (train 1372)
 )
@@ -4175,13 +4176,14 @@
 
 ; KNIGHT LINE
 (defrule
-	(current-age == imperial-age)
-	(can-train knight-line)
+    (or
+        (and(current-age == imperial-age)(gold-amount > 400))
+        (and(food-amount > 1060)(gold-amount > 875))
+    )
 	(unit-type-count-total knight-line g:< gl-cantCaballeros)
-    (gold-amount > 500)
+    (up-compare-goal gl-dudeHasSpearmen == 0)
     (or
         (or
-            
             (civ-selected bulgarians)            
             (or 
                 (civ-selected frankish)        
@@ -4196,14 +4198,7 @@
             (civ-selected teutonic)            
         )   
     )
-=>
-    (train knight-line)
-)
-
-(defrule
-	(can-train knight-line)
-    (research-completed ri-szlachta-privileges)
-    (civ-selected poles)(gold-amount > 750)
+    (can-train knight-line)
 =>
     (train knight-line)
 )
