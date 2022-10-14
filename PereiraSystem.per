@@ -41,7 +41,10 @@
 (defconst gl-spearmenQtyLow 110)
 (defconst gl-spearmenQtyMedium 111)
 (defconst gl-spearmenQtyHigh 112)
-(defconst gl-militiaQty 113)
+
+(defconst gl-militiaQtyLow 113)
+(defconst gl-militiaQtyMedium 114)
+(defconst gl-militiaQtyHigh 115)
 
 (defconst gl-archerQty 114)
 (defconst gl-skirmisherQty 115)
@@ -95,9 +98,12 @@
     (true)
 =>
     (set-goal gl-spearmenQtyLow 5)
-    (set-goal gl-spearmenQtyMedium 40)
+    (set-goal gl-spearmenQtyMedium 30)
     (set-goal gl-spearmenQtyHigh 60)
-    (set-goal gl-militiaQty 45)
+
+    (set-goal gl-militiaQtyLow 8)
+    (set-goal gl-militiaQtyMedium 20)
+    (set-goal gl-militiaQtyHigh 60)        
 
     (set-goal gl-archerQty 40)
     (set-goal gl-skirmisherQty 25)
