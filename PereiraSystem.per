@@ -4425,9 +4425,9 @@
 
 (defrule
     (current-age == feudal-age)
-    (enemy-buildings-in-town)(gold-amount > 250)
-    (can-train militiaman-line)(not(can-train eagle-warrior))
-    (not(can-train archer-line))(not(can-train camel-line))
+    (enemy-buildings-in-town)(gold-amount > 220)
+    (unit-type-count-total militiaman-line g:< gl-militiamanQtyLow)
+    (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
