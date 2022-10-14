@@ -210,6 +210,13 @@
 	(up-get-fact amount-farm-food 0 gl-amountFarmFood)
 )
 
+(defconst gl-amountExplored 321)
+(defrule
+	(true)
+=>
+	(up-get-fact amount-exploration 0 gl-amountExplored)
+)
+
 (defconst gl-milPop 331)
 (defrule
 	(true)
@@ -293,7 +300,7 @@
     (chat-to-player my-player-number "............")    
     (up-chat-data-to-self "Civilians: %d" g: gl-civPop)
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)
-    (up-chat-data-to-self "Farm food: %d" g: gl-amountFarmFood)
+    (up-chat-data-to-self "Explored: %d" g: gl-exploredAmount)
     (chat-to-player my-player-number "............")               
 )
 
@@ -307,9 +314,8 @@
     ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)
     (chat-to-player my-player-number "............")       
     (up-chat-data-to-self "Military: %d" g: gl-milPop)
-    (up-chat-data-to-self "Enemies deceased: %d" g: gl-kills)        
-    (up-chat-data-to-self "Buildings destroyed: %d" g: gl-razings)
-    (chat-to-player my-player-number "............")              
+    (up-chat-data-to-self "Kills: %d" g: gl-kills)        
+    (up-chat-data-to-self "Razings: %d" g: gl-razings)            
 )
 
 ; TIMER 15 DELETES VILLAGERS
