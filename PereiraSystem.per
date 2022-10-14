@@ -289,10 +289,12 @@
 	(timer-triggered 10)
 =>
 	(disable-timer 10)
-    (enable-timer 10 30)    
+    (enable-timer 10 60)
+    (chat-to-player my-player-number "............")    
     (up-chat-data-to-self "Civilians: %d" g: gl-civPop)
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)
-    (up-chat-data-to-self "Relics captured: %d" g: gl-relicsCapturedCount)        
+    (up-chat-data-to-self "Relics captured: %d" g: gl-relicsCapturedCount)
+    (chat-to-player my-player-number "............")               
 )
 
 ; TIMER 11 MILITARY REPORT
@@ -303,9 +305,11 @@
 	(disable-timer 11)
     (enable-timer 11 60)    
     ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)
+    (chat-to-player my-player-number "............")       
     (up-chat-data-to-self "Military: %d" g: gl-milPop)
     (up-chat-data-to-self "Enemies deceased: %d" g: gl-kills)        
-    (up-chat-data-to-self "Buildings destroyed: %d" g: gl-razings)       
+    (up-chat-data-to-self "Buildings destroyed: %d" g: gl-razings)
+    (chat-to-player my-player-number "............")              
 )
 
 ; TIMER 15 DELETES VILLAGERS
