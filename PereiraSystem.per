@@ -238,6 +238,13 @@
 	(up-get-fact amount-razings 0 gl-razings)
 )
 
+(defconst gl-razings 340)
+(defrule
+	(true)
+=>
+	(up-get-fact amount-razings 0 gl-razings)
+)
+
 ; TIMER 1 INCREASES TOWN SIZE
 (defrule(true)=>(enable-timer 1 720)(disable-self)) 
 (defrule
@@ -310,9 +317,9 @@
     (enable-timer 11 120)    
     ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)
     (chat-to-player my-player-number "............")       
-    (up-chat-data-to-self "Military: %d" g: gl-milPop)
-    (up-chat-data-to-self "Kills: %d" g: gl-kills)        
-    (up-chat-data-to-self "Razings: %d" g: gl-razings)            
+    (up-chat-data-to-self "Military: %d" g: gl-milPop)   
+    (up-chat-data-to-self "Kills: %d" c: amount-kills)        
+    (up-chat-data-to-self "Razings: %d" c: amount-razings)            
 )
 
 ; TIMER 15 DELETES VILLAGERS
@@ -4359,7 +4366,7 @@
     ;(research-completed ri-leather-archer-armor)   
     (building-type-count-total monastery > 0)
     (can-train skirmisher-line)(not(can-train genitour))
-    (not(civ-selected sicilians))    
+    ;(not(civ-selected sicilians))    
 =>
     (train skirmisher-line)
 )
@@ -4471,8 +4478,6 @@
     (train militiaman-line)
 )
 
-
-
 (defrule
     (current-age == imperial-age)
     (unit-type-count-total militiaman-line g:< gl-cantMilicia)
@@ -4483,16 +4488,13 @@
     (train militiaman-line)
 )
 
-
-; LANCERO
-
-
+; SPEARMAN
 (defrule
     (current-age == feudal-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (wood-amount > 125)
-    (up-compare-goal gl-dudeHasScouts > 0)
-    (unit-type-count-total spearman-line g:< gl-dudeHasScouts)
+    (up-compare-goal gl-dudeHasScouts == 1)
+    (unit-type-count-total spearman-line g:< gl-cantLancerosMedia)
     (can-train spearman-line)
 =>
     (train spearman-line)
@@ -4502,8 +4504,7 @@
     (current-age == castle-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (building-type-count-total monastery > 0)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)
-    (research-completed ri-heavy-plow)
+    (wood-amount > 125)
     (unit-type-count-total spearman-line g:< gl-cantLancerosMedia)
     (can-train spearman-line)
 =>
