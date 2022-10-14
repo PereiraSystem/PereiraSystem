@@ -4068,7 +4068,6 @@
 
 ; STABLE
 ; STEPPE LANCER
-
 (defrule ;steppe lancer
     (unit-type-count-total 1370 g:< gl-cantCaballeros)
     (or
@@ -4084,7 +4083,7 @@
     (unit-type-count-total 1372 g:< gl-cantCaballeros)
     (or
         (current-age == imperial-age)
-        (and(food-amount > 1071)(gold-amount > 841))
+        (and(food-amount > 1070)(gold-amount > 840))
     )
 	(can-train 1372)    
 =>
@@ -4093,23 +4092,20 @@
 
 ; ELEPHANTS
 (defrule
-	(current-age == imperial-age)(gold-amount > 600)
-	(can-train battle-elephant-line)(not(civ-selected khmer))    
-=>
-    (train battle-elephant-line)
-)
-
-(defrule
-	(current-age == imperial-age)(unit-type-count-total battle-elephant-line < 12)
-	(can-train battle-elephant-line)(civ-selected khmer)  
+	(or
+        (and(current-age == imperial-age)(gold-amount > 600))
+        (and(food-amount > 1120)(gold-amount > 870))
+    )
+	(not(civ-selected khmer))
+    (can-train battle-elephant-line)        
 =>
     (train battle-elephant-line)
 )
 
 ; SCOUTS
 (defrule
-    (unit-type-count-total scout-cavalry-line < 2)
     (current-age < imperial-age)
+    (unit-type-count-total scout-cavalry-line < 2)
     (can-train scout-cavalry-line) 
 =>
     (train scout-cavalry-line)
@@ -4130,7 +4126,7 @@
 (defrule
 	(current-age == castle-age)
     (town-under-attack)
-    (food-amount > 400)
+    (up-compare-goal dudeHasSpearmen == 0)
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
@@ -4155,7 +4151,7 @@
     (train scout-cavalry-line)
 )
 
-; CAMEL
+; CAMEL 
 (defrule
 	(current-age == castle-age)
     (research-completed ri-hand-cart)
