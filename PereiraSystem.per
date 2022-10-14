@@ -185,15 +185,15 @@
 =>    
     (set-goal gl-max-lumber-camps-qty 4)
     (set-goal gl-max-mining-camps-qty 1)
-    (up-chat-data-to-self "Lumber camps max qty = %d" g: gl-max-lumber-camps-qty)
-    (up-chat-data-to-self "Mining camps max qty = %d" g: gl-max-mining-camps-qty)
+    ;(up-chat-data-to-self "Lumber camps max qty = %d" g: gl-max-lumber-camps-qty)
+    ;(up-chat-data-to-self "Mining camps max qty = %d" g: gl-max-mining-camps-qty)
     (disable-self)	    
 )
 
 (defrule
     (true)
 =>    
-   (set-goal gl-dudeHasCavalry 0)    
+    (set-goal gl-dudeHasCavalry 0)    
     (set-goal gl-dudeHasScouts 0)
     (set-goal gl-dudeHasKnights 0)
     (set-goal gl-dudeHasCamels 0)
@@ -211,17 +211,12 @@
 	(up-get-fact civilian-population 0 gl-civPop)
 )
 
-
 (defconst gl-milPop 330)
 (defrule
 	(true)
 =>
 	(up-get-fact military-population 0 gl-milPop)
 )
-
-
-
-
 
 ; TIMER 1 INCREASES TOWN SIZE
 (defrule(true)=>(enable-timer 1 720)(disable-self)) 
@@ -237,23 +232,23 @@
 )
 
 ; TIMER 2 INCREASES LUMBER CAMPS QUANTITY
-(defrule(true)=>(enable-timer 2 300)(disable-self))
+(defrule(building-type-count lumber-camp > 0)=>(enable-timer 2 120)(disable-self))
 (defrule
 	(timer-triggered 2)
 =>
 	(disable-timer 2)
-    (enable-timer 2 300)    
+    (enable-timer 2 120)    
     (up-modify-goal gl-max-lumber-camps-qty c:+ 1) 
     (up-chat-data-to-self "Lumber camps max qty increased: %d" g: gl-max-lumber-camps-qty)
 )
 
 ; TIMER 3 INCREASES MINING CAMPS QUANTITY
-(defrule(true)=>(enable-timer 3 480)(disable-self)) 
+(defrule(building-type-count mining-camp > 0)=>(enable-timer 3 180)(disable-self)) 
 (defrule
 	(timer-triggered 3)
 =>
 	(disable-timer 3)
-    (enable-timer 3 480)      
+    (enable-timer 3 180)      
     (up-modify-goal gl-max-mining-camps-qty c:+ 1)    
     (up-chat-data-to-self "Mining camps max qty increased: %d" g: gl-max-mining-camps-qty)	
 )
@@ -3174,7 +3169,8 @@
 )
 
 (defrule ;four nested conditionals, the japanese would do it for you
-	(building-type-count-total barracks < 1)
+	(building-type-count-total barracks == 0)
+    (building-type-count town-center > 0)
     (or
     	(or
             (and(building-type-count-total lumber-camp > 0)(wood-amount > 275))
@@ -3193,7 +3189,9 @@
 
 (defrule
 	(current-age == imperial-age)
-	(building-type-count-total barracks == 1)(food-amount > 400)
+	(building-type-count-total barracks == 1)
+    (building-type-count town-center > 0)    
+    (food-amount > 400)
     (or
         (and(building-type-count-total siege-workshop > 0)(building-type-count-total castle > 0))
         (civ-selected gothic)
@@ -3209,7 +3207,9 @@
 
 (defrule
 	(current-age == imperial-age)
-	(building-type-count-total barracks == 2)(food-amount > 400)
+	(building-type-count-total barracks == 2)
+    (building-type-count town-center > 0)
+    (food-amount > 400)
     (or
         (and(building-type-count-total siege-workshop > 0)(building-type-count-total castle > 0))
         (civ-selected gothic)
