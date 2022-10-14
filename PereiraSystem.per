@@ -203,6 +203,13 @@
 	(up-get-fact civilian-population 0 gl-civPop)
 )
 
+(defconst gl-relicsCapturedCount 310)
+(defrule
+	(true)
+=>
+	(up-get-fact amount-relics 0 gl-relicsCapturedCount)
+)
+
 (defconst gl-milPop 331)
 (defrule
 	(true)
@@ -215,6 +222,13 @@
 	(true)
 =>
 	(up-get-fact amount-kill-ratio 0 gl-kills)
+)
+
+(defconst gl-razings 333)
+(defrule
+	(true)
+=>
+	(up-get-fact amount-razings 0 gl-razings)
 )
 
 ; TIMER 1 INCREASES TOWN SIZE
@@ -269,7 +283,7 @@
 	(disable-timer 4)
 )
 
-; TIMER 10 REPORT
+; TIMER 10 CIVILIAN REPORT
 (defrule(true)=>(enable-timer 10 30)(disable-self)) 
 (defrule
 	(timer-triggered 10)
@@ -277,19 +291,32 @@
 	(disable-timer 10)
     (enable-timer 10 30)    
     (up-chat-data-to-self "Civilians: %d" g: gl-civPop)
-    (up-chat-data-to-self "Military: %d" g: gl-milPop)
-    (up-chat-data-to-self "Enemies deceased: %d" g: gl-kills)        
+    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)
+    (up-chat-data-to-self "Relics captured: %d" g: gl-relicsCapturedCount)        
 )
 
-; TIMER 11 DELETES VILLAGERS
-(defrule(true)=>(enable-timer 11 1800)(disable-self)) 
+; TIMER 11 MILITARY REPORT
+(defrule(true)=>(enable-timer 11 60)(disable-self)) 
 (defrule
 	(timer-triggered 11)
+=>
+	(disable-timer 11)
+    (enable-timer 11 60)    
+    ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)
+    (up-chat-data-to-self "Military: %d" g: gl-milPop)
+    (up-chat-data-to-self "Enemies deceased: %d" g: gl-kills)        
+    (up-chat-data-to-self "Buildings destroyed: %d" g: gl-razings)       
+)
+
+; TIMER 15 DELETES VILLAGERS
+(defrule(true)=>(enable-timer 15 1800)(disable-self)) 
+(defrule
+	(timer-triggered 15)
     (current-age == imperial-age)
 =>
 	(chat-local-to-self "Deleting idle villagers")
-	(disable-timer 11)
-    (enable-timer 11 600)    
+	(disable-timer 15)
+    (enable-timer 15 600)    
     (up-delete-idle-units idle-type-villager)
 )
 
