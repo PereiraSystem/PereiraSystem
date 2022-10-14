@@ -302,7 +302,7 @@
 (defrule(true)=>(enable-timer 15 1800)(disable-self)) 
 (defrule
 	(timer-triggered 15)
-    (current-age == imperial-age)
+    (current-age == imperial-age)(building-type-count town-center > 0)
 =>
 	(chat-local-to-self "Deleting idle villagers")
 	(disable-timer 15)
