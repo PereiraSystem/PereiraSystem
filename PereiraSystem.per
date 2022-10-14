@@ -4598,7 +4598,7 @@
 (defrule
 	(current-age == castle-age)
 	(can-buy-commodity food)
-    (gold-amount > 1300)(food-amount < 800)
+    (gold-amount > 900)(food-amount < 800)
 =>
     (buy-commodity food)
 )
@@ -4658,7 +4658,7 @@
     (buy-commodity stone)
 )
 
-;TRIBUTOS
+;TRIBUTE
 
 (defrule
     (current-age == feudal-age)
@@ -4676,7 +4676,7 @@
 
 (defrule
     (current-age == feudal-age)
-    (gold-amount > 400)
+    (gold-amount > 800)
 =>
     (tribute-to-player any-ally gold 100)
 )
@@ -4697,7 +4697,7 @@
 
 (defrule
     (current-age == castle-age)
-    (gold-amount > 1000)
+    (gold-amount > 1400)
 =>
     (tribute-to-player any-ally gold 100)
 )
