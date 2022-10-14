@@ -234,8 +234,8 @@
     (enable-timer 1 120)    
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)
-    (up-chat-data-to-self "Town size max increased: %d" s: sn-maximum-town-size)
-    (up-chat-data-to-self "Town size min increased: %d" s: sn-minimum-town-size)
+    ;(up-chat-data-to-self "Town size max increased: %d" s: sn-maximum-town-size)
+    ;(up-chat-data-to-self "Town size min increased: %d" s: sn-minimum-town-size)
 )
 
 ; TIMER 2 INCREASES LUMBER CAMPS QUANTITY
@@ -246,7 +246,7 @@
 	(disable-timer 2)
     (enable-timer 2 120)    
     (up-modify-goal gl-max-lumber-camps-qty c:+ 1) 
-    (up-chat-data-to-self "Lumber camps max qty increased: %d" g: gl-max-lumber-camps-qty)
+    ;(up-chat-data-to-self "Lumber camps max qty increased: %d" g: gl-max-lumber-camps-qty)
 )
 
 ; TIMER 3 INCREASES MINING CAMPS QUANTITY
@@ -257,7 +257,7 @@
 	(disable-timer 3)
     (enable-timer 3 180)      
     (up-modify-goal gl-max-mining-camps-qty c:+ 1)    
-    (up-chat-data-to-self "Mining camps max qty increased: %d" g: gl-max-mining-camps-qty)	
+    ;(up-chat-data-to-self "Mining camps max qty increased: %d" g: gl-max-mining-camps-qty)	
 )
 
 ; TIMER 4 INCREASES LUMBER CAMPS DISTANCE
@@ -352,7 +352,7 @@
 =>
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-local-to-self  "WE ARE RICH, TIME TO ATTACK!!!!")    
+    (chat-local-to-self "WE ARE RICH, TIME TO ATTACK!!!!")    
 )
 
 ;(defrule(players-unit-type-count any-ally villager  > 0)
