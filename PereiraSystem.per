@@ -203,11 +203,11 @@
 	(up-get-fact civilian-population 0 gl-civPop)
 )
 
-(defconst gl-relicsCapturedCount 310)
+(defconst gl-amountFarmFood 310)
 (defrule
 	(true)
 =>
-	(up-get-fact amount-relics 0 gl-relicsCapturedCount)
+	(up-get-fact amount-farm-food 0 gl-amountFarmFood)
 )
 
 (defconst gl-milPop 331)
@@ -293,7 +293,7 @@
     (chat-to-player my-player-number "............")    
     (up-chat-data-to-self "Civilians: %d" g: gl-civPop)
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)
-    (up-chat-data-to-self "Relics captured: %d" g: gl-relicsCapturedCount)
+    (up-chat-data-to-self "Farm food: %d" g: gl-amountFarmFood)
     (chat-to-player my-player-number "............")               
 )
 
