@@ -234,7 +234,14 @@
 	(up-get-fact enemy-buildings-in-town 0 gl-enemyBuildingsInTown)
 )
 
-(defconst gl-rangedSoldierAmount 332)
+(defconst gl-infantrySoldierAmount 333)
+(defrule
+	(true)
+=>
+	(up-get-fact unit-type-count infantry-class 0 gl-infantrySoldierAmount)
+)
+
+(defconst gl-rangedSoldierAmount 333)
 (defrule
 	(true)
 =>
@@ -312,7 +319,8 @@
     (enable-timer 11 120)         
     (up-chat-data-to-self "Enemy buildings in town: %d" g: gl-enemyBuildingsInTown)    
     (up-chat-data-to-self "Military: %d" g: gl-milPop)
-    (up-chat-data-to-self "Ranged: %d" g: gl-rangedSoldiersAmount)                  
+    (up-chat-data-to-self "Infantry: %d" g: gl-infantrySoldierAmount)    
+    (up-chat-data-to-self "Ranged: %d" g: gl-rangedSoldiersAmount)              
 )
 
 ; TIMER 15 DELETES VILLAGERS
