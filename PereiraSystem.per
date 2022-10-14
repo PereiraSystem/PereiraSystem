@@ -307,7 +307,7 @@
 	(disable-timer 4)
 )
 
-; TIMER 10 CIVILIAN REPORT
+; TIMER 10 CIVILIAN / BUILDINGS REPORT
 (defrule(true)=>(enable-timer 10 90)(disable-self)) 
 (defrule
 	(timer-triggered 10)
@@ -315,7 +315,8 @@
 	(disable-timer 10)
     (enable-timer 10 120)  
     (up-chat-data-to-self "Civilians: %d" g: gl-civPop)      
-    (up-chat-data-to-self "Buildings: %d" g: gl-buildCount)    
+    (up-chat-data-to-self "Buildings: %d" g: gl-buildCount)
+    (up-chat-data-to-self "Enemy buildings in town: %d" g: gl-enemyBuildingsInTown)          
 )
 
 ; TIMER 11 MILITARY REPORT
@@ -324,8 +325,7 @@
 	(timer-triggered 11)
 =>
 	(disable-timer 11)
-    (enable-timer 11 120)         
-    (up-chat-data-to-self "Enemy buildings in town: %d" g: gl-enemyBuildingsInTown)    
+    (enable-timer 11 120)           
     (up-chat-data-to-self "Military: %d" g: gl-milPop)
     (up-chat-data-to-self "Land soldiers: %d" g: gl-infantrySoldierAmount)    
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)              
