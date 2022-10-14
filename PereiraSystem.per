@@ -205,47 +205,15 @@
 	(up-get-fact civilian-population 0 gl-civPop)
 )
 
-(defconst gl-amountFarmFood 310)
-(defrule
-	(true)
-=>
-	(up-get-fact amount-farm-food 0 gl-amountFarmFood)
-)
 
-(defconst gl-amountExplored 321)
-(defrule
-	(true)
-=>
-	(up-get-fact amount-exploration 0 gl-amountExplored)
-)
-
-(defconst gl-milPop 331)
+(defconst gl-milPop 330)
 (defrule
 	(true)
 =>
 	(up-get-fact military-population 0 gl-milPop)
 )
 
-(defconst gl-kills 332)
-(defrule
-	(true)
-=>
-	(up-get-fact amount-kill-ratio 0 gl-kills)
-)
 
-(defconst gl-razings 333)
-(defrule
-	(true)
-=>
-	(up-get-fact amount-razings 0 gl-razings)
-)
-
-(defconst gl-razings 340)
-(defrule
-	(true)
-=>
-	(up-get-fact amount-razings 0 gl-razings)
-)
 
 ; TIMER 1 INCREASES TOWN SIZE
 (defrule(true)=>(enable-timer 1 720)(disable-self)) 
@@ -305,8 +273,7 @@
 	(timer-triggered 10)
 =>
 	(disable-timer 10)
-    (enable-timer 10 120)
-    (chat-to-player my-player-number "............")    
+    (enable-timer 10 120)  
     (up-chat-data-to-self "Civilians: %d" g: gl-civPop)          
 )
 
@@ -316,12 +283,8 @@
 	(timer-triggered 11)
 =>
 	(disable-timer 11)
-    (enable-timer 11 120)    
-    ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)
-    (chat-to-player my-player-number "............")       
-    (up-chat-data-to-self "Military: %d" g: gl-milPop)   
-    (up-chat-data-to-self "Kills: %d" g: amount-kills)        
-    (up-chat-data-to-self "Razings: %d" g: amount-razings)            
+    (enable-timer 11 120)         
+    (up-chat-data-to-self "Military: %d" g: gl-milPop)              
 )
 
 ; TIMER 15 DELETES VILLAGERS
