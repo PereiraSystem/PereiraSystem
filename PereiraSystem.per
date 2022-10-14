@@ -1024,7 +1024,7 @@
 ; TECNOLOGIA UNICA
 
 ; AOK
-; BIZANTINOS
+; BYZANTINES
 (defrule
     (civ-selected byzantine)(unit-type-count-total fire-ship-line > 0)
     (can-research my-second-unique-research )
@@ -1037,7 +1037,7 @@
     (civ-selected byzantine)(unit-type-count-total my-unique-unit-line > 0)
 =>
     (research my-unique-research)
-    (chat-local-to-self "CATAFRACTROFICO")
+    (chat-to-player my-player-number "CATAFRACTROFIC!")
     (disable-self)
 )
 
@@ -1094,7 +1094,8 @@
     (civ-selected frankish)(unit-type-count-total my-unique-unit-line > 0)
     (can-research my-unique-research )
 =>
-    (research my-unique-research)(chat-local-to-self  "LANZADORES DE HACHA +1 ALCANCE!") 
+    (research my-unique-research)
+    (chat-to-player my-player-number "AXE THROWERS +1 RANGE!") 
 )
 
 (defrule
@@ -1129,7 +1130,7 @@
     (can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
-    (chat-to-player my-player-number "ARQUEROS +1 ALCANCE, TORRES + 2 ATAQUE!") 
+    (chat-to-player my-player-number "ARCHERS +1 RANGE, TOWERS +2 ATTACK!") 
 )
 
 (defrule
@@ -1137,47 +1138,48 @@
     (civ-selected briton)(unit-type-count-total trebuchet > 0)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "TREBUCHETS HACEN DAÑO DE ÁREA!")
+    (chat-to-player my-player-number "TREBUCHETS CAUSE BLAST DAMAGE!")
 )
 
-; JAPONESES
+; JAPANESE
 (defrule
     (can-research 484)
     (building-type-count-total watch-tower-line > 2)
 =>
     (research 484 )
-    (chat-local-to-self "TORRES DISPARAN FLECHAS EXTRA!") 
+    (chat-to-player my-player-number "TOWERS SHOOT EXTRA ARROWS!") 
 )
 
 (defrule
-    (civ-selected japanese)(can-research my-unique-research)(unit-type-count-total trebuchet > 0)
+    (civ-selected japanese)
+    (can-research my-unique-research)(unit-type-count-total trebuchet > 0)
 =>
     (research my-unique-research)
-    (chat-local-to-self "TREBUCHETS RÁPIDOS!")
+    (chat-to-player my-player-number "TREBUCHETS PACK AND UNPACK FASTER!")
 )
 
-; MONGOLES
+; MONGOLIANS
 (defrule
     (can-research 487)
 =>
     (research 487)
-    (chat-to-player my-player-number "PODEMOS VIVIR SIN CASAS COMO LOS HUNOS!")
+    (chat-to-player my-player-number "WE DON´T NEED HOUSES ANYMORE!")
 )
 
 (defrule
     (civ-selected mongol)(can-research my-unique-research)
 =>
     (research my-unique-research)
-    (chat-local-to-self "MÁQUINAS DE ASEDIO 50% MÁS RÁPIDAS!") 
+    (chat-local-to-self "SIEGE WEAPONS 50% FASTER!") 
 )
 
-; PERSAS
+; PERSIANS
 (defrule
     (civ-selected persian)
     (can-research my-second-unique-research)
 =>
     (research my-second-unique-research)
-    (chat-local-to-self "ARQUEROS NO CUESTAN ORO!")  
+    (chat-to-player my-player-number "ARCHERS COST NO GOLD!")  
 )
 
 (defrule
@@ -1185,7 +1187,7 @@
     (unit-type-count-total my-unique-unit-line > 0)
 =>
     (research my-unique-research)
-    (chat-local-to-self "ELEFANTES 30% MÁS RÁPIDOS!")  
+    (chat-to-player my-player-number "ELEPHANTS 30% FASTER!")  
 )
 
 ; SARACEN
@@ -1193,7 +1195,7 @@
     (can-research ri-madrasah)(unit-type-count monk > 0)
 =>
     (research ri-madrasah)
-    (chat-local-to-self "MONKS RETURN 33% OF GOLD COST WHEN THEY DIE!")
+    (chat-to-player my-player-number "MONKS RETURN 33% OF GOLD COST WHEN THEY DIE!")
 )
 
 (defrule
@@ -1205,15 +1207,15 @@
     (civ-selected saracen)
 =>
     (research my-unique-research)
-    (chat-local-to-self "LA ESQUINA ES EL SITIO TIPICO DEL CAMELLO PERO YO LAS COSTUMBRES ME LAS PASO POR LOS HUEVOS. CAMELLOS +20% HP!")
+    (chat-to-player my-player-number "CAMELS +20% HP!")
 )   
 
-; TEUTONES
+; TEUTONS
 (defrule
     (civ-selected teutonic)(can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
-    (chat-local-to-self  "MÁQUINAS DE ASEDIO +4 DEFENSA CUERPO A CUERPO!") 
+    (chat-to-player my-player-number "SIEGE WEAPONS +4 MELEE ARMOR!") 
 )
 
 (defrule
@@ -1221,41 +1223,41 @@
     (building-type-count-total castle > 0)
 =>
     (research my-unique-research)
-    (chat-local-to-self  "CASTILLOS + 3 ALCANCE. INFANTERÍA GUARNECIDA DISPARA FLECHAS!")  
+    (chat-to-player my-player-number "CASTLES +3 RANGE!")  
 )
 
-; TURCOS
+; TURKS
 (defrule
     (can-research ri-sipahi)(unit-type-count-total cavalry-archer > 0)
 =>
     (research ri-sipahi)
-    (chat-local-to-self  "ARQUEROS A CABALLO +20 HP!")  
+    (chat-to-player my-player-number "CAVALRY ARCHERS +20 HP!")  
 )
 
 (defrule
     (civ-selected turkish)(can-research my-unique-research)
 =>
     (research my-unique-research)
-    (chat-local-to-self  "CAÑONES DE TODO TIPO +3 ALCANCE!")  
+    (chat-to-player my-player-number "ALL TYPES OF CANNONS +3 RANGE!")  
 )
 
-; VIKINGOS
+; VIKINGS
 (defrule
     (can-research ri-chieftains)
 =>
     (research ri-chieftains)
-    (chat-local-to-self  "INFANTERÍA CAUSA DAÑO EXTRA A CABALLERÍA!")  
+    (chat-to-player my-player-number "INFANTRY CAUSES EXTRA DAMAGE TO CAVALRY!")  
 )
 
 (defrule
     (civ-selected viking)(can-research my-unique-research)(unit-type-count-total my-unique-unit-line > 0)
 =>
     (research my-unique-research)
-    (chat-local-to-self  "BERSERKERS SE REGENERAN!")  
+    (chat-to-player my-player-number "BERSERKERS REGENERATE!")  
 )
 
 ; AOC
-; AZTECAS
+; AZTECS
 (defrule
     (can-research ri-atlatl)
     (or
@@ -1267,7 +1269,7 @@
     )
 =>
     (research ri-atlatl)
-    (chat-local-to-self  "JAVALINAS +1 ATAQUE +1 ALCANCE")    
+    (chat-to-player my-player-number "SKIRMISHERS +1 ATTACK, +1 RANGE")    
 )
 
 (defrule
@@ -1275,17 +1277,17 @@
     (can-research my-unique-research)
 =>
     (research my-unique-research)
-    (chat-local-to-self  "INFANTERIA +4 ATAQUE")   
+    (chat-to-player my-player-number "INFANTRY +4 ATTACK!")   
 )
 
-; COREANOS
+; KOREANS
 (defrule
     (civ-selected korean)
     (building-type-count-total watch-tower-line > 3)
     (can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
-    (chat-local-to-self  "TORRES +2 ALCANCE!")  
+    (chat-to-player my-player-number "TOWERS +2 RANGE!")  
 )
 
 (defrule
@@ -1294,7 +1296,7 @@
     (can-research my-unique-research )
 =>
     (research my-unique-research)
-    (chat-local-to-self  "CATAPULTAS +1 RANGO!")  
+    (chat-to-player my-player-number "MANGONELS +1 RANGE!")  
 )
 
 ; ESPANYOLES
@@ -1303,7 +1305,7 @@
     (current-age == imperial-age)
 =>
     (research ri-inquisition)
-    (chat-local-to-self  "CONVERTIREMOS AL HEREJE!") 
+    (chat-to-player my-player-number "INQUISITION!") 
 )
 
 (defrule
@@ -1312,15 +1314,17 @@
     (research-completed ri-sappers)
 =>
     (research my-unique-research)
-    (chat-local-to-self "QUE NO VA SABE NI ONDE SA METÍO!")  
+    (chat-to-player my-player-number "SE VA A HABÉ UN FOLLÓN QUE NO VA SABE NI ONDE SA METÍO!")
+    (set-strategic-number sn-allow-civilian-defense 2)  
+    (set-strategic-number sn-allow-civilian-offense 3)     
 )
 
-; HUNOS
+; HUNS
 (defrule
-    (can-research 483) ;saqueadores
+    (can-research 483) 
 =>
     (research 483)
-    (chat-local-to-self  "CREAR TARCANOS EN ESTABLOS!") 
+    (chat-to-player my-player-number "CREATE TARCANS AT STABLES!") 
 )
 
 (defrule
@@ -1328,16 +1332,16 @@
     (can-research my-unique-research)
 =>
     (research my-unique-research)
-    (chat-local-to-self  "RELIQUIAS ENEMIGAS PRODUCEN LA MITAD!")   
+    (chat-to-player my-player-number "ENEMY RELICS PRODUCE HALF THE GOLD!")   
 )
 
-; MAYAS
+; MAYANS
 (defrule
     (civ-selected mayan)(unit-type-count-total skirmisher-line > 0) 
     (can-research my-second-unique-research)
 =>
     (research my-second-unique-research)
-    (chat-local-to-self  "JAVALINEROS X2 PROYECTILES!")  
+    (chat-to-player my-player-number "SKIRMISHERS SHOOT TWICE!")  
 )
 
 (defrule
@@ -1345,32 +1349,33 @@
     (can-research my-unique-research )
 =>
     (research my-unique-research)
-    (chat-local-to-self  "GUERREROS ÁGUILA +40 HP!")  
+    (chat-to-player my-player-number "EAGLE WARRIORS +40 HP!")  
 )
 
 ; FORGOTTEN
-; ESLAVOS
+; SLAVS
 (defrule
     (can-research ri-orthodoxy )
     (current-age == imperial-age)
 =>
-    (research ri-orthodoxy)(chat-local-to-self  "MONJES +3 DEFENSA CUERPO A CUERPO, +3 DEFENSA A DISTANCIA!")  
+    (research ri-orthodoxy)
+    (chat-to-player my-player-number "MONKS +3 MELEE, +3 RANGED ARMOR!")  
 )
 
 (defrule
     (can-research ri-druzhina)
 =>
     (research ri-druzhina)
-    (chat-local-to-self  "INFANTERÍA ATACA CON ÁREA DE EFECTO!")  
+    (chat-to-player my-player-number "INFANTRY ATTACKS WITH BLAST DAMAGE!")  
 )
 
-; HUNGAROS
+; HUNGARIANS - MAGYAR
 (defrule
     (civ-selected magyar)
     (can-research my-second-unique-research)
 =>
     (research my-second-unique-research)
-    (chat-local-to-self  "UNIDAD ÚNICA YA NO CUESTA ORO!")  
+    (chat-to-player my-player-number "UNIQUE UNIT COSTS NO GOLD!")  
 )
 
 (defrule
@@ -1378,10 +1383,10 @@
     (can-research my-unique-research )
 =>
     (research my-unique-research)
-    (chat-local-to-self  "ARQUEROS A CABALLO +1 ATAQUE, +1 ALCANCE!")  
+    (chat-to-player my-player-number "CAVALRY ARCHERS +1 ATTACK, +1 RANGE!")  
 )
 
-; INCAS
+; INCA
 (defrule
     (civ-selected incan)(can-research my-second-unique-research )
     (or
@@ -1390,23 +1395,23 @@
     )
 =>
     (research my-second-unique-research)
-    (chat-local-to-self  "JAVALINEROS Y HONDEROS SIN ALCANCE MÍNIMO!")    
+    (chat-to-player my-player-number "SKIRMISHERS AND SLINGERS NO MINIMUM RANGE!")    
 )
 
 (defrule
     (civ-selected incan)(can-research my-unique-research)
 =>
     (research my-unique-research)
-    (chat-local-to-self  "UNIDADES UNICAS, HONDEROS Y GUERREROS ÁGUILA +1 DEFENSA CUERPO A CUERPO, + 2 DEFENSA A DISTANCIA!")  
+    (chat-to-player my-player-number "KAMAYUKS, SLINGERS, EAGLE WARRIORS +1 MELEE, +2 RANGED ARMOR!")  
 )
 
-; INDIOS
+; INDIANS
 (defrule
     (civ-selected indian)
     (can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
-    (chat-local-to-self "INGRESOS DE ORO 10% MÁS RÁPIDOS!")  
+    (chat-to-player my-player-number "GOLD INCOME 10% FASTER!")  
 )
 
 (defrule
@@ -1415,10 +1420,10 @@
     (unit-type-count-total hand-cannoneer > 0)
 =>
     (research my-unique-research)
-    (chat-local-to-self "MOSQUETEROS +1 ALCANCE!")  
+    (chat-to-player my-player-number "HAND CANNONEERS +1 RANGE!")  
 )
 
-; ITALIANOS
+; ITALIANS
 (defrule
     (civ-selected italian)
     (can-research my-second-unique-research )
@@ -1432,7 +1437,7 @@
     )
 =>
     (research my-second-unique-research)
-    (chat-local-to-self "ARQUEROS A PIE Y CONDOTTIERO + 1 ARMADURA CUERPO A CUERPO, +1 ARMADURA A DISTANCIA!")  
+    (chat-to-player my-player-number "FOOR ARCHERS AND CONDOTTIERI +1 MELEE, +1 RANGED ARMOR!")  
 )
 
 (defrule
@@ -1444,7 +1449,7 @@
     )
 =>
     (research my-unique-research)
-    (chat-local-to-self "UNIDADES COMERCIALES A MITAD DE PRECIO!")  
+    (chat-to-player my-player-number "TRADE UNITS COST HALF THE PRICE!")  
 )
 
 ; PORTUGUESE
@@ -3711,7 +3716,7 @@
     (current-age == imperial-age)
     (unit-type-count-total my-unique-unit-line < 30)(gold-amount > 160)(not(civ-selected khmer))
     (can-train my-unique-unit-line)(not(civ-selected korean))(not(civ-selected celtic))
-    (not(civ-selected ethiopian))
+    (not(civ-selected ethiopian))(not(civ-selected gothic))
     (research-completed my-unique-unit-upgrade)
 =>
     (train my-unique-unit-line)
@@ -3732,6 +3737,7 @@
     )
 	(not(civ-selected korean))(not(civ-selected celtic))(not(civ-selected chinese))(not(civ-selected chinese))
 	(can-train my-unique-unit-line)(not(civ-selected ethiopian))(not(civ-selected khmer))
+    (not(civ-selected gothic))
 =>
 	(train my-unique-unit-line)
 )
@@ -3756,9 +3762,27 @@
 
 (defrule
 	(civ-selected gothic)
-	(can-train my-unique-unit-line)
+	(can-train 761)
 =>
-	(train my-unique-unit-line)
+	(train 761)
+    (chat-local-to-self "TRAINING BARRACKS ELITE HUSKARL")
+)
+
+(defrule
+	(civ-selected gothic)
+	(can-train 759)
+=>
+	(train 759)
+    (chat-local-to-self "TRAINING BARRACKS HUSKARL")    
+)
+
+(defrule
+	(civ-selected gothic)
+    (not(can-train 761))(not(can-train 759))
+    (can-train huskarl-line)
+=>
+    (chat-local-to-self "TRAINING NORMAL HUSKARL")    	
+    (train huskarl-line)
 )
 
 (defrule
