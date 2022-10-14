@@ -225,6 +225,16 @@
 	(up-get-fact military-population 0 gl-milPop)
 )
 
+
+
+(defconst gl-enemyBuildingsInTown 331)
+(defrule
+	(true)
+=>
+	(up-get-fact enemy-buildings-in-town 0 gl-enemyBuildingsInTown)
+)
+
+
 ; TIMER 1 INCREASES TOWN SIZE
 (defrule(true)=>(enable-timer 1 720)(disable-self)) 
 (defrule
@@ -295,6 +305,7 @@
 =>
 	(disable-timer 11)
     (enable-timer 11 120)         
+    (up-chat-data-to-self "Enemy buildings in town: %d" g: gl-enemyBuildingsInTown)    
     (up-chat-data-to-self "Military: %d" g: gl-milPop)              
 )
 
