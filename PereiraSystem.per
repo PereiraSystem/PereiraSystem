@@ -15,6 +15,7 @@
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
 
+(defconst gl-dudeHasCavalry 50)
 (defconst gl-dudeHasScouts 51)
 (defconst gl-dudeHasKnights 52)
 (defconst gl-dudeHasCamels 53)
@@ -186,6 +187,7 @@
 (defrule
     (true)
 =>    
+   (set-goal gl-dudeHasCavalry 0)    
     (set-goal gl-dudeHasScouts 0)
     (set-goal gl-dudeHasKnights 0)
     (set-goal gl-dudeHasCamels 0)
@@ -4802,6 +4804,18 @@
     (players-unit-type-count any-enemy scout-cavalry-line < 2) 
 =>  
     (set-goal gl-dudeHasScouts 0)
+)
+
+(defrule
+    (players-unit-type-count any-enemy cavalry-class > 2)
+=>  
+    (set-goal gl-dudeHasCavalry 1)
+)
+
+(defrule
+    (players-unit-type-count any-enemy cavalry-class < 2) 
+=>  
+    (set-goal gl-dudeHasCavalry 0)
 )
 
 (defrule
