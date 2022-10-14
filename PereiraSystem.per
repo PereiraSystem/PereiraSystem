@@ -39,8 +39,8 @@
 (defconst gl-cantBarcosComercio 109)
 
 (defconst gl-cantLancerosMinima 110)
-(defconst gl-cantLancerosMedia 111)
-(defconst gl-cantLanceros 112)
+(defconst gl-spearmanQtyMedium 111)
+(defconst gl-spearmanQtyHigh 112)
 (defconst gl-cantMilicia 113)
 
 (defconst gl-cantArqueros 114)
@@ -95,8 +95,8 @@
     (true)
 =>
     (set-goal gl-cantLancerosMinima 5)
-    (set-goal gl-cantLancerosMedia 40)
-    (set-goal gl-cantLanceros 60)
+    (set-goal gl-spearmanQtyMedium 40)
+    (set-goal gl-spearmanQtyHigh 60)
     (set-goal gl-cantMilicia 45)
 
     (set-goal gl-cantArqueros 40)
@@ -4458,8 +4458,8 @@
     (current-age == feudal-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (wood-amount > 125)
-    (up-compare-goal gl-dudeHasScouts == 1)
-    (unit-type-count-total spearman-line g:< gl-cantLancerosMedia)
+    (up-compare-goal gl-dudeHasCavalry == 1)
+    (unit-type-count-total spearman-line g:< gl-spearmanQtyMedium)
     (can-train spearman-line)
 =>
     (train spearman-line)
@@ -4470,7 +4470,8 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (building-type-count-total monastery > 0)
     (wood-amount > 125)
-    (unit-type-count-total spearman-line g:< gl-cantLancerosMedia)
+    (up-compare-goal gl-dudeHasCavalry == 1)
+    (unit-type-count-total spearman-line g:< gl-spearmanQtyMedium)
     (can-train spearman-line)
 =>
     (train spearman-line)
@@ -4478,16 +4479,17 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total spearman-line g:< gl-cantLanceros)
-    (wood-amount > 100)
-    (can-train spearman-line)
-    (not(civ-selected cumans))  
+    (or(wood-amount > 275)(building-type-count town-center > 0))
+    (wood-amount > 125)    
+    (up-compare-goal gl-dudeHasCavalry == 1)    
+    (unit-type-count-total spearman-line g:< gl-spearmanQtyHigh)
+    (not(civ-selected cumans))     
+    (can-train spearman-line)     
 =>
-    ;(train spearman-line)
-     (do-nothing)
+    (train spearman-line)  
 )
 
-(defrule ;godos
+(defrule ;goth
 	(current-age >= feudal-age)
 	(unit-type-count-total spearman-line < 4)
 	(civ-selected gothic) ; para explorar ya que los godos solo hacen unidades de castillo
