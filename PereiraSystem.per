@@ -238,14 +238,14 @@
 (defrule
 	(true)
 =>
-	(up-get-fact unit-type-count 25 0 gl-infantrySoldierAmount)
+	(up-get-fact soldier-count 0 gl-infantrySoldierAmount)
 )
 
-(defconst gl-rangedSoldierAmount 334)
+(defconst gl-attackSoldierAmount 334)
 (defrule
 	(true)
 =>
-	(up-get-fact unit-type-count archery-class 0 gl-rangedSoldierAmount)
+	(up-get-fact attack-soldier-count 0 gl-attackSoldierAmount)
 )
 ; TIMER 1 INCREASES TOWN SIZE
 (defrule(true)=>(enable-timer 1 720)(disable-self)) 
@@ -319,8 +319,8 @@
     (enable-timer 11 120)         
     (up-chat-data-to-self "Enemy buildings in town: %d" g: gl-enemyBuildingsInTown)    
     (up-chat-data-to-self "Military: %d" g: gl-milPop)
-    (up-chat-data-to-self "Infantry: %d" g: gl-infantrySoldierAmount)    
-    (up-chat-data-to-self "Ranged: %d" g: gl-rangedSoldiersAmount)              
+    (up-chat-data-to-self "Land soldiers: %d" g: gl-infantrySoldierAmount)    
+    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)              
 )
 
 ; TIMER 15 DELETES VILLAGERS
