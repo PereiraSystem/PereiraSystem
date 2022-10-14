@@ -1141,17 +1141,17 @@
 )
 
 ; GOTHS
-(defrule
-    (civ-selected gothic)
-    (can-research my-unique-research)
-    (current-age == imperial-age)
+(defrule ;anarchy
+    (civ-selected gothic) 
+    (current-age == imperial-age)(building-type-count barracks > 1)
+    (can-research my-unique-research)    
 =>
     (research my-unique-research)
     (chat-to-player my-player-number "HUSKARLS AVAILABLE AT BARRACKS!") 
 )
 
 (defrule
-    (civ-selected gothic)
+    (civ-selected gothic)(building-type-count barracks > 1)
     (can-research my-second-unique-research)
 =>
     (research my-second-unique-research)
