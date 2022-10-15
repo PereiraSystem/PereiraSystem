@@ -688,7 +688,7 @@
 
 (defrule 
     (current-age == dark-age)
-    (game-time > 480)
+    (game-time > 540)
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
@@ -700,7 +700,7 @@
 )
 
 (defrule 
-    (current-age == dark-age)(game-time > 520)
+    (current-age == dark-age)(game-time > 570)
 =>  
     (set-strategic-number sn-maximum-stone-drop-distance 9)
     (chat-to-player my-player-number "Let´s Get Some Stone")    
@@ -2690,7 +2690,7 @@
     (military-population > 10)
     (can-build town-center)    
 =>
-    (build town-center)(chat-local-to-self  "Trying To Build Town Center 3")
+    (build town-center)(chat-local-to-self "Trying To Build Town Center 3")
 )
 
 (defrule
@@ -2700,7 +2700,7 @@
     (building-type-count-total town-center < 6) 
     (can-build town-center)
 =>
-    (build town-center) (chat-local-to-self "Trying To Build Town Center")
+    (build town-center)(chat-local-to-self "Trying To Build Town Center")
 )
 
 ; MILL   
@@ -2710,14 +2710,14 @@
     (wood-amount > 200)
     (can-build mill)    
 =>
-    (build mill)(chat-local-to-self  "Trying To Build Mill 1 (Food Found)")
+    (build mill)(chat-local-to-self "Trying To Build Mill 1 (Food Found)")
 )
 
 (defrule  
     (building-type-count-total mill < 1)(building-type-count town-center > 0)
     (wood-amount > 400)(can-build mill)
 =>
-    (build mill)(chat-local-to-self  "Trying To Build Mill 1 (Excess Wood)")
+    (build mill)(chat-local-to-self "Trying To Build Mill 1 (Excess Wood)")
 )
 
 (defrule  
@@ -2728,7 +2728,7 @@
     (wood-amount > 200)(not(civ-selected khmer))
     (can-build mill)    
 =>
-    (build mill)(chat-local-to-self  "Trying To Build Mill 1 (Forced)")
+    (build mill)(chat-local-to-self "Trying To Build Mill 1 (Forced)")
 )
 
 (defrule  
@@ -2739,7 +2739,7 @@
 =>
     (build mill)
     (set-strategic-number sn-maximum-food-drop-distance 9)
-    (chat-local-to-self  "Trying To Build Mill 1 (Forced - Feudal)")
+    (chat-local-to-self "Trying To Build Mill 1 (Forced - Feudal)")
 )
 
 (defrule  
