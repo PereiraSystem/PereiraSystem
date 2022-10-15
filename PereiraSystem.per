@@ -4477,7 +4477,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total skirmisher-line g:< gl-skirmisherQty)    
+    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium)    
     (research-completed ri-leather-archer-armor)    
     (or
         (players-unit-type-count any-enemy archer-line > 4)
@@ -4505,7 +4505,7 @@
 ; HONDEROS INCAS
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total slinger g:< gl-skirmisherQty)
+    (unit-type-count-total slinger g:< gl-skirmisherQtyMedium)
     (can-train slinger)
 =>
     (train slinger)
