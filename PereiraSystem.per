@@ -3429,8 +3429,9 @@
     (building-type-count-total stable < 1)
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0)) 
 =>
-    (build stable)
-    (chat-local-to-self "Trying To Build Stable 1") 
+    (chat-local-to-self "Trying To Build Stable 1")
+    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (build stable)         
 )
 
 (defrule
@@ -4626,9 +4627,14 @@
 ; BARRACKS                                        
 ; MILITIA
 (defrule
-    (current-age == dark-age)
+    (can-train militiaman-line) ; 2 explorers
+=>
+    (train militiaman-line)
+    (disable-self)
+)
+
+(defrule
     (can-train militiaman-line)
-    (unit-type-count-total militiaman-line < 2) ;explorer
 =>
     (train militiaman-line)
     (disable-self)
