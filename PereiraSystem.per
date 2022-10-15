@@ -4471,7 +4471,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (building-type-count-total monastery > 0)
     (not(can-train genitour))        
-    (unit-type-count-total skirmisher-line < 8)
+    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyLow) 
     (can-train skirmisher-line) 
 =>
     (train skirmisher-line)
@@ -4501,7 +4501,7 @@
     (train hand-cannoneer)
 )
 
-; HONDEROS INCAS
+; SLINGERS
 (defrule
     (current-age == imperial-age)
     (unit-type-count-total slinger g:< gl-skirmisherQtyMedium)
@@ -4510,12 +4510,11 @@
     (train slinger)
 )
 
-; BARRACAS                                         
-; MILICIA
+; BARRACKS                                        
+; MILITIA
 (defrule
     (current-age == dark-age)
     (can-train militiaman-line)
-    ;(gold-amount > 220)
     (unit-type-count-total militiaman-line < 2) ;explorer
 =>
     (train militiaman-line)
@@ -4583,10 +4582,9 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
-    (research-completed my-unique-research)
+    (civ-selected malay)(research-completed my-unique-research)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)    
     (can-train militiaman-line)
-    (civ-selected malay)
 =>
     (train militiaman-line)
 )
