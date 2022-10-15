@@ -1060,7 +1060,8 @@
     (civ-selected byzantine)(unit-type-count-total fire-ship-line > 0)
     (can-research my-second-unique-research )
 =>
-    (research my-second-unique-research) 
+    (research my-second-unique-research)
+    (chat-to-player my-player-number "FIRE SHIPS +1 RANGE!")     
 )
 
 (defrule
@@ -1068,7 +1069,7 @@
     (civ-selected byzantine)(unit-type-count-total my-unique-unit-line > 0)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "CATAFRACTROFIC!")
+    (chat-to-player my-player-number "CATAFRACS CAUSE TRAMPLE DAMAGE!")
 )
 
 ; CELTS
