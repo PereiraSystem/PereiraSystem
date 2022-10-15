@@ -2023,21 +2023,24 @@
 ; COMMON
 (defrule
     ;(research-completed ri-wheel-barrow)
-    (unit-type-count-total cavalry-class > 2) 
+    (or(unit-type-count-total cavalry-class > 2)
+    (unit-type-count-total cavalry-archer-class > 2))
     (can-research ri-bloodlines)
 =>
     (research ri-bloodlines)
 )
 
 (defrule
-    (unit-type-count-total cavalry-class > 3)     
+    (or(unit-type-count-total cavalry-class > 2)
+    (unit-type-count-total cavalry-archer-class > 2))   
     (can-research ri-husbandry)
 =>
     (research ri-husbandry)
 )
 
 (defrule
-    (unit-type-count-total cavalry-class > 3)
+    (or(unit-type-count-total cavalry-class > 2)
+    (unit-type-count-total cavalry-archer-class > 2))
     (can-research ri-stirrups)
 =>
     (research ri-stirrups)
