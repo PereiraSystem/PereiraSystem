@@ -4574,7 +4574,7 @@
 
 (defrule
     (current-age == castle-age) ;dont use militia if theres discount on cav or arch
-    (or(building-type-count siege-workshop == 0)(not(can-train battering-ram-line))
+    (not(can-train battering-ram-line))
     (enemy-buildings-in-town)(gold-amount > 220)
     (not(civ-selected frankish))(not(civ-selected cumans))
     (not(civ-selected magyar))(not(civ-selected mongol))  
