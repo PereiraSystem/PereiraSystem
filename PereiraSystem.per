@@ -4330,12 +4330,11 @@
 )
 
 (defrule
-	(current-age == imperial-age)(gold-amount < 1400)
+	(current-age == imperial-age)(food-amount > 1500)(gold-amount < 1400)
     (research-completed ri-hand-cart)(research-completed ri-bow-saw)
-    (research-completed ri-heavy-plow)
-    (research-completed ri-light-cavalry)          
-    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
-    (not(civ-selected japanese))(not(civ-selected viking))(not(civ-selected gothic))     
+    (research-completed ri-heavy-plow)          
+    (not(civ-selected japanese))(not(civ-selected viking))(not(civ-selected gothic))
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)     
 	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
