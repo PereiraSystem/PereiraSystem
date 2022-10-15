@@ -594,7 +594,8 @@
 (defrule 
     (true)
 =>  
-    (set-strategic-number sn-camp-max-distance 24); 
+    (set-strategic-number sn-lumber-camp-max-distance 24); 
+    (set-strategic-number sn-mining-camp-max-distance 24);     
     (set-strategic-number sn-mill-max-distance 19)  
     (disable-self)
 )
@@ -4488,8 +4489,7 @@
     (current-age == castle-age)
     (up-compare-goal gl-dudeHasArchers == 1)    
     (or(wood-amount > 275)(building-type-count town-center > 0))
-    (building-type-count-total monastery > 0)
-    (not(can-train genitour))        
+    (building-type-count-total monastery > 0)      
     (unit-type-count-total genitour-line g:< gl-skirmisherQtyLow) 
     (can-train genitour-line) 
 =>
@@ -4502,7 +4502,6 @@
     (not(civ-selected khmer))(not(civ-selected spanish))
     (not(civ-selected sicilians))(not(civ-selected portuguese))
     (not(civ-selected gothic))
-    (not(can-train genitour))
     (unit-type-count-total genitour-line g:< gl-skirmisherQtyMedium)
     (can-train genitour-line)    
 =>
