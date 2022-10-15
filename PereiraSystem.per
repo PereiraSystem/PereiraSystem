@@ -1286,7 +1286,9 @@
 
 ; TURKS
 (defrule
-    (can-research ri-sipahi)(unit-type-count-total cavalry-archer > 0)
+    (or(current-age == imperial-age)(and(food-amount > 1350)(gold-amount > 950)))
+    (building-type-count archery-range > 0)
+    (can-research ri-sipahi)
 =>
     (research ri-sipahi)
     (chat-to-player my-player-number "CAVALRY ARCHERS +20 HP!")  
