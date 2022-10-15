@@ -4475,25 +4475,38 @@
 ; SKIRMISHERS AND GENITOURS
 ; GENITOUR
 (defrule
-    (current-age == castle-age)
-    (unit-type-count-total elite-genitour g:< gl-skirmisherQtyLow)
-    (or(food-amount > 900)(town-under-attack))
-    (or
-            (players-unit-type-count any-enemy archer-line > 4)
-            (players-unit-type-count any-enemy cavalry-archer-line > 4)        
-    )    
-    (can-train elite-genitour)
+    (current-age == feudal-age)
+    (up-compare-goal gl-dudeHasArchers == 1)
+    (or(wood-amount > 275)(building-type-count town-center > 0))
+    (unit-type-count-total genitour-line g:< gl-skirmisherQtyLow)     
+    (can-train genitour-line)      
 =>
-    (train elite-genitour)
+    (train genitour-line)
 )
 
 (defrule
-    (current-age == imperial-age)
-    (unit-type-count-total genitour g:< gl-skirmisherQtyMedium)
-
-    (can-train genitour)
+    (current-age == castle-age)
+    (up-compare-goal gl-dudeHasArchers == 1)    
+    (or(wood-amount > 275)(building-type-count town-center > 0))
+    (building-type-count-total monastery > 0)
+    (not(can-train genitour))        
+    (unit-type-count-total genitour-line g:< gl-skirmisherQtyLow) 
+    (can-train genitour-line) 
 =>
-    (train genitour)
+    (train genitour-line)
+)
+
+(defrule
+    (current-age == imperial-age)      
+    (up-compare-goal gl-dudeHasArchers == 1)
+    (not(civ-selected khmer))(not(civ-selected spanish))
+    (not(civ-selected sicilians))(not(civ-selected portuguese))
+    (not(civ-selected gothic))
+    (not(can-train genitour))
+    (unit-type-count-total genitour-line g:< gl-skirmisherQtyMedium)
+    (can-train genitour-line)    
+=>
+    (train genitour-line)
 )
 
 ; SKIRMISHER
