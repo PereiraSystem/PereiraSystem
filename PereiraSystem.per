@@ -4347,7 +4347,7 @@
 
 (defrule
     (current-age == castle-age)
-    (gold-amount > 1200)(wood-amount > 400)
+    (gold-amount > 845)(wood-amount > 400)
 	(not(civ-selected gothic))
 	(unit-type-count-total archer-line g:< gl-archerQty)    
     (can-train archer-line)     
@@ -4380,11 +4380,36 @@
 
 ; CAVALRY ARCHER
 (defrule
+    (current-age == castle-age)
+    (or
+        (or
+            (or(civ-selected tatars)(civ-selected mongol))
+            (or(civ-selected hun)(civ-selected cumans))
+        )
+        (or
+            (or(civ-selected franks)(civ-selected vietnamese))
+            (and(civ-selected turkish)(research-completed my-second-unique-research))
+        )
+    )     
+    (gold-amount > 845)(wood-amount > 400)
+	(unit-type-count-total archer-line g:< gl-archerQty)    
+    (can-train archer-line)     
+=>
+	(train archer-line)
+)
+
+(defrule
     (current-age == imperial-age)
     (or
-        (or(civ-selected tatars)(civ-selected mongol))
-        (civ-selected hun) 
-    )    
+        (or
+            (or(civ-selected tatars)(civ-selected mongol))
+            (or(civ-selected hun)(civ-selected cumans))
+        )
+        (or
+            (or(civ-selected franks)(civ-selected vietnamese))
+            (and(civ-selected turkish)(research-completed my-second-unique-research))
+        )
+    )     
     (wood-amount > 200)(gold-amount > 200)
 	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQty)
 
