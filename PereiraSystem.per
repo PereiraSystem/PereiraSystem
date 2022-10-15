@@ -556,7 +556,7 @@
     (up-assign-builders c: donjon c:+ 2)
     (up-assign-builders c: castle c:+ 8)
     (up-assign-builders c: town-center c:+ 8)
-    (up-assign-builders c: town-center-foundation c:+ 20)    
+    (up-assign-builders c: town-center-foundation c:+ 8)    
     (up-assign-builders c: palisade-wall c:+ 3)     
     (disable-self)
 )
@@ -4400,6 +4400,18 @@
 ; ARCHERY RANGE
 ; ARCHER
 (defrule
+    (civ-selected vietnamese)
+    (can-train archer-line)=>(train archer-line)
+    (disable-self)
+)
+
+(defrule
+    (civ-selected vietnamese)
+    (can-train archer-line)=>(train archer-line)
+    (disable-self)
+)
+
+(defrule
     (current-age == feudal-age) ;Cav archer not available
     (up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasScouts == 0)
@@ -4525,6 +4537,18 @@
 )
 
 ; SKIRMISHER
+(defrule
+    (civ-selected vietnamese)
+    (can-train skirmisher-line)=>(train skirmisher-line)
+    (disable-self)
+)
+
+(defrule
+    (civ-selected vietnamese)
+    (can-train skirmisher-line)=>(train skirmisher-line)
+    (disable-self)
+)
+
 (defrule
     (current-age == feudal-age)
     (up-compare-goal gl-dudeHasArchers == 1)
