@@ -3706,13 +3706,12 @@
 ; CASTLE
 ; TREBUCHET
 (defrule
+    (or(military-population g:> gl-knightsQtyMedium)(enemy-buildings-in-town))
     (and
         (unit-type-count-total trebuchet g:< gl-trebuchetsQtyLow)
         (unit-type-count-total 954 g:< gl-trebuchetsQtyLow)
     )
-    (not(civ-selected tatars))(not(civ-selected gothic)) 
-    (not(civ-selected japanese))
-    (military-population g:> gl-knightsQtyMedium) 
+    (not(civ-selected gothic)) 
     (can-train trebuchet)   
 =>
     (train trebuchet)
@@ -3720,8 +3719,8 @@
 
 (defrule
     (or
-        (civ-selected tatars)
-        (civ-selected japanese)
+        (and(civ-selected tatars)(research-completed my-unique-research))
+        (and(civ-selected japanese)(research-completed my-unique-research))
     )
     (unit-type-count-total trebuchet g:< gl-trebuchetsQtyHigh)
     (can-train trebuchet)
@@ -4634,36 +4633,34 @@
 	(train spearman-line)
 )
 
-; G AGUILA
-
+; EAGLE WARRIOR
 (defrule
     (current-age == feudal-age)
-    (or(up-compare-goal gl-dudeHasArchers > 0)
-    (up-compare-goal gl-dudeHasSkirmishers > 0))
-    (unit-type-count-total eagle-warrior-line g:< gl-scoutsQtyMedium)
+    (or(up-compare-goal gl-dudeHasArchers == 1)(up-compare-goal gl-dudeHasSkirmishers == 1))
     (gold-amount > 251)
-    =>
+    (unit-type-count-total eagle-warrior-line g:< gl-scoutsQtyMedium)    
+    (can-train eagle-warrior-line)
+=>
     (train eagle-warrior-line)
 )
 
 (defrule
-    (current-age == castle-age)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)    
-    (can-train eagle-warrior-line)
-    (unit-type-count-total eagle-warrior-line < 4)
-    =>
+    (current-age == castle-age) 
+    (unit-type-count-total eagle-warrior-line g:< gl-scoutsQtyMedium)
+    (can-train eagle-warrior-line)    
+=>
     (train eagle-warrior-line)
 )
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(gold-amount > 250)
+    (unit-type-count-total eagle-warrior-line g:< gl-scoutsQtyMedium)
     (can-train eagle-warrior-line)
-    (unit-type-count-total eagle-warrior-line < 7)(gold-amount > 500)
-    =>
+=>
     (train eagle-warrior-line)
 )
 
-; MERCENARIO ITALIANO
+; CONDOTTIERO
 (defrule
     (unit-type-count-total condottiero g:< gl-militiaQtyMedium)
     (players-unit-type-count any-enemy hand-cannoneer > 3)   
@@ -4672,14 +4669,12 @@
     (train condottiero)
 )
 
-; 6. TRADE                           
-
+; 6. TRADE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$                          
 ; SELLING WOOD
-
 (defrule
     (current-age == feudal-age)
-    (can-sell-commodity wood)
     (wood-amount > 500)
+(can-sell-commodity wood)    
 =>
     (sell-commodity wood)
 )
