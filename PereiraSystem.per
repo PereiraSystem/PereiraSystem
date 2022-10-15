@@ -3643,7 +3643,7 @@
 
 ; TRADE CARTS
 (defrule 
-    (or(current-age == castle-age)(research-pending castle-age))
+    (or(current-age == castle-age)(up-research-status c: castle-age == research-pending))
     (players-building-type-count any-ally market > 0)
     (unit-type-count-total trade-cart < 3)    
     (civilian-population < 100)
@@ -3654,7 +3654,7 @@
 )
 
 (defrule 
-    (or(current-age == imperial-age)(research-pending imperial-age))
+    (or(current-age == imperial-age)(up-research-status c: imperial-age == research-pending))
     (players-building-type-count any-ally market > 0)
     (unit-type-count-total trade-cart < 6)    
     (civilian-population < 100)
