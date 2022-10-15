@@ -321,7 +321,7 @@
     ;(up-chat-data-to-self "Mining camps max qty increased = %d" g: gl-max-mining-camps-qty)	
 )
 
-; TIMER 4 INCREASES LUMBER CAMPS DISTANCE (FAST THEN SLOWER)
+; TIMER 4 INCREASES LUMBER CAMPS DISTANCE FAST WHEN WE HAVE NONE
 (defrule(true)=>(enable-timer 4 330)(disable-self))
 (defrule
 	(timer-triggered 4)
@@ -333,19 +333,37 @@
 )
 
 (defrule
-	(building-type-count-total lumber-camp > 0) ;will increase lc distance 1 per 20 secs
+	(building-type-count-total lumber-camp > 0)
 =>
 	(disable-timer 4)
-    (enable-timer 4 10)     
+    (enable-timer 5 15)
+    (disable-self)
 )
 
-; TIMER 5 INCREASES MINING CAMPS DISTANCE (FAST THEN SLOWER)
-(defrule(current-age == feudal-age)=>(enable-timer 5 60)(disable-self))
+; TIMER 5 INCREASES LUMBER CAMPS DISTANCE SLOWLY AFTER BUILDING ONE
 (defrule
 	(timer-triggered 5)
 =>
 	(disable-timer 5)
-    (enable-timer 5 60)    
+    (enable-timer 5 15)    
+    (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
+    (up-chat-data-to-self "Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
+)
+
+(defrule
+	(building-type-count-total lumber-camp > 0)
+=>
+	(disable-timer 4)
+    (disable-self)
+)
+
+; TIMER 6 INCREASES MINING CAMPS DISTANCE (FAST THEN SLOWER)
+(defrule(current-age == feudal-age)=>(enable-timer 6 60)(disable-self))
+(defrule
+	(timer-triggered 6)
+=>
+	(disable-timer 6)
+    (enable-timer 6 60)    
     (up-modify-sn sn-mining-camp-max-distance c:+ 1) 
     ;(up-chat-data-to-self "Mining camps max distance increased = %d" s: sn-mining-camp-max-distance)
 )
