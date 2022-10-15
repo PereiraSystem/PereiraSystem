@@ -729,22 +729,11 @@
     (building-type-count stable > 0))     
     (building-type-count blacksmith > 0)           
 =>
-    (set-strategic-number sn-food-gatherer-percentage 64)
-    (set-strategic-number sn-wood-gatherer-percentage 22)
-    (set-strategic-number sn-gold-gatherer-percentage 14) ;
+    (set-strategic-number sn-food-gatherer-percentage 65)
+    (set-strategic-number sn-wood-gatherer-percentage 25)
+    (set-strategic-number sn-gold-gatherer-percentage 10) ;
     (set-strategic-number sn-stone-gatherer-percentage 0)
     (chat-to-player my-player-number "Let´s Get Some Gold")    
-    (disable-self)
-)
-
-(defrule 
-    (current-age == feudal-age)
-=>  
-    (set-strategic-number sn-maximum-hunt-drop-distance 16)
-    (set-strategic-number sn-maximum-food-drop-distance 9)
-    (set-strategic-number sn-maximum-wood-drop-distance 9)
-    (set-strategic-number sn-maximum-gold-drop-distance 9)
-    (set-strategic-number sn-maximum-stone-drop-distance 0)
     (disable-self)
 )
 
