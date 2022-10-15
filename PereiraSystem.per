@@ -4336,9 +4336,9 @@
 ; ARCHER
 (defrule
     (current-age == feudal-age)
-    (gold-amount > 245)
     (up-compare-goal gl-dudeHasSpearmen == 1)
-    (up-compare-goal gl-dudeHasScouts == 0)     
+    (up-compare-goal gl-dudeHasScouts == 0)
+    (gold-amount > 245)         
     (unit-type-count-total archer-line g:< gl-archerQty)    
     (can-train archer-line)
 =>
@@ -4347,16 +4347,17 @@
 
 (defrule
     (current-age == castle-age)
-	(unit-type-count-total archer-line g:< gl-archerQty)
     (gold-amount > 1200)(wood-amount > 400)
-	(can-train archer-line)(not(civ-selected gothic)) 
+	(not(civ-selected gothic))
+	(unit-type-count-total archer-line g:< gl-archerQty)    
+    (can-train archer-line)     
 =>
 	(train archer-line)
 )
 
 (defrule
     (current-age == imperial-age)
-    (wood-amount > 200)(gold-amount > 200)
+    (wood-amount > 225)(gold-amount > 245)
 	(unit-type-count-total archer-line g:< gl-archerQty)
     (or
         (or(civ-selected sicilians)(civ-selected mayan))
@@ -4379,13 +4380,14 @@
 
 ; CAVALRY ARCHER
 (defrule
-(current-age == imperial-age)
-    (wood-amount > 200)(gold-amount > 200)
-	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQty)
+    (current-age == imperial-age)
     (or
         (or(civ-selected tatars)(civ-selected mongol))
         (civ-selected hun) 
-    )
+    )    
+    (wood-amount > 200)(gold-amount > 200)
+	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQty)
+
 	(can-train cavalry-archer-line)
 =>
 	(train cavalry-archer-line)
