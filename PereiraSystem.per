@@ -2322,10 +2322,9 @@
 ; MANGONEL
 (defrule
 	(unit-type-count-total mangonel-line > 2)
-    (can-research ri-onager )
+    (can-research ri-onager)
 =>
-	(research ri-onager )
-    
+	(research ri-onager)
 )
 
 (defrule
@@ -2341,29 +2340,28 @@
         (unit-type-count-total scorpion-line > 3)
         (or(civ-selected chinese)(civ-selected khmer))
     )
-    (can-research ri-heavy-scorpion )
+    (can-research ri-heavy-scorpion)
 =>
-    (research ri-heavy-scorpion )
+    (research ri-heavy-scorpion)
 )
 
 ; RAM
 (defrule
 	(unit-type-count-total battering-ram-line > 2)
-    (can-research ri-capped-ram )
+    (can-research ri-capped-ram)
 =>
-    (research ri-capped-ram )
+    (research ri-capped-ram)
 )
 
 (defrule
 	(unit-type-count-total battering-ram-line > 2)
-    (can-research ri-siege-ram )
+    (can-research ri-siege-ram)
 =>
-    (research ri-siege-ram )
+    (research ri-siege-ram)
 )
 
 ; HOUFNICE
 (defrule
-	;(unit-type-count-total bombard-cannon > 0)
     (can-research 787)
 =>
     (research 787)
@@ -2372,12 +2370,14 @@
 ; MONASTERY
 (defrule ;herbs
     (town-under-attack)(research-completed ri-atonement)
+    (can-research 441)
 =>
     (research 441)
 )
 
 (defrule
-    (can-research ri-fervor )(unit-type-count-total monk-set g:>= gl-monkQty)
+    (unit-type-count-total monk-set g:>= gl-monkQty)
+    (can-research ri-fervor)
 =>
     (research ri-fervor )
 )
@@ -2385,87 +2385,87 @@
 (defrule
     (unit-type-count-total monk g:>= gl-monkQty)
 	(research-completed ri-fervor)
-    (can-research ri-sanctity )
+    (can-research ri-sanctity)
 =>
-    (research ri-sanctity )
+    (research ri-sanctity)
 )
 
 (defrule
-	(unit-type-count-total monk > 3)
-	(research-completed ri-hand-cart)
-    (can-research ri-redemption )
     (current-age == imperial-age)
+	(research-completed ri-hand-cart)
+	(unit-type-count-total monk > 3)    
+    (can-research ri-redemption )
 =>
     (research ri-redemption )
 )
 
 (defrule
-    (unit-type-count-total monk > 3)
-	(research-completed ri-hand-cart)
     (current-age == imperial-age)
+	(research-completed ri-hand-cart)
+    (unit-type-count-total monk > 3)    
     (can-research ri-heresy)
 =>
     (research ri-heresy )
 )
 
 (defrule
-    (unit-type-count-total monk > 3)
-	(research-completed ri-hand-cart)
     (current-age == imperial-age)
+	(research-completed ri-hand-cart)
     (or
         (gold-amount > 800)
         (civ-selected bohemians)
-    )    
+    )
+    (unit-type-count-total monk > 3)    
     (can-research ri-atonement)
 =>
     (research ri-atonement)
 )
 
 (defrule
-	(unit-type-count-total monk > 3)
     (or
         (gold-amount > 800)
         (civ-selected bohemians)
-    )    
+    )
+	(unit-type-count-total monk > 3)        
     (can-research ri-theocracy)
 =>
     (research ri-theocracy)
 )
 
 (defrule
-	(unit-type-count-total monk > 3)
-    (can-research ri-block-printing)
     (or
         (gold-amount > 800)
         (civ-selected bohemians)
     )
+    (unit-type-count-total monk > 3)    
+    (can-research ri-block-printing)    
 =>
     (research ri-block-printing)
 )
 
 (defrule
-    (can-research ri-faith)
     (or
         (and(gold-amount > 1200)(food-amount > 1400))
         (civ-selected bohemians)
     )
+    (can-research ri-faith)
 =>
     (research ri-faith)
 )
 
 (defrule
-	(unit-type-count-total monk > 3)
     (or
         (gold-amount > 800)
         (civ-selected bohemians)
-    )    
+    ) 
+	(unit-type-count-total monk > 3)    
     (can-research ri-illumination)
 =>
     (research ri-illumination)
 )
 
-; MEJORAS UNIVERSIDAD                 
-; E. CASTILLOS
+; UNIVERSITY UPGRADES                
+; CASTLE AGE UNIVERSITY UPGRADES
 (defrule
     (current-age == imperial-age)(building-type-count-total castle > 1)
     (can-research ri-masonry)
@@ -2531,7 +2531,7 @@
     (research ri-murder-holes)
 )
 
-; E. IMPERIAL
+; IMPERIAL AGE UNIVERSITY UPGRADES
 (defrule
     (building-type-count-total castle > 1)
     (can-research ri-architecture)
@@ -2569,7 +2569,6 @@
 
 ; 4. BUILDING
 ; CIVILIAN BUILDINGS
-
 ; WONDER                          
 (defrule
     (can-build wonder)
