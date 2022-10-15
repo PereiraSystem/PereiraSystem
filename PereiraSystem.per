@@ -2173,9 +2173,9 @@
     (research ri-conscription )
 )
 
-(defrule
-    (can-research my-unique-unit-upgrade)
+(defrule    
     (current-age == imperial-age)(not(civ-selected ethiopian))
+    (can-research my-unique-unit-upgrade)    
 =>
     (research my-unique-unit-upgrade)
     (chat-to-player my-player-number "UNIQUE UNIT UPGRADED!")
