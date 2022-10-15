@@ -385,18 +385,21 @@
 )
 
 ; TIMER 11 MILITARY REPORT
-(defrule(true)=>(enable-timer 11 120)(disable-self)) 
+(defrule(true)=>(enable-timer 11 60)(disable-self)) 
+
 (defrule
 	(timer-triggered 11)
+
 =>
 	(disable-timer 11)
-    (enable-timer 11 120)           
+    (enable-timer 11 60)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     ;(up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
-    ;(up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)              
-    
+    ;(up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
+                   
 )
+
 
 ; TIMER 12 MILITARY REPORT 2 NAVAL
 (defrule(building-type-count dock > 0)=>(enable-timer 11 120)(disable-self)) 
@@ -5075,7 +5078,7 @@
     )
 =>  
     (set-goal gl-dudeHasCavalry 1)
-    (chat-local-to-self "DUDE HAS CAVALRY!")
+    ;(chat-local-to-self "DUDE HAS CAVALRY!")
 )
 
 (defrule
@@ -5103,7 +5106,7 @@
     )
 =>  
     (set-goal gl-dudeHasCavalry 1)
-    (chat-local-to-self "DUDE HAS CAVALRY!")
+    ;(chat-local-to-self "DUDE HAS CAVALRY!")
 )
 
 (defrule
@@ -5131,14 +5134,14 @@
     (players-unit-type-count any-enemy battle-elephant-line > 0)
 =>  
     (do-nothing)
-    (chat-local-to-self "DUDE HAS ELEPHANTS!")
+    ;(chat-local-to-self "DUDE HAS ELEPHANTS!")
 )
 
 (defrule
     (players-unit-type-count any-enemy skirmisher-line > 0)
 =>  
     (set-goal gl-dudeHasSkirmishers 1)
-    (chat-local-to-self "DUDE HAS SKIRMISHERS!")    
+    ;(chat-local-to-self "DUDE HAS SKIRMISHERS!")    
 )
 
 (defrule
@@ -5151,7 +5154,7 @@
     (players-unit-type-count any-enemy archer-line > 0)
 =>  
     (set-goal gl-dudeHasArchers 1)
-    (chat-local-to-self "DUDE HAS ARCHERS!")        
+    ;(chat-local-to-self "DUDE HAS ARCHERS!")        
 )
 
 (defrule
@@ -5164,7 +5167,7 @@
     (players-unit-type-count any-enemy cavalry-archer-line > 0)
 =>  
     (set-goal gl-dudeHasCavalryArchers 1)
-    (chat-local-to-self "DUDE HAS CAVALRY ARCHERS!")        
+    ;(chat-local-to-self "DUDE HAS CAVALRY ARCHERS!")        
 )
 
 (defrule
@@ -5177,7 +5180,7 @@
     (players-unit-type-count any-enemy spearman-line > 0)
 =>  
     (set-goal gl-dudeHasSpearmen 1)
-    (chat-local-to-self "DUDE HAS SPEARMEN!")        
+    ;(chat-local-to-self "DUDE HAS SPEARMEN!")        
 )
 
 (defrule
@@ -5190,7 +5193,7 @@
     (players-unit-type-count any-enemy militiaman-line > 0)
 =>  
     (set-goal gl-dudeHasMilitia 1)
-    (chat-local-to-self "DUDE HAS MILITIA!")        
+    ;(chat-local-to-self "DUDE HAS MILITIA!")        
 )
 
 (defrule
