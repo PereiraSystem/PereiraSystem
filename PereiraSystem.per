@@ -4458,13 +4458,15 @@
 
 (defrule
     (current-age == castle-age) ;Cav archer available
+    (or(up-compare-goal gl-dudeHasSpearmen == 1)
+    (up-compare-goal gl-dudeHasMilitia == 1))    
     (or(gold-amount > 845)(food-amount < 100))
     (or
         (wood-amount > 325)
         (and(building-type-count market > 0)
         (building-type-count blacksmith > 0))
     )
-    (wood-amount > 145)
+    (wood-amount > 145)    
 	(not(civ-selected gothic))(not(civ-selected mongol))
     (not(civ-selected frankish))(not(civ-selected cumans))
     (not(civ-selected tatars))(not(civ-selected vietnamese))          
