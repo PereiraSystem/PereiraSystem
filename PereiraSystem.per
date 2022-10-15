@@ -648,24 +648,37 @@
 )
 
 (defrule 
-    (current-age == dark-age)(game-time > 390)
+    (current-age == dark-age)
+    (or(civ-selected incan(or(civ-selected mayan)(civ-selected aztec))
+    (game-time > 390)
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
     (set-strategic-number sn-maximum-wood-drop-distance 9)
     (set-strategic-number sn-maximum-gold-drop-distance 9)
     (set-strategic-number sn-maximum-stone-drop-distance 0)
+    (chat-to-player my-player-number "Let´s Get Some Gold Right Now Cause We Got No Horses")    
     (disable-self)
 )
 
 (defrule 
-    (current-age == dark-age)(game-time > 490)
+    (current-age == dark-age)
+    (game-time > 480)
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
     (set-strategic-number sn-maximum-wood-drop-distance 9)
     (set-strategic-number sn-maximum-gold-drop-distance 9)
+    (set-strategic-number sn-maximum-stone-drop-distance 0)
+    (chat-to-player my-player-number "Let´s Get Some Gold")
+    (disable-self)
+)
+
+(defrule 
+    (current-age == dark-age)(game-time > 520)
+=>  
     (set-strategic-number sn-maximum-stone-drop-distance 9)
+    (chat-to-player my-player-number "Let´s Get Some Stone")    
     (disable-self)
 )
 
