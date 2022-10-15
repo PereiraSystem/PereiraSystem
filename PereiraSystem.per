@@ -609,6 +609,12 @@
     (disable-self)
 )
 
+(defrule 
+    (building-type-count-total lumber-camp < 3)
+=>  
+    (set-strategic-number sn-maximum-wood-drop-distance 9)
+)
+
 ; PERCENT VILLAGER BUILDERS
 (defrule
     (current-age == dark-age)
