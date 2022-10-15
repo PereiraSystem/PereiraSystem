@@ -195,7 +195,7 @@
 (defrule
     (true)
 =>    
-    (set-goal gl-max-lumber-camps-qty 4)
+    (set-goal gl-max-lumber-camps-qty 3)
     (set-goal gl-max-mining-camps-qty 1)
     ;(up-chat-data-to-self "Lumber camps max qty = %d" g: gl-max-lumber-camps-qty)
     ;(up-chat-data-to-self "Mining camps max qty = %d" g: gl-max-mining-camps-qty)
@@ -305,9 +305,9 @@
 	(timer-triggered 2)
 =>
 	(disable-timer 2)
-    (enable-timer 2 30)    
+    (enable-timer 2 60)    
     (up-modify-goal gl-max-lumber-camps-qty c:+ 1) 
-    ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: gl-max-lumber-camps-qty)
+    (up-chat-data-to-self "Lumber camps max qty increased = %d" g: gl-max-lumber-camps-qty)
 )
 
 ; TIMER 3 INCREASES MINING CAMPS QUANTITY
