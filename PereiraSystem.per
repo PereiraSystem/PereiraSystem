@@ -5092,15 +5092,14 @@
 )
 
 (defrule
-    (players-unit-type-count any-enemy battle-elephant-line > 2)
-
+    (players-unit-type-count any-enemy battle-elephant-line > 0)
 =>  
     (do-nothing)
     (chat-local-to-self "DUDE HAS ELEPHANTS!")
 )
 
 (defrule
-    (players-unit-type-count any-enemy skirmisher-line > 1)
+    (players-unit-type-count any-enemy skirmisher-line > 0)
 =>  
     (set-goal gl-dudeHasSkirmishers 1)
     (chat-local-to-self "DUDE HAS SKIRMISHERS!")    
@@ -5113,10 +5112,10 @@
 )
 
 (defrule
-    (players-unit-type-count any-enemy archer-line > 1)
+    (players-unit-type-count any-enemy archer-line > 0)
 =>  
     (set-goal gl-dudeHasArchers 1)
-    ;(chat-local-to-self "DUDE HAS ARCHERS!")        
+    (chat-local-to-self "DUDE HAS ARCHERS!")        
 )
 
 (defrule
@@ -5126,10 +5125,10 @@
 )
 
 (defrule
-    (players-unit-type-count any-enemy spearman-line > 1)
+    (players-unit-type-count any-enemy spearman-line > 0)
 =>  
     (set-goal gl-dudeHasSpearmen 1)
-    ;(chat-local-to-self "DUDE HAS SPEARMEN!")        
+    (chat-local-to-self "DUDE HAS SPEARMEN!")        
 )
 
 (defrule
