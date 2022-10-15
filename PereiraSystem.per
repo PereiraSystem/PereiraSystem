@@ -2673,7 +2673,6 @@
     (set-strategic-number sn-maximum-food-drop-distance 9) 
 )
 
-
 (defrule  
     (building-type-count-total mill == 2)
     (current-age >= feudal-age)
@@ -3159,15 +3158,16 @@
     (build dock)(chat-local-to-self "DOCK (EXCESS WOOD)")
 )
 
-; MILITARES
-; MURALLA - EMPALIZADA
-; GATES
+; MILITARY
+; STONE WALL AND PALISADE WALL
 
-; PERMITIR MURALLA PREVIAMENTE
+; PREVIOUSLY ENABLE WALL, PERIMETER 1 OR 2
 ;(defrule(true)=>(enable-wall-placement 1)(disable-self))
 
+; GATE TYPE 1 = PALISADE, 2 = STONE
 (defrule(civ-selected gothic)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
 
+; GATES PERIMETER 1
 (defrule 
     (or
         (building-type-count-total 72 > 0)
@@ -3178,6 +3178,7 @@
     (build-gate 1)  
 )
 
+; GATES PERIMETER 2
 (defrule 
     (or
         (building-type-count-total 72 > 0)
@@ -3189,7 +3190,7 @@
 )
 
 ; WALL
-; STONE
+; STONE WALL PERIMETER 1
 (defrule 
 	(can-build-wall 1 stone-wall-line)
     (building-type-count castle > 0)(current-age == imperial-age)
@@ -3199,14 +3200,14 @@
 	(build-wall 1 stone-wall-line) 
 )
 
-; WOOD
+; PALISADE WALL PERIMETER 1
 (defrule 
 	(can-build-wall 1 72)  
 =>
 	(build-wall 1 72)
 )
 
-; STONE 2
+; STONE WALL PERIMETER 2
 (defrule 
 	(can-build-wall 2 stone-wall-line)
     (building-type-count-total castle > 0)(current-age == imperial-age)
@@ -3214,7 +3215,7 @@
 	(build-wall 2  stone-wall-line)
 )
 
-; WOOD 2
+; PALISADE WALL PERIMETER 2
 (defrule 
 	(can-build-wall 2 72)
     (building-type-count-total castle > 0)(current-age == imperial-age)
@@ -3232,39 +3233,38 @@
     (build castle) 
 )
 
+
 (defrule
-    (can-build castle)(current-age == castle-age)
     (building-type-count-total castle == 1)
+    (can-build castle)
 =>
-    (chat-local-to-self "Trying To Build Forward Castle 2")(build-forward castle) 
+    (chat-local-to-self "Trying To Build Castle 2")
+    (build castle) 
 )
 
 (defrule
-    (building-type-count-total castle == 1)(can-build castle)
+    (building-type-count-total castle == 2)
+    (can-build castle)    
 =>
-    (chat-local-to-self "Trying To Build Castle 2")(build castle) 
+    (chat-local-to-self "Trying To Build FORWARD Castle 3")
+    (build-forward castle) 
 )
 
-(defrule ; MINI CASTILLO HUNGARO
+; MINI CASTLES (MEGA TOWERS?)
+(defrule
     (building-type-count-total castle > 1)(building-type-count-total krepost < 4)
     (can-build krepost)
 =>
-    (up-modify-sn sn-maximum-town-size c:+ 1)(build krepost)   
+    (build krepost)
+    (up-modify-sn sn-maximum-town-size c:+ 1)   
 )
 
-(defrule ; SICILIANS
-    (building-type-count-total market > 0) 
-    (building-type-count-total donjon < 1)
-    (can-build donjon)
+(defrule 
+    (building-type-count-total donjon < 64)
+    (can-build donjon)    
 =>
     (build donjon)
-)
-
-(defrule ; SICILIANS
-    (can-build donjon) 
-    (building-type-count-total donjon < 64)
-=>
-    (build donjon)(up-modify-sn sn-maximum-town-size c:+ 1)   
+    (up-modify-sn sn-maximum-town-size c:+ 1)   
 )
 
 ; MILITARY PRODUCTION BUILDINGS
@@ -3353,7 +3353,7 @@
     (wood-amount > 3000)
     (can-build barracks)
 =>
-    (build barracks)(chat-local-to-self "GOTHIC BARRACKS")
+    (build barracks)(chat-local-to-self "Trying To Build Gothic Barracks")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
