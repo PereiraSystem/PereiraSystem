@@ -2793,7 +2793,7 @@
 (defrule
     (current-age == dark-age)(wood-amount > 125)
     (or(building-type-count barracks > 0)(building-type-count mill > 0))
-    (unit-type-count-total villager > 10) 
+    (unit-type-count-total villager > 11) 
     (building-type-count-total house < 3)(can-build house)
 =>
     (chat-local-to-self "Trying to build house 3")(build house) 
