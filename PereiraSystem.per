@@ -1,6 +1,6 @@
 ;PEREIRA SYSTEM AI - AGE OF EMPIRES II DEFINITIVE - (LORDS OF THE WEST) by LordBoniato
 
-; 1. Constants and timers
+; 1. Constants and timers --------------
 ; 2. Strategic numbers
 ; 3. Researching
 ; 4. Building
@@ -8,7 +8,7 @@
 ; 6. Trade
 ; 7. Detect things 
 
-; 1. CONSTANTS AND TIMERS
+; 1. CONSTANTS AND TIMERS -----------------
 
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
@@ -421,13 +421,13 @@
     (chat-to-player my-player-number "WE ARE RICH, TIME TO ATTACK!")    
 )
 
-; 2. STRATEGIC NUMBERS
+; 2. STRATEGIC NUMBERS ==================
 (defrule 
     (true)
 =>  (set-strategic-number sn-do-not-scale-for-difficulty-level 1) (disable-self)
 )
-; EXPLORE
 
+; EXPLORE 
 (defrule 
     (true)
 =>  
@@ -484,7 +484,7 @@
     (disable-self)
 )
 
-; CAZAR
+; HUNT 
 (defrule 
     (true)
 =>
@@ -502,7 +502,7 @@
     (disable-self)
 )
 
-; CONSTRUIR
+; BUILD 
 (defrule
     (true)
 =>
@@ -545,8 +545,8 @@
     (disable-self)
 )
 
-; DISTANCIAS RECURSOS
-; CANCELAR MINA SI PELIGROSO
+; DROPSITES AND DISTANCES
+; CANCEL SITE BUILDING IF DANGEROUS
 (defrule 
     (true)
 =>
@@ -554,12 +554,11 @@
     (disable-self)
 )
 
-; ARBOLES REQUERIDOS
 (defrule 
     (true)
 =>
-    (set-strategic-number sn-dropsite-separation-distance 3) ; NF
-    (set-strategic-number sn-allow-adjacent-dropsites 0) ; CAMBIA CON 3 CAMPAMENTOS
+    (set-strategic-number sn-dropsite-separation-distance 3) ; WORKS?
+    (set-strategic-number sn-allow-adjacent-dropsites 0) ; WILL CHANGE LATER
     (set-strategic-number sn-required-forest-tiles 5)
     (disable-self)
 )
@@ -595,7 +594,6 @@
 )    
 
 ; PERCENT GATHERERS AND DROP DISTANCES
-
 (defrule
     (current-age == dark-age)
 =>
@@ -684,7 +682,7 @@
     (disable-self)
 )
 
-; DROP DISTANCE CASTILLOS
+; DROP DISTANCE CASTLE AGE
 (defrule 
     (current-age == castle-age)
 =>  
@@ -737,7 +735,7 @@
     (set-strategic-number sn-wood-gatherer-percentage 9)
     (set-strategic-number sn-gold-gatherer-percentage 10)
     (set-strategic-number sn-stone-gatherer-percentage 6)
-    (chat-local-to-self  "Imperial age with no relics - sending more villagers for gold")     
+    (chat-local-to-self  "Imperial Age With No Relics - Sending More Villagers For Gold")     
     (disable-self)
 )
 
@@ -748,7 +746,7 @@
     (set-strategic-number sn-wood-gatherer-percentage 13)
     (set-strategic-number sn-gold-gatherer-percentage 4)
     (set-strategic-number sn-stone-gatherer-percentage 6)
-    (chat-local-to-self "Imperial age with all relics - sending less villagers for gold")     
+    (chat-local-to-self "Imperial Age With All Relics - Sending Less Villagers For Gold")     
     (disable-self)
 )
 
@@ -757,7 +755,7 @@
 =>
     (up-modify-sn sn-food-gatherer-percentage c: -16)
     (up-modify-sn sn-wood-gatherer-percentage c: +16)
-    (chat-local-to-self  "We need more wood, less food")     
+    (chat-local-to-self  "We Need More Wood, Less Food")     
     (disable-self)
 )
 
@@ -766,7 +764,7 @@
 =>
     (up-modify-sn sn-food-gatherer-percentage c: -16)
     (up-modify-sn sn-gold-gatherer-percentage c: +16)
-    (chat-local-to-self  "We need more gold, less food")     
+    (chat-local-to-self  "We Need More Gold, Less Food")     
     (disable-self)
 )
 
@@ -775,7 +773,7 @@
 =>
     (up-modify-sn sn-wood-gatherer-percentage c: -16)
     (up-modify-sn sn-food-gatherer-percentage c: +16)
-    (chat-local-to-self  "We need more food, less wood")     
+    (chat-local-to-self  "We Need More Food, Less Wood")     
     (disable-self)
 )
 
@@ -784,7 +782,7 @@
 =>
     (up-modify-sn sn-wood-gatherer-percentage c: -16)
     (up-modify-sn sn-gold-gatherer-percentage c: +16)
-    (chat-local-to-self  "We need more gold, less wood")     
+    (chat-local-to-self  "We Need More Gold, Less Wood")     
     (disable-self)
 )
 
@@ -793,7 +791,7 @@
 =>
     (up-modify-sn sn-gold-gatherer-percentage c: -16)
     (up-modify-sn sn-food-gatherer-percentage c: +16)    
-    (chat-local-to-self "We need more food, less gold")     
+    (chat-local-to-self "We Need More Food, Less Gold")     
     (disable-self)
 )
 
@@ -802,7 +800,7 @@
 =>
     (up-modify-sn sn-gold-gatherer-percentage c: -16)
     (up-modify-sn sn-wood-gatherer-percentage c: +16)    
-    (chat-local-to-self "We need more wood, less gold")     
+    (chat-local-to-self "We Need More Wood, Less Gold")     
     (disable-self)
 )
 
@@ -819,7 +817,6 @@
 )
 
 ; ATTACK                              
-
 (defrule 
     (true)
 =>
@@ -872,7 +869,7 @@
     (disable-self)
 )
 
-; 3 RESEARCHING
+; 3. UPGRADES ////////////////////////////
 ; ADVANCING AGE
 (defrule
     (can-research feudal-age)
@@ -891,17 +888,15 @@
     (can-research imperial-age)   
 =>
     (research imperial-age)
-
 )
 
-; LUMBERJACKS
+; LUMBER UPGRADES 
 (defrule(can-research ri-double-bit-axe)=>(research ri-double-bit-axe))
 (defrule(can-research ri-bow-saw)=>(research ri-bow-saw))
 (defrule(can-research ri-two-man-saw)=>(research ri-two-man-saw))
 
-; CENTRO CIUDAD       
-; MEJORAR ALDEANOS
-
+; TOWN CENTER UPGRADES      
+; VILLAGER UPGRADES
 (defrule
     (can-research ri-loom)
     (or
@@ -934,7 +929,7 @@
     (research ri-hand-cart)
 )
 
-; MEJORAR VISION
+; BUILDING SIGHT RANGE
 (defrule
     (can-research ri-town-watch)
     (food-amount > 1200)
@@ -968,72 +963,76 @@
 )
 
 (defrule
-    (can-research ri-guilds )
+    (can-research ri-guilds)
 =>
     (research ri-guilds)
 )
 
 (defrule
-    (can-research ri-coinage )
     (players-building-type-count any-ally market > 0)
-    (building-type-count-total monastery > 0)    
+    (building-type-count-total monastery > 0)
+    (can-research ri-coinage)    
 =>
     (research ri-coinage)
 )
 
 (defrule
-    (can-research ri-banking )(players-building-type-count any-ally market > 0)
+    (players-building-type-count any-ally market > 0)
+    (can-research ri-banking)    
 =>
     (research ri-banking)
 )
 
-; GRANJAS
+; FARMS
 (defrule
-    (can-research ri-horse-collar)
-        (or
-            (and
-                (food-amount > 875)
-                (not(town-under-attack))
-            )
-            (or
-                (current-age == imperial-age)
-                (building-type-count farm > 5)                            
-            )
-            
+    (or
+        (and
+            (food-amount > 875)
+            (not(town-under-attack))
         )
+        (or
+            (current-age == imperial-age)
+            (building-type-count farm > 5)                            
+        )
+    )
     (building-type-count-total farm > 3)
     (research-completed ri-double-bit-axe)
     (wood-amount > 175)
+(can-research ri-horse-collar)    
 =>
     (research ri-horse-collar)
 )
 
 (defrule
-    (can-research ri-heavy-plow)(wood-amount > 225)
+    (wood-amount > 225)
  	(research-completed ri-hand-cart) 
- 	(research-completed ri-bow-saw)   
+ 	(research-completed ri-bow-saw)
+    (can-research ri-heavy-plow)      
 =>
     (research ri-heavy-plow)
 )
 
 (defrule
-    (can-research ri-crop-rotation)(wood-amount > 350)
+    (wood-amount > 350)(can-research ri-crop-rotation)
 =>
     (research ri-crop-rotation)
 )
 
-; MINAS
+; MINES
  (defrule
-    (can-research ri-gold-mining)(wood-amount > 100)
+    (wood-amount > 100)
     (building-type-count market > 0)
     (research-completed ri-double-bit-axe)
+    (can-research ri-gold-mining)    
 =>
     (research ri-gold-mining)
 )
 
 (defrule
-    (can-research ri-gold-shaft-mining)(wood-amount > 100)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+    (wood-amount > 100)
+    (research-completed ri-hand-cart)
+    (research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+    (can-research ri-gold-shaft-mining)
 =>
     (research ri-gold-shaft-mining)
 )
@@ -1048,14 +1047,13 @@
 )
 
 (defrule
-    (can-research ri-stone-shaft-mining)(wood-amount > 100)(current-age == imperial-age)
+    (current-age == imperial-age)(wood-amount > 100)
+    (can-research ri-stone-shaft-mining)
 =>
     (research ri-stone-shaft-mining)
 )
 
-
-; TECNOLOGIA UNICA
-
+; UNIQUE TECHS
 ; AOK
 ; BYZANTINES
 (defrule
@@ -1071,7 +1069,6 @@
 =>
     (research my-unique-research)
     (chat-to-player my-player-number "CATAFRACTROFIC!")
-    (disable-self)
 )
 
 ; CELTS
