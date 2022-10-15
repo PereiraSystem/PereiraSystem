@@ -2966,6 +2966,7 @@
 
 (defrule
     (current-age >= feudal-age)
+    (building-type-count-total lumber-camp == 3)
     (building-type-count-total lumber-camp g:< gl-max-lumber-camps-qty) 	
     (resource-found wood)
     (dropsite-min-distance wood > 3)
