@@ -1266,7 +1266,7 @@
 =>
     (research my-unique-research)
     (chat-to-player my-player-number "CAMELS +20% HP!")
-)   
+)
 
 ; TEUTONS
 (defrule
@@ -4562,6 +4562,19 @@
 
 (defrule
     (current-age == feudal-age) ;dont use militia if theres discount on cav or arch
+    (enemy-buildings-in-town)(gold-amount > 220)
+    (not(civ-selected frankish))(not(civ-selected cumans))
+    (not(civ-selected magyar))(not(civ-selected mongol))  
+    (not(civ-selected turkish))(not(civ-selected vietnamese))     
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
+    (can-train militiaman-line)
+=>
+    (train militiaman-line)
+)
+
+(defrule
+    (current-age == castle-age) ;dont use militia if theres discount on cav or arch
+    (or(building-type-count siege-workshop == 0)(not(can-train battering-ram-line))
     (enemy-buildings-in-town)(gold-amount > 220)
     (not(civ-selected frankish))(not(civ-selected cumans))
     (not(civ-selected magyar))(not(civ-selected mongol))  
