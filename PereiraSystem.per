@@ -602,7 +602,7 @@
 =>
     (set-strategic-number sn-dropsite-separation-distance 3) ; WORKS?
     (set-strategic-number sn-allow-adjacent-dropsites 0) ; WILL CHANGE LATER
-    (set-strategic-number sn-required-forest-tiles 7)
+    (set-strategic-number sn-required-forest-tiles 8)
     (disable-self)
 )
 
@@ -2775,7 +2775,7 @@
 ; DARK AGE
 (defrule
     (current-age == dark-age)(building-type-count town-center > 0)
-    (building-type-count-total barracks > 0)(wood-amount > 176)
+    (building-type-count-total barracks > 0)(wood-amount > 175)
     (building-type-count-total lumber-camp > 0)
 	(idle-farm-count < 3)
 	(can-build farm)    
@@ -2793,7 +2793,7 @@
             (building-type-count-total stable > 0)
         )
     )
-    (wood-amount > 276)(food-amount < 2000)
+    (wood-amount > 275)(food-amount < 2000)
 	(idle-farm-count < 5)
 	(can-build farm)
 =>
