@@ -1192,7 +1192,7 @@
 ; FRANCOS ESTA AL REVES
 (defrule
     (civ-selected frankish)(unit-type-count-total my-unique-unit-line > 0)
-    (can-research my-unique-research )
+    (can-research my-unique-research)
 =>
     (research my-unique-research)
     (chat-to-player my-player-number "AXE THROWERS +1 RANGE!") 
@@ -3838,7 +3838,7 @@
     (or(town-under-attack)(gold-amount > 860))
     (can-train my-unique-unit-line)(not(civ-selected korean))(not(civ-selected celtic))
     (not(civ-selected ethiopian))(not(civ-selected khmer))(not(civ-selected chinese))
-    (not(civ-selected persian))    
+    (not(civ-selected persian))(not(civ-selected frankish))     
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
     (can-train my-unique-unit-line)
 =>
