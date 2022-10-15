@@ -4478,13 +4478,14 @@
 )
 
 (defrule
-    (current-age == imperial-age)
-    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium)        
-    (up-compare-goal gl-dudeHasArchers == 1) 
-    (can-train skirmisher-line)(not(can-train genitour))
-    (not(civ-selected khmer))
-    (not(civ-selected spanish))(not(civ-selected sicilians))
-    (not(civ-selected portuguese))(not(civ-selected gothic))    
+    (current-age == imperial-age)      
+    (up-compare-goal gl-dudeHasArchers == 1)
+    (not(civ-selected khmer))(not(civ-selected spanish))
+    (not(civ-selected sicilians))(not(civ-selected portuguese))
+    (not(civ-selected gothic))
+    (not(can-train genitour))
+    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium)
+    (can-train skirmisher-line)    
 =>
     (train skirmisher-line)
 )
