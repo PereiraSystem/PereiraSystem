@@ -4698,6 +4698,18 @@
 
 ; SPEARMAN
 (defrule
+    (can-train spearman-line)
+=>
+    (train spearman-line)(disable-self)
+)
+
+(defrule
+    (can-train spearman-line)
+=>
+    (train spearman-line)(disable-self)
+)
+
+(defrule
     (current-age == feudal-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (wood-amount > 125)
