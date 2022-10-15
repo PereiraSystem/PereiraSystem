@@ -3736,10 +3736,7 @@
             (and(civ-selected tatars)(research-completed my-unique-research))
             (and(civ-selected japanese)(research-completed my-unique-research))
         )
-        (or
-            (civ-selected briton)(research-completed my-unique-research)
-            (civ-selected briton)(research-completed my-unique-research)            
-        )    
+        (and(civ-selected briton)(research-completed my-unique-research))    
     )
     (and
         (unit-type-count-total trebuchet g:< gl-trebuchetsQtyHigh)
