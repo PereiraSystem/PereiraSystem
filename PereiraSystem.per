@@ -315,22 +315,35 @@
     ;(up-chat-data-to-self "Mining camps max qty increased: %d" g: gl-max-mining-camps-qty)	
 )
 
-; TIMER 4 INCREASES LUMBER CAMPS DISTANCE
+; TIMER 4 INCREASES LUMBER CAMPS DISTANCE (FAST THEN SLOWER)
 (defrule(true)=>(enable-timer 4 330)(disable-self))
 (defrule
 	(timer-triggered 4)
 =>
 	(disable-timer 4)
     (enable-timer 4 11)    
-    (up-modify-sn sn-camp-max-distance c:+ 1) 
-    (up-chat-data-to-self "Lumber camps max distance increased: %d" s: sn-camp-max-distance)
+    (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
+    (up-chat-data-to-self "Lumber camps max distance increased: %d" s: sn-lumber-camp-max-distance)
 )
 
 (defrule
 	(building-type-count-total lumber-camp > 0)
 =>
 	(disable-timer 4)
+    (enable-timer 4 30)     
 )
+
+; TIMER 5 INCREASES MINING CAMPS DISTANCE (FAST THEN SLOWER)
+(defrule(current-age == feudal-age)=>(enable-timer 5 30)(disable-self))
+(defrule
+	(timer-triggered 5)
+=>
+	(disable-timer 5)
+    (enable-timer 5 30)    
+    (up-modify-sn sn-mining-camp-max-distance c:+ 1) 
+    (up-chat-data-to-self "Mining camps max distance increased: %d" s: sn-mining-camp-max-distance)
+)
+
 
 ; TIMER 10 CIVILIAN / BUILDINGS REPORT
 (defrule(true)=>(enable-timer 10 90)(disable-self)) 
@@ -2918,7 +2931,6 @@
 =>
     (up-chat-data-to-self "Trying To Build Mining Camp (Gold 1) - Max Distance = %d" s: sn-mining-camp-max-distance)      
     (build mining-camp)
-    (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
 )
 
 (defrule 
@@ -2932,9 +2944,8 @@
     (dropsite-min-distance gold > 3)
     (can-build mining-camp)
 =>
+    (up-chat-data-to-self "Trying To Build Mining Camp (Gold) - Max Distance = %d" s: sn-mining-camp-max-distance)
     (build mining-camp)
-    (up-modify-sn sn-mining-camp-max-distance c:+ 8)  
-    (up-chat-data-to-self "Trying To Build Mining Camp (Gold) - Max Distance = %d" s: sn-mining-camp-max-distance)  
 )
 
 ; STONE MINING CAMP
@@ -2949,8 +2960,7 @@
     (can-build mining-camp)
 =>
     (up-chat-data-to-self "Trying To Build Mining Camp (Stone 1) - Max Distance = %d" s: sn-mining-camp-max-distance)      
-    (build mining-camp)
-    (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
+    (build mining-camp) 
 )
 
 (defrule 
@@ -2963,7 +2973,6 @@
 =>
     (up-chat-data-to-self "Trying To Build Mining Camp (Stone 2) - Max Distance = %d" s: sn-mining-camp-max-distance)      
     (build mining-camp)
-    (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
 )
 
 (defrule 
@@ -2975,8 +2984,7 @@
     (can-build mining-camp)
 =>
     (up-chat-data-to-self "Trying To Build Mining Camp (Stone) - Max Distance = %d" s: sn-mining-camp-max-distance)  
-    (build mining-camp)
-    (up-modify-sn sn-mining-camp-max-distance c:+ 24)  
+    (build mining-camp) 
 )
 
 ; BLACKSMITH
