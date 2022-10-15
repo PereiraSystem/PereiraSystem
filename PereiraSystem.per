@@ -393,7 +393,7 @@
 =>
 	(disable-timer 11)
     (enable-timer 11 120)           
-    (up-chat-data-to-self "Military: %d" g: gl-milPop)  
+    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     (up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
@@ -2706,6 +2706,7 @@
     (building-type-count-total mill == 0)(building-type-count town-center > 0)
     (resource-found food)
     (wood-amount > 200)
+    (or(not(civ-selected poles))(wood-amount > 225))
     (can-build mill)    
 =>
     (build mill)(chat-local-to-self "Trying To Build Mill 1 (Food Found)")
