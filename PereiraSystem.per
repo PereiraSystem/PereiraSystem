@@ -2004,16 +2004,14 @@
 )
 
 (defrule
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)
-    (research-completed ri-heavy-plow)
-    (unit-type-count-total cavalry-class > 2)     
+    (unit-type-count-total cavalry-class > 3)     
     (can-research ri-husbandry)
 =>
     (research ri-husbandry)
 )
 
 (defrule
-    (unit-type-count-total cavalry-class > 2)
+    (unit-type-count-total cavalry-class > 3)
     (can-research ri-stirrups)
 =>
     (research ri-stirrups)
@@ -2021,7 +2019,8 @@
 
 ; LIGHT CAVALRY  
 (defrule
-    (or(current-age == imperial-age)(unit-type-count scout-cavalry-line > 6))
+    (or(current-age == imperial-age)(food-amount > 950))
+    (unit-type-count scout-cavalry-line > 4)    
     (can-research ri-light-cavalry)    
 =>
     (research ri-light-cavalry)
@@ -2029,6 +2028,7 @@
 
 (defrule
     (current-age == imperial-age)
+    (unit-type-count scout-cavalry-line > 4)    
     (can-research ri-hussar)    
 =>
     (research ri-hussar)
