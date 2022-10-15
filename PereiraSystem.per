@@ -3731,8 +3731,8 @@
 ; PETARD    
 (defrule
     (current-age == imperial-age)
-    (civ-selected saracen)
-    (can-train petard)(gold-amount > 2100)
+    (civ-selected saracen)(gold-amount > 2100)
+    (can-train petard)
 =>
     (train petard)
 )
