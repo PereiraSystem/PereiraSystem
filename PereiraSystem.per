@@ -4681,7 +4681,7 @@
     (current-age == feudal-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (wood-amount > 125)
-    (up-compare-goal gl-dudeHasCavalry == 1)
+    (up-compare-goal gl-dudeHasScouts == 1)
     (unit-type-count-total spearman-line g:< gl-spearmenQtyMedium)
     (can-train spearman-line)
 =>
@@ -4693,7 +4693,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (building-type-count-total monastery > 0)
     (wood-amount > 125)
-    (up-compare-goal gl-dudeHasCavalry == 1)
+    (up-compare-goal gl-dudeHasScouts == 1)
     (unit-type-count-total spearman-line g:< gl-spearmenQtyMedium)
     (can-train spearman-line)
 =>
@@ -4704,7 +4704,7 @@
     (current-age == imperial-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 125)    
-    (up-compare-goal gl-dudeHasCavalry == 1)    
+    (up-compare-goal gl-dudeHasScouts == 1)    
     (unit-type-count-total spearman-line g:< gl-spearmenQtyHigh)
     (not(civ-selected cumans))     
     (can-train spearman-line)     
