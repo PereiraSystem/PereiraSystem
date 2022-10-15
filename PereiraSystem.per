@@ -57,6 +57,10 @@
 (defconst gl-scoutsQtyMedium 136)
 (defconst gl-camelQtyLow 140)
 
+(defconst gl-eagleQtyLow 150)
+(defconst gl-eagleQtyMedium 151)
+(defconst gl-eagleQtyHigh 152)
+
 (defconst gl-monkQty 300)
 (defconst gl-monkQtyHigh 301)
 
@@ -105,7 +109,11 @@
 
     (set-goal gl-militiaQtyLow 8)
     (set-goal gl-militiaQtyMedium 20)
-    (set-goal gl-militiaQtyHigh 60)        
+    (set-goal gl-militiaQtyHigh 60)
+
+    (set-goal gl-eagleQtyLow 8)
+    (set-goal gl-eagleQtyMedium 16)
+    (set-goal gl-eagleQtyHigh 40)
 
     (set-goal gl-archerQty 40)
     (set-goal gl-skirmisherQtyLow 8)    
@@ -4665,7 +4673,7 @@
     (current-age == feudal-age)
     (or(up-compare-goal gl-dudeHasArchers == 1)(up-compare-goal gl-dudeHasSkirmishers == 1))
     (gold-amount > 251)
-    (unit-type-count-total eagle-warrior-line g:< gl-scoutsQtyMedium)    
+    (unit-type-count-total eagle-warrior-line g:< gl-eagleQtyLow)    
     (can-train eagle-warrior-line)
 =>
     (train eagle-warrior-line)
@@ -4673,7 +4681,7 @@
 
 (defrule
     (current-age == castle-age) 
-    (unit-type-count-total eagle-warrior-line g:< gl-scoutsQtyMedium)
+    (unit-type-count-total eagle-warrior-line g:< gl-eagleQtyMedium)
     (can-train eagle-warrior-line)    
 =>
     (train eagle-warrior-line)
@@ -4681,7 +4689,7 @@
 
 (defrule
     (current-age == imperial-age)(gold-amount > 250)
-    (unit-type-count-total eagle-warrior-line g:< gl-scoutsQtyMedium)
+    (unit-type-count-total eagle-warrior-line g:< gl-eagleQtyHigh)
     (can-train eagle-warrior-line)
 =>
     (train eagle-warrior-line)
