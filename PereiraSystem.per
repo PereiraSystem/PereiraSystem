@@ -4449,7 +4449,7 @@
     (current-age == feudal-age) ;Cav archer not available
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))
-    (gold-amount > 245)         
+    (or(gold-amount > 245)(food-amount < 100))         
     (unit-type-count-total archer-line g:< gl-archerQty)    
     (can-train archer-line)
 =>
