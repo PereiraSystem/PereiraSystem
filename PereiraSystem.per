@@ -3861,7 +3861,7 @@
     (current-age == castle-age)
     (unit-type-count-total mangonel-line < 1)
     (town-under-attack)
-    (up-compare-goal gl-dudeHasScouts == 0)
+    (up-compare-goal gl-dudeHasCavalry == 0)
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
@@ -4341,7 +4341,7 @@
 ; ARCHERY RANGE
 ; ARCHER
 (defrule
-    (current-age == feudal-age)
+    (current-age == feudal-age) ;Cav archer not available
     (up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasScouts == 0)
     (gold-amount > 245)         
@@ -4352,9 +4352,11 @@
 )
 
 (defrule
-    (current-age == castle-age)
+    (current-age == castle-age) ;Cav archer available
     (gold-amount > 845)(wood-amount > 400)
 	(not(civ-selected gothic))(not(civ-selected mongol))
+    (not(civ-selected frankish))(not(civ-selected cumans))
+    (not(civ-selected tatars))(not(civ-selected vietnamese))          
 	(unit-type-count-total archer-line g:< gl-archerQty)    
     (can-train archer-line)     
 =>
@@ -4364,11 +4366,11 @@
 (defrule
     (current-age == imperial-age)
     (wood-amount > 225)(gold-amount > 245)
-	(unit-type-count-total archer-line g:< gl-archerQty)
     (or
         (or(civ-selected sicilians)(civ-selected mayan))
         (or(civ-selected ethiopian)(civ-selected viking))    
     )
+    (unit-type-count-total archer-line g:< gl-archerQty)    
 	(can-train archer-line)
 =>
 	(train archer-line)
