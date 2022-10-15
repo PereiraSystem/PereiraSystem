@@ -4454,42 +4454,23 @@
 ; SKIRMISHER
 (defrule
     (current-age == feudal-age)
-
     (up-compare-goal gl-dudeHasArchers == 1)
-
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (not(can-train genitour))
-    (unit-type-count-total skirmisher-line g:< gl-ski)     
+    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyLow)     
     (can-train skirmisher-line)       
 =>
     (train skirmisher-line)
 )
 
 (defrule
-    (current-age == feudal-age)
-    (unit-type-count-total skirmisher-line < 20)
-    (up-compare-goal gl-dudeHasArchers > 0)        
-    (research-completed ri-padded-archer-armor)
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
-    (can-train skirmisher-line)
-    (not(can-train genitour))   
-=>
-    (train skirmisher-line)
-)
-
-(defrule
     (current-age == castle-age)
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
-    ;(unit-type-count-total villager > 35)
-    (unit-type-count-total skirmisher-line < 8)
-        (or
-        (players-unit-type-count any-enemy 936 > 4)
-        (players-unit-type-count any-enemy 900 > 4)
-    )    
-    ;(research-completed ri-leather-archer-armor)   
+    (up-compare-goal gl-dudeHasArchers == 1)    
+    (or(wood-amount > 275)(building-type-count town-center > 0))
     (building-type-count-total monastery > 0)
-    (can-train skirmisher-line)(not(can-train genitour))
-    ;(not(civ-selected sicilians))    
+    (not(can-train genitour))        
+    (unit-type-count-total skirmisher-line < 8)
+    (can-train skirmisher-line) 
 =>
     (train skirmisher-line)
 )
