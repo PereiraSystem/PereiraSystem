@@ -373,33 +373,31 @@
 )
 
 ; TIMER 10 CIVILIAN / BUILDINGS REPORT
-(defrule(true)=>(enable-timer 10 90)(disable-self)) 
+(defrule(true)=>(enable-timer 10 60)(disable-self)) 
 (defrule
 	(timer-triggered 10)
 =>
 	(disable-timer 10)
-    (enable-timer 10 360)  
-    ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)      
-    ;(up-chat-data-to-self "Buildings: %d" g: gl-buildCount)
-    ;(up-chat-data-to-self "Enemy B. In Town: %d" g: gl-enemyBuildingsInTown)          
+    (enable-timer 10 120)  
+    (up-chat-data-to-self "Civilians: %d" g: gl-civPop)      
+    (up-chat-data-to-self "Buildings: %d" g: gl-buildCount)
+    (up-chat-data-to-self "Enemy B. In Town: %d" g: gl-enemyBuildingsInTown)          
 )
 
 ; TIMER 11 MILITARY REPORT
-(defrule(true)=>(enable-timer 11 60)(disable-self)) 
+(defrule(true)=>(enable-timer 11 90)(disable-self)) 
 
 (defrule
 	(timer-triggered 11)
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 60)           
-    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
-    ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
-    ;(up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
-    ;(up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
-
+    (enable-timer 11 120)           
+    (up-chat-data-to-self "Military: %d" g: gl-milPop)  
+    (up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
+    (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
+    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
 )
-
 
 ; TIMER 12 MILITARY REPORT 2 NAVAL
 (defrule(building-type-count dock > 0)=>(enable-timer 11 120)(disable-self)) 
