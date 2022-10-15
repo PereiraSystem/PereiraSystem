@@ -21,6 +21,8 @@
 (defconst gl-dudeHasArchers 55)
 (defconst gl-dudeHasSkirmishers 56)
 (defconst gl-dudeHasSpearmen 57)
+(defconst gl-dudeHasMilitia 58)
+(defconst gl-dudeHasCavalryArchers 59)
 
 (defconst gl-weMovedPlace 90)
 
@@ -211,6 +213,8 @@
     (set-goal gl-dudeHasCamels 0)
     (set-goal gl-dudeHasElephants 0)
     (set-goal gl-dudeHasArchers 0)
+    (set-goal gl-dudeHasCavalryArchers 0)
+    (set-goal gl-dudeHasMilitia 0)        
     (set-goal gl-dudeHasSkirmishers 0)
     (set-goal gl-weMovedPlace 0)        
     (disable-self)	    
@@ -4438,8 +4442,8 @@
 
 (defrule
     (current-age == feudal-age) ;Cav archer not available
-    (up-compare-goal gl-dudeHasSpearmen == 1)
-    (up-compare-goal gl-dudeHasScouts == 0)
+    (or(up-compare-goal gl-dudeHasSpearmen == 1)
+    (up-compare-goal gl-dudeHasMilitia == 1))
     (gold-amount > 245)         
     (unit-type-count-total archer-line g:< gl-archerQty)    
     (can-train archer-line)
@@ -4574,7 +4578,8 @@
 
 (defrule
     (current-age == feudal-age)
-    (up-compare-goal gl-dudeHasArchers == 1)
+    (or(up-compare-goal gl-dudeHasArchers == 1)
+    (up-compare-goal gl-dudeHasCavalryArchers == 1))    
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (not(can-train genitour))
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyLow)     
@@ -5150,6 +5155,19 @@
 )
 
 (defrule
+    (players-unit-type-count any-enemy cavalry-archer-line < 1)
+=>  
+    (set-goal gl-dudeHasCavalryArchers 0)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy cavalry-archer-line > 0)
+=>  
+    (set-goal gl-dudeHasCavalryArchers 1)
+    (chat-local-to-self "DUDE HAS CAVALRY ARCHERS!")        
+)
+
+(defrule
     (players-unit-type-count any-enemy archer-line < 1)
 =>  
     (set-goal gl-dudeHasArchers 0)    
@@ -5166,4 +5184,17 @@
     (players-unit-type-count any-enemy spearman-line < 1)
 =>  
     (set-goal gl-dudeHasSpearmen 0)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy militiamanline > 0)
+=>  
+    (set-goal gl-dudeHasMilitia 1)
+    (chat-local-to-self "DUDE HAS MILITIA!")        
+)
+
+(defrule
+    (players-unit-type-count any-enemy militiaman-line < 1)
+=>  
+    (set-goal gl-dudeHasMilitia 0)    
 )
