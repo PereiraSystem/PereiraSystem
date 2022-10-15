@@ -6,11 +6,9 @@
 ; 4. Building
 ; 5. Creating units
 ; 6. Trade
-; 7. Taunts 
+; 7. Detect things 
 
 ; 1. CONSTANTS AND TIMERS
-
-(load "Constants\Constants for AoFE")
 
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
@@ -372,7 +370,7 @@
 	(timer-triggered 15)
     (current-age == imperial-age)(building-type-count town-center > 0)
 =>
-	(chat-local-to-self "Deleting Idle Villagers!!!")
+	(chat-local-to-self "DELETING IDLE VILLAGERS!")
 	(disable-timer 15)
     (enable-timer 15 600)    
     (up-delete-idle-units idle-type-villager)
@@ -394,7 +392,7 @@
     (enable-timer 20 1)
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-to-player my-player-number "Time Has Passed, Time To Attack!!!!")       
+    (chat-to-player my-player-number "TIME HAS PASSED, TIME TO ATTACK!")       
 )
 
 ; ATTACK!!!
@@ -419,7 +417,7 @@
 =>
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-to-player my-player-number "We Are Rich, Time To Attack!!!!")    
+    (chat-to-player my-player-number "WE ARE RICH, TIME TO ATTACK!")    
 )
 
 ; 2. STRATEGIC NUMBERS
