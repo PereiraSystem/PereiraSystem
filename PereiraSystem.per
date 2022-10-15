@@ -4367,12 +4367,11 @@
 	(train archer-line)
 )
 
-
 (defrule
-    (wood-amount > 200)
-	(unit-type-count-total archer-line g:< gl-archerQty)
     (civ-selected persian)
     (research-completed my-second-unique-research)
+    (wood-amount > 270)
+	(unit-type-count-total archer-line g:< gl-archerQty)
 	(can-train archer-line)
 =>
 	(train archer-line)
