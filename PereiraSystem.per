@@ -121,7 +121,7 @@
     (set-goal gl-monkQty 5)
     (set-goal gl-monkQtyHigh 16)
 
-    (set-goal gl-ramQtyLow 2)
+    (set-goal gl-ramQtyLow 3)
     (set-goal gl-ramQtyMedium 6)
     (set-goal gl-scorpionQty 8)
     (set-goal gl-mangonelQty 8)
@@ -1975,18 +1975,19 @@
 
 ; SPEARMEN
 (defrule
-    (can-research ri-pikeman)
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow) 
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)
+    (research-completed ri-heavy-plow) 
     (building-type-count-total monastery > 0)
     (unit-type-count-total spearman-line > 4)
+    (can-research ri-pikeman)
 =>
     (research ri-pikeman)
 )
 
 (defrule
-    (can-research ri-halberdier)
-    (unit-type-count-total spearman-line > 4)
     (building-type-count-total monastery > 0)
+    (unit-type-count-total spearman-line > 4) 
+    (can-research ri-halberdier)
 =>
     (research ri-halberdier)
 )
@@ -1995,19 +1996,23 @@
 ; COMMON
 (defrule
     ;(research-completed ri-wheel-barrow)
-    (unit-type-count-total scout-cavalry-line > 1)    
-    (can-research ri-bloodlines)    
+    (unit-type-count-total cavalry-class > 2) 
+    (can-research ri-bloodlines)
 =>
     (research ri-bloodlines)
 )
 
 (defrule
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow) 
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)
+    (research-completed ri-heavy-plow)
+    (unit-type-count-total cavalry-class > 2)     
     (can-research ri-husbandry)
 =>
     (research ri-husbandry)
 )
+
 (defrule
+    (unit-type-count-total cavalry-class > 2)
     (can-research ri-stirrups)
 =>
     (research ri-stirrups)
@@ -2092,31 +2097,31 @@
     (research ri-elite-steppe-lancer)
 )
 
-; ARCHERY RANGE UPGRADES        
+; ARCHERY RANGE UPGRADES      
 ; COMMON
 (defrule
  	(research-completed ri-hand-cart)
  	(research-completed ri-two-man-saw)
-    (can-research ri-thumb-ring )
+    (can-research ri-thumb-ring)
 =>
-    (research ri-thumb-ring )
+    (research ri-thumb-ring)
 )
 
 ; ARCHER
 (defrule
-    (can-research ri-crossbow )
  	(research-completed ri-hand-cart)
  	(research-completed ri-bow-saw)    
     (unit-type-count-total archer-line > 1)
+    (can-research ri-crossbow)    
 =>
-    (research ri-crossbow )
+    (research ri-crossbow)
 )
 
 (defrule
-    (can-research ri-arbalest )
     (unit-type-count-total archer-line > 1)
+    (can-research ri-arbalest)    
 =>
-    (research ri-arbalest )
+    (research ri-arbalest)
 )
 
 ; SKIRMISHER AND GENITOUR
@@ -2144,17 +2149,17 @@
 
 ; CAVALRY ARCHERS UPGRADES
 (defrule
-    (can-research ri-parthian-tactics)
     (current-age == imperial-age)
     (unit-type-count-total cavalry-archer-line > 4)
+    (can-research ri-parthian-tactics)    
 =>
     (research ri-parthian-tactics )
 )
 
 (defrule
-    (can-research ri-heavy-cavalry-archer)
     (current-age == imperial-age)
     (unit-type-count-total cavalry-archer-line > 4)
+    (can-research ri-heavy-cavalry-archer)    
 =>
     (research ri-heavy-cavalry-archer)
 )
@@ -2248,22 +2253,21 @@
 
 ; CAVALRY DEFENSE            
 (defrule
-    (or
-        (unit-type-count-total cavalry-class > 4)
-        (current-age == imperial-age)
-    )
+    (unit-type-count-total cavalry-class > 4)
     (can-research ri-scale-barding)    
 =>
     (research ri-scale-barding)
 )
 
 (defrule
+    (unit-type-count-total cavalry-class > 4)
     (can-research ri-chain-barding)
 =>
     (research ri-chain-barding)
 )
 
 (defrule
+    (unit-type-count-total cavalry-class > 4)
     (can-research ri-plate-barding)
 =>
     (research ri-plate-barding)
@@ -2294,24 +2298,25 @@
 
 ; ARCHER ARMOR      
 (defrule
-    (can-research ri-padded-archer-armor )
-    (or(unit-type-count-total skirmisher-line > 0)(current-age == imperial-age))
+    (unit-type-count-total archery-class > 2)
+    (can-research ri-padded-archer-armor)
 =>
     (research ri-padded-archer-armor )
 )
 
 (defrule
+    (unit-type-count-total archery-class > 2)
     (can-research ri-leather-archer-armor )
 =>
     (research ri-leather-archer-armor )
 )
 
 (defrule
+    (unit-type-count-total archery-class > 2)
     (can-research ri-ring-archer-armor )
 =>
     (research ri-ring-archer-armor )
 )
-
 
 ; SIEGE WORKSHOP UPGRADES
 ; MANGONEL
@@ -2343,8 +2348,7 @@
 
 ; RAM
 (defrule
-	(unit-type-count-total battering-ram-line > 1)
-    (food-amount > 700)
+	(unit-type-count-total battering-ram-line > 2)
     (can-research ri-capped-ram )
 =>
     (research ri-capped-ram )
@@ -4269,7 +4273,7 @@
     (research-completed ri-heavy-plow)
     (research-completed ri-light-cavalry)          
     (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
-    (not(civ-selected japanese))(not(civ-selected viking))     
+    (not(civ-selected japanese))(not(civ-selected viking))(not(civ-selected gothic))     
 	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
