@@ -478,6 +478,19 @@
     (disable-self)
 )
 
+(defrule
+	(true)
+=>
+	;(up-send-scout group-type-land-explore scout-center)
+	;(up-send-scout group-type-land-explore scout-opposite)
+	(up-send-scout group-type-land-explore scout-corner)
+	;(up-send-scout group-type-land-explore scout-enemy)          
+ 	;(up-send-scout group-type-land-explore scout-border)
+	;(up-send-scout group-type-land-explore scout-mirror)
+	;(up-send-scout group-type-land-explore scout-flank)        
+	(disable-self)
+)
+
 (defrule 
     (unit-type-count villager > 7)(building-type-count lumber-camp < 1)
 =>  
