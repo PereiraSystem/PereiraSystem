@@ -4479,12 +4479,8 @@
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium)    
-    (research-completed ri-leather-archer-armor)    
-    (or
-        (players-unit-type-count any-enemy archer-line > 4)
-        (players-unit-type-count any-enemy cavalry-archer-line > 4)
-    )
+    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium)        
+    (up-compare-goal gl-dudeHasArchers == 1) 
     (can-train skirmisher-line)(not(can-train genitour))
     (not(civ-selected khmer))
     (not(civ-selected spanish))(not(civ-selected sicilians))
