@@ -5011,8 +5011,8 @@
 )
 
 (defrule
-    (or(players-unit-type-count any-enemy cavalry-class > 2)
-    (players-unit-type-count any-enemy magyar-huszar-line > 2))
+    (players-unit-type-count any-enemy cavalry-class > 2)
+    
 =>  
     (set-goal gl-dudeHasCavalry 1)
     (chat-local-to-self "DUDE HAS CAVALRY!")
@@ -5020,6 +5020,21 @@
 
 (defrule
     (players-unit-type-count any-enemy cavalry-class < 2) 
+=>  
+    (set-goal gl-dudeHasCavalry 0)
+)
+
+(defrule
+    (players-unit-type-count any-enemy magyar-huszar-line > 2)
+    
+=>  
+    (set-goal gl-dudeHasCavalry 1)
+    (chat-local-to-self "DUDE HAS SPECIAL CAVALRY!")
+)
+
+(defrule
+    (and(players-unit-type-count any-enemy magyar-huszar-line < 2) 
+    (players-unit-type-count any-enemy cavalry-class < 2) )
 =>  
     (set-goal gl-dudeHasCavalry 0)
 )
