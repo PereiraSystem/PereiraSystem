@@ -3060,8 +3060,8 @@
 (defrule
     (building-type-count town-center > 0)
     (or(wood-amount > 275)(and(civ-selected japanese)(wood-amount > 225)))   
-    (players-building-type-count any-ally villager > 0)
-    (research-completed ri-double-bit-axe)
+    (players-unit-type-count any-ally villager > 0)
+    (or(research-completed ri-double-bit-axe)(gold-amount > 700))
     (building-type-count-total market == 0)    
     (can-build market)
 =>
