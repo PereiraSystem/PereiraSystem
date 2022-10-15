@@ -4988,6 +4988,7 @@
     (players-unit-type-count any-enemy scout-cavalry-line > 2)
 =>  
     (set-goal gl-dudeHasScouts 1)
+(chat-local-to-self "DUDE HAS SCOUTS!")    
 )
 
 (defrule
@@ -5000,6 +5001,7 @@
     (players-unit-type-count any-enemy knight-line > 2)
 =>  
     (set-goal gl-dudeHasKnights 1)
+    (chat-local-to-self "DUDE HAS KNIGHTS!")
 )
 
 (defrule
@@ -5026,6 +5028,7 @@
     (players-unit-type-count any-enemy skirmisher-line > 1)
 =>  
     (set-goal gl-dudeHasSkirmishers 1)
+    (chat-local-to-self "DUDE HAS SKIRMISHERS!")    
 )
 
 (defrule
@@ -5050,7 +5053,8 @@
 (defrule
     (players-unit-type-count any-enemy spearman-line > 1)
 =>  
-    (set-goal gl-dudeHasSpearmen 1)    
+    (set-goal gl-dudeHasSpearmen 1)
+    (chat-local-to-self "DUDE HAS SPEARMEN!")        
 )
 
 (defrule
