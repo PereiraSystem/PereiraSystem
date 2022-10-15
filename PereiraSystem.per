@@ -4354,7 +4354,7 @@
 (defrule
     (current-age == castle-age)
     (gold-amount > 845)(wood-amount > 400)
-	(not(civ-selected gothic))
+	(not(civ-selected gothic))(not(civ-selected mongol))
 	(unit-type-count-total archer-line g:< gl-archerQty)    
     (can-train archer-line)     
 =>
