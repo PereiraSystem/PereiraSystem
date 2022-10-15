@@ -342,12 +342,12 @@
 )
 
 ; TIMER 5 INCREASES MINING CAMPS DISTANCE (FAST THEN SLOWER)
-(defrule(current-age == feudal-age)=>(enable-timer 5 30)(disable-self))
+(defrule(current-age == feudal-age)=>(enable-timer 5 60)(disable-self))
 (defrule
 	(timer-triggered 5)
 =>
 	(disable-timer 5)
-    (enable-timer 5 30)    
+    (enable-timer 5 60)    
     (up-modify-sn sn-mining-camp-max-distance c:+ 1) 
     (up-chat-data-to-self "Mining camps max distance increased = %d" s: sn-mining-camp-max-distance)
 )
@@ -3691,13 +3691,14 @@
 
 (defrule
     (unit-type-count-total monk-set g:< gl-monkQty)
-    (can-train monk)(not(hold-relics))
-    (not(enemy-buildings-in-town))
+    (not(hold-relics))(not(enemy-buildings-in-town))
+    (can-train monk)    
 =>
     (train monk)
 )
 
 (defrule
+    (current-age == imperial-age)
     (or
         (or
             (civ-selected mayan)
@@ -3708,7 +3709,7 @@
             (civ-selected saracen)
         )     
     )
-    (current-age == imperial-age)(gold-amount > 400)
+    (gold-amount > 400)
     (unit-type-count-total monk g:< gl-monkQtyHigh) 
     (can-train monk)
 =>
