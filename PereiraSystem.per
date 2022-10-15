@@ -4524,9 +4524,11 @@
 )
 
 (defrule
-    (current-age == feudal-age)
+    (current-age == feudal-age) ;dont use militia if theres discount on cav or arch
     (enemy-buildings-in-town)(gold-amount > 220)
     (not(civ-selected frankish))(not(civ-selected cumans))
+    (not(civ-selected magyar))(not(civ-selected mongol))  
+    (not(civ-selected turks))(not(civ-selected vietnamese))     
     (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
     (can-train militiaman-line)
 =>
