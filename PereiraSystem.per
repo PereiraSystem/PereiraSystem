@@ -3786,16 +3786,20 @@
     (gold-amount > 860)
     (can-train my-unique-unit-line)(not(civ-selected korean))(not(civ-selected celtic))
     (not(civ-selected ethiopian))(not(civ-selected khmer))(not(civ-selected chinese))
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
+    (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
 )
 
 (defrule
     (current-age == imperial-age)
-    (unit-type-count-total my-unique-unit-line < 30)(gold-amount > 160)(not(civ-selected khmer))
-    (can-train my-unique-unit-line)(not(civ-selected korean))(not(civ-selected celtic))
+    (gold-amount > 160)(not(civ-selected khmer))
+    (not(civ-selected korean))(not(civ-selected celtic))
     (not(civ-selected ethiopian))(not(civ-selected gothic))
     (research-completed my-unique-unit-upgrade)
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
+    (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
 )
