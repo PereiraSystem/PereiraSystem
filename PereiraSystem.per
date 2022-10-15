@@ -2166,8 +2166,9 @@
 
 ; CASTLE UPGRADES
 (defrule
-    (can-research ri-conscription)
     (current-age == imperial-age)
+    (or(food-amount > 500)(soldier-count > 4))
+    (can-research ri-conscription)    
 =>
     (research ri-conscription )
 )
