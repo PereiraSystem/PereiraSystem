@@ -1410,8 +1410,7 @@
 )
 
 (defrule
-    (civ-selected magyar)(unit-type-count-total cavalry-archer-line > 0)  
-    (can-research my-unique-research )
+    (civ-selected magyar)  (can-research my-unique-research )
 =>
     (research my-unique-research)
     (chat-to-player my-player-number "CAVALRY ARCHERS +1 ATTACK, +1 RANGE!")  
@@ -4409,8 +4408,11 @@
             (or(civ-selected hun)(civ-selected cumans))
         )
         (or
-            (or(civ-selected frankish)(civ-selected vietnamese))
-            (and(civ-selected turkish)(research-completed my-second-unique-research))
+            (or
+                (or(civ-selected frankish)(civ-selected vietnamese))
+                (and(civ-selected turkish)(research-completed my-second-unique-research))
+            )        
+            (and(civ-selected magyar)(research-completed my-unique-research)
         )
     )     
     (wood-amount > 200)(gold-amount > 200)
