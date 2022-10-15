@@ -2890,14 +2890,13 @@
 (defrule
     (building-type-count-total lumber-camp == 1)
     (building-type-count dock > 0)    
-    (up-compare-goal gl-weMovedPlace == 1)
-    (can-build lumber-camp)
+    (up-compare-goal gl-weMovedPlace == 1)    
     (resource-found wood)
-    (dropsite-min-distance wood > 3) 
+    (dropsite-min-distance wood > 6)
+    (can-build lumber-camp)     
 =>
     (chat-local-to-self "Trying To Build Lumber Camp 2")    
-    (build lumber-camp)
-    (up-modify-sn sn-camp-max-distance c:+ 8)     
+    (build lumber-camp)    
 )
 
 (defrule
@@ -2906,13 +2905,12 @@
         (current-age > dark-age)
         (food-amount > 600)
     )
-    (can-build lumber-camp)
     (resource-found wood)
-    (dropsite-min-distance wood > 3)
+    (dropsite-min-distance wood > 6)
+    (can-build lumber-camp)    
 =>
     (chat-local-to-self "Trying To Build Lumber Camp 2")    
-    (build lumber-camp)
-    (up-modify-sn sn-camp-max-distance c:+ 8)     
+    (build lumber-camp)      
 )
 
 (defrule
@@ -2926,8 +2924,7 @@
     (dropsite-min-distance wood > 3)
 =>
     (chat-local-to-self "Trying To Build Lumber Camp 3")    
-    (build lumber-camp)
-    (up-modify-sn sn-camp-max-distance c:+ 8)     
+    (build lumber-camp)     
 )
 
 (defrule
@@ -2938,8 +2935,7 @@
     (can-build lumber-camp)
 =>
     (chat-local-to-self "Trying To Build Lumber Camp")
-    (build lumber-camp)
-    (up-modify-sn sn-camp-max-distance c:+ 4)               
+    (build lumber-camp)             
 )
 
 ; MINING CAMPS                    
