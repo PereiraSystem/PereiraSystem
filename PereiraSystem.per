@@ -333,10 +333,10 @@
 )
 
 (defrule
-	(building-type-count-total lumber-camp > 0)
+	(building-type-count-total lumber-camp > 0) ;will increase lc distance 1 per 20 secs
 =>
 	(disable-timer 4)
-    (enable-timer 4 30)     
+    (enable-timer 4 20)     
 )
 
 ; TIMER 5 INCREASES MINING CAMPS DISTANCE (FAST THEN SLOWER)
@@ -2946,7 +2946,7 @@
 ; GOLD MINING CAMP
 (defrule 
     (current-age == feudal-age)
-    (wood-amount > 200)
+    (wood-amount > 200)(gold-amount < 200) ;if more than 200 they are using nearby deposit
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (or(building-type-count archery-range > 0)(building-type-count market > 0))
     (research-completed ri-double-bit-axe)
