@@ -4979,6 +4979,7 @@
     (players-unit-type-count any-enemy cavalry-class > 2)
 =>  
     (set-goal gl-dudeHasCavalry 1)
+    (chat-local-to-self "DUDE HAS CAVALRY!")
 )
 
 (defrule
@@ -5002,7 +5003,8 @@
 (defrule
     (players-unit-type-count any-enemy archer-line > 1)
 =>  
-    (set-goal gl-dudeHasArchers 1)    
+    (set-goal gl-dudeHasArchers 1)
+    (chat-local-to-self "DUDE HAS ARCHERS!")        
 )
 
 (defrule
