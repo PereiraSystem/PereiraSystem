@@ -2182,20 +2182,21 @@
 )
 
 (defrule
-    (can-research ri-hoardings )
     (current-age == imperial-age)
     (building-type-count-total castle > 1)
     (wood-amount > 1000)
     (food-amount > 1000)
+    (can-research ri-hoardings)    
 =>
     (research ri-hoardings)
 )
 
 (defrule
-    (can-research ri-sappers )
     (current-age == imperial-age)
+    (unit-type-count villager > 0)
     (food-amount > 2000)
     (gold-amount > 1000)
+    (can-research ri-sappers)    
 =>
     (research ri-sappers)
     (chat-to-player my-player-number "SAPPERS!")   
@@ -2204,19 +2205,20 @@
 ; BLACKSMITH UPGRADES                          
 ; INFANTRY AND CAVALRY ATTACK      
  (defrule
+    (or(town-under-attack)(current-age == imperial-age))
     (or(unit-type-count infantry-class > 2)(unit-type-count cavalry-class > 2))
     ;(research-completed ri-hand-cart)
     ;(research-completed ri-bow-saw)
     ;(research-completed ri-heavy-plow)
-    (or(town-under-attack)(current-age == imperial-age))
     (can-research ri-forging)
 =>
     (research ri-forging)
 )
 
 (defrule
-	(research-completed ri-hand-cart)(research-completed ri-bow-saw)    
     (or(town-under-attack)(current-age == imperial-age))
+    (or(unit-type-count infantry-class > 2)(unit-type-count cavalry-class > 2))    
+	(research-completed ri-hand-cart)(research-completed ri-bow-saw)    
     (can-research ri-iron-casting)
 =>
     (research ri-iron-casting)
@@ -2224,6 +2226,7 @@
 
 (defrule
     (or(town-under-attack)(current-age == imperial-age))
+    (or(unit-type-count infantry-class > 2)(unit-type-count cavalry-class > 2))    
     (can-research ri-blast-furnace)    
 =>
     (research ri-blast-furnace)
@@ -2231,22 +2234,23 @@
 
 ; INFANTRY DEFENSE
 (defrule
-    (or(town-under-attack)
-    (current-age == imperial-age))
+    (or(town-under-attack)(current-age == imperial-age))
+    (unit-type-count-total infantry-class > 2)    
     (can-research ri-scale-mail)       
 =>
     (research ri-scale-mail)
 )
 
 (defrule
-    (or(town-under-attack)
-    (current-age == imperial-age))   
+    (or(town-under-attack)(current-age == imperial-age))
+    (unit-type-count-total infantry-class > 2)       
     (can-research ri-chain-mail)    
 =>
     (research ri-chain-mail)
 )
 
 (defrule
+    (unit-type-count-total infantry-class > 2)
     (can-research ri-plate-mail)
 =>
     (research ri-plate-mail)
