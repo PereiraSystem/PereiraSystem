@@ -725,12 +725,15 @@
     (current-age == feudal-age)
     (or(building-type-count archery-range > 0)
     (building-type-count siege-workshop > 0))
-    (building-type-count blacksmith > 0)    
+    (or(building-type-count market > 0)
+    (building-type-count stable > 0))     
+    (building-type-count blacksmith > 0)           
 =>
     (set-strategic-number sn-food-gatherer-percentage 64)
     (set-strategic-number sn-wood-gatherer-percentage 22)
     (set-strategic-number sn-gold-gatherer-percentage 14) ;
     (set-strategic-number sn-stone-gatherer-percentage 0)
+    (chat-to-player my-player-number "Let´s Get Some Gold")    
     (disable-self)
 )
 
@@ -3828,8 +3831,7 @@
 
 (defrule
     (current-age == castle-age)
-    (town-under-attack)
-    (gold-amount > 860)
+    (or(town-under-attack)(gold-amount > 860))
     (can-train my-unique-unit-line)(not(civ-selected korean))(not(civ-selected celtic))
     (not(civ-selected ethiopian))(not(civ-selected khmer))(not(civ-selected chinese))
     (not(civ-selected persian))    
