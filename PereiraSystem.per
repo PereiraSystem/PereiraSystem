@@ -4431,7 +4431,7 @@
 ; GENITOUR
 (defrule
     (current-age == castle-age)
-    (unit-type-count-total elite-genitour g:< gl-skirmisherQty)
+    (unit-type-count-total elite-genitour g:< gl-skirmisherQtyLow)
     (or(food-amount > 900)(town-under-attack))
     (or
             (players-unit-type-count any-enemy archer-line > 4)
@@ -4526,7 +4526,7 @@
 (defrule
     (current-age == feudal-age)
     (enemy-buildings-in-town)(gold-amount > 220)
-    (not(civ-selected frankish))
+    (not(civ-selected frankish))(not(civ-selected cumans))
     (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
     (can-train militiaman-line)
 =>
