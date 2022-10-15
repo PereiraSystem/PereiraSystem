@@ -70,7 +70,8 @@
 (defconst gl-uniqueUnitQtyMedium 201)
 
 (defconst gl-trebuchetsQtyLow 420)
-(defconst gl-trebuchetsQtyHigh 421)
+(defconst gl-trebuchetsQtyMedium 421)
+(defconst gl-trebuchetsQtyHigh 422)
 
 (defconst gl-galleyQty 450)
 (defconst gl-galleonQty 455)
@@ -134,7 +135,8 @@
     (set-goal gl-uniqueUnitQtyLow 10)
     (set-goal gl-uniqueUnitQtyMedium 40)
     (set-goal gl-trebuchetsQtyLow 4)
-    (set-goal gl-trebuchetsQtyHigh 8)
+    (set-goal gl-trebuchetsQtyMedium 8)    
+    (set-goal gl-trebuchetsQtyHigh 16)
 )
 
 (defrule
@@ -3722,7 +3724,10 @@
         (and(civ-selected tatars)(research-completed my-unique-research))
         (and(civ-selected japanese)(research-completed my-unique-research))
     )
-    (unit-type-count-total trebuchet g:< gl-trebuchetsQtyHigh)
+    (and
+        (unit-type-count-total trebuchet g:< gl-trebuchetsQtyHigh)
+        (unit-type-count-total 954 g:< gl-trebuchetsQtyHigh)
+    )
     (can-train trebuchet)
 =>
     (train trebuchet)
