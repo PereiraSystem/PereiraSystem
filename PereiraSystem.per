@@ -959,7 +959,7 @@
 )
 
 ; LUMBER UPGRADES 
-(defrule(can-research ri-double-bit-axe)=>(research ri-double-bit-axe))
+(defrule(can-research ri-double-bit-axe)(wood-amount > 150)=>(research ri-double-bit-axe))
 (defrule(can-research ri-bow-saw)=>(research ri-bow-saw))
 (defrule(can-research ri-two-man-saw)=>(research ri-two-man-saw))
 
