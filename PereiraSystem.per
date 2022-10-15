@@ -3733,7 +3733,6 @@
 )
 
 ; UNIQUE UNIT
-
 ;(defrule(can-train donjon-serjeant-line)=>(train donjon-serjeant-line))
 
 (defrule
@@ -3799,7 +3798,7 @@
 	(can-train 761)
 =>
 	(train 761)
-    (chat-local-to-self "TRAINING BARRACKS ELITE HUSKARL")
+    (chat-local-to-self "Training Barracks Huskarl")
 )
 
 (defrule
@@ -3807,7 +3806,7 @@
 	(can-train 759)
 =>
 	(train 759)
-    (chat-local-to-self "TRAINING BARRACKS HUSKARL")    
+    (chat-local-to-self "Training Barracks Huskarl")    
 )
 
 (defrule
@@ -3815,12 +3814,11 @@
     (not(can-train 761))(not(can-train 759))
     (can-train huskarl-line)
 =>
-    (chat-local-to-self "TRAINING NORMAL HUSKARL")    	
+    (chat-local-to-self "Training Castle Huskarl")    	
     (train huskarl-line)
 )
 
 (defrule
-    (current-age == imperial-age)
     (can-train stable-tarkan)
 =>
     (train stable-tarkan)
