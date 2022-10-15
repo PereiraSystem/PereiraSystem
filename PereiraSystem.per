@@ -44,36 +44,39 @@
 (defconst gl-militiaQtyMedium 114)
 (defconst gl-militiaQtyHigh 115)
 
-(defconst gl-archerQty 114)
-(defconst gl-skirmisherQty 115)
-(defconst gl-cavalryArcherQty 116)
-(defconst gl-handCannoneerQty 117)
+(defconst gl-archerQty 116)
 
-(defconst gl-knightsQtyLow 118)
-(defconst gl-knightsQtyMedium 119)
-(defconst gl-scoutsQtyLow 120)
-(defconst gl-scoutsQtyMedium 121)
-(defconst gl-camelQtyLow 138)
+(defconst gl-skirmisherQtyLow 119)
+(defconst gl-skirmisherQtyMedium 120)
+(defconst gl-cavalryArcherQty 122)
+(defconst gl-handCannoneerQty 125)
 
-(defconst gl-monkQty 122)
-(defconst gl-monkQtyHigh 123)
+(defconst gl-knightsQtyLow 130)
+(defconst gl-knightsQtyMedium 131)
+(defconst gl-scoutsQtyLow 135)
+(defconst gl-scoutsQtyMedium 136)
+(defconst gl-camelQtyLow 140)
 
-(defconst gl-ramQtyLow 124)
-(defconst gl-ramQtyMedium 125)
-(defconst gl-scorpionQty 126)
-(defconst gl-mangonelQty 127)
-(defconst gl-bombardCannonsQty 128)
+(defconst gl-monkQty 300)
+(defconst gl-monkQtyHigh 301)
 
-(defconst gl-uniqueUnitQtyLow 129)
-(defconst gl-uniqueUnitQtyMedium 130)
-(defconst gl-trebuchetsQtyLow 131)
-(defconst gl-trebuchetsQtyHigh 132)
+(defconst gl-ramQtyLow 400)
+(defconst gl-ramQtyMedium 401)
+(defconst gl-scorpionQty 405)
+(defconst gl-mangonelQty 410)
+(defconst gl-bombardCannonsQty 415)
 
-(defconst gl-galleyQty 133)
-(defconst gl-galleonQty 134)
-(defconst gl-fireshipQty 135)
-(defconst gl-demolitionShipQty 136)
-(defconst gl-specialShipQty 137)
+(defconst gl-uniqueUnitQtyLow 200)
+(defconst gl-uniqueUnitQtyMedium 201)
+
+(defconst gl-trebuchetsQtyLow 420)
+(defconst gl-trebuchetsQtyHigh 421)
+
+(defconst gl-galleyQty 450)
+(defconst gl-galleonQty 455)
+(defconst gl-fireshipQty 460)
+(defconst gl-demolitionShipQty 465)
+(defconst gl-specialShipQty 470)
 
 #load-if-defined POPULATION-CAP-150
 (defrule
@@ -104,7 +107,8 @@
     (set-goal gl-militiaQtyHigh 60)        
 
     (set-goal gl-archerQty 40)
-    (set-goal gl-skirmisherQty 25)
+    (set-goal gl-skirmisherQtyLow 8)    
+    (set-goal gl-skirmisherQtyMedium 25)
     (set-goal gl-cavalryArcherQty 30)
     (set-goal gl-handCannoneerQty 30)
 
@@ -4450,11 +4454,13 @@
 ; SKIRMISHER
 (defrule
     (current-age == feudal-age)
-    (unit-type-count-total skirmisher-line < 8) 
-    (up-compare-goal gl-dudeHasArchers > 0)
-    (can-train skirmisher-line)
+
+    (up-compare-goal gl-dudeHasArchers == 1)
+
     (or(wood-amount > 275)(building-type-count town-center > 0))
-    (not(can-train genitour))   
+    (not(can-train genitour))
+    (unit-type-count-total skirmisher-line g:< gl-ski)     
+    (can-train skirmisher-line)       
 =>
     (train skirmisher-line)
 )
@@ -4539,6 +4545,7 @@
 (defrule
     (current-age == feudal-age)
     (enemy-buildings-in-town)(gold-amount > 220)
+    (not(civ-selected frankish))
     (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
     (can-train militiaman-line)
 =>
