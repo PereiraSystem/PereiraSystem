@@ -3643,21 +3643,23 @@
 
 ; TRADE CARTS
 (defrule 
-    (gold-amount < 200)
-    (current-age == feudal-age)
-    (players-building-type-count any-ally market  > 0)
+    (or(current-age == castle-age)(research-pending castle-age))
+    (players-building-type-count any-ally market > 0)
     (unit-type-count-total trade-cart < 3)    
     (civilian-population < 100)
+    (military-population > 4)
+    (can-train trade-cart)
 =>
 	(train trade-cart)
 )
 
 (defrule 
-    (gold-amount < 800)
-    (current-age == castle-age)
-    (players-building-type-count any-ally market  > 0)
+    (or(current-age == imperial-age)(research-pending imperial-age))
+    (players-building-type-count any-ally market > 0)
     (unit-type-count-total trade-cart < 6)    
     (civilian-population < 100)
+    (military-population > 8)
+    (can-train trade-cart)
 =>
 	(train trade-cart)
 )
