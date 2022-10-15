@@ -603,9 +603,9 @@
     (building-type-count-total lumber-camp > 3)
 =>  
     (set-strategic-number sn-maximum-wood-drop-distance 3)
-    (set-strategic-number sn-required-forest-tiles 8)
-    (set-strategic-number sn-allow-adjacent-dropsites 1)       
-    (up-chat-data-to-self "Industrial lumber mode activated: Adjacent sites allowed. Max drop distance = %d" s: sn-maximum-wood-drop-distance)
+    ;(set-strategic-number sn-required-forest-tiles 8)
+    ;(set-strategic-number sn-allow-adjacent-dropsites 1)       
+    ;(up-chat-data-to-self "Industrial lumber mode activated: Adjacent sites allowed. Max drop distance = %d" s: sn-maximum-wood-drop-distance)
     (disable-self)
 )
 
@@ -2886,8 +2886,8 @@
     (building-type-count dock > 0)    
     (up-compare-goal gl-weMovedPlace == 1)
     (can-build lumber-camp)
-    ;(resource-found wood)
-        (dropsite-min-distance wood > 3) 
+    (resource-found wood)
+    (dropsite-min-distance wood > 3) 
 =>
     (chat-local-to-self "Trying To Build Lumber Camp 2")    
     (build lumber-camp)
@@ -2936,9 +2936,8 @@
     (up-modify-sn sn-camp-max-distance c:+ 4)               
 )
 
-; MINAS                       
-; ORO
-
+; MINING CAMPS                    
+; GOLD MINING CAMP
 (defrule 
     (current-age == feudal-age)
     (wood-amount > 200)
