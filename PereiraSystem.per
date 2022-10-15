@@ -2330,21 +2330,24 @@
 
 ; ARCHER ARMOR      
 (defrule
-    (unit-type-count-total archery-class > 2)
+    (or(unit-type-count-total archery-class > 2)
+    (unit-type-count-total archery-cannon-class > 2))
     (can-research ri-padded-archer-armor)
 =>
     (research ri-padded-archer-armor )
 )
 
 (defrule
-    (unit-type-count-total archery-class > 2)
+    (or(unit-type-count-total archery-class > 2)
+    (unit-type-count-total archery-cannon-class > 2))
     (can-research ri-leather-archer-armor )
 =>
     (research ri-leather-archer-armor )
 )
 
 (defrule
-    (unit-type-count-total archery-class > 2)
+    (or(unit-type-count-total archery-class > 2)
+    (unit-type-count-total archery-cannon-class > 2))
     (can-research ri-ring-archer-armor )
 =>
     (research ri-ring-archer-armor )
