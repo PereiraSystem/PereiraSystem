@@ -524,18 +524,11 @@
 )
 
 (defrule 
-    (current-age == feudal-age)(building-type-count lumber-camp < 1)
-=>
-    (set-strategic-number sn-total-number-explorers 3) 
-    (set-strategic-number sn-number-explore-groups 3)
-    (disable-self)
-)
-
-(defrule 
-    (current-age == feudal-age)(town-under-attack)
+    ((building-type-count lumber-camp > 0))
 =>
     (set-strategic-number sn-total-number-explorers 0) 
     (set-strategic-number sn-number-explore-groups 0)
+    (chat-to-player my-player-number "NO MORE EXPLORING")
     (disable-self)
 )
 
@@ -4636,11 +4629,21 @@
 )
 
 (defrule
+    (can-train skirmisher-line)=>(train skirmisher-line)
+    (disable-self)
+)
+
+(defrule
+    (can-train skirmisher-line)=>(train skirmisher-line)
+    (disable-self)
+)
+
+(defrule
     (current-age == feudal-age)
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasCavalryArchers == 1))    
     (or(wood-amount > 275)(building-type-count town-center > 0))
-    (wood-amount > 135)
+    (or(wood-amount > 135)(building-type-count lumber-camp > 0))
     (not(can-train genitour))
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyLow)     
     (can-train skirmisher-line)       
