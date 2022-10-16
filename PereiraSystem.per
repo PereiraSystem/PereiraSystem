@@ -598,7 +598,7 @@
     (set-strategic-number sn-minimum-town-size 0)
     (set-strategic-number sn-maximum-town-size 8)
     (set-strategic-number sn-mining-camp-max-distance 32)
-    (set-strategic-number sn-lumber-camp-max-distance 19)      
+    (set-strategic-number sn-lumber-camp-max-distance 20)      
     (disable-self)
 )
 
@@ -2921,8 +2921,7 @@
     (building-type-count-total lumber-camp == 0)
     (can-build lumber-camp)
     (resource-found wood)
-    (dropsite-min-distance wood > 14)
-    (dropsite-min-distance wood > 3)    
+    (dropsite-min-distance wood > 19)   
     (or
         (building-type-count house > 0)
         (civ-selected hun)
