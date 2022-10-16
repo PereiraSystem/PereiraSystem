@@ -4687,6 +4687,48 @@
 )
 
 (defrule
+    (current-age == castle-age) ;create 3
+    (enemy-buildings-in-town)
+    (not(civ-selected frankish))(not(civ-selected cumans))
+    (not(civ-selected magyar))(not(civ-selected mongol))  
+    (not(civ-selected turkish))(not(civ-selected vietnamese))
+    (not(civ-selected lithuanians))(not(civ-selected poles))
+    (not(civ-selected berbers))(not(civ-selected persian))     
+
+    (can-train militiaman-line)
+=>
+    (train militiaman-line)(disable-self)
+)
+
+(defrule
+    (current-age == castle-age) ;create 3
+    (enemy-buildings-in-town)
+    (not(civ-selected frankish))(not(civ-selected cumans))
+    (not(civ-selected magyar))(not(civ-selected mongol))  
+    (not(civ-selected turkish))(not(civ-selected vietnamese))
+    (not(civ-selected lithuanians))(not(civ-selected poles))
+    (not(civ-selected berbers))(not(civ-selected persian))     
+
+    (can-train militiaman-line)
+=>
+    (train militiaman-line)(disable-self)
+)
+
+(defrule
+    (current-age == castle-age) ;create 3
+    (enemy-buildings-in-town)
+    (not(civ-selected frankish))(not(civ-selected cumans))
+    (not(civ-selected magyar))(not(civ-selected mongol))  
+    (not(civ-selected turkish))(not(civ-selected vietnamese))
+    (not(civ-selected lithuanians))(not(civ-selected poles))
+    (not(civ-selected berbers))(not(civ-selected persian))     
+
+    (can-train militiaman-line)
+=>
+    (train militiaman-line)(disable-self)
+)
+
+(defrule
     (current-age == castle-age) ;dont use militia if theres discount on cav or arch
     (not(can-train battering-ram-line))
     (enemy-buildings-in-town)(gold-amount > 220)
