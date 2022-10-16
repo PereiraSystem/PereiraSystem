@@ -524,7 +524,23 @@
 )
 
 (defrule 
-    (current-age == feudal-age)(not(town-under-attack))
+    (current-age == feudal-age)(building-type-count lumber-camp < 1)
+=>
+    (set-strategic-number sn-total-number-explorers 3) 
+    (set-strategic-number sn-number-explore-groups 3)
+    (disable-self)
+)
+
+(defrule 
+    (current-age == feudal-age)(town-under-attack)
+=>
+    (set-strategic-number sn-total-number-explorers 0) 
+    (set-strategic-number sn-number-explore-groups 0)
+    (disable-self)
+)
+
+(defrule 
+    (current-age == castle-age)(not(town-under-attack))
 =>
     (set-strategic-number sn-total-number-explorers 3) 
     (set-strategic-number sn-number-explore-groups 3)
