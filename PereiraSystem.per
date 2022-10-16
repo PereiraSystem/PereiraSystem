@@ -602,6 +602,13 @@
     (disable-self)
 )
 
+(defrule 
+    (enemy-buildings-in-town)
+=>
+    (set-strategic-number sn-lumber-camp-max-distance 28)      
+    (disable-self)
+)
+
 ; DROPSITES AND DISTANCES
 ; CANCEL SITE BUILDING IF DANGEROUS
 (defrule 
