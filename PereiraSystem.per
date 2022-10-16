@@ -4413,6 +4413,27 @@
 
 ; KNIGHT LINE
 (defrule
+    (current-age == castle-age)(enemy-buildings-in-town)
+    (can-train knight-line)
+=>
+    (train knight-line)(disable-self)
+)
+
+(defrule
+    (current-age == castle-age)(enemy-buildings-in-town)
+    (can-train knight-line)
+=>
+    (train knight-line)(disable-self)
+)
+
+(defrule
+    (current-age == castle-age)(enemy-buildings-in-town)
+    (can-train knight-line)
+=>
+    (train knight-line)(disable-self)
+)
+
+(defrule
     (or
         (and(current-age == imperial-age)(gold-amount > 400))
         (and(food-amount > 1060)(gold-amount > 875))
@@ -4688,13 +4709,6 @@
 
 (defrule
     (current-age == castle-age) ;create 3
-    (enemy-buildings-in-town)
-    (not(civ-selected frankish))(not(civ-selected cumans))
-    (not(civ-selected magyar))(not(civ-selected mongol))  
-    (not(civ-selected turkish))(not(civ-selected vietnamese))
-    (not(civ-selected lithuanians))(not(civ-selected poles))
-    (not(civ-selected berbers))(not(civ-selected persian))     
-
     (can-train militiaman-line)
 =>
     (train militiaman-line)(disable-self)
@@ -4702,13 +4716,7 @@
 
 (defrule
     (current-age == castle-age) ;create 3
-    (enemy-buildings-in-town)
-    (not(civ-selected frankish))(not(civ-selected cumans))
-    (not(civ-selected magyar))(not(civ-selected mongol))  
-    (not(civ-selected turkish))(not(civ-selected vietnamese))
-    (not(civ-selected lithuanians))(not(civ-selected poles))
-    (not(civ-selected berbers))(not(civ-selected persian))     
-
+    (enemy-buildings-in-town)  
     (can-train militiaman-line)
 =>
     (train militiaman-line)(disable-self)
@@ -4716,13 +4724,7 @@
 
 (defrule
     (current-age == castle-age) ;create 3
-    (enemy-buildings-in-town)
-    (not(civ-selected frankish))(not(civ-selected cumans))
-    (not(civ-selected magyar))(not(civ-selected mongol))  
-    (not(civ-selected turkish))(not(civ-selected vietnamese))
-    (not(civ-selected lithuanians))(not(civ-selected poles))
-    (not(civ-selected berbers))(not(civ-selected persian))     
-
+    (enemy-buildings-in-town)   
     (can-train militiaman-line)
 =>
     (train militiaman-line)(disable-self)
