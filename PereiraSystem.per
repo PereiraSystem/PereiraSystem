@@ -3845,10 +3845,7 @@
 
 (defrule
     (current-age == castle-age)
-    (or(town-under-attack)(gold-amount > 860))
-    (not(civ-selected korean))(not(civ-selected celtic))
-    (not(civ-selected ethiopian))(not(civ-selected khmer))(not(civ-selected chinese))
-    (not(civ-selected persian))(not(civ-selected frankish))     
+    (or(town-under-attack)(gold-amount > 860))   
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
     (can-train my-unique-unit-line)
 =>
