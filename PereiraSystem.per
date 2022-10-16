@@ -2921,7 +2921,10 @@
     (building-type-count-total lumber-camp == 0)
     (can-build lumber-camp)
     (resource-found wood)
-    (dropsite-min-distance wood > 19)   
+    (or
+        (and(not(enemy-buildings-in-town))(dropsite-min-distance wood > 9))
+        (dropsite-min-distance wood > 19)
+    )   
     (or
         (building-type-count house > 0)
         (civ-selected hun)
