@@ -3845,7 +3845,7 @@
 
 (defrule
     (current-age == castle-age)
-    (or(town-under-attack)(gold-amount > 860))   
+    (town-under-attack)(gold-amount > 860))   
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
     (can-train my-unique-unit-line)
 =>
