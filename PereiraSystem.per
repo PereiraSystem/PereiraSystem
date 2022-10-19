@@ -3371,40 +3371,35 @@
 (defconst gl-point-y 501)
 (defconst gl-other-x 502)
 (defconst gl-other-y 503)
+(defconst gl-point-x2 504)
+(defconst gl-point-y2 505)
+(defconst gl-other-x2 506)
+(defconst gl-other-y2 507)
 
 (defrule
-    (building-type-count palisade-wall > 50) 
-    (civ-selected berbers)
+    (true)
 =>
     (set-goal gl-point-x 0)
     (set-goal gl-other-x 60)
     (set-goal gl-point-y 85)
     (set-goal gl-other-y 95)
+    (set-goal gl-point-x2 60)
+    (set-goal gl-other-x2 120)
+    (set-goal gl-point-y2 85)
+    (set-goal gl-other-y2 95)    
 )
 
 (defrule
-    (building-type-count palisade-wall > 50)(civ-selected berbers)
+    (true)
     ;(up-can-build-line gl-point-y gl-other-y c: palisade-wall)    
-
 =>
     (up-build-line gl-point-y gl-other-y c: palisade-wall)
-    (chat-to-player my-player-number "BUILDING WALL PART 1")    
-)
-
-
-(defrule
-    (building-type-count palisade-wall >  30) 
-    (building-type-count-total 793 < 3)    
-=>
-    (set-goal gl-point-x 59)
-    (set-goal gl-other-x 60)
-    (set-goal gl-point-y 85)
-    (set-goal gl-other-y 85)
-    (up-assign-builders c: palisade-wall c:+ 8)
+    (up-build-line gl-point-y2 gl-other-y2 c: palisade-wall)
+    (chat-to-player my-player-number "BUILDING WALL PART 2")  
 )
 
 (defrule
-    (building-type-count-total 793 < 3) ; works or what
+    (building-type-count-total 793 < 3)
     ;(up-can-build-line gl-point-y gl-other-y c: 793)
 =>
     ;(up-build-line gl-point-y gl-other-y c: palisade-gate)
@@ -3415,30 +3410,6 @@
     ;(chat-to-player my-player-number "BUILDING THE GATES TO THE WALL FRONT")
     (do-nothing)
 )
-
-(defrule
-    ;(building-type-count-total 793 > 1)
-    (building-type-count palisade-wall <= 50)     
-    (true)
-=>
-    (set-goal gl-point-x 60)
-    (set-goal gl-other-x 120)
-    (set-goal gl-point-y 85)
-    (set-goal gl-other-y 95)
-    (up-assign-builders c: palisade-wall c:+ 8)
-)
-
-(defrule
-    (building-type-count palisade-wall <= 50)
-    ;(building-type-count-total 793 > 1)  
-=>
-    (up-build-line gl-point-y gl-other-y c: palisade-wall)
-    (chat-to-player my-player-number "BUILDING WALL PART 2")    
-)
-
-
-
-
 
 
 ; WALL
