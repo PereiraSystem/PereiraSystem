@@ -3379,23 +3379,28 @@
 (defrule
     (true)
 =>
-    (set-goal gl-point-x 0)
-    (set-goal gl-other-x 60)
-    (set-goal gl-point-y 85)
-    (set-goal gl-other-y 95)
+    (set-goal gl-point-x 35)
+    (set-goal gl-other-x 35)
+    (set-goal gl-point-y 90)
+    (set-goal gl-other-y 90)
     (set-goal gl-point-x2 60)
     (set-goal gl-other-x2 120)
     (set-goal gl-point-y2 85)
     (set-goal gl-other-y2 95)    
 )
 
+
+
 (defrule
-    (true)
+    (not(map-type black-forest))(not(map-type arabia))
     ;(up-can-build-line gl-point-y gl-other-y c: palisade-wall)    
-=>
-    (up-build-line gl-point-y gl-other-y c: palisade-wall)
-    (up-build-line gl-point-y2 gl-other-y2 c: palisade-wall)
-    (chat-to-player my-player-number "BUILDING WALL PART 2")  
+=>  
+    (set-goal position-corner gl-point-x)
+    (set-goal position-center gl-other-x)
+    ;(up-build-line gl-point-y gl-other-y c: palisade-wall)
+    ;(up-build-line gl-point-y gl-other-y c: palisade-wall)
+    (up-build-line gl-point-x gl-other-x c: palisade-wall)    
+    (chat-to-player my-player-number "BUILDING WALL")  
 )
 
 (defrule
