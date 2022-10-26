@@ -857,41 +857,23 @@
     (set-strategic-number sn-minimum-number-hunters 0)
     (set-strategic-number sn-maximum-hunt-drop-distance 0)
     (set-strategic-number sn-maximum-wood-drop-distance 11) 
-    (set-strategic-number sn-maximum-gold-drop-distance 9)
-    (set-strategic-number sn-maximum-stone-drop-distance 9)    
+    (set-strategic-number sn-maximum-gold-drop-distance 9)    
     (up-assign-builders c: house c:+ 2)
-    (disable-self)
-)
-
-(defrule
-    (current-age == castle-age)
-=>
-    (set-strategic-number sn-food-gatherer-percentage 58)
+    (set-strategic-number sn-food-gatherer-percentage 64)
     (set-strategic-number sn-wood-gatherer-percentage 20)
+    (set-strategic-number sn-gold-gatherer-percentage 16)
+    (set-strategic-number sn-stone-gatherer-percentage 0)
+    (disable-self)
+)
+
+(defrule
+    (up-research-status c: imperial-age == research-pending)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 61)
+    (set-strategic-number sn-wood-gatherer-percentage 17)
     (set-strategic-number sn-gold-gatherer-percentage 13)
-    (set-strategic-number sn-stone-gatherer-percentage 9)
-    (disable-self)
-)
-
-(defrule
-    (current-age == castle-age)(building-type-count monastery > 0)
-=>
-    (set-strategic-number sn-food-gatherer-percentage 55)
-    (set-strategic-number sn-wood-gatherer-percentage 15)
-    (set-strategic-number sn-gold-gatherer-percentage 15)
-    (set-strategic-number sn-stone-gatherer-percentage 15)
-    (chat-local-to-self "Monastery 1 built: sending some gold villagers for stone")
-    (disable-self)
-)
-
-(defrule
-    (current-age == castle-age)(hold-relics)
-=>
-    (set-strategic-number sn-food-gatherer-percentage 68)
-    (set-strategic-number sn-wood-gatherer-percentage 18)
-    (set-strategic-number sn-gold-gatherer-percentage 4)
-    (set-strategic-number sn-stone-gatherer-percentage 10)
-    (chat-local-to-self "Castle age with all relics - sending less villagers for gold")    
+    (set-strategic-number sn-stone-gatherer-percentage 0)
+    (set-strategic-number sn-maximum-stone-drop-distance 9)    
     (disable-self)
 )
 
@@ -3493,13 +3475,11 @@
         )
         (wood-amount > 305)
     )
-    (up-can-build 0 c: barracks)
-    ;(can-build barracks)
+    (can-build barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks 1")
-    ;(build barracks)
-    (up-set-placement-data my-player-number -1 c: +3)    
-    (up-build place-control 0 c: barracks)
+    (build barracks)
+
 )
 
 (defrule
@@ -3677,7 +3657,7 @@
 ; CONSTRUIR TALLER ASEDIO
 (defrule
     (building-type-count-total siege-workshop == 0)
-    (or(building-type-count town-center > 1)(civ-selected cumans))
+    (building-type-count town-center > 0)
 	(not(civ-selected gothic))
     (can-build siege-workshop)    
 =>
@@ -3747,7 +3727,7 @@
     (up-can-build 0 c: watch-tower)    
 =>  
     ;(build watch-tower-line)
-    (up-set-placement-data my-player-number -1 c: -8)    
+    (up-set-placement-data my-player-number -1 c: +3)    
     (up-build place-control 0 c: watch-tower)  
 )
 
@@ -3779,9 +3759,7 @@
 
 (defrule
     (current-age == feudal-age)
-    (or(research-completed ri-wheel-barrow)(food-amount > 150)) 
-
-    ;(civilian-population g:< gl-maxCiviliansFeudalAge)
+    (civilian-population g:< gl-maxCiviliansFeudalAge)
     (can-train villager)
 =>
     (train villager)
@@ -3789,7 +3767,6 @@
 
 (defrule
     (current-age == castle-age)
-    (or(research-completed ri-hand-cart)(food-amount > 350))  
     (civilian-population g:< gl-maxCiviliansCastleAge)
     (can-train villager)
 =>
@@ -4137,7 +4114,7 @@
     (current-age == castle-age)(gold-amount > 300)
 	(unit-type-count-total battering-ram-line < 3)
     (or(enemy-buildings-in-town)(military-population > 20))
-    (military-population > 8)
+    (military-population > 20)
     (not(civ-selected gothic))
     (can-train battering-ram-line)
 =>
@@ -4149,6 +4126,7 @@
 	(unit-type-count-total battering-ram-line < 2)
     (not(civ-selected gothic))
     (not(civ-selected vietnamese)) 
+    (military-population > 25)    
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
@@ -4157,6 +4135,7 @@
 (defrule
     (current-age == imperial-age)
 	(unit-type-count-total battering-ram-line < 6)
+        (military-population > 50)
     (gold-amount > 200)
 	(can-train battering-ram-line)(not(civ-selected vietnamese))(not(civ-selected portuguese))
 	(not(civ-selected korean))(not(civ-selected poles))(not(civ-selected tatars))(not(civ-selected gothic)) 
