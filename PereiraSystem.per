@@ -471,7 +471,6 @@
 
         )              
     )
-
     (building-type-count lumber-camp > 1)
 =>
     (attack-now)
@@ -496,6 +495,8 @@
     (true)
 =>  (set-strategic-number sn-do-not-scale-for-difficulty-level 1) (disable-self)
 )
+
+load
 
 ; EXPLORE 
 (defrule 
@@ -3389,20 +3390,6 @@
     (set-goal gl-other-y2 95)    
 )
 
-
-
-(defrule
-    (not(map-type black-forest))(not(map-type arabia))
-    ;(up-can-build-line gl-point-y gl-other-y c: palisade-wall)    
-=>  
-    (set-goal position-corner gl-point-x)
-    (set-goal position-center gl-other-x)
-    ;(up-build-line gl-point-y gl-other-y c: palisade-wall)
-    ;(up-build-line gl-point-y gl-other-y c: palisade-wall)
-    (up-build-line gl-point-x gl-other-x c: palisade-wall)    
-    (chat-to-player my-player-number "BUILDING WALL")  
-)
-
 (defrule
     (building-type-count-total 793 < 3)
     ;(up-can-build-line gl-point-y gl-other-y c: 793)
@@ -3415,7 +3402,6 @@
     ;(chat-to-player my-player-number "BUILDING THE GATES TO THE WALL FRONT")
     (do-nothing)
 )
-
 
 ; WALL
 ; STONE WALL PERIMETER 1
