@@ -13,6 +13,9 @@
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
 
+(defconst gl-minimumWoodForTC 10)
+(defconst gl-minimumWoodForLC 11)
+
 (defconst gl-dudeHasCavalry 50)
 (defconst gl-dudeHasScouts 51)
 (defconst gl-dudeHasKnights 52)
@@ -23,7 +26,10 @@
 (defconst gl-dudeHasSpearmen 57)
 (defconst gl-dudeHasMilitia 58)
 (defconst gl-dudeHasCavalryArchers 59)
+(defconst gl-dudeHasSiegeWeapons 60)
 
+(defconst gl-maximumSoldiersFeudal 80)
+(defconst gl-totalSoldiersCreated 89)
 (defconst gl-weMovedPlace 90)
 
 (defconst gl-maxHousesBeforeDeleting 101)    
@@ -50,17 +56,22 @@
 
 (defconst gl-skirmisherQtyLow 119)
 (defconst gl-skirmisherQtyMedium 120)
+
 (defconst gl-cavalryArcherQty 122)
+
 (defconst gl-handCannoneerQty 125)
 
 (defconst gl-knightsQtyLow 130)
 (defconst gl-knightsQtyMedium 131)
+
 (defconst gl-scoutsQtyLow 135)
 (defconst gl-scoutsQtyMedium 136)
+
 (defconst gl-camelQtyLow 140)
 
 (defconst gl-eagleQtyLow 150)
 (defconst gl-eagleQtyMedium 151)
+
 (defconst gl-eagleQtyHigh 152)
 
 (defconst gl-monkQty 300)
@@ -68,8 +79,12 @@
 
 (defconst gl-ramQtyLow 400)
 (defconst gl-ramQtyMedium 401)
+
 (defconst gl-scorpionQty 405)
-(defconst gl-mangonelQty 410)
+
+(defconst gl-mangonelQtyLow 410)
+(defconst gl-mangonelQtyMedium 410)
+
 (defconst gl-bombardCannonsQty 415)
 
 (defconst gl-uniqueUnitQtyLow 200)
@@ -139,7 +154,7 @@
     (set-goal gl-ramQtyLow 3)
     (set-goal gl-ramQtyMedium 6)
     (set-goal gl-scorpionQty 8)
-    (set-goal gl-mangonelQty 8)
+    (set-goal gl-mangonelQtyLow 2)
     (set-goal gl-bombardCannonsQty 8)
 
     (set-goal gl-uniqueUnitQtyLow 10)
@@ -193,16 +208,19 @@
 
 #end-if
 
-
 (defrule
     (true)
 =>    
     (set-goal gl-max-lumber-camps-qty 3)
     (set-goal gl-max-mining-camps-qty 1)
+    (set-goal gl-minimumWoodForTC 275)
+    (set-goal gl-minimumWoodForLC 100)
     ;(up-chat-data-to-self "Lumber camps max qty = %d" g: gl-max-lumber-camps-qty)
     ;(up-chat-data-to-self "Mining camps max qty = %d" g: gl-max-mining-camps-qty)
     (disable-self)	    
 )
+
+
 
 (defrule
     (true)
@@ -216,7 +234,9 @@
     (set-goal gl-dudeHasCavalryArchers 0)
     (set-goal gl-dudeHasMilitia 0)        
     (set-goal gl-dudeHasSkirmishers 0)
-    (set-goal gl-weMovedPlace 0)        
+    (set-goal gl-weMovedPlace 0)  
+    (set-goal gl-maximumSoldiersFeudal 30)
+    (set-goal gl-totalSoldiersCreated 0)          
     (disable-self)	    
 )
 
@@ -515,7 +535,7 @@
     ;(chat-to-player my-player-number "SCOUTING STYLE CENTER")     
 	;(up-send-scout group-type-land-explore scout-opposite)
 	(up-send-scout group-type-land-explore scout-corner)
-    (chat-to-player my-player-number "SCOUTING STYLE CORNER")      
+    ;(chat-to-player my-player-number "SCOUTING STYLE CORNER")      
 	;(up-send-scout group-type-land-explore scout-enemy)          
  	;(up-send-scout group-type-land-explore scout-border)
     ;(chat-to-player my-player-number "SCOUTING STYLE BORDER")     
@@ -537,7 +557,7 @@
     (game-time > 150)
 =>
     (up-send-scout group-type-land-explore scout-corner)
-    (chat-to-player my-player-number "SCOUTING STYLE CORNER")          
+    ;(chat-to-player my-player-number "SCOUTING STYLE CORNER")          
     (disable-self)
 )
 
@@ -545,7 +565,7 @@
     (game-time > 180)
 =>
     (up-send-scout group-type-land-explore scout-border)
-    (chat-to-player my-player-number "SCOUTING STYLE BORDER")      
+    ;(chat-to-player my-player-number "SCOUTING STYLE BORDER")      
     (disable-self)
 )
 
@@ -553,7 +573,7 @@
     (game-time > 210)
 =>
     (up-send-scout group-type-land-explore scout-flank)
-    (chat-to-player my-player-number "SCOUTING STYLE FLANK")        
+    ;(chat-to-player my-player-number "SCOUTING STYLE FLANK")        
     (disable-self)
 )
 
@@ -755,7 +775,7 @@
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
     (set-strategic-number sn-maximum-wood-drop-distance 9)
-    (set-strategic-number sn-maximum-gold-drop-distance 9)
+    (set-strategic-number sn-maximum-gold-drop-distance 14)
     (set-strategic-number sn-maximum-stone-drop-distance 0)
     (chat-to-player my-player-number "Gold and Stone mining avaiable")    
     (disable-self)
@@ -770,8 +790,8 @@
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
     (set-strategic-number sn-maximum-wood-drop-distance 9)
-    (set-strategic-number sn-maximum-gold-drop-distance 9)
-    (set-strategic-number sn-maximum-stone-drop-distance 9)
+    (set-strategic-number sn-maximum-gold-drop-distance 14)
+    (set-strategic-number sn-maximum-stone-drop-distance 14)
     (chat-to-player my-player-number "Gold and Stone mining avaiable")    
     (disable-self)
 )
@@ -783,19 +803,20 @@
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
     (set-strategic-number sn-maximum-wood-drop-distance 9)
-    (set-strategic-number sn-maximum-gold-drop-distance 9)
+    (set-strategic-number sn-maximum-gold-drop-distance 14)
     (set-strategic-number sn-maximum-stone-drop-distance 0)
     (chat-to-player my-player-number "Let´s Get Some Gold")
     (disable-self)
 )
 
 (defrule
-    (current-age == feudal-age)
+    (up-research-status c: feudal-age == research-pending)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 100)
-    (set-strategic-number sn-wood-gatherer-percentage 0)
-    (set-strategic-number sn-gold-gatherer-percentage 0) ;
+    (set-strategic-number sn-food-gatherer-percentage 2)
+    (set-strategic-number sn-wood-gatherer-percentage 96)
+    (set-strategic-number sn-gold-gatherer-percentage 2) ;
     (set-strategic-number sn-stone-gatherer-percentage 0)
+    (set-strategic-number sn-maximum-gold-drop-distance 14)    
     (disable-self)
 )
 
@@ -804,24 +825,23 @@
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 5) ;to make them use mills
-    
-    (set-strategic-number sn-maximum-gold-drop-distance 0)
     (set-strategic-number sn-maximum-stone-drop-distance 0)
     (disable-self)
 )
 
 (defrule
     (current-age == feudal-age)
-    (or(building-type-count archery-range > 0)
+    (or(building-type-count blacksmith > 0) ;goths use only barracks
     (building-type-count stable > 0))
+    (or(building-type-count market > 0)
+    (building-type-count archery-range > 0))    
+    (building-type-count-total lumber-camp > 1)    
 =>
-    (set-strategic-number sn-food-gatherer-percentage 80)
-    (set-strategic-number sn-wood-gatherer-percentage 10)
-    (set-strategic-number sn-gold-gatherer-percentage 10)
-    (set-strategic-number sn-stone-gatherer-percentage 0)
-    (set-strategic-number sn-maximum-gold-drop-distance 9)      
-    (set-strategic-number sn-maximum-gold-drop-distance 6)  
-    (chat-to-player my-player-number "Less wood, more food and gold")    
+    (set-strategic-number sn-food-gatherer-percentage 60)
+    (set-strategic-number sn-wood-gatherer-percentage 28)
+    (set-strategic-number sn-gold-gatherer-percentage 12)
+    (set-strategic-number sn-stone-gatherer-percentage 0)    
+    (set-strategic-number sn-maximum-gold-drop-distance 6)    
     (disable-self)
 )
 
@@ -1224,7 +1244,7 @@
     (civ-selected byzantine)(unit-type-count-total my-unique-unit-line > 0)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "CATAFRACS CAUSE TRAMPLE DAMAGE!")
+    (chat-to-player my-player-number "CATAFRACTS CAUSE TRAMPLE DAMAGE!")
 )
 
 ; CELTS
@@ -2903,7 +2923,8 @@
     (current-age == dark-age)(building-type-count town-center > 0)
     (building-type-count-total barracks > 0)(wood-amount > 175)
     (building-type-count-total lumber-camp > 0)
-	(idle-farm-count < 3)
+    ;(gaia-)
+	(idle-farm-count < 1)
 	(can-build farm)    
 =>
 	(build farm)
@@ -2920,7 +2941,7 @@
         )
     )
     (wood-amount > 175)(food-amount < 2000)
-	(idle-farm-count < 5)
+	(idle-farm-count < 1)
 	(can-build farm)
 =>
     (build farm)
@@ -2934,7 +2955,8 @@
         (building-type-count monastery > 0)
         (building-type-count siege-workshop > 0)
     )
-	(building-type-count-total farm < 20)    
+	(building-type-count-total farm < 20)
+    (idle-farm-count < 1)    
 	(can-build farm)
 =>
 	(build farm)
@@ -3043,7 +3065,7 @@
     )
     (resource-found wood)
 
-    (dropsite-min-distance wood > 3)
+    (dropsite-min-distance wood > 4)
     (can-build lumber-camp)    
 =>  
     (up-modify-sn sn-camp-max-distance c:+ 8)  
@@ -3060,7 +3082,7 @@
     )
     (can-build lumber-camp)
     (resource-found wood)
-    (dropsite-min-distance wood > 6)
+    (dropsite-min-distance wood > 4)
 =>
     (chat-local-to-self "Trying To Build Lumber Camp 3")    
     (build lumber-camp)     
@@ -3152,7 +3174,9 @@
 
 ; BLACKSMITH
 (defrule
-    (military-population > 4)
+    (or(military-population > 4)
+        (not(enemy-buildings-in-town))
+    )
     (building-type-count-total blacksmith == 0)(wood-amount > 275)
     (building-type-count town-center > 0)    
     (or(building-type-count-total archery-range > 0)(civ-selected cumans))
@@ -3501,7 +3525,7 @@
 =>
     (chat-local-to-self "Trying To Build Barracks 1")
     ;(build barracks)
-    (up-set-placement-data my-player-number -1 c: -20)    
+    (up-set-placement-data my-player-number -1 c: +1)    
     (up-build place-control 0 c: barracks)
 )
 
@@ -3743,6 +3767,7 @@
 
 ; NORMAL TOWER
 (defrule
+    (town-under-attack)
     (or(building-type-count stable > 0)(building-type-count blacksmith > 0))
     (or(current-age < castle-age)(building-type-count castle > 1))
     ;(can-build watch-tower-line)
@@ -4063,10 +4088,8 @@
 
 (defrule
     (current-age == castle-age)
-    (building-type-count town-center > 1)     
-    (unit-type-count-total mangonel-line < 1)
-    (town-under-attack)
-    (military-population > 8)
+    (building-type-count town-center > 0)     
+    (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
     (up-compare-goal gl-dudeHasCavalry == 0)
 	(can-train mangonel-line)
 =>
@@ -4104,7 +4127,7 @@
             (civ-selected teutonic)
         )   
     )
-    (unit-type-count-total mangonel-line g:< gl-mangonelQty)
+    (unit-type-count-total mangonel-line g:< gl-mangonelQtyMedium)
 =>
     (train mangonel-line)
 )
@@ -4803,10 +4826,12 @@
     (not(civ-selected magyar))(not(civ-selected mongol))  
     (not(civ-selected turkish))
     (not(civ-selected lithuanians))         
+    (up-compare-goal gl-totalSoldiersCreated g:< gl-maximumSoldiersFeudal)    
     (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
     (can-train militiaman-line)
 =>
     (train militiaman-line)
+    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
 )
 
 (defrule
@@ -4880,26 +4905,44 @@
     (train militiaman-line)
 )
 
-; SPEARMAN
-(defrule
-    (can-train spearman-line)
-=>
-    (train spearman-line)(disable-self)
-)
-
-(defrule
-    (can-train spearman-line)
-=>
-    (train spearman-line)(disable-self)
-)
-
+; SPEARMEN
+; SPEARMEN FEUDAL AGE
 (defrule
     (current-age == feudal-age)
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
-    (wood-amount > 125)
+    (or
+        (wood-amount >= 275) ;not optimized for civs with cheaper TC
+        (building-type-count town-center > 0)
+    )    
+    (or(wood-amount >= 125)
+        (or
+            (and(civ-selected japanese)(wood-amount >= 75))
+            (and(civ-selected malian)(wood-amount >= 110))         
+        )
+    )
     (up-compare-goal gl-dudeHasCavalry == 1)
+    (up-compare-goal gl-totalSoldiersCreated g:< gl-maximumSoldiersFeudal)
+    (unit-type-count-total spearman-line g:< gl-spearmenQtyLow)
+    (can-train spearman-line)
+=>
+    (train spearman-line)
+    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+)
+
+(defrule
+    (current-age == feudal-age)(town-under-attack)
+    (or
+        (wood-amount >= 275) ;not optimized for civs with cheaper TC
+        (building-type-count town-center > 0)
+    )    
+    (or(wood-amount >= 125)
+        (or
+            (and(civ-selected japanese)(wood-amount >= 75))
+            (and(civ-selected malian)(wood-amount >= 110))         
+        )
+    )
+    (or(up-compare-goal gl-dudeHasCavalry == 1)(up-compare-goal gl-dudeHasCavalryArchers == 1))
+    (up-compare-goal gl-dudeHasArchers == 0)    
     (unit-type-count-total spearman-line g:< gl-spearmenQtyMedium)
-    (not(civ-selected portuguese))
     (can-train spearman-line)
 =>
     (train spearman-line)
@@ -4910,7 +4953,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (building-type-count-total monastery > 0)
     (wood-amount > 125)
-    (up-compare-goal gl-dudeHasCavalry == 1)
+    (or(up-compare-goal gl-dudeHasCavalry == 1)(up-compare-goal gl-dudeHasCavalryArchers == 1))
     (unit-type-count-total spearman-line g:< gl-spearmenQtyMedium)
     (can-train spearman-line)
 =>
@@ -5232,7 +5275,7 @@
     )
 =>  
     (set-goal gl-dudeHasCavalry 1)
-    (chat-local-to-self "DUDE HAS CAVALRY!")
+    ;(chat-local-to-self "DUDE HAS CAVALRY!")
 )
 
 (defrule
@@ -5260,7 +5303,7 @@
     )
 =>  
     (set-goal gl-dudeHasCavalry 1)
-    (chat-local-to-self "DUDE HAS CAVALRY!")
+    ;(chat-local-to-self "DUDE HAS CAVALRY!")
 )
 
 (defrule
@@ -5355,3 +5398,8 @@
 =>  
     (set-goal gl-dudeHasMilitia 0)    
 )
+
+
+
+(defrule(civ-selected celtic)=>(up-change-name "PereiraSystem_CELT"))
+(defrule(civ-selected chinese)=>(up-change-name "PereiraSystem_CHIN"))
