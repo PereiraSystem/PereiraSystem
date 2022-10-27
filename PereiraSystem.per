@@ -374,7 +374,7 @@
 	(timer-triggered 5)
 =>
 	(disable-timer 5)
-    (enable-timer 5 45)    
+    (enable-timer 5 55)    
     (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
     ;(up-chat-data-to-self "Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
 )
@@ -687,8 +687,8 @@
 =>
     (set-strategic-number sn-minimum-town-size 0)
     (set-strategic-number sn-maximum-town-size 8)
-    (set-strategic-number sn-mining-camp-max-distance 32)
-    (set-strategic-number sn-lumber-camp-max-distance 26)      
+    (set-strategic-number sn-mining-camp-max-distance 24)
+    (set-strategic-number sn-lumber-camp-max-distance 16)      
     (disable-self)
 )
 
@@ -3024,7 +3024,22 @@
 
 
 
-; LUMBER                       
+; LUMBER   
+(defrule
+    (building-type-count-total lumber-camp == 0)
+    (up-can-build 0 c: lumber-camp)
+    (resource-found wood)
+    (or
+        (building-type-count house > 0)
+        (civ-selected hun)
+    )
+=>
+    (chat-local-to-self "Trying To Build Special Lumber Camp")
+    (up-set-placement-data my-player-number -1 c: -12)
+    (up-build place-control 0 c: lumber-camp)
+            
+)
+
 (defrule
     (building-type-count-total lumber-camp == 0)
     (can-build lumber-camp)
@@ -3046,7 +3061,7 @@
 
 (defrule
     (current-age >= feudal-age)
-    (building-type-count-total lumber-camp == 3)
+    (building-type-count-total lumber-camp > 0)
     (building-type-count-total lumber-camp g:< gl-max-lumber-camps-qty) 	
     (resource-found wood)
     (dropsite-min-distance wood > 3)
@@ -4871,7 +4886,7 @@
     (not(civ-selected turkish))(not(civ-selected vietnamese))
     (not(civ-selected lithuanians))(not(civ-selected poles))
     (not(civ-selected berbers))(not(civ-selected persian)) 
-    (not(civ-selected hindustani))        
+    (not(civ-selected indian))        
     (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
     (can-train militiaman-line)
 =>
@@ -5457,6 +5472,7 @@
 )
 
 
-
-(defrule(civ-selected celtic)=>(up-change-name "PereiraSystem_CELT"))
-(defrule(civ-selected chinese)=>(up-change-name "PereiraSystem_CHIN"))
+(defrule(civ-selected bengalis)=>(up-change-name "PereiraSystem BENG"))
+(defrule(civ-selected celtic)=>(up-change-name "PereiraSystem CELT"))
+(defrule(civ-selected chinese)=>(up-change-name "PereiraSystem CHIN"))
+(defrule(civ-selected dravidians)=>(up-change-name "PereiraSystem DRAV"))
