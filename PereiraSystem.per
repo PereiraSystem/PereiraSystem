@@ -374,7 +374,7 @@
 	(timer-triggered 5)
 =>
 	(disable-timer 5)
-    (enable-timer 5 55)    
+    (enable-timer 5 80)    
     (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
     ;(up-chat-data-to-self "Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
 )
@@ -421,7 +421,7 @@
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
-    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)gl-totalSoldiersCreated
+    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
     (up-chat-data-to-self "Inf / Cav created: %d" g: gl-totalSoldiersCreated)    
 )
 
@@ -474,7 +474,7 @@
 
 (defrule
     (current-age == feudal-age)
-    (military-population >= 6)
+    (military-population >= 26)
     (or
         (or
             (or
@@ -2205,8 +2205,9 @@
 
 ; SPEARMEN
 (defrule
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)
-    (research-completed ri-heavy-plow) 
+    (research-completed ri-hand-cart)
+    (research-completed ri-bow-saw)
+    ;(research-completed ri-heavy-plow) 
     (building-type-count-total monastery > 0)
     (unit-type-count-total spearman-line > 4)
     (can-research ri-pikeman)
@@ -2842,7 +2843,7 @@
     )
     (can-build town-center)    
 =>
-    (set-strategic-number sn-town-center-placement 0)
+    (set-strategic-number sn-town-center-placement lumber-camp)
     (chat-local-to-self "Trying To Build Town Center 2") 
     (build town-center)
 )
@@ -3029,14 +3030,14 @@
 (defrule
     (building-type-count-total lumber-camp == 0)
     (up-can-build 0 c: lumber-camp)
-    (resource-found wood)
+    ;(resource-found wood)
     (or
         (building-type-count house > 0)
         (civ-selected hun)
     )
 =>
     (chat-local-to-self "Trying To Build Special Lumber Camp")
-    (up-set-placement-data my-player-number -1 c: -12)
+    (up-set-placement-data my-player-number -1 c: -20)
     (up-build place-control 0 c: lumber-camp)
             
 )
@@ -4139,8 +4140,8 @@
 (defrule
     (current-age == castle-age)(gold-amount > 300)
 	(unit-type-count-total battering-ram-line g:< gl-ramQtyLow)
-    (or(enemy-buildings-in-town)(military-population > 30))
-    (military-population > 20)
+    (or(enemy-buildings-in-town)(military-population > 45))
+    (military-population > 25)
     (not(civ-selected gothic))
     (can-train battering-ram-line)
 =>
@@ -4457,15 +4458,15 @@
 (defrule
 	(can-train scout-cavalry-line)    
 =>
-    (train scout-cavalry-line)(disable-self)
-    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+    (train scout-cavalry-line)
+    (up-modify-goal gl-totalSoldiersCreated c:+ 1)(disable-self)
 )
 
 (defrule
 	(can-train scout-cavalry-line)    
 =>
-    (train scout-cavalry-line)(disable-self)
-    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+    (train scout-cavalry-line)
+    (up-modify-goal gl-totalSoldiersCreated c:+ 1)(disable-self)
 )
 
 ; FEUDAL AGE SCOUTS
@@ -4482,7 +4483,7 @@
 	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
-    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+    (up-modify-goal gl-totalSoldiersCreated c:+ 1)
 )
 
 ; CASTLE AGE SCOUTS
@@ -4572,6 +4573,10 @@
     (or(unit-type-count-total monk > 4)(hold-relics))
     (unit-type-count-total knight-line g:< gl-knightsQtyLow)
     (not(can-train battle-elephant-line))
+    (not
+        (and(up-compare-goal gl-dudeHasCavalry == 1)
+            (can-train camel-line))
+    )
     (can-train knight-line)
 =>
     (train knight-line)
@@ -4875,7 +4880,7 @@
     (can-train militiaman-line)
 =>
     (train militiaman-line)
-    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+    (up-modify-goal gl-totalSoldiersCreated c:+ 1)
 )
 
 (defrule
@@ -4962,7 +4967,7 @@
     (can-train spearman-line)
 =>
     (train spearman-line)
-    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+    (up-modify-goal gl-totalSoldiersCreated c:+ 1)
     (disable-self)
 )
 
@@ -4976,7 +4981,7 @@
     (can-train spearman-line)
 =>
     (train spearman-line)
-    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+    (up-modify-goal gl-totalSoldiersCreated c:+ 1)
     (disable-self)
 )
 
@@ -4998,7 +5003,7 @@
     (can-train spearman-line)
 =>
     (train spearman-line)
-    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+    (up-modify-goal gl-totalSoldiersCreated c:+ 1)
 )
 
 (defrule
