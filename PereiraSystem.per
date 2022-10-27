@@ -138,8 +138,8 @@
     (set-goal gl-cavalryArcherQty 30)
     (set-goal gl-handCannoneerQty 30)
 
-    (set-goal gl-knightsQtyLow 5)
-    (set-goal gl-knightsQtyMedium 40)
+    (set-goal gl-knightsQtyLow 4)
+    (set-goal gl-knightsQtyMedium 9)
     (set-goal gl-scoutsQtyLow 8)
     (set-goal gl-scoutsQtyMedium 40)
     (set-goal gl-camelQtyLow 4)
@@ -3840,7 +3840,10 @@
 
 
 (defrule
-    (unit-type-count-total monk < 5)
+    (and
+        (unit-type-count-total monk < 5)
+        (unit-type-count-total 286 < 5)
+    )
     (not(hold-relics))(not(enemy-buildings-in-town))
     (can-train monk)    
 =>
@@ -4161,10 +4164,7 @@
     (can-train scorpion-line)
     (unit-type-count-total scorpion-line g:< gl-scorpionQty)
     (military-population > 45)
-    (or
-      (civ-selected khmer)
-      (civ-selected chinese)  
-    )	
+    (civ-selected chinese)  
 =>
     (train scorpion-line)
 )
@@ -4439,7 +4439,19 @@
 )
 
 ; SCOUTS
+(defrule
+	(can-train scout-cavalry-line)    
+=>
+    (train scout-cavalry-line)(disable-self)
+    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+)
 
+(defrule
+	(can-train scout-cavalry-line)    
+=>
+    (train scout-cavalry-line)(disable-self)
+    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+)
 
 (defrule
 	(current-age == feudal-age)
@@ -4455,6 +4467,14 @@
 =>
     (train scout-cavalry-line)
     (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+)
+
+(defrule
+	(current-age == castle-age)
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)
+	(can-train scout-cavalry-line)
+=>
+    (train scout-cavalry-line)
 )
 
 (defrule
@@ -4506,12 +4526,29 @@
     (train camel-line)
 )
 
-; KNIGHT LINE
+; KNIGHTS
+; KNIGHTS IN CASTLE AGE
+(defrule
+    (current-age == castle-age)
+    (or(unit-type-count-total monk > 4)(hold-relics))
+    (unit-type-count-total knight-line g:< gl-knightsQtyLow)
+    (not(can-train battle-elephant-line))   
+    (can-train knight-line)
+=>
+    (train knight-line)
+)
+
 (defrule
     (current-age == castle-age)(gold-amount > 220)
     (unit-type-count-total knight-line g:< gl-knightsQtyMedium)
-    ;(up-compare-goal gl-dudeHasSpearmen == 0)
-    (up-compare-goal gl-dudeHasArchers == 1)    
+    (up-compare-goal gl-dudeHasSpearmen == 0)
+    (or
+        (up-compare-goal gl-dudeHasArchers == 1)
+        (or
+            (up-compare-goal gl-dudeHasSkirmishers == 1)
+            (up-compare-goal gl-dudeHasCavalryArchers == 1)
+        )
+    )        
     (or
         (or
             (civ-selected bulgarians)            
@@ -4533,6 +4570,7 @@
     (train knight-line)
 )
 
+; KNIGHTS IN IMPERIAL AGE
 (defrule
     (or
         (and(current-age == imperial-age)(gold-amount > 400))
