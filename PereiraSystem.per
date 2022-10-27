@@ -2285,10 +2285,8 @@
 )
 
 (defrule
-    (or
     (or(unit-type-count-total cavalry-class > 2)
-    (unit-type-count-total cavalry-archer-class > 2))  
-    (or(unit-type-count-total camel-line > 2)
+    (unit-type-count-total cavalry-archer-class > 2)) 
     (can-research ri-husbandry)
 =>
     (research ri-husbandry)
