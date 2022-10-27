@@ -145,7 +145,7 @@
     (set-goal gl-scoutsQtyLow 8)
     (set-goal gl-scoutsQtyMedium 40)
     (set-goal gl-camelQtyLow 5)
-    (set-goal gl-camelQtyMedium 12)
+    (set-goal gl-camelQtyMedium 15)
     (set-goal gl-camelQtyHigh 28)        
 )
 
@@ -2285,8 +2285,10 @@
 )
 
 (defrule
+    (or
     (or(unit-type-count-total cavalry-class > 2)
-    (unit-type-count-total cavalry-archer-class > 2))   
+    (unit-type-count-total cavalry-archer-class > 2))  
+    (or(unit-type-count-total camel-line > 2)
     (can-research ri-husbandry)
 =>
     (research ri-husbandry)
@@ -2599,6 +2601,7 @@
         (unit-type-count-total archery-cannon-class > 2))
         (unit-type-count-total cavalry-archer-class > 2)
     )
+    (research-completed ri-wheel-barrow)    
     (can-research ri-padded-archer-armor)
 =>
     (research ri-padded-archer-armor )
@@ -4552,9 +4555,10 @@
 ; FEUDAL AGE SCOUTS
 (defrule
 	(current-age == feudal-age) ; just cause they are good
+    (research-completed ri-wheel-barrow)
     (or(civ-selected mongol)(civ-selected turkish)) 
     (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)    
-	(unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
+	(unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)
 	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
@@ -4631,7 +4635,7 @@
     (current-age == castle-age)
     ;(up-compare-goal gl-dudeHasCavalry == 1)
 	(unit-type-count-total monk > 4)    
-	(unit-type-count-total camel-line g:< gl-camelQtyLow)
+	(unit-type-count-total camel-line g:< gl-camelQtyMedium)
 	(can-train camel-line)    
 =>
     (train camel-line)
@@ -4741,7 +4745,8 @@
 
 (defrule
     (current-age == feudal-age) ;Cav archer not available
-    (or(gold-amount > 245)(food-amount < 100))          
+    (gold-amount > 245)
+    (research-completed ri-wheel-barrow)              
     (can-train archer-line)
 =>
     (train archer-line)(disable-self)
