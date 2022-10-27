@@ -68,6 +68,8 @@
 (defconst gl-scoutsQtyMedium 136)
 
 (defconst gl-camelQtyLow 140)
+(defconst gl-camelQtyMedium 141)
+(defconst gl-camelQtyHigh 142)
 
 (defconst gl-eagleQtyLow 150)
 (defconst gl-eagleQtyMedium 151)
@@ -121,7 +123,7 @@
     (true)
 =>
     (set-goal gl-spearmenQtyLow 5)
-    (set-goal gl-spearmenQtyMedium 30)
+    (set-goal gl-spearmenQtyMedium 35)
     (set-goal gl-spearmenQtyHigh 60)
 
     (set-goal gl-militiaQtyLow 8)
@@ -134,7 +136,7 @@
 
     (set-goal gl-archerQty 40)
     (set-goal gl-skirmisherQtyLow 8)    
-    (set-goal gl-skirmisherQtyMedium 25)
+    (set-goal gl-skirmisherQtyMedium 30)
     (set-goal gl-cavalryArcherQty 30)
     (set-goal gl-handCannoneerQty 30)
 
@@ -142,7 +144,9 @@
     (set-goal gl-knightsQtyMedium 9)
     (set-goal gl-scoutsQtyLow 8)
     (set-goal gl-scoutsQtyMedium 40)
-    (set-goal gl-camelQtyLow 4)
+    (set-goal gl-camelQtyLow 5)
+    (set-goal gl-camelQtyMedium 12)
+    (set-goal gl-camelQtyHigh 28)        
 )
 
 (defrule
@@ -594,7 +598,7 @@
     (game-time > 230)
 =>
     (up-send-scout group-type-land-explore scout-corner)
-    (chat-to-player my-player-number "SCOUTING STYLE CORNER")        
+    ;(chat-to-player my-player-number "SCOUTING STYLE CORNER")        
     (disable-self)
 )
 
@@ -602,7 +606,7 @@
     (game-time > 250)
 =>
     (up-send-scout group-type-land-explore scout-center)
-    (chat-to-player my-player-number "SCOUTING STYLE CENTER")        
+    ;(chat-to-player my-player-number "SCOUTING STYLE CENTER")        
     (disable-self)
 )
 
@@ -4522,6 +4526,19 @@
     (train scout-cavalry-line)
 )
 
+(defrule
+	(current-age == castle-age)
+    (town-under-attack)(food-amount > 1300)
+    (or(up-compare-goal gl-dudeHasArchers == 1)
+    (up-compare-goal gl-dudeHasSkirmishers == 1))    
+    ;(up-compare-goal gl-dudeHasSpearmen == 0)
+    (not(civ-selected japanese))
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)    
+	(can-train scout-cavalry-line)
+=>
+    (train scout-cavalry-line)
+)
+
 ; IMPERIAL AGE SCOUTS
 (defrule
 	(current-age == imperial-age)(food-amount > 1500)(gold-amount < 1400)
@@ -4544,6 +4561,7 @@
 
 ; CAMEL 
 (defrule
+    (current-age == castle-age)
     (or(up-compare-goal gl-dudeHasScouts == 1)
     (up-compare-goal gl-dudeHasKnights == 1))   
 	(unit-type-count-total camel-line g:< gl-camelQtyLow)
@@ -4553,9 +4571,20 @@
 )
 
 (defrule
+    (current-age == castle-age)
+    (or(up-compare-goal gl-dudeHasScouts == 1)
+    (up-compare-goal gl-dudeHasKnights == 1))
+    (up-compare-goal gl-dudeHasSpearmen == 0)       
+	(unit-type-count-total camel-line g:< gl-camelQtyMedium)
+	(can-train camel-line)    
+=>
+    (train camel-line)
+)
+
+(defrule
 	(current-age == imperial-age)
     (gold-amount > 260)
-	(unit-type-count-total camel-line g:< gl-knightsQtyMedium)
+	(unit-type-count-total camel-line g:< gl-camelQtyMedium)
 	(can-train camel-line)    
 =>
     (train camel-line)
@@ -4567,7 +4596,7 @@
     (current-age == castle-age)
     (or(unit-type-count-total monk > 4)(hold-relics))
     (unit-type-count-total knight-line g:< gl-knightsQtyLow)
-    (not(can-train battle-elephant-line))   
+    (not(can-train battle-elephant-line))
     (can-train knight-line)
 =>
     (train knight-line)
@@ -4800,13 +4829,13 @@
 
 (defrule
     (current-age == castle-age)
-    (building-type-count town-center > 1)     
+    (building-type-count town-center > 0)     
     (up-compare-goal gl-dudeHasArchers == 1)    
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 135)    
     (building-type-count-total monastery > 0)
     (not(can-train genitour))       
-    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyLow) 
+    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium) 
     (can-train skirmisher-line) 
 =>
     (train skirmisher-line)
