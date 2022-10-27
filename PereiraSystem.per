@@ -3496,10 +3496,17 @@
     (building-type-count-total castle == 0)
 =>
     (chat-local-to-self "Trying To Build Castle 1")
-    (up-modify-sn sn-maximum-town-size c:+ 3)    
+    (up-modify-sn sn-maximum-town-size c:+ 1)    
     (build castle) 
 )
-
+(defrule
+    (can-build castle)
+    (building-type-count-total castle == 0)
+=>
+    (chat-local-to-self "Trying To Build Castle 1 - 2nd attempt")
+    (up-modify-sn sn-maximum-town-size c:+ 2)    
+    (build castle) 
+)
 
 (defrule
     (building-type-count-total castle == 1)
