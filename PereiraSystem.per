@@ -3042,48 +3042,7 @@
             
 )
 
-(defrule
-    (building-type-count-total lumber-camp == 1) ;only after moving city
-    (building-type-count dock > 0)    
-    (up-compare-goal gl-weMovedPlace == 1)    
-    (resource-found wood)
-    (dropsite-min-distance wood > 3)
-    (can-build lumber-camp)     
-=>
-    (chat-local-to-self "Trying To Build Lumber Camp 2")    
-    (build lumber-camp)    
-)
 
-(defrule
-    (building-type-count-total lumber-camp == 1)
-    (or
-        (current-age > dark-age)
-        (food-amount > 600)
-    )
-    (resource-found wood)
-
-    (dropsite-min-distance wood > 3)
-    (can-build lumber-camp)    
-=>  
-    (up-modify-sn sn-camp-max-distance c:+ 8)  
-    (chat-local-to-self "Trying To Build Lumber Camp 2")    
-    (build lumber-camp)      
-    (set-strategic-number sn-maximum-wood-drop-distance 5)
-)
-
-(defrule
-    (building-type-count-total lumber-camp == 2)
-    (or
-        (current-age > dark-age)
-        (food-amount > 600)
-    )
-    (can-build lumber-camp)
-    (resource-found wood)
-    (dropsite-min-distance wood > 3)
-=>
-    (chat-local-to-self "Trying To Build Lumber Camp 3")    
-    (build lumber-camp)     
-)
 
 (defrule
     (current-age >= feudal-age)
