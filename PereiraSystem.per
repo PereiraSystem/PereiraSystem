@@ -961,8 +961,27 @@
         (building-type-count town-center > 1)
         (building-type-count barracks > 1)
     )
+
 =>
     (set-strategic-number sn-maximum-stone-drop-distance 9)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (building-type-count castle > 0)    
+=>
+    (set-strategic-number sn-maximum-stone-drop-distance 0)
+    (set-strategic-number sn-stone-gatherer-percentage 0)    
+    (disable-self)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (military-population > 70)    
+=>
+    (set-strategic-number sn-maximum-stone-drop-distance 9)
+    (set-strategic-number sn-stone-gatherer-percentage 6)      
+    (disable-self)
 )
 
 (defrule
@@ -3482,10 +3501,19 @@
 
 (defrule
     (building-type-count-total castle == 2)
+    (civilian-population > 60)(military-population > 70)
     (can-build castle)    
 =>
     (chat-local-to-self "Trying To Build FORWARD Castle 3")
     (build-forward castle) 
+)
+
+(defrule
+    (building-type-count-total castle == 2)
+    (can-build castle)
+=>
+    (chat-local-to-self "Trying To Build Castle 3")
+    (build castle) 
 )
 
 ; MINI CASTLES (MEGA TOWERS?)
@@ -5502,8 +5530,10 @@
     (set-goal gl-dudeHasMilitia 0)    
 )
 
-(defrule(civ-selected 1)=>(up-change-name "PereiraSystem BRIT"))
-(defrule(civ-selected 2)=>(up-change-name "PereiraSystem BRIT"))
+(defrule(civ-selected briton)=>(up-change-name "PereiraSystem BRIT"))
+(defrule(civ-selected frankish)=>(up-change-name "PereiraSystem FRNK"))
+(defrule(civ-selected byzantine)=>(up-change-name "PereiraSystem BYZN"))
+(defrule(civ-selected berbers)=>(up-change-name "PereiraSystem BERB"))
 (defrule(civ-selected bengalis)=>(up-change-name "PereiraSystem BENG"))
 (defrule(civ-selected celtic)=>(up-change-name "PereiraSystem CELT"))
 (defrule(civ-selected chinese)=>(up-change-name "PereiraSystem CHIN"))
