@@ -4491,8 +4491,7 @@
 (defrule
     (current-age == castle-age)
     (or(unit-type-count-total monk > 4)(hold-relics))
-    (unit-type-count-total steppe-lancer-line g:< gl-knightsQtyLow)
-    (not(can-train steppe-lancer-line))    
+    (unit-type-count-total steppe-lancer-line g:< gl-knightsQtyLow)   
     (can-train steppe-lancer-line)
 =>
     (train steppe-lancer-line)
