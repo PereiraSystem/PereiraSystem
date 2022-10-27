@@ -4439,6 +4439,7 @@
 )
 
 ; SCOUTS
+; DISABLE SELF SCOUTS
 (defrule
 	(can-train scout-cavalry-line)    
 =>
@@ -4453,6 +4454,7 @@
     (up-modify-goal gl-totalSoldiersCreated g:+ 1)
 )
 
+; FEUDAL AGE SCOUTS
 (defrule
 	(current-age == feudal-age)
     (town-under-attack)
@@ -4469,6 +4471,7 @@
     (up-modify-goal gl-totalSoldiersCreated g:+ 1)
 )
 
+; CASTLE AGE SCOUTS
 (defrule
 	(current-age == castle-age)
     (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)
