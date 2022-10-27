@@ -4537,23 +4537,18 @@
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)(disable-self)
 )
 
-(defrule
-	(can-train scout-cavalry-line)
-    (or(civ-selected mongol)(civ-selected turkish))
-=>
-    (train scout-cavalry-line)
-    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)(disable-self)
-)
-
-(defrule
-	(can-train scout-cavalry-line)
-    (or(civ-selected mongol)(civ-selected turkish))    
-=>
-    (train scout-cavalry-line)
-    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)(disable-self)
-)
-
 ; FEUDAL AGE SCOUTS
+(defrule
+	(current-age == feudal-age)
+    (or(civ-selected mongol)(civ-selected turkish)) 
+    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)    
+	(unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
+	(can-train scout-cavalry-line)    
+=>
+    (train scout-cavalry-line)
+    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
+)
+
 (defrule
 	(current-age == feudal-age)
     (town-under-attack)
