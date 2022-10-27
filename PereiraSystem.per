@@ -151,7 +151,7 @@
     (set-goal gl-monkQty 5)
     (set-goal gl-monkQtyHigh 16)
 
-    (set-goal gl-ramQtyLow 3)
+    (set-goal gl-ramQtyLow 2)
     (set-goal gl-ramQtyMedium 6)
     (set-goal gl-scorpionQty 8)
     (set-goal gl-mangonelQtyLow 2)
@@ -361,7 +361,7 @@
 	(building-type-count-total lumber-camp > 0)
 =>
 	(disable-timer 4)
-    (enable-timer 5 60)
+    (enable-timer 5 80)
     (disable-self)
 )
 
@@ -400,8 +400,8 @@
 =>
 	(disable-timer 10)
     (enable-timer 10 120)  
-    (up-chat-data-to-self "Civilians: %d" g: gl-civPop)      
-    (up-chat-data-to-self "Buildings: %d" g: gl-buildCount)
+    ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)      
+    ;(up-chat-data-to-self "Buildings: %d" g: gl-buildCount)
     (up-chat-data-to-self "Enemy B. In Town: %d" g: gl-enemyBuildingsInTown)          
 )
 
@@ -415,7 +415,7 @@
 	(disable-timer 11)
     (enable-timer 11 120)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
-    (up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
+    ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
 )
@@ -434,10 +434,11 @@
 )
 
 ; TIMER 15 DELETES VILLAGERS
-(defrule(true)=>(enable-timer 15 1800)(disable-self)) 
+(defrule(true)=>(enable-timer 15 2400)(disable-self)) 
 (defrule
 	(timer-triggered 15)
     (current-age == imperial-age)(building-type-count town-center > 0)
+    (civilian-population > 70)
 =>
 	(chat-local-to-self "DELETING IDLE VILLAGERS!")
 	(disable-timer 15)
@@ -866,6 +867,24 @@
     (disable-self)
 )
 
+(defrule 
+    (current-age == castle-age)
+    (wood-amount > 1200)
+=>  
+    (up-modify-sn sn-food-gatherer-percentage c:+ 25)
+    (up-modify-sn sn-wood-gatherer-percentage c:- 25)
+     (disable-self)   
+)
+
+(defrule 
+    (current-age == castle-age)
+    (gold-amount > 1200)
+=>  
+    (up-modify-sn sn-food-gatherer-percentage c:+ 25)
+    (up-modify-sn sn-gold-gatherer-percentage c:- 25)  
+     (disable-self)
+)
+
 (defrule
     (up-research-status c: imperial-age == research-pending)
 =>
@@ -961,7 +980,8 @@
     (set-difficulty-parameter ability-to-dodge-missiles 0)
 	(set-difficulty-parameter ability-to-maintain-distance 0)
     (set-strategic-number sn-allow-civilian-defense 2)   
-    (set-strategic-number sn-defense-distance 20)     
+    (set-strategic-number sn-defense-distance 20)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)         
     (disable-self)
 )
 
@@ -2796,7 +2816,7 @@
     )
     (can-build town-center)    
 =>
-    (set-strategic-number sn-town-center-placement mining-camp)
+    (set-strategic-number sn-town-center-placement 0)
     (chat-local-to-self "Trying To Build Town Center 2") 
     (build town-center)
 )
@@ -3831,7 +3851,7 @@
 (defrule(can-train monk)=>(train monk)(disable-self))
 
 (defrule
-    (unit-type-count-total monk-set g:< gl-monkQty)
+    (unit-type-count-total monk g:< gl-monkQty)
     (not(hold-relics))(not(enemy-buildings-in-town))
     (can-train monk)    
 =>
@@ -4112,8 +4132,8 @@
 
 (defrule
     (current-age == castle-age)(gold-amount > 300)
-	(unit-type-count-total battering-ram-line < 3)
-    (or(enemy-buildings-in-town)(military-population > 20))
+	(unit-type-count-total battering-ram-line g:< gl-ramQtyLow)
+    (or(enemy-buildings-in-town)(military-population > 30))
     (military-population > 20)
     (not(civ-selected gothic))
     (can-train battering-ram-line)
@@ -4123,7 +4143,7 @@
 
 (defrule
     (current-age == imperial-age)
-	(unit-type-count-total battering-ram-line < 2)
+	(unit-type-count-total battering-ram-line g:< gl-ramQtyLow)
     (not(civ-selected gothic))
     (not(civ-selected vietnamese)) 
     (military-population > 25)    
@@ -4134,7 +4154,7 @@
 
 (defrule
     (current-age == imperial-age)
-	(unit-type-count-total battering-ram-line < 6)
+	(unit-type-count-total battering-ram-line g:< gl-ramQtyMedium)
         (military-population > 50)
     (gold-amount > 200)
 	(can-train battering-ram-line)(not(civ-selected vietnamese))(not(civ-selected portuguese))
@@ -4151,6 +4171,7 @@
     (current-age == castle-age)
     (can-train scorpion-line)
     (unit-type-count-total scorpion-line g:< gl-scorpionQty)
+    (military-population > 45)
     (or
       (civ-selected khmer)
       (civ-selected chinese)  
@@ -4412,8 +4433,9 @@
 (defrule  
     (current-age == castle-age)
     (up-compare-goal gl-dudeHasSpearmen == 0)
+    (unit-type-count-total monk > 4)    
     (not(civ-selected khmer))
-    (unit-type-count-total battle-elephant-line < gl-knightsQtyLow)
+    (unit-type-count-total battle-elephant-line g:< gl-knightsQtyLow)
     (can-train battle-elephant-line)        
 =>
     (train battle-elephant-line)
@@ -4428,13 +4450,7 @@
 )
 
 ; SCOUTS
-(defrule
-    (current-age < imperial-age)
-    (unit-type-count-total scout-cavalry-line < 2)
-    (can-train scout-cavalry-line) 
-=>
-    (train scout-cavalry-line)
-)
+
 
 (defrule
 	(current-age == feudal-age)
@@ -4444,10 +4460,12 @@
     (not(civ-selected celtic))
     (not(civ-selected japanese))
     (not(civ-selected portuguese))
+    (up-compare-goal gl-totalSoldiersCreated g:< gl-maximumSoldiersFeudal)    
 	(unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
 	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
+    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
 )
 
 (defrule
@@ -4556,7 +4574,22 @@
 
 ; ARCHERY RANGE
 ; ARCHER
+; 2 UNITS
+(defrule
+    (current-age == feudal-age) ;Cav archer not available
+    (or(gold-amount > 245)(food-amount < 100))          
+    (can-train archer-line)
+=>
+    (train archer-line)(disable-self)
+)
 
+(defrule
+    (current-age == feudal-age) ;Cav archer not available
+    (or(gold-amount > 245)(food-amount < 100))          
+    (can-train archer-line)
+=>
+    (train archer-line)(disable-self)
+)
 
 (defrule
     (current-age == feudal-age) ;Cav archer not available
@@ -4717,7 +4750,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 135)    
     (building-type-count-total monastery > 0)
-    (not(can-train genitour))        
+    (not(can-train genitour))       
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyLow) 
     (can-train skirmisher-line) 
 =>
@@ -4859,6 +4892,34 @@
 
 ; SPEARMEN
 ; SPEARMEN FEUDAL AGE
+(defrule
+    (current-age == feudal-age)
+    (or
+        (wood-amount >= 275) ;not optimized for civs with cheaper TC
+        (building-type-count town-center > 0)
+    )    
+    (wood-amount >= 125)
+    (can-train spearman-line)
+=>
+    (train spearman-line)
+    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+    (disable-self)
+)
+
+(defrule
+    (current-age == feudal-age)
+    (or
+        (wood-amount >= 275) ;not optimized for civs with cheaper TC
+        (building-type-count town-center > 0)
+    )    
+    (wood-amount >= 125)
+    (can-train spearman-line)
+=>
+    (train spearman-line)
+    (up-modify-goal gl-totalSoldiersCreated g:+ 1)
+    (disable-self)
+)
+
 (defrule
     (current-age == feudal-age)
     (or
