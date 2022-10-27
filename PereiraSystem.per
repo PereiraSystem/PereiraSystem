@@ -789,9 +789,6 @@
     (civ-selected poles)
     (game-time > 420)
 =>  
-    (set-strategic-number sn-maximum-hunt-drop-distance 16)
-    (set-strategic-number sn-maximum-food-drop-distance 9)
-    (set-strategic-number sn-maximum-wood-drop-distance 9)
     (set-strategic-number sn-maximum-gold-drop-distance 14)
     (set-strategic-number sn-maximum-stone-drop-distance 14)
     (chat-to-player my-player-number "Gold and Stone mining avaiable")    
@@ -802,11 +799,7 @@
     (current-age == dark-age)
     (game-time > 540)
 =>  
-    (set-strategic-number sn-maximum-hunt-drop-distance 16)
-    (set-strategic-number sn-maximum-food-drop-distance 9)
-    (set-strategic-number sn-maximum-wood-drop-distance 9)
     (set-strategic-number sn-maximum-gold-drop-distance 14)
-    (set-strategic-number sn-maximum-stone-drop-distance 0)
     (chat-to-player my-player-number "Let´s Get Some Gold")
     (disable-self)
 )
@@ -826,7 +819,7 @@
     (current-age == feudal-age)
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
-    (set-strategic-number sn-maximum-food-drop-distance 5) ;to make them use mills
+    (set-strategic-number sn-maximum-food-drop-distance 6) ;to make them use mills
     (set-strategic-number sn-maximum-stone-drop-distance 0)
     (set-strategic-number sn-food-gatherer-percentage 50)
     (set-strategic-number sn-wood-gatherer-percentage 40)
@@ -2879,7 +2872,6 @@
     (can-build mill)
 =>
     (build mill)
-    (set-strategic-number sn-maximum-food-drop-distance 9)
     (chat-local-to-self "Trying To Build Mill 1 (Forced - Feudal)")
 )
 
@@ -2966,7 +2958,7 @@
         (building-type-count siege-workshop > 0)
     )
 	(building-type-count-total farm < 20)
-    (idle-farm-count < 1)    
+    (idle-farm-count < 3)    
 	(can-build farm)
 =>
 	(build farm)
@@ -3844,11 +3836,7 @@
 
 ; MILITARY UNITS
 ; MONASTERY  
-(defrule(can-train monk)=>(train monk)(disable-self))
-(defrule(can-train monk)=>(train monk)(disable-self))
-(defrule(can-train monk)=>(train monk)(disable-self))
-(defrule(can-train monk)=>(train monk)(disable-self))
-(defrule(can-train monk)=>(train monk)(disable-self))
+
 
 (defrule
     (unit-type-count-total monk g:< gl-monkQty)
