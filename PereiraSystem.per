@@ -689,7 +689,8 @@
     (set-strategic-number sn-minimum-town-size 0)
     (set-strategic-number sn-maximum-town-size 8)
     (set-strategic-number sn-mining-camp-max-distance 24)
-    (set-strategic-number sn-lumber-camp-max-distance 16)      
+    (set-strategic-number sn-lumber-camp-max-distance 16)
+    (set-strategic-number sn-town-center-placement lumber-camp)          
     (disable-self)
 )
 
@@ -2625,15 +2626,14 @@
 )
 
 (defrule
-    (unit-type-count-total monk-set g:>= gl-monkQty)
+    (unit-type-count-total monk > 4)
     (can-research ri-fervor)
 =>
     (research ri-fervor )
 )
 
 (defrule
-    (unit-type-count-total monk g:>= gl-monkQty)
-	(research-completed ri-fervor)
+    (unit-type-count-total monk > 4)
     (can-research ri-sanctity)
 =>
     (research ri-sanctity)
@@ -2843,7 +2843,6 @@
     )
     (can-build town-center)    
 =>
-    ;(set-strategic-number sn-town-center-placement lumber-camp)
     (chat-local-to-self "Trying To Build Town Center 2") 
     (build town-center)
 )
