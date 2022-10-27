@@ -459,16 +459,9 @@
     (up-delete-idle-units idle-type-villager)
 )
 
-(defrule(true)=>(enable-timer 20 2700)(disable-self)) 
+(defrule(true)=>(enable-timer 20 3600)(disable-self)) 
 (defrule
-        (timer-triggered 20)
-        (and
-            (food-amount > 5000)
-            (and
-                (gold-amount > 1900)
-                (wood-amount > 5000)                
-            )
-        )
+    (timer-triggered 20)
     (current-age == imperial-age)
 =>
 	(disable-timer 20)
@@ -510,7 +503,7 @@
     (building-type-count lumber-camp > 1)
 =>
     (attack-now)
-    (chat-to-player my-player-number "ATTACK!")     
+    (chat-to-player my-player-number "FEUDAL AGE ATTACK!")     
 )
 
  (defrule
@@ -522,7 +515,7 @@
     )
 =>
     (attack-now)
-    (chat-to-player my-player-number "ATTACK!")     
+    (chat-to-player my-player-number "CASTLE AGE ATTACK!")     
 ) 
 
 (defrule
@@ -534,6 +527,14 @@
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
     (chat-to-player my-player-number "WE ARE RICH, TIME TO ATTACK!")    
+)
+
+(defrule
+    (military-population > 110)
+=>
+    (set-strategic-number sn-enemy-sighted-response-distance 255)    
+    (attack-now)(set-strategic-number sn-number-attack-groups 1)
+    (chat-to-player my-player-number "WE ARE TOO MANY HERE, TIME TO ATTACK!")    
 )
 
 ; 2. STRATEGIC NUMBERS ==================
@@ -2344,7 +2345,10 @@
 ; COMMON
 (defrule
  	(research-completed ri-hand-cart)
- 	(research-completed ri-two-man-saw)
+ 	(or
+        (research-completed ri-two-man-saw)
+        (up-research-status c: ri-two-man-saw == research-unavailable)
+    )    
     (can-research ri-thumb-ring)
 =>
     (research ri-thumb-ring)
@@ -2378,6 +2382,7 @@
 (defrule
     (research-completed ri-hand-cart)
     (unit-type-count-total skirmisher-line > 1)
+    (unit-type-count-total genitour-line == 0)     
     (can-research ri-elite-skirmisher)    
 =>
     (research ri-elite-skirmisher)
@@ -2511,7 +2516,7 @@
     (unit-type-count-total cavalry-class > 2)
     (can-research ri-chain-barding)
 =>
-    (research ri-chain-barding)
+    (research ri-chain-bETarding)
 )
 
 (defrule
@@ -4765,16 +4770,6 @@
 
 ; SKIRMISHERS AND GENITOURS
 ; GENITOUR
-(defrule
-    (current-age == feudal-age)
-    (up-compare-goal gl-dudeHasArchers == 1)
-    (or(wood-amount > 275)(building-type-count town-center > 0))
-    (unit-type-count-total genitour-line g:< gl-skirmisherQtyLow)     
-    (can-train genitour-line)      
-=>
-    (train genitour-line)
-)
-
 (defrule
     (current-age == castle-age)
     (up-compare-goal gl-dudeHasArchers == 1)    
