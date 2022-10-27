@@ -898,7 +898,8 @@
     (set-strategic-number sn-food-gatherer-percentage 63)
     (set-strategic-number sn-wood-gatherer-percentage 16)
     (set-strategic-number sn-gold-gatherer-percentage 15)
-    (set-strategic-number sn-stone-gatherer-percentage 6)    
+    (set-strategic-number sn-stone-gatherer-percentage 6)
+    (set-strategic-number sn-maximum-stone-drop-distance 14)        
     (disable-self)
 )
 
@@ -926,7 +927,8 @@
     (set-strategic-number sn-food-gatherer-percentage 61)
     (set-strategic-number sn-wood-gatherer-percentage 17)
     (set-strategic-number sn-gold-gatherer-percentage 13)
-    (set-strategic-number sn-stone-gatherer-percentage 9)   
+    (set-strategic-number sn-stone-gatherer-percentage 9)
+    (set-strategic-number sn-maximum-stone-drop-distance 9)       
     (disable-self)
 )
 
@@ -1862,7 +1864,7 @@
     (can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
-    (chat-local-to-self  "CABALLERÍA (MENOS PALADINES) PRODUCIDA 100% MÁS RÁPIDO!")  
+    (chat-local-to-self "CAVALRY TRAINS FASTER!")  
 )
 
 (defrule
@@ -1870,7 +1872,7 @@
     (can-research my-unique-research)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "ALIADOS TIENEN 10 MERCENARIOS GRATIS EN CASTILLO!")  
+    (chat-to-player my-player-number "5 MERCENARIES IN CASTLES!")  
 )
 ; LITHUANIANS
 (defrule
