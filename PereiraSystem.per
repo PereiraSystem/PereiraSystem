@@ -856,7 +856,7 @@
 
 ; DROP DISTANCE CASTLE AGE
 (defrule 
-    (current-age == castle-age)
+    (up-research-status c: castle-age == research-pending)
 =>  
     (set-strategic-number sn-enable-boar-hunting 0); no more hunting
     (set-strategic-number sn-minimum-number-hunters 0)
@@ -4070,7 +4070,10 @@
     (current-age == feudal-age)
     (town-under-attack)
     (unit-type-count-total mangonel-line < 1)
-   
+    (or    
+        (unit-type-count-total monk > 4)
+        (hold-relics)
+    )
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
@@ -4081,6 +4084,10 @@
     (building-type-count town-center > 0)     
     (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
     (up-compare-goal gl-dudeHasCavalry == 0)
+    (or    
+        (unit-type-count-total monk > 4)
+        (hold-relics)
+    )    
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
@@ -4629,14 +4636,7 @@
 
 ; ARCHERY RANGE
 ; ARCHER
-; 2 UNITS
-(defrule
-    (current-age == feudal-age) ;Cav archer not available
-    (or(gold-amount > 245)(food-amount < 100))          
-    (can-train archer-line)
-=>
-    (train archer-line)(disable-self)
-)
+
 
 (defrule
     (current-age == feudal-age) ;Cav archer not available
