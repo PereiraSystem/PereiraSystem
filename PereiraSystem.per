@@ -861,7 +861,7 @@
     (set-strategic-number sn-enable-boar-hunting 0); no more hunting
     (set-strategic-number sn-minimum-number-hunters 0)
     (set-strategic-number sn-maximum-hunt-drop-distance 0)
-    (set-strategic-number sn-maximum-wood-drop-distance 11) 
+    (set-strategic-number sn-maximum-wood-drop-distance 8) 
     (set-strategic-number sn-maximum-gold-drop-distance 9)    
     (up-assign-builders c: house c:+ 2)
     (set-strategic-number sn-food-gatherer-percentage 64)
@@ -3058,7 +3058,7 @@
     )
     (resource-found wood)
 
-    (dropsite-min-distance wood > 4)
+    (dropsite-min-distance wood > 3)
     (can-build lumber-camp)    
 =>  
     (up-modify-sn sn-camp-max-distance c:+ 8)  
@@ -3075,7 +3075,7 @@
     )
     (can-build lumber-camp)
     (resource-found wood)
-    (dropsite-min-distance wood > 4)
+    (dropsite-min-distance wood > 3)
 =>
     (chat-local-to-self "Trying To Build Lumber Camp 3")    
     (build lumber-camp)     
