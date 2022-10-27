@@ -29,7 +29,7 @@
 (defconst gl-dudeHasSiegeWeapons 60)
 
 (defconst gl-maximumSoldiersFeudal 80)
-(defconst gl-totalSoldiersCreated 89)
+(defconst gl-totalSoldiersCreatedThisAge 89)
 (defconst gl-weMovedPlace 90)
 
 (defconst gl-maxHousesBeforeDeleting 101)    
@@ -241,7 +241,14 @@
     (set-goal gl-dudeHasSkirmishers 0)
     (set-goal gl-weMovedPlace 0)  
     (set-goal gl-maximumSoldiersFeudal 30)
-    (set-goal gl-totalSoldiersCreated 0)          
+    (set-goal gl-totalSoldiersCreatedThisAge 0)          
+    (disable-self)	    
+)
+
+(defrule
+    (current-age == castle-age)
+=>    
+    (set-goal gl-totalSoldiersCreatedThisAge 0)          
     (disable-self)	    
 )
 
@@ -423,7 +430,7 @@
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
-    (up-chat-data-to-self "Inf / Cav created: %d" g: gl-totalSoldiersCreated)    
+    (up-chat-data-to-self "Inf / Cav created: %d" g: gl-totalSoldiersCreatedThisAge)    
 )
 
 ; TIMER 12 MILITARY REPORT 2 NAVAL
@@ -4459,14 +4466,14 @@
 	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
-    (up-modify-goal gl-totalSoldiersCreated c:+ 1)(disable-self)
+    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)(disable-self)
 )
 
 (defrule
 	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
-    (up-modify-goal gl-totalSoldiersCreated c:+ 1)(disable-self)
+    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)(disable-self)
 )
 
 ; FEUDAL AGE SCOUTS
@@ -4478,12 +4485,12 @@
     (not(civ-selected celtic))
     (not(civ-selected japanese))
     (not(civ-selected portuguese))
-    (up-compare-goal gl-totalSoldiersCreated g:< gl-maximumSoldiersFeudal)    
+    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)    
 	(unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
 	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
-    (up-modify-goal gl-totalSoldiersCreated c:+ 1)
+    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
 
 ; CASTLE AGE SCOUTS
@@ -4875,12 +4882,12 @@
     (not(civ-selected magyar))(not(civ-selected mongol))  
     (not(civ-selected turkish))
     (not(civ-selected lithuanians))         
-    (up-compare-goal gl-totalSoldiersCreated g:< gl-maximumSoldiersFeudal)    
+    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)    
     (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
     (can-train militiaman-line)
 =>
     (train militiaman-line)
-    (up-modify-goal gl-totalSoldiersCreated c:+ 1)
+    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
 
 (defrule
@@ -4967,7 +4974,7 @@
     (can-train spearman-line)
 =>
     (train spearman-line)
-    (up-modify-goal gl-totalSoldiersCreated c:+ 1)
+    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
     (disable-self)
 )
 
@@ -4981,7 +4988,7 @@
     (can-train spearman-line)
 =>
     (train spearman-line)
-    (up-modify-goal gl-totalSoldiersCreated c:+ 1)
+    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
     (disable-self)
 )
 
@@ -4998,12 +5005,12 @@
         )
     )
     (up-compare-goal gl-dudeHasCavalry == 1)
-    (up-compare-goal gl-totalSoldiersCreated g:< gl-maximumSoldiersFeudal)
+    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)
     (unit-type-count-total spearman-line g:< gl-spearmenQtyLow)
     (can-train spearman-line)
 =>
     (train spearman-line)
-    (up-modify-goal gl-totalSoldiersCreated c:+ 1)
+    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
 
 (defrule
