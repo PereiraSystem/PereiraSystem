@@ -899,7 +899,7 @@
     (set-strategic-number sn-wood-gatherer-percentage 16)
     (set-strategic-number sn-gold-gatherer-percentage 15)
     (set-strategic-number sn-stone-gatherer-percentage 6)
-    (set-strategic-number sn-maximum-stone-drop-distance 14)        
+       
     (disable-self)
 )
 
@@ -925,10 +925,10 @@
     (up-research-status c: imperial-age == research-pending)
 =>
     (set-strategic-number sn-food-gatherer-percentage 61)
-    (set-strategic-number sn-wood-gatherer-percentage 17)
+    (set-strategic-number sn-wood-gatherer-percentage 20)
     (set-strategic-number sn-gold-gatherer-percentage 13)
-    (set-strategic-number sn-stone-gatherer-percentage 9)
-    (set-strategic-number sn-maximum-stone-drop-distance 9)       
+    (set-strategic-number sn-stone-gatherer-percentage 6)
+       
     (disable-self)
 )
 
@@ -952,6 +952,17 @@
     (set-strategic-number sn-stone-gatherer-percentage 6)
     (chat-local-to-self "Imperial Age With All Relics - Sending Less Villagers For Gold")     
     (disable-self)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (building-type-count market > 0)    
+    (or
+        (building-type-count town-center > 1)
+        (building-type-count barracks > 1)
+    )
+=>
+    (set-strategic-number sn-maximum-stone-drop-distance 9)
 )
 
 (defrule
@@ -3659,7 +3670,9 @@
 (defrule
     (military-population > 5)
 	(or(current-age == imperial-age)(enemy-buildings-in-town))
-	(building-type-count-total archery-range < 2)
+    (building-type-count-total market > 0)
+    (building-type-count-total town-center > 1)
+	(building-type-count-total archery-range == 1)
     (not(civ-selected gothic))
     (can-build archery-range)
 =>
@@ -3670,8 +3683,9 @@
 
 (defrule
 	(current-age == imperial-age)(food-amount > 400)
-	(building-type-count-total archery-range < 3)
+	(building-type-count-total archery-range == 2)
     (building-type-count-total university > 0)
+    
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
@@ -3681,6 +3695,7 @@
 
 (defrule
 	(current-age == imperial-age)(building-type-count-total archery-range < 8)
+    (building-type-count-total archery-range >= 3)
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 2000)
 =>
@@ -4557,8 +4572,7 @@
 ; CAMEL 
 (defrule
     (current-age == castle-age)
-    (or(up-compare-goal gl-dudeHasScouts == 1)
-    (up-compare-goal gl-dudeHasKnights == 1))   
+    (up-compare-goal gl-dudeHasCavalry == 1)
 	(unit-type-count-total camel-line g:< gl-camelQtyLow)
 	(can-train camel-line)    
 =>
