@@ -3707,6 +3707,7 @@
 (defrule
     (building-type-count-total siege-workshop == 0)
     (building-type-count town-center > 0)
+    (building-type-count monastery > 0)    
 	(not(civ-selected gothic))
     (can-build siege-workshop)    
 =>
@@ -4572,7 +4573,8 @@
 ; CAMEL 
 (defrule
     (current-age == castle-age)
-    (up-compare-goal gl-dudeHasCavalry == 1)
+    ;(up-compare-goal gl-dudeHasCavalry == 1)
+	(unit-type-count-total monk > 4)    
 	(unit-type-count-total camel-line g:< gl-camelQtyLow)
 	(can-train camel-line)    
 =>
@@ -4581,8 +4583,7 @@
 
 (defrule
     (current-age == castle-age)
-    (or(up-compare-goal gl-dudeHasScouts == 1)
-    (up-compare-goal gl-dudeHasKnights == 1))
+    (up-compare-goal gl-dudeHasCavalry == 1)
     (up-compare-goal gl-dudeHasSpearmen == 0)       
 	(unit-type-count-total camel-line g:< gl-camelQtyMedium)
 	(can-train camel-line)    
@@ -5501,8 +5502,10 @@
     (set-goal gl-dudeHasMilitia 0)    
 )
 
-
+(defrule(civ-selected 1)=>(up-change-name "PereiraSystem BRIT"))
+(defrule(civ-selected 2)=>(up-change-name "PereiraSystem BRIT"))
 (defrule(civ-selected bengalis)=>(up-change-name "PereiraSystem BENG"))
 (defrule(civ-selected celtic)=>(up-change-name "PereiraSystem CELT"))
 (defrule(civ-selected chinese)=>(up-change-name "PereiraSystem CHIN"))
 (defrule(civ-selected dravidians)=>(up-change-name "PereiraSystem DRAV"))
+(defrule(civ-selected indian)=>(up-change-name "PereiraSystem HIND"))
