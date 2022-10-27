@@ -468,6 +468,7 @@
 ; ATTACK!!!
 
 (defrule
+    (current-age == feudal-age)
     (military-population >= 6)
     (or
         (or
@@ -499,7 +500,13 @@
     (chat-to-player my-player-number "ATTACK!")     
 )
 
-  
+ (defrule
+    (current-age == castle-age)
+    (military-population >= 60)
+=>
+    (attack-now)
+    (chat-to-player my-player-number "ATTACK!")     
+) 
 
 (defrule
     (food-amount > 5000)
@@ -862,6 +869,22 @@
 
 (defrule 
     (current-age == castle-age)
+    (building-type-count monastery > 0)
+    (building-type-count siege-workshop > 0)    
+    (or
+        (building-type-count university > 0)
+        (building-type-count town-center > 1)         
+    )
+=>  
+    (set-strategic-number sn-food-gatherer-percentage 64)
+    (set-strategic-number sn-wood-gatherer-percentage 17)
+    (set-strategic-number sn-gold-gatherer-percentage 16)
+    (set-strategic-number sn-stone-gatherer-percentage 3)    
+    (disable-self)
+)
+
+(defrule 
+    (current-age == castle-age)
     (wood-amount > 1200)
 =>  
     (up-modify-sn sn-food-gatherer-percentage c:+ 25)
@@ -884,8 +907,7 @@
     (set-strategic-number sn-food-gatherer-percentage 61)
     (set-strategic-number sn-wood-gatherer-percentage 17)
     (set-strategic-number sn-gold-gatherer-percentage 13)
-    (set-strategic-number sn-stone-gatherer-percentage 0)
-    (set-strategic-number sn-maximum-stone-drop-distance 9)    
+    (set-strategic-number sn-stone-gatherer-percentage 9)   
     (disable-self)
 )
 
@@ -4486,11 +4508,13 @@
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasSkirmishers == 1))    
     (up-compare-goal gl-dudeHasSpearmen == 0)
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)    
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
 )
 
+; IMPERIAL AGE SCOUTS
 (defrule
 	(current-age == imperial-age)(food-amount > 1500)(gold-amount < 1400)
     (research-completed ri-hand-cart)(research-completed ri-bow-saw)
@@ -4634,7 +4658,7 @@
 
 (defrule
     (current-age == castle-age) ;Cav archer available
-    (building-type-count town-center > 1) 
+    (building-type-count town-center > 0) 
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))    
     (or(gold-amount > 845)(food-amount < 100))
@@ -4646,7 +4670,7 @@
     (wood-amount > 145)    
 	(not(civ-selected gothic))(not(civ-selected mongol))
     (not(civ-selected frankish))(not(civ-selected cumans))
-    (not(civ-selected tatars))(not(civ-selected vietnamese))          
+    (not(civ-selected tatars))          
     (not(civ-selected berbers))    
 	(unit-type-count-total archer-line g:< gl-archerQty)    
     (can-train archer-line)     
