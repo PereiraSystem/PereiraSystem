@@ -438,7 +438,7 @@
 (defrule
 	(timer-triggered 15)
     (current-age == imperial-age)(building-type-count town-center > 0)
-    (civilian-population > 70)
+    (civilian-population > 15)
 =>
 	(chat-local-to-self "DELETING IDLE VILLAGERS!")
 	(disable-timer 15)
@@ -974,7 +974,7 @@
 )
 
 (defrule
-    (gold-amount > 1300)(food-amount < 500)
+    (gold-amount > 1600)(food-amount < 500)
 =>
     (up-modify-sn sn-gold-gatherer-percentage c: -16)
     (up-modify-sn sn-food-gatherer-percentage c: +16)    
@@ -983,7 +983,7 @@
 )
 
 (defrule
-    (gold-amount > 1300)(food-amount < 500)
+    (gold-amount > 1600)(food-amount < 500)
 =>
     (up-modify-sn sn-gold-gatherer-percentage c: -16)
     (up-modify-sn sn-wood-gatherer-percentage c: +16)    
