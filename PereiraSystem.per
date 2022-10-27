@@ -4425,15 +4425,18 @@
 
 ; STABLE
 ; STEPPE LANCER
-(defrule ;steppe lancer
-    (unit-type-count-total 1370 g:< gl-knightsQtyMedium)
-    (or
-        (current-age == imperial-age)
-        (and(food-amount > 1071)(gold-amount > 841))
+(defrule
+    (current-age == castle-age)
+    (or(unit-type-count-total monk > 4)(hold-relics))
+    (unit-type-count-total steppe-lancer-line g:< gl-knightsQtyLow)
+    (not
+        (and(up-compare-goal gl-dudeHasCavalry == 1)
+            (can-train camel-line))
     )
-	(can-train 1370)    
+    (not(can-train steppe-lancer-line))    
+    (can-train steppe-lancer-line)
 =>
-    (train 1370)
+    (train steppe-lancer-line)
 )
 
 (defrule ;steppe lancer
@@ -4591,6 +4594,7 @@
         (and(up-compare-goal gl-dudeHasCavalry == 1)
             (can-train camel-line))
     )
+    (not(can-train steppe-lancer-line))    
     (can-train knight-line)
 =>
     (train knight-line)
