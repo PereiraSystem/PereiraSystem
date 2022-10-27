@@ -795,6 +795,13 @@
 )
 
 (defrule 
+    (current-age == dark-age)(civ-selected mongol)
+=>  
+    (set-strategic-number sn-maximum-hunt-drop-distance 26)
+    (disable-self)
+)
+
+(defrule 
     (current-age == dark-age)
     ;(or(civ-selected incan)(or(civ-selected mayan)(civ-selected aztec)))
     (not(civ-selected poles))
@@ -2391,6 +2398,7 @@
  	(research-completed ri-hand-cart)
  	(research-completed ri-bow-saw)    
     (unit-type-count-total archer-line > 1)
+    (not(civ-selected mongol)) 
     (can-research ri-crossbow)    
 =>
     (research ri-crossbow)
@@ -4475,10 +4483,6 @@
     (current-age == castle-age)
     (or(unit-type-count-total monk > 4)(hold-relics))
     (unit-type-count-total steppe-lancer-line g:< gl-knightsQtyLow)
-    (not
-        (and(up-compare-goal gl-dudeHasCavalry == 1)
-            (can-train camel-line))
-    )
     (not(can-train steppe-lancer-line))    
     (can-train steppe-lancer-line)
 =>
@@ -4539,7 +4543,7 @@
 
 ; FEUDAL AGE SCOUTS
 (defrule
-	(current-age == feudal-age)
+	(current-age == feudal-age) ; just cause they are good
     (or(civ-selected mongol)(civ-selected turkish)) 
     (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)    
 	(unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
@@ -4550,7 +4554,7 @@
 )
 
 (defrule
-	(current-age == feudal-age)
+	(current-age == feudal-age) ; counter to archers
     (town-under-attack)
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasSkirmishers == 1))
