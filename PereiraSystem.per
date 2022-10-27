@@ -1107,6 +1107,7 @@
 (defrule
     (can-research ri-town-watch)
     (food-amount > 1200)
+    (current-age == imperial-age)
 =>
     (research ri-town-watch )
 )
