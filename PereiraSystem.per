@@ -417,11 +417,12 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 120)           
+    (enable-timer 11 60)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
-    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
+    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)gl-totalSoldiersCreated
+    (up-chat-data-to-self "Inf / Cav created: %d" g: gl-totalSoldiersCreated)    
 )
 
 ; TIMER 12 MILITARY REPORT 2 NAVAL
