@@ -503,6 +503,10 @@
  (defrule
     (current-age == castle-age)
     (military-population >= 60)
+    (or
+        (unit-type-count mangonel-line > 10)
+        (unit-type-count battering-ram-line > 10)        
+    )
 =>
     (attack-now)
     (chat-to-player my-player-number "ATTACK!")     
@@ -667,7 +671,7 @@
     (up-assign-builders c: guard-tower c:+ 1)          
     (up-assign-builders c: keep c:+ 2)
     (up-assign-builders c: donjon c:+ 2)
-    (up-assign-builders c: castle c:+ 3)
+    (up-assign-builders c: castle c:+ 6)
     (up-assign-builders c: town-center c:+ 8)
     (up-assign-builders c: town-center-foundation c:+ 8)    
     (up-assign-builders c: palisade-wall c:+ 3)     
@@ -876,10 +880,10 @@
         (building-type-count town-center > 1)         
     )
 =>  
-    (set-strategic-number sn-food-gatherer-percentage 64)
-    (set-strategic-number sn-wood-gatherer-percentage 17)
-    (set-strategic-number sn-gold-gatherer-percentage 16)
-    (set-strategic-number sn-stone-gatherer-percentage 3)    
+    (set-strategic-number sn-food-gatherer-percentage 63)
+    (set-strategic-number sn-wood-gatherer-percentage 16)
+    (set-strategic-number sn-gold-gatherer-percentage 15)
+    (set-strategic-number sn-stone-gatherer-percentage 6)    
     (disable-self)
 )
 
@@ -2515,6 +2519,7 @@
 
 (defrule
     (can-research ri-bodkin-arrow)
+    (or(unit-type-count monk > 4)(current-age == imperial-age))
 =>
     (research ri-bodkin-arrow)
 )
@@ -3907,6 +3912,7 @@
         (unit-type-count-total trebuchet g:< gl-trebuchetsQtyLow)
         (unit-type-count-total 954 g:< gl-trebuchetsQtyLow)
     )
+    (military-population > 25)
     (not(civ-selected gothic)) 
     (can-train trebuchet)   
 =>
@@ -4494,21 +4500,16 @@
 )
 
 ; CASTLE AGE SCOUTS
-(defrule
-	(current-age == castle-age)
-    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)
-	(can-train scout-cavalry-line)
-=>
-    (train scout-cavalry-line)
-)
+
 
 (defrule
 	(current-age == castle-age)
     (town-under-attack)
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasSkirmishers == 1))    
-    (up-compare-goal gl-dudeHasSpearmen == 0)
-    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)    
+    ;(up-compare-goal gl-dudeHasSpearmen == 0)
+    (not(civ-selected japanese))
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow))    
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
@@ -4567,7 +4568,7 @@
 
 (defrule
     (current-age == castle-age)(gold-amount > 220)
-    (unit-type-count-total knight-line g:< gl-knightsQtyMedium)
+    (unit-type-count-total knight-line g:< gl-knightsQtyLow)
     (up-compare-goal gl-dudeHasSpearmen == 0)
     (or
         (up-compare-goal gl-dudeHasArchers == 1)
