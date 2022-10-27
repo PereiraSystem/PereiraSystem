@@ -2150,6 +2150,7 @@
     (research-completed ri-bow-saw)
     (research-completed ri-heavy-plow)
     (can-research ri-squires)
+    (or(not(civ-selected mongol))(current-age == imperial-age))
 =>
     (research ri-squires)
 )
@@ -2215,6 +2216,7 @@
 (defrule
  	(unit-type-count-total militiaman-line > 0) 	
     (can-research ri-man-at-arms)
+    (or(not(civ-selected mongol))(current-age == imperial-age))    
 =>
     (research ri-man-at-arms)
 )
@@ -2421,7 +2423,8 @@
 (defrule
     (research-completed ri-hand-cart)
     (unit-type-count-total skirmisher-line > 1)
-    (unit-type-count-total genitour-line == 0)     
+    (unit-type-count-total genitour-line == 0)
+    (or(not(civ-selected mongol))(current-age == imperial-age))         
     (can-research ri-elite-skirmisher)    
 =>
     (research ri-elite-skirmisher)
