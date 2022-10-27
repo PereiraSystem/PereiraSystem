@@ -343,7 +343,7 @@
 	(disable-timer 2)
     (enable-timer 2 90)    
     (up-modify-goal gl-max-lumber-camps-qty c:+ 1) 
-    (up-chat-data-to-self "Lumber camps max qty increased = %d" g: gl-max-lumber-camps-qty)
+    ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: gl-max-lumber-camps-qty)
 )
 
 ; TIMER 3 INCREASES MINING CAMPS QUANTITY
@@ -4439,15 +4439,17 @@
     (train steppe-lancer-line)
 )
 
-(defrule ;steppe lancer
-    (unit-type-count-total 1372 g:< gl-knightsQtyMedium)
-    (or
-        (current-age == imperial-age)
-        (and(food-amount > 1070)(gold-amount > 840))
+(defrule
+    (current-age == imperial-age)
+    (unit-type-count-total steppe-lancer-line g:< gl-knightsQtyMedium)
+    (not
+        (and(up-compare-goal gl-dudeHasCavalry == 1)
+            (can-train camel-line))
     )
-	(can-train 1372)    
+    (not(can-train steppe-lancer-line))    
+    (can-train steppe-lancer-line)
 =>
-    (train 1372)
+    (train steppe-lancer-line)
 )
 
 ; ELEPHANTS
