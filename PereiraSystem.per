@@ -4117,13 +4117,15 @@
 =>
 	(train my-unique-unit-line)
 
-    (chat-local-to-self "Training Non Upgraded Unique Unit")
+    (up-chat-data-to-self "Training Non Upgraded Number %D" g: gl-nonUpgradedUniqueUnitsCreated)
+
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
 
 ; IMPERIAL AGE AFTER UPGRADE UU
 (defrule
-    (current-age == imperial-age)(research-completed my-unique-unit-upgrade)
+    (current-age == imperial-age)
+    (research-completed my-unique-unit-upgrade)
     (gold-amount > 250)
     (not(civ-selected ethiopian))(not(civ-selected gothic))
     (not(civ-selected berbers)) 
@@ -4160,7 +4162,7 @@
 =>
 	(train my-unique-unit-line)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
-    (up-chat-data-to-self "training non upgraded number %d" g: gl-nonUpgradedUniqueUnitsCreated)
+    (up-chat-data-to-self "Training Non Upgraded Number %D" g: gl-nonUpgradedUniqueUnitsCreated)
 )
 
 ; BRITON UU
