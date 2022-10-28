@@ -4141,7 +4141,7 @@
 
 ; MILITARY UNITS
 ; MONASTERY  
-
+; CASTLE AGE MONKS
 (defrule
     (current-age == castle-age)
     (and
@@ -4157,13 +4157,25 @@
 (defrule
     (current-age == castle-age)
     (or
-        (civ-selected bohemians)(civ-selected bohemians)
+        (civ-selected bohemians)(civ-selected byzantine)
     )
     (and
         (unit-type-count-total monk < 8)
         (unit-type-count-total 286 < 8)
     )
     (not(hold-relics))(not(enemy-buildings-in-town))
+    (can-train monk)    
+=>
+    (train monk)
+)
+
+;IMPERIAL AGE MONKS
+(defrule 
+    (current-age == imperial-age)
+    (or
+        (civ-selected bohemians)(civ-selected aztec)
+    )
+    (unit-type-count-total monk < 8)
     (can-train monk)    
 =>
     (train monk)
