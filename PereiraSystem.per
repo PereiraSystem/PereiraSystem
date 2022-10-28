@@ -5036,6 +5036,25 @@
 )
 
 ; SKIRMISHER
+(defrule
+    (current-age == feudal-age) 
+    (or(wood-amount > 275)(building-type-count town-center > 0))
+    (or(wood-amount > 135)(building-type-count lumber-camp > 0))
+    (not(can-train genitour))
+    (can-train skirmisher-line)       
+=>
+    (train skirmisher-line)(disable-self)
+)
+
+(defrule
+    (current-age == feudal-age) 
+    (or(wood-amount > 275)(building-type-count town-center > 0))
+    (or(wood-amount > 135)(building-type-count lumber-camp > 0))
+    (not(can-train genitour))
+    (can-train skirmisher-line)       
+=>
+    (train skirmisher-line)(disable-self)
+)
 
 (defrule
     (current-age == feudal-age)
