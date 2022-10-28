@@ -30,7 +30,9 @@
 
 (defconst gl-maximumSoldiersFeudal 80)
 (defconst gl-totalSoldiersCreatedThisAge 89)
-(defconst gl-weMovedPlace 90)
+(defconst gl-nonUpgradedUniqueUnitsCreated 90)
+
+(defconst gl-weMovedPlace 99)
 
 (defconst gl-maxHousesBeforeDeleting 101)    
 (defconst gl-maxHousesNeeded 102)
@@ -248,7 +250,8 @@
     (set-goal gl-dudeHasSkirmishers 0)
     (set-goal gl-weMovedPlace 0)  
     (set-goal gl-maximumSoldiersFeudal 30)
-    (set-goal gl-totalSoldiersCreatedThisAge 0)          
+    (set-goal gl-totalSoldiersCreatedThisAge 0)
+    (set-goal gl-nonUpgradedUniqueUnitsCreated 0)              
     (disable-self)	    
 )
 
@@ -4099,7 +4102,7 @@
     (train my-unique-unit-line)
 )
 
-; IMPERIAL AGE PRE UPGRADE UU
+; IMPERIAL AGE PRE UPGRADE UU 
 (defrule
 	(current-age == imperial-age)
     (not(research-completed my-unique-unit-upgrade))
@@ -4107,11 +4110,14 @@
     (not(civ-selected chinese))(not(civ-selected ethiopian))
     (not(civ-selected khmer))(not(civ-selected berbers))
     (not(civ-selected gothic))
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated g:< 10)
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
     (can-train my-unique-unit-line)    
 =>
 	(train my-unique-unit-line)
+
     (chat-local-to-self "Training Non Upgraded Unique Unit")
+    (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
 
 ; IMPERIAL AGE AFTER UPGRADE UU
@@ -4422,7 +4428,7 @@
 
 ; SIEGE ELEPHANT
 (defrule
-    (current-age == castle-age)(gold-amount > 300)
+    (current-age == castle-age)(food-amount > 400)(gold-amount > 300)
 	(unit-type-count-total armored-elephant-line g:< gl-ramQtyLow)
     (or(enemy-buildings-in-town)(military-population > 45))
     (military-population > 25)
@@ -5725,20 +5731,20 @@
 (defrule(civ-selected japanese)=>(up-change-name "PereiraSystem JAPN"))
 (defrule(civ-selected khmer)=>(up-change-name "PereiraSystem KHMR"))
 (defrule(civ-selected korean)=>(up-change-name "PereiraSystem KORE"))
-(defrule(civ-selected lithuanian)=>(up-change-name "PereiraSystem LITH"))
+(defrule(civ-selected lithuanians)=>(up-change-name "PereiraSystem LITH"))
 (defrule(civ-selected magyar)=>(up-change-name "PereiraSystem MAGY"))
 (defrule(civ-selected malay)=>(up-change-name "PereiraSystem MLAY"))
 (defrule(civ-selected malian)=>(up-change-name "PereiraSystem MALI"))
 (defrule(civ-selected mayan)=>(up-change-name "PereiraSystem MAYA"))
-(defrule(civ-selected mongols)=>(up-change-name "PereiraSystem MONG"))
+(defrule(civ-selected mongol)=>(up-change-name "PereiraSystem MONG"))
 (defrule(civ-selected persian)=>(up-change-name "PereiraSystem PERS"))
 (defrule(civ-selected poles)=>(up-change-name "PereiraSystem POLE"))
 (defrule(civ-selected portuguese)=>(up-change-name "PereiraSystem PORT"))
 (defrule(civ-selected saracen)=>(up-change-name "PereiraSystem SARR"))
-(defrule(civ-selected sicilian)=>(up-change-name "PereiraSystem SICI"))
+(defrule(civ-selected sicilians)=>(up-change-name "PereiraSystem SICI"))
 (defrule(civ-selected slavic)=>(up-change-name "PereiraSystem SLAV"))
 (defrule(civ-selected spanish)=>(up-change-name "PereiraSystem SPAN"))
-(defrule(civ-selected tatar)=>(up-change-name "PereiraSystem TATR"))
+(defrule(civ-selected tatars)=>(up-change-name "PereiraSystem TATR"))
 (defrule(civ-selected teutonic)=>(up-change-name "PereiraSystem TEUT"))
 (defrule(civ-selected turkish)=>(up-change-name "PereiraSystem TURK"))
 (defrule(civ-selected vietnamese)=>(up-change-name "PereiraSystem VIET"))
