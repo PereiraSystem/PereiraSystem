@@ -3471,15 +3471,16 @@
 )
 
 ; DOCK
-(defrule
-    (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+(defrule ; experimental strategy to move the city to the coast
+    ; can build dock doesnt really check the water
+    (can-build dock)
+    (not(up-research-status c: feudal-age == research-pending))
     (not(up-research-status c: ri-wheel-barrow == research-pending))
+    (current-age < castle-age)
     (wood-amount > 325)
     (building-type-count lumber-camp > 0)
     (or
-        
-            (civ-selected italian)
-        
+        (civ-selected italian)
         (or
             (civ-selected spanish)(civ-selected malay)
         )                
