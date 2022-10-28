@@ -3461,7 +3461,7 @@
     (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)    
     (or
         (building-type-count-total house > 10)
-        (civ-selected hun)
+        (or(civ-selected hun)(civ-selected bohemians))
     )
     (building-type-count-total university < 1)    
     (can-build university)
