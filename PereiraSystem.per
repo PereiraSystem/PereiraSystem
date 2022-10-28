@@ -1125,7 +1125,15 @@
 	(set-difficulty-parameter ability-to-maintain-distance 0)
     (set-strategic-number sn-allow-civilian-defense 2)   
     (set-strategic-number sn-defense-distance 20)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)         
+    (set-strategic-number sn-task-ungrouped-soldiers 0)         
+    (disable-self)
+)
+
+(defrule 
+    (military-population > 15)
+=>
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (chat-local-to-self "Soldiers Spread!")
     (disable-self)
 )
 
