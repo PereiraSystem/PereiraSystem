@@ -91,8 +91,9 @@
 (defconst gl-battleElephantQtyMedium 181)
 (defconst gl-battleElephantQtyHigh 182)
 ; priest constants
-(defconst gl-monkQty 390)
-(defconst gl-monkQtyHigh 391)
+(defconst gl-monkQtyLow 390)
+(defconst gl-monkQtyMedium 391)
+(defconst gl-monkQtyHigh 392)
 ; siege constants
 (defconst gl-ramQtyLow 400)
 (defconst gl-ramQtyMedium 401)
@@ -178,7 +179,8 @@
 (defrule
     (true)
 =>
-    (set-goal gl-monkQty 5)
+    (set-goal gl-monkQtyLow 5)
+    (set-goal gl-monkQtyMedium 8)
     (set-goal gl-monkQtyHigh 16)
 
     (set-goal gl-ramQtyLow 2)
@@ -4145,8 +4147,8 @@
 (defrule
     (current-age == castle-age)
     (and
-        (unit-type-count-total monk < 5)
-        (unit-type-count-total 286 < 5)
+    (unit-type-count-total monk g:< gl-monkQtyLow) 
+    (unit-type-count-total 286 g:< gl-monkQtyLow) 
     )
     (not(hold-relics))(not(enemy-buildings-in-town))
     (can-train monk)    
@@ -4160,8 +4162,8 @@
         (civ-selected bohemians)(civ-selected byzantine)
     )
     (and
-        (unit-type-count-total monk < 8)
-        (unit-type-count-total 286 < 8)
+    (unit-type-count-total monk g:< gl-monkQtyMedium) 
+    (unit-type-count-total 286 g:< gl-monkQtyMedium) 
     )
     (not(hold-relics))(not(enemy-buildings-in-town))
     (can-train monk)    
@@ -4173,9 +4175,9 @@
 (defrule 
     (current-age == imperial-age)
     (or
-        (civ-selected bohemians)(civ-selected aztec)
+        (civ-selected bohemians)(civ-selected bohemians)
     )
-    (unit-type-count-total monk < 8)
+    (unit-type-count-total monk g:< gl-monkQtyMedium) 
     (can-train monk)    
 =>
     (train monk)
@@ -4191,6 +4193,25 @@
         (or
             (civ-selected teutonic)
             (civ-selected saracen)
+        )     
+    )
+    (gold-amount > 400)
+    (unit-type-count-total monk g:< gl-monkQtyHigh) 
+    (can-train monk)
+=>
+    (train monk)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (or
+        (or
+            (civ-selected aztec)
+            (civ-selected aztec)
+        )
+        (or
+            (civ-selected aztec)
+            (civ-selected aztec)
         )     
     )
     (gold-amount > 400)
