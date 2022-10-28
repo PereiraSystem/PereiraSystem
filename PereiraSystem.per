@@ -4190,7 +4190,6 @@
 )
 
 ; UNIQUE UNIT
-
 ; CASTLE AGE DEFENSE UU
 (defrule
     (current-age == castle-age)
@@ -4202,17 +4201,30 @@
 )
 
 ; IMPERIAL AGE PRE UPGRADE UU 
-; if the upgrade costs same resource allow only 10
-; 
+; UNIQUE UNITS WHOSE UPGRADE COSTS SAME RESOURCE, MAKE ONLY A FEW 
+; MAGYAR DONT MAKE THEM UNTIL UPGRADE
 (defrule
-	(current-age == imperial-age)(gold-amount > 600)
+	(current-age == imperial-age)(gold-amount > 400)
     (not(research-completed my-unique-unit-upgrade))
-	(not(civ-selected korean))(not(civ-selected celtic))
-    (not(civ-selected chinese))(not(civ-selected ethiopian))
-    (not(civ-selected khmer))(not(civ-selected berbers))
-    (not(civ-selected gothic))(not(civ-selected bengalis))
-    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 10)
-    ;(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
+    (or
+        (or
+            (or
+                (civ-selected byzantine)(civ-selected celtic)
+            )
+            (or
+                (civ-selected gothic)(civ-selected japanese)
+            )
+        )    
+        (or
+            (or
+                (civ-selected persian)(civ-selected saracen)
+            )
+            (or
+                (civ-selected teutonic)(civ-selected turkish)
+            )
+        )            
+    )
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)    
     (can-train my-unique-unit-line)    
 =>
 	(train my-unique-unit-line)
@@ -4220,22 +4232,126 @@
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
 
-; if the upgrade costs different resource allow more
-(defrule
-	(current-age == imperial-age)(gold-amount > 600)
+(defrule 
+	(current-age == imperial-age)(gold-amount > 400)
     (not(research-completed my-unique-unit-upgrade))
-	(not(civ-selected korean))(not(civ-selected celtic))
-    (not(civ-selected chinese))(not(civ-selected ethiopian))
-    (not(civ-selected khmer))(not(civ-selected berbers))
-    (not(civ-selected gothic))(not(civ-selected bengalis))
-    (not(civ-selected bohemians))    
-    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 10)
-    ;(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
+    (or
+        (or
+            (or
+                (civ-selected viking)(civ-selected korean)
+            )
+            (or
+                (civ-selected spanish)(civ-selected incan)
+            )
+        )    
+        (or
+            (or
+                (civ-selected slavic)(civ-selected ethiopian)
+            )
+            (or
+                (civ-selected malian)(civ-selected khmer)
+            )
+        )            
+    )
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)    
     (can-train my-unique-unit-line)    
 =>
 	(train my-unique-unit-line)
     (up-chat-data-to-self "Training Non Upgraded Unique Unit Nº %d" g: gl-nonUpgradedUniqueUnitsCreated)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
+)
+
+(defrule 
+	(current-age == imperial-age)(gold-amount > 400)
+    (not(research-completed my-unique-unit-upgrade))
+    (or
+        (or
+            (or
+                (civ-selected malay)(civ-selected bulgarians)
+            )
+            (or
+                (civ-selected lithuanians)(civ-selected tatars)
+            )
+        )    
+        (or
+            (or
+                (civ-selected burgundians)(civ-selected sicilians)
+            )
+            (or
+                (civ-selected bohemians)(civ-selected poles)
+            )
+        )            
+    )
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)    
+    (can-train my-unique-unit-line)    
+=>
+	(train my-unique-unit-line)
+    (up-chat-data-to-self "Training Non Upgraded Unique Unit Nº %d" g: gl-nonUpgradedUniqueUnitsCreated)
+    (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
+)
+
+(defrule 
+	(current-age == imperial-age)(gold-amount > 400)
+    (not(research-completed my-unique-unit-upgrade))
+    (or
+        (or
+            (or
+                (civ-selected dravidians)(civ-selected gurjaras)
+            )
+            (or
+                (civ-selected indian)(civ-selected indian)
+            )
+        )
+        (civ-selected tatars); repeated
+    )           
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)    
+    (can-train my-unique-unit-line)    
+=>
+	(train my-unique-unit-line)
+    (up-chat-data-to-self "Training Non Upgraded Unique Unit Nº %d" g: gl-nonUpgradedUniqueUnitsCreated)
+    (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
+)
+
+; UNIQUE UNITS WHOSE UPGRADE COSTS A --DIFFERENT-- RESOURCE
+; KEEP A SMALL QTY WITH NO TOTAL LIMIT
+; BENGALIS, BERBERS HAVE THEIR OWN SECTION
+(defrule
+    (not(research-completed my-unique-unit-upgrade))
+    (or
+        (or
+            (or
+                (civ-selected briton)(civ-selected chinese)
+            )
+            (or
+                (civ-selected mayan)(civ-selected mongol)
+            )
+        )    
+        (or
+            (or
+                (civ-selected italian)(civ-selected portuguese)
+            )
+            (or
+                (civ-selected burmese)(civ-selected vietnamese)
+            )
+        )            
+    )
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
+    (gold-amount > 260)    
+    (can-train my-unique-unit-line)    
+=>
+	(train my-unique-unit-line)
+)
+
+(defrule
+    (not(research-completed my-unique-unit-upgrade))
+    (or
+        (civ-selected cumans)(civ-selected cumans)
+    )
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
+    (gold-amount > 260)    
+    (can-train my-unique-unit-line)    
+=>
+	(train my-unique-unit-line)
 )
 
 ; IMPERIAL AGE AFTER UPGRADE UU
@@ -4291,7 +4407,7 @@
     (train my-unique-unit-line)
 )
 
-; GOTH UU
+; GOTH UU - goth spam!
 (defrule
 	(civ-selected gothic)
 	(can-train 761)
@@ -4326,7 +4442,8 @@
 
 ; MALAY UU
 (defrule
-    (civ-selected malay)(town-under-attack)  
+    (civ-selected malay)
+    (town-under-attack)  
     (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
