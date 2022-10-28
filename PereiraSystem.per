@@ -160,8 +160,8 @@
     (set-goal gl-skirmisherQtyLow 8)    
     (set-goal gl-skirmisherQtyMedium 30)
 
-    (set-goal gl-cavalryArcherQtyLow 16)
-    (set-goal gl-cavalryArcherQtyMedium 30)
+    (set-goal gl-cavalryArcherQtyLow 12)
+    (set-goal gl-cavalryArcherQtyMedium 18)
     (set-goal gl-cavalryArcherQtyHigh 40)
 
     (set-goal gl-handCannoneerQty 30)
@@ -5056,22 +5056,32 @@
 
 (defrule
     (current-age == imperial-age)
+    (or(civ-selected frankish)(civ-selected vietnamese)) 
+    (wood-amount > 200)(gold-amount > 300)
+	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQtyMedium)
+	(can-train cavalry-archer-line)
+=>
+	(train cavalry-archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)
     (or
         (or
-            (or(civ-selected tatars)(civ-selected mongol))
-            (or(civ-selected hun)(civ-selected cumans))
+            (or
+                (civ-selected tatars)(civ-selected mongol)
+            )
+            (or
+                (civ-selected hun)(civ-selected cumans)
+            )
         )
         (or
-            (or
-                (or(civ-selected frankish)(civ-selected vietnamese))
-                (and(civ-selected turkish)(research-completed my-second-unique-research))
-            )        
             (and(civ-selected magyar)(research-completed my-unique-research))
+            (and(civ-selected turkish)(research-completed my-second-unique-research))                        
         )
     )     
     (wood-amount > 200)(gold-amount > 200)
-	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQtyMedium)
-
+	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQtyHigh)
 	(can-train cavalry-archer-line)
 =>
 	(train cavalry-archer-line)
