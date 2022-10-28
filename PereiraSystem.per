@@ -4983,7 +4983,6 @@
 ; ARCHERY RANGE
 ; ARCHER
 
-
 (defrule
     (current-age == feudal-age) ;Cav archer not available
     (gold-amount > 245)
@@ -5004,6 +5003,7 @@
     (train archer-line)
 )
 
+; ARCHERS FEUDAL AGE
 (defrule
     (current-age == castle-age) ;Cav archer available
     (building-type-count town-center > 0) 
@@ -5026,8 +5026,7 @@
 	(train archer-line)
 )
 
-
-
+; ARCHERS IMPERIAL AGE
 (defrule
     (current-age == imperial-age)
     (wood-amount > 225)(gold-amount > 245)
