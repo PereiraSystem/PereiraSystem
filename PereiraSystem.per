@@ -4109,7 +4109,7 @@
 	(not(civ-selected korean))(not(civ-selected celtic))
     (not(civ-selected chinese))(not(civ-selected ethiopian))
     (not(civ-selected khmer))(not(civ-selected berbers))
-    (not(civ-selected gothic))
+    (not(civ-selected gothic))(not(civ-selected bengalis))
     (up-compare-goal gl-nonUpgradedUniqueUnitsCreated g:< 10)
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
     (can-train my-unique-unit-line)    
@@ -4139,6 +4139,19 @@
 	(current-age == imperial-age)
     (gold-amount > 260)
     (or(up-compare-goal gl-dudeHasCavalryArchers == 1)
+    (up-compare-goal gl-dudeHasMilitia == 1))
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
+	(can-train my-unique-unit-line)
+=>
+	(train my-unique-unit-line)
+)
+
+; BENGALI UU
+(defrule
+    (civ-selected bengalis)
+	(current-age == imperial-age)
+    (gold-amount > 260)
+    (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
 	(can-train my-unique-unit-line)
