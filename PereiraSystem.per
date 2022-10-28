@@ -2858,12 +2858,19 @@
     (research ri-atonement)
 )
 
+; IMPERIAL AGE MONASTERY UPGRADES
 (defrule
     (or
         (gold-amount > 800)
         (civ-selected bohemians)
     )
-	(unit-type-count-total monk > 6)        
+	(unit-type-count-total monk > 6)
+    (not
+        (and
+            (up-research-status c: ri-halberdier == research-available)
+            (unit-type-count spearman-line > 6)
+        )
+    )              
     (can-research ri-theocracy)
 =>
     (research ri-theocracy)
@@ -2874,7 +2881,13 @@
         (gold-amount > 800)
         (civ-selected bohemians)
     )
-    (unit-type-count-total monk > 3)    
+    (unit-type-count-total monk > 3)
+    (not
+        (and
+            (up-research-status c: ri-halberdier == research-available)
+            (unit-type-count spearman-line > 6)
+        )
+    )          
     (can-research ri-block-printing)    
 =>
     (research ri-block-printing)
@@ -2885,7 +2898,13 @@
         (and(gold-amount > 1200)(food-amount > 1400))
         (civ-selected bohemians)
     )
-    (players-unit-type-count any-enemy monk > 6)     
+    (players-unit-type-count any-enemy monk > 6)
+    (not
+        (and
+            (up-research-status c: ri-halberdier == research-available)
+            (unit-type-count spearman-line > 6)
+        )
+    )     
     (can-research ri-faith)
 =>
     (research ri-faith)
@@ -2896,7 +2915,13 @@
         (gold-amount > 800)
         (civ-selected bohemians)
     ) 
-	(unit-type-count-total monk > 3)    
+	(unit-type-count-total monk > 3)
+    (not
+        (and
+            (up-research-status c: ri-halberdier == research-available)
+            (unit-type-count spearman-line > 6)
+        )
+    )          
     (can-research ri-illumination)
 =>
     (research ri-illumination)
@@ -4161,7 +4186,7 @@
 
 ; IMPERIAL AGE PRE UPGRADE UU 
 (defrule
-	(current-age == imperial-age)
+	(current-age == imperial-age)(gold-amount > 600)
     (not(research-completed my-unique-unit-upgrade))
 	(not(civ-selected korean))(not(civ-selected celtic))
     (not(civ-selected chinese))(not(civ-selected ethiopian))
@@ -4727,7 +4752,7 @@
 )
 
 (defrule
-    (current-age == imperial-age)(gold-amount > 270)
+    (current-age == imperial-age)(gold-amount > 470)
 	(not(civ-selected khmer))
     (can-train battle-elephant-line)        
 =>
