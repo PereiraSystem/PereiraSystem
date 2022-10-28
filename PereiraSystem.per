@@ -4455,9 +4455,9 @@
 )
 
 (defrule
-    (current-age == castle-age)(gold-amount > 300)
+    (current-age == castle-age)
 	(unit-type-count-total battering-ram-line g:< gl-ramQtyLow)
-    (or(enemy-buildings-in-town)(military-population > 45))
+    (or(enemy-buildings-in-town)(gold-amount > 800))
     (military-population > 25)
     (not(civ-selected gothic))
     (can-train battering-ram-line)
