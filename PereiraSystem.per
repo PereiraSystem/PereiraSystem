@@ -176,12 +176,6 @@
 )
 
 (defrule
-    (civ-selected bohemians)
-=>
-    (set-goal gl-skirmisherQtyLow 10)  
-)
-
-(defrule
     (true)
 =>
     (set-goal gl-monkQty 5)
@@ -2087,7 +2081,7 @@
 )
 
 (defrule
-    (civ-selected bohemians)(food-amount > 20000)
+    (civ-selected bohemians)(food-amount > 1000)
     (can-research my-unique-research)
 =>
     (research my-unique-research)
@@ -3756,18 +3750,6 @@
 
 )
 
-(defrule 
-	(building-type-count-total barracks == 88)
-    (building-type-count town-center > 0)
-    (or(building-type-count-total lumber-camp > 0)(wood-amount > 275))
-    (civ-selected bohemians)
-    (can-build barracks)
-=>
-    (chat-local-to-self "Trying To Build Barracks 2")
-    (build barracks)
-
-)
-
 (defrule
 	(current-age == imperial-age)
 	(building-type-count-total barracks == 1)
@@ -4221,6 +4203,7 @@
 
 ; IMPERIAL AGE PRE UPGRADE UU 
 ; if the upgrade costs same resource allow only 10
+; 
 (defrule
 	(current-age == imperial-age)(gold-amount > 600)
     (not(research-completed my-unique-unit-upgrade))
@@ -4245,7 +4228,7 @@
     (not(civ-selected chinese))(not(civ-selected ethiopian))
     (not(civ-selected khmer))(not(civ-selected berbers))
     (not(civ-selected gothic))(not(civ-selected bengalis))
-    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 30)
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 10)
     ;(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
     (can-train my-unique-unit-line)    
 =>
@@ -4501,7 +4484,7 @@
     (gold-amount > 200)
 	(can-train battering-ram-line)(not(civ-selected vietnamese))(not(civ-selected portuguese))
 	(not(civ-selected korean))(not(civ-selected poles))(not(civ-selected tatars))(not(civ-selected gothic)) 
-    (not(civ-selected celtic))(not(civ-selected bohemians))(not(civ-selected khmer))
+    (not(civ-selected celtic))(not(civ-selected khmer))
     ;(not(civ-selected persian))(not(civ-selected spanish))
 =>
 	(train battering-ram-line)
@@ -5430,7 +5413,7 @@
         (building-type-count town-center > 0)
     )    
     (wood-amount >= 125)
-    (civ-selected bohemians) ;they start weak
+    (civ-selected bohemians)
     (up-compare-goal gl-totalSoldiersCreatedThisAge < 6)
     (can-train spearman-line)
 =>
