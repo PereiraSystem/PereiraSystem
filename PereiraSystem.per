@@ -1126,7 +1126,14 @@
 (defrule
 	(true)
 =>
-	(up-set-defense-priority c: lumber-camp c: 5000)
+	(up-set-defense-priority c: relic c: 10001)
+	(disable-self)
+)
+
+(defrule
+	(true)
+=>
+	(up-set-offense-priority c: castle c: 99999)
 	(disable-self)
 )
 
@@ -1147,12 +1154,25 @@
     (disable-self)
 )
 
-
-
-; ATTACK                              
+; ATTACK    
+; CHOOSING TARGET 
 (defrule 
     (true)
 =>
+    (set-strategic-number sn-free-siege-targeting 0)
+    (set-strategic-number sn-enemy-sighted-response-distance 13)     
+    (set-strategic-number sn-wall-targeting-mode 1)
+    (set-strategic-number sn-attack-intelligence 1)
+    (set-strategic-number sn-target-evaluation-distance 10)
+    (set-strategic-number sn-coop-share-attacking 1)
+    (set-strategic-number sn-target-evaluation-boat 10)    
+    (disable-self)
+)
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-enable-offensive-priority 1) 
+    (set-strategic-number sn-local-targeting-mode 1)     
     (set-strategic-number sn-ignore-attack-group-under-attack 0)        
     (set-strategic-number sn-enable-patrol-attack 1)
     (set-strategic-number sn-percentage-explore-exterminators 50)   
@@ -1188,19 +1208,7 @@
     (disable-self)
 )
 
-; CHOOSING TARGET 
-(defrule 
-    (true)
-=>
-    (set-strategic-number sn-free-siege-targeting 0)
-    (set-strategic-number sn-enemy-sighted-response-distance 13)     
-    (set-strategic-number sn-wall-targeting-mode 1)
-    (set-strategic-number sn-attack-intelligence 1)
-    (set-strategic-number sn-target-evaluation-distance 10)
-    (set-strategic-number sn-coop-share-attacking 1)
-    (set-strategic-number sn-target-evaluation-boat 10)    
-    (disable-self)
-)
+
 
 ; 3. UPGRADES ////////////////////////////
 ; ADVANCING AGE
@@ -6040,3 +6048,11 @@
 (defrule(civ-selected turkish)=>(up-change-name "PereiraSystem TURK"))
 (defrule(civ-selected vietnamese)=>(up-change-name "PereiraSystem VIET"))
 (defrule(civ-selected viking)=>(up-change-name "PereiraSystem VKNG"))
+
+(defrule
+	(true)
+=>
+	;(up-retreat-to castle c: knight-line)
+    (do-nothing)
+	(disable-self)
+)
