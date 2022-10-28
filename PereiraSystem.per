@@ -394,13 +394,6 @@
     (disable-self)
 )
 
-(defrule
-	(building-type-count-total lumber-camp > 0)
-=>
-	(disable-timer 3)
-    (disable-self)
-)
-
 ; TIMER 4 INCREASES LUMBER CAMPS DISTANCE SLOWLY AFTER BUILDING ONE
 (defrule
 	(timer-triggered 4)
