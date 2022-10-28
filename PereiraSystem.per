@@ -435,8 +435,8 @@
     (enable-timer 10 180)  
     ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)      
     ;(up-chat-data-to-self "Buildings: %d" g: gl-buildCount)
-    (up-chat-data-to-self "Town Size: %d" s: sn-maximum-town-size)     
-    (up-chat-data-to-self "Enemy B. In Town: %d" g: gl-enemyBuildingsInTown)          
+    ;(up-chat-data-to-self "Town Size: %d" s: sn-maximum-town-size)     
+    ;(up-chat-data-to-self "Enemy B. In Town: %d" g: gl-enemyBuildingsInTown)          
 )
 
 ; TIMER 11 MILITARY REPORT
@@ -450,8 +450,10 @@
     (enable-timer 11 90)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
-    (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
-    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
+    (up-chat-data-to-self "TS: %d" s: sn-maximum-town-size)     
+    (up-chat-data-to-self "EBIT: %d" g: gl-enemyBuildingsInTown)     
+    (up-chat-data-to-self "D: %d" g: gl-defendSoldierAmount)      
+    (up-chat-data-to-self "A: %d" g: gl-attackSoldierAmount)
 )
 
 (defrule
