@@ -2698,8 +2698,9 @@
 (defrule
     (current-age == imperial-age)
 	(research-completed ri-hand-cart)
-	(unit-type-count-total monk > 3)    
+	(unit-type-count-total monk > 10)    
     (can-research ri-redemption )
+    (gold-amount > 1000)
 =>
     (research ri-redemption )
 )
@@ -2707,7 +2708,8 @@
 (defrule
     (current-age == imperial-age)
 	(research-completed ri-hand-cart)
-    (unit-type-count-total monk > 3)    
+    (players-unit-type-count any-enemy monk > 7)
+    (gold-amount > 1100)   
     (can-research ri-heresy)
 =>
     (research ri-heresy )
@@ -2720,7 +2722,7 @@
         (gold-amount > 800)
         (civ-selected bohemians)
     )
-    (unit-type-count-total monk > 3)    
+    (unit-type-count-total monk > 10)    
     (can-research ri-atonement)
 =>
     (research ri-atonement)
@@ -2731,7 +2733,7 @@
         (gold-amount > 800)
         (civ-selected bohemians)
     )
-	(unit-type-count-total monk > 3)        
+	(unit-type-count-total monk > 4)        
     (can-research ri-theocracy)
 =>
     (research ri-theocracy)
@@ -2753,6 +2755,7 @@
         (and(gold-amount > 1200)(food-amount > 1400))
         (civ-selected bohemians)
     )
+    (players-unit-type-count any-enemy monk > 6)     
     (can-research ri-faith)
 =>
     (research ri-faith)
