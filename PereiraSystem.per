@@ -1790,6 +1790,7 @@
 
 ; BERBER
 (defrule
+    (civ-selected berbers)
     (can-research 578) 
     (research-completed my-unique-research)
     (building-type-count-total castle > 1);KASBAH
@@ -1799,12 +1800,13 @@
 )
 
 (defrule
+    (civ-selected berbers)
     (can-research my-unique-research)
     (or
         (unit-type-count-total my-unique-unit-line > 0)
         (unit-type-count-total camel-line > 0)  
     )
-    (civ-selected berbers)
+    
 =>
     (research my-unique-research)
     (chat-to-player my-player-number "CAMELS REGENERATE!")
