@@ -4660,7 +4660,7 @@
 (defrule
     (current-age == castle-age)
     (or(unit-type-count-total monk > 4)(hold-relics))
-    (unit-type-count-total battle-elephant-line g:< gl-knightsQtyLow)
+    (unit-type-count-total battle-elephant-line < 4)
     (not
         (and(up-compare-goal gl-dudeHasCavalry == 1)
             (can-train camel-line))
