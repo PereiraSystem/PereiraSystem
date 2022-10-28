@@ -4140,11 +4140,26 @@
 ; MILITARY UNITS
 ; MONASTERY  
 
-
 (defrule
+    (current-age == castle-age)
     (and
         (unit-type-count-total monk < 5)
         (unit-type-count-total 286 < 5)
+    )
+    (not(hold-relics))(not(enemy-buildings-in-town))
+    (can-train monk)    
+=>
+    (train monk)
+)
+
+(defrule
+    (current-age == castle-age)
+    (or
+        (civ-selected bohemians)(civ-selected bohemians)
+    )
+    (and
+        (unit-type-count-total monk < 8)
+        (unit-type-count-total 286 < 8)
     )
     (not(hold-relics))(not(enemy-buildings-in-town))
     (can-train monk)    
