@@ -2721,6 +2721,14 @@
     (research ri-siege-ram)
 )
 
+; SIEGE ELEPHANT
+(defrule
+	(unit-type-count-total armored-elephant-line > 2)
+    (can-research ri-siege-elephant)
+=>
+    (research ri-siege-elephant)
+)
+
 ; HOUFNICE
 (defrule
     (can-research 787)
@@ -4073,8 +4081,8 @@
 )
 
 ; UNIQUE UNIT
-;(defrule(can-train donjon-serjeant-line)=>(train donjon-serjeant-line))
 
+; CASTLE AGE DEFENSE UU
 (defrule
     (current-age == castle-age)
     (town-under-attack)(gold-amount > 860)  
@@ -4084,56 +4092,57 @@
     (train my-unique-unit-line)
 )
 
+; IMPERIAL AGE PRE UPGRADE UU
 (defrule
-    (current-age == imperial-age)
-    (gold-amount > 160)(not(civ-selected khmer))
-    (not(civ-selected korean))(not(civ-selected celtic))
+	(current-age == imperial-age)
+    (not((research-completed my-unique-unit-upgrade)))
+	(not(civ-selected korean))(not(civ-selected celtic))
+    (not(civ-selected chinese))(not(civ-selected ethiopian))
+    (not(civ-selected khmer))(not(civ-selected berbers))
+    (not(civ-selected gothic))
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
+    (can-train my-unique-unit-line)    
+=>
+	(train my-unique-unit-line)
+    (chat-local-to-self "Training Non Upgraded Unique Unit")
+)
+
+; IMPERIAL AGE AFTER UPGRADE UU
+(defrule
+    (current-age == imperial-age)(research-completed my-unique-unit-upgrade)
+    (gold-amount > 250)
     (not(civ-selected ethiopian))(not(civ-selected gothic))
-    (research-completed my-unique-unit-upgrade)
+    (not(civ-selected berbers)) 
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
     (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
+    (chat-local-to-self "Training Upgraded Unique Unit")
 )
 
+; BERBER UU
 (defrule
-    (can-train my-unique-unit-line)(civ-selected malay)(town-under-attack)
-=>
-    (train my-unique-unit-line)
-)
-
-(defrule
-	(current-age == imperial-age)(research-completed my-unique-unit-upgrade)
-	(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
-    (or
-        (gold-amount > 401)
-        (civ-selected magyar)
-    )
-	(not(civ-selected korean))(not(civ-selected celtic))(not(civ-selected chinese))(not(civ-selected chinese))
-	(can-train my-unique-unit-line)(not(civ-selected ethiopian))(not(civ-selected khmer))
-    (not(civ-selected gothic))
-=>
-	(train my-unique-unit-line)
-)
-
-(defrule
-    (can-train my-unique-unit-line)(research-completed my-unique-unit-upgrade)
-    (civ-selected briton)
-    (gold-amount > 200)
-=>
-    (train my-unique-unit-line)
-)
-
-(defrule
+    (civ-selected berbers)
 	(current-age == imperial-age)
-	(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
-    (gold-amount > 201)
-	(civ-selected tatars)
+    (gold-amount > 260)
+    (or(up-compare-goal gl-dudeHasCavalryArchers == 1)
+    (up-compare-goal gl-dudeHasMilitia == 1))
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
 )
 
+; BRITON UU
+(defrule
+    (civ-selected briton)
+    (can-train my-unique-unit-line)(research-completed my-unique-unit-upgrade)
+    (gold-amount > 200)
+=>
+    (train my-unique-unit-line)
+)
+
+; GOTH UU
 (defrule
 	(civ-selected gothic)
 	(can-train 761)
@@ -4159,11 +4168,37 @@
     (train huskarl-line)
 )
 
+; HUN UU
 (defrule
     (can-train stable-tarkan)
 =>
     (train stable-tarkan)
 )
+
+; MALAY UU
+(defrule
+    (civ-selected malay)(town-under-attack)  
+    (can-train my-unique-unit-line)
+=>
+    (train my-unique-unit-line)
+)
+
+; SICILIAN UU
+;(defrule(can-train donjon-serjeant-line)=>(train donjon-serjeant-line))
+
+
+; TATAR UU
+(defrule
+    (civ-selected tatars)
+	(current-age == imperial-age)
+	(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
+    (gold-amount > 201)
+	
+	(can-train my-unique-unit-line)
+=>
+	(train my-unique-unit-line)
+)
+
 
 ; SIEGE WORKSHOP
 ; BOMBARD CANNON
@@ -4376,6 +4411,25 @@
     (civ-selected khmer)
 =>
     (train scorpion-line)
+)
+
+; SIEGE ELEPHANT
+    (current-age == castle-age)(gold-amount > 300)
+	(unit-type-count-total armored-elephant-line g:< gl-ramQtyLow)
+    (or(enemy-buildings-in-town)(military-population > 45))
+    (military-population > 25)
+    (can-train armored-elephant-line)
+=>
+	(train armored-elephant-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+	(unit-type-count-total armored-elephant-line g:< gl-ramQtyHigh)
+    (military-population > 25)    
+    (can-train armored-elephant-line)
+=>
+	(train armored-elephant-line)
 )
 
 ; PUERTO MILITARES                                 
@@ -4907,6 +4961,25 @@
 	(can-train cavalry-archer-line)
 =>
 	(train cavalry-archer-line)
+)
+
+; ELEPHANT ARCHER
+(defrule
+    (current-age == castle-age)   
+    (gold-amount > 845)(wood-amount > 400)
+	(unit-type-count-total elephant-archer-line g:< gl-archerQtyLow)    
+    (can-train elephant-archer-line)     
+=>
+	(train elephant-archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)   
+    (gold-amount > 260)(wood-amount > 400)
+	(unit-type-count-total elephant-archer-line g:< gl-archerQtyMedium)    
+    (can-train elephant-archer-line)     
+=>
+	(train elephant-archer-line)
 )
 
 ; SKIRMISHERS AND GENITOURS
