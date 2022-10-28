@@ -3490,14 +3490,14 @@
 
 ; UNIVERSITY
 (defrule
-    (building-type-count town-center > 1) 
+    (or(building-type-count town-center > 1)(civ-selected bohemians))
     (building-type-count-total monastery > 0)  
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)    
+    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
     (or
         (building-type-count-total house > 10)
         (or(civ-selected hun)(civ-selected bohemians))
     )
-    (building-type-count-total university < 1)    
+    (building-type-count-total university == 0)    
     (can-build university)
 =>
     (chat-local-to-self "Trying To Build University")
