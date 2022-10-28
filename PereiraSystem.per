@@ -2027,6 +2027,58 @@
     (chat-to-player my-player-number "SCOUTS CAUSE TRAMPLE DAMAGE!") 
 )
 
+; DYNASTIES OF INDIA
+; BENGALIS
+(defrule
+    (civ-selected bengalis)
+    (can-research my-second-unique-research)
+=>
+    (research my-second-unique-research)
+    (chat-to-player my-player-number "CHARIOTS AND ELEPHANTS ATTACK FASTER!") 
+)
+
+(defrule
+    (civ-selected bengalis)
+    (can-research my-unique-research)
+=>
+    (research my-unique-research)
+    (chat-to-player my-player-number "VILLAGERS TAKE 10% LESS SPACE!") 
+)
+
+; DRAVIDIANS
+(defrule
+    (civ-selected dravidian)
+    (can-research my-second-unique-research)
+=>
+    (research my-second-unique-research)
+    (chat-to-player my-player-number "ELEPHANTS REGENERATE!") 
+)
+
+(defrule
+    (civ-selected dravidian)
+    (can-research my-unique-research)
+=>
+    (research my-unique-research)
+    (chat-to-player my-player-number "INFANTRY AND CAVALRY ATTACKS IGNORE ARMOR!") 
+)
+
+; GURJARAS
+(defrule
+    (civ-selected gurjaras)
+    (can-research my-second-unique-research)
+=>
+    (research my-second-unique-research)
+    (chat-to-player my-player-number "MILITARY UNITS COST 25% LESS FOOD!") 
+)
+
+(defrule
+    (civ-selected gurjaras)
+    (can-research my-unique-research)
+=>
+    (research my-unique-research)
+    (chat-to-player my-player-number "CAMELS AND ELEPHANTS ARCHERS +4 MELEE ARMOR!") 
+)
+
 ; DOCK UPGRADES
 (defrule
 	(unit-type-count-total fishing-ship > 9)
@@ -5572,9 +5624,19 @@
 (defrule(civ-selected briton)=>(up-change-name "PereiraSystem BRIT"))
 (defrule(civ-selected bulgarians)=>(up-change-name "PereiraSystem BULG"))
 (defrule(civ-selected burgundians)=>(up-change-name "PereiraSystem BURG"))
+(defrule(civ-selected burmese)=>(up-change-name "PereiraSystem BURM"))
 (defrule(civ-selected byzantine)=>(up-change-name "PereiraSystem BYZN"))
 (defrule(civ-selected celtic)=>(up-change-name "PereiraSystem CELT"))
 (defrule(civ-selected chinese)=>(up-change-name "PereiraSystem CHIN"))
+(defrule(civ-selected cumans)=>(up-change-name "PereiraSystem CMNS"))
 (defrule(civ-selected dravidians)=>(up-change-name "PereiraSystem DRAV"))
+(defrule(civ-selected ethiopian)=>(up-change-name "PereiraSystem ETHI"))
 (defrule(civ-selected frankish)=>(up-change-name "PereiraSystem FRNK"))
+(defrule(civ-selected gothic)=>(up-change-name "PereiraSystem GOTH"))
+(defrule(civ-selected gurjaras)=>(up-change-name "PereiraSystem GURJ"))
 (defrule(civ-selected indian)=>(up-change-name "PereiraSystem HIND"))
+(defrule(civ-selected hun)=>(up-change-name "PereiraSystem HUNS"))
+(defrule(civ-selected incan)=>(up-change-name "PereiraSystem INCA"))
+(defrule(civ-selected italian)=>(up-change-name "PereiraSystem ITAL"))
+(defrule(civ-selected japanese)=>(up-change-name "PereiraSystem JAPN"))
+(defrule(civ-selected mayan)=>(up-change-name "PereiraSystem MAYA"))
