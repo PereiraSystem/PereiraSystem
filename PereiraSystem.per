@@ -431,7 +431,7 @@
 (defrule(true)=>(enable-timer 11 90)(disable-self)) 
 
 (defrule
-	(timer-triggered 11)
+	(timer-triggered 11)(current-age == dark-age)
 
 =>
 	(disable-timer 11)
@@ -440,7 +440,45 @@
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
-    (up-chat-data-to-self "Inf / Cav created: %d" g: gl-totalSoldiersCreatedThisAge)    
+)
+
+(defrule
+	(timer-triggered 11)(current-age == feudal-age)
+
+=>
+	(disable-timer 11)
+    (enable-timer 11 60)           
+    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
+    ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
+    (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
+    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
+    (up-chat-data-to-self "Inf / Cav created in feudal age: %d" g: gl-totalSoldiersCreatedThisAge)    
+)
+
+(defrule
+	(timer-triggered 11)(current-age == castle-age)
+
+=>
+	(disable-timer 11)
+    (enable-timer 11 60)           
+    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
+    ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
+    (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
+    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
+    ;(up-chat-data-to-self "Inf / Cav created in castle age: %d" g: gl-totalSoldiersCreatedThisAge)    
+)
+
+(defrule
+	(timer-triggered 11)(current-age == imperial-age)
+
+=>
+	(disable-timer 11)
+    (enable-timer 11 60)           
+    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
+    ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
+    (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
+    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
+    ;(up-chat-data-to-self "Inf / Cav created in imperial age: %d" g: gl-totalSoldiersCreatedThisAge)    
 )
 
 ; TIMER 12 MILITARY REPORT 2 NAVAL
