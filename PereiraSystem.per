@@ -397,7 +397,7 @@
 	(timer-triggered 4)
 =>
 	(disable-timer 4)
-    (enable-timer 4 20)    
+    (enable-timer 4 25)    
     (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
     (up-chat-data-to-self "NO LCs! - Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
 )
@@ -406,7 +406,7 @@
 	(building-type-count-total lumber-camp > 0)
 =>
 	(disable-timer 4)
-    (enable-timer 5 80)
+    (enable-timer 5 90)
     (disable-self)
 )
 
@@ -415,7 +415,7 @@
 	(timer-triggered 5)
 =>
 	(disable-timer 5)
-    (enable-timer 5 80)    
+    (enable-timer 5 90)    
     (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
     ;(up-chat-data-to-self "Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
 )
@@ -768,18 +768,11 @@
 =>
     (set-strategic-number sn-minimum-town-size 0)
     (set-strategic-number sn-maximum-town-size 8)
-    (set-strategic-number sn-mining-camp-max-distance 24)
-    (set-strategic-number sn-lumber-camp-max-distance 16)
     (set-strategic-number sn-town-center-placement 0)          
     (disable-self)
 )
 
-(defrule 
-    (enemy-buildings-in-town)
-=>
-    (set-strategic-number sn-lumber-camp-max-distance 38)      
-    (disable-self)
-)
+
 
 ; DROPSITES AND DISTANCES
 ; CANCEL SITE BUILDING IF DANGEROUS
@@ -803,9 +796,9 @@
 (defrule 
     (true)
 =>  
-    (set-strategic-number sn-lumber-camp-max-distance 24); 
-    (set-strategic-number sn-mining-camp-max-distance 24);     
-    (set-strategic-number sn-mill-max-distance 24)  
+    (set-strategic-number sn-lumber-camp-max-distance 12); 
+    (set-strategic-number sn-mining-camp-max-distance 12);     
+    (set-strategic-number sn-mill-max-distance 12)  
     (disable-self)
 )
 
@@ -813,6 +806,13 @@
     (enemy-buildings-in-town)
 =>     
     (up-modify-sn sn-mill-max-distance c:+ 16)  
+    (disable-self)
+)
+
+(defrule 
+    (enemy-buildings-in-town)
+=>
+    (set-strategic-number sn-lumber-camp-max-distance 38)      
     (disable-self)
 )
 
