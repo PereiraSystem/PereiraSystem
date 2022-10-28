@@ -38,6 +38,7 @@
 (defconst gl-maxHousesNeeded 102)
 (defconst gl-farmQtyImperial 103)
 
+; civilian units constants
 (defconst gl-maxCiviliansDarkAge 104)
 (defconst gl-maxCiviliansFeudalAge 105)
 (defconst gl-maxCiviliansCastleAge 106)
@@ -46,25 +47,35 @@
 (defconst gl-tradeCartsQty 108)
 (defconst gl-tradeShipsQty 109)
 
-(defconst gl-spearmenQtyLow 110)
-(defconst gl-spearmenQtyMedium 111)
-(defconst gl-spearmenQtyHigh 112)
+; infantry constants
+(defconst gl-spearmenQtyLow 120)
+(defconst gl-spearmenQtyMedium 121)
+(defconst gl-spearmenQtyHigh 122)
 
-(defconst gl-militiaQtyLow 113)
-(defconst gl-militiaQtyMedium 114)
-(defconst gl-militiaQtyHigh 115)
+(defconst gl-militiaQtyLow 155)
+(defconst gl-militiaQtyMedium 156)
+(defconst gl-militiaQtyHigh 157)
 
-(defconst gl-archerQtyLow 116)
-(defconst gl-archerQtyMedium 117)
-(defconst gl-archerQtyHigh 118)
+(defconst gl-eagleQtyLow 160)
+(defconst gl-eagleQtyMedium 161)
+(defconst gl-eagleQtyHigh 162)
 
-(defconst gl-skirmisherQtyLow 119)
-(defconst gl-skirmisherQtyMedium 120)
+; ranged constants
+(defconst gl-archerQtyLow 200)
+(defconst gl-archerQtyMedium 201)
+(defconst gl-archerQtyHigh 202)
 
-(defconst gl-cavalryArcherQty 122)
+(defconst gl-skirmisherQtyLow 210)
+(defconst gl-skirmisherQtyMedium 211)
 
-(defconst gl-handCannoneerQty 125)
+(defconst gl-cavalryArcherQtyLow 220)
+(defconst gl-cavalryArcherQtyMedium 221)
+(defconst gl-cavalryArcherQty 223)
+(defconst gl-cavalryArcherQtyHigh 223)
 
+(defconst gl-handCannoneerQty 225)
+
+; cavalry constants
 (defconst gl-knightsQtyLow 130)
 (defconst gl-knightsQtyMedium 131)
 
@@ -75,14 +86,14 @@
 (defconst gl-camelQtyMedium 141)
 (defconst gl-camelQtyHigh 142)
 
-(defconst gl-eagleQtyLow 150)
-(defconst gl-eagleQtyMedium 151)
 
-(defconst gl-eagleQtyHigh 152)
-
-(defconst gl-monkQty 300)
-(defconst gl-monkQtyHigh 301)
-
+(defconst gl-battleElephantQtyLow 180)
+(defconst gl-battleElephantQtyMedium 181)
+(defconst gl-battleElephantQtyHigh 182)
+; priest constants
+(defconst gl-monkQty 390)
+(defconst gl-monkQtyHigh 391)
+; siege constants
 (defconst gl-ramQtyLow 400)
 (defconst gl-ramQtyMedium 401)
 (defconst gl-ramQtyHigh 402)
@@ -94,12 +105,15 @@
 
 (defconst gl-bombardCannonsQty 415)
 
-(defconst gl-uniqueUnitQtyLow 200)
-(defconst gl-uniqueUnitQtyMedium 201)
+
 
 (defconst gl-trebuchetsQtyLow 420)
 (defconst gl-trebuchetsQtyMedium 421)
 (defconst gl-trebuchetsQtyHigh 422)
+
+; unique units constants
+(defconst gl-uniqueUnitQtyLow 430)
+(defconst gl-uniqueUnitQtyMedium 431)
 
 (defconst gl-galleyQty 450)
 (defconst gl-galleonQty 455)
@@ -145,7 +159,11 @@
 
     (set-goal gl-skirmisherQtyLow 8)    
     (set-goal gl-skirmisherQtyMedium 30)
-    (set-goal gl-cavalryArcherQty 30)
+
+    (set-goal gl-cavalryArcherQtyLow 8)
+    (set-goal gl-cavalryArcherQtyMedium 30)
+    (set-goal gl-cavalryArcherQtyHigh 40)
+
     (set-goal gl-handCannoneerQty 30)
 
     (set-goal gl-knightsQtyLow 4)
