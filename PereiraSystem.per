@@ -3972,8 +3972,10 @@
     (building-type-count town-center > 0)
     (building-type-count monastery > 0)    
 	(not(civ-selected gothic))
-    (or((building-type-count-total university == 0))
-        (not(civ-selected bohemians)))
+    (or
+        (building-type-count-total university == 1)
+        (not(civ-selected bohemians))
+    )
     (can-build siege-workshop)    
 =>
     (chat-local-to-self "Trying To Build Siege Workshop 1")     
