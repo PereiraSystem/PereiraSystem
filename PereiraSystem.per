@@ -4228,6 +4228,7 @@
     (not(civ-selected chinese))(not(civ-selected ethiopian))
     (not(civ-selected khmer))(not(civ-selected berbers))
     (not(civ-selected gothic))(not(civ-selected bengalis))
+    (not(civ-selected bohemians))    
     (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 10)
     ;(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
     (can-train my-unique-unit-line)    
@@ -4251,40 +4252,41 @@
     (chat-local-to-self "Training Upgraded Unique Unit")
 )
 
-; BERBER UU
+; BERBER UU - upgrade costs same resource
 (defrule
     (civ-selected berbers)
 	(current-age == imperial-age)
     (gold-amount > 260)
     (or(up-compare-goal gl-dudeHasCavalryArchers == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 10)    
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
 )
 
-; BENGALI UU
+; BENGALI UU - upgrade costs different resource
 (defrule
     (civ-selected bengalis)
 	(current-age == imperial-age)
     (gold-amount > 360)
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))
-    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated g:< 10)
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
-    (up-chat-data-to-self "Training Non Upgraded Number %d" g: gl-nonUpgradedUniqueUnitsCreated)
+    (up-chat-data-to-self "Training Non Upgraded Chariot %d" g: gl-nonUpgradedUniqueUnitsCreated)
 )
 
-; BRITON UU
+; BRITON UU - upgrade costs different resource
 (defrule
     (civ-selected briton)
-    (can-train my-unique-unit-line)(research-completed my-unique-unit-upgrade)
-    (gold-amount > 200)
+    ;(research-completed my-unique-unit-upgrade)
+    (gold-amount > 240)
+    (can-train my-unique-unit-line)    
 =>
     (train my-unique-unit-line)
 )
