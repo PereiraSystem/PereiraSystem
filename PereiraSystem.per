@@ -438,7 +438,7 @@
 	(timer-triggered 10)
 =>
 	(disable-timer 10)
-    (enable-timer 10 120)  
+    (enable-timer 10 180)  
     ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)      
     ;(up-chat-data-to-self "Buildings: %d" g: gl-buildCount)
     (up-chat-data-to-self "Town Size: %d" s: sn-maximum-town-size)     
@@ -453,7 +453,7 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 60)           
+    (enable-timer 11 90)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
@@ -465,7 +465,7 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 60)           
+    (enable-timer 11 90)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
@@ -478,7 +478,7 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 60)           
+    (enable-timer 11 90)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
@@ -491,7 +491,7 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 60)           
+    (enable-timer 11 90)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
@@ -4228,8 +4228,8 @@
     (can-train my-unique-unit-line)    
 =>
 	(train my-unique-unit-line)
-    (up-chat-data-to-self "Training Non Upgraded Unique Unit Nº %d" g: gl-nonUpgradedUniqueUnitsCreated)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
+    (up-chat-data-to-self "Training Non Upgraded Unique Unit Nº %d" g: gl-nonUpgradedUniqueUnitsCreated)
 )
 
 (defrule 
