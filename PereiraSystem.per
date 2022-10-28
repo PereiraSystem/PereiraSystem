@@ -3396,10 +3396,11 @@
     )
     (building-type-count-total blacksmith == 0)(wood-amount > 275)
     (building-type-count town-center > 0)    
-    (or(building-type-count-total archery-range > 0)(civ-selected cumans))
+    (or(building-type-count-total archery-range > 0)(civ-selected cumans)
+    )
     ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
-    (can-build blacksmith)
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
+    (can-build blacksmith)
 =>
     (chat-local-to-self "Trying to build blacksmith")
     (build blacksmith)(up-modify-sn sn-maximum-town-size c:+ 1)    
