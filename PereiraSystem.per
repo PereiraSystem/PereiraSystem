@@ -2582,6 +2582,15 @@
     (research ri-heavy-cavalry-archer)
 )
 
+; ELPHANT ARCHERS UPGRADES
+(defrule
+    (current-age == imperial-age)
+    (unit-type-count-total elephant-archer-line > 4)
+    (can-research ri-elite-elephant-archer)    
+=>
+    (research ri-elite-elephant-archer )
+)
+
 ; CASTLE UPGRADES
 (defrule
     (current-age == imperial-age)
