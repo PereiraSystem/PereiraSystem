@@ -176,6 +176,12 @@
 )
 
 (defrule
+    (civ-selected bohemians)
+=>
+    (set-goal gl-skirmisherQtyLow 10)  
+)
+
+(defrule
     (true)
 =>
     (set-goal gl-monkQty 5)
@@ -401,7 +407,7 @@
 =>
 	(disable-timer 4)
     (enable-timer 5 80)
-    (disable-self)ing 
+    (disable-self)
 )
 
 ; TIMER 5 INCREASES LUMBER CAMPS DISTANCE SLOWLY AFTER BUILDING ONE
@@ -3736,7 +3742,7 @@
 (defrule 
 	(building-type-count-total barracks == 1)
     (building-type-count town-center > 0)
-    (building-type-count-total lumber-camp > 0)(wood-amount > 275))
+    (or(building-type-count-total lumber-camp > 0)(wood-amount > 275))
     (civ-selected bohemians)
     (can-build barracks)
 =>
