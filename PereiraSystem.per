@@ -52,7 +52,9 @@
 (defconst gl-militiaQtyMedium 114)
 (defconst gl-militiaQtyHigh 115)
 
-(defconst gl-archerQty 116)
+(defconst gl-archerQtyLow 116)
+(defconst gl-archerQtyMedium 117)
+(defconst gl-archerQtyHigh 118)
 
 (defconst gl-skirmisherQtyLow 119)
 (defconst gl-skirmisherQtyMedium 120)
@@ -135,7 +137,10 @@
     (set-goal gl-eagleQtyMedium 16)
     (set-goal gl-eagleQtyHigh 40)
 
-    (set-goal gl-archerQty 40)
+    (set-goal gl-archerQtyLow 8)
+    (set-goal gl-archerQtyMedium 16)
+    (set-goal gl-archerQtyHigh 40)
+
     (set-goal gl-skirmisherQtyLow 8)    
     (set-goal gl-skirmisherQtyMedium 30)
     (set-goal gl-cavalryArcherQty 30)
@@ -4870,7 +4875,7 @@
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))
     (or(gold-amount > 245)(food-amount < 100))         
-    (unit-type-count-total archer-line g:< gl-archerQty)    
+    (unit-type-count-total archer-line g:< gl-archerQtyLow)    
     (can-train archer-line)
 =>
     (train archer-line)
@@ -4892,7 +4897,7 @@
     (not(civ-selected frankish))(not(civ-selected cumans))
     (not(civ-selected tatars))          
     (not(civ-selected berbers))    
-	(unit-type-count-total archer-line g:< gl-archerQty)    
+	(unit-type-count-total archer-line g:< gl-archerQtyMedium)    
     (can-train archer-line)     
 =>
 	(train archer-line)
@@ -4907,7 +4912,7 @@
         (or(civ-selected sicilians)(civ-selected mayan))
         (or(civ-selected ethiopian)(civ-selected viking))    
     )
-    (unit-type-count-total archer-line g:< gl-archerQty)    
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -4917,7 +4922,7 @@
     (civ-selected persian)
     (research-completed my-second-unique-research)
     (wood-amount > 270)
-	(unit-type-count-total archer-line g:< gl-archerQty)
+	(unit-type-count-total archer-line g:< gl-archerQtyHigh)
 	(can-train archer-line)
 =>
 	(train archer-line)
