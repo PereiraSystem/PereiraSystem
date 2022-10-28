@@ -401,7 +401,7 @@
 =>
 	(disable-timer 4)
     (enable-timer 5 80)
-    (disable-self)
+    (disable-self)ing 
 )
 
 ; TIMER 5 INCREASES LUMBER CAMPS DISTANCE SLOWLY AFTER BUILDING ONE
@@ -3713,7 +3713,7 @@
 
 ; MILITARY PRODUCTION BUILDINGS
 ; BARRACKS   
-(defrule ;four nested conditionals, the japanese would do it for you
+(defrule 
 	(building-type-count-total barracks == 0)
     (building-type-count town-center > 0)
     (or
@@ -3729,6 +3729,18 @@
     (can-build barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks 1")
+    (build barracks)
+
+)
+
+(defrule 
+	(building-type-count-total barracks == 1)
+    (building-type-count town-center > 0)
+    (building-type-count-total lumber-camp > 0)(wood-amount > 275))
+    (civ-selected bohemians)
+    (can-build barracks)
+=>
+    (chat-local-to-self "Trying To Build Barracks 2")
     (build barracks)
 
 )
@@ -5369,6 +5381,21 @@
     (can-train spearman-line)
 =>
     (train spearman-line)
+)
+; SPEARMEN CASTLE AGE
+(defrule
+    (current-age == castle-age) ;non reactive
+    (or
+        (wood-amount >= 275)
+        (building-type-count town-center > 0)
+    )    
+    (wood-amount >= 125)
+    (civ-selected bohemians) ;they start weak
+    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< 6)
+    (can-train spearman-line)
+=>
+    (train spearman-line)
+    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
 
 (defrule
