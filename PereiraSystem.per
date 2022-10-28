@@ -6056,3 +6056,12 @@
     (do-nothing)
 	(disable-self)
 )
+
+(defrule
+	(current-age == imperial-age)
+=>
+	(up-retreat-now)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (chat-local-to-self "EVERYONE GO BACK!")
+	(disable-self)
+)
