@@ -160,7 +160,7 @@
     (set-goal gl-skirmisherQtyLow 8)    
     (set-goal gl-skirmisherQtyMedium 30)
 
-    (set-goal gl-cavalryArcherQtyLow 8)
+    (set-goal gl-cavalryArcherQtyLow 16)
     (set-goal gl-cavalryArcherQtyMedium 30)
     (set-goal gl-cavalryArcherQtyHigh 40)
 
@@ -5023,7 +5023,7 @@
         )
     )     
     (gold-amount > 845)(wood-amount > 400)
-	(unit-type-count-total cavalry-archer-line g:< gl-archerQtyMedium)    
+	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQtyLow)    
     (can-train cavalry-archer-line)     
 =>
 	(train cavalry-archer-line)
@@ -5045,7 +5045,7 @@
         )
     )     
     (wood-amount > 200)(gold-amount > 200)
-	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQty)
+	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQtyMedium)
 
 	(can-train cavalry-archer-line)
 =>
