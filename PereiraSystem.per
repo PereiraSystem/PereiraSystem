@@ -5150,7 +5150,6 @@
 
 (defrule
     (current-age == castle-age) ;dont use militia if theres discount on cav or arch
-    (not(can-train battering-ram-line))
     (gold-amount > 220)
     (not(civ-selected frankish))(not(civ-selected cumans))
     (not(civ-selected magyar))(not(civ-selected mongol))  
