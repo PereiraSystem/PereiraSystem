@@ -4414,6 +4414,7 @@
 )
 
 ; SIEGE ELEPHANT
+(defrule
     (current-age == castle-age)(gold-amount > 300)
 	(unit-type-count-total armored-elephant-line g:< gl-ramQtyLow)
     (or(enemy-buildings-in-town)(military-population > 45))
