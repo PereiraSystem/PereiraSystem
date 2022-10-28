@@ -3711,19 +3711,19 @@
 
 (defrule
     (building-type-count-total castle == 2)
-    (civilian-population > 60)(military-population > 70)
-    (can-build castle)    
-=>
-    (chat-local-to-self "Trying To Build FORWARD Castle 3")
-    (build-forward castle) 
-)
-
-(defrule
-    (building-type-count-total castle == 2)
     (can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle 3")
     (build castle) 
+)
+
+(defrule
+    (building-type-count-total castle == 3)
+    (civilian-population > 60)(military-population > 70)
+    (can-build castle)    
+=>
+    (chat-local-to-self "Trying To Build FORWARD Castle 4")
+    (build-forward castle) 
 )
 
 ; MINI CASTLES (MEGA TOWERS?)
