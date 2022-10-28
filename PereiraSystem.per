@@ -1691,7 +1691,7 @@
     (chat-to-player my-player-number "KAMAYUKS, SLINGERS, EAGLE WARRIORS +1 MELEE, +2 RANGED ARMOR!")  
 )
 
-; INDIANS
+; INDIANS - HINDUSTANIS
 (defrule
     (civ-selected indian)
     (can-research my-second-unique-research )
@@ -1870,10 +1870,10 @@
 )
 
 (defrule
-    (civ-selected vietnamese)(can-research my-unique-research)(gold-amount < 2000)(food-amount > 2000)(wood-amount > 500)
+    (civ-selected vietnamese)(can-research my-unique-research)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "500 GOLD FOR -FREE-!") 
+    (chat-to-player my-player-number "LUMBERJACKS GENERATE GOLD!") 
 )
 
 ; DEFINITIVE   
@@ -1883,7 +1883,7 @@
     (can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
-    (chat-to-player my-player-number "CABALLERÍA ATACA 33% MÁS RÁPIDO!") 
+    (chat-to-player my-player-number "CAVALRY ATTACKS 33% FASTER!") 
 )
 
 (defrule
@@ -1891,7 +1891,7 @@
     (can-research my-unique-research)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "MILICIA +5 DEFENSA CUERPO A CUERPO!") 
+    (chat-to-player my-player-number "MILITIA +5 MELEE ARMOR!") 
 )
 
 ; CUMANS
@@ -1953,7 +1953,8 @@
 (defrule 
     (can-research ri-burgundian-vineyards)
 =>
-    (research ri-burgundian-vineyards ) 
+    (research ri-burgundian-vineyards)
+    (chat-to-player my-player-number "FARMS GENERATE GOLD!")     
 )
 
 (defrule
