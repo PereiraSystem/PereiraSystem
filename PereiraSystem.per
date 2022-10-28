@@ -3067,7 +3067,7 @@
 ; CIVILIAN BUILDINGS
 ; WONDER                          
 (defrule
-    (or(game-type WONDER-RACE)(game-time > 7200))
+    (game-time > 5400)
     (building-type-count-total wonder == 0)
     (can-build wonder)    
 =>
