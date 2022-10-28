@@ -1915,8 +1915,8 @@
 )
 ; MALAY
 (defrule
-    (can-research 624 )
-    (building-type-count-total dock > 0)
+    (can-research 624)
+    (building-type-count dock > 1)
     (current-age == imperial-age)
 =>
     (research 624)
@@ -4193,13 +4193,11 @@
     (not(civ-selected khmer))(not(civ-selected berbers))
     (not(civ-selected gothic))(not(civ-selected bengalis))
     (up-compare-goal gl-nonUpgradedUniqueUnitsCreated g:< 10)
-    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
+    ;(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
     (can-train my-unique-unit-line)    
 =>
 	(train my-unique-unit-line)
-
     (up-chat-data-to-self "Training Non Upgraded Number %d" g: gl-nonUpgradedUniqueUnitsCreated)
-
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
 
@@ -4896,6 +4894,7 @@
     )
     (not(civ-selected turkish)) ;use light cav
     (not(civ-selected vietnamese))    ;elephants will improve later
+    (not(civ-selected malay)) ;ele are cheaper
     (not(can-train steppe-lancer-line))    
     (can-train knight-line)
 =>
