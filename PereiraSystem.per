@@ -595,7 +595,7 @@
 )
 
 (defrule
-    (military-population > 110)
+    (military-population > 90)
 =>
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
@@ -5247,7 +5247,8 @@
     (gold-amount > 220)
     (not(civ-selected frankish))(not(civ-selected cumans))
     (not(civ-selected magyar))(not(civ-selected mongol))  
-    (not(civ-selected turkish))(not(civ-selected vietnamese))
+    (not(civ-selected turkish))
+    (not(civ-selected vietnamese)) ; takes forever to make elephants maybe remove
     (not(civ-selected lithuanians))(not(civ-selected poles))
     (not(civ-selected berbers))(not(civ-selected persian)) 
     (not(civ-selected indian))  (not(civ-selected khmer))          
