@@ -3416,6 +3416,21 @@
     (chat-local-to-self "Trying To Build Market 1 - Bohe / Sarac") 
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (build market)
+    (set-strategic-number sn-maximum-gold-drop-distance 14)
+    (up-modify-sn sn-gold-gatherer-percentage c:+ 30)
+    (up-modify-sn sn-wood-gatherer-percentage c:+ 15)
+    (up-modify-sn sn-food-gatherer-percentage c:+ 15)        
+)
+
+(defrule
+    (or
+        (civ-selected bohemians)(civ-selected saracen)
+    )
+=>
+    (up-modify-sn sn-gold-gatherer-percentage c:+ 30)
+    (up-modify-sn sn-wood-gatherer-percentage c:+ 15)
+    (up-modify-sn sn-food-gatherer-percentage c:+ 15)
+    (disable-self)       
 )
 
 (defrule
