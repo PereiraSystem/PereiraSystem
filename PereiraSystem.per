@@ -1467,8 +1467,7 @@
 )
 
 (defrule
-    (civ-selected frankish)
-    (can-research my-second-unique-research )
+    (civ-selected frankish)(can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
     (chat-to-player my-player-number "STABLES WORK 40% FASTER!") 
@@ -1494,8 +1493,7 @@
 
 ; BRITONS
 (defrule
-    (civ-selected briton)
-    (can-research my-second-unique-research )
+    (civ-selected briton)(can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
     (chat-to-player my-player-number "ARCHERS +1 RANGE, TOWERS +2 ATTACK!") 
@@ -1543,8 +1541,7 @@
 
 ; PERSIANS
 (defrule
-    (civ-selected persian)
-    (can-research my-second-unique-research)
+    (civ-selected persian)(can-research my-second-unique-research)
 =>
     (research my-second-unique-research)
     (chat-to-player my-player-number "ARCHERS COST NO GOLD!")  
@@ -1756,7 +1753,7 @@
 
 ; INCA
 (defrule
-    (civ-selected incan)(can-research my-second-unique-research )
+    (civ-selected incan)(can-research my-second-unique-research)
     (or
         (unit-type-count-total skirmisher > 0)    
         (unit-type-count-total slinger > 0)        
@@ -1776,7 +1773,7 @@
 ; INDIANS - HINDUSTANIS
 (defrule
     (civ-selected indian)
-    (can-research my-second-unique-research )
+    (can-research my-second-unique-research)
 =>
     (research my-second-unique-research)
     (chat-to-player my-player-number "GOLD INCOME 10% FASTER!")  
@@ -1898,7 +1895,7 @@
 ; RISE OF THE RAJAS   
 ; BURMESE
 (defrule
-    (can-research my-second-unique-research )
+    (can-research my-second-unique-research)
     (civ-selected burmese)
     (unit-type-count-total battle-elephant-line > 0)
 =>
@@ -1916,7 +1913,7 @@
 
 ; KHMER
 (defrule
-    (civ-selected khmer)(can-research my-second-unique-research )
+    (civ-selected khmer)(can-research my-second-unique-research)
     (unit-type-count-total battle-elephant-line > 0)
 =>
     (research my-second-unique-research)
@@ -1948,7 +1945,9 @@
 
 ; VIETNAMESE
 (defrule
-    (can-research my-second-unique-research)(unit-type-count-total battle-elephant-line > 0)
+    (civ-selected vietnamese)
+    (can-research my-second-unique-research)
+    (unit-type-count-total battle-elephant-line > 0)
 =>
     (research my-second-unique-research)
     (chat-to-player my-player-number "ELEPHANTS +50 HP!") 
