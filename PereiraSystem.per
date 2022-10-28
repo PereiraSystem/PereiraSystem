@@ -5221,37 +5221,23 @@
 ; SPEARMEN
 ; SPEARMEN FEUDAL AGE
 (defrule
-    (current-age == feudal-age)
+    (current-age == feudal-age) ;non reactive
     (or
-        (wood-amount >= 275) ;not optimized for civs with cheaper TC
+        (wood-amount >= 275)
         (building-type-count town-center > 0)
     )    
     (wood-amount >= 125)
+    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< 4)
     (can-train spearman-line)
 =>
     (train spearman-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
-    (disable-self)
 )
 
 (defrule
-    (current-age == feudal-age)
+    (current-age == feudal-age) ;reactive
     (or
-        (wood-amount >= 275) ;not optimized for civs with cheaper TC
-        (building-type-count town-center > 0)
-    )    
-    (wood-amount >= 125)
-    (can-train spearman-line)
-=>
-    (train spearman-line)
-    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
-    (disable-self)
-)
-
-(defrule
-    (current-age == feudal-age)
-    (or
-        (wood-amount >= 275) ;not optimized for civs with cheaper TC
+        (wood-amount >= 275)
         (building-type-count town-center > 0)
     )    
     (or(wood-amount >= 125)
