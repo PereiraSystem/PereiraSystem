@@ -1791,6 +1791,7 @@
 ; BERBER
 (defrule
     (can-research 578) 
+    (research-completed my-unique-research)
     (building-type-count-total castle > 1);KASBAH
 =>
     (research 578)
@@ -2785,7 +2786,7 @@
         (gold-amount > 800)
         (civ-selected bohemians)
     )
-	(unit-type-count-total monk > 4)        
+	(unit-type-count-total monk > 6)        
     (can-research ri-theocracy)
 =>
     (research ri-theocracy)
