@@ -1123,6 +1123,13 @@
     (disable-self)
 )
 
+(defrule
+	(true)
+=>
+	(up-set-defense-priority c: lumber-camp c: 5000)
+	(disable-self)
+)
+
 (defrule 
     (military-population > 15)
 =>
