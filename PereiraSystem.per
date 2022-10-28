@@ -1477,22 +1477,19 @@
 
 ; SARACEN
 (defrule
-    (can-research ri-madrasah)(unit-type-count monk > 0)
+    (civ-selected saracen)
+    (can-research my-second-unique-research)
 =>
-    (research ri-madrasah)
-    (chat-to-player my-player-number "MONKS RETURN 33% OF GOLD COST WHEN THEY DIE!")
+    (research my-second-unique-research)
+    (chat-to-player my-player-number "CAMELS +20 HP!")
 )
 
 (defrule
-    (can-research my-unique-research)
-    (or
-        (unit-type-count my-unique-unit-line > 2)
-        (unit-type-count camel-line > 2)  
-    )
     (civ-selected saracen)
+    (can-research my-unique-research)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "CAMELS +20% HP!")
+    (chat-to-player my-player-number "TREBUCHETS AND MANGONELS +15% ATTACK!")
 )
 
 ; TEUTONS
@@ -1642,11 +1639,13 @@
 ; FORGOTTEN
 ; SLAVS
 (defrule
-    (can-research ri-orthodoxy )
+    (civ-selected slavic)
+    (stone-amount < 1000)
+    (can-research my-second-unique-research)
     (current-age == imperial-age)
 =>
-    (research ri-orthodoxy)
-    (chat-to-player my-player-number "MONKS +3 MELEE, +3 RANGED ARMOR!")  
+    (research my-second-unique-research)
+    (chat-to-player my-player-number "CASTLES COST LESS STONE!")  
 )
 
 (defrule
