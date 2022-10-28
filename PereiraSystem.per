@@ -601,7 +601,7 @@
 )
 
 (defrule
-    (military-population > 90)
+    (military-population > 109)
 =>
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
@@ -5250,7 +5250,7 @@
     (not(civ-selected magyar))(not(civ-selected mongol))  
     (not(civ-selected turkish))
     (not(civ-selected lithuanians))         
-    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)    
+    (up-compare-goal gl-totalSoldiersCreatedThisAge < gl-maximumSoldiersFeudal)    
     (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
     (can-train militiaman-line)
 =>
@@ -5340,7 +5340,7 @@
         (building-type-count town-center > 0)
     )    
     (wood-amount >= 125)
-    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< 4)
+    (up-compare-goal gl-totalSoldiersCreatedThisAge < 4)
     (can-train spearman-line)
 =>
     (train spearman-line)
@@ -5360,7 +5360,7 @@
         )
     )
     (up-compare-goal gl-dudeHasCavalry == 1)
-    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)
+    (up-compare-goal gl-totalSoldiersCreatedThisAge < gl-maximumSoldiersFeudal)
     (unit-type-count-total spearman-line g:< gl-spearmenQtyLow)
     (can-train spearman-line)
 =>
@@ -5382,7 +5382,7 @@
     )
     (or(up-compare-goal gl-dudeHasCavalry == 1)(up-compare-goal gl-dudeHasCavalryArchers == 1))
     (up-compare-goal gl-dudeHasArchers == 0)    
-    (unit-type-count-total spearman-line g:< gl-spearmenQtyMedium)
+    (unit-type-count-total spearman-line < gl-spearmenQtyMedium)
     (can-train spearman-line)
 =>
     (train spearman-line)
@@ -5396,7 +5396,7 @@
     )    
     (wood-amount >= 125)
     (civ-selected bohemians) ;they start weak
-    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< 6)
+    (up-compare-goal gl-totalSoldiersCreatedThisAge < 6)
     (can-train spearman-line)
 =>
     (train spearman-line)
