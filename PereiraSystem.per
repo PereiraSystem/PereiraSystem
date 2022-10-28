@@ -4661,7 +4661,6 @@
     (current-age == castle-age)
     (or(unit-type-count-total monk > 4)(hold-relics))
     (unit-type-count-total battle-elephant-line g:< gl-knightsQtyLow)
-    (not(can-train battle-elephant-line))
     (not
         (and(up-compare-goal gl-dudeHasCavalry == 1)
             (can-train camel-line))
@@ -4815,6 +4814,7 @@
             (can-train camel-line))
     )
     (not(civ-selected turkish)) ;use light cav
+    (not(civ-selected vietnamese))    ;elephants will improve later
     (not(can-train steppe-lancer-line))    
     (can-train knight-line)
 =>
