@@ -3083,7 +3083,7 @@
 	(building-type-count-total town-center == 1)
     (or
         (building-type-count siege-workshop > 0)
-        (civ-selected gothic)
+        (or(civ-selected gothic)(civ-selected bohemians))
     )
     (can-build town-center)    
 =>
