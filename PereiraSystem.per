@@ -4151,13 +4151,15 @@
 (defrule
     (civ-selected bengalis)
 	(current-age == imperial-age)
-    (gold-amount > 260)
+    (gold-amount > 360)
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated g:< 10)
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
+    (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
 
 ; BRITON UU
