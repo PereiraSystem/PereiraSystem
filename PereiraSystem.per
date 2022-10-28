@@ -371,7 +371,7 @@
 	(disable-timer 2)
     (enable-timer 2 90)    
     (up-modify-goal gl-max-lumber-camps-qty c:+ 1) 
-    (up-chat-data-to-self "Lumber camps max qty increased = %d" g: gl-max-lumber-camps-qty)
+    ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: gl-max-lumber-camps-qty)
 )
 
 
@@ -383,7 +383,7 @@
 	(disable-timer 3)
     (enable-timer 3 25)    
     (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
-    (up-chat-data-to-self "NO LCs! - Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
+    ;(up-chat-data-to-self "NO LCs! - Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
 )
 
 (defrule
@@ -401,18 +401,18 @@
 	(disable-timer 4)
     (enable-timer 4 90)    
     (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
-    (up-chat-data-to-self "Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
+    ;(up-chat-data-to-self "Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
 )
 
 ; TIMER 5 INCREASES MINING CAMPS QUANTITY
-(defrule(building-type-count mining-camp > 0)=>(enable-timer 3 180)(disable-self)) 
+(defrule(building-type-count mining-camp > 0)=>(enable-timer 5 180)(disable-self)) 
 (defrule
 	(timer-triggered 5)
 =>
 	(disable-timer 5)
     (enable-timer 5 240)      
     (up-modify-goal gl-max-mining-camps-qty c:+ 1)    
-    (up-chat-data-to-self "Mining camps max qty increased = %d" g: gl-max-mining-camps-qty)	
+    ;(up-chat-data-to-self "Mining camps max qty increased = %d" g: gl-max-mining-camps-qty)	
 )
 
 ; TIMER 6 INCREASES MINING CAMPS DISTANCE (FAST THEN SLOWER)
