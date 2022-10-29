@@ -568,13 +568,6 @@
     (chat-to-player my-player-number "FEUDAL AGE ATTACK!")     
 )
 
- (defrule
-    (current-age == castle-age)
-    (military-population >= 45)
-=>
-    (attack-now)
-    (chat-to-player my-player-number "CASTLE AGE ATTACK!")     
-)
 
 (defrule
     (food-amount > 5000)
