@@ -5274,6 +5274,69 @@
 )
 
 ; ARCHERS IMPERIAL AGE
+; CIVS WITH NO CROSSWBOW
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 525)(gold-amount > 545)
+    (or(civ-selected bulgarians)(civ-selected spanish))
+    (unit-type-count-total archer-line g:< gl-archerQtyLow)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+; CIVS WITH NO ARBALESTER
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 525)(gold-amount > 545)
+    (or
+        (or(civ-selected berbers)(civ-selected burgundians))
+        (or(civ-selected burmese)(civ-selected gothic))    
+    )
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 525)(gold-amount > 545)
+    (or
+        (or(civ-selected celtic)(civ-selected cumans))
+        (or(civ-selected frankish)(civ-selected gothic))    
+    )
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 525)(gold-amount > 545)
+    (or
+        (or(civ-selected gurjaras)(civ-selected huns))
+        (or(civ-selected hindustanis)(civ-selected lithuanians))    
+    )
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 525)(gold-amount > 545)
+    (or
+        (or(civ-selected slavs)(civ-selected tatars))
+        (or(civ-selected teutonic)(civ-selected turkish))    
+    )
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
 ; CIVS WITH ARBALESTER NOT FULLY UPG
 (defrule
     (current-age == imperial-age)
@@ -5317,7 +5380,7 @@
 ; CIVS WITH ARBALESTER UPGRADED
 (defrule
     (current-age == imperial-age)
-    (wood-amount > 225)(gold-amount > 245)
+    (wood-amount > 325)(gold-amount > 345)
     (or
         (or(civ-selected briton)(civ-selected byzantine))
         (or(civ-selected chinese)(civ-selected dravidians))    
@@ -5330,7 +5393,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (wood-amount > 225)(gold-amount > 245)
+    (wood-amount > 325)(gold-amount > 345)
     (or
         (or(civ-selected ethiopian)(civ-selected incan))
         (or(civ-selected italian)(civ-selected japanese))    
@@ -5343,7 +5406,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (wood-amount > 225)(gold-amount > 245)
+    (wood-amount > 325)(gold-amount > 345)
     (or
         (or(civ-selected korean)(civ-selected magyar))
         (or(civ-selected malay)(civ-selected mayan))    
@@ -5356,7 +5419,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (wood-amount > 225)(gold-amount > 245)
+    (wood-amount > 325)(gold-amount > 345)
     (or
         (or(civ-selected portuguese)(civ-selected saracen))
         (or(civ-selected vietnamese)(civ-selected vietnamese))    
