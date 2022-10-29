@@ -3842,7 +3842,7 @@
 )
 
 (defrule
-	(game-time > 3600)(building-type-count-total barracks >= 4)
+	(game-time > 2400)(building-type-count-total barracks >= 4)
 =>
     (chat-local-to-self "DELETING FIRST BARRACKS!")
     (delete-building barracks)
@@ -3918,7 +3918,7 @@
 
 
 (defrule
-	(game-time > 3600)(building-type-count-total stable >= 3)
+	(game-time > 2400)(building-type-count-total stable >= 3)
 =>
     (chat-local-to-self "DELETING FIRST STABLE!")
     (delete-building barracks)
@@ -3985,7 +3985,7 @@
 )
 
 (defrule
-	(game-time > 3600)(building-type-count-total archery-range >= 3)
+	(game-time > 2400)(building-type-count-total archery-range >= 3)
 =>
     (chat-local-to-self "DELETING FIRST ARCHERY RANGE!")
     (delete-building barracks)
@@ -4033,7 +4033,7 @@
 )
 
 (defrule
-	(game-time > 3600)(building-type-count-total siege-workshop >= 3)
+	(game-time > 2400)(building-type-count-total siege-workshop >= 3)
 =>
     (chat-local-to-self "DELETING FIRST SIEGE WORKSHOP!")
     (delete-building barracks)
