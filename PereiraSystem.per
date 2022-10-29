@@ -3882,8 +3882,7 @@
     (can-build archery-range)
 =>
     (chat-local-to-self "Trying To Build Archery Range 1")
-    (up-modify-sn sn-maximum-town-size c:+ 2)
-    (up-modify-sn sn-minimum-town-size c:+ 2)
+    (up-modify-sn sn-maximum-town-size c:+ 1)
     (build archery-range)
 )
 
@@ -4638,7 +4637,7 @@
 (defrule
     (current-age == castle-age)
 	(unit-type-count-total battering-ram-line g:< gl-ramQtyLow)
-    (or(enemy-buildings-in-town)(gold-amount > 800))
+    (enemy-buildings-in-town)
     (military-population > 25)
     (not(civ-selected gothic))
     (can-train battering-ram-line)
