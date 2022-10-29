@@ -1039,23 +1039,17 @@
 
 =>
     (set-strategic-number sn-maximum-stone-drop-distance 9)
+    (chat-local-to-self "STONE DISTANCE 9")     
+    (disable-self)
 )
 
 (defrule
     (current-age == imperial-age)
     (building-type-count castle > 0)    
 =>
-    (set-strategic-number sn-maximum-stone-drop-distance 0)
     (set-strategic-number sn-stone-gatherer-percentage 0)    
-    (disable-self)
-)
-
-(defrule
-    (current-age == imperial-age)
-    (military-population > 70)    
-=>
-    (set-strategic-number sn-maximum-stone-drop-distance 9)
-    (set-strategic-number sn-stone-gatherer-percentage 6)      
+    (set-strategic-number sn-maximum-stone-drop-distance 0)
+    (chat-local-to-self "STONE DISTANCE 0, PERCENTAGE 0")      
     (disable-self)
 )
 
@@ -3736,6 +3730,7 @@
     (can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle 2")
+    (up-modify-sn sn-maximum-town-size c:+ 4)     
     (build castle) 
 )
 
