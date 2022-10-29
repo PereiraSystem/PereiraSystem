@@ -1476,7 +1476,7 @@
     (chat-to-player my-player-number "UNIQUE ARCHERS +2 ATTACK, SCORPIONS +4 ATTACK!")
 )
 
-; FRANCOS ESTA AL REVES
+; FRANKS
 (defrule
     (civ-selected frankish)(unit-type-count-total my-unique-unit-line > 0)
     (can-research my-unique-research)
@@ -3901,7 +3901,6 @@
     (not(civ-selected gothic))
 =>
     (build stable)(chat-local-to-self "Trying To Build Stable")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
 ; CONSTRUIR ARQUERIA
@@ -3941,8 +3940,6 @@
     (can-build archery-range)
 =>
     (build archery-range)(chat-local-to-self "Trying To Build Archery Range 2")
-
-    (up-modify-sn sn-minimum-town-size c:+ 1)
 )
 
 (defrule
@@ -3954,7 +3951,6 @@
     (can-build archery-range)(military-population > 60)
 =>
     (build archery-range)(chat-local-to-self "Trying To Build Archery Range 3")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
 (defrule
@@ -3964,7 +3960,7 @@
     (can-build archery-range)(wood-amount > 4000)
 =>
     (build archery-range)(chat-local-to-self "Trying To Build Archery Range")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
+    
 )
 
 ; CONSTRUIR TALLER ASEDIO
@@ -3990,8 +3986,7 @@
     (building-type-count-total siege-workshop == 1)
 =>
     (build siege-workshop)(chat-local-to-self  "Trying To Build Siege Workshop 2")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
-    (up-modify-sn sn-minimum-town-size c:+ 1)
+
 )
 
 (defrule
@@ -4002,7 +3997,7 @@
 =>
     
     (build siege-workshop)(chat-local-to-self "Trying To Build Siege Workshop")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
+
 )
 
 ; MONASTERIO              
