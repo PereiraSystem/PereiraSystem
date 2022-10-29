@@ -186,16 +186,20 @@
     (set-goal gl-ramQtyLow 2)
     (set-goal gl-ramQtyMedium 6)
     (set-goal gl-ramQtyHigh 16)
-    (set-goal gl-scorpionQty 8)
-    (set-goal gl-mangonelQtyLow 2)
-    (set-goal gl-mangonelQtyMedium 9)    
+
+    (set-goal gl-scorpionQty 4)
+    
+    (set-goal gl-mangonelQtyLow 3)
+    (set-goal gl-mangonelQtyMedium 9)
+
     (set-goal gl-bombardCannonsQty 8)
 
     (set-goal gl-uniqueUnitQtyLow 10)
-    (set-goal gl-uniqueUnitQtyMedium 40)
+    (set-goal gl-uniqueUnitQtyMedium 20)
+
     (set-goal gl-trebuchetsQtyLow 4)
     (set-goal gl-trebuchetsQtyMedium 8)    
-    (set-goal gl-trebuchetsQtyHigh 16)
+    (set-goal gl-trebuchetsQtyHigh 12)
 )
 
 (defrule
@@ -5417,7 +5421,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 135)    
     (building-type-count-total monastery > 0)
-    (not(can-train genitour))       
+    (not(can-train genitour))(nor(can-train mangonel-line))        
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium) 
     (can-train skirmisher-line) 
 =>
