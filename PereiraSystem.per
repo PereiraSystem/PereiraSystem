@@ -1126,6 +1126,7 @@
 
 (defrule 
     (military-population > 15)
+    (not(town-under-attack))
 =>
     (set-strategic-number sn-task-ungrouped-soldiers 1)
     (chat-local-to-self "Soldiers Spread!")
