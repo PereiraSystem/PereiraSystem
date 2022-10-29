@@ -6348,7 +6348,8 @@
 
 (defrule
 	(current-age == imperial-age)
-    (amount-population == 150)
+    (population-headroom == 0)
+    (housing-headroom == 0)
 =>
 	(up-retreat-now)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
