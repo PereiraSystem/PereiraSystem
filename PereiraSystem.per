@@ -3824,7 +3824,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)(building-type-count-total barracks < 8)
+	(current-age == imperial-age)(building-type-count-total barracks < 4)
     (can-build barracks)(wood-amount > 2000)(food-amount > 400)
 =>
     (chat-local-to-self "Trying To Build Barracks")
