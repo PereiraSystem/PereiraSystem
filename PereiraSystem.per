@@ -3982,11 +3982,11 @@
     (building-type-count-total siege-workshop == 0)
     (building-type-count town-center > 0)
     (building-type-count monastery > 0)    
-	(not(civ-selected gothic))
     (or
         (building-type-count-total university == 1)
         (not(civ-selected bohemians))
     )
+    (not(civ-selected gothic))    
     (can-build siege-workshop)    
 =>
     (chat-local-to-self "Trying To Build Siege Workshop 1")     
@@ -3995,10 +3995,11 @@
 )
 
 (defrule
-    (can-build siege-workshop)(military-population > 60)
+    (military-population > 60)
     (wood-amount > 600)(food-amount > 600)
     (current-age == imperial-age)(building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total siege-workshop == 1)
+    (can-build siege-workshop)
 =>
     (build siege-workshop)(chat-local-to-self  "Trying To Build Siege Workshop 2")
 
@@ -4006,13 +4007,22 @@
 
 (defrule
 	(current-age == imperial-age)
-	(building-type-count-total siege-workshop < 8)
+	(building-type-count-total siege-workshop < 4)
     (building-type-count-total university > 0)(building-type-count-total castle > 0)
-    (can-build siege-workshop)(wood-amount > 4000)(not(civ-selected gothic)) 
+    (military-population > 60)
+    (wood-amount > 2000)(food-amount > 600)
+    (not(civ-selected gothic)) 
+    (can-build siege-workshop)
 =>
     
     (build siege-workshop)(chat-local-to-self "Trying To Build Siege Workshop")
+)
 
+(defrule
+	(game-time > 3600)(building-type-count-total siege-workshop >= 3)
+=>
+    (chat-local-to-self "DELETING FIRST SIEGE WORKSHOP!")
+    (delete-building barracks)
 )
 
 ; MONASTERIO              
