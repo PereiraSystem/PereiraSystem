@@ -3029,7 +3029,7 @@
 (defrule
 	(town-under-attack)
     (or(building-type-count-total castle > 0)
-        (building-type-count-total watch-tower > 1)
+        (building-type-count-total watch-tower-line > 1)
     )
     (can-research ri-murder-holes)
 =>
@@ -3057,14 +3057,20 @@
 )
 
 (defrule
-	(or
-        (building-type-count-total guard-tower > 4)
-        (building-type-count-total watch-tower > 4)
-	)
+    (or
+        (building-type-count-total watch-tower-line > 4)
+        (and
+            (building-type-count-total watch-tower-line > 0)
+            (and
+                (wood-amount > 9000)(food-amount > 9000)
+            )
+        )
+    )      
     (can-research ri-keep )
 =>
     (research ri-keep )
 )
+
 
 (defrule
     (can-research ri-bombard-tower )
