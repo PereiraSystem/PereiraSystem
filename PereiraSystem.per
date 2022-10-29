@@ -5477,6 +5477,8 @@
     (current-age == castle-age) 
     (gold-amount > 200)        
     (up-compare-goal gl-totalSoldiersCreatedThisAge < 15)
+    (not(can-train steppe-lancer-line))
+    (not(can-train battle-elephant-line))    
     (can-train militiaman-line)
 =>
     (train militiaman-line)
