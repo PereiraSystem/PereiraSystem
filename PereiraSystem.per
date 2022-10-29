@@ -536,13 +536,15 @@
 (defrule(true)=>(enable-timer 20 3600)(disable-self)) 
 (defrule
     (timer-triggered 20)
-    (current-age == imperial-age)
+    (current-age == imperial-age)(military-population >= 80)
 =>
 	(disable-timer 20)
     (enable-timer 20 1)
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-to-player my-player-number "TIME HAS PASSED, TIME TO ATTACK!")       
+    (set-strategic-number sn-minimum-attack-group-size 80)
+    (set-strategic-number sn-attack-group-gather-spacing 80)      
+    (chat-to-player my-player-number "TIME HAS PASSED AND WE HAVE 80 DUDES, TIME TO ATTACK!")       
 )
 
 ; ATTACK!!!
