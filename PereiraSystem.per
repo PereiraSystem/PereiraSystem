@@ -3916,6 +3916,14 @@
     (build stable)(chat-local-to-self "Trying To Build Stable")
 )
 
+
+(defrule
+	(game-time > 3600)(building-type-count-total stable >= 3)
+=>
+    (chat-local-to-self "DELETING FIRST STABLE!")
+    (delete-building barracks)
+)
+
 ; CONSTRUIR ARQUERIA
 (defrule
 	(building-type-count-total archery-range == 0)(wood-amount > 275)
@@ -3973,8 +3981,14 @@
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 4000)
 =>
-    (build archery-range)(chat-local-to-self "Trying To Build Archery Range")
-    
+    (build archery-range)(chat-local-to-self "Trying To Build Archery Range")   
+)
+
+(defrule
+	(game-time > 3600)(building-type-count-total archery-range >= 3)
+=>
+    (chat-local-to-self "DELETING FIRST ARCHERY RANGE!")
+    (delete-building barracks)
 )
 
 ; CONSTRUIR TALLER ASEDIO
