@@ -4096,9 +4096,9 @@
     (build watch-tower-line)(up-modify-sn sn-maximum-town-size c:+ 1)   
 )
 
-; 5. CREAR UNIDADES
-; UNIDADES CIVILES                       
-; ALDEANOS 
+; 5. CREATING UNITS
+; CIVILIAN UNITS
+; VILLAGERS
 (defrule
     (civilian-population  < 7)
     (can-train villager)
@@ -4321,6 +4321,12 @@
 )
 
 ; UNIQUE UNIT
+(defrule ;flemish militia                            
+    (can-train 1699)
+=>
+    (train 1699)
+)
+
 ; CASTLE AGE DEFENSE UU
 (defrule
     (current-age == castle-age)
