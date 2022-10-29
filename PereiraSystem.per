@@ -4578,7 +4578,11 @@
     (current-age == castle-age)
     (building-type-count town-center > 0)     
     (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
-    (up-compare-goal gl-dudeHasCavalry == 0)
+    (or
+        (up-compare-goal gl-dudeHasArchers == 0)
+        (up-compare-goal gl-dudeHasCavalryArchers == 0)
+    )
+    ;(up-compare-goal gl-dudeHasCavalry == 0)
     (or    
         (unit-type-count-total monk > 4)
         (hold-relics)
@@ -4592,7 +4596,7 @@
     (current-age == imperial-age)
     (gold-amount > 201)
     (can-train mangonel-line)
-    (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
+    (unit-type-count-total mangonel-line g:< gl-mangonelQtyMedium)
 =>
     (train mangonel-line)
 )
