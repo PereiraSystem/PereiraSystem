@@ -5624,7 +5624,8 @@
 (defrule
     (gold-amount > 250)
     (not(can-train conquistador))
-    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (or(up-compare-goal gl-dudeHasSpearmen == 1)
+    (up-compare-goal gl-dudeHasMilitia == 1))    
     (unit-type-count-total hand-cannoneer g:< gl-handCannoneerQty)    
     (can-train hand-cannoneer)    
 =>
