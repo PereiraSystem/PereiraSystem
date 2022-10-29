@@ -5459,17 +5459,13 @@
 (train militiaman-line)(disable-self))
 
 (defrule
-    (current-age == feudal-age) ;dont use militia if theres discount on cav
+    (current-age == feudal-age) 
     (gold-amount > 220)
     (or
         (not(research-available ri-supplies))
         (research-completed ri-supplies)
-    )
-    (not(civ-selected frankish))(not(civ-selected cumans))
-    (not(civ-selected magyar))(not(civ-selected mongol))  
-    (not(civ-selected turkish))
-    (not(civ-selected lithuanians))         
-    (up-compare-goal gl-totalSoldiersCreatedThisAge < gl-maximumSoldiersFeudal)    
+    )        
+    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)    
     (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
     (can-train militiaman-line)
 =>
@@ -5478,20 +5474,13 @@
 )
 
 (defrule
-    (current-age == castle-age) ;dont use militia if theres discount on cav or arch
-    (gold-amount > 220)
-    (not(civ-selected frankish))(not(civ-selected cumans))
-    (not(civ-selected magyar))(not(civ-selected mongol))  
-    (not(civ-selected turkish))
-    (not(civ-selected vietnamese)) ; takes forever to make elephants maybe remove
-    (not(civ-selected lithuanians))(not(civ-selected poles))
-    (not(civ-selected berbers))(not(civ-selected persian)) 
-    (not(civ-selected indian))  (not(civ-selected khmer))          
-    (not(can-train battle-elephant-line))
-    (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
+    (current-age == castle-age) 
+    (gold-amount > 200)        
+    (up-compare-goal gl-totalSoldiersCreatedThisAge < 15)
     (can-train militiaman-line)
 =>
     (train militiaman-line)
+    (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
 
 (defrule
