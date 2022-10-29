@@ -5158,12 +5158,36 @@
 
 ; KNIGHTS IN IMPERIAL AGE
 (defrule
-    (or
-        (and(current-age == imperial-age)(gold-amount > 400))
-        (and(food-amount > 1060)(gold-amount > 875))
-    )
+    (current-age == imperial-age)
+    (food-amount > 400)(gold-amount > 400)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
-    (up-compare-goal gl-dudeHasSpearmen == 0)
+    ;(up-compare-goal gl-dudeHasSpearmen == 0)
+    (or
+        (or
+            (civ-selected briton)            
+            (or 
+                (civ-selected frankish)        
+                (civ-selected malian)
+            )
+        )
+        (or
+            (or 
+                (civ-selected poles)
+                (civ-selected sicilians)
+            )
+            (civ-selected teutonic)            
+        )   
+    )
+    (can-train knight-line)
+=>
+    (train knight-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (food-amount > 400)(gold-amount > 400)
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
+    ;(up-compare-goal gl-dudeHasSpearmen == 0)
     (or
         (or
             (civ-selected bulgarians)            
