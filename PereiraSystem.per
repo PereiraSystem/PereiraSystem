@@ -5621,12 +5621,13 @@
 )
 
 ; HAND CANNONEER
+; Only Burgundians, Franks and Gurjaras lack fully upgraded Hand Cannoneers,
 (defrule
     (gold-amount > 250)
-    (not(can-train conquistador))
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))    
-    (unit-type-count-total hand-cannoneer g:< gl-handCannoneerQty)    
+    (unit-type-count-total hand-cannoneer g:< gl-handCannoneerQty)
+    (not(can-train conquistador))    
     (can-train hand-cannoneer)    
 =>
     (train hand-cannoneer)
