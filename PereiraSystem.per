@@ -582,6 +582,7 @@
 
 (defrule
     (military-population > 109)
+    (game-time > 3300)
 =>
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
