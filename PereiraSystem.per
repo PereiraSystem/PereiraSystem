@@ -2539,6 +2539,13 @@
     (research ri-elite-steppe-lancer)
 )
 
+(defrule
+    (can-research ri-elite-shrivamsha-rider)
+    (unit-type-count-total shrivamsha-rider-line > 3)
+    (current-age == imperial-age)
+=>
+    (research ri-elite-shrivamsha-rider)
+)
 ; ARCHERY RANGE UPGRADES      
 ; COMMON
 (defrule
@@ -5158,6 +5165,14 @@
 	(can-train camel-line)    
 =>
     (train camel-line)
+)
+
+; GURJARAS CAVALRY
+(defrule
+	(unit-type-count-total shrivamsha-rider-line g:< gl-camelQtyMedium)
+	(can-train shrivamsha-rider-line)    
+=>
+    (train shrivamsha-rider-line)
 )
 
 ; KNIGHTS
