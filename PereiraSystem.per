@@ -3812,7 +3812,7 @@
 	(current-age == imperial-age)
 	(building-type-count-total barracks == 2)
     (building-type-count town-center > 0)
-    (food-amount > 400)
+    (wood-amount > 600)(food-amount > 600)
     (or
         (and(building-type-count-total siege-workshop > 0)(building-type-count-total castle > 0))
         (civ-selected gothic)
@@ -3883,7 +3883,8 @@
 )
 
 (defrule
-	(current-age == imperial-age)(food-amount > 400)
+	(current-age == imperial-age)
+    (wood-amount > 600)(food-amount > 600)
 	(building-type-count-total stable == 2)
     (building-type-count-total university > 0)
 	(not(civ-selected gothic))	
@@ -3941,7 +3942,8 @@
 )
 
 (defrule
-	(current-age == imperial-age)(food-amount > 400)
+	(current-age == imperial-age)
+    (wood-amount > 600)(food-amount > 600)
 	(building-type-count-total archery-range == 2)
     (building-type-count-total university > 0)
     
