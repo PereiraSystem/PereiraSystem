@@ -3895,7 +3895,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)(building-type-count-total stable < 8)
+	(current-age == imperial-age)(building-type-count-total stable < 5)
     (can-build stable)(wood-amount > 4000)
     (not(civ-selected gothic))
 =>
@@ -3954,7 +3954,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)(building-type-count-total archery-range < 8)
+	(current-age == imperial-age)(building-type-count-total archery-range < 5)
     (building-type-count-total archery-range >= 3)
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 4000)
