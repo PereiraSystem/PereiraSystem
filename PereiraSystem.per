@@ -5036,6 +5036,7 @@
 ; CASTLE AGE SCOUTS
 (defrule
 	(current-age == castle-age)
+    (research-completed ri-hand-cart)
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasSkirmishers == 1))    
     (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)    
