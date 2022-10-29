@@ -5427,9 +5427,8 @@
 
 (defrule
     (current-age == imperial-age)      
-    (up-compare-goal gl-dudeHasArchers == 1)
-    (not(civ-selected khmer))(not(civ-selected spanish))
-    (not(civ-selected sicilians))(not(civ-selected portuguese))
+    (or(up-compare-goal gl-dudeHasArchers == 1)
+    (up-compare-goal gl-dudeHasCavalryArchers == 1))
     (not(civ-selected gothic))
     (not(can-train genitour))
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium)
