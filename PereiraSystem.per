@@ -570,6 +570,7 @@
 
 (defrule
 	(current-age == feudal-age)(military-population < 10)
+    (game-time > )
 =>
 	(up-retreat-now)
     (set-strategic-number sn-number-attack-groups 0)
