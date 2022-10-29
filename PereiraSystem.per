@@ -2370,7 +2370,8 @@
 
 
 (defrule
-    (unit-type-count-total militiaman-line > 2)	
+    (unit-type-count-total militiaman-line > 2)
+    (or(game-time < 900)(current-age == imperial-age))
     (can-research ri-long-swordsman)    
 =>
     (research ri-long-swordsman)
@@ -5033,7 +5034,7 @@
 	(current-age == castle-age)
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasSkirmishers == 1))    
-    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)    
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)    
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
@@ -5484,11 +5485,13 @@
 )
 
 (defrule
-    (current-age == castle-age) 
+    (current-age == castle-age)
+    (game-time < 900)
     (gold-amount > 200)        
     (up-compare-goal gl-totalSoldiersCreatedThisAge < 15)
     (not(can-train steppe-lancer-line))
-    (not(can-train battle-elephant-line))    
+    (not(can-train battle-elephant-line))
+    (nor(can-train mangonel-line))     
     (can-train militiaman-line)
 =>
     (train militiaman-line)
