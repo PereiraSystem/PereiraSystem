@@ -3745,7 +3745,7 @@
 )
 
 (defrule
-    (building-type-count-total castle == 999)
+    (building-type-count-total castle == 2)
     (can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle 3")
@@ -3753,8 +3753,9 @@
 )
 
 (defrule
-    (building-type-count-total castle == 999)
+    (building-type-count-total castle == 3)
     (civilian-population > 60)(military-population > 70)
+    (wood-amount > 4000)(food-amount > 4000)(gold-amount > 4000)
     (can-build castle)    
 =>
     (chat-local-to-self "Trying To Build FORWARD Castle 4")
