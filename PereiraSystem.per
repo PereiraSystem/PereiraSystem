@@ -3464,7 +3464,9 @@
 (defrule
     (or(building-type-count town-center > 1)(civ-selected bohemians))
     (building-type-count-total monastery > 0)  
-    (research-completed ri-hand-cart)(research-completed ri-bow-saw)(research-completed ri-heavy-plow)
+    (research-completed ri-hand-cart)
+    (research-completed ri-bow-saw)
+    (research-completed ri-heavy-plow)
     (or
         (building-type-count-total house > 10)
         (or(civ-selected hun)(civ-selected bohemians))
