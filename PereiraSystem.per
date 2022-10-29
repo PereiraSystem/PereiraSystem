@@ -5274,12 +5274,92 @@
 )
 
 ; ARCHERS IMPERIAL AGE
+; CIVS WITH ARBALESTER NOT FULLY UPG
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 425)(gold-amount > 445)
+    (or
+        (or(civ-selected aztec)(civ-selected bengalis))
+        (or(civ-selected bohemians)(civ-selected khmer))    
+    )
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 425)(gold-amount > 445)
+    (or
+        (or(civ-selected malian)(civ-selected mongol))
+        (or(civ-selected poles)(civ-selected khmer))    
+    )
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 425)(gold-amount > 445)
+    (or
+        (or(civ-selected viking)(civ-selected viking))
+        (or(civ-selected viking)(civ-selected viking))    
+    )
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+; CIVS WITH ARBALESTER UPGRADED
 (defrule
     (current-age == imperial-age)
     (wood-amount > 225)(gold-amount > 245)
     (or
-        (or(civ-selected sicilians)(civ-selected mayan))
-        (or(civ-selected ethiopian)(civ-selected viking))    
+        (or(civ-selected briton)(civ-selected byzantine))
+        (or(civ-selected chinese)(civ-selected dravidian))    
+    )
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 225)(gold-amount > 245)
+    (or
+        (or(civ-selected ethiopian)(civ-selected incan))
+        (or(civ-selected italian)(civ-selected japanese))    
+    )
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 225)(gold-amount > 245)
+    (or
+        (or(civ-selected korean)(civ-selected magyar))
+        (or(civ-selected malay)(civ-selected mayan))    
+    )
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 225)(gold-amount > 245)
+    (or
+        (or(civ-selected portuguese)(civ-selected saracen))
+        (or(civ-selected vietnamese)(civ-selected vietnamese))    
     )
     (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
 	(can-train archer-line)
