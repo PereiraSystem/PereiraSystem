@@ -4036,10 +4036,9 @@
 
 ; NORMAL TOWER
 (defrule
-    (town-under-attack)
+    (town-under-attack)(building-type-count castle < 1)
     (not(up-research-status c: castle-age == research-pending))
     (or(building-type-count stable > 0)(building-type-count blacksmith > 0))
-    (or(current-age < castle-age)(building-type-count castle > 1))
     ;(can-build watch-tower-line)
     (up-can-build 0 c: watch-tower)    
 =>  
@@ -4050,8 +4049,11 @@
 
 (defrule
 	(current-age == imperial-age)
-    (can-build watch-tower-line)(not(can-build bombard-tower))
-    (building-type-count-total castle > 1)(not (civ-selected teutonic)) (not (civ-selected portuguese)) 
+    (building-type-count-total castle > 1)
+    (not(civ-selected teutonic))(not(civ-selected portuguese))
+    (building-type-count watch-tower-line < 4)
+    (not(can-build bombard-tower))    
+    (can-build watch-tower-line)
 =>
     (build watch-tower-line)(up-modify-sn sn-maximum-town-size c:+ 1)   
 )
