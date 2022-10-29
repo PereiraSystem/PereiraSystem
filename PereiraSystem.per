@@ -6356,6 +6356,26 @@
 )
 
 (defrule
+	(current-age == imperial-age)
+    (research-completed my-unique-research)
+=>
+	(up-retreat-now)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (chat-local-to-self "UNIQUE RESEARCH COMPLETE, EVERYONE GO BACK!")
+	(disable-self)
+)
+
+(defrule
+	(current-age == imperial-age)
+    (research-completed my-unique-unit-upgrade)
+=>
+	(up-retreat-now)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (chat-local-to-self "UNIQUE UNIT UPGRADE COMPLETE, EVERYONE GO BACK!")
+	(disable-self)
+)
+
+(defrule
     (unit-type-count monk > 0)
 =>	
     (up-full-reset-search)	
