@@ -1799,12 +1799,12 @@
 )
 
 (defrule
-    (civ-selected indian)(can-research my-unique-research) ; rango
+    (civ-selected indian)(can-research my-unique-research)
     (current-age == imperial-age)
     (unit-type-count-total hand-cannoneer > 0)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "HAND CANNONEERS +1 RANGE!")  
+    (chat-to-player my-player-number "HAND CANNONEERS +2 RANGE!")  
 )
 
 ; ITALIANS
@@ -4781,7 +4781,7 @@
     (current-age == castle-age)(food-amount > 400)(gold-amount > 300)
 	(unit-type-count-total armored-elephant-line g:< gl-ramQtyLow)
     (or(enemy-buildings-in-town)(military-population > 45))
-    (military-population > 25)
+    (military-population > 35)
     (can-train armored-elephant-line)
 =>
 	(train armored-elephant-line)
@@ -4790,7 +4790,8 @@
 (defrule
     (current-age == imperial-age)
 	(unit-type-count-total armored-elephant-line g:< gl-ramQtyHigh)
-    (military-population > 25)    
+    (military-population > 45)
+    (gold-amount > 400);priority for trebuchets and cannons
     (can-train armored-elephant-line)
 =>
 	(train armored-elephant-line)
