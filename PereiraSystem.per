@@ -4462,7 +4462,7 @@
 (defrule
     (civ-selected briton)
     ;(research-completed my-unique-unit-upgrade)
-    (gold-amount > 240)
+    (wood-amount > 200)(gold-amount > 240)
     (can-train my-unique-unit-line)    
 =>
     (train my-unique-unit-line)
@@ -5619,7 +5619,7 @@
         (building-type-count town-center > 0)
     )    
     (wood-amount >= 125)
-    (up-compare-goal gl-totalSoldiersCreatedThisAge < 14)
+    (up-compare-goal gl-totalSoldiersCreatedThisAge < 5)
     (can-train spearman-line)
 =>
     (train spearman-line)
