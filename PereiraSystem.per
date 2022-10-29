@@ -3071,7 +3071,7 @@
 
 (defrule
 	(building-type-count-total town-center == 1)
-    (civilian-population > 30)
+    (civilian-population > 35)
     (or
         (building-type-count siege-workshop > 0)
         (or(civ-selected gothic)(civ-selected bohemians))
@@ -3472,7 +3472,7 @@
     (can-build university)
 =>
     (chat-local-to-self "Trying To Build University")
-    (up-modify-sn sn-maximum-town-size c:+ 3)(build university)    
+    (up-modify-sn sn-maximum-town-size c:+ 2)(build university)    
 )
 
 ; DOCK
@@ -3898,7 +3898,7 @@
     (civ-selected cumans)
 =>
     (chat-local-to-self "Trying To Build Archery Range 1")
-    (up-modify-sn sn-maximum-town-size c:+ 2)
+    (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 2)
     (build archery-range)
 )
@@ -3913,7 +3913,7 @@
     (can-build archery-range)
 =>
     (build archery-range)(chat-local-to-self "Trying To Build Archery Range 2")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
+
     (up-modify-sn sn-minimum-town-size c:+ 1)
 )
 
@@ -4267,7 +4267,7 @@
 ; UNIQUE UNITS WHOSE UPGRADE COSTS SAME RESOURCE, MAKE ONLY A FEW 
 ; MAGYAR DONT MAKE THEM UNTIL UPGRADE
 (defrule
-	(current-age == imperial-age)(gold-amount > 400)
+	(current-age == imperial-age)(gold-amount > 500)
     (not(research-completed my-unique-unit-upgrade))
     (or
         (or
@@ -4296,7 +4296,7 @@
 )
 
 (defrule 
-	(current-age == imperial-age)(gold-amount > 400)
+	(current-age == imperial-age)(gold-amount > 500)
     (not(research-completed my-unique-unit-upgrade))
     (or
         (or
@@ -4325,7 +4325,7 @@
 )
 
 (defrule 
-	(current-age == imperial-age)(gold-amount > 400)
+	(current-age == imperial-age)(gold-amount > 500)
     (not(research-completed my-unique-unit-upgrade))
     (or
         (or
@@ -4354,7 +4354,7 @@
 )
 
 (defrule 
-	(current-age == imperial-age)(gold-amount > 400)
+	(current-age == imperial-age)(gold-amount > 500)
     (not(research-completed my-unique-unit-upgrade))
     (or
         (or
@@ -4399,7 +4399,7 @@
         )            
     )
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
-    (gold-amount > 260)    
+    (gold-amount > 460) ;trebuchets and mangonels have priority   
     (can-train my-unique-unit-line)    
 =>
 	(train my-unique-unit-line)
@@ -4411,7 +4411,7 @@
         (civ-selected cumans)(civ-selected cumans)
     )
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
-    (gold-amount > 260)    
+    (gold-amount > 460)    
     (can-train my-unique-unit-line)    
 =>
 	(train my-unique-unit-line)
@@ -4421,7 +4421,7 @@
 (defrule
     (current-age == imperial-age)
     (research-completed my-unique-unit-upgrade)
-    (gold-amount > 250)
+    (gold-amount > 350)
     (not(civ-selected ethiopian))(not(civ-selected gothic))
     (not(civ-selected berbers)) 
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
@@ -4434,12 +4434,26 @@
 ; BERBER UU - upgrade costs same resource
 (defrule
     (civ-selected berbers)
-	(current-age == imperial-age)
-    (gold-amount > 260)
+    (not(research-completed my-unique-unit-upgrade))
+	(or(current-age == imperial-age)(gold-amount > 800))
+    (gold-amount > 460)
     (or(up-compare-goal gl-dudeHasCavalryArchers == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))
-    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 10)    
-    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 10)       
+	(can-train my-unique-unit-line)
+=>
+	(train my-unique-unit-line)
+    (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
+)
+
+(defrule
+    (civ-selected berbers)
+    (research-completed my-unique-unit-upgrade)
+	(current-age == imperial-age)
+    (gold-amount > 360)
+    (or(up-compare-goal gl-dudeHasCavalryArchers == 1)
+    (up-compare-goal gl-dudeHasMilitia == 1)) 
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
@@ -4574,37 +4588,10 @@
 )
 
 (defrule
-    (current-age == imperial-age)(gold-amount > 250)
+    (current-age == imperial-age)
+    (gold-amount > 201)
     (can-train mangonel-line)
-    (or
-        (or
-            (or
-                (or 
-                    (civ-selected aztec)
-                    (civ-selected bulgarians)
-                )
-                (or 
-                    (civ-selected cumans)        
-                    (civ-selected ethiopian)
-                )
-            )   
-            (or
-                (or 
-                    (civ-selected malian)
-                    (civ-selected mongol)
-                )
-                (or 
-                    (civ-selected saracen)        
-                    (civ-selected sicilians)
-                )
-            )     
-        )	    
-        (or
-            (civ-selected teutonic)
-            (civ-selected teutonic)
-        )   
-    )
-    (unit-type-count-total mangonel-line g:< gl-mangonelQtyMedium)
+    (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
 =>
     (train mangonel-line)
 )
