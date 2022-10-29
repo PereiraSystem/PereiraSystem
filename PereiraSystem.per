@@ -466,6 +466,7 @@
     (enable-timer 11 90)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
+    (up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)    
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
     (up-chat-data-to-self "Inf / Cav created in feudal age: %d" g: gl-totalSoldiersCreatedThisAge)    
@@ -476,9 +477,10 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 90)           
+    (enable-timer 11 80)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
+    (up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)    
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
     ;(up-chat-data-to-self "Inf / Cav created in castle age: %d" g: gl-totalSoldiersCreatedThisAge)    
@@ -489,9 +491,10 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 90)           
+    (enable-timer 11 60)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
+    (up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)    
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
     ;(up-chat-data-to-self "Inf / Cav created in imperial age: %d" g: gl-totalSoldiersCreatedThisAge)    
@@ -4596,7 +4599,7 @@
     (current-age == imperial-age)
     (gold-amount > 201)
     (can-train mangonel-line)
-    (unit-type-count-total mangonel-line g:< gl-mangonelQtyMedium)
+    (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
 =>
     (train mangonel-line)
 )
