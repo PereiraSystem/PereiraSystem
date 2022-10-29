@@ -533,13 +533,14 @@
     (up-delete-idle-units idle-type-villager)
 )
 
-(defrule(true)=>(enable-timer 20 3600)(disable-self)) 
+(defrule(true)=>(enable-timer 20 3600)(disable-self))
+
 (defrule
     (timer-triggered 20)
     (current-age == imperial-age)(military-population >= 80)
 =>
 	(disable-timer 20)
-    (enable-timer 20 1)
+    (enable-timer 20 2)
     (set-strategic-number sn-enemy-sighted-response-distance 255)    
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 80)
