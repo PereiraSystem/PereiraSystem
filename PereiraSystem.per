@@ -3856,7 +3856,6 @@
     (can-build stable)
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
-    (not(civ-selected celtic))
     (or
         (not(civ-selected japanese))(building-type-count archery-range > 0)
     )
@@ -3870,8 +3869,6 @@
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (build stable)         
 )
-
-
 
 (defrule
     (current-age == castle-age)
