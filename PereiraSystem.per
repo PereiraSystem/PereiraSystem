@@ -3071,6 +3071,7 @@
 
 (defrule
 	(building-type-count-total town-center == 1)
+    (civilian-population > 30)
     (or
         (building-type-count siege-workshop > 0)
         (or(civ-selected gothic)(civ-selected bohemians))
