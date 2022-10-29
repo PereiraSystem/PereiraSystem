@@ -550,7 +550,6 @@
                 (unit-type-count archer-line > 9)
                 (unit-type-count cavalry-archer-line > 9)
             ) 
-
         )
         (or
             (or
@@ -576,20 +575,24 @@
     (set-strategic-number sn-number-attack-groups 0)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
     (chat-local-to-self "FEUDAL AGE RETREAT!")
-	(disable-self)
 )
 
  (defrule
     (current-age == castle-age)
-    (military-population >= 60)
-    (or
-        (unit-type-count mangonel-line > 10)
-        (unit-type-count battering-ram-line > 10)        
-    )
+    (military-population >= 45)
 =>
     (attack-now)
     (chat-to-player my-player-number "CASTLE AGE ATTACK!")     
-) 
+)
+
+(defrule
+	(current-age == castle-age)(military-population < 30)
+=>
+	(up-retreat-now)
+    (set-strategic-number sn-number-attack-groups 0)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (chat-local-to-self "CASTLE AGE RETREAT!")
+)
 
 (defrule
     (food-amount > 5000)
