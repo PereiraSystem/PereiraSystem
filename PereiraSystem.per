@@ -3842,6 +3842,13 @@
 )
 
 (defrule
+	(game-time > 3600)(building-type-count-total barracks >= 4)
+=>
+    (chat-local-to-self "DELETING FIRST BARRACKS!")
+    (delete-building barracks)
+)
+
+(defrule
     (civ-selected gothic)
     (current-age == imperial-age)
     (wood-amount > 3000)
