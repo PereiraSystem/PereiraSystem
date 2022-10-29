@@ -371,7 +371,7 @@
 	(timer-triggered 2)
 =>
 	(disable-timer 2)
-    (enable-timer 2 90)    
+    (enable-timer 2 100)    
     (up-modify-goal gl-max-lumber-camps-qty c:+ 1) 
     ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: gl-max-lumber-camps-qty)
 )
@@ -401,7 +401,7 @@
 	(timer-triggered 4)
 =>
 	(disable-timer 4)
-    (enable-timer 4 90)    
+    (enable-timer 4 100)    
     (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
     ;(up-chat-data-to-self "Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
 )
@@ -3707,7 +3707,7 @@
 )
 
 (defrule
-    (building-type-count-total castle == 2)
+    (building-type-count-total castle == 999)
     (can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle 3")
@@ -3715,7 +3715,7 @@
 )
 
 (defrule
-    (building-type-count-total castle == 3)
+    (building-type-count-total castle == 999)
     (civilian-population > 60)(military-population > 70)
     (can-build castle)    
 =>
