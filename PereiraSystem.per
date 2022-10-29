@@ -3981,7 +3981,8 @@
 )
 
 (defrule
-    (can-build siege-workshop)(military-population > 60)(food-amount > 400)
+    (can-build siege-workshop)(military-population > 60)
+    (wood-amount > 600)(food-amount > 600)
     (current-age == imperial-age)(building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total siege-workshop == 1)
 =>
