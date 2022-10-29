@@ -5238,7 +5238,8 @@
 
 ; ARCHERS FEUDAL AGE
 (defrule
-    (current-age == castle-age) ;Cav archer available
+    (current-age == castle-age)
+    (research-completed ri-hand-cart)
     (building-type-count town-center > 0) 
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))    
@@ -5492,6 +5493,7 @@
 
 (defrule
     (current-age == castle-age)
+    (research-completed ri-hand-cart)
     (game-time < 900)
     (gold-amount > 200)        
     (up-compare-goal gl-totalSoldiersCreatedThisAge < 15)
