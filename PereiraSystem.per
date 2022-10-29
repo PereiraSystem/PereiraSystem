@@ -1279,7 +1279,9 @@
 )
 
 (defrule
-    (can-research ri-hand-cart)(building-type-count-total monastery > 0)
+    (can-research ri-hand-cart)
+    (or(building-type-count-total monastery > 0)
+        (civ-selected bugundians))
 =>
     (research ri-hand-cart)
 )
