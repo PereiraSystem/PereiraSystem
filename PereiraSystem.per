@@ -568,31 +568,12 @@
     (chat-to-player my-player-number "FEUDAL AGE ATTACK!")     
 )
 
-(defrule
-	(current-age == feudal-age)(military-population < 10)
-    (game-time > )
-=>
-	(up-retreat-now)
-    (set-strategic-number sn-number-attack-groups 0)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "FEUDAL AGE RETREAT!")
-)
-
  (defrule
     (current-age == castle-age)
     (military-population >= 45)
 =>
     (attack-now)
     (chat-to-player my-player-number "CASTLE AGE ATTACK!")     
-)
-
-(defrule
-	(current-age == castle-age)(military-population < 30)
-=>
-	(up-retreat-now)
-    (set-strategic-number sn-number-attack-groups 0)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "CASTLE AGE RETREAT!")
 )
 
 (defrule
