@@ -5283,7 +5283,7 @@
 ; ARCHERS IMPERIAL AGE
 ; CIVS WITH NO CROSSWBOW
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
     (or(civ-selected bulgarians)(civ-selected spanish))
     (up-compare-goal gl-dudeHasSpearmen == 1)
@@ -5294,7 +5294,7 @@
 )
 ; CIVS WITH NO ARBALESTER
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
     (or
         (or(civ-selected berbers)(civ-selected burgundians))
@@ -5308,7 +5308,7 @@
 )
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
     (or
         (or(civ-selected celtic)(civ-selected cumans))
@@ -5322,11 +5322,11 @@
 )
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
     (or
         (or(civ-selected gurjaras)(civ-selected hun))
-        (or(civ-selected hindustanis)(civ-selected lithuanians))    
+        (or(civ-selected indian)(civ-selected lithuanians))    
     )
     (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
@@ -5336,14 +5336,15 @@
 )
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
     (or
-        (or(civ-selected slavs)(civ-selected tatars))
+        (or(civ-selected slavic)(civ-selected tatars))
         (or(civ-selected teutonic)(civ-selected turkish))    
     )
     (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)
+    (not(can-train hand-cannoneer))    
 	(can-train archer-line)
 =>
 	(train archer-line)
