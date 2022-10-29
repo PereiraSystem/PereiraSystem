@@ -3462,7 +3462,13 @@
 
 ; UNIVERSITY
 (defrule
-    (or(building-type-count town-center > 1)(civ-selected bohemians))
+    (or
+        (and
+            (building-type-count town-center > 0)
+            (civ-selected bohemians)
+        )    
+        (building-type-count town-center > 1)        
+    )    
     (building-type-count-total monastery > 0)  
     (research-completed ri-hand-cart)
     (research-completed ri-bow-saw)
