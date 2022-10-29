@@ -5019,16 +5019,11 @@
 )
 
 ; CASTLE AGE SCOUTS
-
-
 (defrule
 	(current-age == castle-age)
-    (town-under-attack)
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasSkirmishers == 1))    
-    ;(up-compare-goal gl-dudeHasSpearmen == 0)
-    (not(civ-selected japanese))
-    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)    
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)    
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
