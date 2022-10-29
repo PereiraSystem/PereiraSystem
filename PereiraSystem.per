@@ -539,26 +539,26 @@
 
 (defrule
     (current-age == feudal-age)
-    (military-population >= 26)
+    (military-population >= 12)
     (or
         (or
             (or
-                (unit-type-count militiaman-line > 12)
-                (unit-type-count scout-cavalry-line > 12)
+                (unit-type-count militiaman-line > 9)
+                (unit-type-count scout-cavalry-line > 9)
             )
             (or
-                (unit-type-count archer-line > 12)
-                (unit-type-count cavalry-archer-line > 12)
+                (unit-type-count archer-line > 9)
+                (unit-type-count cavalry-archer-line > 9)
             ) 
 
         )
         (or
             (or
-                (unit-type-count eagle-warrior-line > 12)
-                (unit-type-count my-unique-unit-line > 12)
+                (unit-type-count eagle-warrior-line > 9)
+                (unit-type-count my-unique-unit-line > 9)
             )
             (or
-                (unit-type-count battering-ram-line > 4)
+                (unit-type-count battering-ram-line > 3)
                 (unit-type-count trebuchet > 0)
             )
         )              
@@ -567,6 +567,16 @@
 =>
     (attack-now)
     (chat-to-player my-player-number "FEUDAL AGE ATTACK!")     
+)
+
+(defrule
+	(current-age == feudal-age)(military-population < 10)
+=>
+	(up-retreat-now)
+    (set-strategic-number sn-number-attack-groups 0)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (chat-local-to-self "FEUDAL AGE RETREAT!")
+	(disable-self)
 )
 
  (defrule
