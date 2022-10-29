@@ -189,7 +189,7 @@
 
     (set-goal gl-scorpionQty 4)
 
-    (set-goal gl-mangonelQtyLow 3)
+    (set-goal gl-mangonelQtyLow 4)
     (set-goal gl-mangonelQtyMedium 9)
 
     (set-goal gl-bombardCannonsQty 8)
@@ -5632,6 +5632,10 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 135)    
     (building-type-count-total monastery > 0)
+    (or ;make sure they dont interfer with mangonel creation
+        (and(wood-amount > 400)(gold-amount > 200))
+        (building-type-count siege-workshop == 0)
+    )
     (not(can-train genitour))
     (not(can-train mangonel-line))      
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium) 
