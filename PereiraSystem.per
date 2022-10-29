@@ -6316,7 +6316,17 @@
 =>
 	(up-retreat-now)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "EVERYONE GO BACK!")
+    (chat-local-to-self "IMPERIAL AGE, EVERYONE GO BACK!")
+	(disable-self)
+)
+
+(defrule
+	(current-age == imperial-age)
+    (amount-population == 150)
+=>
+	(up-retreat-now)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (chat-local-to-self "MAX POP, EVERYONE GO BACK!")
 	(disable-self)
 )
 
