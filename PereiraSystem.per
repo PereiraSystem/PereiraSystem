@@ -4190,6 +4190,7 @@
     (can-train villager)
 =>
     (train villager)
+)
 
 (defrule
     (current-age == imperial-age) ;save some food for soldiers after age change
@@ -4757,16 +4758,9 @@
 
 ; RAM
 (defrule
-    (current-age == feudal-age)(civ-selected cumans)
+    (current-age == feudal-age)
+    (civ-selected cumans)
     (unit-type-count-total battering-ram-line < 2)
-    (can-train battering-ram-line)    
-=>
-	(train battering-ram-line)
-)
-
-(defrule
-    (current-age == feudal-age)(civ-selected cumans)
-    (building-type-count stable > 0)
     (can-train battering-ram-line)    
 =>
 	(train battering-ram-line)
@@ -5302,6 +5296,7 @@
 )
 
 ; CIVS WITH AT LEAST CAVALIER UPGRADE
+; bohemians, briton, burmese etc
 (defrule
     (current-age == imperial-age)
     (gold-amount > 575)
@@ -5314,6 +5309,7 @@
 )
 
 ; CIVS WITH PALADIN UPGRADE
+; burg, byz, celt, cumans, franks, huns, lithuanians, magyars, persians, spanish, teutons
 (defrule
     (current-age == imperial-age)
     (gold-amount > 475)
@@ -5326,7 +5322,7 @@
             )           
             (or 
                 (civ-selected celtic)
-                (civ-selected cumans)
+                (civ-selected cumans); again in good upgrades, maybe not check for steppe lancer here
             )
         )
         (or
@@ -5340,6 +5336,7 @@
             )
         )             
     )
+   (not(can-train steppe-lancer-line))     
     (can-train knight-line)
 =>
     (train knight-line)
