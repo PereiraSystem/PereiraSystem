@@ -4188,7 +4188,7 @@
 
 (defrule
     (current-age == imperial-age) ;save some food for soldiers after age change
-    (military-population > 55)
+    (or(military-population > 55)(food-amount > 400))
     (civilian-population g:< gl-maxCiviliansImperialAge)
     (can-train villager)
 =>
