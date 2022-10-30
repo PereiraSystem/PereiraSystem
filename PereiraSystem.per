@@ -367,8 +367,8 @@
     (enable-timer 1 120)    
     (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-modify-sn sn-minimum-town-size c:+ 1)
-    ;(up-chat-data-to-self "Town size max increased = %d" s: sn-maximum-town-size)
-    ;(up-chat-data-to-self "Town size min increased = %d" s: sn-minimum-town-size)
+    (up-chat-data-to-self "Town size max increased = %d" s: sn-maximum-town-size)
+    (up-chat-data-to-self "Town size min increased = %d" s: sn-minimum-town-size)
 )
 
 ; TIMER 2 INCREASES LUMBER CAMPS QUANTITY
@@ -484,7 +484,7 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 45)           
+    (enable-timer 11 60)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     (up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
@@ -3880,7 +3880,8 @@
     (can-build barracks)(military-population > 51)
 =>
     (build barracks)(chat-local-to-self "Trying To Build Barracks 3")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (up-modify-sn sn-maximum-town-size c:+ 1)    
+    (up-modify-sn sn-minimum-town-size c:+ 8)
 )
 
 (defrule
@@ -3941,7 +3942,8 @@
     (building-type-count-total university > 0)
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
-=>
+=>  
+    (up-modify-sn sn-minimum-town-size c:+ 8)
     (build stable)(chat-local-to-self "Trying To Build Stable 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
@@ -4022,6 +4024,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
+    (up-modify-sn sn-minimum-town-size c:+ 8)
     (build archery-range)(chat-local-to-self "Trying To Build Archery Range 3")
 )
 
@@ -4030,7 +4033,8 @@
     (building-type-count-total archery-range >= 3)
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 4000)
-=>
+=>  
+    (up-modify-sn sn-minimum-town-size c:+ 8)
     (build archery-range)(chat-local-to-self "Trying To Build Archery Range")   
 )
 
@@ -4064,8 +4068,9 @@
     (current-age == imperial-age)(building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total siege-workshop == 1)
     (can-build siege-workshop)
-=>
-    (build siege-workshop)(chat-local-to-self  "Trying To Build Siege Workshop 2")
+=>  
+    (up-modify-sn sn-minimum-town-size c:+ 8)
+    (build siege-workshop)(chat-local-to-self "Trying To Build Siege Workshop 2")
 
 )
 
