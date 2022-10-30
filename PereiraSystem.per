@@ -1050,11 +1050,12 @@
     (current-age == imperial-age)
     (not(civ-selected cumans)); to get mercenaries
     (not(civ-selected sicilians)) ;to build donjons
+    (not(civ-selected bulgarians))    
     (building-type-count castle > 0)    
 =>
     (set-strategic-number sn-stone-gatherer-percentage 0)    
     (set-strategic-number sn-maximum-stone-drop-distance 0)
-    (chat-local-to-self "STONE DISTANCE 0, PERCENTAGE 0")      
+    (chat-local-to-self "CASTLE BUILT! STONE DISTANCE 0, PERCENTAGE 0")      
     (disable-self)
 )
 
@@ -1068,10 +1069,11 @@
 
 =>
     (set-strategic-number sn-maximum-stone-drop-distance 9)
-    (chat-local-to-self "STONE DISTANCE 9")     
+    (chat-local-to-self "TWO TOWN CENTERS, 2 BARRACK: STONE DISTANCE 9 AGAIN")     
     (disable-self)
 )
-
+; CHANGE PERCENTAGES WHEN TOO MANY OF SOMETHING - THEY TEND TO GET MORE GOLD THAN NEEDED
+; EXCESS FOOD
 (defrule
     (food-amount > 2500)(wood-amount < 500)
 =>
@@ -1084,12 +1086,13 @@
 (defrule
     (food-amount > 2600)(gold-amount < 500)
 =>
-    (up-modify-sn sn-food-gatherer-percentage c: -16)
-    (up-modify-sn sn-gold-gatherer-percentage c: +16)
+    (up-modify-sn sn-food-gatherer-percentage c: -8)
+    (up-modify-sn sn-gold-gatherer-percentage c: +8)
     (chat-local-to-self  "We Need More Gold, Less Food")     
     (disable-self)
 )
 
+; EXCESS WOOD
 (defrule
     (wood-amount > 2500)(food-amount < 500)
 =>
@@ -1102,12 +1105,13 @@
 (defrule
     (wood-amount > 2600)(gold-amount < 500)
 =>
-    (up-modify-sn sn-wood-gatherer-percentage c: -16)
-    (up-modify-sn sn-gold-gatherer-percentage c: +16)
+    (up-modify-sn sn-wood-gatherer-percentage c: -8)
+    (up-modify-sn sn-gold-gatherer-percentage c: +8)
     (chat-local-to-self  "We Need More Gold, Less Wood")     
     (disable-self)
 )
 
+; EXCESS GOLD
 (defrule
     (gold-amount > 1600)(food-amount < 500)
 =>
