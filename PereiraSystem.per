@@ -5670,7 +5670,8 @@
 )
 
 (defrule
-    (current-age == imperial-age)      
+    (current-age == imperial-age)
+    (food-amount > 100) ;saving food for heavy units
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasCavalryArchers == 1))
     (not(civ-selected gothic))
