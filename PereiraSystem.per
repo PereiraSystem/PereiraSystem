@@ -3429,7 +3429,7 @@
 (defrule
     (or(building-type-count castle < 1)(stone-amount < 650))
     (or
-        (or(current-age >= castle-age)(building-type-count university > 0)
+        (and(current-age >= castle-age)(building-type-count university > 0))
         (and(building-type-count town-center < 0)(stone-amount < 100))
     )
     (wood-amount > 276)
@@ -3553,21 +3553,12 @@
 
 ; UNIVERSITY
 (defrule
-    (or
-        (and
-            (building-type-count town-center > 0)
-            (civ-selected bohemians)
-        )    
-        (building-type-count town-center > 1)        
-    )    
+    (building-type-count town-center > 0)            
     (building-type-count-total monastery > 0)  
     (research-completed ri-hand-cart)
     (research-completed ri-bow-saw)
     (research-completed ri-heavy-plow)
-    (or
-        (building-type-count-total house > 9)
-        (or(civ-selected hun)(civ-selected bohemians))
-    )
+    (military-population > 45)
     (building-type-count-total university == 0)    
     (can-build university)
 =>
