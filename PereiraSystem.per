@@ -2020,6 +2020,7 @@
 ; LITHUANIANS
 (defrule
     (civ-selected lithuanians)(can-research my-second-unique-research)
+    (food-amount > 600)
     (or
         (building-type-count-total town-center > 1)    
         (town-under-attack)
