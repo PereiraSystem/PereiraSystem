@@ -4046,7 +4046,7 @@
 	(game-time > 2400)(building-type-count-total siege-workshop >= 3)
 =>
     (chat-local-to-self "DELETING FIRST SIEGE WORKSHOP!")
-    (delete-building siege-workshop)(disable-self)
+    (delete-building siege-workshop)
 )
 
 ; MONASTERIO              
@@ -5482,6 +5482,17 @@
         (or(civ-selected portuguese)(civ-selected saracen))
         (or(civ-selected vietnamese)(civ-selected vietnamese))    
     )
+    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+; SPECIAL ARCHER UPGRADES
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 225)(gold-amount > 245)
+    (or(civ-selected ethiopian)(civ-selected ethiopian))
     (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
 	(can-train archer-line)
