@@ -5311,12 +5311,10 @@
     (current-age == imperial-age)
     (gold-amount > 375)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
-    (or
-        (or 
-            (civ-selected portuguese) ;reduced cost      
-            (civ-selected berbers) ;reduced cost
-        )           
-    )
+    (or 
+        (civ-selected portuguese)   
+        (civ-selected berbers)
+    )           
     (can-train knight-line)
 =>
     (train knight-line)
