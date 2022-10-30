@@ -5223,61 +5223,66 @@
 )
 
 ; KNIGHTS IN IMPERIAL AGE
+; CIVS WITH CAVALIER
 (defrule
     (current-age == imperial-age)
-    ;(food-amount > 400)
-    (gold-amount > 400)
+    (gold-amount > 475)
+    (not(civ-selected bengalis))(not(civ-selected dravidians))
+    (not(civ-selected gurjaras))(not(civ-selected indian))
+    (not(civ-selected saracen))
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
-    ;(up-compare-goal gl-dudeHasSpearmen == 0)
+    (can-train knight-line)
+=>
+    (train knight-line)
+)
+
+; PUT HERE CIVS WITH PALADIN
+(defrule
+    (current-age == imperial-age)
+    (gold-amount > 375)
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (or
         (or
             (or 
-                (civ-selected briton)        
-                (civ-selected briton)
-            )          
+                (civ-selected burgundians)        
+                (civ-selected byzantine)
+            )           
             (or 
-                (civ-selected briton)        
-                (civ-selected briton)
+                (civ-selected celtic)
+                (civ-selected cumans)
             )
         )
         (or
             (or 
-                (civ-selected briton)
-                (civ-selected briton)
+                (civ-selected frankish)        
+                (civ-selected lithuanians)
+            )           
+            (or 
+                (civ-selected teutonic)
+                (civ-selected teutonic)
             )
-            (civ-selected briton)            
-        )   
+        )             
     )
     (can-train knight-line)
 =>
     (train knight-line)
 )
 
+; PUT HERE CIVS WITH FULLY UPG PALADIN
 (defrule
     (current-age == imperial-age)
-    ;(food-amount > 400)
-    (gold-amount > 300)
+    (gold-amount > 275)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
-    ;(up-compare-goal gl-dudeHasSpearmen == 0)
-    (or
-        (or
-            (or 
-                (civ-selected lithuanians)        
-                (civ-selected bulgarians)
-            )           
-            (or 
-                (civ-selected frankish)        
-                (civ-selected malian)
-            )
+    (or)
+        (or 
+            (civ-selected hun)        
+            (civ-selected magyar)
+        )           
+        (or 
+            (civ-selected persian)
+            (civ-selected spanish)
         )
-        (or
-            (or 
-                (civ-selected poles)
-                (civ-selected sicilians)
-            )
-            (civ-selected teutonic)            
-        )   
-    )
+    )  
     (can-train knight-line)
 =>
     (train knight-line)
