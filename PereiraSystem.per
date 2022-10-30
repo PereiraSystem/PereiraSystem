@@ -3456,7 +3456,7 @@
     (building-type-count-total market == 0)    
     (can-build market)
 =>
-    (chat-local-to-self "Trying To Build Market 1") 
+    (chat-local-to-self "Trying To Build Saracen Market 1") 
     (up-modify-sn sn-maximum-town-size c:+ 2)
     (build market)
 )
@@ -4662,18 +4662,29 @@
 
 ; MANGONEL
 (defrule
-    (current-age == castle-age)
+    (current-age == castle-age) ;first mangonel at 2 monks
+    (building-type-count town-center > 0)    
+    (unit-type-count monk > 2)
+    (unit-type-count-total mangonel-line == 0)    
+	(can-train mangonel-line)
+=>
+    (train mangonel-line)
+)
+
+(defrule
+    (current-age == castle-age) ;rest of mangonels when producing 5th monk, against arch
     (building-type-count town-center > 0)     
     (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
     (or ;maybe dont check this
         (up-compare-goal gl-dudeHasArchers == 0)
         (up-compare-goal gl-dudeHasCavalryArchers == 0)
     )
-    ;(up-compare-goal gl-dudeHasCavalry == 0)
     (or    
         (unit-type-count-total monk > 4)
-        (hold-relics)
-    )    
+        (or
+            (hold-relics)(town-under-attack)
+        )
+    )       
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
@@ -6206,7 +6217,7 @@
 (defrule
     (current-age == feudal-age)
     (wood-amount > 500)
-(can-sell-commodity wood)    
+    (can-sell-commodity wood)    
 =>
     (sell-commodity wood)
 )
@@ -6232,7 +6243,7 @@
     (current-age == feudal-age)
     (can-sell-commodity food)
     (food-amount > 900)
-    (or
+    (or ; maybe remove this
          (wood-amount < 200)
          (stone-amount < 200)
     )
@@ -6333,7 +6344,6 @@
 )
 
 ;TRIBUTE
-
 (defrule
     (current-age == feudal-age)
     (wood-amount > 600)
