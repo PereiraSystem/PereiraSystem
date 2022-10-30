@@ -3883,7 +3883,7 @@
 =>
     (build barracks)(chat-local-to-self "Trying To Build Barracks 3")
     (up-modify-sn sn-maximum-town-size c:+ 1)    
-    (up-modify-sn sn-minimum-town-size c:+ 8)
+    (up-modify-sn sn-minimum-town-size c:+ 3)
 )
 
 (defrule
@@ -3945,7 +3945,7 @@
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>  
-    (up-modify-sn sn-minimum-town-size c:+ 8)
+    (up-modify-sn sn-minimum-town-size c:+ 3)
     (build stable)(chat-local-to-self "Trying To Build Stable 2")
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
@@ -4001,7 +4001,7 @@
 =>
     (chat-local-to-self "Trying To Build Archery Range 1")
     (up-modify-sn sn-maximum-town-size c:+ 1)
-    (up-modify-sn sn-minimum-town-size c:+ 2)
+    (up-modify-sn sn-minimum-town-size c:+ 3)
     (build archery-range)
 )
 
@@ -4026,7 +4026,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
-    (up-modify-sn sn-minimum-town-size c:+ 8)
+    (up-modify-sn sn-minimum-town-size c:+ 3)
     (build archery-range)(chat-local-to-self "Trying To Build Archery Range 3")
 )
 
@@ -4036,7 +4036,7 @@
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 4000)
 =>  
-    (up-modify-sn sn-minimum-town-size c:+ 8)
+    (up-modify-sn sn-minimum-town-size c:+ 3)
     (build archery-range)(chat-local-to-self "Trying To Build Archery Range")   
 )
 
@@ -4071,7 +4071,7 @@
     (building-type-count-total siege-workshop == 1)
     (can-build siege-workshop)
 =>  
-    (up-modify-sn sn-minimum-town-size c:+ 8)
+    (up-modify-sn sn-minimum-town-size c:+ 3)
     (build siege-workshop)(chat-local-to-self "Trying To Build Siege Workshop 2")
 
 )
