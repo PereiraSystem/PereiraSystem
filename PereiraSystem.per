@@ -5452,7 +5452,7 @@
     (train archer-line)
 )
 
-; ARCHERS FEUDAL AGE
+; ARCHERS CASTLE AGE
 (defrule
     (current-age == castle-age)
     (research-completed ri-hand-cart)
@@ -5503,13 +5503,25 @@
 	(train archer-line)
 )
 
+(defrule ;civs with cav archer bonus
+    (current-age == imperial-age)  
+    (wood-amount > 525)(gold-amount > 545)
+    (or
+        (or(civ-selected mongol)(civ-selected mongol))
+        (or(civ-selected frankish)(civ-selected cumans))    
+    )
+    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)
+    (not(can-train cavalry-archer))(not(can-train hand-cannoneer))        
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
 (defrule
     (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
-    (or
-        (or(civ-selected celtic)(civ-selected mongol))
-        (or(civ-selected frankish)(civ-selected cumans))    
-    )
+    (civ-selected celtic)
     (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
 	(can-train archer-line)
