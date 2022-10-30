@@ -215,6 +215,15 @@
     (set-goal gl-specialShipQty 20)
 )
 
+(defrule
+    (civ-selected sicilians)
+=>
+    (up-modify-goal gl-knightsQtyLow c:* 1,8)
+    (up-modify-goal gl-knightsQtyMedium c:* 1,8)
+
+    (up-modify-goal gl-scoutsQtyLow c:* 1,8)
+    (up-modify-goal gl-scoutsQtyMedium c:* 1,8)
+
 #end-if
 
 #load-if-defined POPULATION-CAP-25
@@ -3993,7 +4002,7 @@
 	(building-type-count-total archery-range == 0)(wood-amount > 275)
     (building-type-count town-center > 0)
     (building-type-count lumber-camp > 0)
-    (not(civ-selected cumans))
+    (not(civ-selected cumans))(not(civ-selected sicilians))
     (can-build archery-range)
 =>
     (chat-local-to-self "Trying To Build Archery Range 1")
@@ -4002,16 +4011,15 @@
 )
 
 (defrule
-	(building-type-count-total archery-range == 0)
+	(building-type-count-total archery-range == 0) ;cumans and sicilians
     (building-type-count lumber-camp > 0)(building-type-count town-center > 0)
     (building-type-count siege-workshop > 0)      
     ;(research-completed ri-double-bit-axe)   
     (can-build archery-range)
-    (civ-selected cumans)
+    (or(civ-selected cumans)(civ-selected sicilians))
 =>
     (chat-local-to-self "Trying To Build Archery Range 1")
     (up-modify-sn sn-maximum-town-size c:+ 1)
-    (up-modify-sn sn-minimum-town-size c:+ 3)
     (build archery-range)
 )
 
@@ -5862,7 +5870,7 @@
         (and(wood-amount > 400)(gold-amount > 200))
         (building-type-count siege-workshop == 0)
     )
-    (not(can-train genitour))
+    (not(can-train genitour))(not(civ-selected sicilians))
     (not(can-train mangonel-line))      
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium) 
     (can-train skirmisher-line) 
@@ -5917,7 +5925,7 @@
 (train militiaman-line)(disable-self))
 
 (defrule
-    (current-age == feudal-age) 
+    (current-age == feudal-age)(not(civ-selected sicilians))
     (gold-amount > 220)
     (or
         (not(research-available ri-supplies))
@@ -5933,7 +5941,7 @@
 
 ; MILITIA CASTLE AGE
 (defrule
-    (current-age == castle-age)
+    (current-age == castle-age)(not(civ-selected sicilians))
     (research-completed ri-hand-cart)
     (game-time < 900)
     (gold-amount > 200)        
