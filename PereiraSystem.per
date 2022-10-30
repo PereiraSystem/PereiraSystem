@@ -6322,15 +6322,12 @@
     (buy-commodity stone)
 )
 
-;EXCESO PIEDRA FEUDAL
+; TOO MUCH STONE
 (defrule
 	(current-age == feudal-age)
 	(can-sell-commodity stone)
-    (gold-amount < 200)(food-amount > 799) 
-    (or
-        (building-type-count-total archery-range > 0)
-        (building-type-count-total stable > 0)
-    )    
+    (gold-amount < 200)(food-amount < 800) 
+    (research-available castle-age)    
 =>
     (sell-commodity stone)
 )
