@@ -6326,7 +6326,7 @@
 (defrule
 	(current-age == feudal-age)
 	(can-sell-commodity stone)
-    (gold-amount < 200)(food-amount < 800) 
+    (gold-amount < 200)(food-amount > 600) 
     (research-available castle-age)    
 =>
     (sell-commodity stone)
