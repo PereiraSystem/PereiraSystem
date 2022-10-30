@@ -3429,7 +3429,7 @@
 (defrule
     (or(building-type-count castle < 1)(stone-amount < 650))
     (or
-        (and(current-age >= castle-age)(building-type-count university > 0))
+        (building-type-count university > 0)
         (and(building-type-count town-center < 0)(stone-amount < 100))
     )
     (wood-amount > 276)
