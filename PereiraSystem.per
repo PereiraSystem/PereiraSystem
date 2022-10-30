@@ -1045,7 +1045,7 @@
 
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(not(civ-selected cumans)); to get mercenaries
     (building-type-count castle > 0)    
 =>
     (set-strategic-number sn-stone-gatherer-percentage 0)    
