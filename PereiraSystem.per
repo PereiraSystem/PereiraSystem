@@ -4520,8 +4520,8 @@
     (or
         (civ-selected cumans)(civ-selected cumans)
     )
-    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
-    (gold-amount > 460)    
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
+    (gold-amount > 235) ;cav archers at 260    
     (can-train my-unique-unit-line)    
 =>
 	(train my-unique-unit-line)
@@ -5673,7 +5673,7 @@
             (and(civ-selected turkish)(research-completed my-second-unique-research))                        
         )
     )     
-    (wood-amount > 200)(gold-amount > 200)
+    (wood-amount > 200)(gold-amount > 260)
 	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQtyHigh)
 	(can-train cavalry-archer-line)
 =>
