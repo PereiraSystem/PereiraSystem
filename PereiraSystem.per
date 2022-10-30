@@ -4089,13 +4089,6 @@
     (build siege-workshop)(chat-local-to-self "Trying To Build Siege Workshop")
 )
 
-(defrule
-	(game-time > 2400)(building-type-count-total siege-workshop >= 3)
-=>
-    (chat-local-to-self "DELETING FIRST SIEGE WORKSHOP!")
-    (delete-building siege-workshop)
-)
-
 ; MONASTERY             
 (defrule
     (or(building-type-count-total house > 3)(civ-selected hun))
