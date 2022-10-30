@@ -1047,7 +1047,9 @@
 
 
 (defrule
-    (current-age == imperial-age)(not(civ-selected cumans)); to get mercenaries
+    (current-age == imperial-age)
+    (not(civ-selected cumans)); to get mercenaries
+    (not(civ-selected sicilians)) ;to build donjons
     (building-type-count castle > 0)    
 =>
     (set-strategic-number sn-stone-gatherer-percentage 0)    
@@ -3817,19 +3819,21 @@
 
 ; MINI CASTLES (MEGA TOWERS?)
 (defrule
-    (building-type-count-total castle > 1)(building-type-count-total krepost < 4)
+    (building-type-count-total castle > 1)
+    (building-type-count-total krepost < 64)
     (can-build krepost)
 =>
     (build krepost)
-    (up-modify-sn sn-maximum-town-size c:+ 1)   
+    ;(up-modify-sn sn-maximum-town-size c:+ 1)   
 )
 
-(defrule 
+(defrule
+    (building-type-count-total castle > 1) 
     (building-type-count-total donjon < 64)
     (can-build donjon)    
 =>
     (build donjon)
-    (up-modify-sn sn-maximum-town-size c:+ 1)   
+    ;(up-modify-sn sn-maximum-town-size c:+ 1)   
 )
 
 ; MILITARY PRODUCTION BUILDINGS
@@ -6430,7 +6434,10 @@
 )
 
 (defrule
-    (current-age == imperial-age)(not(civ-selected cumans));to get mercs
+    (current-age == imperial-age)
+    (not(civ-selected cumans));to get mercs
+    (not(civ-selected sicilians)) ;to build donjons   
+    (not(civ-selected bulgarians)) ;to build krepost 
     (building-type-count castle >= 3)
     (not(can-build bombard-tower))
     (stone-amount > 300)
