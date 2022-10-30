@@ -2987,6 +2987,7 @@
 ; CASTLE AGE UNIVERSITY UPGRADES
 (defrule
     (current-age == imperial-age)(building-type-count-total castle > 1)
+    (food-amount > 500)
     (can-research ri-masonry)
 =>
     (research ri-masonry)
@@ -3045,6 +3046,7 @@
     (or(building-type-count-total castle > 0)
         (building-type-count-total watch-tower-line > 1)
     )
+    (food-amount > 600)
     (can-research ri-murder-holes)
 =>
     (research ri-murder-holes)
@@ -3053,6 +3055,7 @@
 ; IMPERIAL AGE UNIVERSITY UPGRADES
 (defrule
     (building-type-count-total castle > 1)
+    (food-amount > 800)    
     (can-research ri-architecture)
 =>
     (research ri-architecture)
