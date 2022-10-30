@@ -5718,7 +5718,7 @@
 ; ELEPHANT ARCHER
 (defrule
     (current-age == castle-age)   
-    (gold-amount > 845)(wood-amount > 400)
+    (gold-amount > 1000)(food-amount > 1000)
 	(unit-type-count-total elephant-archer-line g:< gl-archerQtyLow)    
     (can-train elephant-archer-line)     
 =>
@@ -5727,7 +5727,7 @@
 
 (defrule
     (current-age == imperial-age)   
-    (gold-amount > 260)(wood-amount > 400)
+    (gold-amount > 260)(food-amount > 400) ;leave food for melee units
 	(unit-type-count-total elephant-archer-line g:< gl-archerQtyMedium)    
     (can-train elephant-archer-line)     
 =>
