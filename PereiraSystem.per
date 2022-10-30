@@ -4306,12 +4306,11 @@
 ; CASTLE
 ; TREBUCHET
 (defrule
-    (or(military-population g:> gl-knightsQtyMedium)(enemy-buildings-in-town))
+    (or(military-population > 23)(enemy-buildings-in-town))
     (and
         (unit-type-count-total trebuchet g:< gl-trebuchetsQtyLow)
         (unit-type-count-total 954 g:< gl-trebuchetsQtyLow)
     )
-    (military-population > 23)
     (not(civ-selected gothic)) 
     (can-train trebuchet)   
 =>
