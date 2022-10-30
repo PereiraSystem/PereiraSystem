@@ -4631,6 +4631,17 @@
     (train my-unique-unit-line)
 )
 
+;BULGARIANS
+(defrule
+    (civ-selected bulgarians)
+    (research-completed my-unique-unit-upgrade)
+    (gold-amount > 200)
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
+    (can-train my-unique-unit-line)    
+=>
+    (train my-unique-unit-line)
+)
+
 ; CUMANS UU
 (defrule
     (research-completed my-unique-unit-upgrade)
@@ -5433,7 +5444,8 @@
     (current-age == imperial-age)
     (gold-amount > 250)
 	(unit-type-count-total knight-line g:< gl-knightsQtyHigh)
-    (research-completed my-second-unique-research)
+    (or(research-completed my-second-unique-research)(gold-amount > 350))
+    ;if not all cavalry improved use more konniks
     (can-train knight-line)
 =>
     (train knight-line)
