@@ -125,7 +125,7 @@
 (defconst gl-demolitionShipQty 465)
 (defconst gl-specialShipQty 470)
 
-#load-if-defined POPULATION-CAP-150
+
 (defrule
     (true)
 =>
@@ -176,7 +176,8 @@
     (set-goal gl-knightsQtyHigh 40)
 
     (set-goal gl-scoutsQtyLow 8)
-    (set-goal gl-scoutsQtyMedium 40)
+    (set-goal gl-scoutsQtyMedium 30)
+    (set-goal gl-scoutsQtyHigh 40)    
 
     (set-goal gl-camelQtyLow 5)
     (set-goal gl-camelQtyMedium 15)
@@ -229,6 +230,7 @@
     (up-modify-goal gl-scoutsQtyLow c:* 1,8)
     (up-modify-goal gl-scoutsQtyMedium c:* 1,8)
 )
+#load-if-defined POPULATION-CAP-150
 #end-if
 
 #load-if-defined POPULATION-CAP-25
