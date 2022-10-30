@@ -4662,8 +4662,10 @@
 )
 
 (defrule
-	(unit-type-count-total bombard-cannon < 8)(not(can-train houfnice))
-	(can-train bombard-cannon)(not(civ-selected korean))(not(civ-selected ethiopian))
+    (gold-amount > 300) ;trebuchet priority
+	(unit-type-count-total bombard-cannon < 8)
+    (not(can-train houfnice))
+	(can-train bombard-cannon)
 =>
 	(train bombard-cannon)
 )
@@ -6334,6 +6336,18 @@
 =>
     (sell-commodity food)
     (chat-local-to-self "SELLING FOOD (> 3000)")     
+)
+
+(defrule
+    (current-age == imperial-age)
+    (building-type-count castle >= 3)
+    (not(can-build bombard-tower))
+    (stone-amount > 300)
+	(gold-amount < 1000)
+    (can-sell-commodity stone)    
+=>
+    (sell-commodity food)
+    (chat-local-to-self "SELLING STONE (> 300), 3 CASTLES AND NO B.T.")     
 )
 
 (defrule ;imperial age with no castle, we buy stone
