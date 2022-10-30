@@ -5321,6 +5321,17 @@
 )
 
 (defrule
+    (civ-selected bulgarians)
+    (current-age == imperial-age)
+    (gold-amount > 330)
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
+    (research-completed my-second-unique-research)
+    (can-train knight-line)
+=>
+    (train knight-line)
+)
+
+(defrule
     (civ-selected poles)
     (current-age == imperial-age)
     (gold-amount > 330)
