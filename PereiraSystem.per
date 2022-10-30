@@ -115,6 +115,7 @@
 ; unique units constants
 (defconst gl-uniqueUnitQtyLow 430)
 (defconst gl-uniqueUnitQtyMedium 431)
+(defconst gl-uniqueUnitQtyHigh 432)
 
 (defconst gl-galleyQty 450)
 (defconst gl-galleonQty 455)
@@ -195,7 +196,8 @@
     (set-goal gl-bombardCannonsQty 8)
 
     (set-goal gl-uniqueUnitQtyLow 10)
-    (set-goal gl-uniqueUnitQtyMedium 20)
+    (set-goal gl-uniqueUnitQtyMedium 24)
+    (set-goal gl-uniqueUnitQtyHigh 40)    
 
     (set-goal gl-trebuchetsQtyLow 5)
     (set-goal gl-trebuchetsQtyMedium 8)    
@@ -4518,14 +4520,14 @@
     (or
         (civ-selected cumans)(civ-selected cumans)
     )
-    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
     (gold-amount > 235) ;cav archers at 260    
     (can-train my-unique-unit-line)    
 =>
 	(train my-unique-unit-line)
 )
 
-; IMPERIAL AGE AFTER UPGRADE UU
+; IMPERIAL AGE AFTER UPGRADE UU - some civs have own section with less gold limit
 (defrule
     (current-age == imperial-age)
     (research-completed my-unique-unit-upgrade)
@@ -4589,6 +4591,17 @@
     (can-train my-unique-unit-line)    
 =>
     (train my-unique-unit-line)
+)
+
+; CUMANS UU
+(defrule
+    (research-completed my-unique-unit-upgrade)
+    (civ-selected cumans)
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
+    (gold-amount > 235) ;cav archers at 260    
+    (can-train my-unique-unit-line)    
+=>
+	(train my-unique-unit-line)
 )
 
 ; GOTH UU - goth spam!
