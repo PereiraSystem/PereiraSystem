@@ -4674,8 +4674,8 @@
 (defrule
     (current-age == castle-age) ;first mangonel at 2 monks
     (building-type-count town-center > 0)    
-    (unit-type-count monk > 2)
-    (unit-type-count-total mangonel-line == 0)    
+    (unit-type-count-total monk > 2)
+    (unit-type-count-total mangonel-line < 1)    
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
