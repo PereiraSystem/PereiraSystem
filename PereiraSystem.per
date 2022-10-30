@@ -5291,12 +5291,23 @@
 )
 
 ; KNIGHTS IN IMPERIAL AGE
+(defrule
+    (current-age == imperial-age) ;saracen dont even have cavalier
+    (gold-amount > 675)
+    (civ-selected saracen)
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)  
+    (can-train knight-line)
+=>
+    (train knight-line)
+)
+
 ; CIVS WITH AT LEAST CAVALIER UPGRADE
 (defrule
     (current-age == imperial-age)
     (gold-amount > 575)
-    (civ-selected saracen)
+    (not(civ-selected saracen))
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
+    (not(can-train steppe-lancer-line))     
     (can-train knight-line)
 =>
     (train knight-line)
@@ -5369,7 +5380,8 @@
             (civ-selected lithuanians) ;attack per relic
             (civ-selected sicilians) ; defense
         )
-    )  
+    )    
+    (not(can-train steppe-lancer-line))    
     (can-train knight-line)
 =>
     (train knight-line)
