@@ -6223,14 +6223,7 @@
     (chat-local-to-self "BUYING WOOD (GOLD > 1600)")       
 )
 
-(defrule ;SELL WOOD
-    (can-sell-commodity wood)
-    (wood-amount > 2000)
-    (gold-amount < 1000)
-=>
-    (sell-commodity wood)
-    (chat-local-to-self "SELLING WOOD (> 2000)")     
-)
+
 
 (defrule ;BUY FOOD
 	(can-buy-commodity food)
@@ -6315,14 +6308,24 @@
 )
 
 ; IMPERIAL AGE TRADE
+(defrule ;SELL WOOD
+    (current-age == imperial-age)
+    (wood-amount > 3000)
+    (gold-amount < 1000)
+    (can-sell-commodity wood)    
+=>
+    (sell-commodity wood)
+    (chat-local-to-self "SELLING WOOD (> 3000)")     
+)
+
 (defrule
     (current-age == imperial-age)
-    (food-amount > 2000)
+    (food-amount > 3000)
 	(gold-amount < 1000)
     (can-sell-commodity food)    
 =>
     (sell-commodity food)
-    (chat-local-to-self "SELLING FOOD (> 2000)")     
+    (chat-local-to-self "SELLING FOOD (> 3000)")     
 )
 
 (defrule ;imperial age with no castle, we buy stone
