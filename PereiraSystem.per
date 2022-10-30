@@ -5224,7 +5224,8 @@
 ; KNIGHTS IN IMPERIAL AGE
 (defrule
     (current-age == imperial-age)
-    (food-amount > 400)(gold-amount > 400)
+    ;(food-amount > 400)
+    (gold-amount > 400)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     ;(up-compare-goal gl-dudeHasSpearmen == 0)
     (or
@@ -5250,7 +5251,8 @@
 
 (defrule
     (current-age == imperial-age)
-    (food-amount > 400)(gold-amount > 400)
+    ;(food-amount > 400)
+    (gold-amount > 400)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     ;(up-compare-goal gl-dudeHasSpearmen == 0)
     (or
@@ -5846,10 +5848,6 @@
     (train militiaman-line)
 )
 
-; civs with full upgraded champion
-; aztec, berbers, bohemians, burmese, drav, frank, goth, inca ital, japa
-; poles, saracen, sicilians, slav, spanish, teut, viki
-
 ; civs with FU champion and cavalry / camelry
 (defrule
     (current-age == imperial-age)(gold-amount > 500)
@@ -5866,7 +5864,7 @@
 
 ; civs with FU champion and cavalry
 (defrule
-    (current-age == imperial-age)(gold-amount > 500)
+    (current-age == imperial-age)(gold-amount > 400)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
     (up-compare-goal gl-dudeHasSpearmen == 1)
     (or
