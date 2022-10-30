@@ -5223,20 +5223,18 @@
 )
 
 ; KNIGHTS IN IMPERIAL AGE
-; CIVS WITH CAVALIER
+; CIVS WITH AT LEAST CAVALIER UPGRADE
 (defrule
     (current-age == imperial-age)
     (gold-amount > 475)
-    (not(civ-selected bengalis))(not(civ-selected dravidians))
-    (not(civ-selected gurjaras))(not(civ-selected indian))
-    (not(civ-selected saracen))
+    (civ-selected saracen)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (can-train knight-line)
 =>
     (train knight-line)
 )
 
-; PUT HERE CIVS WITH PALADIN
+; CIVS WITH PALADIN UPGRADE
 (defrule
     (current-age == imperial-age)
     (gold-amount > 375)
@@ -5268,12 +5266,13 @@
     (train knight-line)
 )
 
-; PUT HERE CIVS WITH FULLY UPG PALADIN
+; PUT HERE CIVS WITH FULLY UPG PALADIN OR GOOD UPGRADE
+; FU PALADIN:
 (defrule
     (current-age == imperial-age)
     (gold-amount > 275)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
-    (or)
+    (or
         (or 
             (civ-selected hun)        
             (civ-selected magyar)
@@ -5288,9 +5287,65 @@
     (train knight-line)
 )
 
+; GOOD UPGRADES
+(defrule
+    (current-age == imperial-age)
+    (gold-amount > 275)
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
+    (or
+        (or 
+            (civ-selected cumans); maybe steppe lancer only        
+            (civ-selected frankish) ;more hp
+        )           
+        (or 
+            (civ-selected lithuanians) ;attack per relic
+            (civ-selected sicilians) ; defense
+        )
+    )  
+    (can-train knight-line)
+=>
+    (train knight-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (gold-amount > 275)
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
+    (or
+        (or 
+            (civ-selected portuguese) ;reduced cost      
+            (civ-selected berbers) ;reduced cost
+        )           
+    )  
+    (can-train knight-line)
+=>
+    (train knight-line)
+)
+
+(defrule
+    (civ-selected poles)
+    (current-age == imperial-age)
+    (gold-amount > 230)
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
+    (research-completed my-second-unique-research)
+    (can-train knight-line)
+=>
+    (train knight-line)
+)
+
+(defrule
+    (civ-selected malian)
+    (current-age == imperial-age)
+    (gold-amount > 230)
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
+    (research-completed my-unique-research)
+    (can-train knight-line)
+=>
+    (train knight-line)
+)
+
 ; ARCHERY RANGE
 ; ARCHER
-
 (defrule
     (current-age == feudal-age) ;Cav archer not available
     (gold-amount > 245)
