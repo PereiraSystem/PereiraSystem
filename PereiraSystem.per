@@ -6404,7 +6404,7 @@
 )
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(not(civ-selected cumans));to get mercs
     (building-type-count castle >= 3)
     (not(can-build bombard-tower))
     (stone-amount > 300)
