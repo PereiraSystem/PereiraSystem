@@ -5742,7 +5742,110 @@
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
 
-; MILITIA IMPERIAL AGE 
+; MILITIA IMPERIAL AGE
+; CIVS WITH NO CHAMPION (excluding mayans)
+(defrule
+    (current-age == imperial-age)(gold-amount > 600)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (or
+        (or
+            (or 
+                (civ-selected bulgarians)
+                (civ-selected ethiopian)
+            )
+            (or 
+                (civ-selected gurjaras)        
+                (civ-selected hun)
+            )
+        )   
+        (or
+            (or 
+                (civ-selected khmer)(civ-selected khmer)
+                ;(civ-selected malay) malay no militia until ut research
+            )
+            (or 
+                (civ-selected persians)
+                (civ-selected tatars)
+            )
+        )       
+    )
+    (can-train militiaman-line)    
+=>
+    (train militiaman-line)
+)
+
+; CIVS WITH NOT FU CHAMPION, OR NO INTERESTING BONUS
+(defrule
+    (current-age == imperial-age)(gold-amount > 500)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (or
+        (or
+            (or 
+                (civ-selected bengalis)
+                (civ-selected burgundians)
+            )
+            (or 
+                (civ-selected bizantines)        
+                (civ-selected chinese)
+            )
+        )   
+        (or
+            (or 
+                (civ-selected cumans)
+                (civ-selected indian)
+            )
+            (or 
+                (civ-selected korean)
+                (civ-selected lithuanians)
+            )
+        )       
+    )
+    (can-train militiaman-line)    
+=>
+    (train militiaman-line)
+)
+
+; CIVS WITH NOT FU CHAMPION, OR NO INTERESTING BONUS PART 2
+(defrule
+    (current-age == imperial-age)(gold-amount > 500)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (or
+        (or 
+            (civ-selected magyar)        
+            (civ-selected mongol)
+        )
+        (or 
+            (civ-selected portuguese)
+            (civ-selected vietnamese)
+        )
+    )   
+    (can-train militiaman-line)    
+=>
+    (train militiaman-line)
+)
+; CIVS WITH NOT FU CHAMPION BUT HAVE SOME BONUS 
+(defrule
+    (current-age == imperial-age)(gold-amount > 400)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (or
+        (or 
+            (civ-selected celtic) ;speed
+            (civ-selected gothic) ;building attack
+        )
+        (or 
+            (civ-selected malian)        
+            (civ-selected malian) ;piercer armor
+        )
+    )   
+    (can-train militiaman-line)    
+=>
+    (train militiaman-line)
+)
+
 ; civs with full upgraded champion
 ; aztec, berbers, bohemians, burmese, drav, frank, goth, inca ital, japa
 ; poles, saracen, sicilians, slav, spanish, teut, viki
@@ -5751,7 +5854,7 @@
 (defrule
     (current-age == imperial-age)(gold-amount > 500)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
-    (up-compare-goal gl-dudeHasSkirmishers == 1)
+    (up-compare-goal gl-dudeHasSpearmen == 1)
     (or 
         (civ-selected berbers)
         (civ-selected saracen)
@@ -5762,15 +5865,14 @@
 )
 
 ; civs with FU champion and cavalry
-(defrule
     (current-age == imperial-age)(gold-amount > 500)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
-    (up-compare-goal gl-dudeHasSkirmishers == 1)
+    (up-compare-goal gl-dudeHasSpearmen == 1)
     (or
         (or
             (or 
-                (civ-selected briton)
                 (civ-selected bohemians)
+                (civ-selected briton)
             )
             (or 
                 (civ-selected dravidians)        
@@ -5780,7 +5882,7 @@
         (or
             (or 
                 (civ-selected italian)
-                (civ-selected japanese)
+                (civ-selected italian)
             )
             (or 
                 (civ-selected poles)
@@ -5793,88 +5895,73 @@
     (train militiaman-line)
 )
 
+
 (defrule
     (current-age == imperial-age)(gold-amount > 500)
-    (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
-    (up-compare-goal gl-dudeHasSkirmishers == 1)
-    (or
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
+    (up-compare-goal gl-dudeHasSpearmen == 1)
         (or
             (or 
-                (civ-selected slavs)
                 (civ-selected spanish)
+                (civ-selected spanish)
+            )
+            (or 
+                (civ-selected spanish)        
+                (civ-selected spanish)
+            )
+        )         
+    (can-train militiaman-line)    
+=>
+    (train militiaman-line)
+)
+
+; civs with FU champion with BONUS
+(defrule
+    (current-age == imperial-age)(gold-amount > 400)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+        (or
+            (or 
+                (civ-selected slavic)
+                (civ-selected japanese)
             )
             (or 
                 (civ-selected teutonic)        
                 (civ-selected viking)
             )
-        )   
-        (or
-            (or 
-                (civ-selected italian)
-                (civ-selected japanese)
-            )
-            (or 
-                (civ-selected poles)
-                (civ-selected sicilians)
-            )
-        )       
-    )
+        )     
     (can-train militiaman-line)    
 =>
     (train militiaman-line)
 )
 
-; NO HORSE CIVS
+; NO HORSE CIVS - dont check for spearmen
 (defrule
     (current-age == imperial-age)(gold-amount > 400)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
-    (or
+
         (or
             (or 
                 (civ-selected aztec)
-                (civ-selected bulgarians)
+                (civ-selected mayan)
             )
             (or 
-                (civ-selected bulgarians)        
-                (civ-selected burmese)
-            )
-        )   
-        (or
-            (or 
-                (civ-selected gothic)
+                (civ-selected incan)        
                 (civ-selected incan)
             )
-            (or 
-                (civ-selected malian)        
-                (civ-selected slavic)
-            )
-        )       
-    )
+        )   
+
     (can-train militiaman-line)    
 =>
     (train militiaman-line)
 )
 
-(defrule
-    (current-age == imperial-age)(gold-amount > 600)
-    (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
-    (or
-        (or
-            (civ-selected japanese)(civ-selected sicilians)   
-        )                     
-        (or        
-            (civ-selected teutonic)                
-            (civ-selected viking)                
-        )      
-    )
-    (can-train militiaman-line)    
-=>
-    (train militiaman-line)
-)
+; MALAY
 
 (defrule
     (current-age == imperial-age)
     (civ-selected malay)(research-completed my-unique-research)
+    (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)    
     (can-train militiaman-line)
 =>
