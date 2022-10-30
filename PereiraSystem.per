@@ -3800,6 +3800,17 @@
     (build-forward castle) 
 )
 
+(defrule
+    (civ-selected cumans); when pop is at max
+    (research-completed my-unique-research)
+    (population-headroom == 0)
+    (housing-headroom == 0)    
+    (can-build castle)
+=>
+    (chat-local-to-self "Trying To Build Extra Cuman Castle For Mercenaries")
+    (build castle) 
+)
+
 ; MINI CASTLES (MEGA TOWERS?)
 (defrule
     (building-type-count-total castle > 1)(building-type-count-total krepost < 4)
