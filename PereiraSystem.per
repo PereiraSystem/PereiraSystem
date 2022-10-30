@@ -67,6 +67,7 @@
 
 (defconst gl-skirmisherQtyLow 210)
 (defconst gl-skirmisherQtyMedium 211)
+(defconst gl-skirmisherQtyHigh 212)
 
 (defconst gl-cavalryArcherQtyLow 220)
 (defconst gl-cavalryArcherQtyMedium 221)
@@ -161,7 +162,7 @@
 
     (set-goal gl-skirmisherQtyLow 8)    
     (set-goal gl-skirmisherQtyMedium 30)
-
+    (set-goal gl-skirmisherQtyHigh 30)
     (set-goal gl-cavalryArcherQtyLow 12)
     (set-goal gl-cavalryArcherQtyMedium 18)
     (set-goal gl-cavalryArcherQtyHigh 40)
@@ -535,31 +536,53 @@
     (up-delete-idle-units idle-type-villager)
 )
 
-(defrule(true)=>(enable-timer 20 3600)(disable-self))
-
+; ATTACK TIMER
+(defrule(true)=>(enable-timer 20 3600)(disable-self)) ;will start anyway at 1 hour
 (defrule
     (timer-triggered 20)
-    (current-age == imperial-age)(military-population >= 80)
+    (current-age == imperial-age)(military-population >= 70)
 =>
 	(disable-timer 20)
     (enable-timer 20 2)     
-    (chat-to-player my-player-number "TIME HAS PASSED AND WE HAVE 80 DUDES, TIME TO ATTACK!")
+    (chat-to-player my-player-number "TIME HAS PASSED AND WE HAVE 70 DUDES, TIME TO ATTACK!")
     (disable-self)
+)
+; CONDITIONS FOR ATTACKING BEFORE TIME
+(defrule
+    (food-amount > 5000)
+    (gold-amount > 1700)
+    (wood-amount > 5000)                
+    (current-age == imperial-age)
+=>  
+    (chat-to-player my-player-number "WE ARE RICH, ATTACK!")
+    (disable-timer 20)
+    (enable-timer 20 2)      
 )
 
 (defrule
+    (military-population > 109)
+    (game-time > 3300) 
+=>
+    (chat-to-player my-player-number "WE ARE TOO MANY HERE, ATTACK!")
+    (disable-timer 20)
+    (enable-timer 20 2)         
+)
+
+; ATTACK TIMER
+(defrule
     (timer-triggered 20)
-    (current-age == imperial-age)(military-population >= 80)
+    (current-age == imperial-age)
+    (military-population >= 40) 
 =>
 	(disable-timer 20)
     (enable-timer 20 2)
-    (set-strategic-number sn-enemy-sighted-response-distance 255)    
+    (set-strategic-number sn-enemy-sighted-response-distance 64)
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 80)
-    (set-strategic-number sn-attack-group-gather-spacing 80)      
+    (set-strategic-number sn-attack-group-gather-spacing 24)  
 )
 
-; ATTACK!!!
+; ATTACK WITH NO TIMER
 (defrule
     (current-age == feudal-age)
     (military-population >= 12)
@@ -592,32 +615,11 @@
 )
 
 
-(defrule
-    (food-amount > 5000)
-    (gold-amount > 1700)
-    (wood-amount > 5000)                
-    (current-age == imperial-age)
-=>
-    (set-strategic-number sn-enemy-sighted-response-distance 255)    
-    (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-to-player my-player-number "WE ARE RICH, TIME TO ATTACK!")    
-)
-
-(defrule
-    (military-population > 109)
-    (game-time > 3300)
-=>
-    (set-strategic-number sn-enemy-sighted-response-distance 255)    
-    (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (chat-to-player my-player-number "WE ARE TOO MANY HERE, TIME TO ATTACK!")    
-)
-
 ; 2. STRATEGIC NUMBERS ==================
 (defrule 
     (true)
 =>  (set-strategic-number sn-do-not-scale-for-difficulty-level 1) (disable-self)
 )
-
 
 ; EXPLORE 
 (defrule 
