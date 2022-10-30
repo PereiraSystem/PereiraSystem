@@ -3895,9 +3895,8 @@
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
-; ESTABLOS
+; BUILD STABLES
 (defrule
-    (can-build stable)
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
     (or
@@ -3907,7 +3906,8 @@
         (not(civ-selected portuguese))(building-type-count archery-range > 0)
     )
     (building-type-count-total stable == 0)
-    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0)) 
+    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
+    (can-build stable)    
 =>
     (chat-local-to-self "Trying To Build Stable 1")
     (up-modify-sn sn-maximum-town-size c:+ 1)
@@ -3961,7 +3961,7 @@
     (delete-building stable)(disable-self)
 )
 
-; CONSTRUIR ARQUERIA
+; BUILD ARCHERY RANGE
 (defrule
 	(building-type-count-total archery-range == 0)(wood-amount > 275)
     (building-type-count town-center > 0)
@@ -4028,7 +4028,7 @@
     (delete-building archery-range)(disable-self)
 )
 
-; CONSTRUIR TALLER ASEDIO
+; BUILD SIEGE WORKSHOP
 (defrule
     (building-type-count-total siege-workshop == 0)
     (building-type-count town-center > 0)
@@ -4076,7 +4076,7 @@
     (delete-building siege-workshop)
 )
 
-; MONASTERIO              
+; MONASTERY             
 (defrule
     (or(building-type-count-total house > 3)(civ-selected hun))
     (building-type-count-total monastery == 0)(can-build monastery)
@@ -4662,7 +4662,7 @@
 )
 
 (defrule
-    (gold-amount > 300) ;trebuchet priority
+    (gold-amount > 350) ;trebuchet priority
 	(unit-type-count-total bombard-cannon < 8)
     (not(can-train houfnice))
 	(can-train bombard-cannon)
