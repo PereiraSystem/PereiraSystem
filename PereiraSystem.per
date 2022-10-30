@@ -5226,7 +5226,7 @@
 ; CIVS WITH AT LEAST CAVALIER UPGRADE
 (defrule
     (current-age == imperial-age)
-    (gold-amount > 475)
+    (gold-amount > 575)
     (civ-selected saracen)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (can-train knight-line)
@@ -5237,7 +5237,7 @@
 ; CIVS WITH PALADIN UPGRADE
 (defrule
     (current-age == imperial-age)
-    (gold-amount > 375)
+    (gold-amount > 475)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (or
         (or
@@ -5270,7 +5270,7 @@
 ; FU PALADIN:
 (defrule
     (current-age == imperial-age)
-    (gold-amount > 275)
+    (gold-amount > 375)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (or
         (or 
@@ -5290,7 +5290,7 @@
 ; GOOD UPGRADES
 (defrule
     (current-age == imperial-age)
-    (gold-amount > 275)
+    (gold-amount > 375)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (or
         (or 
@@ -5309,7 +5309,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (gold-amount > 275)
+    (gold-amount > 375)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (or
         (or 
@@ -5325,7 +5325,7 @@
 (defrule
     (civ-selected poles)
     (current-age == imperial-age)
-    (gold-amount > 230)
+    (gold-amount > 330)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (research-completed my-second-unique-research)
     (can-train knight-line)
@@ -5336,7 +5336,7 @@
 (defrule
     (civ-selected malian)
     (current-age == imperial-age)
-    (gold-amount > 230)
+    (gold-amount > 330)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (research-completed my-unique-research)
     (can-train knight-line)
