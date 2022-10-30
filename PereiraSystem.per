@@ -5738,7 +5738,8 @@
 
 (defrule
     (current-age == imperial-age)
-    (food-amount > 100) ;saving food for heavy units
+    (food-amount > 150)
+    (wood-amount > 150) ;saving food for heavy units, give priority to spearmen
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasCavalryArchers == 1))
     (not(civ-selected gothic))
