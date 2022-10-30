@@ -3855,7 +3855,7 @@
 	(game-time > 2400)(building-type-count-total barracks >= 4)
 =>
     (chat-local-to-self "DELETING FIRST BARRACKS!")
-    (delete-building barracks)
+    (delete-building barracks)(disable-self)
 )
 
 (defrule
@@ -3931,7 +3931,7 @@
 	(game-time > 2400)(building-type-count-total stable >= 3)
 =>
     (chat-local-to-self "DELETING FIRST STABLE!")
-    (delete-building barracks)
+    (delete-building stable)(disable-self)
 )
 
 ; CONSTRUIR ARQUERIA
@@ -3998,7 +3998,7 @@
 	(game-time > 2400)(building-type-count-total archery-range >= 3)
 =>
     (chat-local-to-self "DELETING FIRST ARCHERY RANGE!")
-    (delete-building barracks)
+    (delete-building archery-range)(disable-self)
 )
 
 ; CONSTRUIR TALLER ASEDIO
@@ -4046,7 +4046,7 @@
 	(game-time > 2400)(building-type-count-total siege-workshop >= 3)
 =>
     (chat-local-to-self "DELETING FIRST SIEGE WORKSHOP!")
-    (delete-building barracks)
+    (delete-building siege-workshop)(disable-self)
 )
 
 ; MONASTERIO              
@@ -5364,7 +5364,7 @@
     (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
     (or
-        (or(civ-selected gurjaras)(civ-selected huns))
+        (or(civ-selected gurjaras)(civ-selected hun))
         (or(civ-selected indian)(civ-selected lithuanians))    
     )
     (up-compare-goal gl-dudeHasSpearmen == 1)   
