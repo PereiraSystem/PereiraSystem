@@ -6582,7 +6582,7 @@
 (defrule
 	(current-age == imperial-age)
     (military-population < 40)
-    (players-building-count focus-player castle > 0)
+    (players-building-type-count focus-player castle > 0)
 =>
 	(up-retreat-now)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
