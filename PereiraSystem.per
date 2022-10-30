@@ -1032,19 +1032,7 @@
     (disable-self)
 )
 
-(defrule
-    (current-age == imperial-age)
-    (building-type-count market > 0)    
-    (or
-        (building-type-count town-center > 1)
-        (building-type-count barracks > 1)
-    )
 
-=>
-    (set-strategic-number sn-maximum-stone-drop-distance 9)
-    (chat-local-to-self "STONE DISTANCE 9")     
-    (disable-self)
-)
 
 (defrule
     (current-age == imperial-age)
@@ -1053,6 +1041,20 @@
     (set-strategic-number sn-stone-gatherer-percentage 0)    
     (set-strategic-number sn-maximum-stone-drop-distance 0)
     (chat-local-to-self "STONE DISTANCE 0, PERCENTAGE 0")      
+    (disable-self)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (building-type-count market > 0)    
+    (or
+        (building-type-count town-center > 2)
+        (building-type-count barracks > 2)
+    )
+
+=>
+    (set-strategic-number sn-maximum-stone-drop-distance 9)
+    (chat-local-to-self "STONE DISTANCE 9")     
     (disable-self)
 )
 
