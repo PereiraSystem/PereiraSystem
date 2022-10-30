@@ -3450,6 +3450,18 @@
 
 ; MARKET
 (defrule
+    (civ-selected saracen)
+    (building-type-count town-center > 0)
+    (wood-amount > 175)
+    (building-type-count-total market == 0)    
+    (can-build market)
+=>
+    (chat-local-to-self "Trying To Build Market 1") 
+    (up-modify-sn sn-maximum-town-size c:+ 2)
+    (build market)
+)
+
+(defrule
     (or
         (or(food-amount > 1400)(stone-amount > 700))
         (or(wood-amount > 600)(gold-amount > 700))
