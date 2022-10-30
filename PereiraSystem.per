@@ -4178,9 +4178,17 @@
 =>
     (train villager)
 )
-
+; villagers imperial age
 (defrule
     (current-age == imperial-age)
+    (civilian-population g:< gl-maxCiviliansCastleAge)
+    (can-train villager)
+=>
+    (train villager)
+
+(defrule
+    (current-age == imperial-age) ;save some food for soldiers after age change
+    (military-population > 55)
     (civilian-population g:< gl-maxCiviliansImperialAge)
     (can-train villager)
 =>
