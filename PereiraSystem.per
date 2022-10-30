@@ -2021,7 +2021,9 @@
 )
 
 (defrule
-    (civ-selected cumans)(players-building-type-count any-ally castle > 0)
+    (civ-selected cumans)
+    (or(players-building-type-count any-ally castle > 0)
+    (building-type-count castle > 0))
     (can-research my-unique-research)
 =>
     (research my-unique-research)
@@ -6222,8 +6224,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 125)    
     (up-compare-goal gl-dudeHasCavalry == 1)    
-    (unit-type-count-total spearman-line g:< gl-spearmenQtyHigh)
-    (not(civ-selected cumans))     
+    (unit-type-count-total spearman-line g:< gl-spearmenQtyHigh)  
     (can-train spearman-line)     
 =>
     (train spearman-line)  
