@@ -5787,7 +5787,7 @@
                 (civ-selected burgundians)
             )
             (or 
-                (civ-selected bizantines)        
+                (civ-selected byzantine)        
                 (civ-selected chinese)
             )
         )   
@@ -5865,6 +5865,7 @@
 )
 
 ; civs with FU champion and cavalry
+(defrule
     (current-age == imperial-age)(gold-amount > 500)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
     (up-compare-goal gl-dudeHasSpearmen == 1)
