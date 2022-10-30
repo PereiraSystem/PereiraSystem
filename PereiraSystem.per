@@ -5226,23 +5226,26 @@
 (defrule
     (current-age == imperial-age)
     ;(food-amount > 400)
-    (gold-amount > 300)
+    (gold-amount > 400)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     ;(up-compare-goal gl-dudeHasSpearmen == 0)
     (or
         (or
-            (civ-selected briton)            
             (or 
-                (civ-selected frankish)        
-                (civ-selected malian)
+                (civ-selected briton)        
+                (civ-selected briton)
+            )          
+            (or 
+                (civ-selected briton)        
+                (civ-selected briton)
             )
         )
         (or
             (or 
-                (civ-selected poles)
-                (civ-selected sicilians)
+                (civ-selected briton)
+                (civ-selected briton)
             )
-            (civ-selected teutonic)            
+            (civ-selected briton)            
         )   
     )
     (can-train knight-line)
@@ -5253,7 +5256,7 @@
 (defrule
     (current-age == imperial-age)
     ;(food-amount > 400)
-    (gold-amount > 400)
+    (gold-amount > 300)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     ;(up-compare-goal gl-dudeHasSpearmen == 0)
     (or
