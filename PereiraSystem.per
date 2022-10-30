@@ -6300,6 +6300,14 @@
     (buy-commodity food)
     (chat-local-to-self "BUYING FOOD (GOLD > 1600)")       
 )
+(defrule ;BUY FOOD
+	(can-buy-commodity food)
+    (gold-amount > 500)
+    (food-amount < 50)
+=>
+    (buy-commodity food)
+    (chat-local-to-self "BUYING FOOD (FOOD < 50)")       
+)
 
 ; FEUDAL AGE TRADE                       
 (defrule
