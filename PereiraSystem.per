@@ -4530,7 +4530,6 @@
     (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
-    (chat-local-to-self "Training Upgraded Unique Unit")
 )
 
 ; BERBER UU - upgrade costs same resource
@@ -6330,6 +6329,28 @@
     (current-age == imperial-age)
     (building-type-count-total castle == 0)
     (stone-amount < 650)
+    (not(civ-selected frankish))(not(civ-selected incan))
+	(can-buy-commodity stone)    
+=>
+    (buy-commodity stone)
+    (chat-local-to-self "BUYING STONE (NO CASTLE)")      
+)
+
+(defrule ;imperial age with no castle, we buy stone
+    (current-age == imperial-age)
+    (building-type-count-total castle == 0)
+    (stone-amount < 650)
+    (not(civ-selected frankish))
+	(can-buy-commodity stone)    
+=>
+    (buy-commodity stone)
+    (chat-local-to-self "BUYING STONE (NO CASTLE)")      
+)
+
+(defrule ;imperial age with no castle, we buy stone
+    (current-age == imperial-age)
+    (building-type-count-total castle == 0)
+    (stone-amount < 488)
 	(can-buy-commodity stone)    
 =>
     (buy-commodity stone)
