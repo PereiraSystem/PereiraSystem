@@ -4865,6 +4865,19 @@
 )
 
 (defrule
+    (current-age == imperial-age)
+    (gold-amount > 645)
+    (can-train scorpion-line)
+    (unit-type-count-total scorpion-line g:< gl-scorpionQty)
+    (or
+        (civ-selected tatars)
+        (civ-selected tatars)
+    )
+=>
+    (train scorpion-line)
+)    
+
+(defrule
     (current-age == imperial-age)(research-completed my-unique-research)
     (can-train scorpion-line)
     (wood-amount > 200)
