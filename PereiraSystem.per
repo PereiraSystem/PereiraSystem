@@ -5549,12 +5549,25 @@
 )
 
 (defrule
-    (current-age == imperial-age)(not(can-train hand-cannoneer))  
+    (current-age == imperial-age) ;they have better cav archers after ca upg 
     (wood-amount > 525)(gold-amount > 545)
+    (or(civ-selected tatars)(civ-selected turkish))    
+    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)
     (or
-        (or(civ-selected slavic)(civ-selected tatars))
-        (or(civ-selected teutonic)(civ-selected turkish))    
+        (not(can-train cavalry-archer))
+        (not(research-complete my-second-unique-research))
     )
+    (not(can-train hand-cannoneer))    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)  
+    (wood-amount > 525)(gold-amount > 545)
+    (or(civ-selected slavic)(civ-selected teutonic))    
     (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)
     (not(can-train hand-cannoneer))    
