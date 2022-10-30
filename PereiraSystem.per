@@ -5726,6 +5726,7 @@
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
 
+; MILITIA CASTLE AGE
 (defrule
     (current-age == castle-age)
     (research-completed ri-hand-cart)
@@ -5741,6 +5742,89 @@
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
 
+; MILITIA IMPERIAL AGE 
+; civs with full upgraded champion
+; aztec, berbers, bohemians, burmese, drav, frank, goth, inca ital, japa
+; poles, saracen, sicilians, slav, spanish, teut, viki
+
+; civs with FU champion and cavalry / camelry
+(defrule
+    (current-age == imperial-age)(gold-amount > 500)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
+    (up-compare-goal gl-dudeHasSkirmishers == 1)
+    (or 
+        (civ-selected berbers)
+        (civ-selected saracen)
+    )
+    (can-train militiaman-line)    
+=>
+    (train militiaman-line)
+)
+
+; civs with FU champion and cavalry
+(defrule
+    (current-age == imperial-age)(gold-amount > 500)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
+    (up-compare-goal gl-dudeHasSkirmishers == 1)
+    (or
+        (or
+            (or 
+                (civ-selected briton)
+                (civ-selected bohemians)
+            )
+            (or 
+                (civ-selected dravidians)        
+                (civ-selected frankish)
+            )
+        )   
+        (or
+            (or 
+                (civ-selected italian)
+                (civ-selected japanese)
+            )
+            (or 
+                (civ-selected poles)
+                (civ-selected sicilians)
+            )
+        )       
+    )
+    (can-train militiaman-line)    
+=>
+    (train militiaman-line)
+)
+
+(defrule
+    (current-age == imperial-age)(gold-amount > 500)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
+    (up-compare-goal gl-dudeHasSkirmishers == 1)
+    (or
+        (or
+            (or 
+                (civ-selected slavs)
+                (civ-selected spanish)
+            )
+            (or 
+                (civ-selected teutonic)        
+                (civ-selected viking)
+            )
+        )   
+        (or
+            (or 
+                (civ-selected italian)
+                (civ-selected japanese)
+            )
+            (or 
+                (civ-selected poles)
+                (civ-selected sicilians)
+            )
+        )       
+    )
+    (can-train militiaman-line)    
+=>
+    (train militiaman-line)
+)
+
+; NO HORSE CIVS
 (defrule
     (current-age == imperial-age)(gold-amount > 400)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
