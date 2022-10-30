@@ -4644,23 +4644,10 @@
 
 ; MANGONEL
 (defrule
-    (current-age == feudal-age)
-    (town-under-attack)
-    (unit-type-count-total mangonel-line < 1)
-    (or    
-        (unit-type-count-total monk > 4)
-        (hold-relics)
-    )
-	(can-train mangonel-line)
-=>
-    (train mangonel-line)
-)
-
-(defrule
     (current-age == castle-age)
     (building-type-count town-center > 0)     
     (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
-    (or
+    (or ;maybe dont check this
         (up-compare-goal gl-dudeHasArchers == 0)
         (up-compare-goal gl-dudeHasCavalryArchers == 0)
     )
@@ -5360,8 +5347,8 @@
     (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
     (or
-        (or(civ-selected celtic)(civ-selected cumans))
-        (or(civ-selected frankish)(civ-selected gothic))    
+        (or(civ-selected celtic)(civ-selected mongol))
+        (or(civ-selected frankish)(civ-selected cumans))    
     )
     (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
@@ -5370,14 +5357,17 @@
 	(train archer-line)
 )
 
-(defrule
+; huns, franks, vietnamese, mongols, cumans
+; maybe use only if theres spearmen in front
+
+(defrule ;gurjaras e-a, huns use c-a
     (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
     (or
-        (or(civ-selected gurjaras)(civ-selected hun))
+        (or(civ-selected gurjaras)(civ-selected huns))
         (or(civ-selected indian)(civ-selected lithuanians))    
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)   
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
 	(can-train archer-line)
 =>
