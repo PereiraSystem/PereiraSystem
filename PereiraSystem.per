@@ -6411,12 +6411,12 @@
 ; IMPERIAL AGE TRADE
 (defrule ;SELL WOOD
     (current-age == imperial-age)
-    (wood-amount > 2200)
+    (wood-amount > 1800)
     (gold-amount < 1000)
     (can-sell-commodity wood)    
 =>
     (sell-commodity wood)
-    (chat-local-to-self "SELLING WOOD (> 2200)")     
+    (chat-local-to-self "SELLING WOOD (> 1800)")     
 )
 
 (defrule
