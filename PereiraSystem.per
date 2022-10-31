@@ -1136,7 +1136,7 @@
 )
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(food-amount > 400)
     (building-type-count market > 0)    
     (or
         (building-type-count town-center > 2)
