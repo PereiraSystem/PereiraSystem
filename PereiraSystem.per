@@ -5663,8 +5663,9 @@
         (or(civ-selected aztec)(civ-selected bengalis))
         (or(civ-selected bohemians)(civ-selected khmer))    
     )
-    (or
-        (not(civ-selected bohemians)(not(can-train hand-cannoneer)))
+    (or ; maybe better check if it has anti gunpowder like winged hussar  
+        (not(civ-selected bohemians))
+        (not(can-train hand-cannoneer)) 
     )
     (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
