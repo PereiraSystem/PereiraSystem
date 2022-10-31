@@ -1345,7 +1345,7 @@
     (can-research ri-hand-cart)
     (or
         (building-type-count-total monastery > 0)
-        (and(civ-selected burgundians)(not(town-under-attack)))
+        (and(civ-selected burgundians)(civilian-population > 20))
     )
 =>
     (research ri-hand-cart)
