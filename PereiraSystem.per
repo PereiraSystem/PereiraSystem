@@ -1234,7 +1234,9 @@
 (defrule
 	(true)
 =>
-	(up-set-defense-priority c: lumber-camp c: 10001)
+	(up-set-defense-priority c: lumber-camp c: 20000)
+	(up-set-defense-priority c: mining-camp c: 20000)    
+	(up-set-defense-priority c: farm c: 20000)       
 	(disable-self)
 )
 
@@ -1245,10 +1247,13 @@
     (up-set-offense-priority c: blacksmith c: 1)    
     (up-set-offense-priority c: lumber-camp c: 2)
     (up-set-offense-priority c: mining-camp c: 2)    
-    (up-set-offense-priority c: siege-workshop c: 5)  
-    (up-set-offense-priority c: house c: 9)
-    (up-set-offense-priority c: town-center c: 10)     
-	(up-set-offense-priority c: castle c: 11)
+    (up-set-offense-priority c: siege-workshop c: 3)  
+    (up-set-offense-priority c: house c: 4)
+    (up-set-offense-priority c: town-center c: 5)
+	(up-set-offense-priority c: castle c: 6)      
+
+	(up-set-offense-priority c: cavalry-class c: 11)
+	(up-set-offense-priority c: archery-class c: 5)    
 	(disable-self)
 )
 
@@ -1383,8 +1388,7 @@
 
 (defrule
     (can-research ri-hand-cart)
-    ;(or(building-type-count-total monastery > 0)(civ-selected bugundians))
-    (building-type-count-total monastery > 0)
+    (or(building-type-count-total monastery > 0)(civ-selected bugundians))
 =>
     (research ri-hand-cart)
 )
@@ -1406,13 +1410,6 @@
 )
 
 ; MARKET
-(defrule
-    (can-research ri-cartography)
-    (current-age >= castle-age)
-=>
-    (research ri-cartography)
-)
-
 (defrule
     (can-research ri-caravan )
     (or
@@ -2411,15 +2408,6 @@
 ; MILTARY UPGRADES
 ; BARRACKS UPGRADES
 ; COMMON
-(defrule
-    (research-completed ri-hand-cart)
-    (research-completed ri-bow-saw)
-    (research-completed ri-heavy-plow)
-    (can-research ri-tracking) 
-=>
-    (research ri-tracking)
-)
-
 (defrule
     (research-completed ri-hand-cart)
     (research-completed ri-bow-saw)
@@ -7096,4 +7084,10 @@
 =>
 	(attack-now)
 	(acknowledge-taunt any-ally 31)
+)
+
+(defrule
+	(true)
+=>
+	(chat-to-all "30 HELLO")
 )
