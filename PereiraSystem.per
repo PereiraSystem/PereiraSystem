@@ -5528,12 +5528,9 @@
 (defrule
     (civ-selected bulgarians) ;sa
     (current-age == imperial-age)
-    (gold-amount > 210)
+    (gold-amount > 270)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
-    (or ;if konniks are upgraded knights have low priority
-        (not(research-completed my-unique-unit-upgrade))
-        (gold-amount > 310)
-    )
+    (not(research-completed my-unique-unit-upgrade))
     (can-train knight-line)
 =>
     (train knight-line)
@@ -6961,4 +6958,5 @@
     (up-full-reset-search)	
     (up-find-local c: all-units-class c: 240)	
     (up-target-objects 0 action-stop formation-box -1)
+    (chat-local-to-self "BOX FORMATION!")
 )
