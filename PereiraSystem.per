@@ -230,7 +230,16 @@
 
     (up-modify-goal gl-scoutsQtyLow c:* 1,8)
     (up-modify-goal gl-scoutsQtyMedium c:* 1,8)
+    (disable-self)
 )
+
+(defrule
+    (civ-selected burgundians)
+=>
+    (up-modify-goal gl-knightsQtyLow c:+ 6)
+    (disable-self)
+)
+
 #load-if-defined POPULATION-CAP-150
 #end-if
 
@@ -4345,10 +4354,6 @@
         (unit-type-count-total monk g:< gl-monkQtyLow) 
         (unit-type-count-total 286 g:< gl-monkQtyLow) 
     )
-    (and
-        (players-unit-type-count any-ally monk g:< gl-monkQtyLow) 
-        (players-unit-type-count any-ally 286 g:< gl-monkQtyLow) 
-    )    
     (not(hold-relics))(not(enemy-buildings-in-town))
     (can-train monk)    
 =>
