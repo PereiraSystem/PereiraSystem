@@ -2632,8 +2632,8 @@
 ; HEAVY CAVALRY
 (defrule
     (can-research ri-cavalier)
-    (not(civ-selected byzantine))(unit-type-count-total knight-line > 3)	
-    (current-age == imperial-age)
+    (not(civ-selected byzantine))
+    (unit-type-count-total knight-line > 3)	
 =>
     (research ri-cavalier)
 )
