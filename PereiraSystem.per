@@ -3313,7 +3313,8 @@
 
 (defrule
 	(current-age == imperial-age)(military-population > 40) 
-    (resource-found food)(building-type-count-total mill < 5) 
+    (resource-found food)(building-type-count-total mill < 24)
+    (or(wood-amount > 9000)(building-type-count-total mill < 5))
     (dropsite-min-distance food > 3)
     (wood-amount > 800)
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))    
