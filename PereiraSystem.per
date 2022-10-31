@@ -3899,7 +3899,7 @@
 )
 
 (defrule
-    (building-type-count-total castle == 2)(unit-type-count villager > 40)
+    (building-type-count-total castle == 2)(civilian-population > 40)
     (can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle 3")
