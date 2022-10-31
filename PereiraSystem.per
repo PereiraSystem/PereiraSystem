@@ -574,15 +574,14 @@
 (defrule(true)=>(enable-timer 20 240)(disable-self))
 
 (defrule
-    (timer-triggered 20)
+    (timer-triggered 20)(military-population > 3)
 =>
 	(disable-timer 20)
     (enable-timer 20 3)     
     (chat-local-to-self "ATTACK!")
-    (set-strategic-number sn-number-attack-groups 1)
+    (set-strategic-number sn-number-attack-groups 15)
     (set-strategic-number sn-percent-attack-soldiers 100)    
-    (attack-now)      
-    ;(disable-self)
+    (attack-now)    
 )
 
 
