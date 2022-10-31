@@ -5979,7 +5979,8 @@
 
 ; MILITIA CASTLE AGE
 (defrule
-    (current-age == castle-age)(not(civ-selected sicilians))
+    (current-age == castle-age)
+    (not(civ-selected sicilians))(not(civ-selected bohemians))
     (research-completed ri-hand-cart)
     (game-time < 900)
     (gold-amount > 200)        
