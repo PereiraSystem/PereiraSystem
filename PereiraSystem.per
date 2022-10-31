@@ -237,7 +237,13 @@
 (defrule
     (civ-selected burgundians)
 =>
-    (up-modify-goal gl-knightsQtyLow c:+ 6)
+    (up-modify-goal gl-scoutsQtyLow c:+ 4)
+    (up-modify-goal gl-skirmsherQtyLow c:- 3)
+    (up-modify-goal gl-scoutsQtyLow c:+ 4)
+    (up-modify-goal gl-skirmsherQtyMedium c:- 5)    
+    (up-modify-goal gl-archerQtyLow c:- 3) 
+    (up-modify-goal gl-militiaQtyLow c:- 3)     
+    (up-modify-goal gl-knightsQtyLow c:+ 5)   
     (disable-self)
 )
 
