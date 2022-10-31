@@ -5288,7 +5288,10 @@
 (defrule
 	(current-age == feudal-age) ; just cause they are good
     (research-completed ri-wheel-barrow)
-    (or(civ-selected mongol)(civ-selected turkish)) 
+    (or
+        (or(civ-selected mongol)(civ-selected turkish))
+        (or(civ-selected sicilians)(civ-selected burgundians))
+    ) 
     (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)    
 	(unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)
 	(can-train scout-cavalry-line)    
