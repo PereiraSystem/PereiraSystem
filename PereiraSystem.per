@@ -476,7 +476,7 @@
     (enable-timer 11 90)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
-    (up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)     
+    ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)     
     (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)     
     (up-chat-data-to-self "Def: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Atk: %d" g: gl-attackSoldierAmount)
@@ -490,8 +490,8 @@
     (enable-timer 11 60)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
-    (up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
-     (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)       
+    ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
+    (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)       
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
     (up-chat-data-to-self "Inf / Cav created in feudal age: %d" g: gl-totalSoldiersCreatedThisAge)    
@@ -505,7 +505,7 @@
     (enable-timer 11 60)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
-    (up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
+    ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
     (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)        
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
@@ -517,10 +517,10 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 30)           
+    (enable-timer 11 60)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
-    (up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
+    ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
     (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)       
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
@@ -562,7 +562,7 @@
 =>
 	(disable-timer 20)
     (enable-timer 20 2)     
-    (chat-to-player my-player-number "TIME HAS PASSED AND WE HAVE 70 DUDES, TIME TO ATTACK!")
+    (chat-local-to-self "TIME HAS PASSED AND WE HAVE 70 DUDES, TIME TO ATTACK!")
     (disable-self)
 )
 ; CONDITIONS FOR ATTACKING BEFORE TIME
@@ -572,7 +572,7 @@
     (wood-amount > 5000)                
     (current-age == imperial-age)
 =>  
-    (chat-to-player my-player-number "WE ARE RICH, ATTACK!")
+    (chat-local-to-self "WE ARE RICH, ATTACK!")
         (set-strategic-number sn-enemy-sighted-response-distance 64)
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 80)
@@ -585,7 +585,7 @@
     (military-population > 109)
     (game-time > 3300) 
 =>
-    (chat-to-player my-player-number "WE ARE TOO MANY HERE, ATTACK!")
+    (chat-local-to-self "WE ARE TOO MANY HERE, ATTACK!")
     (disable-timer 20)
     (enable-timer 20 2)         
 )
@@ -596,7 +596,7 @@
     (current-age == imperial-age)
     (military-population >= 40) 
 =>  
-    (chat-to-player my-player-number "TIMER TRIGGERED 20!")
+    (chat-local-to-self "TIMER TRIGGERED 20!")
 	(disable-timer 20)
     (enable-timer 20 2)
     (set-strategic-number sn-enemy-sighted-response-distance 64)
@@ -634,7 +634,7 @@
     (building-type-count lumber-camp > 1)
 =>
     (attack-now)
-    (chat-to-player my-player-number "FEUDAL AGE ATTACK!")     
+    (chat-local-to-self "FEUDAL AGE ATTACK!")     
 )
 
 
