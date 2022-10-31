@@ -4521,9 +4521,9 @@
 
 ; UNIQUE UNIT
 (defrule ;flemish militia                            
-    (can-train 1699)
+    (can-train flemish-pikeman)
 =>
-    (train 1699)
+    (train flemish-pikeman)
 )
 
 ; CASTLE AGE DEFENSE UU
@@ -6485,7 +6485,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 125)    
     (up-compare-goal gl-dudeHasCavalry == 1)
-    (not(can-train coustillier))(not(can-train flemish-militia))
+    (not(can-train coustillier))(not(can-train flemish-pikeman))
     (unit-type-count-total spearman-line g:< gl-spearmenQtyHigh)  
     (can-train spearman-line)     
 =>
