@@ -582,7 +582,7 @@
     (chat-local-to-self "DARK AGE ATTACK!")
     (set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 6)
-    (set-strategic-number sn-maximum-attack-group-size 6) 
+    (set-strategic-number sn-maximum-attack-group-size 8) 
     (set-strategic-number sn-percent-attack-soldiers 100)    
     (attack-now)    
 )
@@ -1337,7 +1337,7 @@
     (can-research ri-wheel-barrow)
     (or
         (and(not(town-under-attack))(enemy-buildings-in-town))
-        (food-amount > 400)
+        (food-amount > 200); leave food for villagers if we under attack
     )
 =>
     (research ri-wheel-barrow)
