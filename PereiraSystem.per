@@ -4469,7 +4469,11 @@
     (not
         (and(civ-selected bohemians)(can-train bombard-cannon))
     )
+    (not
+        (and(civ-selected burgundians)(can-train bombard-cannon))
+    )    
     (not(up-research-status c: 787 == research-available))
+  
     (can-train trebuchet)   
 =>
     (train trebuchet)
@@ -4938,8 +4942,12 @@
 (defrule
     (current-age == imperial-age)
     (gold-amount > 251) ; trebuchet priority or not
-    (can-train mangonel-line)
+    ;(not(and(civ-selected bohemians)(can-train bombard-cannon)))    
+    (not
+        (and(civ-selected burgundians)(can-train bombard-cannon))
+    )       
     (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
+    (can-train mangonel-line)    
 =>
     (train mangonel-line)
 )
@@ -4987,7 +4995,7 @@
             (civ-selected bohemians)
             (and(gold-amount < 250)(wood-amount < 250))
         )
-    )    
+    )      
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
@@ -5001,7 +5009,7 @@
 	(can-train battering-ram-line)(not(civ-selected vietnamese))(not(civ-selected portuguese))
 	(not(civ-selected korean))(not(civ-selected poles))(not(civ-selected tatars))(not(civ-selected gothic)) 
     (not(civ-selected celtic))(not(civ-selected khmer))(not(civ-selected berbers))
-    (not(civ-selected bohemians))
+    (not(civ-selected bohemians))(not(civ-selected burgundians))
     ;(not(civ-selected persian))(not(civ-selected spanish))
 =>
 	(train battering-ram-line)
@@ -6092,7 +6100,7 @@
     (wood-amount > 150) ;saving food for heavy units, give priority to spearmen
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasCavalryArchers == 1))
-    (not(civ-selected gothic))
+    (not(civ-selected gothic))(not(civ-selected burgundians))
     (not(can-train genitour))
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium)
     (can-train skirmisher-line)    
