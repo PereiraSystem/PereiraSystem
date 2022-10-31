@@ -6945,3 +6945,12 @@
 	;(up-remove-objects search-local object-data-hitpoints < 50)
     (up-guard-unit monk c: spearman-line)
 )
+
+(defrule	
+
+    (military-population > 6 )	
+    =>	
+    (up-full-reset-search)	
+    (up-find-local c: all-units-class c: 240)	
+    (up-target-objects 0 action-stop formation-box -1)
+)
