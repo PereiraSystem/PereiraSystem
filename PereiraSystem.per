@@ -588,21 +588,21 @@
 )
 
 (defrule
-    (timer-triggered 20)(military-population > 16)
+    (timer-triggered 20)(military-population > 36)
     (current-age == feudal-age)
 =>
 	(disable-timer 20)
     (enable-timer 20 3)     
     (chat-local-to-self "FEUDAL AGE ATTACK!")
-    (set-strategic-number sn-number-attack-groups 2)
-    (set-strategic-number sn-minimum-attack-group-size 8)
-    (set-strategic-number sn-maximum-attack-group-size 8)     
+    (set-strategic-number sn-number-attack-groups 4)
+    (set-strategic-number sn-minimum-attack-group-size 9)
+    (set-strategic-number sn-maximum-attack-group-size 9)     
     (set-strategic-number sn-percent-attack-soldiers 100)    
     (attack-now)    
 )
 
 (defrule
-    (timer-triggered 20)(military-population > 40)
+    (timer-triggered 20)(military-population > 70)
     (current-age == castle-age)
 =>
 	(disable-timer 20)
@@ -1335,7 +1335,7 @@
     (can-research ri-wheel-barrow)
     (or
         (and(not(town-under-attack))(enemy-buildings-in-town))
-        (food-amount > 200); leave food for villagers if we under attack
+        (civilian-population > 5)
     )
 =>
     (research ri-wheel-barrow)
@@ -1345,7 +1345,7 @@
     (can-research ri-hand-cart)
     (or
         (building-type-count-total monastery > 0)
-        (and(civ-selected burgundians)(civilian-population > 20))
+        (and(civ-selected burgundians)(civilian-population > 10))
     )
 =>
     (research ri-hand-cart)
