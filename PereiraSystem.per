@@ -483,7 +483,7 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 90)           
+    (enable-timer 11 900)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)     
@@ -497,7 +497,7 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 60)           
+    (enable-timer 11 600)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
@@ -512,7 +512,7 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 60)           
+    (enable-timer 11 600)           
     ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
     ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
@@ -4784,7 +4784,9 @@
 (defrule
     (civ-selected burgundians)
     (not(research-completed my-unique-unit-upgrade))
-    (or(current-age == castle-age(gold-amount > 211)))
+    (or
+        (current-age == castle-age)(gold-amount > 211)
+    )
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
     (can-train my-unique-unit-line)    
 =>
