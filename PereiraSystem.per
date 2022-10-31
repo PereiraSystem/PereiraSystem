@@ -1249,6 +1249,7 @@
     (up-set-offense-priority c: mining-camp c: 2)    
     (up-set-offense-priority c: siege-workshop c: 3)  
     (up-set-offense-priority c: house c: 4)
+    (up-set-offense-priority c: villager c: 4)    
     (up-set-offense-priority c: town-center c: 5)
 	(up-set-offense-priority c: castle c: 6)      
 
@@ -1390,7 +1391,7 @@
     (can-research ri-hand-cart)
     (or
         (building-type-count-total monastery > 0)
-        (civ-selected bugundians)
+        (civ-selected burgundians)
     )
 =>
     (research ri-hand-cart)
@@ -6484,7 +6485,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 125)    
     (up-compare-goal gl-dudeHasCavalry == 1)
-    (not(can-train coustillier))
+    (not(can-train coustillier))(not(can-train flemish-militia))
     (unit-type-count-total spearman-line g:< gl-spearmenQtyHigh)  
     (can-train spearman-line)     
 =>
