@@ -6491,6 +6491,19 @@
 )
 
 (defrule
+    (current-age == castle-age)
+    (building-type-count monastery > 0)
+    (and(building-type-count siege-workshop == 0)
+    (building-type-count university == 0))
+    (wood-amount < 300)
+    (gold-amount > 500)
+    (can-buy-commodity wood)    
+=>
+    (sell-commodity wood)
+    (chat-local-to-self "BUYING WOOD FOR THE SIEGE WORKSHOP / UNIV")    
+)
+
+(defrule
     (current-age == castle-age) ;
     (food-amount > 300)
 	(gold-amount < 100)
