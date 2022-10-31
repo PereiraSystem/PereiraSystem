@@ -5434,14 +5434,15 @@
     (train knight-line)
 )
 
-; CIVS WITH AT LEAST CAVALIER UPGRADE
+; CIVS WITH AT LEAST CAVALIER UPGRADE - try to use regional units better
 ; bohemians, briton, burmese etc
 (defrule
     (current-age == imperial-age)
     (gold-amount > 575)
     (not(civ-selected saracen))
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
-    (not(can-train steppe-lancer-line))     
+    (not(can-train steppe-lancer-line))
+    (not(can-train battle-elephant-line))    
     (can-train knight-line)
 =>
     (train knight-line)
