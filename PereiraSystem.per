@@ -586,13 +586,15 @@
 )
 
 (defrule
-    (timer-triggered 20)(military-population > 10)
+    (timer-triggered 20)(military-population > 16)
     (current-age == feudal-age)
 =>
 	(disable-timer 20)
     (enable-timer 20 3)     
     (chat-local-to-self "FEUDAL AGE ATTACK!")
-    (set-strategic-number sn-number-attack-groups 1)
+    (set-strategic-number sn-number-attack-groups 2)
+    (set-strategic-number sn-minimum-attack-group-size 8)
+    (set-strategic-number sn-maximum-attack-group-size 8)     
     (set-strategic-number sn-percent-attack-soldiers 100)    
     (attack-now)    
 )
@@ -721,14 +723,13 @@
     (true)
 =>
     (set-strategic-number sn-group-form-distance 24) ;def 20
-    (set-strategic-number sn-attack-group-gather-spacing 3)    
-    (set-strategic-number sn-minimum-attack-group-size 2)
-    (set-strategic-number sn-maximum-attack-group-size 10)
-    (set-strategic-number sn-number-attack-groups 0)  
+    (set-strategic-number sn-attack-group-gather-spacing 2)     
     (set-strategic-number sn-percent-attack-soldiers 0)
     (set-strategic-number sn-attack-group-size-randomness 0)    
     
-               
+    (set-strategic-number sn-minimum-attack-group-size 8)
+    (set-strategic-number sn-maximum-attack-group-size 8)
+    (set-strategic-number sn-number-attack-groups 0)                    
     (disable-self)
 )
 
