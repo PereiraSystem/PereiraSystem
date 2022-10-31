@@ -578,6 +578,7 @@
 (defrule
     (civ-selected burgundians)
     (research-completed my-unique-research)
+    (military-population > 40)
 =>
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 80)
