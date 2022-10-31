@@ -1241,7 +1241,14 @@
 (defrule
 	(true)
 =>
-	(up-set-offense-priority c: castle c: 99999)
+    (up-set-offense-priority c: university c: 1)
+    (up-set-offense-priority c: blacksmith c: 1)    
+    (up-set-offense-priority c: lumber-camp c: 2)
+    (up-set-offense-priority c: mining-camp c: 2)    
+    (up-set-offense-priority c: siege-workshop c: 5)  
+    (up-set-offense-priority c: house c: 9)
+    (up-set-offense-priority c: town-center c: 10)     
+	(up-set-offense-priority c: castle c: 11)
 	(disable-self)
 )
 
@@ -2638,7 +2645,8 @@
 )
 
 (defrule
-    (can-research ri-paladin )(unit-type-count-total knight-line > 5)	
+    (can-research ri-paladin )(unit-type-count-total knight-line > 5)
+    (not(research-available ri-elite-coustillier))
     (current-age == imperial-age)
 =>
     (research ri-paladin)
@@ -2948,6 +2956,7 @@
 ; RAM
 (defrule
 	(unit-type-count-total battering-ram-line > 2)
+    
     (can-research ri-capped-ram)
 =>
     (research ri-capped-ram)
