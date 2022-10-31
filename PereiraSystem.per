@@ -3872,7 +3872,7 @@
 )
 
 (defrule
-    (building-type-count-total castle == 2)
+    (building-type-count-total castle == 2)(unit-type-count villager > 40)
     (can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle 3")
@@ -3880,7 +3880,7 @@
 )
 
 (defrule
-    (building-type-count-total castle == 3)
+    (building-type-count-total castle == 3)(unit-type-count villager > 60)
     (civilian-population > 60)(military-population > 70)
     (wood-amount > 4000)(food-amount > 4000)(gold-amount > 4000)
     (can-build castle)    
@@ -3960,7 +3960,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)
+	(current-age == imperial-age)(unit-type-count villager > 40)
 	(building-type-count-total barracks == 2)
     (building-type-count town-center > 0)
     (wood-amount > 600)(food-amount > 600)
@@ -4040,7 +4040,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)
+	(current-age == imperial-age)(unit-type-count villager > 40)
     (wood-amount > 600)(food-amount > 600)
 	(building-type-count-total stable == 2)
     (building-type-count-total university > 0)
@@ -4052,7 +4052,8 @@
 )
 
 (defrule
-	(current-age == imperial-age)(building-type-count-total stable < 5)
+	(current-age == imperial-age)(unit-type-count villager > 40)
+    (building-type-count-total stable < 5)
     (can-build stable)(wood-amount > 4000)
     (not(civ-selected gothic))
 =>
@@ -4107,7 +4108,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)
+	(current-age == imperial-age)(unit-type-count villager > 40)
     (wood-amount > 600)(food-amount > 600)
 	(building-type-count-total archery-range == 2)
     (building-type-count-total university > 0)
@@ -4120,7 +4121,8 @@
 )
 
 (defrule
-	(current-age == imperial-age)(building-type-count-total archery-range < 5)
+	(current-age == imperial-age)(unit-type-count villager > 40)
+    (building-type-count-total archery-range < 5)
     (building-type-count-total archery-range >= 3)
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 4000)
@@ -4154,7 +4156,7 @@
 )
 
 (defrule
-    (military-population > 60)
+    (military-population > 60)(unit-type-count villager > 40)
     (wood-amount > 600)(food-amount > 600)
     (current-age == imperial-age)(building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total siege-workshop == 1)
@@ -4166,7 +4168,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)
+	(current-age == imperial-age)(unit-type-count villager > 40)
 	(building-type-count-total siege-workshop < 4)
     (building-type-count-total university > 0)(building-type-count-total castle > 0)
     (military-population > 60)
