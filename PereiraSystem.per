@@ -1384,6 +1384,13 @@
 )
 
 (defrule
+    (or
+        (or
+            (wood-amount > 600)
+            (food-amount > 1000)
+        )
+        (gold-amount > 600)
+    )
     (can-research ri-guilds)
 =>
     (research ri-guilds)
