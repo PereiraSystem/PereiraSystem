@@ -34,6 +34,7 @@
 (defconst gl-nonUpgradedUniqueUnitsCreated 90)
 
 (defconst gl-weMovedPlace 99)
+(defconst gl-weMovedAreAttacking 100)
 
 (defconst gl-maxHousesBeforeDeleting 101)    
 (defconst gl-maxHousesNeeded 102)
@@ -309,7 +310,8 @@
     (set-goal gl-dudeHasCavalryArchers 0)
     (set-goal gl-dudeHasMilitia 0)        
     (set-goal gl-dudeHasSkirmishers 0)
-    (set-goal gl-weMovedPlace 0)  
+    (set-goal gl-weMovedPlace 0)
+    (set-goal gl-weAreAttacking 0)
     (set-goal gl-maximumSoldiersFeudal 30)
     (set-goal gl-totalSoldiersCreatedThisAge 0)
     (set-goal gl-nonUpgradedUniqueUnitsCreated 0)              
@@ -584,18 +586,20 @@
     (set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 6)
     (set-strategic-number sn-maximum-attack-group-size 8) 
-    (set-strategic-number sn-percent-attack-soldiers 100)    
+    (set-strategic-number sn-percent-attack-soldiers 100)
+    (set-goal gl-weAreAttacking == 1)   
     (attack-now)    
 )
 
 (defrule
     (current-age == dark-age)(military-population < 12)
-    (game-time > 360)
+    (game-time > 360)(goal gl-weAreAttacking 1)
 =>
 	(up-retreat-now)(chat-local-to-self "RETREAT!")
     (set-strategic-number sn-number-attack-groups 0)
     (set-strategic-number sn-enemy-sighted-response-distance 1)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)              
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (set-goal gl-weAreAttacking == 0)              
 )
 
 (defrule
@@ -609,17 +613,20 @@
     (set-strategic-number sn-number-attack-groups 4)
     (set-strategic-number sn-minimum-attack-group-size 9)
     (set-strategic-number sn-maximum-attack-group-size 9)     
-    (set-strategic-number sn-percent-attack-soldiers 100)    
+    (set-strategic-number sn-percent-attack-soldiers 100)
+    (set-goal gl-weAreAttacking == 1)       
     (attack-now)    
 )
 
 (defrule
     (current-age == feudal-age)(military-population < 22)
+    (goal gl-weAreAttacking 1)
 =>
 	(up-retreat-now)(chat-local-to-self "RETREAT!")
     (set-strategic-number sn-number-attack-groups 0)
     (set-strategic-number sn-enemy-sighted-response-distance 1)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)     
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (set-goal gl-weAreAttacking == 0)          
 )
 
 (defrule
@@ -632,18 +639,21 @@
     (set-strategic-number sn-task-ungrouped-soldiers 0)      
     (set-strategic-number sn-number-attack-groups 4)
     (set-strategic-number sn-minimum-attack-group-size 9)
-    (set-strategic-number sn-maximum-attack-group-size 9)    
-    (set-strategic-number sn-percent-attack-soldiers 100)    
+    (set-strategic-number sn-maximum-attack-group-size 9)  
+    (set-strategic-number sn-percent-attack-soldiers 100)
+    (set-goal gl-weAreAttacking == 1)        
     (attack-now)    
 )
 
 (defrule
     (current-age == feudal-age)(military-population < 36)
+    (goal gl-weAreAttacking 1)
 =>
 	(up-retreat-now)(chat-local-to-self "RETREAT!")
     (set-strategic-number sn-number-attack-groups 0)
     (set-strategic-number sn-enemy-sighted-response-distance 1)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)    
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (set-goal gl-weAreAttacking == 0)       
 )
 
 (defrule(true)=>(enable-timer 21 2100)(disable-self)) ;35 min
