@@ -7072,9 +7072,16 @@
 (defrule
 	(current-score < 2000)
     (players-score any-enemy > 6000)
-    ((not(players-score any-ally > 2000)))
+    (not(players-score any-ally > 2000))
 =>
 	(chat-local-to-self "I HAVE LOW SCORE AND OUR TEAM IS SHIT - I GIVE UP!!")
     (resign)
 )
 
+(defrule
+	(taunt-detected any-ally 31)
+	(military-population >= 8)
+=>
+	(attack-now)
+	(acknowledge-taunt any-ally 31)
+)
