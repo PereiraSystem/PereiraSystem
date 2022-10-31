@@ -2172,7 +2172,9 @@
 
 (defrule
     (civ-selected bohemians)(food-amount > 1000)
-    (or(not(research-available ri-houfnice)(research-completed ri-houfnice))  
+    (or
+        (not(research-available ri-houfnice))(research-completed ri-houfnice)
+    ) 
     (can-research my-unique-research)
 =>
     (research my-unique-research)
@@ -2879,7 +2881,9 @@
 
 (defrule
 	(unit-type-count-total mangonel-line > 3)
-    (or(not(research-available ri-houfnice)(research-completed ri-houfnice))
+    (or
+        (not(research-available ri-houfnice))(research-completed ri-houfnice)
+    ) 
     (can-research ri-siege-onager )
 =>
     (research ri-siege-onager )
@@ -2906,7 +2910,9 @@
 
 (defrule
 	(unit-type-count-total battering-ram-line > 2)
-    (or(not(research-available ri-houfnice)(research-completed ri-houfnice))
+    (or
+        (not(research-available ri-houfnice))(research-completed ri-houfnice)
+    ) 
     (can-research ri-siege-ram)
 =>
     (research ri-siege-ram)
@@ -3165,7 +3171,9 @@
 
 
 (defrule
-    (or(not(research-available ri-houfnice)(research-completed ri-houfnice))
+    (or
+        (not(research-available ri-houfnice))(research-completed ri-houfnice)
+    ) 
     (can-research ri-bombard-tower )
 =>
     (research ri-bombard-tower )
