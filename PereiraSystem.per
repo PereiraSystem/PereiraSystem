@@ -5443,7 +5443,8 @@
     (not(civ-selected saracen))
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (not(can-train steppe-lancer-line))
-    (not(can-train battle-elephant-line))    
+    (not(can-train battle-elephant-line))
+    (or(not(civ-selected burmese))(research-completed my-unique-research))       
     (can-train knight-line)
 =>
     (train knight-line)
