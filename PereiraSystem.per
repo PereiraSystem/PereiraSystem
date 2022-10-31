@@ -235,7 +235,8 @@
 )
 
 (defrule
-    (civ-selected burgundians)(civ-selected berbers)
+    (civ-selected burgundians)
+    ;(civ-selected berbers)
 =>
     (up-modify-goal gl-scoutsQtyLow c:+ 4)
     (up-modify-goal gl-skirmisherQtyLow c:- 3)
@@ -570,7 +571,7 @@
 )
 
 ; ATTACK TIMER
-(defrule(true)=>(enable-timer 20 480)(disable-self))
+(defrule(true)=>(enable-timer 20 300)(disable-self))
 
 (defrule
     (timer-triggered 20)
@@ -2501,7 +2502,11 @@
 
 ; LIGHT CAVALRY  
 (defrule
-    (or(current-age == imperial-age)(food-amount > 950))
+    (or
+        (or(current-age == imperial-age)(civ-selected burgundians))
+        (food-amount > 950)
+
+    )
     (unit-type-count scout-cavalry-line > 4)    
     (can-research ri-light-cavalry)    
 =>
