@@ -580,6 +580,7 @@
 	(disable-timer 20)
     (enable-timer 20 3)     
     (chat-local-to-self "DARK AGE ATTACK!")
+    (set-strategic-number sn-task-ungrouped-soldiers 0)    
     (set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 6)
     (set-strategic-number sn-maximum-attack-group-size 8) 
@@ -591,7 +592,9 @@
     (current-age == dark-age)(military-population < 12)
 =>
 	(up-retreat-now)(chat-local-to-self "RETREAT!")
-    (set-strategic-number sn-number-attack-groups 0)     
+    (set-strategic-number sn-number-attack-groups 0)
+    (set-strategic-number sn-enemy-sighted-response-distance 1)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)              
 )
 
 (defrule
@@ -601,6 +604,7 @@
 	(disable-timer 20)
     (enable-timer 20 3)     
     (chat-local-to-self "FEUDAL AGE ATTACK!")
+    (set-strategic-number sn-task-ungrouped-soldiers 0)    
     (set-strategic-number sn-number-attack-groups 4)
     (set-strategic-number sn-minimum-attack-group-size 9)
     (set-strategic-number sn-maximum-attack-group-size 9)     
@@ -612,7 +616,9 @@
     (current-age == feudal-age)(military-population < 22)
 =>
 	(up-retreat-now)(chat-local-to-self "RETREAT!")
-    (set-strategic-number sn-number-attack-groups 0)    
+    (set-strategic-number sn-number-attack-groups 0)
+    (set-strategic-number sn-enemy-sighted-response-distance 1)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)     
 )
 
 (defrule
@@ -622,6 +628,7 @@
 	(disable-timer 20)
     (enable-timer 20 3)     
     (chat-local-to-self "CASTLE AGE ATTACK!")
+    (set-strategic-number sn-task-ungrouped-soldiers 0)      
     (set-strategic-number sn-number-attack-groups 4)
     (set-strategic-number sn-minimum-attack-group-size 9)
     (set-strategic-number sn-maximum-attack-group-size 9)    
@@ -633,7 +640,9 @@
     (current-age == feudal-age)(military-population < 36)
 =>
 	(up-retreat-now)(chat-local-to-self "RETREAT!")
-    (set-strategic-number sn-number-attack-groups 0)   
+    (set-strategic-number sn-number-attack-groups 0)
+    (set-strategic-number sn-enemy-sighted-response-distance 1)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)    
 )
 
 (defrule(true)=>(enable-timer 21 2100)(disable-self)) ;35 min
@@ -7017,14 +7026,6 @@
 (defrule(civ-selected turkish)=>(up-change-name "PereiraSystem TURK"))
 (defrule(civ-selected vietnamese)=>(up-change-name "PereiraSystem VIET"))
 (defrule(civ-selected viking)=>(up-change-name "PereiraSystem VKNG"))
-
-(defrule
-	(true)
-=>
-	;(up-retreat-to castle c: knight-line)
-    (do-nothing)
-	(disable-self)
-)
 
 (defrule
 	(current-age == imperial-age)
