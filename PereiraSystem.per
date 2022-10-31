@@ -573,6 +573,10 @@
     (current-age == imperial-age)
 =>  
     (chat-to-player my-player-number "WE ARE RICH, ATTACK!")
+        (set-strategic-number sn-enemy-sighted-response-distance 64)
+    (attack-now)(set-strategic-number sn-number-attack-groups 1)
+    (set-strategic-number sn-minimum-attack-group-size 80)
+    (set-strategic-number sn-attack-group-gather-spacing 24) 
     (disable-timer 20)
     (enable-timer 20 2)      
 )
@@ -591,7 +595,8 @@
     (timer-triggered 20)
     (current-age == imperial-age)
     (military-population >= 40) 
-=>
+=>  
+    (chat-to-player my-player-number "TIMER TRIGGERED 20!")
 	(disable-timer 20)
     (enable-timer 20 2)
     (set-strategic-number sn-enemy-sighted-response-distance 64)
