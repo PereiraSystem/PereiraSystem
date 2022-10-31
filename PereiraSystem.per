@@ -4676,7 +4676,7 @@
 (defrule
     (civ-selected bulgarians)
     (not(research-completed my-unique-unit-upgrade))
-    (gold-amount > 210) ;knight 220
+    (gold-amount > 210)
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
     (can-train my-unique-unit-line)    
 =>
@@ -5520,10 +5520,9 @@
 (defrule
     (civ-selected bulgarians)
     (current-age == imperial-age)
-    (gold-amount > 250)
-	(unit-type-count-total knight-line g:< gl-knightsQtyHigh)
-    (or(research-completed my-second-unique-research)(gold-amount > 350))
-    ;if not all cavalry improved use more konniks
+    (gold-amount > 400)
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
+    (or(research-completed my-second-unique-research)(gold-amount > 500))
     (can-train knight-line)
 =>
     (train knight-line)
