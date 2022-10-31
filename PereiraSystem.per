@@ -3057,6 +3057,13 @@
 )
 
 (defrule
+    (current-age == imperial-age)(military-population > 45)
+    (can-research ri-treadmill-crane)
+=>
+    (research ri-treadmill-crane)
+)
+
+(defrule
    	(building-type-count-total stone-wall-line > 10)
     (current-age == imperial-age)
     (can-research ri-fortified-wall ) 
