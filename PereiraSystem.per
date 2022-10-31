@@ -1388,7 +1388,10 @@
 
 (defrule
     (can-research ri-hand-cart)
-    (or(building-type-count-total monastery > 0)(civ-selected bugundians))
+    (or
+        (building-type-count-total monastery > 0)
+        (civ-selected bugundians)
+    )
 =>
     (research ri-hand-cart)
 )
@@ -3909,7 +3912,7 @@
 )
 
 (defrule
-    (building-type-count-total castle == 2)(civilian-population > 40)
+    (building-type-count-total castle == 2)(civilian-population > 50)
     (can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle 3")
