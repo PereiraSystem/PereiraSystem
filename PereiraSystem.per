@@ -2171,7 +2171,7 @@
 
 (defrule
     (civ-selected bohemians)(food-amount > 1000)
-    (not(research-available 787));houfnice first    
+    (not(up-research-status c: 787 == research-available));houfnice first    
     (can-research my-unique-research)
 =>
     (research my-unique-research)
@@ -2462,7 +2462,7 @@
        (unit-type-count-total militiaman-line > 6)
        (and(unit-type-count-total militiaman-line > 0)(food-amount > 4000))
     )
-    (not(research-available 787));houfnice first    
+    (not(up-research-status c: 787 == research-available))
     (can-research ri-champion)    
 =>
     (research ri-champion)
@@ -2874,7 +2874,7 @@
 
 (defrule
 	(unit-type-count-total mangonel-line > 3)
-    (not(research-available 787));houfnice first
+    (not(up-research-status c: 787 == research-available))
     (can-research ri-siege-onager )
 =>
     (research ri-siege-onager )
@@ -2901,7 +2901,7 @@
 
 (defrule
 	(unit-type-count-total battering-ram-line > 2)
-    (not(research-available 787));houfnice first    
+    (not(up-research-status c: 787 == research-available))    
     (can-research ri-siege-ram)
 =>
     (research ri-siege-ram)
@@ -4375,7 +4375,7 @@
         (unit-type-count-total 954 g:< gl-trebuchetsQtyLow)
     )
     (not(civ-selected gothic))
-    (not(research-available 787));houfnice first
+    (not(up-research-status c: 787 == research-available))
     (can-train trebuchet)   
 =>
     (train trebuchet)
@@ -4745,7 +4745,7 @@
 ; SIEGE WORKSHOP
 ; BOMBARD CANNON , trebuchets have better AI
 (defrule
-	(unit-type-count-total houfnice < 8)
+	(unit-type-count-total houfnice < 16)
 	(can-train houfnice)
 =>
 	(train houfnice)
