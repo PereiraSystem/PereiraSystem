@@ -2438,11 +2438,12 @@
 )
 
 (defrule
-    (can-research ri-champion)
     (or
        (unit-type-count-total militiaman-line > 6)
        (and(unit-type-count-total militiaman-line > 0)(food-amount > 4000))
-    )    
+    )
+    (not(research-available 787));houfnice first    
+    (can-research ri-champion)    
 =>
     (research ri-champion)
 )
