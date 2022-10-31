@@ -7063,7 +7063,7 @@
 )
 
 (defrule
-	(current-score < 2000)
+	(current-score < 2300)
     (game-time > 900)
 =>
 	(chat-local-to-self "LOW SCORE!!")
@@ -7072,10 +7072,9 @@
 (defrule
 	(current-score < 2000)
     (players-score any-enemy > 6000)
-    ((not(players-score any-ally > 2000)) 
-
+    ((not(players-score any-ally > 2000)))
 =>
-	(chat-local-to-self "LOW SCORE - I GIVE UP!!")
+	(chat-local-to-self "I HAVE LOW SCORE AND OUR TEAM IS SHIT - I GIVE UP!!")
     (resign)
 )
 
