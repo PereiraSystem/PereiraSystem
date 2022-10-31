@@ -3588,8 +3588,7 @@
     (building-type-count town-center > 0)(wood-amount > 200)            
     (building-type-count-total monastery > 0)
     (building-type-count-total market > 0)
-    (or(building-type-count-total siege-workshop > 0)
-    (civ-selected bohemians))
+    (building-type-count-total siege-workshop > 0)
     (research-completed ri-hand-cart)
     (research-completed ri-bow-saw)
     (research-completed ri-heavy-plow)
@@ -4774,10 +4773,30 @@
 
 ; MANGONEL
 (defrule
-    (current-age == castle-age) ;first mangonel at 2 monks
+    (current-age == castle-age)
     (building-type-count town-center > 0)    
     (unit-type-count-total monk > 2)
-    (unit-type-count-total mangonel-line < 1)    
+    (unit-type-count-total mangonel-line < 2)    
+	(can-train mangonel-line)
+=>
+    (train mangonel-line)
+)
+
+(defrule
+    (current-age == castle-age)
+    (building-type-count town-center > 0)    
+    (unit-type-count-total monk > 3)
+    (unit-type-count-total mangonel-line < 3)    
+	(can-train mangonel-line)
+=>
+    (train mangonel-line)
+)
+
+(defrule
+    (current-age == castle-age)
+    (building-type-count town-center > 0)    
+    (unit-type-count-total monk > 4)
+    (unit-type-count-total mangonel-line < 4)    
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
@@ -6003,7 +6022,7 @@
 ; MILITIA CASTLE AGE
 (defrule
     (current-age == castle-age)
-    (not(civ-selected sicilians))(not(civ-selected bohemians))
+    (not(civ-selected sicilians))
     (research-completed ri-hand-cart)
     (game-time < 900)
     (gold-amount > 200)        
@@ -6304,7 +6323,7 @@
         (building-type-count town-center > 0)
     )    
     (wood-amount >= 125)
-    (up-compare-goal gl-totalSoldiersCreatedThisAge < 5)
+    (up-compare-goal gl-totalSoldiersCreatedThisAge < 10)
     (can-train spearman-line)
 =>
     (train spearman-line)
