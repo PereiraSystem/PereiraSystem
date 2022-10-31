@@ -5498,7 +5498,8 @@
             )
         )             
     )
-   (not(can-train steppe-lancer-line))     
+    (not(can-train steppe-lancer-line))(not(can-train cataphract-line))
+    (not(can-train coustiller-line))     
     (can-train knight-line)
 =>
     (train knight-line)
@@ -5650,14 +5651,15 @@
 )
 ; CIVS WITH NO ARBALESTER
 (defrule
-    (current-age == imperial-age)(not(can-train hand-cannoneer))  
+    (current-age == imperial-age)
     (wood-amount > 525)(gold-amount > 545)
     (or
-        (or(civ-selected berbers)(civ-selected burgundians))
+        (or(civ-selected berbers)(civ-selected berbers))
         (or(civ-selected burmese)(civ-selected gothic))    
     )
     (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)
+    (not(can-train hand-cannoneer))        
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -5681,7 +5683,8 @@
 (defrule
     (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
-    (civ-selected celtic)
+    (or(civ-selected celtic)
+    (civ-selected burgundians)) ;hc bonus
     (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
 	(can-train archer-line)
