@@ -146,7 +146,7 @@
 (defrule
     (true)
 =>
-    (set-goal gl-spearmenQtyLow 5)
+    (set-goal gl-spearmenQtyLow 6)
     (set-goal gl-spearmenQtyMedium 35)
     (set-goal gl-spearmenQtyHigh 60)
 
@@ -158,7 +158,7 @@
     (set-goal gl-eagleQtyMedium 16)
     (set-goal gl-eagleQtyHigh 40)
 
-    (set-goal gl-archerQtyLow 7)
+    (set-goal gl-archerQtyLow 8)
     (set-goal gl-archerQtyMedium 16)
     (set-goal gl-archerQtyHigh 40)
 
@@ -176,7 +176,7 @@
     (set-goal gl-knightsQtyMedium 9)
     (set-goal gl-knightsQtyHigh 40)
 
-    (set-goal gl-scoutsQtyLow 7)
+    (set-goal gl-scoutsQtyLow 8)
     (set-goal gl-scoutsQtyMedium 30)
     (set-goal gl-scoutsQtyHigh 40)    
 
@@ -1207,7 +1207,7 @@
 )
 
 (defrule 
-    (military-population > 15)
+    (military-population > 25)
     (not(town-under-attack))
 =>
     (set-strategic-number sn-task-ungrouped-soldiers 1)
@@ -5261,7 +5261,7 @@
 ; CASTLE AGE SCOUTS
 (defrule
 	(current-age == castle-age)
-    (research-completed ri-hand-cart)
+    (or(research-completed ri-hand-cart)(town-under-attack))
     (or(up-compare-goal gl-dudeHasArchers == 1)
     (up-compare-goal gl-dudeHasSkirmishers == 1))    
     (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)    
