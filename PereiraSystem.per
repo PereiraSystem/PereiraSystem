@@ -574,17 +574,40 @@
 (defrule(true)=>(enable-timer 20 240)(disable-self))
 
 (defrule
-    (timer-triggered 20)(military-population > 3)
+    (timer-triggered 20)(military-population > 6)
+    (current-age == dark-age)
 =>
 	(disable-timer 20)
     (enable-timer 20 3)     
-    (chat-local-to-self "ATTACK!")
-    (set-strategic-number sn-number-attack-groups 15)
+    (chat-local-to-self "DARK AGE ATTACK!")
+    (set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-percent-attack-soldiers 100)    
     (attack-now)    
 )
 
+(defrule
+    (timer-triggered 20)(military-population > 10)
+    (current-age == feudal-age)
+=>
+	(disable-timer 20)
+    (enable-timer 20 3)     
+    (chat-local-to-self "FEUDAL AGE ATTACK!")
+    (set-strategic-number sn-number-attack-groups 1)
+    (set-strategic-number sn-percent-attack-soldiers 100)    
+    (attack-now)    
+)
 
+(defrule
+    (timer-triggered 20)(military-population > 40)
+    (current-age == castle-age)
+=>
+	(disable-timer 20)
+    (enable-timer 20 3)     
+    (chat-local-to-self "CASTLE AGE ATTACK!")
+    (set-strategic-number sn-number-attack-groups 1)
+    (set-strategic-number sn-percent-attack-soldiers 100)    
+    (attack-now)    
+)
 ; 2. STRATEGIC NUMBERS ==================
 (defrule 
     (true)
