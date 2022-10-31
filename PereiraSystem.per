@@ -2627,15 +2627,16 @@
 (defrule
  	(research-completed ri-hand-cart)
  	(research-completed ri-bow-saw)    
-    (unit-type-count-total archer-line > 1)
-    (not(civ-selected mongol)) 
+    (unit-type-count-total archer-line > 3)
+    (not(civ-selected mongol))
+    (or(not(civ-selected bohemians)(building-type-count siege-workshop < 0))) 
     (can-research ri-crossbow)    
 =>
     (research ri-crossbow)
 )
 
 (defrule
-    (unit-type-count-total archer-line > 1)
+    (unit-type-count-total archer-line > 6)
     (can-research ri-arbalest)    
 =>
     (research ri-arbalest)
@@ -5574,7 +5575,8 @@
     (wood-amount > 145)    
 	(not(civ-selected gothic))(not(civ-selected mongol))
     (not(civ-selected frankish))(not(civ-selected cumans))
-    (not(civ-selected tatars))(not(civ-selected bohemians))          
+    (not(civ-selected tatars))
+    (or(not(civ-selected bohemians)(building-type-count siege-workshop < 0)))         
     (not(civ-selected berbers))    
 	(unit-type-count-total archer-line g:< gl-archerQtyMedium)    
     (can-train archer-line)     
@@ -5950,7 +5952,8 @@
         (building-type-count siege-workshop == 0)
     )
     (not(can-train genitour))
-    (not(civ-selected sicilians))(not(civ-selected bohemians))
+    (not(civ-selected sicilians))
+    (or(not(civ-selected bohemians)(building-type-count siege-workshop < 0)))
     (not(can-train mangonel-line))
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium) 
     (can-train skirmisher-line) 
