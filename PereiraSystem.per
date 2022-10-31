@@ -1039,6 +1039,18 @@
     (disable-self)
 )
 
+(defrule
+    (civ-selected burgundians) ;to get uu asap
+    (up-research-status c: castle-age == research-pending)
+=>  
+    (set-strategic-number sn-maximum-stone-drop-distance 9)    
+    (set-strategic-number sn-food-gatherer-percentage 44)
+    (set-strategic-number sn-wood-gatherer-percentage 23)
+    (set-strategic-number sn-gold-gatherer-percentage 13)
+    (set-strategic-number sn-stone-gatherer-percentage 20)
+    (disable-self)
+)
+
 (defrule 
     (current-age == castle-age)
     (building-type-count monastery > 0)
@@ -5441,7 +5453,7 @@
 ; KNIGHTS IN CASTLE AGE
 (defrule
     (current-age == castle-age)
-    (or(unit-type-count-total monk > 4)(hold-relics))
+    (or(unit-type-count-total monk > 3)(hold-relics))
     (unit-type-count-total knight-line g:< gl-knightsQtyLow)
     (not(can-train battle-elephant-line))
     (not
@@ -7056,3 +7068,14 @@
 =>
 	(chat-local-to-self "LOW SCORE!!")
 )
+
+(defrule
+	(current-score < 2000)
+    (players-score any-enemy > 6000)
+    ((not(players-score any-ally > 2000)) 
+
+=>
+	(chat-local-to-self "LOW SCORE - I GIVE UP!!")
+    (resign)
+)
+
