@@ -163,7 +163,7 @@
     (set-goal gl-archerQtyHigh 40)
 
     (set-goal gl-skirmisherQtyLow 8)    
-    (set-goal gl-skirmisherQtyMedium 30)
+    (set-goal gl-skirmisherQtyMedium 16)
     (set-goal gl-skirmisherQtyHigh 30)
 
     (set-goal gl-cavalryArcherQtyLow 12)
@@ -767,22 +767,42 @@
 (defrule
     (true)
 =>
-    (up-assign-builders c: monastery c:+ 2)
-    (up-assign-builders c: archery-range c:+ 1)
-    (up-assign-builders c: stable c:+ 1)    
-    (up-assign-builders c: market c:+ 1)
-    (up-assign-builders c: blacksmith c:+ 1)
-    (up-assign-builders c: university c:+ 1)
-    (up-assign-builders c: siege-workshop c:+ 1)
-    (up-assign-builders c: bombard-tower c:+ 1) 
-    (up-assign-builders c: watch-tower c:+ 2)
-    (up-assign-builders c: guard-tower c:+ 1)          
-    (up-assign-builders c: keep c:+ 2)
-    (up-assign-builders c: donjon c:+ 2)
-    (up-assign-builders c: castle c:+ 5)
-    (up-assign-builders c: town-center c:+ 3)
-    (up-assign-builders c: town-center-foundation c:+ 8)    
-    (up-assign-builders c: palisade-wall c:+ 3)     
+    (up-assign-builders c: monastery c: 3)
+    (up-assign-builders c: archery-range c: 1)
+    (up-assign-builders c: stable c: 1)    
+    (up-assign-builders c: market c: 1)
+    (up-assign-builders c: blacksmith c: 1)
+    (up-assign-builders c: university c: 1)
+    (up-assign-builders c: siege-workshop c: 1)
+    (up-assign-builders c: watch-tower c: 1)
+    (up-assign-builders c: guard-tower c: 1)       
+    (up-assign-builders c: keep c: 2)
+    (up-assign-builders c: bombard-tower c: 2)     
+    (up-assign-builders c: donjon c: 1)
+    (up-assign-builders c: castle c: 5)
+    (up-assign-builders c: town-center c: 3)
+    (up-assign-builders c: town-center-foundation c: 8)    
+    (up-assign-builders c: palisade-wall c: 3)     
+    (disable-self)
+)
+
+(defrule
+    (current-age == castle-age)
+=>
+    (up-assign-builders c: house c: 2)
+    (up-assign-builders c: watch-tower c: 2)
+    (up-assign-builders c: guard-tower c: 2)       
+    (disable-self)
+)
+
+(defrule
+    (unit-type-count villager > 40)
+=>
+    (up-assign-builders c: castle c: 8)
+    (up-assign-builders c: watch-tower c: 3)
+    (up-assign-builders c: guard-tower c: 3)
+    (up-assign-builders c: keep c: 3)
+    (up-assign-builders c: bombard-tower c: 3)             
     (disable-self)
 )
 
