@@ -1282,7 +1282,7 @@
     (true)
 =>
     (set-strategic-number sn-free-siege-targeting 0)
-    (set-strategic-number sn-enemy-sighted-response-distance 13)     
+    (set-strategic-number sn-enemy-sighted-response-distance 10)     
     (set-strategic-number sn-wall-targeting-mode 1)
     (set-strategic-number sn-attack-intelligence 1)
     (set-strategic-number sn-target-evaluation-distance 10)
@@ -1297,9 +1297,11 @@
     (set-strategic-number sn-local-targeting-mode 1)     
     (set-strategic-number sn-ignore-attack-group-under-attack 0)        
     (set-strategic-number sn-enable-patrol-attack 1)
-    (set-strategic-number sn-percentage-explore-exterminators 50)   
+    (set-strategic-number sn-percentage-explore-exterminators 50)  
+
     (set-strategic-number sn-disable-defend-groups 0)  
-    (set-strategic-number sn-relic-return-distance 999)
+
+    (set-strategic-number sn-relic-return-distance 20)
     (set-strategic-number sn-allow-civilian-offense 1)  
     ;(set-strategic-number sn-number-civilian-militia 100) 
 	(set-strategic-number sn-garrison-rams 1)  
@@ -1329,8 +1331,6 @@
     (set-strategic-number sn-number-boat-attack-groups 1) 
     (disable-self)
 )
-
-
 
 ; 3. UPGRADES ////////////////////////////
 ; ADVANCING AGE
@@ -1370,7 +1370,7 @@
         )
         (or
             (current-age == imperial-age)
-            (gold-amount > 250)
+            (and(gold-amount > 250)(town-under-attack))
         )            
     )
 =>
@@ -2631,7 +2631,7 @@
 ; HEAVY CAVALRY
 (defrule
     (can-research ri-cavalier)
-    (not(civ-selected byzantine))(unit-type-count-total knight-line > 5)	
+    (not(civ-selected byzantine))(unit-type-count-total knight-line > 3)	
     (current-age == imperial-age)
 =>
     (research ri-cavalier)
