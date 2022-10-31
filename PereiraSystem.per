@@ -5634,13 +5634,16 @@
     (building-type-count town-center > 0) 
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))    
-    (wood-amount > 145)    
+    (wood-amount > 145)
+    (or(building-type-count siege-workshop == 0)(wood-amount > 245))    
 	(not(civ-selected gothic))(not(civ-selected mongol))
-    (not(civ-selected frankish))(not(civ-selected cumans))
+    (not(civ-selected frankish))(not(civ-selected cumans)) ;cav arc
     (not(civ-selected tatars))
     (or
-        (and(not(civ-selected bohemians)
-        (not-civ civ-selected bugundians)))
+        (and
+            (not(civ-selected bohemians))
+            (not(civ civ-selected burgundians))
+        )
         (building-type-count siege-workshop < 0)  
     )        
     (not(civ-selected berbers))    
