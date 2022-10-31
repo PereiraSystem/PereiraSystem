@@ -590,7 +590,7 @@
 (defrule
     (current-age == dark-age)(military-population < 12)
 =>
-	(up-retreat-now)    
+	(up-retreat-now)(chat-local-to-self "RETREAT!")     
 )
 
 (defrule
@@ -610,7 +610,7 @@
 (defrule
     (current-age == feudal-age)(military-population < 22)
 =>
-	(up-retreat-now)    
+	(up-retreat-now)(chat-local-to-self "RETREAT!")    
 )
 
 (defrule
@@ -630,7 +630,7 @@
 (defrule
     (current-age == feudal-age)(military-population < 36)
 =>
-	(up-retreat-now)    
+	(up-retreat-now)(chat-local-to-self "RETREAT!")   
 )
 
 (defrule(true)=>(enable-timer 21 2100)(disable-self)) ;35 min
@@ -645,25 +645,26 @@
     (wood-amount > 800)(food-amount > 800)
 =>
 	(disable-timer 21)
-    (enable-timer 21 3)     
+    (enable-timer 21 3)
     (chat-local-to-self "IMPERIAL AGE ATTACK!")
     (set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 1)
-    (set-strategic-number sn-maximum-attack-group-size 150) 
-    (set-strategic-number sn-percent-attack-soldiers 100)    
+    (set-strategic-number sn-maximum-attack-group-size 150)
+    (set-strategic-number sn-percent-attack-soldiers 100)   
     (attack-now)    
 )
 
 (defrule
     (current-age == imperial-age)(military-population < 40)
 =>
-	(up-retreat-now)    
+	(up-retreat-now)(chat-local-to-self "RETREAT!")   
 )
 
 ; 2. STRATEGIC NUMBERS ==================
-(defrule 
+(defrule
     (true)
-=>  (set-strategic-number sn-do-not-scale-for-difficulty-level 1) (disable-self)
+=>  (set-strategic-number sn-do-not-scale-for-difficulty-level 1)
+    (disable-self)
 )
 
 ; COMBAT                             
