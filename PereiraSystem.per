@@ -582,7 +582,8 @@
     (military-population > 40)
 =>
     (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (set-strategic-number sn-minimum-attack-group-size 80)
+    (set-strategic-number sn-minimum-attack-group-size 70)
+    (set-strategic-number sn-maxmimum-attack-group-size 200)    
     (set-strategic-number sn-attack-group-gather-spacing 24)
     (chat-local-to-self "BURGUNDIAN ATTACK!")           
 )
@@ -7068,14 +7069,7 @@
     (up-guard-unit monk c: spearman-line)
 )
 
-(defrule	
 
-    (military-population > 6 )	
-    =>	
-    (up-full-reset-search)	
-    (up-find-local c: all-units-class c: 240)	
-    (up-target-objects 0 action-stop formation-box -1)
-)
 
 (defrule
 	(current-score < 2300)
@@ -7104,6 +7098,6 @@
 (defrule
 	(true)
 =>
-	(chat-to-all14)
+	(chat-to-all "14")
     (disable-self)
 )
