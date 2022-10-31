@@ -574,7 +574,7 @@
 (defrule(true)=>(enable-timer 20 240)(disable-self))
 
 (defrule
-    (timer-triggered 20)(military-population > 6)
+    (timer-triggered 20)(military-population > 16)
     (current-age == dark-age)
 =>
 	(disable-timer 20)
@@ -588,7 +588,7 @@
 )
 
 (defrule
-    (timer-triggered 20)(military-population > 36)
+    (timer-triggered 20)(military-population > 56)
     (current-age == feudal-age)
 =>
 	(disable-timer 20)
@@ -602,7 +602,7 @@
 )
 
 (defrule
-    (timer-triggered 20)(military-population > 70)
+    (timer-triggered 20)(military-population > 90)
     (current-age == castle-age)
 =>
 	(disable-timer 20)
