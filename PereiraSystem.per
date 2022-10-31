@@ -5636,7 +5636,8 @@
     (not(civ-selected frankish))(not(civ-selected cumans))
     (not(civ-selected tatars))
     (or
-        (not(civ-selected bohemians))
+        (and(not(civ-selected bohemians)
+        (not-civ civ-selected bugundians)))
         (building-type-count siege-workshop < 0)  
     )        
     (not(civ-selected berbers))    
