@@ -4775,7 +4775,7 @@
 (defrule
     (civ-selected burgundians)
     (not(research-completed my-unique-unit-upgrade))
-    (gold-amount > 211) 
+    (or(current-age == castle-age(gold-amount > 211))
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
     (can-train my-unique-unit-line)    
 =>
