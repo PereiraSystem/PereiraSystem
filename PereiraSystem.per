@@ -2629,7 +2629,8 @@
 
 ; HEAVY CAVALRY
 (defrule
-    (can-research ri-cavalier)(not(civ-selected byzantine))(unit-type-count-total knight-line > 5)	
+    (can-research ri-cavalier)
+    (not(civ-selected byzantine))(unit-type-count-total knight-line > 5)	
     (current-age == imperial-age)
 =>
     (research ri-cavalier)
@@ -6482,7 +6483,8 @@
     (current-age == imperial-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 125)    
-    (up-compare-goal gl-dudeHasCavalry == 1)    
+    (up-compare-goal gl-dudeHasCavalry == 1)
+    (not(can-train coustillier))
     (unit-type-count-total spearman-line g:< gl-spearmenQtyHigh)  
     (can-train spearman-line)     
 =>
