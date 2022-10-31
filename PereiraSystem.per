@@ -1007,8 +1007,8 @@
     (set-strategic-number sn-maximum-hunt-drop-distance 0)
     (set-strategic-number sn-maximum-wood-drop-distance 8) 
     (set-strategic-number sn-maximum-gold-drop-distance 9)    
-    (set-strategic-number sn-food-gatherer-percentage 64)
-    (set-strategic-number sn-wood-gatherer-percentage 20)
+    (set-strategic-number sn-food-gatherer-percentage 60)
+    (set-strategic-number sn-wood-gatherer-percentage 24)
     (set-strategic-number sn-gold-gatherer-percentage 16)
     (set-strategic-number sn-stone-gatherer-percentage 0)
     (disable-self)
@@ -1023,9 +1023,9 @@
         (building-type-count town-center > 1)         
     )
 =>  
-    (set-strategic-number sn-food-gatherer-percentage 63)
-    (set-strategic-number sn-wood-gatherer-percentage 16)
-    (set-strategic-number sn-gold-gatherer-percentage 15)
+    (set-strategic-number sn-food-gatherer-percentage 62)
+    (set-strategic-number sn-wood-gatherer-percentage 19)
+    (set-strategic-number sn-gold-gatherer-percentage 13)
     (set-strategic-number sn-stone-gatherer-percentage 6)
        
     (disable-self)
@@ -1035,8 +1035,8 @@
     (current-age == castle-age)
     (wood-amount > 1200)
 =>  
-    (up-modify-sn sn-food-gatherer-percentage c:+ 25)
-    (up-modify-sn sn-wood-gatherer-percentage c:- 25)
+    (up-modify-sn sn-food-gatherer-percentage c:+ 16)
+    (up-modify-sn sn-wood-gatherer-percentage c:- 16)
      (disable-self)   
 )
 
@@ -1044,8 +1044,8 @@
     (current-age == castle-age)
     (gold-amount > 1200)
 =>  
-    (up-modify-sn sn-food-gatherer-percentage c:+ 25)
-    (up-modify-sn sn-gold-gatherer-percentage c:- 25)  
+    (up-modify-sn sn-food-gatherer-percentage c:+ 16)
+    (up-modify-sn sn-gold-gatherer-percentage c:- 16)  
      (disable-self)
 )
 
