@@ -2172,7 +2172,7 @@
 
 (defrule
     (civ-selected bohemians)(food-amount > 1000)
-    (not(up-research-status c: 787 == research-available));houfnice first    
+    (or(not(research-available ri-houfnice)(research-completed ri-houfnice))  
     (can-research my-unique-research)
 =>
     (research my-unique-research)
@@ -2879,7 +2879,7 @@
 
 (defrule
 	(unit-type-count-total mangonel-line > 3)
-    (not(up-research-status c: 787 == research-available))
+    (or(not(research-available ri-houfnice)(research-completed ri-houfnice))
     (can-research ri-siege-onager )
 =>
     (research ri-siege-onager )
@@ -2906,7 +2906,7 @@
 
 (defrule
 	(unit-type-count-total battering-ram-line > 2)
-    (not(up-research-status c: 787 == research-available))    
+    (or(not(research-available ri-houfnice)(research-completed ri-houfnice))
     (can-research ri-siege-ram)
 =>
     (research ri-siege-ram)
@@ -2922,9 +2922,9 @@
 
 ; HOUFNICE
 (defrule
-    (can-research 787)
+    (can-research ri-houfnice)
 =>
-    (research 787)
+    (research ri-houfnice)
 )
 
 ; MONASTERY
@@ -3165,6 +3165,7 @@
 
 
 (defrule
+    (or(not(research-available ri-houfnice)(research-completed ri-houfnice))
     (can-research ri-bombard-tower )
 =>
     (research ri-bombard-tower )
@@ -4780,7 +4781,6 @@
 (defrule
     (gold-amount > 350) ;trebuchet priority
 	(unit-type-count-total bombard-cannon < 8)
-    (not(research-available 787));houfnice first
 	(can-train bombard-cannon)
 =>
 	(train bombard-cannon)
