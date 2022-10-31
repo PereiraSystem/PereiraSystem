@@ -34,7 +34,7 @@
 (defconst gl-nonUpgradedUniqueUnitsCreated 90)
 
 (defconst gl-weMovedPlace 99)
-(defconst gl-weMovedAreAttacking 100)
+(defconst gl-weAreAttacking 100)
 
 (defconst gl-maxHousesBeforeDeleting 101)    
 (defconst gl-maxHousesNeeded 102)
@@ -110,8 +110,6 @@
 (defconst gl-mangonelQtyMedium 411)
 
 (defconst gl-bombardCannonsQty 415)
-
-
 
 (defconst gl-trebuchetsQtyLow 420)
 (defconst gl-trebuchetsQtyMedium 421)
@@ -249,41 +247,6 @@
     (disable-self)
 )
 
-#load-if-defined POPULATION-CAP-150
-#end-if
-
-#load-if-defined POPULATION-CAP-25
-
-#end-if
-
-#load-if-defined POPULATION-CAP-50
-
-#end-if
-
-#load-if-defined POPULATION-CAP-75
-
-#end-if
-
-#load-if-defined POPULATION-CAP-100
-
-#end-if
-
-#load-if-defined POPULATION-CAP-125
-
-#end-if
-
-#load-if-defined POPULATION-CAP-175
-
-#end-if
-
-#load-if-defined POPULATION-CAP-200
-
-#end-if
-
-#load-if-defined POPULATION-CAP-250
-
-#end-if
-
 (defrule
     (true)
 =>    
@@ -295,8 +258,6 @@
     ;(up-chat-data-to-self "Mining Camps Max Qty = %d" g: gl-max-mining-camps-qty)
     (disable-self)	    
 )
-
-
 
 (defrule
     (true)
@@ -419,7 +380,6 @@
     ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: gl-max-lumber-camps-qty)
 )
 
-
 ; TIMER 3 INCREASES LUMBER CAMPS DISTANCE FAST WHEN WE HAVE NONE
 (defrule(true)=>(enable-timer 3 320)(disable-self))
 (defrule
@@ -471,18 +431,6 @@
     ;(up-chat-data-to-self "Mining camps max distance increased = %d" s: sn-mining-camp-max-distance)
 )
 
-; TIMER 10 CIVILIAN / BUILDINGS REPORT
-(defrule(true)=>(enable-timer 10 60)(disable-self)) 
-(defrule
-	(timer-triggered 10)
-=>
-	(disable-timer 10)
-    (enable-timer 10 180)  
-    ;(up-chat-data-to-self "Civilians: %d" g: gl-civPop)      
-    ;(up-chat-data-to-self "Buildings: %d" g: gl-buildCount)
-    ;(up-chat-data-to-self "Town Size: %d" s: sn-maximum-town-size)     
-    ;(up-chat-data-to-self "Enemy B. In Town: %d" g: gl-enemyBuildingsInTown)          
-)
 
 ; TIMER 11 MILITARY REPORT
 (defrule(true)=>(enable-timer 11 90)(disable-self)) 
@@ -492,9 +440,7 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 900)           
-    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
-    ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
+    (enable-timer 11 900)            
     ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)     
     (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)     
     (up-chat-data-to-self "Def: %d" g: gl-defendSoldierAmount)      
@@ -503,12 +449,9 @@
 
 (defrule
 	(timer-triggered 11)(current-age == feudal-age)
-
 =>
 	(disable-timer 11)
     (enable-timer 11 600)           
-    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
-    ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
     (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)       
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
@@ -517,13 +460,11 @@
 )
 
 (defrule
-	(timer-triggered 11)(current-age == castle-age)
+	(timer-triggered 11)(current-age >= castle-age)
 
 =>
 	(disable-timer 11)
     (enable-timer 11 600)           
-    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
-    ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
     ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
     (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)        
     (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
@@ -531,33 +472,6 @@
     ;(up-chat-data-to-self "Inf / Cav created in castle age: %d" g: gl-totalSoldiersCreatedThisAge)    
 )
 
-(defrule
-	(timer-triggered 11)(current-age == imperial-age)
-
-=>
-	(disable-timer 11)
-    (enable-timer 11 60)           
-    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)  
-    ;(up-chat-data-to-self "Land Units: %d" g: gl-infantrySoldierAmount)
-    ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
-    (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)       
-    (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
-    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
-    ;(up-chat-data-to-self "Inf / Cav created in imperial age: %d" g: gl-totalSoldiersCreatedThisAge)    
-)
-
-; TIMER 12 MILITARY REPORT 2 NAVAL
-(defrule(building-type-count dock > 0)=>(enable-timer 11 120)(disable-self)) 
-(defrule
-	(timer-triggered 11)
-=>
-	(disable-timer 11)
-    (enable-timer 11 120)           
-    ;(up-chat-data-to-self "Military: %d" g: gl-milPop)
-    ;(up-chat-data-to-self "Naval Units: %d" g: gl-warboatAmount)        
-    ;(up-chat-data-to-self "Attack: %d" g: gl-attackWarboatAmount)              
-    ;(up-chat-data-to-self "Defend / Explore: %d" g: gl-defendWarboatAmount)      
-)
 
 ; TIMER 15 DELETES VILLAGERS
 (defrule(true)=>(enable-timer 15 2400)(disable-self)) 
@@ -686,6 +600,15 @@
     (set-goal gl-weAreAttacking == 0)        
 )
 
+(defrule 
+    (military-population > 25)
+    (not(town-under-attack))
+=>
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (chat-local-to-self "Soldiers Spread!")
+    (disable-self)
+)
+
 ; 2. STRATEGIC NUMBERS ==================
 (defrule
     (true)
@@ -718,7 +641,7 @@
     (disable-self)
 )
 
-(defrule
+(defrule ;DEFENSE PRIORITIES
 	(true)
 =>
 	(up-set-defense-priority c: lumber-camp c: 20000)
@@ -727,7 +650,7 @@
 	(disable-self)
 )
 
-(defrule
+(defrule ;OFFENSE PRIORITIES
 	(true)
 =>
     (up-set-offense-priority c: university c: 1)
@@ -743,24 +666,6 @@
 	(up-set-offense-priority c: cavalry-class c: 11)
 	(up-set-offense-priority c: archery-class c: 5)    
 	(disable-self)
-)
-
-(defrule 
-    (military-population > 25)
-    (not(town-under-attack))
-=>
-    (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "Soldiers Spread!")
-    (disable-self)
-)
-
-(defrule
-    (true)
-=>
-    (up-set-defense-priority c: lumber-camp c: 1001)
-    (up-set-defense-priority c: watch-tower c: 100)
-    (up-set-defense-priority c: siege-workshop c: 999)
-    (disable-self)
 )
 
 ; ATTACK    
@@ -896,9 +801,7 @@
     (disable-self)
 )
 
-
 ; EXPLORE GROUPS
-
 (defrule 
     (current-age == castle-age)(not(town-under-attack))
 =>
@@ -915,7 +818,7 @@
     (disable-self)
 )
 
-; HUNT 
+; HUNTING
 (defrule 
     (true)
 =>
@@ -933,7 +836,7 @@
     (disable-self)
 )
 
-; BUILD 
+; BUILDING 
 (defrule
     (true)
 =>
@@ -995,6 +898,7 @@
     (disable-self)
 )
 
+; TOWN SIZE AND TOWN CENTER
 (defrule 
     (true)
 =>
@@ -1003,8 +907,6 @@
     (set-strategic-number sn-town-center-placement 0)          
     (disable-self)
 )
-
-
 
 ; DROPSITES AND DISTANCES
 ; CANCEL SITE BUILDING IF DANGEROUS
@@ -3240,10 +3142,10 @@
 (defrule
     (or
         (not(research-available ri-houfnice))(research-completed ri-houfnice)
-    ) 
-    (can-research ri-bombard-tower )
+    )
+    (can-research ri-bombard-tower)
 =>
-    (research ri-bombard-tower )
+    (research ri-bombard-tower)
 )
 
 ; 4. BUILDING
@@ -3460,8 +3362,6 @@
     (up-build place-control 0 c: house)
 )
 
-
-
 ; LUMBER   
 (defrule
     (building-type-count-total lumber-camp == 0)
@@ -3494,8 +3394,6 @@
     (build lumber-camp)
             
 )
-
-
 
 (defrule
     (current-age >= feudal-age)
@@ -3799,8 +3697,6 @@
     (build dock)
     (chat-local-to-self "DOCK 5")
 )    
-
-
 
 ; MILITARY
 ; STONE WALL AND PALISADE WALL
@@ -4263,9 +4159,7 @@
     (build monastery)
 )
 
-; TOWER
-
-
+; TOWERS
 ; BOMBARD TOWER
 (defrule
     (can-build bombard-tower)
