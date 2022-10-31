@@ -4156,8 +4156,10 @@
 ; MONASTERY             
 (defrule
     (or(building-type-count-total house > 3)(civ-selected hun))
-    (building-type-count-total monastery == 0)(can-build monastery)
+    (building-type-count-total monastery == 0)
+    (can-build monastery)
 => 
+    (up-modify-sn sn-maximum-town-size c:+ 1)  
     (chat-local-to-self "Trying To Build Monastery 1")     
     (build monastery)
 )
