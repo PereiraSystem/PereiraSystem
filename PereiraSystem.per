@@ -1031,8 +1031,7 @@
 
 (defrule 
     (current-age == dark-age)
-    ;(or(civ-selected incan)(or(civ-selected mayan)(civ-selected aztec)))
-    (not(civ-selected poles))
+    (or(civ-selected incan)(or(civ-selected mayan)(civ-selected aztec)))
     (game-time > 420)
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 16)
@@ -1045,8 +1044,7 @@
 )
 
 (defrule 
-    (current-age == dark-age)
-    ;(or(civ-selected incan)(or(civ-selected mayan)(civ-selected aztec)))
+    (current-age == dark-age))
     (civ-selected poles)
     (game-time > 420)
 =>  
