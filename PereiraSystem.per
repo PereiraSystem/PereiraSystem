@@ -1193,18 +1193,6 @@
     (disable-self)
 )
 
-(defrule
-    (civ-selected burgundians) ;to get uu asap
-    (up-research-status c: castle-age == research-pending)
-=>  
-    (set-strategic-number sn-maximum-stone-drop-distance 9)    
-    (set-strategic-number sn-food-gatherer-percentage 44)
-    (set-strategic-number sn-wood-gatherer-percentage 23)
-    (set-strategic-number sn-gold-gatherer-percentage 13)
-    (set-strategic-number sn-stone-gatherer-percentage 20)
-    (disable-self)
-)
-
 (defrule 
     (current-age == castle-age)
     (building-type-count monastery > 0)
@@ -1217,8 +1205,7 @@
     (set-strategic-number sn-food-gatherer-percentage 57)
     (set-strategic-number sn-wood-gatherer-percentage 24)
     (set-strategic-number sn-gold-gatherer-percentage 13)
-    (set-strategic-number sn-stone-gatherer-percentage 6)
-       
+    (set-strategic-number sn-stone-gatherer-percentage 6)   
     (disable-self)
 )
 
@@ -1246,8 +1233,7 @@
     (set-strategic-number sn-food-gatherer-percentage 61)
     (set-strategic-number sn-wood-gatherer-percentage 20)
     (set-strategic-number sn-gold-gatherer-percentage 13)
-    (set-strategic-number sn-stone-gatherer-percentage 6)
-       
+    (set-strategic-number sn-stone-gatherer-percentage 6)  
     (disable-self)
 )
 
@@ -1273,8 +1259,6 @@
     (disable-self)
 )
 
-
-
 (defrule
     (current-age == imperial-age)
     (not(civ-selected cumans)); to get mercenaries
@@ -1295,12 +1279,12 @@
         (building-type-count town-center > 2)
         (building-type-count barracks > 2)
     )
-
 =>
     (set-strategic-number sn-maximum-stone-drop-distance 9)
     (chat-local-to-self "TWO TOWN CENTERS, 2 BARRACK: STONE DISTANCE 9 AGAIN")     
     (disable-self)
 )
+
 ; CHANGE PERCENTAGES WHEN TOO MANY OF SOMETHING - THEY TEND TO GET MORE GOLD THAN NEEDED
 ; EXCESS FOOD
 (defrule
@@ -1358,8 +1342,6 @@
     (chat-local-to-self "We Need More Wood, Less Gold")     
     (disable-self)
 )
-
-
 
 ; 3. UPGRADES ////////////////////////////
 ; ADVANCING AGE
@@ -1824,7 +1806,7 @@
     (chat-to-player my-player-number "MANGONELS +1 RANGE!")  
 )
 
-; ESPANYOLES
+; SPANISH
 (defrule
     (can-research ri-inquisition)
     (current-age == imperial-age)
@@ -2157,6 +2139,7 @@
     (research my-unique-research)
     (chat-to-player my-player-number "5 MERCENARIES IN CASTLES!")  
 )
+
 ; LITHUANIANS
 (defrule
     (civ-selected lithuanians)(can-research my-second-unique-research)
@@ -2601,7 +2584,6 @@
     (or
         (or(current-age == imperial-age)(civ-selected burgundians))
         (food-amount > 950)
-
     )
     (unit-type-count scout-cavalry-line > 4)    
     (can-research ri-light-cavalry)    
@@ -4911,7 +4893,6 @@
 	(train my-unique-unit-line)
 )
 
-
 ; SIEGE WORKSHOP
 ; BOMBARD CANNON , trebuchets have better AI
 (defrule
@@ -5056,7 +5037,6 @@
 )
 
 ; SCORPIONS 
-
 (defrule
     (current-age == castle-age)
     (can-train scorpion-line)
@@ -5159,9 +5139,9 @@
 	(train armored-elephant-line)
 )
 
-; PUERTO MILITARES                                 
-; BARCOS ESPECIALES
-; COREANOS
+; DOCK MILITARY SHIPS                       
+; SPECIAL SHIPS
+; KOREANS
 (defrule
     (unit-type-count-total turtle-ship-line < 4)
     (research-completed ri-careening)
@@ -5171,7 +5151,7 @@
     (train turtle-ship-line)
 )
 
-; VIKINGOS
+; VIKINGS
 (defrule
     (unit-type-count-total longboat-line < 4)(research-completed ri-careening)
     (current-age == imperial-age)    
@@ -5180,7 +5160,7 @@
     (train longboat-line)
 )
 
-; PORTUGUESES   
+; PORTUGUESE   
 (defrule
     (unit-type-count-total caravel-line < 4)(research-completed ri-careening)
     (current-age == imperial-age)
@@ -5189,7 +5169,7 @@
     (train caravel-line)
 )
 
-; CAnONERO
+; CANNON GALLEON
 (defrule
     (unit-type-count-total cannon-galleon-line < 4)
     (can-train elite-cannon-galleon)
@@ -6176,13 +6156,17 @@
 
 ; BARRACKS                                        
 ; MILITIA
-(defrule(can-train militiaman-line)(or(civ-selected incan)(civ-selected aztec))
+(defrule
+    (can-train militiaman-line)(or(civ-selected incan)(civ-selected aztec))
 =>
-(train militiaman-line)(disable-self))
+    (train militiaman-line)(disable-self)
+)
 
-(defrule(can-train militiaman-line)(or(civ-selected incan)(civ-selected aztec))
+(defrule
+    (can-train militiaman-line)(or(civ-selected incan)(civ-selected aztec))
 =>
-(train militiaman-line)(disable-self))
+    (train militiaman-line)(disable-self)
+)
 
 (defrule
     (current-age == feudal-age)(not(civ-selected sicilians))
@@ -6428,7 +6412,6 @@
 )
 
 ; MALAY
-
 (defrule
     (current-age == imperial-age)
     (civ-selected malay)(research-completed my-unique-research)
@@ -6604,6 +6587,7 @@
     (buy-commodity food)
     (chat-local-to-self "BUYING FOOD (GOLD > 1600)")       
 )
+
 (defrule ;BUY FOOD
 	(can-buy-commodity food)
     (gold-amount > 500)
@@ -7080,6 +7064,7 @@
     (chat-local-to-self "UNIQUE UNIT UPGRADE COMPLETE, EVERYONE GO BACK!")
 	(disable-self)
 )
+
 (defrule
 	(current-age == imperial-age)
     (military-population < 40)
@@ -7102,37 +7087,6 @@
 )
 
 
-
-(defrule
-	(current-score < 2300)
-    (game-time > 900)
-=>
-	(chat-local-to-self "LOW SCORE!!")
-)
-
-(defrule
-	(current-score < 2000)
-    (players-score any-enemy > 6000)
-    (not(players-score any-ally > 2000))
-=>
-	(chat-local-to-self "I HAVE LOW SCORE AND OUR TEAM IS SHIT - I GIVE UP!!")
-    (resign)
-)
-
-(defrule
-	(taunt-detected any-ally 31)
-	(military-population >= 8)
-=>
-	(attack-now)
-	(acknowledge-taunt any-ally 31)
-)
-
-(defrule
-	(true)
-=>
-	(chat-to-all "14")
-    (disable-self)
-)
 
 (defrule
 	(current-age == imperial-age)
