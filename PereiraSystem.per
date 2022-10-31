@@ -4375,6 +4375,9 @@
         (unit-type-count-total 954 g:< gl-trebuchetsQtyLow)
     )
     (not(civ-selected gothic))
+    (not
+        (and(civ-selected bohemians)(can-train bombard-canon))
+    )
     (not(up-research-status c: 787 == research-available))
     (can-train trebuchet)   
 =>
