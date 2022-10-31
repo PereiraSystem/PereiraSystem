@@ -4840,6 +4840,9 @@
     (not(civ-selected gothic))
     (not(civ-selected vietnamese))
     (military-population > 30) ;trebuchets at 25   
+    (not
+        (and(civ-selected bohemians)(can-train bombard-canon))
+    )    
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
