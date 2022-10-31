@@ -502,7 +502,7 @@
     (set-strategic-number sn-minimum-attack-group-size 6)
     (set-strategic-number sn-maximum-attack-group-size 8) 
     (set-strategic-number sn-percent-attack-soldiers 100)
-    (set-goal gl-weAreAttacking == 1)   
+    (set-goal gl-weAreAttacking 1)   
     (attack-now)    
 )
 
@@ -514,7 +514,7 @@
     (set-strategic-number sn-number-attack-groups 0)
     (set-strategic-number sn-enemy-sighted-response-distance 1)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (set-goal gl-weAreAttacking == 0)              
+    (set-goal gl-weAreAttacking 0)              
 )
 
 (defrule
@@ -529,7 +529,7 @@
     (set-strategic-number sn-minimum-attack-group-size 9)
     (set-strategic-number sn-maximum-attack-group-size 9)     
     (set-strategic-number sn-percent-attack-soldiers 100)
-    (set-goal gl-weAreAttacking == 1)       
+    (set-goal gl-weAreAttacking 1)       
     (attack-now)    
 )
 
@@ -541,7 +541,7 @@
     (set-strategic-number sn-number-attack-groups 0)
     (set-strategic-number sn-enemy-sighted-response-distance 1)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (set-goal gl-weAreAttacking == 0)          
+    (set-goal gl-weAreAttacking 0)          
 )
 
 (defrule
@@ -556,7 +556,7 @@
     (set-strategic-number sn-minimum-attack-group-size 9)
     (set-strategic-number sn-maximum-attack-group-size 9)  
     (set-strategic-number sn-percent-attack-soldiers 100)
-    (set-goal gl-weAreAttacking == 1)        
+    (set-goal gl-weAreAttacking 1)        
     (attack-now)    
 )
 
@@ -568,7 +568,7 @@
     (set-strategic-number sn-number-attack-groups 0)
     (set-strategic-number sn-enemy-sighted-response-distance 1)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (set-goal gl-weAreAttacking == 0)       
+    (set-goal gl-weAreAttacking 0)       
 )
 
 (defrule(true)=>(enable-timer 21 2100)(disable-self)) ;35 min
@@ -589,7 +589,7 @@
     (set-strategic-number sn-minimum-attack-group-size 1)
     (set-strategic-number sn-maximum-attack-group-size 150)
     (set-strategic-number sn-percent-attack-soldiers 100)
-    (set-goal gl-weAreAttacking == 1)      
+    (set-goal gl-weAreAttacking 1)      
     (attack-now)    
 )
 
@@ -597,7 +597,7 @@
     (current-age == imperial-age)(military-population < 40)
 =>
 	(up-retreat-now)(chat-local-to-self "RETREAT!")
-    (set-goal gl-weAreAttacking == 0)        
+    (set-goal gl-weAreAttacking 0)        
 )
 
 (defrule 
