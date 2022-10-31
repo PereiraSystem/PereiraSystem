@@ -571,7 +571,7 @@
 )
 
 ; ATTACK TIMER
-(defrule(true)=>(enable-timer 20 300)(disable-self))
+(defrule(true)=>(enable-timer 20 240)(disable-self))
 
 (defrule
     (timer-triggered 20)
@@ -582,7 +582,7 @@
     (set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-percent-attack-soldiers 100)    
     (attack-now)      
-    (disable-self)
+    ;(disable-self)
 )
 
 
