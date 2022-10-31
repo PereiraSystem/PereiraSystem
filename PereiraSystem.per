@@ -5953,7 +5953,10 @@
     )
     (not(can-train genitour))
     (not(civ-selected sicilians))
-    (or(not(civ-selected bohemians)(building-type-count siege-workshop < 0)))
+    (or
+        (not(civ-selected bohemians))
+        (building-type-count siege-workshop < 0)  
+    )    
     (not(can-train mangonel-line))
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium) 
     (can-train skirmisher-line) 
