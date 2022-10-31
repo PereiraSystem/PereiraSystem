@@ -2151,6 +2151,7 @@
 
 (defrule
     (civ-selected bohemians)(food-amount > 1000)
+    (not(research-available 787));houfnice first    
     (can-research my-unique-research)
 =>
     (research my-unique-research)
@@ -2851,6 +2852,7 @@
 
 (defrule
 	(unit-type-count-total mangonel-line > 3)
+    (not(research-available 787));houfnice first
     (can-research ri-siege-onager )
 =>
     (research ri-siege-onager )
@@ -4349,7 +4351,8 @@
         (unit-type-count-total trebuchet g:< gl-trebuchetsQtyLow)
         (unit-type-count-total 954 g:< gl-trebuchetsQtyLow)
     )
-    (not(civ-selected gothic)) 
+    (not(civ-selected gothic))
+    (not(research-available 787));houfnice first
     (can-train trebuchet)   
 =>
     (train trebuchet)
@@ -4728,7 +4731,7 @@
 (defrule
     (gold-amount > 350) ;trebuchet priority
 	(unit-type-count-total bombard-cannon < 8)
-    (not(can-train houfnice))
+    (not(research-available 787));houfnice first
 	(can-train bombard-cannon)
 =>
 	(train bombard-cannon)
