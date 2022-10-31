@@ -7049,3 +7049,10 @@
     (up-find-local c: all-units-class c: 240)	
     (up-target-objects 0 action-stop formation-box -1)
 )
+
+(defrule
+	(current-score < 2000)
+    (game-time > 900)
+=>
+	(chat-local-to-self "LOW SCORE!!")
+)
