@@ -4178,7 +4178,7 @@
 ; NORMAL TOWER
 (defrule
     (current-age < castle-age)
-    (town-under-attack)
+    (or(town-under-attack)(unit-type-count villager > 9))
     (not(up-research-status c: castle-age == research-pending))
     (or(building-type-count stable > 0)(building-type-count blacksmith > 0))
     ;(can-build watch-tower-line)
