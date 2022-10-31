@@ -5941,8 +5941,7 @@
 )
 
 (defrule
-    (current-age == castle-age)
-    (building-type-count town-center > 0)     
+    (current-age == castle-age)    
     (up-compare-goal gl-dudeHasArchers == 1)    
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 135)    
