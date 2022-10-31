@@ -436,7 +436,7 @@
 	(timer-triggered 5)
 =>
 	(disable-timer 5)
-    (enable-timer 5 240)      
+    (enable-timer 5 260) ;was 240     
     (up-modify-goal gl-max-mining-camps-qty c:+ 1)    
     ;(up-chat-data-to-self "Mining camps max qty increased = %d" g: gl-max-mining-camps-qty)	
 )
@@ -555,6 +555,7 @@
 
 ; ATTACK TIMER
 (defrule(true)=>(enable-timer 20 3600)(disable-self)) ;will start anyway at 1 hour
+
 (defrule
     (timer-triggered 20)
     (current-age == imperial-age)(military-population >= 70)
@@ -4672,6 +4673,16 @@
 )
 
 ;BULGARIANS
+(defrule
+    (civ-selected bulgarians)
+    (not(research-completed my-unique-unit-upgrade))
+    (gold-amount > 210) ;knight 220
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
+    (can-train my-unique-unit-line)    
+=>
+    (train my-unique-unit-line)
+)
+
 (defrule
     (civ-selected bulgarians)
     (research-completed my-unique-unit-upgrade)
