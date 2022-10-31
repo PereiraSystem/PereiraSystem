@@ -590,6 +590,7 @@
 
 (defrule
     (current-age == dark-age)(military-population < 12)
+    (game-time > 360)
 =>
 	(up-retreat-now)(chat-local-to-self "RETREAT!")
     (set-strategic-number sn-number-attack-groups 0)
