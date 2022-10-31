@@ -590,7 +590,8 @@
 (defrule
     (current-age == dark-age)(military-population < 12)
 =>
-	(up-retreat-now)(chat-local-to-self "RETREAT!")     
+	(up-retreat-now)(chat-local-to-self "RETREAT!")
+    (set-strategic-number sn-number-attack-groups 0)     
 )
 
 (defrule
@@ -610,7 +611,8 @@
 (defrule
     (current-age == feudal-age)(military-population < 22)
 =>
-	(up-retreat-now)(chat-local-to-self "RETREAT!")    
+	(up-retreat-now)(chat-local-to-self "RETREAT!")
+    (set-strategic-number sn-number-attack-groups 0)    
 )
 
 (defrule
@@ -630,7 +632,8 @@
 (defrule
     (current-age == feudal-age)(military-population < 36)
 =>
-	(up-retreat-now)(chat-local-to-self "RETREAT!")   
+	(up-retreat-now)(chat-local-to-self "RETREAT!")
+    (set-strategic-number sn-number-attack-groups 0)   
 )
 
 (defrule(true)=>(enable-timer 21 2100)(disable-self)) ;35 min
