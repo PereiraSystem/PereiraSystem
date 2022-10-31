@@ -2630,7 +2630,8 @@
     (unit-type-count-total archer-line > 3)
     (not(civ-selected mongol))
     (or
-        (not(civ-selected bohemians)(building-type-count siege-workshop < 0))
+        (not(civ-selected bohemians))
+        (building-type-count siege-workshop < 0)  
     ) 
     (can-research ri-crossbow)    
 =>
