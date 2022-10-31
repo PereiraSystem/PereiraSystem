@@ -235,12 +235,12 @@
 )
 
 (defrule
-    (civ-selected burgundians)
+    (civ-selected burgundians)(civ-selected berbers)
 =>
     (up-modify-goal gl-scoutsQtyLow c:+ 4)
     (up-modify-goal gl-skirmsherQtyLow c:- 3)
     (up-modify-goal gl-scoutsQtyLow c:+ 4)
-    (up-modify-goal gl-skirmsherQtyMedium c:- 5)    
+    (up-modify-goal gl-skirmisherQtyMedium c:- 5)    
     (up-modify-goal gl-archerQtyLow c:- 3) 
     (up-modify-goal gl-militiaQtyLow c:- 3)     
     (up-modify-goal gl-knightsQtyLow c:+ 5)   
@@ -570,55 +570,19 @@
 )
 
 ; ATTACK TIMER
-(defrule(true)=>(enable-timer 20 3600)(disable-self)) ;will start anyway at 1 hour
+(defrule(true)=>(enable-timer 20 600)(disable-self))
 
 (defrule
     (timer-triggered 20)
-    (current-age == imperial-age)(military-population >= 70)
 =>
 	(disable-timer 20)
     (enable-timer 20 2)     
     (chat-local-to-self "TIME HAS PASSED AND WE HAVE 70 DUDES, TIME TO ATTACK!")
     (disable-self)
 )
-; CONDITIONS FOR ATTACKING BEFORE TIME
-(defrule
-    (civ-selected burgundians)
-    (research-completed my-unique-research)
-    (military-population > 40)
-=>
-    (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (set-strategic-number sn-minimum-attack-group-size 70);4
-    (set-strategic-number sn-maximum-attack-group-size 200) ;10   
-    (set-strategic-number sn-attack-group-gather-spacing 24)
-    (chat-local-to-self "BURGUNDIAN ATTACK!")           
-)
 
-(defrule
-    (food-amount > 5000)
-    (gold-amount > 1700)
-    (wood-amount > 5000)                
-    (current-age == imperial-age)
-=>  
-    (chat-local-to-self "WE ARE RICH, ATTACK!")
-        (set-strategic-number sn-enemy-sighted-response-distance 64)
-    (attack-now)(set-strategic-number sn-number-attack-groups 1)
-    (set-strategic-number sn-minimum-attack-group-size 80)
-    (set-strategic-number sn-attack-group-gather-spacing 24) 
-    (disable-timer 20)
-    (enable-timer 20 2)      
-)
 
-(defrule
-    (military-population > 109)
-    (game-time > 3300) 
-=>
-    (chat-local-to-self "WE ARE TOO MANY HERE, ATTACK!")
-    (disable-timer 20)
-    (enable-timer 20 2)         
-)
 
-; ATTACK TIMER
 (defrule
     (timer-triggered 20)
     (current-age == imperial-age)
@@ -633,43 +597,138 @@
     (set-strategic-number sn-attack-group-gather-spacing 24)  
 )
 
-; ATTACK WITH NO TIMER
-(defrule
-    (current-age == feudal-age)
-    (military-population >= 12)
-    (or
-        (or
-            (or
-                (unit-type-count militiaman-line > 9)
-                (unit-type-count scout-cavalry-line > 9)
-            )
-            (or
-                (unit-type-count archer-line > 9)
-                (unit-type-count cavalry-archer-line > 9)
-            ) 
-        )
-        (or
-            (or
-                (unit-type-count eagle-warrior-line > 9)
-                (unit-type-count my-unique-unit-line > 9)
-            )
-            (or
-                (unit-type-count battering-ram-line > 3)
-                (unit-type-count trebuchet > 0)
-            )
-        )              
-    )
-    (building-type-count lumber-camp > 1)
-=>
-    (attack-now)
-    (chat-local-to-self "FEUDAL AGE ATTACK!")     
-)
-
-
 ; 2. STRATEGIC NUMBERS ==================
 (defrule 
     (true)
 =>  (set-strategic-number sn-do-not-scale-for-difficulty-level 1) (disable-self)
+)
+
+; COMBAT                             
+; DEFENSE 
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-allow-civilian-defense 1)         
+    (disable-self)
+)
+
+(defrule 
+    (game-time > 360)(military-population < 2)
+=>
+    (set-strategic-number sn-allow-civilian-defense 2)         
+)
+
+(defrule 
+    (true)
+=>
+    (set-difficulty-parameter ability-to-dodge-missiles 0)
+	(set-difficulty-parameter ability-to-maintain-distance 0) 
+    (set-strategic-number sn-defense-distance 20)
+    (set-strategic-number sn-task-ungrouped-soldiers 0)         
+    (disable-self)
+)
+
+(defrule
+	(true)
+=>
+	(up-set-defense-priority c: lumber-camp c: 20000)
+	(up-set-defense-priority c: mining-camp c: 20000)    
+	(up-set-defense-priority c: farm c: 20000)       
+	(disable-self)
+)
+
+(defrule
+	(true)
+=>
+    (up-set-offense-priority c: university c: 1)
+    (up-set-offense-priority c: blacksmith c: 1)    
+    (up-set-offense-priority c: lumber-camp c: 2)
+    (up-set-offense-priority c: mining-camp c: 2)    
+    (up-set-offense-priority c: siege-workshop c: 3)  
+    (up-set-offense-priority c: house c: 4)
+    (up-set-offense-priority c: villager c: 4)    
+    (up-set-offense-priority c: town-center c: 5)
+	(up-set-offense-priority c: castle c: 6)      
+
+	(up-set-offense-priority c: cavalry-class c: 11)
+	(up-set-offense-priority c: archery-class c: 5)    
+	(disable-self)
+)
+
+(defrule 
+    (military-population > 25)
+    (not(town-under-attack))
+=>
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (chat-local-to-self "Soldiers Spread!")
+    (disable-self)
+)
+
+(defrule
+    (true)
+=>
+    (up-set-defense-priority c: lumber-camp c: 1001)
+    (up-set-defense-priority c: watch-tower c: 100)
+    (up-set-defense-priority c: siege-workshop c: 999)
+    (disable-self)
+)
+
+; ATTACK    
+; CHOOSING TARGET 
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-free-siege-targeting 0)
+    (set-strategic-number sn-enemy-sighted-response-distance 10)     
+    (set-strategic-number sn-wall-targeting-mode 1)
+    (set-strategic-number sn-attack-intelligence 1)
+    (set-strategic-number sn-target-evaluation-distance 10)
+    (set-strategic-number sn-coop-share-attacking 1)
+    (set-strategic-number sn-target-evaluation-boat 10)    
+    (disable-self)
+)
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-enable-offensive-priority 1) 
+    (set-strategic-number sn-local-targeting-mode 1)     
+    (set-strategic-number sn-ignore-attack-group-under-attack 0)        
+    (set-strategic-number sn-enable-patrol-attack 1)
+    (set-strategic-number sn-percentage-explore-exterminators 50)  
+
+    (set-strategic-number sn-disable-defend-groups 0)  
+
+    (set-strategic-number sn-relic-return-distance 20)
+    (set-strategic-number sn-allow-civilian-offense 1)  
+    ;(set-strategic-number sn-number-civilian-militia 100) 
+	(set-strategic-number sn-garrison-rams 1)  
+    (set-strategic-number sn-gather-idle-soldiers-at-center 1)     	
+    (disable-self)
+)
+
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-group-form-distance 24) ;def 20
+    ;(set-strategic-number sn-attack-group-gather-spacing 5)    
+    (set-strategic-number sn-minimum-attack-group-size 1)
+    (set-strategic-number sn-maximum-attack-group-size 150)
+    (set-strategic-number sn-number-attack-groups 0)  
+    (set-strategic-number sn-percent-attack-soldiers 100)
+    (set-strategic-number sn-attack-group-size-randomness 0)    
+    
+               
+    (disable-self)
+)
+
+; BOATS
+(defrule 
+    (true)
+=>
+    (set-strategic-number sn-minimum-boat-attack-group-size 5)
+    (set-strategic-number sn-maximum-boat-attack-group-size 18)   
+    (set-strategic-number sn-number-boat-attack-groups 1) 
+    (disable-self)
 )
 
 ; EXPLORE 
@@ -1213,131 +1272,7 @@
     (disable-self)
 )
 
-; COMBAT                             
-; DEFENSE 
-(defrule 
-    (true)
-=>
-    (set-strategic-number sn-allow-civilian-defense 1)         
-    (disable-self)
-)
 
-(defrule 
-    (game-time > 360)(military-population < 2)
-=>
-    (set-strategic-number sn-allow-civilian-defense 2)         
-)
-
-(defrule 
-    (true)
-=>
-    (set-difficulty-parameter ability-to-dodge-missiles 0)
-	(set-difficulty-parameter ability-to-maintain-distance 0) 
-    (set-strategic-number sn-defense-distance 20)
-    (set-strategic-number sn-task-ungrouped-soldiers 0)         
-    (disable-self)
-)
-
-(defrule
-	(true)
-=>
-	(up-set-defense-priority c: lumber-camp c: 20000)
-	(up-set-defense-priority c: mining-camp c: 20000)    
-	(up-set-defense-priority c: farm c: 20000)       
-	(disable-self)
-)
-
-(defrule
-	(true)
-=>
-    (up-set-offense-priority c: university c: 1)
-    (up-set-offense-priority c: blacksmith c: 1)    
-    (up-set-offense-priority c: lumber-camp c: 2)
-    (up-set-offense-priority c: mining-camp c: 2)    
-    (up-set-offense-priority c: siege-workshop c: 3)  
-    (up-set-offense-priority c: house c: 4)
-    (up-set-offense-priority c: villager c: 4)    
-    (up-set-offense-priority c: town-center c: 5)
-	(up-set-offense-priority c: castle c: 6)      
-
-	(up-set-offense-priority c: cavalry-class c: 11)
-	(up-set-offense-priority c: archery-class c: 5)    
-	(disable-self)
-)
-
-(defrule 
-    (military-population > 25)
-    (not(town-under-attack))
-=>
-    (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "Soldiers Spread!")
-    (disable-self)
-)
-
-(defrule
-    (true)
-=>
-    (up-set-defense-priority c: lumber-camp c: 1001)
-    (up-set-defense-priority c: watch-tower c: 100)
-    (up-set-defense-priority c: siege-workshop c: 999)
-    (disable-self)
-)
-
-; ATTACK    
-; CHOOSING TARGET 
-(defrule 
-    (true)
-=>
-    (set-strategic-number sn-free-siege-targeting 0)
-    (set-strategic-number sn-enemy-sighted-response-distance 10)     
-    (set-strategic-number sn-wall-targeting-mode 1)
-    (set-strategic-number sn-attack-intelligence 1)
-    (set-strategic-number sn-target-evaluation-distance 10)
-    (set-strategic-number sn-coop-share-attacking 1)
-    (set-strategic-number sn-target-evaluation-boat 10)    
-    (disable-self)
-)
-(defrule 
-    (true)
-=>
-    (set-strategic-number sn-enable-offensive-priority 1) 
-    (set-strategic-number sn-local-targeting-mode 1)     
-    (set-strategic-number sn-ignore-attack-group-under-attack 0)        
-    (set-strategic-number sn-enable-patrol-attack 1)
-    (set-strategic-number sn-percentage-explore-exterminators 50)  
-
-    (set-strategic-number sn-disable-defend-groups 0)  
-
-    (set-strategic-number sn-relic-return-distance 20)
-    (set-strategic-number sn-allow-civilian-offense 1)  
-    ;(set-strategic-number sn-number-civilian-militia 100) 
-	(set-strategic-number sn-garrison-rams 1)  
-    (set-strategic-number sn-gather-idle-soldiers-at-center 1)     	
-    (disable-self)
-)
-
-(defrule 
-    (true)
-=>
-    (set-strategic-number sn-group-form-distance 24) ;def 20
-    ;(set-strategic-number sn-attack-group-gather-spacing 5)    
-    (set-strategic-number sn-minimum-attack-group-size 1)
-    (set-strategic-number sn-maximum-attack-group-size 150)
-    (set-strategic-number sn-number-attack-groups 0)  
-    (set-strategic-number sn-percent-attack-soldiers 100)
-               
-    (disable-self)
-)
-
-; BOATS
-(defrule 
-    (true)
-=>
-    (set-strategic-number sn-minimum-boat-attack-group-size 5)
-    (set-strategic-number sn-maximum-boat-attack-group-size 18)   
-    (set-strategic-number sn-number-boat-attack-groups 1) 
-    (disable-self)
-)
 
 ; 3. UPGRADES ////////////////////////////
 ; ADVANCING AGE
