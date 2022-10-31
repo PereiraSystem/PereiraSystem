@@ -576,6 +576,16 @@
 )
 ; CONDITIONS FOR ATTACKING BEFORE TIME
 (defrule
+    (civ-selected burgundians)
+    (research-completed my-unique-research)
+=>
+    (attack-now)(set-strategic-number sn-number-attack-groups 1)
+    (set-strategic-number sn-minimum-attack-group-size 80)
+    (set-strategic-number sn-attack-group-gather-spacing 24)
+    (chat-local-to-self "BURGUNDIAN ATTACK!")           
+)
+
+(defrule
     (food-amount > 5000)
     (gold-amount > 1700)
     (wood-amount > 5000)                
