@@ -1552,7 +1552,8 @@
         (unit-type-count-total archery-cannon-class > 2))
         (unit-type-count-total cavalry-archer-class > 2)
     )
-    (research-completed ri-wheel-barrow)    
+    (research-completed ri-wheel-barrow)
+    (or(town-under-attack)(research-completed ri-hand-cart))   
     (can-research ri-padded-archer-armor)
 =>
     (research ri-padded-archer-armor )
