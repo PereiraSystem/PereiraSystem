@@ -1465,14 +1465,7 @@
     )    
 	(not(civ-selected gothic))(not(civ-selected mongol))
     (not(civ-selected frankish))(not(civ-selected cumans)) ;cav arc
-    (not(civ-selected tatars))
-    (or
-        (and
-            (not(civ-selected bohemians))
-            (not(civ-selected burgundians))
-        )
-        (building-type-count siege-workshop < 0)  
-    )        
+    (not(civ-selected tatars))  
     (not(civ-selected berbers))    
 	(unit-type-count-total archer-line g:< gl-archerQtyMedium)    
     (can-train archer-line)     
