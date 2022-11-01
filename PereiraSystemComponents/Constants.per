@@ -127,6 +127,8 @@
 (defrule
     (true)
 =>
+    (set-goal gl-minimumWoodForTC 275)
+    (set-goal gl-minimumWoodForLC 100)
     (set-goal gl-feudalAgeFoodCost 500)
     (set-goal gl-castleAgeFoodCost 800)
     (set-goal gl-castleAgeGoldCost 200)
@@ -145,6 +147,20 @@
     (set-goal gl-tradeShipsQty 20)
     (set-goal gl-fishingShipsQty 6)    
 )
+
+(defrule
+    (civ-selected japanese)
+=>
+    (set-goal gl-minimumWoodForTC 275)
+    (set-goal gl-minimumWoodForLC 100)
+)
+
+(defrule
+    (civ-selected malian)
+=>
+    (set-goal gl-minimumWoodForTC 275)
+    (set-goal gl-minimumWoodForLC 100)
+)    
 
 (defrule
     (civ-selected italian)
