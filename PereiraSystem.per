@@ -275,8 +275,21 @@
     (disable-self)
 )
 
-; 2. STRATEGIC NUMBERS ==================
-
+(defrule(true)=>(enable-timer 22 3600)(disable-self)) ; 1 hour
+(defrule
+    (timer-triggered 22)
+=>
+	(disable-timer 22)
+    (enable-timer 22 5)
+    (chat-local-to-self "FINAL ATTACK!")
+    (set-strategic-number sn-number-attack-groups 1)
+    (set-strategic-number sn-minimum-attack-group-size 1)
+    (set-strategic-number sn-maximum-attack-group-size 150)
+    (set-strategic-number sn-percent-attack-soldiers 100)
+    (set-strategic-number sn-maximum-town-size 512)    
+    ;(set-goal gl-weAreAttacking 1)      
+    (attack-now)(chat-to-allies 48)    
+)
 
 (defrule
 	(current-age == imperial-age)
