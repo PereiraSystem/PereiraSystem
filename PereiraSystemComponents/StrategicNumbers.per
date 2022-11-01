@@ -284,7 +284,7 @@
 
 (defrule
     (or
-        (town-under-attack)(up-enemy-buildings-in-town)
+        (town-under-attack)(enemy-buildings-in-town)
     )
 =>
     (up-assign-builders c: castle c: 30)   
