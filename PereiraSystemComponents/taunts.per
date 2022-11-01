@@ -96,3 +96,10 @@
     (chat-to-allies "I WILL HELP YOU!")
 	(acknowledge-taunt any-ally 48)	
 )
+
+(defrule
+	(taunt-detected any-ally 45)
+=>
+    (chat-to-allies "OK WE RETREAT!")
+	(acknowledge-taunt any-ally 45)	
+)
