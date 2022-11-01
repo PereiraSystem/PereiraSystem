@@ -222,7 +222,7 @@
 )
 
 (defrule
-    (current-age == feudal-age)(military-population < 36)
+    (current-age == castle-age)(military-population < 36)
     (goal gl-weAreAttacking 1)
 =>
 	(up-retreat-now)(chat-local-to-self "CASTLE AGE RETREAT!")
