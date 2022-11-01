@@ -1880,9 +1880,10 @@
 
 
 (defrule
-    (or
-        (not(research-available ri-houfnice))(research-completed ri-houfnice)
-    )
+    (not(research-available ri-houfnice))
+    (not(research-available ri-elite-battle-elephant))
+    (not(research-available ri-cavalier))
+    (not(research-available ri-paladin))    
     (can-research ri-bombard-tower)
 =>
     (research ri-bombard-tower)
