@@ -79,7 +79,21 @@
 ; TRADE CARTS
 (defrule 
     (players-building-type-count any-ally market > 0)
-    (unit-type-count-total trade-cart < 2)    
+    (unit-type-count-total trade-cart < 1)    
+    (wood-amount > 150)
+    (military-population > 10)
+    (can-train trade-cart)
+=>
+	(train trade-cart)
+)
+
+(defrule
+    (or(building-type-count siege-workshop > 0) 
+    (building-type-count monastery > 0))
+    (or(building-type-count university > 0) 
+    (building-type-count monastery > 0))   
+    (players-building-type-count any-ally market > 0)
+    (unit-type-count-total trade-cart < 3)    
     (wood-amount > 150)
     (military-population > 10)
     (can-train trade-cart)
