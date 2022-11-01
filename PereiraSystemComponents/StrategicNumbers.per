@@ -283,18 +283,11 @@
 )
 
 (defrule
-    (building-type-count castle > 0)
-=>
-    (up-assign-builders c: castle c:+ 2)   
-    (disable-self)
-)
-
-(defrule
     (or
         (town-under-attack)(up-enemy-buildings-in-town)
     )
 =>
-    (up-assign-builders c: castle c:+ 30)   
+    (up-assign-builders c: castle c: 30)   
     (disable-self)
 )
 
