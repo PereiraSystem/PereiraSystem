@@ -158,7 +158,7 @@
     (set-strategic-number sn-maximum-attack-group-size 8) 
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-goal gl-weAreAttacking 1)   
-    (attack-now)(chat-to-allies 48)    
+    (attack-now)(chat-to-allies "48")    
 )
 
 (defrule
@@ -186,7 +186,7 @@
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-goal gl-weAreAttacking 1)       
     (attack-now)
-    (chat-to-allies 48)   
+    (chat-to-allies "48")   
 )
 
 (defrule
@@ -214,7 +214,7 @@
     (set-strategic-number sn-maximum-attack-group-size 20)  
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-goal gl-weAreAttacking 1)        
-    (attack-now)(chat-to-allies 48)    
+    (attack-now)(chat-to-allies "48")    
 )
 
 (defrule
@@ -252,7 +252,7 @@
     (set-strategic-number sn-maximum-attack-group-size 150)
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-goal gl-weAreAttacking 1)      
-    (attack-now)(chat-to-allies 48)    
+    (attack-now)(chat-to-allies "48")    
 )
 
 (defrule
@@ -288,7 +288,7 @@
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-strategic-number sn-maximum-town-size 512)    
     ;(set-goal gl-weAreAttacking 1)      
-    (attack-now)(chat-to-allies 48)    
+    (attack-now)(chat-to-allies "48")    
 )
 
 (defrule
@@ -297,7 +297,7 @@
 	(up-retreat-now)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
     (chat-local-to-self "IMPERIAL AGE, EVERYONE GO BACK!")
-    (chat-to-allies 45)
+    (chat-to-allies "45")
 	(disable-self)
 )
 
@@ -309,7 +309,7 @@
 	(up-retreat-now)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
     (chat-local-to-self "MAX POP, EVERYONE GO BACK!")
-    (chat-to-allies 45)
+    (chat-to-allies "45")
 	(disable-self)
 )
 
@@ -320,7 +320,7 @@
 	(up-retreat-now)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
     (chat-local-to-self "UNIQUE RESEARCH COMPLETE, EVERYONE GO BACK!")
-    (chat-to-allies 45)
+    (chat-to-allies "45")
 	(disable-self)
 )
 
@@ -331,7 +331,7 @@
 	(up-retreat-now)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
     (chat-local-to-self "UNIQUE UNIT UPGRADE COMPLETE, EVERYONE GO BACK!")
-    (chat-to-allies 45)
+    (chat-to-allies "45")
 	(disable-self)
 )
 
@@ -343,7 +343,7 @@
 	(up-retreat-now)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
     (chat-local-to-self "ENEMY HAS CASTLE, MIL POP LOW, GO BACK!")
-    (chat-to-allies 45)
+    (chat-to-allies "45")
 	(disable-self)
 )
 
