@@ -38,6 +38,7 @@
 
 (defconst gl-tradeCartsQty 108)
 (defconst gl-tradeShipsQty 109)
+(defconst gl-fishingShipsQty 110)
 
 ; infantry constants
 (defconst gl-spearmenQtyLow 120)
@@ -131,6 +132,29 @@
 
     (set-goal gl-tradeCartsQty 14)
     (set-goal gl-tradeShipsQty 20)
+    (set-goal gl-fishingShipsQty 6)    
+)
+
+(defrule
+    (current-age == feudal-age)
+=>
+    (up-modify-goal gl-fishingShipsQty g:* 1,5)    
+)
+
+(defrule
+    (current-age == castle-age)
+=>
+    (up-modify-goal gl-tradeCartsQty g:* 1,5)
+    (up-modify-goal gl-tradeShipsQty g:* 1,5)
+    (up-modify-goal gl-fishingShipsQty g:* 1,5)    
+)
+
+(defrule
+    (current-age == imperial-age)
+=>
+    (up-modify-goal gl-tradeCartsQty g:* 1,5)
+    (up-modify-goal gl-tradeShipsQty g:* 1,5)
+    (up-modify-goal gl-fishingShipsQty g: * 1,5)    
 )
 
 (defrule

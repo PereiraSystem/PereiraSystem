@@ -83,6 +83,14 @@
 	(train trade-cart)
 )
 
+; FISHING SHIPS
+(defrule 
+    (wood-amount > 200)
+    (unit-type-count-total fishing-ship g:< gl-fishingShipsQty)
+=>
+	(train fishing-ship)
+)
+
 ; FISH TRAPS
 (defrule 
     (can-build fish-trap)(civ-selected malay)
