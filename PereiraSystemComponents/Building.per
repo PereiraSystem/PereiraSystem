@@ -395,7 +395,8 @@
     )
     (building-type-count-total market == 0)    
     ;(can-build market)
-    (up-can-build 0 c: market)
+    (up-set-placement-data my-player-number -1 c: -24)
+    (up-build place-control 0 c: market)
 =>
     (chat-local-to-self "Trying To Build Market 1 - TRADE WITH ME FRIEND") 
     (up-modify-sn sn-maximum-town-size c:+ 1)
@@ -411,9 +412,12 @@
     (building-type-count-total castle > 0)
     (building-type-count-total barracks > 1)
     (building-type-count-total market == 1)    
-    (can-build market)    
+    (can-build market)
 =>
-    (chat-local-to-self "Trying To Build Market 2")(build market)  
+    (chat-local-to-self "Trying To Build Market 2")
+    ;(build market)
+    (up-set-placement-data my-player-number -1 c: +32)
+    (up-build place-control 0 c: market)
 )
 
 (defrule
@@ -425,7 +429,9 @@
     (building-type-count-total market == 2)    
     (can-build market)
 =>
-    (chat-local-to-self "Trying To Build Market 3")(build market)  
+    (chat-local-to-self "Trying To Build Market 3")
+    (up-set-placement-data my-player-number -1 c: -38)
+    (up-build place-control 0 c: market)
 )
 
 (defrule
