@@ -14,7 +14,7 @@
 (load "main/PereiraSystemComponents/Trade")
 ; 7. Detect things 
 (load "main/PereiraSystemComponents/Detecting")
-; 8. Researching ;load last to avoid not civ detected problems
+; 8. Researching ;need it before "training"??
 (load "main/PereiraSystemComponents/Researching")
 ; 9. Testing
 (load "main/PereiraSystemComponents/Testing")
@@ -275,7 +275,7 @@
     (not(town-under-attack))
 =>
     (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "Soldiers Spread!")
+    (chat-local-to-self "SOLDIERS SPREAD!")
     (disable-self)
 )
 

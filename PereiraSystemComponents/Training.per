@@ -12,6 +12,12 @@
 
 (defrule
     (current-age == dark-age)
+    (not
+        (and
+            (research-available feudal-age)
+            (food-amount >= 500)
+        )
+    )
     (civilian-population  g:< gl-maxCiviliansDarkAge)
     (can-train villager)
 =>
