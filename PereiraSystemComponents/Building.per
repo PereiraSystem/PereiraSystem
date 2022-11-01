@@ -394,9 +394,7 @@
         )
     )
     (building-type-count-total market == 0)    
-    ;(can-build market)
-    (up-set-placement-data my-player-number -1 c: -24)
-    (up-build place-control 0 c: market)
+    (can-build market)
 =>
     (chat-local-to-self "Trying To Build Market 1 - TRADE WITH ME FRIEND") 
     (up-modify-sn sn-maximum-town-size c:+ 1)
