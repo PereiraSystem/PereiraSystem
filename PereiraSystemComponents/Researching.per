@@ -58,7 +58,8 @@
 (defrule
     (can-research ri-hand-cart)
     (or
-        (building-type-count-total monastery > 0)
+        (or(building-type-count-total monastery > 0)
+        (players-building-type-count any-ally monastery > 0))
         (and(civ-selected burgundians)(civilian-population > 10))
     )
 =>
