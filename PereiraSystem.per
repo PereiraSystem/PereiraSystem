@@ -236,7 +236,12 @@
 (defrule
     (or
         (timer-triggered 21)
-        (and(civ-selected burgundians)(research-completed my-unique-research))
+        (or
+            (and(civ-selected burgundians)(research-completed my-unique-research))
+            (and
+                (wood-amount > 4000)(food-amount > 3000)
+            )
+        )
     )
     (current-age == imperial-age)
     (population-headroom == 0)
