@@ -73,6 +73,13 @@
 (defrule
 	(taunt-detected any-ally 48)
 =>
-    (chat-to-allies "I WILL HELP YOU!")
     (up-modify-sn sn-maximum-town-size c:+ 32)
+	(disable-self)
+)
+
+(defrule
+	(taunt-detected any-ally 48)
+=>
+    (chat-to-allies "I WILL HELP YOU!")
+	(acknowledge-taunt any-ally 48)	
 )
