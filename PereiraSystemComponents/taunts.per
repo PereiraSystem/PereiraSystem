@@ -1,29 +1,6 @@
 ; TAUNTS AND PLAYER NAMES -------------------------------------------------------
 ; TESTING -------------------------------------------------------
 (defrule(true)=>(chat-local-to-self "> 3. Taunts Loaded")(disable-self))
-(defrule(true)=>(chat-to-all 30)(disable-self))
-
-(defrule
-	(taunt-detected any-ally 31)
-	(military-population >= 1)
-=>
-	(attack-now)
-	(acknowledge-taunt any-ally 31)
-    (chat-to-allies "IM ATTACKING BRO!")
-)
-
-(defrule
-	(town-under-attack)
-=>
-    (chat-to-allies 48) ;help
-)
-
-(defrule
-	(taunt-detected any-ally 48)
-=>
-    (chat-to-allies "I WILL HELP YOU!")
-    (up-modify-sn sn-maximum-town-size c:+ 32)
-)
 
 (defrule(civ-selected aztec)=>(up-change-name "PereiraSystem AZTC"))
 (defrule(civ-selected bengalis)=>(up-change-name "PereiraSystem BENG"))
@@ -67,3 +44,27 @@
 (defrule(civ-selected turkish)=>(up-change-name "PereiraSystem TURK"))
 (defrule(civ-selected vietnamese)=>(up-change-name "PereiraSystem VIET"))
 (defrule(civ-selected viking)=>(up-change-name "PereiraSystem VKNG"))
+
+(defrule(true)=>(chat-to-all 30)(disable-self))
+
+(defrule
+	(taunt-detected any-ally 31)
+	(military-population >= 1)
+=>
+	(attack-now)
+	(acknowledge-taunt any-ally 31)
+    (chat-to-allies "IM ATTACKING BRO!")
+)
+
+(defrule
+	(town-under-attack)
+=>
+    (chat-to-allies "48 HELP ME RETARD") ;help
+)
+
+(defrule
+	(taunt-detected any-ally 48)
+=>
+    (chat-to-allies "I WILL HELP YOU!")
+    (up-modify-sn sn-maximum-town-size c:+ 32)
+)
