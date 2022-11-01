@@ -1,0 +1,150 @@
+
+; 7. DETECT THINGS """"""""""""""""""""""""""""""
+(defrule
+    (or
+        (or
+            (or
+                (players-unit-type-count any-enemy scout-cavalry-line > 2)
+                (players-unit-type-count any-enemy knight-line > 2)
+            )
+            (or
+                (players-unit-type-count any-enemy steppe-lancer-line > 2)
+                (players-unit-type-count any-enemy tarkan-set > 2)
+            )
+        ) 
+        (or
+            (or
+                (players-unit-type-count any-enemy konnik-set > 2)
+                (players-unit-type-count any-enemy leitis-line > 2)
+            )
+            (or
+                (players-unit-type-count any-enemy coustillier-line > 2)
+                (players-unit-type-count any-enemy tarkan-line > 2)
+            )
+        )    
+    )
+=>  
+    (set-goal gl-dudeHasCavalry 1)
+    ;(chat-local-to-self "DUDE HAS CAVALRY!")
+)
+
+(defrule
+    (or
+        (or
+            (or
+                (players-unit-type-count any-enemy magyar-huszar-line > 2)
+                (players-unit-type-count any-enemy arambai-line > 2)
+            )
+            (or
+                (players-unit-type-count any-enemy cataphract-line > 2)
+                (players-unit-type-count any-enemy war-wagon-line > 2)
+            )
+        ) 
+        (or
+            (or
+                (players-unit-type-count any-enemy conquistador-line > 2)
+                (players-unit-type-count any-enemy mangudai-line > 2)
+            )
+            (or
+                (players-unit-type-count any-enemy mameluke-line > 2)
+                (players-unit-type-count any-enemy boyar-line > 2)
+            )
+        )    
+    )
+=>  
+    (set-goal gl-dudeHasCavalry 1)
+    ;(chat-local-to-self "DUDE HAS CAVALRY!")
+)
+
+(defrule
+    (players-unit-type-count any-enemy scout-cavalry-line < 2)
+    (players-unit-type-count any-enemy knight-line < 2)
+    (players-unit-type-count any-enemy steppe-lancer-line < 2)
+    (players-unit-type-count any-enemy tarkan-set < 2)
+    (players-unit-type-count any-enemy konnik-set < 2)
+    (players-unit-type-count any-enemy leitis-line < 2)
+    (players-unit-type-count any-enemy coustillier-line < 2)
+    (players-unit-type-count any-enemy tarkan-line < 2)
+    (players-unit-type-count any-enemy magyar-huszar-line < 2)
+    (players-unit-type-count any-enemy arambai-line < 2)
+    (players-unit-type-count any-enemy cataphract-line < 2)
+    (players-unit-type-count any-enemy war-wagon-line < 2)
+    (players-unit-type-count any-enemy conquistador-line < 2)
+    (players-unit-type-count any-enemy mangudai-line < 2)
+    (players-unit-type-count any-enemy mameluke-line < 2)
+    (players-unit-type-count any-enemy boyar-line < 2)    
+=>  
+    (set-goal gl-dudeHasCavalry 0)
+)
+
+(defrule
+    (players-unit-type-count any-enemy battle-elephant-line > 0)
+=>  
+    (do-nothing)
+    ;(chat-local-to-self "DUDE HAS ELEPHANTS!")
+)
+
+(defrule
+    (players-unit-type-count any-enemy skirmisher-line > 0)
+=>  
+    (set-goal gl-dudeHasSkirmishers 1)
+    ;(chat-local-to-self "DUDE HAS SKIRMISHERS!")    
+)
+
+(defrule
+    (players-unit-type-count any-enemy skirmisher-line < 1)
+=>  
+    (set-goal gl-dudeHasSkirmishers 0)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy archer-line > 0)
+=>  
+    (set-goal gl-dudeHasArchers 1)
+    ;(chat-local-to-self "DUDE HAS ARCHERS!")        
+)
+
+(defrule
+    (players-unit-type-count any-enemy cavalry-archer-line < 1)
+=>  
+    (set-goal gl-dudeHasCavalryArchers 0)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy cavalry-archer-line > 0)
+=>  
+    (set-goal gl-dudeHasCavalryArchers 1)
+    ;(chat-local-to-self "DUDE HAS CAVALRY ARCHERS!")        
+)
+
+(defrule
+    (players-unit-type-count any-enemy archer-line < 1)
+=>  
+    (set-goal gl-dudeHasArchers 0)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy spearman-line > 0)
+=>  
+    (set-goal gl-dudeHasSpearmen 1)
+    ;(chat-local-to-self "DUDE HAS SPEARMEN!")        
+)
+
+(defrule
+    (players-unit-type-count any-enemy spearman-line < 1)
+=>  
+    (set-goal gl-dudeHasSpearmen 0)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy militiaman-line > 0)
+=>  
+    (set-goal gl-dudeHasMilitia 1)
+    ;(chat-local-to-self "DUDE HAS MILITIA!")        
+)
+
+(defrule
+    (players-unit-type-count any-enemy militiaman-line < 1)
+=>  
+    (set-goal gl-dudeHasMilitia 0)    
+)

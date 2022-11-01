@@ -1,14 +1,15 @@
 ;PEREIRA SYSTEM AI - AGE OF EMPIRES II DEFINITIVE - (LORDS OF THE WEST) by LordBoniato
 
 ; 1. Constants and timers --------------
-;(load "PereiraSystemComponents/Constants")
+;(load "Components/Constants")
 ; 2. Strategic numbers
 ; 3. Researching
 ; 4. Building
 ; 5. Creating units
 ; 6. Trade
+(load "Components/Trade")
 ; 7. Detect things 
-
+(load "Components/Detecting")
 ; 1. CONSTANTS AND TIMERS -----------------
 
 (defconst gl-max-lumber-camps-qty 1)
@@ -1761,7 +1762,6 @@
     (chat-to-player my-player-number "EAGLE WARRIORS +40 HP!")  
 )
 
-; FORGOTTEN
 ; SLAVS
 (defrule
     (civ-selected slavic)
@@ -1878,8 +1878,7 @@
     (research ri-arquebus)
     (chat-to-player my-player-number "GUNPOWDER UNITS ACCURACY INCREASED!")
 )
-
-; AFRICAN KINGDOMS        
+       
 ; MALIAN
 (defrule
     (can-research ri-tigui )
@@ -1937,7 +1936,6 @@
     (chat-to-player my-player-number "CAMELS REGENERATE!")
 )
 
-; RISE OF THE RAJAS   
 ; BURMESE
 (defrule
     (can-research my-second-unique-research)
@@ -2005,7 +2003,6 @@
     (chat-to-player my-player-number "LUMBERJACKS GENERATE GOLD!") 
 )
 
-; DEFINITIVE   
 ; BULGARIANS
 (defrule
     (civ-selected bulgarians)
@@ -2080,8 +2077,7 @@
     (research my-unique-research)
     (chat-to-player my-player-number "TREBUCHETS +3 RANGE!") 
 )
-
-; LORDS OF THE WEST   
+  
 ; BURGUNDIANS
 (defrule 
     (can-research ri-burgundian-vineyards)
@@ -2125,7 +2121,6 @@
     (chat-to-player my-player-number "KNIGHTS +1 MELEE, +2 RANGED ARMOR!") 
 )
 
-; DAWN OF DUKES   
 ; BOHEMIANS
 (defrule
     (civ-selected bohemians)
@@ -2162,7 +2157,6 @@
     (chat-to-player my-player-number "SCOUTS CAUSE TRAMPLE DAMAGE!") 
 )
 
-; DYNASTIES OF INDIA
 ; BENGALIS
 (defrule
     (civ-selected bengalis)
@@ -2384,7 +2378,6 @@
     (research ri-supplies)
 )
 
- 
 (defrule
     (or(civ-selected aztec)(civ-selected incan))
     (can-research ri-man-at-arms)
@@ -2399,7 +2392,6 @@
 =>
     (research ri-man-at-arms)
 )
-
 
 (defrule
     (unit-type-count-total militiaman-line > 2)
@@ -2427,13 +2419,6 @@
     (research ri-champion)
 )
 
-(defrule
-    (can-research ri-supplies)
-    (unit-type-count-total militiaman-line > 3)
-=>
-    (research ri-supplies) ; MAS VELOCIDAD
-)
-
 ; SPEARMEN
 (defrule
     (research-completed ri-hand-cart)
@@ -2457,7 +2442,6 @@
 ; STABLES UPGRADES                 
 ; COMMON
 (defrule
-    ;(research-completed ri-wheel-barrow)
     (or(unit-type-count-total cavalry-class > 1)
     (unit-type-count-total cavalry-archer-class > 2))
     (can-research ri-bloodlines)
@@ -2513,7 +2497,8 @@
     (can-research 788)    
 =>
     (research 788)
-)(defrule
+)
+(defrule
     (current-age == imperial-age)
     (can-research 789)    
 =>
@@ -2564,8 +2549,7 @@
     (can-research ri-elite-steppe-lancer)(unit-type-count-total 1370 > 3)
     (current-age == imperial-age)
 =>
-    (research ri-elite-steppe-lancer)
-)
+    (research ri-elite-steppe-lancer))
 
 (defrule
     (can-research ri-elite-shrivamsha-rider)
@@ -6460,421 +6444,8 @@
     (train condottiero)
 )
 
-; 6. TRADE $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-; ALL AGES TRADE RULES
-(defrule ;BUY WOOD
-	(can-buy-commodity wood)
-    (gold-amount > 1600)
-    (wood-amount < 300)
-=>
-    (buy-commodity wood)
-    (chat-local-to-self "BUYING WOOD (GOLD > 1600)")       
-)
 
 
-
-(defrule ;BUY FOOD
-	(can-buy-commodity food)
-    (gold-amount > 1600)
-    (food-amount < 300)
-=>
-    (buy-commodity food)
-    (chat-local-to-self "BUYING FOOD (GOLD > 1600)")       
-)
-
-(defrule ;BUY FOOD
-	(can-buy-commodity food)
-    (gold-amount > 500)
-    (food-amount < 50)
-=>
-    (buy-commodity food)
-    (chat-local-to-self "BUYING FOOD (FOOD < 50)")       
-)
-
-; FEUDAL AGE TRADE                       
-(defrule
-    (current-age == feudal-age)
-    (wood-amount > 500)
-    (can-sell-commodity wood)    
-=>
-    (sell-commodity wood)
-    (chat-local-to-self "SELLING WOOD (> 500)")       
-)
-
-(defrule
-    (current-age == feudal-age)
-    (can-sell-commodity food)
-    (food-amount > 900)
-    (or ; maybe remove this
-         (wood-amount < 200)
-         (stone-amount < 200)
-    )
-	(gold-amount < 1100)
-=>
-    (sell-commodity food)
-    (chat-local-to-self "SELLING FOOD (> 900)")      
-)
-
-(defrule
-	(current-age == feudal-age)
-	(can-buy-commodity food)
-    (gold-amount > 300)(food-amount < 800)
-=>
-    (buy-commodity food)
-    (chat-local-to-self "BUYING FOOD (GOLD > 300)")     
-)
-
-(defrule
-	(current-age == feudal-age)
-	(can-sell-commodity stone)
-    (gold-amount < 200)(food-amount > 600) 
-    (research-available castle-age)    
-=>
-    (sell-commodity stone)
-    (chat-local-to-self "SELLING STONE TO GET TO CASTLE AGE")      
-)
-
-; CASTLE AGE TRADE      
-(defrule
-    (current-age == castle-age)
-    (wood-amount > 600)
-    (can-sell-commodity wood)    
-=>
-    (sell-commodity wood)
-    (chat-local-to-self "SELLING WOOD (> 600)")    
-)
-
-(defrule
-    (current-age == castle-age)
-    (building-type-count monastery > 0)
-    (and(building-type-count siege-workshop == 0)
-    (building-type-count university == 0))
-    (wood-amount < 300)
-    (gold-amount > 500)
-    (can-buy-commodity wood)    
-=>
-    (sell-commodity wood)
-    (chat-local-to-self "BUYING WOOD FOR THE SIEGE WORKSHOP / UNIV")    
-)
-
-(defrule
-    (current-age == castle-age) ;
-    (food-amount > 300)
-	(gold-amount < 100)
-    (unit-type-count-total monk-set g:< gl-monkQtyLow)
-    (can-sell-commodity food)    
-=>
-    (sell-commodity food)
-    (chat-local-to-self "SELLING FOOD TO BUY PRIESTS")
-)
-
-(defrule
-	(current-age == castle-age)
-    (gold-amount > 900)(food-amount < 800)
-	(can-buy-commodity food)    
-=>
-    (buy-commodity food)
-    (chat-local-to-self "BUYING FOOD TO GET TO IMPERIAL AGE")      
-)
-
-; IMPERIAL AGE TRADE
-(defrule ;SELL WOOD
-    (current-age == imperial-age)
-    (wood-amount > 1600)
-    (gold-amount < 1000)
-    (can-sell-commodity wood)    
-=>
-    (sell-commodity wood)
-    (chat-local-to-self "SELLING WOOD (> 1600)")     
-)
-
-(defrule
-    (current-age == imperial-age)
-    (food-amount > 2200)
-	(gold-amount < 1000)
-    (can-sell-commodity food)    
-=>
-    (sell-commodity food)
-    (chat-local-to-self "SELLING FOOD (> 2400)")     
-)
-
-(defrule
-    (current-age == imperial-age)
-    (not(civ-selected cumans));to get mercs
-    (not(civ-selected sicilians)) ;to build donjons   
-    (not(civ-selected bulgarians)) ;to build krepost 
-    (building-type-count castle >= 3)
-    (not(can-build bombard-tower))
-    (stone-amount > 300)
-	(gold-amount < 1000)
-    (can-sell-commodity stone)    
-=>
-    (sell-commodity stone)
-    (chat-local-to-self "SELLING STONE (> 300), 3 CASTLES AND NO B.T.")     
-)
-
-(defrule ;imperial age with no castle, we buy stone
-    (current-age == imperial-age)
-    (building-type-count-total castle == 0)
-    (stone-amount < 650)
-    (not(civ-selected frankish))(not(civ-selected incan))
-	(can-buy-commodity stone)    
-=>
-    (buy-commodity stone)
-    (chat-local-to-self "BUYING STONE (NO CASTLE)")      
-)
-
-(defrule ;imperial age with no castle, we buy stone
-    (current-age == imperial-age)
-    (building-type-count-total castle == 0)
-    (stone-amount < 650)
-    (not(civ-selected frankish))
-	(can-buy-commodity stone)    
-=>
-    (buy-commodity stone)
-    (chat-local-to-self "BUYING STONE (NO CASTLE)")      
-)
-
-(defrule ;imperial age with no castle, we buy stone
-    (current-age == imperial-age)
-    (building-type-count-total castle == 0)
-    (stone-amount < 488)
-	(can-buy-commodity stone)    
-=>
-    (buy-commodity stone)
-    (chat-local-to-self "BUYING STONE (NO CASTLE)")      
-)
-
-; TRIBUTE, just randomly give resources to anyone for now
-; TRIBUTE IN FEUDAL AGE
-(defrule
-    (current-age == feudal-age)
-    (wood-amount > 600)
-=>
-    (tribute-to-player any-ally wood 100)
-)
-
-(defrule
-    (current-age == feudal-age)
-    (food-amount > 1200)
-=>
-    (tribute-to-player any-ally food 100)
-)
-
-(defrule
-    (current-age == feudal-age)
-    (gold-amount > 800)
-=>
-    (tribute-to-player any-ally gold 100)
-)
-
-; TRIBUTE IN CASTLE AGE
-(defrule
-    (current-age == castle-age)
-    (wood-amount > 800)
-=>
-    (tribute-to-player any-ally wood 100)
-)
-
-(defrule
-    (current-age == castle-age)
-    (food-amount > 1200)
-=>
-    (tribute-to-player any-ally food 100)
-)
-
-(defrule
-    (current-age == castle-age)
-    (gold-amount > 1400)
-=>
-    (tribute-to-player any-ally gold 100)
-)
-
-(defrule
-    (current-age == castle-age)
-    (stone-amount > 800)
-=>
-    (tribute-to-player any-ally stone 100)
-)
-
-; TRIBUTE IN IMPERIAL AGE
-(defrule
-    (current-age == imperial-age)
-    (wood-amount > 2500)
-=>
-    (tribute-to-player any-ally wood 500)
-)
-
-(defrule
-    (current-age == imperial-age)
-    (food-amount > 2500)
-=>
-    (tribute-to-player any-ally food 500)
-)
-
-(defrule
-    (current-age == imperial-age)
-    (gold-amount > 2500)
-=>
-    (tribute-to-player any-ally gold 500)
-)
-
-(defrule
-    (current-age == imperial-age)
-    (stone-amount > 2000)
-=>
-    (tribute-to-player any-ally stone 500)
-)
-
-; 7. DETECT THINGS """"""""""""""""""""""""""""""
-(defrule
-    (or
-        (or
-            (or
-                (players-unit-type-count any-enemy scout-cavalry-line > 2)
-                (players-unit-type-count any-enemy knight-line > 2)
-            )
-            (or
-                (players-unit-type-count any-enemy steppe-lancer-line > 2)
-                (players-unit-type-count any-enemy tarkan-set > 2)
-            )
-        ) 
-        (or
-            (or
-                (players-unit-type-count any-enemy konnik-set > 2)
-                (players-unit-type-count any-enemy leitis-line > 2)
-            )
-            (or
-                (players-unit-type-count any-enemy coustillier-line > 2)
-                (players-unit-type-count any-enemy tarkan-line > 2)
-            )
-        )    
-    )
-=>  
-    (set-goal gl-dudeHasCavalry 1)
-    ;(chat-local-to-self "DUDE HAS CAVALRY!")
-)
-
-(defrule
-    (or
-        (or
-            (or
-                (players-unit-type-count any-enemy magyar-huszar-line > 2)
-                (players-unit-type-count any-enemy arambai-line > 2)
-            )
-            (or
-                (players-unit-type-count any-enemy cataphract-line > 2)
-                (players-unit-type-count any-enemy war-wagon-line > 2)
-            )
-        ) 
-        (or
-            (or
-                (players-unit-type-count any-enemy conquistador-line > 2)
-                (players-unit-type-count any-enemy mangudai-line > 2)
-            )
-            (or
-                (players-unit-type-count any-enemy mameluke-line > 2)
-                (players-unit-type-count any-enemy boyar-line > 2)
-            )
-        )    
-    )
-=>  
-    (set-goal gl-dudeHasCavalry 1)
-    ;(chat-local-to-self "DUDE HAS CAVALRY!")
-)
-
-(defrule
-    (players-unit-type-count any-enemy scout-cavalry-line < 2)
-    (players-unit-type-count any-enemy knight-line < 2)
-    (players-unit-type-count any-enemy steppe-lancer-line < 2)
-    (players-unit-type-count any-enemy tarkan-set < 2)
-    (players-unit-type-count any-enemy konnik-set < 2)
-    (players-unit-type-count any-enemy leitis-line < 2)
-    (players-unit-type-count any-enemy coustillier-line < 2)
-    (players-unit-type-count any-enemy tarkan-line < 2)
-    (players-unit-type-count any-enemy magyar-huszar-line < 2)
-    (players-unit-type-count any-enemy arambai-line < 2)
-    (players-unit-type-count any-enemy cataphract-line < 2)
-    (players-unit-type-count any-enemy war-wagon-line < 2)
-    (players-unit-type-count any-enemy conquistador-line < 2)
-    (players-unit-type-count any-enemy mangudai-line < 2)
-    (players-unit-type-count any-enemy mameluke-line < 2)
-    (players-unit-type-count any-enemy boyar-line < 2)    
-=>  
-    (set-goal gl-dudeHasCavalry 0)
-)
-
-(defrule
-    (players-unit-type-count any-enemy battle-elephant-line > 0)
-=>  
-    (do-nothing)
-    ;(chat-local-to-self "DUDE HAS ELEPHANTS!")
-)
-
-(defrule
-    (players-unit-type-count any-enemy skirmisher-line > 0)
-=>  
-    (set-goal gl-dudeHasSkirmishers 1)
-    ;(chat-local-to-self "DUDE HAS SKIRMISHERS!")    
-)
-
-(defrule
-    (players-unit-type-count any-enemy skirmisher-line < 1)
-=>  
-    (set-goal gl-dudeHasSkirmishers 0)    
-)
-
-(defrule
-    (players-unit-type-count any-enemy archer-line > 0)
-=>  
-    (set-goal gl-dudeHasArchers 1)
-    ;(chat-local-to-self "DUDE HAS ARCHERS!")        
-)
-
-(defrule
-    (players-unit-type-count any-enemy cavalry-archer-line < 1)
-=>  
-    (set-goal gl-dudeHasCavalryArchers 0)    
-)
-
-(defrule
-    (players-unit-type-count any-enemy cavalry-archer-line > 0)
-=>  
-    (set-goal gl-dudeHasCavalryArchers 1)
-    ;(chat-local-to-self "DUDE HAS CAVALRY ARCHERS!")        
-)
-
-(defrule
-    (players-unit-type-count any-enemy archer-line < 1)
-=>  
-    (set-goal gl-dudeHasArchers 0)    
-)
-
-(defrule
-    (players-unit-type-count any-enemy spearman-line > 0)
-=>  
-    (set-goal gl-dudeHasSpearmen 1)
-    ;(chat-local-to-self "DUDE HAS SPEARMEN!")        
-)
-
-(defrule
-    (players-unit-type-count any-enemy spearman-line < 1)
-=>  
-    (set-goal gl-dudeHasSpearmen 0)    
-)
-
-(defrule
-    (players-unit-type-count any-enemy militiaman-line > 0)
-=>  
-    (set-goal gl-dudeHasMilitia 1)
-    ;(chat-local-to-self "DUDE HAS MILITIA!")        
-)
-
-(defrule
-    (players-unit-type-count any-enemy militiaman-line < 1)
-=>  
-    (set-goal gl-dudeHasMilitia 0)    
-)
 
 (defrule(civ-selected aztec)=>(up-change-name "PereiraSystem AZTC"))
 (defrule(civ-selected bengalis)=>(up-change-name "PereiraSystem BENG"))
@@ -6979,8 +6550,6 @@
 	;(up-remove-objects search-local object-data-hitpoints < 50)
     (up-guard-unit monk c: spearman-line)
 )
-
-
 
 (defrule
 	(current-age == imperial-age)
