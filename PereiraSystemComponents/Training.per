@@ -1642,8 +1642,19 @@
     (wood-amount > 325)(gold-amount > 445)
     (or
         (or(civ-selected ethiopian)(civ-selected incan))
-        (or(civ-selected italian)(civ-selected japanese))    
+        (or(civ-selected japanese)(civ-selected japanese))    
     )
+    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 325)(gold-amount > 445)
+    ((civ-selected italian)(not(can-train hand-cannoneer))
     (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
 	(can-train archer-line)
