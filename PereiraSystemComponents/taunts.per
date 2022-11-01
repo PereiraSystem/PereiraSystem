@@ -3,6 +3,15 @@
 (defrule(true)=>(chat-local-to-self "> 3. Taunts Loaded")(disable-self))
 (defrule(true)=>(chat-to-all 30)(disable-self))
 
+(defrule
+	(taunt-detected any-ally 31)
+	(military-population >= 8)
+=>
+	(attack-now)
+	(acknowledge-taunt any-ally 31)
+    (chat-to-allies "IM ATTACKING BRO!")
+)
+
 (defrule(civ-selected aztec)=>(up-change-name "PereiraSystem AZTC"))
 (defrule(civ-selected bengalis)=>(up-change-name "PereiraSystem BENG"))
 (defrule(civ-selected berbers)=>(up-change-name "PereiraSystem BERB"))
