@@ -1,15 +1,19 @@
 ;PEREIRA SYSTEM AI - AGE OF EMPIRES II DEFINITIVE
 
 ; 1. Constants 
-;(load "Components/Constants")
-; 2. Strategic numbers
-; 3. Researching
-; 4. Building
-; 5. Creating units
-; 6. Trade
+(load "Components/Constants")
+; 2. Researching
+(load "main/PereiraSystemComponents/Researching")
+; 3. Building
+(load "main/PereiraSystemComponents/Building")
+; 4. Creating units
+(load "main/PereiraSystemComponents/Training")
+; 5. Trade
+(load "main/PereiraSystemComponents/Trade")
+; 6. Detect things 
+(load "main/PereiraSystemComponents/Taunts")
 
-; 7. Detect things 
-(load "Pereira/PereiraSystemComponents/Taunts")
+; TIMERS AND STRATEGIC NUMBERSS IN THIS FILE
 
 ; TIMER 1 INCREASES TOWN SIZE
 (defrule(true)=>(enable-timer 1 720)(disable-self)) 
