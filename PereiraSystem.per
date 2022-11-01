@@ -96,61 +96,50 @@
     ;(up-chat-data-to-self "Mining camps max distance increased = %d" s: sn-mining-camp-max-distance)
 )
 
-; TIMER 15 DELETES VILLAGERS
-(defrule(true)=>(enable-timer 15 2400)(disable-self)) 
+; TIMER 10 DELETES VILLAGERS
+(defrule(true)=>(enable-timer 10 2400)(disable-self)) 
 (defrule
-	(timer-triggered 15)
+	(timer-triggered 10)
     (current-age == imperial-age)(building-type-count town-center > 0)
     (civilian-population > 45)
 =>
 	(chat-local-to-self "DELETING IDLE VILLAGERS!")
-	(disable-timer 15)
-    (enable-timer 15 600)    
+	(disable-timer 10)
+    (enable-timer 10 600)    
     (up-delete-idle-units idle-type-villager)
 )
 
 ; TIMER 11 MILITARY REPORT
-(defrule(true)=>(enable-timer 11 90)(disable-self)) 
+(defrule(true)=>(enable-timer 11 60)(disable-self)) 
 (defrule
-	(timer-triggered 11)(current-age == dark-age)
-
+	(timer-triggered 11)
 =>
 	(disable-timer 11)
-    (enable-timer 11 900)               
+    (enable-timer 11 60)               
     (up-chat-data-to-self "SOLDIERS: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "ATTACK NOW SOLDIERS: %d" g: gl-attackSoldierAmount)
 )
 
-(defrule
-	(timer-triggered 11)(current-age == feudal-age)
-=>
-	(disable-timer 11)
-    (enable-timer 11 600)                 
-    (up-chat-data-to-self "SOLDIERS: %d" g: gl-defendSoldierAmount)      
-    (up-chat-data-to-self "ATTACK NOW SOLDIERS: %d" g: gl-attackSoldierAmount)
-    (up-chat-data-to-self "Inf / Cav created in feudal age: %d" g: gl-totalSoldiersCreatedThisAge)    
-)
-
-(defrule
-	(timer-triggered 11)(current-age >= castle-age)
-
-=>
-	(disable-timer 11)
-    (enable-timer 11 600)           
-    
-    (up-chat-data-to-self "SOLDIERS: %d" g: gl-defendSoldierAmount)      
-    (up-chat-data-to-self "ATTACK NOW SOLDIERS: %d" g: gl-attackSoldierAmount)
-    ;(up-chat-data-to-self "Inf / Cav created in castle age: %d" g: gl-totalSoldiersCreatedThisAge)    
-)
 ; TIMER 12 ENEMY BUILDINGS IN TOWN REPORT
 (defrule(true)=>(enable-timer 12 15)(disable-self)) 
 (defrule
 	(timer-triggered 12)(enemy-buildings-in-town)
 =>
 	(disable-timer 12)
-    (enable-timer 12 30)           
+    (enable-timer 12 60)           
     (up-chat-data-to-self "ENEMY BUILDINGS IN TOWN: %d" g: gl-enemyBuildingsInTown)
     (up-chat-data-to-self "TOWN SIZE: %d" s: sn-maximum-town-size)                 
+)
+
+; TIMER 13 SOLDIERS CREATED REPORT- only counting feudal age soldiers atm
+(defrule(true)=>(enable-timer 13 240)(disable-self)) 
+(defrule
+	(timer-triggered 13)(current-age == feudal-age)
+
+=>
+	(disable-timer 13)
+    (enable-timer 13 60)           
+    (up-chat-data-to-self "SOLDIERS CREATED THIS AGE: %d" g: gl-totalSoldiersCreatedThisAge)    
 )
 
 ; ATTACK TIMER 20
