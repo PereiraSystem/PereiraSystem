@@ -516,45 +516,48 @@
 )
 
 (defrule
-    (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+    (current-age == castle-age)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)        
     (wood-amount > 275)
     (building-type-count-total dock == 1)
+    (can-build dock)    
 =>
-    (up-assign-builders c: dock c:+ 2)
     (build dock)
     (chat-local-to-self "DOCK 2")
 )
 
 (defrule
-    (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+    (current-age == imperial-age)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)        
     (wood-amount > 275)
     (building-type-count-total dock == 2)
+    (can-build dock)    
 =>
     (build dock)
     (chat-local-to-self "DOCK 3")
 )
 
 (defrule
-    (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+    (building-type-count castle > 0)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)        
     (wood-amount > 275)
     (building-type-count-total dock == 3)
+    (can-build dock)    
 =>
     (build dock)
     (chat-local-to-self "DOCK 4")
 )
 
 (defrule
-    (can-build dock)(not(up-research-status c: feudal-age == research-pending))
+    (building-type-count castle > 1)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)        
     (wood-amount > 275)
     (building-type-count-total dock == 4)
+    (can-build dock)    
 =>
     (build dock)
     (chat-local-to-self "DOCK 5")
