@@ -676,7 +676,7 @@
     ;(can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle 1")
-    (up-set-placement-data my-player-number -1 c: +1)
+    (up-set-placement-data my-player-number -1 c: -6)
     (up-build place-control 0 c: castle)       
     (build castle) 
 )
@@ -901,11 +901,14 @@
     (building-type-count town-center > 0)
     (building-type-count lumber-camp > 0)
     (not(civ-selected cumans))(not(civ-selected sicilians))
-    (can-build archery-range)
+    (up-can-build 0 c: archery-range)
+    ;(can-build archery-range)
 =>
     (chat-local-to-self "Trying To Build Archery Range 1")
     (up-modify-sn sn-maximum-town-size c:+ 1)
-    (build archery-range)
+    ;(build archery-range)
+    (up-set-placement-data my-player-number -1 c: -6)
+    (up-build place-control 0 c: archery-range)    
 )
 
 (defrule
@@ -975,12 +978,15 @@
         (building-type-count-total university == 1)
         (not(civ-selected bohemians))
     )
-    (not(civ-selected gothic))    
-    (can-build siege-workshop)    
+    (not(civ-selected gothic))
+    (up-can-build 0 c: siege-workshop)
+    ;(can-build siege-workshop)    
 =>
     (chat-local-to-self "Trying To Build Siege Workshop 1")     
     (up-modify-sn sn-maximum-town-size c:+ 1)
-    (build siege-workshop)  
+    ;(build siege-workshop)  
+    (up-set-placement-data my-player-number -1 c: -6)
+    (up-build place-control 0 c: siege-workshop)       
 )
 
 (defrule
@@ -1025,7 +1031,7 @@
     (chat-local-to-self "Trying To Build Monastery 1")  
     (up-set-placement-data my-player-number -1 c: +1)
     (up-build place-control 0 c: monastery)         
-    (build monastery)
+    ;(build monastery)
 )
 
 (defrule
