@@ -59,7 +59,15 @@
 (defrule
 	(town-under-attack)
 =>
-    (chat-to-allies "48 HELP ME RETARD") ;help
+    (enable-timer 50 5) ;help
+)
+
+(defrule
+	(timer-triggered 50)(town-under-attack)
+=>
+    (enable-timer 50 5)
+	(disable-timer 50 10)
+	(chat-to-allies "48 HELP ME RETARD!")
 )
 
 (defrule
