@@ -1457,7 +1457,12 @@
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))    
     (wood-amount > 145)
-    (or(building-type-count siege-workshop == 0)(wood-amount > 245))    
+    (or
+        (and(building-type-count siege-workshop == 0)
+            (building-type-count university == 0)
+        )
+        (wood-amount > 300)
+    )    
 	(not(civ-selected gothic))(not(civ-selected mongol))
     (not(civ-selected frankish))(not(civ-selected cumans)) ;cav arc
     (not(civ-selected tatars))
@@ -2236,6 +2241,7 @@
         (building-type-count town-center > 0)
     )    
     (wood-amount >= 125)
+    
     (up-compare-goal gl-totalSoldiersCreatedThisAge < 10)
     (can-train spearman-line)
 =>
@@ -2248,6 +2254,12 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))    
     (building-type-count-total monastery > 0)
     (wood-amount > 125)
+    (or
+        (and(building-type-count siege-workshop == 0)
+            (building-type-count university == 0)
+        )
+        (wood-amount > 300)
+    )
     (or(up-compare-goal gl-dudeHasCavalry == 1)(up-compare-goal gl-dudeHasCavalryArchers == 1))
     (unit-type-count-total spearman-line g:< gl-spearmenQtyMedium)
     (can-train spearman-line)
