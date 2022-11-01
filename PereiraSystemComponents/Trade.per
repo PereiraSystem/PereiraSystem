@@ -267,7 +267,10 @@
 (defrule
     (current-age == imperial-age)
     (building-type-count castle > 0)
-    (or(players-building-type-count any-ally castle == 0)(stone-amount > 1000)
+    (or
+        (players-building-type-count any-ally castle == 0)
+        (stone-amount > 800)
+    )
 =>
     (tribute-to-player any-ally stone 650)
 )
