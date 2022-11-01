@@ -61,7 +61,7 @@
 	(up-timer-status 50 == timer-disabled)
 =>
     (enable-timer 50 1)
-	(chat-to-allies "startin help timer")	
+	(chat-to-allies "AAAAAAAH!!!!")	
 )
 
 (defrule
@@ -69,9 +69,9 @@
 	(town-under-attack)
 =>
     (disable-timer 50)
-	(enable-timer 50 5)
+	(enable-timer 50 10)
 	(chat-to-allies "48")	
-	(chat-to-allies "HELP MSG!")
+	(chat-to-allies "HELP!!!!!!")
 )
 
 (defrule
