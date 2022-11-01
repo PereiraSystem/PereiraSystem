@@ -7,6 +7,12 @@
 (defconst gl-minimumWoodForTC 10)
 (defconst gl-minimumWoodForLC 11)
 
+(defconst gl-feudalAgeFoodCost 12)
+(defconst gl-castleAgeFoodCost 12)
+(defconst gl-castleAgeGoldCost 13)
+(defconst gl-imperialAgeFoodCost 14)
+(defconst gl-imperialAgeGoldCost 15)
+
 (defconst gl-dudeHasCavalry 50)
 (defconst gl-dudeHasScouts 51)
 (defconst gl-dudeHasKnights 52)
@@ -117,10 +123,15 @@
 (defconst gl-demolitionShipQty 465)
 (defconst gl-specialShipQty 470)
 
-
+; SETTING CIVILIAN CONSTANTS
 (defrule
     (true)
 =>
+    (set-goal gl-feudalAgeFoodCost 500)
+    (set-goal gl-castleAgeFoodCost 800)
+    (set-goal gl-castleAgeGoldCost 200)
+    (set-goal gl-imperialAgeFoodCost 1000)
+    (set-goal gl-imperialAgeGoldCost 800)
     (set-goal gl-maxHousesBeforeDeleting 21)    
     (set-goal gl-maxHousesNeeded 30)
     (set-goal gl-farmQtyImperial 20)
@@ -133,6 +144,16 @@
     (set-goal gl-tradeCartsQty 14)
     (set-goal gl-tradeShipsQty 20)
     (set-goal gl-fishingShipsQty 6)    
+)
+
+(defrule
+    (civ-selected italian)
+=>
+    (set-goal gl-feudalAgeFoodCost 425)
+    (set-goal gl-castleAgeFoodCost 680)
+    (set-goal gl-castleAgeGoldCost 170)
+    (set-goal gl-imperialAgeFoodCost 850)
+    (set-goal gl-imperialAgeGoldCost 680) 
 )
 
 (defrule

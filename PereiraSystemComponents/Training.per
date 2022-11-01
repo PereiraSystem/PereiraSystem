@@ -15,7 +15,7 @@
     (not
         (and
             (research-available feudal-age)
-            (food-amount >= 500)
+            (food-amount g:>= gl-feudalAgeFoodCost)
         )
     )
     (civilian-population  g:< gl-maxCiviliansDarkAge)
@@ -26,6 +26,14 @@
 
 (defrule
     (current-age == feudal-age)
+    (not
+        (and
+            (research-available castle-age)
+            (and
+                (food-amount g:>= gl-castleAgeFoodCost)
+                (gold-amount g:>= gl-castleAgeGoldCost)
+        )
+    )    
     (civilian-population g:< gl-maxCiviliansFeudalAge)
     (can-train villager)
 =>
@@ -34,11 +42,20 @@
 
 (defrule
     (current-age == castle-age)
+    (not
+        (and
+            (research-available imperial-age)
+            (and
+                (food-amount g:>= gl-imperialAgeFoodCost)
+                (gold-amount g:>= gl-imperialAgeGoldCost)
+        )
+    )        
     (civilian-population g:< gl-maxCiviliansCastleAge)
     (can-train villager)
 =>
     (train villager)
 )
+
 ; villagers imperial age
 (defrule
     (current-age == imperial-age)
