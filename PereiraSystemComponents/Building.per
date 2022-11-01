@@ -967,7 +967,7 @@
     (building-type-count-total siege-workshop == 0)
     (building-type-count town-center > 0)
     (or(building-type-count monastery > 0)
-    (players-building-type-count any-ally monastery))
+    (players-building-type-count any-ally monastery > 0))
     (or
         (building-type-count-total university == 1)
         (not(civ-selected bohemians))
@@ -1009,6 +1009,12 @@
 (defrule
     (or(building-type-count-total house > 3)(civ-selected hun))
     (building-type-count-total monastery == 0)
+    (or
+        (players-building-type-count any-ally monastery == 0)
+        (or
+            (civ-selected bohemians)(civ-selected aztec)
+        )
+    )
     (can-build monastery)
 => 
     (up-modify-sn sn-maximum-town-size c:+ 1)  
