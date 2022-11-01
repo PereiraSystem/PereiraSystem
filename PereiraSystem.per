@@ -171,7 +171,7 @@
     (current-age == dark-age)(military-population < 12)
     (game-time > 360)(goal gl-weAreAttacking 1)
 =>
-	(up-retreat-now)(chat-local-to-self "RETREAT!")
+	(up-retreat-now)(chat-local-to-self "DARK AGE RETREAT!")
     (set-strategic-number sn-number-attack-groups 0)
     (set-strategic-number sn-enemy-sighted-response-distance 1)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
@@ -198,7 +198,7 @@
     (current-age == feudal-age)(military-population < 22)
     (goal gl-weAreAttacking 1)
 =>
-	(up-retreat-now)(chat-local-to-self "RETREAT!")
+	(up-retreat-now)(chat-local-to-self "FEUDAL AGE RETREAT!")
     (set-strategic-number sn-number-attack-groups 0)
     (set-strategic-number sn-enemy-sighted-response-distance 1)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
@@ -225,7 +225,7 @@
     (current-age == feudal-age)(military-population < 36)
     (goal gl-weAreAttacking 1)
 =>
-	(up-retreat-now)(chat-local-to-self "RETREAT!")
+	(up-retreat-now)(chat-local-to-self "CASTLE AGE RETREAT!")
     (set-strategic-number sn-number-attack-groups 0)
     (set-strategic-number sn-enemy-sighted-response-distance 1)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
@@ -257,7 +257,7 @@
 (defrule
     (current-age == imperial-age)(military-population < 40)
 =>
-	(up-retreat-now)(chat-local-to-self "RETREAT!")
+	(up-retreat-now)(chat-local-to-self "IMPERIAL AGE RETREAT!")
     (set-goal gl-weAreAttacking 0)        
 )
 
