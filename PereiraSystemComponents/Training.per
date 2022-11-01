@@ -1654,7 +1654,7 @@
 (defrule
     (current-age == imperial-age)
     (wood-amount > 325)(gold-amount > 445)
-    ((civ-selected italian)(not(can-train hand-cannoneer))
+    (civ-selected italian)(not(can-train hand-cannoneer))
     (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
 	(can-train archer-line)

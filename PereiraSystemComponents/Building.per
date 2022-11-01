@@ -437,7 +437,7 @@
 (defrule
     (building-type-count town-center > 0)(wood-amount > 300)            
     (or(building-type-count-total monastery > 0)
-    (building-type-count any-ally monastery > 0))
+    (players-building-type-count any-ally monastery > 0))
     (building-type-count-total market > 0)
     (or(civilian-population > 33)(building-type-count-total siege-workshop > 0))
     (research-completed ri-hand-cart)
