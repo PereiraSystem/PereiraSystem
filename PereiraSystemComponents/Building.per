@@ -447,7 +447,7 @@
     (can-build university)
 =>
     (chat-local-to-self "Trying To Build University")
-    (up-modify-sn sn-maximum-town-size c:+ 3) ;2vs2 problems if small?
+    (up-modify-sn sn-maximum-town-size c:+ 1) 
     (build university)    
 )
 
@@ -671,11 +671,13 @@
 
 ; CASTLE            
 (defrule
-    (can-build castle)
     (building-type-count-total castle == 0)
+    (up-can-build 0 c: castle)
+    ;(can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle 1")
-    (up-modify-sn sn-maximum-town-size c:+ 1)    
+    (up-set-placement-data my-player-number -1 c: +1)
+    (up-build place-control 0 c: castle)       
     (build castle) 
 )
 (defrule
@@ -1016,10 +1018,13 @@
             (civ-selected bohemians)(civ-selected aztec)
         )
     )
-    (can-build monastery)
+    (up-can-build 0 c: monastery)
+    ;(can-build monastery)
 => 
     (up-modify-sn sn-maximum-town-size c:+ 1)  
-    (chat-local-to-self "Trying To Build Monastery 1")     
+    (chat-local-to-self "Trying To Build Monastery 1")  
+    (up-set-placement-data my-player-number -1 c: +1)
+    (up-build place-control 0 c: monastery)         
     (build monastery)
 )
 
