@@ -173,16 +173,16 @@
 )
 
 (defrule
-    (timer-triggered 20)(military-population > 26)
+    (timer-triggered 20)(military-population > 30)
     (current-age == feudal-age)(not(town-under-attack))
 =>
 	(disable-timer 20)
     (enable-timer 20 3)     
     (chat-local-to-self "FEUDAL AGE ATTACK!")
     (set-strategic-number sn-task-ungrouped-soldiers 0)    
-    (set-strategic-number sn-number-attack-groups 4)
-    (set-strategic-number sn-minimum-attack-group-size 9)
-    (set-strategic-number sn-maximum-attack-group-size 9)     
+    (set-strategic-number sn-number-attack-groups 1)
+    (set-strategic-number sn-minimum-attack-group-size 30)
+    (set-strategic-number sn-maximum-attack-group-size 30)     
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-goal gl-weAreAttacking 1)       
     (attack-now)    
@@ -200,8 +200,9 @@
 )
 
 (defrule
-    (timer-triggered 20)(military-population > 40)
+    (timer-triggered 20)(military-population > 50)
     (current-age == castle-age)(not(town-under-attack))
+    (food-amount > 800)(gold-amount > 800)
 =>
 	(disable-timer 20)
     (enable-timer 20 3)     
