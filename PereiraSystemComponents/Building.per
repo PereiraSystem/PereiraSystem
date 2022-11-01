@@ -391,11 +391,14 @@
         )
     )
     (building-type-count-total market == 0)    
-    (can-build market)
+    ;(can-build market)
+    (up-can-build 0 c: market)
 =>
     (chat-local-to-self "Trying To Build Market 1 - TRADE WITH ME FRIEND") 
     (up-modify-sn sn-maximum-town-size c:+ 1)
-    (build market)
+    (up-set-placement-data my-player-number -1 c: -24)
+    (up-build place-control 0 c: market)
+    ;(build market)
 )
 
 (defrule
@@ -435,19 +438,18 @@
 
 ; UNIVERSITY
 (defrule
-    (building-type-count town-center > 0)(wood-amount > 300)            
+    (building-type-count town-center > 0)    
     (or(building-type-count-total monastery > 0)
     (players-building-type-count any-ally monastery > 0))
     (building-type-count-total market > 0)
-    (or(civilian-population > 33)(building-type-count-total siege-workshop > 0))
+    (or(civilian-population > 26)(building-type-count-total siege-workshop > 0))
     (research-completed ri-hand-cart)
     (research-completed ri-bow-saw)
-    (research-completed ri-heavy-plow)
     (building-type-count-total university == 0)    
     (can-build university)
 =>
     (chat-local-to-self "Trying To Build University")
-    (up-modify-sn sn-maximum-town-size c:+ 1) 
+    (up-modify-sn sn-maximum-town-size c:+ 2) 
     (build university)    
 )
 

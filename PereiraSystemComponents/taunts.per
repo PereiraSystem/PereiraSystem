@@ -59,7 +59,7 @@
 (defrule
 	(town-under-attack)
 	(up-compare-sn sn-maximum-town-size < 40)
-	(game-time < 2400) ; 40 min
+	(game-time < 1800) ; 30 min
 	(up-timer-status 50 == timer-disabled)
 =>
     (enable-timer 50 1)
@@ -71,7 +71,7 @@
 	(town-under-attack)
 =>
     (disable-timer 50)
-	(enable-timer 50 10)
+	(enable-timer 50 30)
 	(chat-to-allies "48 HELP!")	
 )
 
