@@ -1,7 +1,7 @@
 ; TAUNTS AND PLAYER NAMES -------------------------------------------------------
 ; TESTING -------------------------------------------------------
-(defrule(true)=>(chat-local-to-self "> 8. Taunts Loaded"))
-(defrule(true)=>(chat-to-all 30))
+(defrule(true)=>(chat-local-to-self "> 8. Taunts Loaded")(disable-self))
+(defrule(true)=>(chat-to-all 30)(disable-self))
 
 (defrule(civ-selected aztec)=>(up-change-name "PereiraSystem AZTC"))
 (defrule(civ-selected bengalis)=>(up-change-name "PereiraSystem BENG"))
