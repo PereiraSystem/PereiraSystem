@@ -115,7 +115,7 @@
 	(timer-triggered 11)
 =>
 	(disable-timer 11)
-    (enable-timer 11 60)               
+    (enable-timer 11 90)               
     (up-chat-data-to-self "SOLDIERS: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "ATTACK NOW SOLDIERS: %d" g: gl-attackSoldierAmount)
 )
@@ -126,7 +126,7 @@
 	(timer-triggered 12)(enemy-buildings-in-town)
 =>
 	(disable-timer 12)
-    (enable-timer 12 60)           
+    (enable-timer 12 90)           
     (up-chat-data-to-self "ENEMY BUILDINGS IN TOWN: %d" g: gl-enemyBuildingsInTown)
     (up-chat-data-to-self "TOWN SIZE: %d" s: sn-maximum-town-size)                 
 )
