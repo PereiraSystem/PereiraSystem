@@ -245,7 +245,7 @@
     (wood-amount > 1600)
     (players-current-age any-ally < imperial-age)
 =>
-    (tribute-to-player any-ally wood 500)
+    (tribute-to-player this-any-ally wood 500)
 )
 
 (defrule
@@ -253,7 +253,7 @@
     (food-amount > 2100)
     (players-current-age any-ally < imperial-age)
 =>
-    (tribute-to-player any-ally food 500)
+    (tribute-to-player this-any-ally food 500)
 )
 
 (defrule
@@ -261,7 +261,7 @@
     (gold-amount > 2000)
     (players-current-age any-ally < imperial-age)    
 =>
-    (tribute-to-player any-ally gold 500)
+    (tribute-to-player this-any-ally gold 500)
 )
 
 (defrule
@@ -270,7 +270,7 @@
     (players-building-type-count any-ally castle == 0)
     (stone-amount > 800)
 =>
-    (tribute-to-player any-ally stone 650)
+    (tribute-to-player this-any-ally stone 650)
 )
 ; BIG QTY
 (defrule
@@ -278,7 +278,7 @@
     (wood-amount > 4000)
     (up-allied-resource-amount any-ally wood < 2000)
 =>
-    (tribute-to-player any-ally wood 1000)
+    (tribute-to-player this-any-ally wood 1000)
 )
 
 (defrule
@@ -286,7 +286,7 @@
     (food-amount > 4000)
     (up-allied-resource-amount any-ally food < 2000)
 =>
-    (tribute-to-player any-ally food 1000)
+    (tribute-to-player this-any-ally food 1000)
 )
 
 (defrule
@@ -294,7 +294,7 @@
     (gold-amount > 4000)
     (up-allied-resource-amount any-ally gold < 2000)
 =>
-    (tribute-to-player any-ally gold 1000)
+    (tribute-to-player this-any-ally gold 1000)
 )
 
 (defrule
@@ -302,5 +302,5 @@
     (stone-amount > 4000)
     (up-allied-resource-amount any-ally stone < 2000)
 =>
-    (tribute-to-player any-ally stone 1000)
+    (tribute-to-player this-any-ally stone 1000)
 )
