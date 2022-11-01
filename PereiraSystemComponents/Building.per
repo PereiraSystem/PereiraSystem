@@ -435,11 +435,11 @@
 
 ; UNIVERSITY
 (defrule
-    (building-type-count town-center > 0)(wood-amount > 200)            
+    (building-type-count town-center > 0)(wood-amount > 300)            
     (or(building-type-count-total monastery > 0)
     (building-type-count any-ally monastery > 0))
     (building-type-count-total market > 0)
-    (civilian-population > 45)
+    (or(civilian-population > 45)(building-type-count-total siege-workshop > 0))
     (research-completed ri-hand-cart)
     (research-completed ri-bow-saw)
     (research-completed ri-heavy-plow)
