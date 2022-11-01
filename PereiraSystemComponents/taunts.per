@@ -73,6 +73,13 @@
 )
 
 (defrule
+	(not(town-under-attack))
+=>
+    (disable-timer 50)	
+	(chat-to-allies "IT´S OK!")
+)
+
+(defrule
 	(taunt-detected any-ally 48)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 32)
