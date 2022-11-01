@@ -242,28 +242,32 @@
 ; TRIBUTE IN IMPERIAL AGE
 (defrule
     (current-age == imperial-age)
-    (wood-amount > 2500)
+    (wood-amount > 1600)
+    (players-current-age any-ally < imperial-age)
 =>
     (tribute-to-player any-ally wood 500)
 )
 
 (defrule
     (current-age == imperial-age)
-    (food-amount > 2500)
+    (food-amount > 2100)
+    (players-current-age any-ally < imperial-age)
 =>
     (tribute-to-player any-ally food 500)
 )
 
 (defrule
     (current-age == imperial-age)
-    (gold-amount > 2500)
+    (gold-amount > 2000)
+    (players-current-age any-ally < imperial-age)    
 =>
     (tribute-to-player any-ally gold 500)
 )
 
 (defrule
     (current-age == imperial-age)
-    (stone-amount > 2000)
+    (building-type-count castle > 0)
+    (or(players-building-type-count any-ally castle == 0)(stone-amount > 1000)
 =>
-    (tribute-to-player any-ally stone 500)
+    (tribute-to-player any-ally stone 650)
 )
