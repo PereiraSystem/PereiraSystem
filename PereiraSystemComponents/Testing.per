@@ -32,13 +32,20 @@
 	(current-age == imperial-age)
     (population-headroom == 0)
     (housing-headroom == 0)
-    (wood-amount > 1000)(food-amount > 1000)(gold-amount > 1000)
+    (wood-amount > 1300)(food-amount > 1300)(gold-amount > 1300)
     (game-time > 2100); 35 min
     (not(civ-selected gothic))(not(civ-selected japanese))    
     (unit-type-count spearman-line > 0)
     (can-train knight-line)    
 =>
-	(delete-unit spearman-line)
+	(delete-unit spearman)(delete-unit pikeman)(delete-unit halberdier)
     (train knight-line)
     (chat-local-to-self "'CHANGING' SPEARMEN FOR KNIGHTS")
+)
+
+(defrule
+	(not	(player-in-game any-ally))
+	(unit-type-count trade-cart > 0)
+=>
+	(delete-unit trade-cart)
 )
