@@ -679,7 +679,8 @@
     ;(not(and(civ-selected bohemians)(can-train bombard-cannon)))    
     (not
         (and(civ-selected burgundians)(can-train bombard-cannon))
-    )       
+    )
+    (not unit-type-count-total karambit-warrior-line > 9)
     (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
     (can-train mangonel-line)    
 =>
