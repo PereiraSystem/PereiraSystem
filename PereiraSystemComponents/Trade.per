@@ -272,3 +272,35 @@
 =>
     (tribute-to-player any-ally stone 650)
 )
+; BIG QTY
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 4000)
+    (up-allied-resource-amount any-ally wood < 2000)
+=>
+    (tribute-to-player any-ally wood 1000)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (food-amount > 4000)
+    (up-allied-resource-amount any-ally food < 2000)
+=>
+    (tribute-to-player any-ally food 1000)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (gold-amount > 4000)
+    (up-allied-resource-amount any-ally gold < 2000)
+=>
+    (tribute-to-player any-ally gold 1000)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (stone-amount > 4000)
+    (up-allied-resource-amount any-ally stone < 2000)
+=>
+    (tribute-to-player any-ally stone 1000)
+)
