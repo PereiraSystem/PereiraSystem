@@ -58,6 +58,7 @@
 
 (defrule
 	(town-under-attack)
+	(up-compare-sn sn-maximum-town-size < 40)
 	(up-timer-status 50 == timer-disabled)
 =>
     (enable-timer 50 1)

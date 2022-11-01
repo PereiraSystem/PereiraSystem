@@ -19,8 +19,10 @@
 (defconst gl-fishingShipWoodCost 30)
 (defconst gl-galleyWoodCost 31)
 
-(defconst gl-civNeedsMonastery 41)
-(defconst gl-civHasGunpowderBonus 41)
+(defconst gl-civNeedsArchersSoon 41)
+(defconst gl-civNeedsCavalrySoon 42)
+(defconst gl-civNeedsMonastery 43)
+(defconst gl-civHasGunpowderBonus 44)
 
 (defconst gl-dudeHasCavalry 50)
 (defconst gl-dudeHasScouts 51)
@@ -155,6 +157,36 @@
     (set-goal gl-tradeCartsQty 14)
     (set-goal gl-tradeShipsQty 20)
     (set-goal gl-fishingShipsQty 6)    
+)
+
+(defrule
+    (or
+        (or
+            (civ-selected aztec)(civ-selected mayan)
+            (civ-selected incan)(civ-selected briton)         
+        )
+        (or
+            (civ-selected italians)(civ-selected koreans)
+            (civ-selected italians)(civ-selected koreans) 
+        )
+    )
+=>
+    (set-goal gl-civNeedsArchersSoon 1)
+)
+
+(defrule
+    (or
+        (or
+            (civ-selected aztec)(civ-selected mayan)
+            (civ-selected incan)(civ-selected briton)         
+        )
+        (or
+            (civ-selected italians)(civ-selected koreans)
+            (civ-selected italians)(civ-selected koreans) 
+        )
+    )
+=>
+    (set-goal gl-civNeedsCavalrySoon 1)
 )
 
 (defrule
