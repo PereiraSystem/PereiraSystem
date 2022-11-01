@@ -116,22 +116,18 @@
 
 =>
 	(disable-timer 11)
-    (enable-timer 11 900)            
-    ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)     
-    (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)     
-    (up-chat-data-to-self "Def: %d" g: gl-defendSoldierAmount)      
-    (up-chat-data-to-self "Atk: %d" g: gl-attackSoldierAmount)
+    (enable-timer 11 900)               
+    (up-chat-data-to-self "SOLDIERS: %d" g: gl-defendSoldierAmount)      
+    (up-chat-data-to-self "ATTACK NOW SOLDIERS: %d" g: gl-attackSoldierAmount)
 )
 
 (defrule
 	(timer-triggered 11)(current-age == feudal-age)
 =>
 	(disable-timer 11)
-    (enable-timer 11 600)           
-    ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
-    (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)       
-    (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
-    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
+    (enable-timer 11 600)                 
+    (up-chat-data-to-self "SOLDIERS: %d" g: gl-defendSoldierAmount)      
+    (up-chat-data-to-self "ATTACK NOW SOLDIERS: %d" g: gl-attackSoldierAmount)
     (up-chat-data-to-self "Inf / Cav created in feudal age: %d" g: gl-totalSoldiersCreatedThisAge)    
 )
 
@@ -141,11 +137,20 @@
 =>
 	(disable-timer 11)
     (enable-timer 11 600)           
-    ;(up-chat-data-to-self "TownSize: %d" s: sn-maximum-town-size)
-    (up-chat-data-to-self "BuildingsInTown: %d" g: gl-enemyBuildingsInTown)        
-    (up-chat-data-to-self "Def. / Explore: %d" g: gl-defendSoldierAmount)      
-    (up-chat-data-to-self "Attack: %d" g: gl-attackSoldierAmount)
+    
+    (up-chat-data-to-self "SOLDIERS: %d" g: gl-defendSoldierAmount)      
+    (up-chat-data-to-self "ATTACK NOW SOLDIERS: %d" g: gl-attackSoldierAmount)
     ;(up-chat-data-to-self "Inf / Cav created in castle age: %d" g: gl-totalSoldiersCreatedThisAge)    
+)
+; TIMER 12 ENEMY BUILDINGS IN TOWN REPORT
+(defrule(true)=>(enable-timer 12 15)(disable-self)) 
+(defrule
+	(timer-triggered 12)(enemy-buildings-in-town)
+=>
+	(disable-timer 12)
+    (enable-timer 12 30)           
+    (up-chat-data-to-self "ENEMY BUILDINGS IN TOWN: %d" g: gl-enemyBuildingsInTown)
+    (up-chat-data-to-self "TOWN SIZE: %d" s: sn-maximum-town-size)                 
 )
 
 ; ATTACK TIMER 20
