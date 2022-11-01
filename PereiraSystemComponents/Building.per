@@ -450,6 +450,16 @@
 )
 
 ; DOCK
+(defrule
+    (building-type-count-total dock == 0)
+    (or(up-gaia-type-count-total c: ocean-fish-class > 0)
+    (up-gaia-type-count-total c: shore-fish-class > 0))
+    (can-build dock)
+=>
+    (chat-local-to-self "Trying To Build Dock 1 (Fish Detected)")
+    (build dock)    
+)
+
 (defrule ; experimental strategy to move the city to the coast
     ; can build dock doesnt really check the water
     (can-build dock)
