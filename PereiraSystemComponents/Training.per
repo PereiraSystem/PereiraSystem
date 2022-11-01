@@ -245,6 +245,11 @@
 =>
     (train flemish-pikeman)
 )
+(defrule ;flemish militia                            
+    (can-train 1699)
+=>
+    (train 1699)
+)
 
 ; CASTLE AGE DEFENSE UU
 (defrule
@@ -662,7 +667,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (gold-amount > 251) ; trebuchet priority or not
+    (gold-amount > 251)
     ;(not(and(civ-selected bohemians)(can-train bombard-cannon)))    
     (not
         (and(civ-selected burgundians)(can-train bombard-cannon))
@@ -710,7 +715,7 @@
 	(unit-type-count-total battering-ram-line g:< gl-ramQtyLow)
     (not(civ-selected gothic))
     (not(civ-selected vietnamese)) ;they block the elephants, maybe put more ele civs here
-    (military-population > 30) ;trebuchets at 25   
+    (military-population > 30)  
     (not
         (and
             (civ-selected bohemians)
@@ -833,7 +838,7 @@
     (current-age == imperial-age)
 	(unit-type-count-total armored-elephant-line g:< gl-ramQtyHigh)
     (military-population > 45)
-    (gold-amount > 400);priority for trebuchets and cannons
+    (gold-amount > 400)
     (can-train armored-elephant-line)
 =>
 	(train armored-elephant-line)

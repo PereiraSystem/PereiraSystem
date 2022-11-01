@@ -312,17 +312,19 @@
     (can-research 484)
     (building-type-count-total watch-tower-line > 2)
 =>
-    (research 484 )
+    (research 484)
     (chat-to-player my-player-number "TOWERS SHOOT EXTRA ARROWS!") 
 )
 
 (defrule
     (civ-selected japanese)
-    (can-research my-unique-research)
+    ;(can-research my-unique-research)
+    (up-can-research 0 c: my-unique-research)
     (unit-type-count-total trebuchet > 0)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "TREBUCHETS PACK AND UNPACK FASTER!")
+    ;(chat-to-player my-player-number "TREBUCHETS PACK AND UNPACK FASTER!")
+    (chat-to-player my-player-number "wtffffffff!")    
 )
 
 ; MONGOLIANS
