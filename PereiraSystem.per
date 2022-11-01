@@ -258,6 +258,9 @@
     (current-age == imperial-age)(military-population < 40)
 =>
 	(up-retreat-now)(chat-local-to-self "IMPERIAL AGE RETREAT!")
+    (set-strategic-number sn-number-attack-groups 0)
+    (set-strategic-number sn-enemy-sighted-response-distance 1)
+    (set-strategic-number sn-task-ungrouped-soldiers 1)    
     (set-goal gl-weAreAttacking 0)        
 )
 
