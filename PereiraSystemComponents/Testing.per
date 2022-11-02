@@ -165,6 +165,15 @@
     (up-compare-goal gl-point-x g:> 80)   
 =>
     (chat-to-all "IM CLOSE TO THE HIGH X BORDER")  
+)(defrule
+    (up-compare-goal gl-point-y g:< 40)  
+=>
+    (chat-to-all "IM CLOSE TO THE LOW X BORDER")  
+)
+(defrule
+    (up-compare-goal gl-point-y g:> 80)   
+=>
+    (chat-to-all "IM CLOSE TO THE HIGH X BORDER")  
 )
 
 
