@@ -115,28 +115,28 @@
     (up-compare-goal gl-point-x > position-center)
     (up-compare-goal gl-point-y > position-center)
 =>
-    (chat-to-all "IM AT HIGH X ZONE AND HIGH Y == RIGHT CORNER OF MINIMAP")
+    (chat-to-all "IM AT HIGH X ZONE AND HIGH Y == RIGHT CORNER OF MINIMAP")(disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-x < position-center)
     (up-compare-goal gl-point-y > position-center) 
 =>
-    (chat-to-all "IM AT LOW X ZONE AND HIGH Y == TOP CORNER OF MINIMAP")
+    (chat-to-all "IM AT LOW X ZONE AND HIGH Y == TOP CORNER OF MINIMAP")(disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-x > position-center)
     (up-compare-goal gl-point-y < position-center)
 =>
-    (chat-to-all "IM AT HIGH X ZONE AND LOW Y == BOTTOM CORNER OF MINIMAP")
+    (chat-to-all "IM AT HIGH X ZONE AND LOW Y == BOTTOM CORNER OF MINIMAP")(disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-x < position-center)
     (up-compare-goal gl-point-y < position-center) 
 =>
-    (chat-to-all "IM AT LOW X ZONE AND LOW Y == LEFT CORNER OF MINIMAP")
+    (chat-to-all "IM AT LOW X ZONE AND LOW Y == LEFT CORNER OF MINIMAP")(disable-self)  
 )
 
 
