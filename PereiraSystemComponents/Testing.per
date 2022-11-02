@@ -140,6 +140,34 @@
     (chat-to-all "IM AT LOW Y ZONE")(disable-self)  
 )
 
+(defrule
+    (up-compare-goal gl-point-x g:> 40)
+    (up-compare-goal gl-point-x g:< 80)    
+=>
+    (chat-to-all "IM IN THE MIDDLE OF THE X AXIS")  
+)
+
+(defrule
+    (or(up-compare-goal gl-point-x g:< 40)
+    (up-compare-goal gl-point-x g:> 80))
+=>
+    (chat-to-all "IM IN A CORNER - X")  
+)
+
+(defrule
+    (up-compare-goal gl-point-y g:> 40)
+    (up-compare-goal gl-point-y g:< 80)    
+=>
+    (chat-to-all "IM IN THE MIDDLE OF THE Y AXIS")  
+)
+
+(defrule
+    (or(up-compare-goal gl-point-y g:< 40)
+    (up-compare-goal gl-point-y g:> 80))
+=>
+    (chat-to-all "IM IN A CORNER - Y")  
+)
+
 ; CHECK OUR POSITION - COMBINED POINTS
 (defrule
     (up-compare-goal gl-point-x g:> gl-center-x)
