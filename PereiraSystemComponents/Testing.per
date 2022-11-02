@@ -118,36 +118,55 @@
     (up-chat-data-to-player any-ally "MY POS X = %d" g: gl-point-x)
     (up-chat-data-to-player any-ally "MY POS Y = %d" g: gl-point-y) 
 )
-
+; CHECK OUR POSITION - BASIC POINTS
 (defrule
     (up-compare-goal gl-point-x g:> gl-center-x)
 =>
     (chat-to-all "IM AT HIGH X ZONE")(disable-self)  
 )
-
 (defrule
     (up-compare-goal gl-point-x g:< gl-center-x) 
 =>
     (chat-to-all "IM AT LOW X ZONE")(disable-self)  
 )
-
-(defrule
-    (up-compare-goal gl-point-x g:> gl-center-x)
-    (up-compare-goal gl-point-x g:< gl-center-x)
-=>
-    (chat-to-all "IM AT HIGH X AND LOW Y ZONE - TOP OF THE MAP?")(disable-self)  
-)
-
 (defrule
     (up-compare-goal gl-point-y g:> gl-center-y)
 =>
     (chat-to-all "IM AT HIGH Y ZONE")(disable-self)  
 )
-
 (defrule
     (up-compare-goal gl-point-y g:< gl-center-y) 
 =>
     (chat-to-all "IM AT LOW Y ZONE")(disable-self)  
+)
+
+; CHECK OUR POSITION - COMBINED POINTS
+(defrule
+    (up-compare-goal gl-point-x g:> gl-center-x)
+    (up-compare-goal gl-point-y g:< gl-center-y)
+=>
+    (chat-to-all "IM AT HIGH X AND LOW Y ZONE - TOP OF THE MAP?")(disable-self)  
+)
+
+(defrule
+    (up-compare-goal gl-point-x g:> gl-center-x)
+    (up-compare-goal gl-point-y g:> gl-center-y)
+=>
+    (chat-to-all "IM AT HIGH X AND HIGH Y ZONE - RIGHT OF THE MAP?")(disable-self)  
+)
+
+(defrule
+    (up-compare-goal gl-point-x g:< gl-center-x)
+    (up-compare-goal gl-point-y g:< gl-center-y)
+=>
+    (chat-to-all "IM AT LOW X AND LOW Y ZONE - LEFT OF THE MAP?")(disable-self)  
+)
+
+(defrule
+    (up-compare-goal gl-point-x g:< gl-center-x)
+    (up-compare-goal gl-point-y g:> gl-center-y)
+=>
+    (chat-to-all "IM AT LOW X AND HIGH Y ZONE - BOTTOM OF THE MAP?")(disable-self)  
 )
 
 (defrule
