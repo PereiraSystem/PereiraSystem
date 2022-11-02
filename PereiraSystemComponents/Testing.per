@@ -51,17 +51,19 @@
 )
 
 ; USER PATCH WALL
-(defconst gl-point-x 500)
-(defconst gl-point-y 501)
-(defconst gl-other-x 502)
-(defconst gl-other-y 503)
-(defconst gl-wall-start-x 506)
-(defconst gl-wall-start-y 507)
-(defconst gl-wall-end-x 508)
-(defconst gl-wall-end-y 509) ; limit constant 510
+(defconst gl-point-x 480) ; limit constant 510
+(defconst gl-point-y 481)
+(defconst gl-other-x 482)
+(defconst gl-other-y 483)
+(defconst gl-wall-start-x 484)
+(defconst gl-wall-start-y 485)
+(defconst gl-wall-end-x 486)
+(defconst gl-wall-end-y 487) 
+(defconst gl-wall-other-end-x 488) 
+(defconst gl-wall-other-end-y 489)
 
 (defrule
-    (true)
+    (true) ;just in case
 =>
     (set-goal gl-point-x 0)
     (set-goal gl-point-y 0)
@@ -70,7 +72,9 @@
     (set-goal gl-wall-start-x 0)
     (set-goal gl-wall-start-y 0)
     (set-goal gl-wall-end-x 0)
-    (set-goal gl-wall-end-y 0)    
+    (set-goal gl-wall-end-y 0)
+    (set-goal gl-wall-other-end-x 0) 
+    (set-goal gl-wall-other-end-y 0)      
     (disable-self)  
 )
 
@@ -124,6 +128,7 @@
     (set-goal gl-wall-start-y 120)
     (set-goal gl-wall-end-x 90)
     (set-goal gl-wall-end-y 40)
+    (set-goal gl-wall-other-end-x 120)     
     (disable-self)    
 )
 
@@ -176,7 +181,7 @@
     (true)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
-    (up-build-line gl-wall-end-x position-corner c: palisade-wall)
+    (up-build-line gl-wall-end-x gl-wall-other-end-x c: palisade-wall)
     (chat-local-to-self "BUILDING THE WALL B!")    
 )
 
