@@ -154,30 +154,6 @@
     (chat-to-all "IM IN THE MIDDLE OF THE Y AXIS")  
 )
 
-; CHECK POSITION: BEING NEXT TO A BORDER
-(defrule
-    (up-compare-goal gl-point-x g:< 40)  
-=>
-    (chat-to-all "IM CLOSE TO THE LOW X BORDER")  
-)
-(defrule
-    (up-compare-goal gl-point-x g:> 80)   
-=>
-    (chat-to-all "IM CLOSE TO THE HIGH X BORDER")  
-)
-
-(defrule
-    (up-compare-goal gl-point-y g:< 40)  
-=>
-    (chat-to-all "IM CLOSE TO THE LOW Y BORDER")  
-)
-
-(defrule
-    (up-compare-goal gl-point-y g:> 80)   
-=>
-    (chat-to-all "IM CLOSE TO THE HIGH Y BORDER")  
-)
-
 
 ; TIMER 32 POSITION STUFF
 (defrule(true)=>(enable-timer 32 8)(disable-self)) 
