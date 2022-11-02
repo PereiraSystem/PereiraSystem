@@ -70,8 +70,9 @@
     (true)
 =>
     (up-get-point position-self gl-point-x)
-    (up-chat-data-to-self "MY POS X = %d" gl-point-x)
-    (up-chat-data-to-self "MY POS Y = %d" gl-point-y)    
+    (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
+    (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)
+    (disable-self)   
 )
 
 (defrule
