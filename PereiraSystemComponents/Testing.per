@@ -144,13 +144,13 @@
 )
 
 (defrule
-    (up-compare-goal gl-point-x < gl-point-y) 
+    (up-compare-goal gl-point-x g:< gl-point-y) 
 =>
     (chat-to-all "MY X IS LOWER THAN Y")(disable-self)  
 )
 
 (defrule
-    (up-compare-goal gl-point-x > gl-point-y) 
+    (up-compare-goal gl-point-x g:> gl-point-y) 
 =>
     (chat-to-all "MY Y IS LOWER THAN X")(disable-self)  
 )
