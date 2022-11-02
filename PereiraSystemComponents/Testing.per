@@ -202,7 +202,7 @@
 ; TIMER 34 POSITION STUFF
 (defrule(true)=>(enable-timer 34 12)(disable-self)) 
 (defrule
-    (up-compare-gsoldiersoal gl-point-x g:< 40)   
+    (up-compare-goal gl-point-x g:< 40)   
     (timer-triggered 34)
 =>  
     (disable-timer 34)
