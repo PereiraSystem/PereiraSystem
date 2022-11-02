@@ -114,9 +114,9 @@
     (timer-triggered 31)
 =>  
     (disable-timer 31)
-   ; (enable-timer 31 60)
-    (chat-to-allies "MY POS X = %d" g: gl-point-x)
-    (chat-to-allies "MY POS Y = %d" g: gl-point-y) 
+    (enable-timer 31 60)
+    (up-chat-data-to-player any-ally "MY POS X = %d" g: gl-point-x)
+    (up-chat-data-to-player any-ally "MY POS Y = %d" g: gl-point-y) 
 )
 
 (defrule
