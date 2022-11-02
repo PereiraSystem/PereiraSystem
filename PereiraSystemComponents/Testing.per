@@ -123,7 +123,8 @@
     (set-goal gl-wall-start-x 90)
     (set-goal gl-wall-start-y 90)
     (set-goal gl-wall-end-x 90)
-    (set-goal gl-wall-end-y 90)(disable-self)    
+    (set-goal gl-wall-end-y 90)
+    (disable-self)    
 )
 
 (defrule
@@ -164,7 +165,7 @@
 
 
 (defrule
-    (up-can-build-line 0 gl-wall-start-x gl-wall-end-x c: palisade-wall)
+    (up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
     (chat-local-to-self "BUILDING THE WALL!")    
