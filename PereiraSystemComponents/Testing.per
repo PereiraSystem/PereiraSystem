@@ -91,14 +91,14 @@
     (up-compare-goal gl-point-x > position-center)
     (up-compare-goal gl-point-y > position-center)
 =>
-    (chat-to-all "IM AT THE SOUTH WEST")
+    (chat-to-all "IM AT THE SOUTH EAST")
 )
 
 (defrule
     (up-compare-goal gl-point-x > position-center)
     (up-compare-goal gl-point-y < position-center)    
 =>
-    (chat-to-all "IM AT THE SOUTH EAST")
+    (chat-to-all "IM AT THE SOUTH WEST")
 )
 
 
