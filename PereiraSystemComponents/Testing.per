@@ -51,6 +51,9 @@
 )
 
 ; USER PATCH WALL
+; IMAGINE THE MINIMAP IS JUST SITTING ON ITS BOTTOM LEFT SIDE 
+; (OR TURN YOUR NECK TO THE RIGHT)
+; SO X AXIS = WEST EAST AND Y AXIS = SOUTH NORTH
 (defconst gl-point-x 500)
 (defconst gl-point-y 501)
 (defconst gl-other-x 502)
@@ -94,25 +97,25 @@
 (defrule
     (up-compare-goal gl-point-x > gl-position-center-x)
 =>
-    (chat-local-to-self "TOP X ZONE")
+    (chat-local-to-self "HIGH X ZONE - LETS CALL THIS NORTH")
 )
 
 (defrule
     (up-compare-goal gl-point-x < gl-position-center-x)
 =>
-    (chat-local-to-self "BOTTOM X ZONE")  
+    (chat-local-to-self "BOTTOM X ZONE - LETS CALL THIS SOUTH")  
 )
 
 (defrule
     (up-compare-goal gl-point-y > gl-position-center-y)
 =>
-    (chat-local-to-self "TOP Y ZONE")
+    (chat-local-to-self "HIGH Y ZONE - LETS CALL THIS WEST")
 )
 
 (defrule
     (up-compare-goal gl-point-y < gl-position-center-y)
 =>
-    (chat-local-to-self "BOTTOM Y ZONE")  
+    (chat-local-to-self "BOTTOM Y ZONE - LETS CALL THIS EAST")  
 )
 
 
