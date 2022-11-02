@@ -241,7 +241,10 @@
     (or
         (civ-selected burgundians)(civ-selected aztec)
     )
-    (amount-hold-relics > 0)
+    (or
+        (hold-relics)
+        (not(enemy-captured-relics))
+    )
     (and
         (unit-type-count-total monk g:< gl-monkQtyLow) 
         (unit-type-count-total 286 g:< gl-monkQtyLow) 
@@ -249,6 +252,7 @@
     (can-train monk)
 =>
     (train monk)
+    (chat-to-allies "GIMME THE RELICS!")
 )
 
 ; CASTLE
