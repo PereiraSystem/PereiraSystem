@@ -75,6 +75,8 @@
     (up-get-point position-center gl-position-center-x)      
     (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
     (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)
+    (up-chat-data-to-self "CENTER X = %d" g: gl-position-center-x)
+        (up-chat-data-to-self "CENTER Y = %d" g: gl-position-center-y)    
     (disable-self)   
 )
 
@@ -113,6 +115,13 @@
     (up-chat-data-to-self "ENEMY POS X = %d" g: gl-point-x)
     (up-chat-data-to-self "ENEMY POS Y = %d" g: gl-point-y)
     (disable-self)   
+)
+
+(defrule
+    (building-type-count-total 793 < 3)
+    ;(up-can-build-line gl-point-y gl-other-y c: 793)
+=>
+    (up-build-line gl-point-x position-corner c: palisade-wall)
 )
 
 (defrule
