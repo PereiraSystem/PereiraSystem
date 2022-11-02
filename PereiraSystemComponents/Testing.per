@@ -121,9 +121,9 @@
 =>
     (chat-to-all "IM AT HIGH X ZONE AND HIGH Y")
     (set-goal gl-wall-start-x 90)
-    (set-goal gl-wall-start-y 90)
+    (set-goal gl-wall-start-y 120)
     (set-goal gl-wall-end-x 90)
-    (set-goal gl-wall-end-y 60)
+    (set-goal gl-wall-end-y 40)
     (disable-self)    
 )
 
@@ -135,7 +135,7 @@
     (set-goal gl-wall-start-x 30)
     (set-goal gl-wall-start-y 90)
     (set-goal gl-wall-end-x 30)
-    (set-goal gl-wall-end-y 90)
+    (set-goal gl-wall-end-y 60)
     (disable-self)  
 )
 
@@ -170,6 +170,15 @@
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
     (chat-local-to-self "BUILDING THE WALL!")    
+)
+
+(defrule
+    (building-type-count-total palisade-wall > 10)
+    (current-age == feudal-age)
+    ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
+=>
+    (up-build-line gl-wall-end-x position-border c: palisade-wall)
+    (chat-local-to-self "BUILDING THE WALL PART 2!")    
 )
 
 (defrule
