@@ -158,14 +158,14 @@
 
 (defrule
     (up-compare-goal gl-point-x < position-center)
-    (up-compare-goal gl-point-y < position-center) 
+    (up-compare-goal gl-point-y < position-center)
 =>
     (chat-to-all "IM AT LOW X ZONE AND LOW Y")
     (set-goal gl-wall-start-x 30)
     (set-goal gl-wall-start-y 90)
     (set-goal gl-wall-end-x 30)
     (set-goal gl-wall-end-y 90)    
-    (disable-self)  
+    (disable-self)
 )
 
 
@@ -174,26 +174,17 @@
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
-    (chat-local-to-self "BUILDING THE WALL A!")    
+    ;(chat-local-to-self "BUILDING THE WALL SECTION A !")
+    (do-nothing)
 )
 
 (defrule
     (true)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
-    ;(up-build-line gl-wall-end-x gl-wall-other-end-x c: palisade-wall)
-    ;(chat-local-to-self "BUILDING THE WALL B!")
+    (up-build-line gl-wall-end-x gl-wall-other-end-x c: palisade-wall)
+    (chat-local-to-self "BUILDING THE WALL SECTION B !")
     (do-nothing)
-)
-
-(defrule
-    (building-type-count-total palisade-wall > 10)
-    (current-age == feudal-age)
-    ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
-=>
-    (set-goal gl-wall-end-x 120)
-    (up-build-line gl-wall-end-x position-corner c: palisade-wall)
-    (chat-local-to-self "BUILDING THE WALL PART 2!")    
 )
 
 (defrule
