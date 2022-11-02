@@ -65,6 +65,8 @@
     (set-goal gl-point-y 0)
     (set-goal gl-other-x 0)    
     (set-goal gl-other-y 0)
+    (set-goal gl-position-center-x 0)
+    (set-goal gl-position-center-y 0)    
     (disable-self)  
 )
 
@@ -76,22 +78,21 @@
     (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
     (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)
     (up-chat-data-to-self "CENTER X = %d" g: gl-position-center-x)
-        (up-chat-data-to-self "CENTER Y = %d" g: gl-position-center-y)    
+    (up-chat-data-to-self "CENTER Y = %d" g: gl-position-center-y)    
     (disable-self)   
 )
 
 (defrule
-    (up-compare-goal gl-point-x > gl-position-center-x)
+    (up-compare-goal gl-point-x g:> gl-position-center-x)
 =>
     (chat-local-to-self "IM AT THE 'EAST'")
-    (disable-self)   
+   
 )
 
 (defrule
-    (up-compare-goal gl-point-x < gl-position-center-x)
+    (up-compare-goal gl-point-x g:< gl-position-center-x)
 =>
-    (chat-local-to-self "IM AT THE 'WEST'")
-    (disable-self)   
+    (chat-local-to-self "IM AT THE 'WEST'")  
 )
 
 (defrule
@@ -118,10 +119,11 @@
 )
 
 (defrule
-    (building-type-count-total 793 < 3)
-    ;(up-can-build-line gl-point-y gl-other-y c: 793)
+    ;(building-type-count-total 793 < 3)
+    (up-can-build-line gl-point-x position-corner c: palisade-wall)
 =>
     (up-build-line gl-point-x position-corner c: palisade-wall)
+    (chat-local-to-self "BUILDING THE WALL!")    
 )
 
 (defrule
