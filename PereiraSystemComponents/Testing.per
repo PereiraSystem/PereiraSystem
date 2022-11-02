@@ -140,18 +140,12 @@
     (chat-to-all "IM AT LOW Y ZONE")(disable-self)  
 )
 
+; CHECK POSITION: BEING IN THE MIDDLE
 (defrule
-    (up-compare-goal gl-point-x g:> 40)
-    (up-compare-goal gl-point-x g:< 80)    
+    (up-compare-goal gl-point-y g:> 40)
+    (up-compare-goal gl-point-y g:< 80)    
 =>
-    (chat-to-all "IM IN THE MIDDLE OF THE X AXIS")  
-)
-
-(defrule
-    (or(up-compare-goal gl-point-x g:< 40)
-    (up-compare-goal gl-point-x g:> 80))
-=>
-    (chat-to-all "IM IN A CORNER - X")  
+    (chat-to-all "IM IN THE MIDDLE OF THE Y AXIS")  
 )
 
 (defrule
@@ -161,12 +155,18 @@
     (chat-to-all "IM IN THE MIDDLE OF THE Y AXIS")  
 )
 
+; CHECK POSITION: BEING NEXT TO A BORDER
 (defrule
-    (or(up-compare-goal gl-point-y g:< 40)
-    (up-compare-goal gl-point-y g:> 80))
+    (up-compare-goal gl-point-x g:< 40)  
 =>
-    (chat-to-all "IM IN A CORNER - Y")  
+    (chat-to-all "IM CLOSE TO THE LOW X BORDER")  
 )
+(defrule
+    (up-compare-goal gl-point-x g:> 80)   
+=>
+    (chat-to-all "IM CLOSE TO THE HIGH X BORDER")  
+)
+
 
 ; CHECK OUR POSITION - COMBINED POINTS
 (defrule
