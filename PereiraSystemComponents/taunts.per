@@ -73,7 +73,7 @@
     (disable-timer 50)
 	(enable-timer 50 60)
 	(chat-to-allies "48")
-	;(chat-to-allies "HELP ME!")			
+	(chat-to-allies "HELP ME!")			
 )
 
 (defrule
@@ -87,13 +87,16 @@
 	(taunt-detected any-ally 48)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 32)
+    (set-strategic-number sn-enemy-sighted-response-distance 24)	
+    (set-strategic-number sn-task-ungrouped-soldiers 1)	
+    (chat-to-allies "I WILL HELP YOU!")	
 	(disable-self)
 )
 
 (defrule
 	(taunt-detected any-ally 48)
 =>
-    ;(chat-to-allies "I WILL HELP YOU!")
+    (chat-to-allies "MY TROOPS SHOULD BE HELPING!")
 	(acknowledge-taunt any-ally 48)	
 )
 
