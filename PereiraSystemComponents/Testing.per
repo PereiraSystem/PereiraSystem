@@ -95,7 +95,6 @@
     (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)
     (up-chat-data-to-self "CENTER X = %d" g: gl-center-x)
     (up-chat-data-to-self "CENTER Y = %d" g: gl-center-y)    
-    (disable-self)
 )
 
 (defrule
@@ -125,13 +124,13 @@
 (defrule
     (up-compare-goal gl-point-x < gl-point-y) 
 =>
-    (chat-to-all "MY X IS LOWER THAN Y (TOP OF THE MAP?)")(disable-self)  
+    (chat-to-all "MY X IS LOWER THAN Y")(disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-x > gl-point-y) 
 =>
-    (chat-to-all "MY Y IS LOWER THAN X (BOTTOM OF THE MAP?)")(disable-self)  
+    (chat-to-all "MY Y IS LOWER THAN X")(disable-self)  
 )
 
 ; ----
