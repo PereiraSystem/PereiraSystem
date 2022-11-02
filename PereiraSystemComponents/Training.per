@@ -150,7 +150,7 @@
 
 ; MILITARY UNITS
 ; MONASTERY  
-; CASTLE AGE MONKS ;dont make them if ally has them?
+; CASTLE AGE MONKS 
 (defrule
     (current-age == castle-age)
     (and
@@ -230,10 +230,25 @@
 
 (defrule
     (current-age == imperial-age)
-    (gold-amount > 1300)
+    (gold-amount > 1200)
     (can-train missionary)
 =>
     (train missionary)
+)
+
+; MONKS FOR RELIC TRANSFUSION
+(defrule
+    (or
+        (civ-selected burgundian)(civ-selected aztec)
+    )
+    (amount-hold-relics > 0)
+    (and
+        (unit-type-count-total monk g:< gl-monkQtyLow) 
+        (unit-type-count-total 286 g:< gl-monkQtyLow) 
+    )    
+    (can-train monk)
+=>
+    (train monk)
 )
 
 ; CASTLE

@@ -1001,21 +1001,45 @@
     ;(can-build monastery)
 =>  
     (chat-local-to-self "Trying To Build Monastery 1")  
-    (up-set-placement-data my-player-number -1 c:+ 1)
+    (up-set-placement-data my-player-number -1 c:+ 6)
     (up-build place-control 0 c: monastery)         
     ;(build monastery)
 )
 
 (defrule
-    (building-type-count-total monastery == 2)(building-type-count-total castle > 0)(building-type-count-total town-center > 1)
-    (can-build monastery)   
-    (building-type-count-total house > 25)
-    (civ-selected saracen)
-=> 
-    (chat-local-to-self "Trying To Build Monastery 2")         
-    (build monastery)
+    (amount-hold-relics > 0)
+    (and
+        (not(civ-selected burgundians))
+        (players-civ any-ally burgdundians)
+    )
+=>
+    (chat-to-allies "RELIC TRANSFUSION TO BURGUNDIANS")
+    (delete-building monastery)
 )
 
+(defrule
+    (amount-hold-relics > 0)
+    (and
+        (not(civ-selected aztec))
+        (players-civ any-ally aztec)
+    )
+    (not(civ-selected burgundians)
+=>
+    (chat-to-allies "RELIC TRANSFUSION TO AZTECS")
+    (delete-building monastery)
+)
+
+(defrule
+    (or
+        (civ-selected burgundian)(civ-selected aztec)
+    )
+    (amount-hold-relics > 0)
+    (up-can-build 0 c: monastery)
+=>  
+    (chat-local-to-self "BUILDING RELIC TRANSFUSION MONASTERY")  
+    (up-set-placement-data my-player-number -1 c:- 6)
+    (up-build place-control 0 c: monastery)         
+)
 
 ; TOWERS
 ; BOMBARD TOWER
