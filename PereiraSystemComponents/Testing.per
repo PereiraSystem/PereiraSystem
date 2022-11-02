@@ -61,6 +61,8 @@
 (defconst gl-wall-end-y 487) 
 (defconst gl-wall-other-end-x 488) 
 (defconst gl-wall-other-end-y 489)
+(defconst gl-center-x 490)
+(defconst gl-center-y 491)
 
 (defrule
     (true) ;just in case
@@ -82,8 +84,7 @@
     (true)
 =>
     (up-get-point position-self gl-point-x)    ; the next constant y gets auto filled 
-    (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
-    (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)  
+    (up-get-point position-center gl-center-x)
     (disable-self)   
 )
 
@@ -91,39 +92,41 @@
     (true)
 =>  
     (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
-    (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)   
+    (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)
+    (up-chat-data-to-self "CENTER X" g: gl-center-x)
+    (up-chat-data-to-self "CENTER Y = %d" g: gl-center-y)    
     (disable-self)
 )
 
 (defrule
-    (up-compare-goal gl-point-x > position-center)
+    (up-compare-goal gl-point-x > gl-center-x)
 =>
     (chat-to-all "IM AT HIGH X ZONE")(disable-self)  
 )
 
 (defrule
-    (up-compare-goal gl-point-x < position-center) 
+    (up-compare-goal gl-point-x < gl-center-x) 
 =>
     (chat-to-all "IM AT LOW X ZONE")(disable-self)  
 )
 
 (defrule
-    (up-compare-goal gl-point-y > position-center)
+    (up-compare-goal gl-point-y > gl-center-y)
 =>
     (chat-to-all "IM AT HIGH Y ZONE")(disable-self)  
 )
 
 (defrule
-    (up-compare-goal gl-point-y < position-center) 
+    (up-compare-goal gl-point-y < gl-center-y) 
 =>
     (chat-to-all "IM AT LOW Y ZONE")(disable-self)  
 )
 ; ----
 (defrule
-    (up-compare-goal gl-point-x > position-center)
-    (up-compare-goal gl-point-y > position-center)
+    (up-compare-goal gl-point-x > gl-center-x)
+    (up-compare-goal gl-point-y > gl-center-y)
 =>
-    (chat-to-all "IM AT HIGH X ZONE AND HIGH Y")
+    ;(chat-to-all "IM AT HIGH X ZONE AND HIGH Y")
     (set-goal gl-wall-start-x 90)
     (set-goal gl-wall-start-y 120)
     (set-goal gl-wall-end-x 90)
@@ -134,10 +137,10 @@
 )
 
 (defrule
-    (up-compare-goal gl-point-x < position-center)
-    (up-compare-goal gl-point-y > position-center) 
+    (up-compare-goal gl-point-x < gl-center-x)
+    (up-compare-goal gl-point-y > gl-center-y) 
 =>
-    (chat-to-all "IM AT LOW X ZONE AND HIGH Y ")
+    ;(chat-to-all "IM AT LOW X ZONE AND HIGH Y ")
     (set-goal gl-wall-start-x 30)
     (set-goal gl-wall-start-y 90)
     (set-goal gl-wall-end-x 30)
@@ -146,10 +149,10 @@
 )
 
 (defrule
-    (up-compare-goal gl-point-x > position-center)
-    (up-compare-goal gl-point-y < position-center)
+    (up-compare-goal gl-point-x > gl-center-x)
+    (up-compare-goal gl-point-y < gl-center-y)
 =>
-    (chat-to-all "IM AT HIGH X ZONE AND LOW Y")
+    ;(chat-to-all "IM AT HIGH X ZONE AND LOW Y")
     (set-goal gl-wall-start-x 90)
     (set-goal gl-wall-start-y 30)
     (set-goal gl-wall-end-x 90)
@@ -158,10 +161,10 @@
 )
 
 (defrule
-    (up-compare-goal gl-point-x < position-center)
-    (up-compare-goal gl-point-y < position-center)
+    (up-compare-goal gl-point-x < gl-center-x)
+    (up-compare-goal gl-point-y < gl-center-y)
 =>
-    (chat-to-all "IM AT LOW X ZONE AND LOW Y")
+    ;(chat-to-all "IM AT LOW X ZONE AND LOW Y")
     (set-goal gl-wall-start-x 30)
     (set-goal gl-wall-start-y 90)
     (set-goal gl-wall-end-x 30)
