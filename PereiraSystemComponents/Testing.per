@@ -109,7 +109,6 @@
 
 ; TIMER 31 POSITION TO ALLIES
 (defrule(true)=>(enable-timer 31 6)(disable-self))
-
 (defrule
     (timer-triggered 31)
 =>  
@@ -180,6 +179,44 @@
 )
 
 
+; TIMER 32 POSITION STUFF
+(defrule(true)=>(enable-timer 32 8)(disable-self)) 
+(defrule
+    (up-compare-goal gl-point-x g:< 40) 
+    (timer-triggered 32)
+=>  
+    (disable-timer 32)
+    (enable-timer 32 60)
+    (chat-to-all "IM CLOSE TO THE LOW X BORDER")  
+)
+
+(defrule
+    (up-compare-goal gl-point-x g:> 80) 
+    (timer-triggered 32)
+=>  
+    (disable-timer 32)
+    (enable-timer 32 60)
+    (chat-to-all "IM CLOSE TO THE HIGH X BORDER")  
+)
+
+(defrule
+    (up-compare-goal gl-point-y g:< 40) 
+    (timer-triggered 32)
+=>  
+    (disable-timer 32)
+    (enable-timer 32 60)
+    (chat-to-all "IM CLOSE TO THE LOW Y BORDER")  
+)
+
+(defrule
+    (up-compare-goal gl-point-y g:> 80) 
+    (timer-triggered 32)
+=>  
+    (disable-timer 32)
+    (enable-timer 32 60)
+    (chat-to-all "IM CLOSE TO THE HIGH Y BORDER")  
+)
+
 ; CHECK OUR POSITION - COMBINED POINTS
 (defrule
     (up-compare-goal gl-point-x g:> gl-center-x)
@@ -221,6 +258,9 @@
     (chat-to-all "MY Y IS LOWER THAN X")
     (disable-self)  
 )
+
+
+
 
 ; ----
 (defrule
