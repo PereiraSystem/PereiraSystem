@@ -125,7 +125,19 @@
     (chat-to-all "IM AT LOW X ZONE AND HIGH Y == TOP CORNER OF MINIMAP")
 )
 
+(defrule
+    (up-compare-goal gl-point-x > position-center)
+    (up-compare-goal gl-point-y < position-center)
+=>
+    (chat-to-all "IM AT HIGH X ZONE AND LOW Y == BOTTOM CORNER OF MINIMAP")
+)
 
+(defrule
+    (up-compare-goal gl-point-x < position-center)
+    (up-compare-goal gl-point-y < position-center) 
+=>
+    (chat-to-all "IM AT LOW X ZONE AND LOW Y == LEFT CORNER OF MINIMAP")
+)
 
 
 (defrule
