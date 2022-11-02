@@ -83,6 +83,15 @@
 )
 
 (defrule
+    (true)
+=>   
+    (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
+    (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)
+    (up-chat-data-to-self "CENTER X = %d" g: gl-position-center-x)
+    (up-chat-data-to-self "CENTER Y = %d" g: gl-position-center-y)    
+)
+
+(defrule
     (up-compare-goal gl-point-x > gl-position-center-x)
 =>
     (chat-local-to-self "TOP X ZONE")
