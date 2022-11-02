@@ -85,28 +85,54 @@
 (defrule
     (up-compare-goal gl-point-x > gl-position-center-x)
 =>
-    (chat-local-to-self "IM AT THE 'EAST'")
-   
+    (chat-local-to-self "TOP X ZONE")
 )
 
 (defrule
     (up-compare-goal gl-point-x < gl-position-center-x)
 =>
-    (chat-local-to-self "IM AT THE 'WEST'")  
+    (chat-local-to-self "BOTTOM X ZONE")  
 )
 
 (defrule
-    (up-compare-goal gl-point-y g:> gl-position-center-y)
+    (up-compare-goal gl-point-y > gl-position-center-y)
 =>
-    (chat-local-to-self "IM AT THE 'NORTH'")
-    (disable-self)   
+    (chat-local-to-self "TOP Y ZONE")
 )
 
 (defrule
-    (up-compare-goal gl-point-y g:< gl-position-center-y)
+    (up-compare-goal gl-point-y < gl-position-center-y)
 =>
-    (chat-local-to-self "IM AT THE 'SOUTH'")
-    (disable-self)   
+    (chat-local-to-self "BOTTOM Y ZONE")  
+)
+
+
+(defrule
+    (up-compare-goal gl-point-x > gl-position-center-x)
+    (up-compare-goal gl-point-y > gl-position-center-y)    
+=>
+    (chat-local-to-self "TOP X AND TOP Y = RIGHT CORNER OF THE MAP")
+)
+
+(defrule
+    (up-compare-goal gl-point-x > gl-position-center-x)
+    (up-compare-goal gl-point-y < gl-position-center-y)    
+=>
+    (chat-local-to-self "TOP X AND BOTTOM Y = TOP CORNER OF THE MAP")
+)
+
+(defrule
+    (up-compare-goal gl-point-x < gl-position-center-x)
+    (up-compare-goal gl-point-y < gl-position-center-y)    
+=>
+    (chat-local-to-self "BOTTOM X AND BOTTOM Y = LEFT CORNER OF THE MAP")
+)
+
+(defrule
+    (up-compare-goal gl-point-x < gl-position-center-x)
+    (up-compare-goal gl-point-y > gl-position-center-y)    
+=>
+    (chat-local-to-self "BOTTOM X AND TOP Y = BOTTOM CORNER OF THE MAP")
 )
 
 (defrule
