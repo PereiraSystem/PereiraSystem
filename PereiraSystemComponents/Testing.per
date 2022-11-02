@@ -94,7 +94,15 @@
     (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
     (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)
     (up-chat-data-to-self "CENTER X = %d" g: gl-center-x)
-    (up-chat-data-to-self "CENTER Y = %d" g: gl-center-y)    
+    (up-chat-data-to-self "CENTER Y = %d" g: gl-center-y)
+    (disable-self) 
+)
+
+(defrule
+    (true)
+=>  
+    (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
+    (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y) 
 )
 
 (defrule
