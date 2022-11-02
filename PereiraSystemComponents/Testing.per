@@ -132,6 +132,13 @@
 )
 
 (defrule
+    (up-compare-goal gl-point-x g:> gl-center-x)
+    (up-compare-goal gl-point-x g:< gl-center-x)
+=>
+    (chat-to-all "IM AT HIGH X AND LOW Y ZONE - TOP OF THE MAP?")(disable-self)  
+)
+
+(defrule
     (up-compare-goal gl-point-y g:> gl-center-y)
 =>
     (chat-to-all "IM AT HIGH Y ZONE")(disable-self)  
@@ -152,7 +159,7 @@
 (defrule
     (up-compare-goal gl-point-x g:> gl-point-y) 
 =>
-    (chat-to-all "MY Y IS LOWER THAN X - im at the bottom in atacama at least")
+    (chat-to-all "MY Y IS LOWER THAN X")
     (disable-self)  
 )
 
