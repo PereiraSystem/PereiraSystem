@@ -99,7 +99,17 @@
     (chat-to-all "IM AT LOW X ZONE")
 )
 
+(defrule
+    (up-compare-goal gl-point-y > position-center)
+=>
+    (chat-to-all "IM AT HIGH Y ZONE")
+)
 
+(defrule
+    (up-compare-goal gl-point-y < position-center) 
+=>
+    (chat-to-all "IM AT LOW Y ZONE")
+)
 
 (defrule
     ;(building-type-count-total 793 < 3)
