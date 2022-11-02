@@ -55,13 +55,15 @@
 (defconst gl-point-y 501)
 (defconst gl-other-x 502)
 (defconst gl-other-y 503)
+(defconst gl-position-center-x 504)
+(defconst gl-position-center-y 505)
 
 (defrule
     (true)
 =>
     (set-goal gl-point-x 0)
-    (set-goal gl-other-x 0)
     (set-goal gl-point-y 0)
+    (set-goal gl-other-x 0)    
     (set-goal gl-other-y 0)
     (disable-self)  
 )
@@ -70,34 +72,35 @@
     (true)
 =>
     (up-get-point position-self gl-point-x)
+    (up-get-point position-center gl-position-center-x)      
     (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
     (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)
     (disable-self)   
 )
 
 (defrule
-    (up-compare-goal gl-point-x > position-center)
+    (up-compare-goal gl-point-x g:> gl-position-center-x)
 =>
     (chat-local-to-self "IM AT THE 'EAST'")
     (disable-self)   
 )
 
 (defrule
-    (up-compare-goal gl-point-x < position-center)
+    (up-compare-goal gl-point-x g:< gl-position-center-x)
 =>
     (chat-local-to-self "IM AT THE 'WEST'")
     (disable-self)   
 )
 
 (defrule
-    (up-compare-goal gl-point-y > position-center)
+    (up-compare-goal gl-point-y g:> gl-position-center-y)
 =>
     (chat-local-to-self "IM AT THE 'NORTH'")
     (disable-self)   
 )
 
 (defrule
-    (up-compare-goal gl-point-y < position-center)
+    (up-compare-goal gl-point-y g:< gl-position-center-y)
 =>
     (chat-local-to-self "IM AT THE 'SOUTH'")
     (disable-self)   
