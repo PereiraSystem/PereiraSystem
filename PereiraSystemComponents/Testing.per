@@ -207,7 +207,7 @@
 =>  
     (disable-timer 34)
     (enable-timer 34 60)
-    (chat-to-all "IM IN A CORNER - X LOW")  
+    (chat-to-all "Y LOW")  
 )
 
 (defrule
@@ -216,10 +216,51 @@
 =>  
     (disable-timer 34)
     (enable-timer 34 60)
-    (chat-to-all "IM IN A CORNER - X HIGH")  
+    (chat-to-all "X HIGH")  
 )
 
-; TIMER 35 POSITION STUFF
+
+; TIMER 36 POSITION STUFF
+(defrule(true)=>(enable-timer 36 17)(disable-self)) 
+(defrule
+    (up-compare-goal gl-point-x g:< 40)
+    (up-compare-goal gl-point-y g:< 40)        
+    (timer-triggered 36)
+=>  
+    (disable-timer 36)
+    (enable-timer 36 60)
+    (chat-to-all "CORNER A")  
+)
+
+(defrule
+    (up-compare-goal gl-point-x g:> 80)
+    (up-compare-goal gl-point-y g:> 80)        
+    (timer-triggered 36)
+=>  
+    (disable-timer 36)
+    (enable-timer 36 60)
+    (chat-to-all "CORNER B")  
+)
+(defrule
+    (up-compare-goal gl-point-x g:< 40)
+    (up-compare-goal gl-point-y g:> 80)        
+    (timer-triggered 36)
+=>  
+    (disable-timer 36)
+    (enable-timer 36 60)
+    (chat-to-all "CORNER C")  
+)
+(defrule
+    (up-compare-goal gl-point-x g:> 80)
+    (up-compare-goal gl-point-y g:< 40)        
+    (timer-triggered 36)
+=>  
+    (disable-timer 36)
+    (enable-timer 36 60)
+    (chat-to-all "CORNER D")  
+)
+
+; TIMER 36 POSITION STUFF COMBINED
 (defrule(true)=>(enable-timer 35 15)(disable-self)) 
 (defrule
     (up-compare-goal gl-point-y g:< 40)   
@@ -227,7 +268,7 @@
 =>  
     (disable-timer 35)
     (enable-timer 35 60)
-    (chat-to-all "IM IN A CORNER - y LOW")  
+    (chat-to-all "Y LOW")  
 )
 
 (defrule
@@ -236,37 +277,12 @@
 =>  
     (disable-timer 35)
     (enable-timer 35 60)
-    (chat-to-all "IM IN A CORNER - y HIGH")  
+    (chat-to-all "Y HIGH")  
 )
 
-; CHECK OUR POSITION - COMBINED POINTS
-(defrule
-    (up-compare-goal gl-point-x g:> gl-center-x)
-    (up-compare-goal gl-point-y g:< gl-center-y)
-=>
-    (chat-to-all "IM AT HIGH X AND LOW Y ZONE - TOP OF THE MAP?")(disable-self)  
-)
 
-(defrule
-    (up-compare-goal gl-point-x g:> gl-center-x)
-    (up-compare-goal gl-point-y g:> gl-center-y)
-=>
-    (chat-to-all "IM AT HIGH X AND HIGH Y ZONE - RIGHT OF THE MAP?")(disable-self)  
-)
 
-(defrule
-    (up-compare-goal gl-point-x g:< gl-center-x)
-    (up-compare-goal gl-point-y g:< gl-center-y)
-=>
-    (chat-to-all "IM AT LOW X AND LOW Y ZONE - LEFT OF THE MAP?")(disable-self)  
-)
 
-(defrule
-    (up-compare-goal gl-point-x g:< gl-center-x)
-    (up-compare-goal gl-point-y g:> gl-center-y)
-=>
-    (chat-to-all "IM AT LOW X AND HIGH Y ZONE - BOTTOM OF THE MAP?")(disable-self)  
-)
 
 (defrule
     (up-compare-goal gl-point-x g:< gl-point-y) 
