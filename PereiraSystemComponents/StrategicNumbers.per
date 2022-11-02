@@ -490,9 +490,10 @@
 
 (defrule 
     (current-age == castle-age)
-    (or(building-type-count monastery > 0)
-    (players-building-type-count any-ally monastery))
-    (or(building-type-count siege-workshop > 0)(building-type-count university > 0))    
+    (players-building-type-count any-ally monastery > 0)
+    (or
+        (building-type-count siege-workshop > 0)(building-type-count university > 0)
+    )    
 =>  
     (set-strategic-number sn-food-gatherer-percentage 57)
     (set-strategic-number sn-wood-gatherer-percentage 24)
