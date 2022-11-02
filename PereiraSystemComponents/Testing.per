@@ -83,8 +83,8 @@
 (defrule
     (true)
 =>  
-    ;(up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
-    ;(up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)   
+    (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
+    (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)   
     (do-nothing)
 )
 
@@ -116,28 +116,28 @@
     (up-compare-goal gl-point-x > position-center)
     (up-compare-goal gl-point-y > position-center)
 =>
-    (chat-to-all "IM AT HIGH X ZONE AND HIGH Y == RIGHT CORNER OF MINIMAP")(disable-self)  
+    (chat-to-all "IM AT HIGH X ZONE AND HIGH Y")(disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-x < position-center)
     (up-compare-goal gl-point-y > position-center) 
 =>
-    (chat-to-all "IM AT LOW X ZONE AND HIGH Y == TOP CORNER OF MINIMAP")(disable-self)  
+    (chat-to-all "IM AT LOW X ZONE AND HIGH Y ")(disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-x > position-center)
     (up-compare-goal gl-point-y < position-center)
 =>
-    (chat-to-all "IM AT HIGH X ZONE AND LOW Y == BOTTOM CORNER OF MINIMAP")(disable-self)  
+    (chat-to-all "IM AT HIGH X ZONE AND LOW Y")(disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-x < position-center)
     (up-compare-goal gl-point-y < position-center) 
 =>
-    (chat-to-all "IM AT LOW X ZONE AND LOW Y == LEFT CORNER OF MINIMAP")(disable-self)  
+    (chat-to-all "IM AT LOW X ZONE AND LOW Y")(disable-self)  
 )
 
 
