@@ -1007,7 +1007,11 @@
 )
 
 (defrule
-    (amount-hold-relics > 0)
+    (game-time > 900)
+    (or
+        (hold-relics)
+        (not(enemy-captured-relics))
+    )
     (and
         (not(civ-selected burgundians))
         (players-civ any-ally burgdundians)
@@ -1018,7 +1022,11 @@
 )
 
 (defrule
-    (amount-hold-relics > 0)
+    (game-time > 900)
+    (or
+        (hold-relics)
+        (not(enemy-captured-relics))
+    )
     (and
         (not(civ-selected aztec))
         (players-civ any-ally aztec)
@@ -1033,7 +1041,11 @@
     (or
         (civ-selected burgundian)(civ-selected aztec)
     )
-    (amount-hold-relics > 0)
+    (game-time > 900)
+    (or
+        (hold-relics)
+        (not(enemy-captured-relics))
+    )
     (up-can-build 0 c: monastery)
 =>  
     (chat-local-to-self "BUILDING RELIC TRANSFUSION MONASTERY")  
