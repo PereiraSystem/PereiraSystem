@@ -90,25 +90,25 @@
 (defrule
     (up-compare-goal gl-point-x > position-center)
 =>
-    (chat-to-all "IM AT HIGH X ZONE")
+    (chat-to-all "IM AT HIGH X ZONE")(disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-x < position-center) 
 =>
-    (chat-to-all "IM AT LOW X ZONE")
+    (chat-to-all "IM AT LOW X ZONE")(disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-y > position-center)
 =>
-    (chat-to-all "IM AT HIGH Y ZONE")
+    (chat-to-all "IM AT HIGH Y ZONE")(disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-y < position-center) 
 =>
-    (chat-to-all "IM AT LOW Y ZONE")
+    (chat-to-all "IM AT LOW Y ZONE")(disable-self)  
 )
 ; ----
 (defrule
