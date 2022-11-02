@@ -97,13 +97,13 @@
 (defrule
     (up-compare-goal gl-point-x > gl-position-center-x)
 =>
-    (chat-local-to-self "HIGH X ZONE ")
+    (chat-local-to-self "HIGH X ZONE - LET´S CALL THIS SOUTH ")
 )
 
 (defrule
     (up-compare-goal gl-point-x < gl-position-center-x)
 =>
-    (chat-local-to-self "BOTTOM X ZONE ")  
+    (chat-local-to-self "BOTTOM X ZONE - LET´S CALL THIS NORTH")  
 )
 
 (defrule
@@ -116,6 +116,21 @@
     (up-compare-goal gl-point-y < gl-position-center-y)
 =>
     (chat-local-to-self "BOTTOM Y ZONE - LETS CALL THIS EAST")  
+)
+
+
+(defrule
+    (up-compare-goal gl-point-x > gl-position-center-x)
+    (up-compare-goal gl-point-y > gl-position-center-y)
+=>
+    (chat-local-to-self "IM SOUTH WEST")
+)
+
+(defrule
+    (up-compare-goal gl-point-x > gl-position-center-x)
+    (up-compare-goal gl-point-y < gl-position-center-y)    
+=>
+    (chat-local-to-self "IM SOUTH EAST")
 )
 
 
