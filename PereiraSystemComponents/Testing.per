@@ -51,15 +51,14 @@
 )
 
 ; USER PATCH WALL
-; IMAGINE THE MINIMAP IS JUST SITTING ON ITS BOTTOM LEFT SIDE 
-; (OR TURN YOUR NECK TO THE RIGHT)
-; SO X AXIS = WEST EAST AND Y AXIS = SOUTH NORTH
 (defconst gl-point-x 500)
 (defconst gl-point-y 501)
 (defconst gl-other-x 502)
 (defconst gl-other-y 503)
-(defconst gl-position-center-x 504)
-(defconst gl-position-center-y 505)
+(defconst gl-wall-start-x 506)
+(defconst gl-wall-start-y 507)
+(defconst gl-wall-end-x 508)
+(defconst gl-wall-end-y 509) ; limit constant 510
 
 (defrule
     (true)
@@ -67,14 +66,18 @@
     (set-goal gl-point-x 0)
     (set-goal gl-point-y 0)
     (set-goal gl-other-x 0)    
-    (set-goal gl-other-y 0) 
+    (set-goal gl-other-y 0)
+    (set-goal gl-wall-start-x 0)
+    (set-goal gl-wall-start-y 0)
+    (set-goal gl-wall-end-x 0)
+    (set-goal gl-wall-end-y 0)    
     (disable-self)  
 )
 
 (defrule
     (true)
 =>
-    (up-get-point position-self gl-point-x)     
+    (up-get-point position-self gl-point-x)    ; the next constant y gets auto filled 
     (up-chat-data-to-self "MY POS X = %d" g: gl-point-x)
     (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)  
     (disable-self)   
@@ -116,36 +119,54 @@
     (up-compare-goal gl-point-x > position-center)
     (up-compare-goal gl-point-y > position-center)
 =>
-    (chat-to-all "IM AT HIGH X ZONE AND HIGH Y")(disable-self)  
+    (chat-to-all "IM AT HIGH X ZONE AND HIGH Y")
+    (set-goal gl-wall-start-x 90)
+    (set-goal gl-wall-start-y 90)
+    (set-goal gl-wall-end-x 90)
+    (set-goal gl-wall-end-y 90)(disable-self)    
 )
 
 (defrule
     (up-compare-goal gl-point-x < position-center)
     (up-compare-goal gl-point-y > position-center) 
 =>
-    (chat-to-all "IM AT LOW X ZONE AND HIGH Y ")(disable-self)  
+    (chat-to-all "IM AT LOW X ZONE AND HIGH Y ")
+    (set-goal gl-wall-start-x 30)
+    (set-goal gl-wall-start-y 90)
+    (set-goal gl-wall-end-x 30)
+    (set-goal gl-wall-end-y 90)
+    (disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-x > position-center)
     (up-compare-goal gl-point-y < position-center)
 =>
-    (chat-to-all "IM AT HIGH X ZONE AND LOW Y")(disable-self)  
+    (chat-to-all "IM AT HIGH X ZONE AND LOW Y")
+    (set-goal gl-wall-start-x 90)
+    (set-goal gl-wall-start-y 30)
+    (set-goal gl-wall-end-x 90)
+    (set-goal gl-wall-end-y 30)    
+    (disable-self)  
 )
 
 (defrule
     (up-compare-goal gl-point-x < position-center)
     (up-compare-goal gl-point-y < position-center) 
 =>
-    (chat-to-all "IM AT LOW X ZONE AND LOW Y")(disable-self)  
+    (chat-to-all "IM AT LOW X ZONE AND LOW Y")
+    (set-goal gl-wall-start-x 30)
+    (set-goal gl-wall-start-y 90)
+    (set-goal gl-wall-end-x 30)
+    (set-goal gl-wall-end-y 90)    
+    (disable-self)  
 )
 
 
 (defrule
-    ;(building-type-count-total 793 < 3)
-    (up-can-build-line gl-point-x position-corner c: palisade-wall)
+    (up-can-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
 =>
-    (up-build-line gl-point-x position-corner c: palisade-wall)
+    (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
     (chat-local-to-self "BUILDING THE WALL!")    
 )
 
