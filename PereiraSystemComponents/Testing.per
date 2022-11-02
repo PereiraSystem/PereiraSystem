@@ -165,7 +165,8 @@
 
 
 (defrule
-    (up-can-build-line 0 gl-wall-start-x c: palisade-wall)
+    (true)
+    ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
     (chat-local-to-self "BUILDING THE WALL!")    
