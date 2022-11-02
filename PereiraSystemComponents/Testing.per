@@ -108,12 +108,13 @@
 )
 
 ; TIMER 31 POSITION TO ALLIES
-(defrule(true)=>(enable-timer 31 6)(disable-self)) 
+(defrule(true)=>(enable-timer 31 6)(disable-self))
+
 (defrule
     (timer-triggered 31)
 =>  
     (disable-timer 31)
-    (enable-timer 31 60)
+   ; (enable-timer 31 60)
     (chat-to-allies "MY POS X = %d" g: gl-point-x)
     (chat-to-allies "MY POS Y = %d" g: gl-point-y) 
 )
