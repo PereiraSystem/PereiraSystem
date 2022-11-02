@@ -128,7 +128,8 @@
     (set-goal gl-wall-start-y 120)
     (set-goal gl-wall-end-x 90)
     (set-goal gl-wall-end-y 40)
-    (set-goal gl-wall-other-end-x 120)     
+    (set-goal gl-wall-other-end-x 120)
+    (set-goal gl-wall-other-end-y 90)    
     (disable-self)    
 )
 
@@ -173,7 +174,7 @@
     (true)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
-    (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
+    ;(up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
     ;(chat-local-to-self "BUILDING THE WALL SECTION A !")
     (do-nothing)
 )
