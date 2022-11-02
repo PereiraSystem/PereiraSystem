@@ -79,14 +79,14 @@
 )
 
 (defrule
-    (up-compare-goal gl-point-x g:> gl-position-center-x)
+    (up-compare-goal gl-point-x > gl-position-center-x)
 =>
     (chat-local-to-self "IM AT THE 'EAST'")
     (disable-self)   
 )
 
 (defrule
-    (up-compare-goal gl-point-x g:< gl-position-center-x)
+    (up-compare-goal gl-point-x < gl-position-center-x)
 =>
     (chat-local-to-self "IM AT THE 'WEST'")
     (disable-self)   
