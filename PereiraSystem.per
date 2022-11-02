@@ -112,7 +112,8 @@
 ; TIMER 11 MILITARY REPORT
 (defrule(true)=>(enable-timer 11 60)(disable-self)) 
 (defrule
-	(timer-triggered 11)(player-in-game any-enemy > 0)
+	(timer-triggered 11)
+    (up-players-in-game enemy > 0)
 =>
 	(disable-timer 11)
     (enable-timer 11 90)               
