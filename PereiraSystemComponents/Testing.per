@@ -108,34 +108,6 @@
 
 
 (defrule
-    (up-compare-goal gl-point-x > gl-position-center-x)
-    (up-compare-goal gl-point-y > gl-position-center-y)    
-=>
-    (chat-local-to-self "TOP X AND TOP Y = RIGHT CORNER OF THE MAP")
-)
-
-(defrule
-    (up-compare-goal gl-point-x > gl-position-center-x)
-    (up-compare-goal gl-point-y < gl-position-center-y)    
-=>
-    (chat-local-to-self "TOP X AND BOTTOM Y = TOP CORNER OF THE MAP")
-)
-
-(defrule
-    (up-compare-goal gl-point-x < gl-position-center-x)
-    (up-compare-goal gl-point-y < gl-position-center-y)    
-=>
-    (chat-local-to-self "BOTTOM X AND BOTTOM Y = LEFT CORNER OF THE MAP")
-)
-
-(defrule
-    (up-compare-goal gl-point-x < gl-position-center-x)
-    (up-compare-goal gl-point-y > gl-position-center-y)    
-=>
-    (chat-local-to-self "BOTTOM X AND TOP Y = BOTTOM CORNER OF THE MAP")
-)
-
-(defrule
     (true)
 =>
     (up-get-point position-enemy gl-point-x)
