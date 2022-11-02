@@ -158,7 +158,7 @@
 ; TIMER 32 POSITION STUFF
 (defrule(true)=>(enable-timer 32 8)(disable-self)) 
 (defrule
-    (up-compare-goal gl-point-x g:< 40) 
+    (up-compare-goal gl-point-x < 40) 
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -167,7 +167,7 @@
 )
 
 (defrule
-    (up-compare-goal gl-point-x g:> 80) 
+    (up-compare-goal gl-point-x > 80) 
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -176,7 +176,7 @@
 )
 
 (defrule
-    (up-compare-goal gl-point-y g:< 40) 
+    (up-compare-goal gl-point-y < 40) 
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -185,7 +185,7 @@
 )
 
 (defrule
-    (up-compare-goal gl-point-y g:> 80) 
+    (up-compare-goal gl-point-y > 80) 
     (timer-triggered 32)
 =>  
     (disable-timer 32)
