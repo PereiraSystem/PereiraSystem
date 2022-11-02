@@ -141,8 +141,8 @@
 
 ; CHECK POSITION: BEING IN THE MIDDLE
 (defrule
-    (up-compare-goal gl-point-y g:> 40)
-    (up-compare-goal gl-point-y g:< 80)    
+    (up-compare-goal gl-point-x g:> 40)
+    (up-compare-goal gl-point-x g:< 80)    
 =>
     (chat-to-all "IM IN THE MIDDLE OF THE Y AXIS")  
 )
@@ -192,6 +192,29 @@
     (enable-timer 32 60)
     (chat-to-all "IM CLOSE TO THE HIGH Y BORDER")  
 )
+
+; TIMER 33 POSITION STUFF
+(defrule(true)=>(enable-timer 32 10)(disable-self)) 
+(defrule
+    (up-compare-goal gl-point-x g:> 40)
+    (up-compare-goal gl-point-x g:< 80)    
+    (timer-triggered 33)
+=>  
+    (disable-timer 33)
+    (enable-timer 33 60)
+    (chat-to-all "IM IN THE MIDDLE OF THE X AXIS")  
+)
+
+(defrule
+    (up-compare-goal gl-point-y g:> 40)
+    (up-compare-goal gl-point-y g:< 80)    
+    (timer-triggered 33)
+=>  
+    (disable-timer 33)
+    (enable-timer 33 60)
+    (chat-to-all "IM IN THE MIDDLE OF THE Y AXIS")  
+)
+
 
 ; CHECK OUR POSITION - COMBINED POINTS
 (defrule
