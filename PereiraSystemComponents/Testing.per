@@ -76,6 +76,34 @@
 )
 
 (defrule
+    (up-compare-goal gl-point-x > position-center)
+=>
+    (chat-local-to-self "IM AT THE 'EAST'")
+    (disable-self)   
+)
+
+(defrule
+    (up-compare-goal gl-point-x < position-center)
+=>
+    (chat-local-to-self "IM AT THE 'WEST'")
+    (disable-self)   
+)
+
+(defrule
+    (up-compare-goal gl-point-y > position-center)
+=>
+    (chat-local-to-self "IM AT THE 'NORTH'")
+    (disable-self)   
+)
+
+(defrule
+    (up-compare-goal gl-point-y < position-center)
+=>
+    (chat-local-to-self "IM AT THE 'SOUTH'")
+    (disable-self)   
+)
+
+(defrule
     (true)
 =>
     (up-get-point position-enemy gl-point-x)
