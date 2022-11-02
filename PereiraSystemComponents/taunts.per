@@ -63,7 +63,7 @@
 	(up-timer-status 50 == timer-disabled)
 =>
     (enable-timer 50 1)
-	(chat-to-allies "THEY ARE COMING!")	
+	;(chat-to-allies "THEY ARE COMING!")	
 )
 
 (defrule
@@ -71,8 +71,9 @@
 	(town-under-attack)
 =>
     (disable-timer 50)
-	(enable-timer 50 30)
-	(chat-to-allies "48 HELP!")	
+	(enable-timer 50 60)
+	(chat-to-allies "48")
+	;(chat-to-allies "HELP ME!")			
 )
 
 (defrule
@@ -80,7 +81,6 @@
 	(not(town-under-attack))
 =>
     (disable-timer 50)	
-	(chat-to-allies "IT´S OK!")
 )
 
 (defrule
@@ -93,7 +93,7 @@
 (defrule
 	(taunt-detected any-ally 48)
 =>
-    (chat-to-allies "I WILL HELP YOU!")
+    ;(chat-to-allies "I WILL HELP YOU!")
 	(acknowledge-taunt any-ally 48)	
 )
 
