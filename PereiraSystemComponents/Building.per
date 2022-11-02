@@ -605,42 +605,6 @@
     (build-gate 2)  
 )
 
-; USER PATCH WALL
-(defconst gl-point-x 500)
-(defconst gl-point-y 501)
-(defconst gl-other-x 502)
-(defconst gl-other-y 503)
-(defconst gl-point-x2 504)
-(defconst gl-point-y2 505)
-(defconst gl-other-x2 506)
-(defconst gl-other-y2 507)
-
-(defrule
-    (true)
-=>
-    (set-goal gl-point-x 35)
-    (set-goal gl-other-x 35)
-    (set-goal gl-point-y 90)
-    (set-goal gl-other-y 90)
-    (set-goal gl-point-x2 60)
-    (set-goal gl-other-x2 120)
-    (set-goal gl-point-y2 85)
-    (set-goal gl-other-y2 95)    
-)
-
-(defrule
-    (building-type-count-total 793 < 3)
-    ;(up-can-build-line gl-point-y gl-other-y c: 793)
-=>
-    ;(up-build-line gl-point-y gl-other-y c: palisade-gate)
-    ;(up-build-line gl-point-y gl-other-y c: 798)    ;diagonal left-right
-    ;(up-build-line gl-point-y gl-other-y c: 801)    ;diagonal north-south   
-    ;(up-build-line gl-point-y gl-other-y c: 789)    ;along y axis
-    ;(up-build-line gl-point-y gl-other-y c: 793)    ;along x axis
-    ;(chat-to-player my-player-number "BUILDING THE GATES TO THE WALL FRONT")
-    (do-nothing)
-)
-
 ; WALL
 ; STONE WALL PERIMETER 1
 (defrule 

@@ -49,3 +49,40 @@
 =>
 	(delete-unit trade-cart)
 )
+
+; USER PATCH WALL
+(defconst gl-point-x 500)
+(defconst gl-point-y 501)
+(defconst gl-other-x 502)
+(defconst gl-other-y 503)
+
+(defrule
+    (true)
+=>
+    (set-goal gl-point-x 0)
+    (set-goal gl-other-x 0)
+    (set-goal gl-point-y 0)
+    (set-goal gl-other-y 0)
+    (disable-self)  
+)
+
+(defrule
+    (true)
+=>
+    (up-get-point position-self gl-point-x)
+    (up-chat-data-to-self "MY POS X = " gl-point-x)
+    (up-chat-data-to-self "MY POS Y = " gl-point-y)    
+)
+
+(defrule
+    (building-type-count-total 793 < 3)
+    ;(up-can-build-line gl-point-y gl-other-y c: 793)
+=>
+    ;(up-build-line gl-point-y gl-other-y c: palisade-gate)
+    ;(up-build-line gl-point-y gl-other-y c: 798)    ;diagonal left-right
+    ;(up-build-line gl-point-y gl-other-y c: 801)    ;diagonal north-south   
+    ;(up-build-line gl-point-y gl-other-y c: 789)    ;along y axis
+    ;(up-build-line gl-point-y gl-other-y c: 793)    ;along x axis
+    ;(chat-to-player my-player-number "BUILDING THE GATES TO THE WALL FRONT")
+    (do-nothing)
+)
