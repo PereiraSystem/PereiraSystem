@@ -199,6 +199,45 @@
     (chat-to-all "IM IN THE MIDDLE OF THE Y AXIS")  
 )
 
+; TIMER 34 POSITION STUFF
+(defrule(true)=>(enable-timer 34 12)(disable-self)) 
+(defrule
+    (up-compare-gsoldiersoal gl-point-x g:< 40)   
+    (timer-triggered 34)
+=>  
+    (disable-timer 34)
+    (enable-timer 34 60)
+    (chat-to-all "IM IN A CORNER - X LOW")  
+)
+
+(defrule
+    (up-compare-goal gl-point-x g:> 80)    
+    (timer-triggered 34)
+=>  
+    (disable-timer 34)
+    (enable-timer 34 60)
+    (chat-to-all "IM IN A CORNER - X HIGH")  
+)
+
+; TIMER 35 POSITION STUFF
+(defrule(true)=>(enable-timer 35 15)(disable-self)) 
+(defrule
+    (up-compare-goal gl-point-y g:< 40)   
+    (timer-triggered 35)
+=>  
+    (disable-timer 35)
+    (enable-timer 35 60)
+    (chat-to-all "IM IN A CORNER - y LOW")  
+)
+
+(defrule
+    (up-compare-goal gl-point-y g:> 80)    
+    (timer-triggered 35)
+=>  
+    (disable-timer 35)
+    (enable-timer 35 60)
+    (chat-to-all "IM IN A CORNER - y HIGH")  
+)
 
 ; CHECK OUR POSITION - COMBINED POINTS
 (defrule
