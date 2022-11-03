@@ -240,6 +240,19 @@
 )
 
 (defrule
+    (up-compare-goal gl-positionXisLow == 1) ; left corner
+    (up-compare-goal gl-positionYisLow == 1)
+=>
+    (set-goal gl-wall-start-x 50)
+    (set-goal gl-wall-start-y 50)
+    (set-goal gl-wall-end-x 0)
+    (set-goal gl-wall-end-y 50)
+    (set-goal gl-wall-other-end-x 50)
+    (set-goal gl-wall-other-end-y 0)    
+    (disable-self)    
+)
+
+(defrule
     (or 
         (up-compare-goal gl-positionXisHigh == 1)
         (or
