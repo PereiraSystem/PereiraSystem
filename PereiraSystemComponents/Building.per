@@ -202,10 +202,7 @@
 
 ; HOUSES
 (defrule
-    (or
-        (wood-amount > 125)
-        (and(civ-selected japanese)(wood-amount > 75))
-    )
+    (wood-amount g:> gl-minimumWoodForLC)
     (or
         (and(housing-headroom < 3)(population-headroom > 0))
         (wood-amount > 9000)
