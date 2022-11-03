@@ -226,6 +226,7 @@
 ) 
 
 ; PREPARING WALL POINTS ACCORDING TO THE POSITIONS WE GOT BEFORE
+; high x
 (defrule
     (up-compare-goal gl-positionXisHigh == 1) ; right corner
     (up-compare-goal gl-positionYisHigh == 1)
@@ -264,7 +265,42 @@
     (set-goal gl-wall-other-end-y 120)    
     (disable-self)    
 )
+;medium x
+(defrule
+    (up-compare-goal gl-positionXisMedium == 1) ; right corner
+    (up-compare-goal gl-positionYisHigh == 1)
+=>
+    (set-goal gl-wall-start-x 70)
+    (set-goal gl-wall-start-y 70)
+    (set-goal gl-wall-end-x 120)
+    (set-goal gl-wall-end-y 70)
+    (set-goal gl-wall-other-end-x 70)
+    (set-goal gl-wall-other-end-y 120)    
+    (disable-self)    
+)
 
+(defrule
+    (up-compare-goal gl-positionXisMedium == 1) 
+    (up-compare-goal gl-positionYisMedium == 1)
+    (can-build-wall palisade-wall)
+=>
+    (build-wall palisade-wall)
+    (disable-self)    
+)
+
+(defrule
+    (up-compare-goal gl-positionXisMedium == 1) 
+    (up-compare-goal gl-positionYisLow == 1)
+=>
+    (set-goal gl-wall-start-x 70)
+    (set-goal gl-wall-start-y 70)
+    (set-goal gl-wall-end-x 70)
+    (set-goal gl-wall-end-y 70)
+    (set-goal gl-wall-other-end-x 70)
+    (set-goal gl-wall-other-end-y 0)    
+    (disable-self)    
+)
+; low x
 (defrule
     (up-compare-goal gl-positionXisLow == 1) ; left corner
     (up-compare-goal gl-positionYisLow == 1)
