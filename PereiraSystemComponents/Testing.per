@@ -160,13 +160,41 @@
     (up-compare-goal gl-positionXisHigh == 1)
 =>
     (chat-to-allies "x hihh") 
-    (disable-self)  
+    (disable-self)  35
 )
 
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)
 =>
     (chat-to-allies "x med") 
+    (disable-self)  
+)
+
+(defrule
+    (up-compare-goal gl-positionXisLow == 1)
+=>
+    (chat-to-allies "x low") 
+    (disable-self)  
+)
+
+(defrule
+    (up-compare-goal gl-positionYisHigh == 1)
+=>
+    (chat-to-allies "Y hihh") 
+    (disable-self)  
+)
+
+(defrule
+    (up-compare-goal gl-positionYisMedium == 1)
+=>
+    (chat-to-allies "Y med") 
+    (disable-self)  
+)
+
+(defrule
+    (up-compare-goal gl-positionYisLow == 1)
+=>
+    (chat-to-allies "Y low") 
     (disable-self)  
 )
 
