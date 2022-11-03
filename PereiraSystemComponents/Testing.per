@@ -168,6 +168,7 @@
     (up-chat-data-to-self "MY POS X = %d" g: gl-myPosition-x)
     (up-chat-data-to-self "MY POS Y = %d" g: gl-myPosition-y)  
 )
+
 (defrule
     (true)
 =>    
@@ -179,6 +180,11 @@
     (set-goal gl-wallPoint3-y 0)
     (set-goal gl-wallPoint4-x 0) ;west
     (set-goal gl-wallPoint4-y 0)
+
+    (set-goal gl-wallPoint1-x gl-myPosition-x) ;north
+    (set-goal gl-wallPoint1-y gl-myPosition-y)    
+    (up-modify-goal gl-wallPoint1-x c:+ 20)
+    (up-modify-goal gl-wallPoint1-y c:+ 20)    
 )
 
 
@@ -438,10 +444,10 @@
     )
     (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 793 == 0)
-    (building-type-count-total palisade-wall == 0)
+    (building-type-count-total palisade-wall < 2)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: 793)
-    (chat-local-to-self "BUILDING THE WALL GATE!")
+    (chat-local-to-self "BUILDING THE WALL GATES!")
 )
 
 (defrule    
@@ -469,7 +475,7 @@
     )
     (wood-amount g:> gl-minimumWoodForLC) 
     (building-type-count-total 789 == 0)
-    (building-type-count-total palisade-wall == 0)
+    (building-type-count-total palisade-wall < 2)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: 789)
     (chat-local-to-self "BUILDING THE WALL GATES!")
@@ -543,14 +549,14 @@
 )
 
 (defrule
-    (building-type-count-total 793 > 2)
+    (building-type-count-total 793 > 3)
 =>
     (delete-building 793)
     (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")
 )
 
 (defrule
-    (building-type-count-total 789 > 2)
+    (building-type-count-total 789 > 3)
 =>
     (delete-building 789)
     (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")    
