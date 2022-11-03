@@ -735,10 +735,13 @@
         )
         (wood-amount > 305)
     )
-    (can-build barracks)
+    ;(can-build barracks)
+    (up-can-build 0 barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks 1")
-    (build barracks)
+    (up-set-placement-data my-player-number -1 c: 12)
+    (up-build place-control 0 c: barracks)    
+    ;(build barracks)
 
 )
 
