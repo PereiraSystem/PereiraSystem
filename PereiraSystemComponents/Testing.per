@@ -477,6 +477,7 @@
 ; FINISHED GATES, NOW THE PALISADE
 (defrule
     (true)    
+    (wood-amount g:> gl-minimumWoodForLC)    
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
     ;(chat-local-to-self "BUILDING THE WALL SECTION A !")
@@ -484,6 +485,7 @@
 
 (defrule
     (building-type-count palisade-wall > 4)
+    (wood-amount g:> gl-minimumWoodForLC)    
 =>
     (up-build-line gl-wall-start-x gl-wall-other-end-x c: palisade-wall)
     ;(chat-local-to-self "BUILDING THE WALL SECTION B !")
@@ -502,6 +504,7 @@
             )
         )
     ) 
+    (wood-amount g:> gl-minimumWoodForLC)    
     (building-type-count palisade-wall > 8)  
 =>
     (up-build-line gl-wall-end-x gl-wall-final-x c: palisade-wall)
