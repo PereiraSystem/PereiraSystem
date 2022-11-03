@@ -204,25 +204,24 @@
 =>  
     ;(set-goal gl-wall-start-x gl-mapSizeDivider1-x)
     (set-goal gl-wall-start-x 80)
-
     ;(set-goal gl-wall-start-y gl-mapSizeDivider1-y)
     (set-goal gl-wall-start-y 40)
-
-    ;(set-goal gl-wall-end-x gl-mapSizeDivider2-x)
     (set-goal gl-wall-end-x 80)    
-
-    ;(set-goal gl-wall-end-y gl-mapSizeThird)
     (set-goal gl-wall-end-y 80) 
-   
     (set-goal gl-wall-other-end-x 120) 
-
-    ;(set-goal gl-wall-other-end-y gl-mapSizeDivider1-y)
     (set-goal gl-wall-other-end-y 40)    
-
     (set-goal gl-wall-final-x 120)
-
-    ;(set-goal gl-wall-final-y gl-mapSizeDivider2-y)
     (set-goal gl-wall-final-y 80)
+
+    ; make wall smaller
+    (up-modify-goal gl-wall-start-x c:+ 3)
+    (up-modify-goal gl-wall-start-y c:+ 3)
+    (up-modify-goal gl-wall-end-x c:+ 3)    
+    (up-modify-goal gl-wall-end-y c:+ 3) 
+    (up-modify-goal gl-wall-other-end-x 120) 
+    (up-modify-goal gl-wall-other-end-y c:- 3)    
+    (up-modify-goal gl-wall-final-x 120)
+    (up-modify-goal gl-wall-final-y c:+ 3)
 
     (set-goal gl-positionCode 2)         
     (chat-to-allies "IM AT THE NORTH EAST!")
