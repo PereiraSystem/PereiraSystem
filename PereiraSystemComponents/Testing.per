@@ -246,16 +246,18 @@
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
     (chat-local-to-self "BUILDING THE WALL SECTION A !")
+    (enable-timer 35 120)
     (do-nothing)
 )
 
 (defrule
-    (true)
+    (timer-triggered 35)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
+    (disable-timer 35)
     (up-build-line gl-wall-end-x gl-wall-other-end-x c: palisade-wall)
     (chat-local-to-self "BUILDING THE WALL SECTION B !")
-    (do-nothing)
+
 )
 
 (defrule
