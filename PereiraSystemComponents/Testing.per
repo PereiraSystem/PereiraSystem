@@ -83,20 +83,9 @@
 (defconst gl-mapSizeThird 509)
 (defconst gl-mapSizeTwoThirds 510)
 
-#load-if-defined TINY-MAP
-(defrule
-    (true)
-=>    
-    (set-goal gl-mapSizeDivider1-x 80) ;north
-    (set-goal gl-mapSizeDivider1-y 40)
-    (set-goal gl-mapSizeDivider2-x 80) ;east
-    (set-goal gl-mapSizeDivider2-y 80)
-    (set-goal gl-mapSizeDivider3-x 40) ;south
-    (set-goal gl-mapSizeDivider3-y 80)
-    (set-goal gl-mapSizeDivider4-x 40) ;west
-    (set-goal gl-mapSizeDivider4-y 40)
-)
-#end-if
+
+
+
 
 
 (defrule
@@ -202,16 +191,39 @@
 )
 
 (defrule
+    (true)
+=>    
+    (set-goal gl-mapSizeDivider1-x 80) ;north
+    (set-goal gl-mapSizeDivider1-y 40)
+    (set-goal gl-mapSizeDivider2-x 80) ;east
+    (set-goal gl-mapSizeDivider2-y 80)
+    (set-goal gl-mapSizeDivider3-x 40) ;south
+    (set-goal gl-mapSizeDivider3-y 80)
+    (set-goal gl-mapSizeDivider4-x 40) ;west
+    (set-goal gl-mapSizeDivider4-y 40)
+)
+
+(defrule
     (up-compare-goal gl-positionXisHigh == 1)
     (up-compare-goal gl-positionYisMedium == 1)
 =>  
-    (set-goal gl-wall-start-x gl-mapSizeDivider1-x)
-    (set-goal gl-wall-start-y gl-mapSizeDivider1-y)
-    (set-goal gl-wall-end-x gl-mapSizeDivider2-x)
+    ;(set-goal gl-wall-start-x gl-mapSizeDivider1-x)
+    (set-goal gl-wall-start-x 80)
+
+    ;(set-goal gl-wall-start-y gl-mapSizeDivider1-y)
+    (set-goal gl-wall-start-y 40)
+
+    ;(set-goal gl-wall-end-x gl-mapSizeDivider2-x)
+    (set-goal gl-wall-end-x 80)    
+
     ;(set-goal gl-wall-end-y gl-mapSizeThird)
-    (set-goal gl-wall-end-y gl-mapSizeDivider2-y)    
-    (set-goal gl-wall-other-end-x 120)
-    (set-goal gl-wall-other-end-y gl-mapSizeDivider1-y)
+    (set-goal gl-wall-end-y 80) 
+   
+    (set-goal gl-wall-other-end-x 120) 
+
+    ;(set-goal gl-wall-other-end-y gl-mapSizeDivider1-y)
+    (set-goal gl-wall-other-end-y 40)    
+
     (set-goal gl-wall-final-x 120)
     (set-goal gl-wall-final-y gl-mapSizeDivider2-y)      
     (set-goal gl-positionCode 2)         
