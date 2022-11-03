@@ -145,115 +145,70 @@
 )
 
 ; TIMER 32 POSITION STUFF
-; HIGH X
+; TOP X
+(defrule
+    (up-compare-goal gl-positionXisHigh == 1)
+    (up-compare-goal gl-positionYisHigh == 1)
+=>  
+    (chat-to-allies "IM AT THE CORNER TOP")
+    (disable-self)
+)
 
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
-=>
-    (chat-to-allies "x hihh") 
+    (up-compare-goal gl-positionYisMedium == 1)
+=>  
+    (chat-to-allies "IM AT MIDDLE OF Y AXIS CLOSE TO THE X BORDER")
+    (disable-self)  
+)
+
+(defrule
+    (up-compare-goal gl-positionXisHigh == 1)
+    (up-compare-goal gl-positionYisLow == 1)
+=>  
+    (chat-to-allies "IM AT CORNER HIGH X LOW Y")
+    (disable-self)  
+)
+
+; CENTER X
+(defrule
+    (up-compare-goal gl-positionXisMedium == 1)
+    (up-compare-goal gl-positionYisHigh == 1)
+=>  
+    (chat-to-allies "IM AT MIDDLE OF X AXIS CLOSE TO HIGH Y BORDER")
     (disable-self)
 )
 
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)
-=>
-    (chat-to-allies "x med") 
-    (disable-self)  
-)
-
-(defrule
-    (up-compare-goal gl-positionXisLow == 1)
-=>
-    (chat-to-allies "x low") 
-    (disable-self)  
-)
-
-(defrule
-    (up-compare-goal gl-positionYisHigh == 1)
-=>
-    (chat-to-allies "Y HIGH") 
-    (disable-self)  
-)
-
-(defrule
-    (up-compare-goal gl-positionYisMedium == 1)
-=>
-    (chat-to-allies "Y med") 
-    (disable-self)  
-)
-
-(defrule
-    (up-compare-goal gl-positionYisLow == 1)
-=>
-    (chat-to-allies "Y low") 
-    (disable-self)  
-)
-
-(defrule
-    (up-compare-goal gl-positionXisHigh == 1)
-    (up-compare-goal gl-positionYisHigh == 1)
-=>  
-    (chat-to-allies "IM AT THE CORNER TOP")  (disable-self)  
-)
-
-(defrule
-    (up-compare-goal gl-positionXisHigh == 1)
     (up-compare-goal gl-positionYisMedium == 1)
 =>  
-    (chat-to-allies "IM AT MIDDLE OF Y AXIS CLOSE TO THE X BORDER")  (disable-self)  
-
-)
-
-(defrule
-    (up-compare-goal gl-positionXisHigh == 1)
-    (up-compare-goal gl-positionYisLow == 1)
-=>  
-    (chat-to-allies "IM AT CORNER HIGH X LOW Y")  (disable-self)  
-
-)
-
-;medium x
-(defrule
-    (up-compare-goal gl-positionXisMedium == 1)
-    (up-compare-goal gl-positionYisHigh == 1)
-=>  
-    (chat-to-allies "IM AT MIDDLE OF X AXIS CLOSE TO HIGH Y BORDER")  (disable-self)  
-
-)
-
-(defrule
-    (up-compare-goal gl-positionXisMedium == 1)
-    (up-compare-goal gl-positionYisMedium == 1)
-=>  
-    (chat-to-allies "IM IN THE MIDDLE OF THE MAP")  (disable-self)  
-
+    (chat-to-allies "IM IN THE MIDDLE OF THE MAP")
+    (disable-self)
 )
 
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)
     (up-compare-goal gl-positionYisLow == 1)
 =>  
-    (chat-to-allies "IM AT MIDDLE OF X AXIS CLOSE TO LOW Y BORDER - TOP LEFT OF MAP?")  (disable-self)  
-
+    (chat-to-allies "IM AT MIDDLE OF X AXIS CLOSE TO LOW Y BORDER - TOP LEFT OF MAP?")
+    (disable-self)
 )
 
-; low x
+; BOTTOM X
 (defrule
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal  gl-positionYisHigh == 1)
 =>  
     (chat-to-allies "IM AT CORNER LOW X HIGH Y") (disable-self)  
-
 )
 
 (defrule
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal gl-positionYisMedium == 1)
 =>  
-
     (chat-to-allies "IM AT MIDDLE OF Y AXIS CLOSE TO LOW X BORDER")(disable-self)  
 )  
-
 
 (defrule
     (up-compare-goal gl-positionXisLow == 1)
@@ -262,23 +217,6 @@
     (chat-to-allies "IM AT CORNER LOW X LOQ Y") (disable-self)  
 ) 
 
-
-
-(defrule
-    (up-compare-goal gl-point-x g:< gl-point-y) 
-=>
-    ;(chat-to-all "MY X IS LOWER THAN Y (")
-    (do-nothing)
-    (disable-self)  
-)
-
-(defrule
-    (up-compare-goal gl-point-x g:> gl-point-y) 
-=>
-    ;(chat-to-all "MY Y IS LOWER THAN X")
-    (do-nothing)
-    (disable-self)  
-)
 
 ; TIMER 30 POSITION TO SELF
 (defrule(true)=>(enable-timer 30 5)(disable-self)) 
@@ -291,7 +229,7 @@
     (up-chat-data-to-self "MY POS Y = %d" g: gl-myPosition-y)    
 )
 
-; TIMER 31 POSITION 
+; TIMER 31 POSITION TO ALLIES
 (defrule(true)=>(enable-timer 31 8)(disable-self)) 
 (defrule
     (timer-triggered 31)
@@ -305,6 +243,7 @@
     (up-chat-data-to-self "Y MEDIUM = %d" g: gl-positionYisMedium) 
     (up-chat-data-to-self "Y TOP = %d" g: gl-positionYisHigh)     
 )
+
 ; ----
 (defrule
     (up-compare-goal gl-point-x > gl-center-x)
