@@ -68,8 +68,8 @@
 (defconst gl-wall-end-y 487) 
 (defconst gl-wall-other-end-x 488) 
 (defconst gl-wall-other-end-y 489)
-(defconst gl-wall-final-x 482)
-(defconst gl-wall-final-y 482)
+(defconst gl-wall-final-x 490)
+(defconst gl-wall-final-y 491)
 (defconst gl-center-x 492)
 (defconst gl-center-y 493)
 
@@ -90,7 +90,9 @@
     (set-goal gl-wall-end-x 0)
     (set-goal gl-wall-end-y 0)
     (set-goal gl-wall-other-end-x 0) 
-    (set-goal gl-wall-other-end-y 0)      
+    (set-goal gl-wall-other-end-y 0)
+    (set-goal gl-wall-final-x 0)
+    (set-goal gl-wall-final-y 0)      
     (disable-self)  
 )
 
@@ -101,7 +103,6 @@
     (up-get-point position-border gl-posBorderX)    
     (disable-self)   
 )
-
 
 
 ; CHECK OUR POSITION - BASIC POINTS
@@ -190,7 +191,7 @@
     (set-goal gl-wall-end-x 120)
     (set-goal gl-wall-end-y 50)
     (set-goal gl-wall-other-end-x 70)
-    (set-goal gl-wall-other-end-y 0)
+    (set-goal gl-wall-other-end-y 0)   
     (set-goal gl-positionCode 3)       
     (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
     (disable-self)  
@@ -369,8 +370,19 @@
     (chat-local-to-self "BUILDING THE WALL SECTION B !")
 )
 
-(defrule
-    (true)
+(defrule ; corners need no third wall
+    (not
+        (or
+            (or
+                (up-compare-goal gl-positionCode == 1)
+                (up-compare-goal gl-positionCode == 3)
+            )
+            (or
+                (up-compare-goal gl-positionCode == 7)
+                (up-compare-goal gl-positionCode == 9)
+            )
+        )
+    ) 
     (building-type-count palisade-wall > 18)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
