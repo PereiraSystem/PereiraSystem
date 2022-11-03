@@ -172,19 +172,35 @@
 (defrule
     (true)
 =>    
-    (set-goal gl-wallPoint1-x 0) ;north
+    (set-goal gl-wallPoint1-x 0) 
     (set-goal gl-wallPoint1-y 0)
-    (set-goal gl-wallPoint2-x 0) ;east
+    (set-goal gl-wallPoint2-x 0) 
     (set-goal gl-wallPoint2-y 0)
-    (set-goal gl-wallPoint3-x 0) ;south
+    (set-goal gl-wallPoint3-x 0) 
     (set-goal gl-wallPoint3-y 0)
-    (set-goal gl-wallPoint4-x 0) ;west
+    (set-goal gl-wallPoint4-x 0) 
     (set-goal gl-wallPoint4-y 0)
 
-    (set-goal gl-wallPoint1-x gl-myPosition-x) ;north
-    (set-goal gl-wallPoint1-y gl-myPosition-y)    
-    (up-modify-goal gl-wallPoint1-x c:+ 20)
-    (up-modify-goal gl-wallPoint1-y c:+ 20)    
+    (set-goal gl-wallPoint1-x gl-myPosition-x) 
+    (set-goal gl-wallPoint1-y gl-myPosition-y)
+    (set-goal gl-wallPoint2-x gl-myPosition-x) 
+    (set-goal gl-wallPoint2-y gl-myPosition-y) 
+    (set-goal gl-wallPoint3-x gl-myPosition-x) 
+    (set-goal gl-wallPoint3-y gl-myPosition-y)
+    (set-goal gl-wallPoint4-x gl-myPosition-x) 
+    (set-goal gl-wallPoint4-y gl-myPosition-y) 
+
+    (up-modify-goal gl-wallPoint1-x c:+ 20) ; east
+    (up-modify-goal gl-wallPoint1-y c:+ 20) 
+
+    (up-modify-goal gl-wallPoint2-x c:+ 20) ; north
+    (up-modify-goal gl-wallPoint2-y c:- 20) 
+
+    (up-modify-goal gl-wallPoint3-x c:- 20) ; s
+    (up-modify-goal gl-wallPoint3-y c:+ 20) 
+
+    (up-modify-goal gl-wallPoint4-x c:- 20) ; west
+    (up-modify-goal gl-wallPoint4-y c:- 20)             
 )
 
 
