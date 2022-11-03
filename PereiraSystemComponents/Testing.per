@@ -327,8 +327,6 @@
     (disable-self)    
 )
 
-
-
 (defrule
     (up-compare-goal gl-positionXisLow == 1) ; left corner
     (up-compare-goal gl-positionYisLow == 1)
@@ -348,10 +346,6 @@
     (up-build-line gl-wall-start-x gl-wall-end-x c: 789)
     (chat-local-to-self "BUILDING THE WALL GATES !")
 )
-
-
-
-
 
 (defrule
     (true)
@@ -386,6 +380,15 @@
 
 (defrule
     (building-type-count-total palisade-wall > 30)
+    (up-can-build 0 c: outpost)
+=>
+    (up-set-placement-data my-player-number palisade-wall c: -1)
+    (up-build place-control 0 c: outpost)
+)
+
+(defrule
+    (building-type-count-total palisade-wall > 30)
+(building-type-count-total outpost < 30)    
     (up-can-build 0 c: outpost)
 =>
     (up-set-placement-data my-player-number palisade-wall c: -1)
