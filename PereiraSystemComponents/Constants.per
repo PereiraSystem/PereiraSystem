@@ -156,7 +156,7 @@
 
     (set-goal gl-tradeCartsQty 14)
     (set-goal gl-tradeShipsQty 20)
-    (set-goal gl-fishingShipsQty 6)    
+    (set-goal gl-fishingShipsQty 6) (disable-self)   
 )
 
 (defrule
@@ -169,7 +169,7 @@
         )
     )
 =>
-    (set-goal gl-civNeedsArchersSoon 1)
+    (set-goal gl-civNeedsArchersSoon 1)(disable-self)
 )
 
 (defrule
@@ -182,21 +182,21 @@
         )
     )
 =>
-    (set-goal gl-civNeedsCavalrySoon 1)
+    (set-goal gl-civNeedsCavalrySoon 1)(disable-self)
 )
 
 (defrule
     (civ-selected japanese)
 =>
     (set-goal gl-minimumWoodForTC 275)
-    (set-goal gl-minimumWoodForLC 100)
+    (set-goal gl-minimumWoodForLC 100)(disable-self)
 )
 
 (defrule
     (civ-selected malian)
 =>
     (set-goal gl-minimumWoodForTC 275)
-    (set-goal gl-minimumWoodForLC 100)
+    (set-goal gl-minimumWoodForLC 100)(disable-self)
 )    
 
 (defrule
@@ -206,13 +206,14 @@
     (set-goal gl-castleAgeFoodCost 680)
     (set-goal gl-castleAgeGoldCost 170)
     (set-goal gl-imperialAgeFoodCost 850)
-    (set-goal gl-imperialAgeGoldCost 680) 
+    (set-goal gl-imperialAgeGoldCost 680) (disable-self)
 )
 
 (defrule
     (current-age == feudal-age)
 =>
-    (up-modify-goal gl-fishingShipsQty g:* 1,1)    
+    (up-modify-goal gl-fishingShipsQty g:* 1,1) 
+    (disable-self)
 )
 
 (defrule
@@ -220,7 +221,7 @@
 =>
     (up-modify-goal gl-tradeCartsQty g:* 1,5)
     (up-modify-goal gl-tradeShipsQty g:* 1,5)
-    (up-modify-goal gl-fishingShipsQty g:* 1,1)    
+    (up-modify-goal gl-fishingShipsQty g:* 1,1)  (disable-self)  
 )
 
 (defrule
@@ -228,7 +229,7 @@
 =>
     (up-modify-goal gl-tradeCartsQty g:* 1,5)
     (up-modify-goal gl-tradeShipsQty g:* 1,5)
-    (up-modify-goal gl-fishingShipsQty g:* 1,1)    
+    (up-modify-goal gl-fishingShipsQty g:* 1,1)(disable-self)    
 )
 
 (defrule
@@ -270,7 +271,7 @@
 
     (set-goal gl-camelQtyLow 5)
     (set-goal gl-camelQtyMedium 15)
-    (set-goal gl-camelQtyHigh 28)        
+    (set-goal gl-camelQtyHigh 28)(disable-self)        
 )
 
 (defrule
@@ -297,7 +298,7 @@
 
     (set-goal gl-trebuchetsQtyLow 5)
     (set-goal gl-trebuchetsQtyMedium 8)    
-    (set-goal gl-trebuchetsQtyHigh 12)
+    (set-goal gl-trebuchetsQtyHigh 12)(disable-self)
 )
 
 (defrule
@@ -307,7 +308,7 @@
     (set-goal gl-galleonQty 20)
     (set-goal gl-fireshipQty 20)
     (set-goal gl-demolitionShipQty 20)
-    (set-goal gl-specialShipQty 20)
+    (set-goal gl-specialShipQty 20)(disable-self)
 )
 
 (defrule
