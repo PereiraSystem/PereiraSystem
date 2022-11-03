@@ -116,7 +116,7 @@
 ; CHECK OUR POSITION - BASIC POINTS
 ; HIGH
 (defrule
-    (up-compare-goal gl-myPosition-x g:>= gl)
+    (up-compare-goal gl-myPosition-x g:>= gl_mapSizeTwoThirds)
 =>
     (set-goal gl-positionXisHigh 1)(disable-self)  
 )
@@ -287,12 +287,12 @@
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal gl-positionYisLow == 1)
 =>  
-    (set-goal gl-wall-start-x 37)
-    (set-goal gl-wall-start-y 37)
-    (set-goal gl-wall-end-x 37)
+    (set-goal gl-wall-start-x gl_mapSizeThird)
+    (set-goal gl-wall-start-y gl_mapSizeThird)
+    (set-goal gl-wall-end-x gl_mapSizeThird)
     (set-goal gl-wall-end-y 0)
     (set-goal gl-wall-other-end-x 0)
-    (set-goal gl-wall-other-end-y 37)
+    (set-goal gl-wall-other-end-y gl_mapSizeThird)
     (set-goal gl-positionCode 9)        
     (chat-to-allies "IM AT THE WEST, IN THE CORNER!")(disable-self)  
 ) 
