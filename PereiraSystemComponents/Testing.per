@@ -198,6 +198,7 @@
 
 ; avoid building a wall next to abyss
 (defrule ; x is veryx low
+    (false)
     (up-compare-goal gl-wallPoint1-y < 10)
 => 
     (set-goal gl-wallPoint1-x 0)
