@@ -248,21 +248,23 @@
         )
     )    
     (up-compare-goal gl-positionYisHigh == 1)
-    (building-type-count-total 789 < 1)
+    (building-type-count-total 789 == 0)
+    (building-type-count-total palisade-wall < 4)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: 789)
-    (chat-local-to-self "BUILDING THE WALL GATES !")(disable-self)
+    (chat-local-to-self "BUILDING THE WALL GATES !")
 )
 
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)
     (up-compare-goal gl-positionYisHigh == 1)
-    (building-type-count-total 789 < 1)
+    (building-type-count-total 789 == 0)
+    (building-type-count-total palisade-wall < 4)    
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: 789)
-    (chat-local-to-self "BUILDING THE WALL GATES !")(disable-self)
+    (chat-local-to-self "BUILDING THE WALL GATES !")
 )
 
 (defrule
