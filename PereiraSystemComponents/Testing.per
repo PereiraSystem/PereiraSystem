@@ -144,7 +144,14 @@
     (set-goal gl-positionYisLow 1)(disable-self)  
 )
 
-; TIMER 32 POSITION STUFF
+; WE GOT THE POSITIONS
+(defrule
+    (false)
+=>  
+    (up-chat-data-to-self "MY POS X = %d" g: gl-myPosition-x)
+    (up-chat-data-to-self "MY POS Y = %d" g: gl-myPosition-y)    
+)
+
 ; TOP X
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
@@ -218,69 +225,18 @@
     (chat-to-allies "IM AT CORNER LOW X LOQ Y - LEFT CORNER OF MINIMAP") (disable-self)  
 ) 
 
-
-; TIMER 30 POSITION TO SELF
-(defrule(true)=>(enable-timer 30 5)(disable-self)) 
+; PREPARING WALL POINTS ACCORDING TO THE POSITIONS WE GOT BEFORE
 (defrule
-    (timer-triggered 30)
-=>  
-    (disable-timer 30)
-    (enable-timer 30 15)
-    (up-chat-data-to-self "MY POS X = %d" g: gl-myPosition-x)
-    (up-chat-data-to-self "MY POS Y = %d" g: gl-myPosition-y)    
-)
-
-
-
-; ----
-(defrule
-    (up-compare-goal gl-point-x > gl-center-x)
-    (up-compare-goal gl-point-y > gl-center-y)
+    (up-compare-goal gl-positionXisHigh == 1) ; right corner
+    (up-compare-goal gl-positionYisHigh == 1)
 =>
-    ;(chat-to-all "IM AT HIGH X ZONE AND HIGH Y")
-    (set-goal gl-wall-start-x 90)
-    (set-goal gl-wall-start-y 120)
-    (set-goal gl-wall-end-x 90)
-    (set-goal gl-wall-end-y 40)
-    (set-goal gl-wall-other-end-x 120)
-    ;(set-goal gl-wall-other-end-y 90)    
+    (set-goal gl-wall-start-x 70)
+    (set-goal gl-wall-start-y 70)
+    (set-goal gl-wall-end-x 120)
+    (set-goal gl-wall-end-y 70)
+    (set-goal gl-wall-other-end-x 70)
+    (set-goal gl-wall-other-end-y 120)    
     (disable-self)    
-)
-
-(defrule
-    (up-compare-goal gl-point-x < gl-center-x)
-    (up-compare-goal gl-point-y > gl-center-y) 
-=>
-    ;(chat-to-all "IM AT LOW X ZONE AND HIGH Y ")
-    (set-goal gl-wall-start-x 30)
-    (set-goal gl-wall-start-y 90)
-    (set-goal gl-wall-end-x 30)
-    (set-goal gl-wall-end-y 60)
-    (disable-self)  
-)
-
-(defrule
-    (up-compare-goal gl-point-x > gl-center-x)
-    (up-compare-goal gl-point-y < gl-center-y)
-=>
-    ;(chat-to-all "IM AT HIGH X ZONE AND LOW Y")
-    (set-goal gl-wall-start-x 90)
-    (set-goal gl-wall-start-y 30)
-    (set-goal gl-wall-end-x 90)
-    (set-goal gl-wall-end-y 30)    
-    (disable-self)  
-)
-
-(defrule
-    (up-compare-goal gl-point-x < gl-center-x)
-    (up-compare-goal gl-point-y < gl-center-y)
-=>
-    ;(chat-to-all "IM AT LOW X ZONE AND LOW Y")
-    (set-goal gl-wall-start-x 30)
-    (set-goal gl-wall-start-y 90)
-    (set-goal gl-wall-end-x 30)
-    (set-goal gl-wall-end-y 90)    
-    (disable-self)
 )
 
 
