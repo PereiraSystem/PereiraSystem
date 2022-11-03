@@ -62,9 +62,13 @@
     (resource-found food)
     (wood-amount > 200)
     (or(not(civ-selected poles))(wood-amount > 225))
-    (can-build mill)    
+    ;(can-build mill)    
+    (up-can-build 0 c: mill)
 =>
-    (build mill)(chat-local-to-self "Trying To Build Mill 1 (Food Found)")
+    ;(build mill)
+         (up-set-placement-data my-player-number -1 c: -9)
+    (up-build place-control 0 c: mill)   
+    (chat-local-to-self "Trying To Build Mill 1 (Food Found)")
 )
 
 (defrule  
@@ -821,7 +825,7 @@
 =>
     (chat-local-to-self "Trying To Build Stable 1")
     (up-modify-sn sn-maximum-town-size c:+ 1)
-     (up-set-placement-data my-player-number -1 c: 12)
+    (up-set-placement-data my-player-number -1 c: 12)
     (up-build place-control 0 c: stable)     
     ;(build stable)         
 )
