@@ -424,15 +424,6 @@
     (disable-self)
 )
 
-(defrule 
-    (current-age == dark-age)
-    (game-time > 540)
-=>  
-    (set-strategic-number sn-maximum-gold-drop-distance 14)
-    (chat-to-player my-player-number "Let´s Get Some Gold")
-    (disable-self)
-)
-
 (defrule
     (up-research-status c: feudal-age == research-pending)
 =>
