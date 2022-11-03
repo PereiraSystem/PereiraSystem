@@ -198,46 +198,46 @@
 
 ; avoid building a wall next to abyss
 (defrule ; x is veryx low
-    (up-compare-goal gl-wallPoint1-x g:< 10)
+    (up-compare-goal gl-wallPoint1-x < 10)
 => 
     (set-goal gl-wallPoint1-x 0)
 )
 
 (defrule
-    (up-compare-goal gl-wallPoint2-x g:< 10)
+    (up-compare-goal gl-wallPoint2-x < 10)
 => 
     (set-goal gl-wallPoint2-x 0)
 )
 (defrule
-    (up-compare-goal gl-wallPoint3-x g:< 10)
+    (up-compare-goal gl-wallPoint3-x < 10)
 => 
     (set-goal gl-wallPoint3-x 0)
 )
 (defrule
-    (up-compare-goal gl-wallPoint4-x g:< 10)
+    (up-compare-goal gl-wallPoint4-x < 10)
 => 
     (set-goal gl-wallPoint4-x 0)
 )
 ; x is x high
 (defrule
-    (up-compare-goal gl-wallPoint1-x g:> 110)
+    (up-compare-goal gl-wallPoint1-x > 110)
 => 
-    (set-goal gl-wallPoint1-x position-map-size)
+    (set-goal gl-wallPoint1-x 120)
 )
 (defrule
-    (up-compare-goal gl-wallPoint2-x g:> 110)
+    (up-compare-goal gl-wallPoint2-x > 110)
 => 
-    (set-goal gl-wallPoint2-x position-map-size)
+    (set-goal gl-wallPoint2-x 120)
 )
 (defrule
-    (up-compare-goal gl-wallPoint2-x g:> 110)
+    (up-compare-goal gl-wallPoint2-x > 110)
 => 
-    (set-goal gl-wallPoint2-x position-map-size)
+    (set-goal gl-wallPoint2-x 120)
 )
 (defrule
-    (up-compare-goal gl-wallPoint2-x g:> 110)
+    (up-compare-goal gl-wallPoint2-x > 110)
 => 
-    (set-goal gl-wallPoint2-x position-map-size)
+    (set-goal gl-wallPoint2-x 120)
 )
 
 (defrule ; y is very low
