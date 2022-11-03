@@ -209,8 +209,8 @@
 )
 
 (defrule
-    (goal gl-positionXisMedium 1)
-    (goal gl-positionYisLow 1)
+    (up-compare-goal gl-positionXisMedium == 1)
+    (up-compare-goal gl-positionYisLow == 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
