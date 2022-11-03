@@ -177,7 +177,7 @@
 )
 
 (defrule
-      (unit-type-count-total villager > 17) ; "square" wall
+      (town-center > 1) ; "square" wall
 =>    
     (up-get-point position-self gl-wallPoint1-x)
     (up-get-point position-self gl-wallPoint2-x)
@@ -361,7 +361,7 @@
 
 ; FINISHED GATES, NOW THE stonewa
 (defrule ;along Y axis, right side
-    (unit-type-count-total villager > 15)
+    (town-center > 1)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
 =>    
@@ -371,7 +371,7 @@
 
 (defrule
     (true)
-    (unit-type-count-total villager > 16)
+    (town-center > 1)
     (building-type-count-total barracks > 0)     
     (building-type-count palisade-wall > 4)
     (wood-amount > 200)   
@@ -381,7 +381,7 @@
 
 (defrule
     (true)
-    (unit-type-count-total villager > 17)
+    (town-center > 1)
     (building-type-count-total barracks > 0)      
     (wood-amount > 200)    
     (building-type-count palisade-wall > 8)  
