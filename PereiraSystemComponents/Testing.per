@@ -157,7 +157,7 @@
 ; HIGH X
 (defrule(true)=>(enable-timer 32 8)(disable-self)) 
 (defrule
-    (goal gl-positionXisHigh 1)
+    (up gl-positionXisHigh 1)
     (goal gl-positionYisHigh 1)
     (timer-triggered 32)
 =>  
@@ -194,7 +194,7 @@
     (timer-triggered 32)
 =>  
     (disable-timer 32)
-    (enable-timer 32 60)
+    (enable-timer 32 15)
     (chat-to-allies "IMT AT THE TOP RIGHT OF THE MAP CLOSE TO THE BORDER")  
 )
 
@@ -204,7 +204,7 @@
     (timer-triggered 32)
 =>  
     (disable-timer 32)
-    (enable-timer 32 60)
+    (enable-timer 32 15)
     (chat-to-allies "IM IN THE MIDDLE OF THE MAP")  
 )
 
@@ -214,7 +214,7 @@
     (timer-triggered 32)
 =>  
     (disable-timer 32)
-    (enable-timer 32 60)
+    (enable-timer 32 15)
     (chat-to-allies "IM AT THE BOTTOM LEFT OF THE MAP CLOSE TO THE BORDER")  
 )
 
@@ -226,7 +226,7 @@
     (timer-triggered 32)
 =>  
     (disable-timer 32)
-    (enable-timer 32 60)
+    (enable-timer 32 15)
     (chat-to-allies "IM AT THE CORNER RIGHT")  
 )
 
@@ -236,7 +236,7 @@
     (timer-triggered 32)
 =>  
     (disable-timer 32)
-    (enable-timer 32 60)
+    (enable-timer 32 15)
     (chat-to-allies "IM AT THE TOP RIGHT OF THE MAP, CLOSE TO THE BORDER")  
 )
 
@@ -246,7 +246,7 @@
     (timer-triggered 32)
 =>  
     (disable-timer 32)
-    (enable-timer 32 60)
+    (enable-timer 32 15)
     (chat-to-allies "IM AT CORNER BOTTOM")  
 )
 
