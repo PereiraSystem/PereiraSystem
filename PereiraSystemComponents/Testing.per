@@ -323,7 +323,7 @@
     (set-goal gl-wall-end-x 40)
     (set-goal gl-wall-end-y 100)
     (set-goal gl-wall-other-end-x 0)
-    (set-goal gl-wall-other-end-y 40)    
+    (set-goal gl-wall-other-end-y 100)    
     (disable-self)    
 )
 
@@ -388,7 +388,7 @@
 
 (defrule
     (building-type-count-total palisade-wall > 30)
-(building-type-count-total outpost < 30)    
+    (building-type-count-total outpost < 30)    
     (up-can-build 0 c: outpost)
 =>
     (up-set-placement-data my-player-number palisade-wall c: -1)
