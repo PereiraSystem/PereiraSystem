@@ -349,7 +349,7 @@
     (can-build blacksmith)
 =>
     (chat-local-to-self "Trying to build blacksmith")
-    (build blacksmith)(up-modify-sn sn-maximum-town-size c:+ 1)    
+    (build blacksmith)(up-modify-sn sn-maximum-town-size c:- 7)    
 )
 
 ; MARKET
@@ -740,7 +740,7 @@
     (up-can-build 0 c: barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks 1")
-    (up-set-placement-data my-player-number -1 c: 9)
+    (up-set-placement-data my-player-number -1 c: 7)
     (up-build place-control 0 c: barracks)    
     ;(build barracks)
 
@@ -822,7 +822,7 @@
 =>
     (chat-local-to-self "Trying To Build Stable 1")
     (up-modify-sn sn-maximum-town-size c:+ 1)
-    (up-set-placement-data my-player-number barracks c: 3)
+    (up-set-placement-data my-player-number barracks c: 2)
     (up-build place-control 0 c: stable)     
     ;(build stable)         
 )
@@ -888,7 +888,7 @@
     (chat-local-to-self "Trying To Build Archery Range 1")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     ;(build archery-range)
-    (up-set-placement-data my-player-number -1 c: -9)
+    (up-set-placement-data my-player-number -1 c: -8)
     (up-build place-control 0 c: archery-range)    
 )
 
