@@ -282,9 +282,9 @@
 (defrule
     (up-compare-goal gl-positionXisMedium == 1) 
     (up-compare-goal gl-positionYisMedium == 1)
-    (can-build-wall palisade-wall)
+    (can-build-wall 2 palisade-wall)
 =>
-    (build-wall palisade-wall)
+    (build-wall 2 palisade-wall)
     (disable-self)    
 )
 
