@@ -488,7 +488,9 @@
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
 =>
-    (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
+    ;(up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
+    
+    (up-build-line gl-wall-start-x gl-wallPoint1-x c: palisade-wall)
     (set-strategic-number sn-defense-distance 40)
     ;(chat-local-to-self "BUILDING THE WALL SECTION A !")
 )
@@ -556,7 +558,7 @@
 )
 
 (defrule
-    (building-type-count 789 > 2)
+    (building-type-count 789 > 3)
 =>
     (delete-building 789)
     (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")    
