@@ -386,8 +386,8 @@
 
 (defrule
     (building-type-count-total palisade-wall > 30)
-    (can-build outpost)
+    (up-can-build 0 c: outpost)
 =>
-    (up-set-placement-data palisade-wall c: -1)
+    (up-set-placement-data my-player-number palisade-wall c: -1)
     (up-build place-control 0 c: outpost)
 )
