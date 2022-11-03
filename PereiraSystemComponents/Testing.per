@@ -73,7 +73,7 @@
 (defconst gl-center-x 492)
 (defconst gl-center-y 493)
 (defconst gl_mapSizeThird 509)
-(defconst gl_mapSize 510)
+
 
 (defrule
     (true) ;just in case
@@ -96,7 +96,7 @@
     (set-goal gl-wall-final-x 0)
     (set-goal gl-wall-final-y 0) 
     (set-goal gl_mapSizeThird 0)         
-    (set-goal gl_mapSize 0)     
+    
     (disable-self)  
 )
 
@@ -105,9 +105,8 @@
 =>
     (up-get-point position-self gl-myPosition-x)
     (up-get-point position-border gl-posBorderX)
-    (up-get-point position-map-size gl_mapSize)
-    (up-get-point position-map-size gl_mapSizeThird)
-    (up-modify-goal gl_mapSizeThird g:/ 3)
+    (up-get-point position-map-size gl_MapSizeThird)
+    (up-chat-data-to-all "1 THIRD OF MAP SIZE = %d" gl_mapSizeThird)
     (disable-self)   
 )
 
@@ -115,7 +114,7 @@
 ; CHECK OUR POSITION - BASIC POINTS
 ; HIGH
 (defrule
-    (up-compare-goal gl-myPosition-x g:>= 80)
+    (up-compare-goal gl-myPosition-x >= 80)
 =>
     (set-goal gl-positionXisHigh 1)(disable-self)  
 )
@@ -127,25 +126,25 @@
 ; MID
 (defrule
     (up-compare-goal gl-myPosition-x < 80)
-    (up-compare-goal gl-myPosition-x g:> gl_mapSizeThird)
+    (up-compare-goal gl-myPosition-x > 39)
 =>
     (set-goal gl-positionXisMedium 1)(disable-self)  
 )
 (defrule
     (up-compare-goal gl-myPosition-y < 80)
-    (up-compare-goal gl-myPosition-y g:> gl_mapSizeThird)
+    (up-compare-goal gl-myPosition-y > 39)
 =>
     (set-goal gl-positionYisMedium 1)(disable-self)  
 )
 
 ; BOTTOM
 (defrule
-    (up-compare-goal gl-myPosition-x g:<= gl_mapSizeThird)
+    (up-compare-goal gl-myPosition-x <= 39)
 =>
     (set-goal gl-positionXisLow 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-myPosition-y g:<= gl_mapSizeThird)
+    (up-compare-goal gl-myPosition-y <= 39)
 =>
     (set-goal gl-positionYisLow 1)(disable-self)  
 )
