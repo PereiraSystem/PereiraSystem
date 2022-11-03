@@ -480,7 +480,7 @@
 (defrule
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
-    (wood-amount g:> gl-minimumWoodForLC)    
+    (wood-amount > 300) 
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
     (set-strategic-number sn-defense-distance 40)
@@ -491,7 +491,7 @@
     (unit-type-count-total villager > 6)
     (building-type-count-total barracks > 0)     
     (building-type-count palisade-wall > 4)
-    (wood-amount g:> gl-minimumWoodForLC)    
+    (wood-amount > 300)   
 =>
     (up-build-line gl-wall-start-x gl-wall-other-end-x c: palisade-wall)
     ;(chat-local-to-self "BUILDING THE WALL SECTION B !")
@@ -512,7 +512,7 @@
     )
     (unit-type-count-total villager > 7)
     (building-type-count-total barracks > 0)      
-    (wood-amount g:> gl-minimumWoodForLC)    
+    (wood-amount > 300)    
     (building-type-count palisade-wall > 8)  
 =>
     (up-build-line gl-wall-end-x gl-wall-final-x c: palisade-wall)
