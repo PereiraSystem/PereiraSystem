@@ -73,6 +73,7 @@
 (defconst gl-center-x 492)
 (defconst gl-center-y 493)
 (defconst gl_mapSizeThird 509)
+(defconst gl_mapSizeTwoThirds 510)
 
 
 (defrule
@@ -96,7 +97,7 @@
     (set-goal gl-wall-final-x 0)
     (set-goal gl-wall-final-y 0) 
     (set-goal gl_mapSizeThird 0)         
-    
+    (set-goal gl_mapSizeTwoThirds 0) 
     (disable-self)  
 )
 
@@ -106,8 +107,9 @@
     (up-get-point position-self gl-myPosition-x)
     (up-get-point position-border gl-posBorderX)
     (up-get-point position-map-size gl_mapSizeThird)
-    (up-chat-data-to-all "1 THIRD OF MAP SIZE = %d" g: gl_mapSizeThird)
+    (up-get-point position-map-size gl_mapSizeTwoThirds)    
     (up-modify-goal gl_mapSizeThird c:/ 3)
+    (up-modify-goal gl_mapSizeTwoThirds g:- gl_mapSizeThird)    
     (disable-self)   
 )
 
@@ -115,7 +117,7 @@
     (true)
 =>
     (up-chat-data-to-all "1 THIRD OF MAP SIZE = %d" g: gl_mapSizeThird)
- 
+    (up-chat-data-to-all "1 THIRD OF MAP SIZE = %d" g: gl_mapSizeThird) 
 )
 
 ; CHECK OUR POSITION - BASIC POINTS
