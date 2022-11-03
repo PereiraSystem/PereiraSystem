@@ -161,6 +161,28 @@
     (up-get-point position-self gl-wallPoint3-x)
     (up-get-point position-self gl-wallPoint4-x)
 
+    (up-modify-goal gl-wallPoint1-x c:+ 21) ; 1 north
+    (up-modify-goal gl-wallPoint1-y c:- 21) 
+
+    (up-modify-goal gl-wallPoint2-x c:+ 21) ; 2 east
+    (up-modify-goal gl-wallPoint2-y c:+ 21) 
+
+    (up-modify-goal gl-wallPoint3-x c:- 21) ; 3 south
+    (up-modify-goal gl-wallPoint3-y c:+ 21) 
+
+    (up-modify-goal gl-wallPoint4-x c:- 21) ; 4 west
+    (up-modify-goal gl-wallPoint4-y c:- 21)  
+    (disable-self)           
+)
+
+(defrule
+    (current-age == imperial-age) ; "square" wall
+=>    
+    (up-get-point position-self gl-wallPoint1-x)
+    (up-get-point position-self gl-wallPoint2-x)
+    (up-get-point position-self gl-wallPoint3-x)
+    (up-get-point position-self gl-wallPoint4-x)
+
     (up-modify-goal gl-wallPoint1-x c:+ 20) ; 1 north
     (up-modify-goal gl-wallPoint1-y c:- 20) 
 
@@ -174,6 +196,7 @@
     (up-modify-goal gl-wallPoint4-y c:- 20)  
     (disable-self)           
 )
+
 (defrule
     (false) ; "romboid" wall
 =>    
