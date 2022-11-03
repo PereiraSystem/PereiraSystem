@@ -318,12 +318,12 @@
     (up-compare-goal gl-positionXisLow == 1) ; south west
     (up-compare-goal gl-positionYisMedium == 1)
 =>
-    (set-goal gl-wall-start-x 40)
-    (set-goal gl-wall-start-y 80)
-    (set-goal gl-wall-end-x 40)
-    (set-goal gl-wall-end-y 40)
+    (set-goal gl-wall-start-x 46)
+    (set-goal gl-wall-start-y 76)
+    (set-goal gl-wall-end-x 46)
+    (set-goal gl-wall-end-y 46)
     (set-goal gl-wall-other-end-x 0)
-    (set-goal gl-wall-other-end-y 80)    
+    (set-goal gl-wall-other-end-y 76)    
     (disable-self)    
 )
 
@@ -356,6 +356,17 @@
     (up-build-line gl-wall-start-x gl-wall-end-x c: 793)
     (chat-local-to-self "BUILDING THE WALL GATES !")
 )
+
+(defrule    
+    (up-compare-goal gl-positionXisHigh == 1) 
+    (up-compare-goal gl-positionYisMedium == 1)
+    (building-type-count-total 793 == 0)
+    (building-type-count-total palisade-wall == 0)
+=>
+    (up-build-line gl-wall-start-x gl-wall-end-x c: 793)
+    (chat-local-to-self "BUILDING THE WALL GATES !")
+)
+
 
 (defrule
     (true)
