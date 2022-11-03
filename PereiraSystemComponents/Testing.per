@@ -198,98 +198,69 @@
     (disable-self)  
 )
 
-(defrule(true)=>(enable-timer 32 8)(disable-self)) 
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
-    (goal gl-positionYisHigh 1)
-    (timer-triggered 32)
+    (up-compare-goal gl-positionYisHigh == 1)
 =>  
-    (disable-timer 32)
-    (enable-timer 32 15)
     (chat-to-allies "IM AT THE CORNER TOP")  
 )
 
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
-    (goal gl-positionYisMedium 1)
-    (timer-triggered 32)
+    (up-compare-goal gl-positionYisMedium == 1)
 =>  
-    (disable-timer 32)
-    (enable-timer 32 15)
     (chat-to-allies "IM AT THE TOP LEFT OF THE MAP, CLOSE TO THE BORDER")  
 )
 
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
-    (goal gl-positionYisLow 1)
-    (timer-triggered 32)
+    (up-compare-goal gl-positionYisLow == 1)
 =>  
-    (disable-timer 32)
-    (enable-timer 32 15)
     (chat-to-allies "IM AT CORNER LEFT")  
 )
 
 ;medium x
-
 (defrule
-(up-compare-goal gl-positionXisMedium == 1)
-    (goal gl-positionYisHigh 1)
-    (timer-triggered 32)
+    (up-compare-goal gl-positionXisMedium == 1)
+    (up-compare-goal gl-positionYisHigh == 1)
 =>  
-    (disable-timer 32)
-    (enable-timer 32 15)
     (chat-to-allies "IMT AT THE TOP RIGHT OF THE MAP CLOSE TO THE BORDER")  
 )
 
 (defrule
-(up-compare-goal gl-positionXisMedium == 1)
-    (goal gl-positionYisMedium 1)
-    (timer-triggered 32)
+    (up-compare-goal gl-positionXisMedium == 1)
+    (up-compare-goal gl-positionYisMedium == 1)
 =>  
-    (disable-timer 32)
-    (enable-timer 32 15)
     (chat-to-allies "IM IN THE MIDDLE OF THE MAP")  
 )
 
 (defrule
-(up-compare-goal gl-positionXisMedium == 1)
+    (up-compare-goal gl-positionXisMedium == 1)
     (up-compare-goal gl-positionYisLow == 1)
-    (timer-triggered 32)
 =>  
-    (disable-timer 32)
-    (enable-timer 32 15)
     (chat-to-allies "IM AT THE BOTTOM LEFT OF THE MAP CLOSE TO THE BORDER")  
 )
 
 ; low x
-
 (defrule
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal  gl-positionYisHigh == 1)
-    (timer-triggered 32)
 =>  
-    (disable-timer 32)
-    (enable-timer 32 15)
     (chat-to-allies "IM AT THE CORNER RIGHT")  
 )
 
 (defrule
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal gl-positionYisMedium == 1)
-    (timer-triggered 32)
 =>  
-    (disable-timer 32)
-    (enable-timer 32 15)
+
     (chat-to-allies "IM AT THE TOP RIGHT OF THE MAP, CLOSE TO THE BORDER")  
 )
 
 (defrule
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal gl-positionYisLow == 1)
-    (timer-triggered 32)
 =>  
-    (disable-timer 32)
-    (enable-timer 32 15)
     (chat-to-allies "IM AT CORNER BOTTOM")  
 )
 
