@@ -278,6 +278,20 @@
     (set-goal gl-wall-other-end-y 80)    
     (disable-self)    
 )
+; medium medium needs no positions
+(defrule
+    (up-compare-goal gl-positionXisMedium == 1); south east
+    (up-compare-goal gl-positionYisLow == 1)
+=>
+    (set-goal gl-wall-start-x 80)
+    (set-goal gl-wall-start-y 40)
+    (set-goal gl-wall-end-x 40)
+    (set-goal gl-wall-end-y 40)
+    (set-goal gl-wall-other-end-x 0)
+    (set-goal gl-wall-other-end-y 40)    
+    (disable-self)    
+)
+;
 
 (defrule
     (up-compare-goal gl-positionXisMedium == 1) 
