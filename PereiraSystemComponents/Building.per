@@ -4,7 +4,7 @@
 ; CIVILIAN BUILDINGS
 ; WONDER                          
 (defrule
-    (game-time > 5400)
+    (unit-type-count villager > 15)
     (building-type-count-total wonder == 0)
     (can-build wonder)    
 =>

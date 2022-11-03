@@ -523,6 +523,7 @@
 
 (defrule
     (building-type-count-total palisade-wall > 30)
+    (wood-amount g:> gl-minimumWoodForLC)
     (building-type-count-total outpost < 12)    
     (up-can-build 0 c: outpost)
 =>
