@@ -110,8 +110,8 @@
     (up-get-point position-map-size gl_mapSizeTwoThirds)    
     (up-modify-goal gl_mapSizeThird c:/ 3)
     (up-modify-goal gl_mapSizeTwoThirds g:- gl_mapSizeThird)
-    (up-chat-data-to-all gl_mapSizeThird)
-     (up-chat-data-to-all gl_mapSizeTwoThirds)   
+    (up-chat-data-to-all "%d" g: gl_mapSizeThird)
+     (up-chat-data-to-all "%d" g: gl_mapSizeTwoThirds)   
     (disable-self)   
 )
 
