@@ -1073,6 +1073,7 @@
 
 ; NORMAL TOWER
 (defrule
+    (false) ;use only after palisade, see testing
     (current-age < castle-age)
     (or(town-under-attack)(unit-type-count villager > 9))
     (not(up-research-status c: castle-age == research-pending))
