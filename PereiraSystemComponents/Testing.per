@@ -61,6 +61,8 @@
 (defconst gl-myPosition-y 477)
 (defconst gl-center-x 492)
 (defconst gl-center-y 493)
+(defconst gl-buildingInnerWall 495)
+
 (defconst gl-wallPoint1-x 501)
 (defconst gl-wallPoint1-y 502)
 (defconst gl-wallPoint2-x 503)
@@ -82,7 +84,8 @@
     (set-goal gl-positionYisMedium 0)
     (set-goal gl-positionYisLow 0)
     (set-goal gl-myPosition-x 0)
-    (set-goal gl-myPosition-y 0)   
+    (set-goal gl-myPosition-y 0)
+    (set-goal gl-buildingInnerWall 0)       
     (set-goal gl-mapSizeThird 0)         
     (set-goal gl-mapSizeTwoThirds 0) 
     (disable-self)  
@@ -155,29 +158,29 @@
 )
 
 (defrule
-    (true) ; "square" wall
+    (up-compare-goal gl-buildingInnerWall == 0)
 =>    
     (up-get-point position-self gl-wallPoint1-x)
     (up-get-point position-self gl-wallPoint2-x)
     (up-get-point position-self gl-wallPoint3-x)
     (up-get-point position-self gl-wallPoint4-x)
 
-    (up-modify-goal gl-wallPoint1-x c:+ 21) ; 1 north
-    (up-modify-goal gl-wallPoint1-y c:- 21) 
+    (up-modify-goal gl-wallPoint1-x c:+ 22) ; 1 north
+    (up-modify-goal gl-wallPoint1-y c:- 22) 
 
-    (up-modify-goal gl-wallPoint2-x c:+ 21) ; 2 east
-    (up-modify-goal gl-wallPoint2-y c:+ 21) 
+    (up-modify-goal gl-wallPoint2-x c:+ 22) ; 2 east
+    (up-modify-goal gl-wallPoint2-y c:+ 22) 
 
-    (up-modify-goal gl-wallPoint3-x c:- 21) ; 3 south
-    (up-modify-goal gl-wallPoint3-y c:+ 21) 
+    (up-modify-goal gl-wallPoint3-x c:- 22) ; 3 south
+    (up-modify-goal gl-wallPoint3-y c:+ 22) 
 
-    (up-modify-goal gl-wallPoint4-x c:- 21) ; 4 west
-    (up-modify-goal gl-wallPoint4-y c:- 21)  
+    (up-modify-goal gl-wallPoint4-x c:- 22) ; 4 west
+    (up-modify-goal gl-wallPoint4-y c:- 22)  
     (disable-self)           
 )
 
 (defrule
-      (building-type-count-total town-center > 1) ; "square" wall
+    (up-compare-goal gl-buildingInnerWall == 1) ; inner wall
 =>    
     (up-get-point position-self gl-wallPoint1-x)
     (up-get-point position-self gl-wallPoint2-x)
@@ -321,6 +324,7 @@
 
 ; FINISHED GATES, NOW THE PALISADE
 (defrule ;along Y axis, right side
+    (up-compare-goal gl-buildingInnerWall == 0)
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
@@ -330,7 +334,7 @@
 )
 
 (defrule
-    (true)
+    (up-compare-goal gl-buildingInnerWall == 0)
     (unit-type-count-total villager > 6)
     (building-type-count-total barracks > 0)     
     (building-type-count palisade-wall > 4)
@@ -340,7 +344,7 @@
 )
 
 (defrule
-    (true)
+    (up-compare-goal gl-buildingInnerWall == 0)
     (unit-type-count-total villager > 7)
     (building-type-count-total barracks > 0)      
     (wood-amount > 200)    
@@ -350,7 +354,7 @@
 )
 
 (defrule
-    (true)
+    (up-compare-goal gl-buildingInnerWall == 0)
     (unit-type-count-total villager > 7)
     (building-type-count-total barracks > 0)      
     (wood-amount > 200)    
@@ -359,42 +363,34 @@
     (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: palisade-wall)
 )
 
+(defrule
+    (current-age == castle-age)  
+=>
+    (set-goal gl-buildingInnerWall == 1)
+)
+
 ; FINISHED GATES, NOW THE stonewa
 (defrule ;along Y axis, right side
-    (building-type-count-total town-center > 1)
-    (building-type-count-total barracks > 0)     
-    (wood-amount > 200) 
+    (up-compare-goal gl-buildingInnerWall == 1)
 =>    
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: stone-wall-line)
     (set-strategic-number sn-defense-distance 40)
 )
 
 (defrule
-    (true)
-    (building-type-count-total town-center > 1)
-    (building-type-count-total barracks > 0)     
-    (building-type-count palisade-wall > 4)
-    (wood-amount > 200)   
+    (up-compare-goal gl-buildingInnerWall == 1)
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: stone-wall-line)
 )
 
 (defrule
-    (true)
-    (building-type-count-total town-center > 1)
-    (building-type-count-total barracks > 0)      
-    (wood-amount > 200)    
-    (building-type-count palisade-wall > 8)  
+    (up-compare-goal gl-buildingInnerWall == 1) 
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: stone-wall-line)
 )
 
 (defrule
-    (true)
-    (unit-type-count-total villager > 7)
-    (building-type-count-total barracks > 0)      
-    (wood-amount > 200)    
-    (building-type-count palisade-wall > 8)  
+    (up-compare-goal gl-buildingInnerWall == 1)
 =>
     (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: stone-wall-line)
 )
