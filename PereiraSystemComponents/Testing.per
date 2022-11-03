@@ -177,7 +177,6 @@
 
 ; TOP X
 
-
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
     (up-compare-goal gl-positionYisHigh == 1)
@@ -186,8 +185,6 @@
     (chat-to-allies "IM AT THE EAST, IN THE CORNER!")
     (disable-self)
 )
-
-
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
     (up-compare-goal gl-positionYisMedium == 1)
@@ -196,8 +193,6 @@
     (chat-to-allies "IM AT THE NORTH EAST!")
     (disable-self)  
 )
-
-
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
     (up-compare-goal gl-positionYisLow == 1)
@@ -206,51 +201,36 @@
     (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
     (disable-self)  
 )
-
-
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisHigh == 1)
     (game-time > 8)
 =>  
-    (chat-to-allies "IM AT THE SOUTH EAST!")
-    (disable-self)
+    (chat-to-allies "IM AT THE SOUTH EAST!")(disable-self)
 )
-
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)
     (up-compare-goal gl-positionYisMedium == 1)
 =>  
-    (chat-to-allies "IM IN THE MIDDLE OF THE MAP")
-    (disable-self)
+    (chat-to-allies "IM IN THE MIDDLE OF THE MAP")(disable-self)
 )
-
-
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisLow == 1)
     (game-time > 10)
 =>  
-    (chat-to-allies "IM AT THE NORTH WEST!")
-    (disable-self)
+    (chat-to-allies "IM AT THE NORTH WEST!")(disable-self)
 )
-
-
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisHigh == 1)
     (game-time > 12)
 => 
-    (chat-to-allies "IM AT THE SOUTH, IN THE CORNER!")
-    (disable-self)
+    (chat-to-allies "IM AT THE SOUTH, IN THE CORNER!")(disable-self)
 ) 
-
-
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisMedium == 1)
     (game-time > 14)
 =>
-    (chat-to-allies "IM AT THE SOUTH WEST!")
-    (disable-self)  
+    (chat-to-allies "IM AT THE SOUTH WEST!")(disable-self)  
 )    
-
 (defrule
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal gl-positionYisLow == 1)
@@ -268,14 +248,6 @@
     (chat-local-to-self "BUILDING THE WALL GATES!")
 )
 
-(defrule
-    (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 < 2)
-    (building-type-count-total palisade-wall == 0)
-=>
-    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: 793)
-    (chat-local-to-self "BUILDING THE WALL GATES!")
-)
 
 ; FINISHED GATES, NOW THE PALISADE
 (defrule ;along x axis, top side
@@ -283,7 +255,7 @@
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
 =>    
-    (up-build-line gl-wallPoint2-x gl-wallPoint4-x c: palisade-wall)
+    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: palisade-wall)
     (set-strategic-number sn-defense-distance 40)
 )
 
@@ -294,7 +266,7 @@
     (building-type-count palisade-wall > 4)
     (wood-amount > 200)   
 =>
-    (up-build-line gl-wallPoint4-x gl-wallPoint3-x c: palisade-wall)
+    (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: palisade-wall)
 )
 
 (defrule
@@ -304,7 +276,7 @@
     (wood-amount > 200)    
     (building-type-count palisade-wall > 8)  
 =>
-    (up-build-line gl-wallPoint3-x gl-wallPoint1-x c: palisade-wall)
+    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: palisade-wall)
 )
 
 (defrule
@@ -314,21 +286,9 @@
     (wood-amount > 200)    
     (building-type-count palisade-wall > 8)  
 =>
-    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: palisade-wall)
+    (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: palisade-wall)
 )
 
-(defrule
-    (building-type-count-total 793 < 3)
-    ;(up-can-build-line gl-point-y gl-other-y c: 793)
-=>
-    ;(up-build-line gl-point-y gl-other-y c: palisade-gate)
-    ;(up-build-line gl-point-y gl-other-y c: 798)    ;diagonal left-right
-    ;(up-build-line gl-point-y gl-other-y c: 801)    ;diagonal north-south   
-    ;(up-build-line gl-point-y gl-other-y c: 789)    ;along y axis
-    ;(up-build-line gl-point-y gl-other-y c: 793)    ;along x axis
-    ;(chat-to-player my-player-number "BUILDING THE GATES TO THE WALL FRONT")
-    (do-nothing)
-)
 
 (defrule
     (building-type-count-total palisade-wall > 30)
