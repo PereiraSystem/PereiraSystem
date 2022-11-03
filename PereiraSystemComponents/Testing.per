@@ -118,37 +118,37 @@
 ; CHECK OUR POSITION - BASIC POINTS
 ; HIGH
 (defrule
-    (up-compare-goal gl-point-x g:> 80)
+    (up-compare-goal gl-myPosition-x g:> 80)
 =>
     (set-goal gl-positionXisHigh 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-point-y g:> 80)
+    (up-compare-goal gl-myPosition-y g:> 80)
 =>
     (set-goal gl-positionYisHigh 1)(disable-self)  
 )
 ; MID
 (defrule
-    (up-compare-goal gl-point-x g:< 80)
-    (up-compare-goal gl-point-x g:> 40)
+    (up-compare-goal gl-myPosition-x g:< 80)
+    (up-compare-goal gl-myPosition-x g:> 40)
 =>
     (set-goal gl-positionXisMedium 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-point-y g:< 80)
-    (up-compare-goal gl-point-y g:> 40)
+    (up-compare-goal gl-myPosition-y g:< 80)
+    (up-compare-goal gl-myPosition-y g:> 40)
 =>
     (set-goal gl-positionYisMedium 1)(disable-self)  
 )
 
 ; BOTTOM
 (defrule
-    (up-compare-goal gl-point-x g:< 40)
+    (up-compare-goal gl-myPosition-x g:< 40)
 =>
     (set-goal gl-positionXisLow 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-point-y g:< 40)
+    (up-compare-goal gl-myPosition-y g:< 40)
 =>
     (set-goal gl-positionYisLow 1)(disable-self)  
 )
