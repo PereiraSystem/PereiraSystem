@@ -525,13 +525,11 @@
 
 
 ; FINISHED GATES, NOW THE PALISADE
-(defrule
+(defrule ;along x axis, top side
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
-=>
-    ;(up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
-    
+=>    
     (up-build-line gl-wallPoint2-x gl-wallPoint4-x c: palisade-wall)
     (set-strategic-number sn-defense-distance 40)
     ;(chat-local-to-self "BUILDING THE WALL SECTION A !")
