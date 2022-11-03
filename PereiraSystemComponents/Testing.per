@@ -166,7 +166,7 @@
     (up-compare-goal gl-positionXisHigh == 1)
     (up-compare-goal gl-positionYisLow == 1)
 =>  
-    (chat-to-allies "IM AT CORNER HIGH X LOW Y")
+    (chat-to-allies "IM AT CORNER HIGH X LOW Y - TOP OF MINIMAP")
     (disable-self)  
 )
 
@@ -200,7 +200,8 @@
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal  gl-positionYisHigh == 1)
 =>  
-    (chat-to-allies "IM AT CORNER LOW X HIGH Y") (disable-self)  
+    (chat-to-allies "IM AT CORNER LOW X HIGH Y - BOTTOM OF MINIMAP")
+    (disable-self)
 )
 
 (defrule
@@ -214,7 +215,7 @@
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal gl-positionYisLow == 1)
 =>  
-    (chat-to-allies "IM AT CORNER LOW X LOQ Y") (disable-self)  
+    (chat-to-allies "IM AT CORNER LOW X LOQ Y - LEFT CORNER OF MINIMAP") (disable-self)  
 ) 
 
 
