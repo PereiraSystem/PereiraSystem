@@ -157,7 +157,7 @@
 ; HIGH X
 (defrule(true)=>(enable-timer 32 8)(disable-self)) 
 (defrule
-    (gl-positionXisHigh 1)
+    (goal gl-positionXisHigh 1)
     (goal gl-positionYisHigh 1)
     (timer-triggered 32)
 =>  
