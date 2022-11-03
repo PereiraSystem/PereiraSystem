@@ -190,7 +190,7 @@
     (set-goal gl-wall-start-x 80)
     (set-goal gl-wall-start-y 80)
     (set-goal gl-wall-end-x 120)
-    (set-goal gl-wall-end-y 40)
+    (set-goal gl-wall-end-y 80)
     (set-goal gl-wall-other-end-x 80)
     (set-goal gl-wall-other-end-y 120)
     (set-goal gl-positionCode 1)        
@@ -422,7 +422,7 @@
             )
             (or
                     (up-compare-goal gl-positionCode == 9)
-                    (up-compare-goal gl-positionCode == 9)
+                    (up-compare-goal gl-positionCode == 1)
             )
         )   
         (or
@@ -447,7 +447,7 @@
     (or
         (or
             (or
-                    (up-compare-goal gl-positionCode == 1)
+                    (up-compare-goal gl-positionCode == 3)
                     (up-compare-goal gl-positionCode == 3)
             )
             (or
@@ -457,12 +457,12 @@
         )   
         (or
             (or
-                    (up-compare-goal gl-positionCode == 1)
-                    (up-compare-goal gl-positionCode == 1)
+                    (up-compare-goal gl-positionCode == 3)
+                    (up-compare-goal gl-positionCode == 3)
             )
             (or
-                    (up-compare-goal gl-positionCode == 1)
-                    (up-compare-goal gl-positionCode == 1)
+                    (up-compare-goal gl-positionCode == 3)
+                    (up-compare-goal gl-positionCode == 3)
             )
         )           
     )
