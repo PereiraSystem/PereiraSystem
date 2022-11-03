@@ -129,15 +129,14 @@
     (up-chat-data-to-self "Map Size: %d" g: gl-posMapSize-x)  
     ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
     ;(up-chat-data-to-all "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
-    (up-chat-data-to-self "My wall perimeter: %d" g: gl-myWallPerimeter)      
+    ;(up-chat-data-to-self "My wall perimeter: %d" g: gl-myWallPerimeter)      
     (disable-self)   
 )
 
 (defrule
     (up-compare-goal gl-myWallPerimeter < 21)
 =>
-    (set-goal gl-myWallPerimeter 21)
-    (up-chat-data-to-self "My wall perimeter: %d" g: gl-myWallPerimeter)      
+    (set-goal gl-myWallPerimeter 21)      
 )
 
 ; CHECK OUR POSITION IN 9 SQUARES
