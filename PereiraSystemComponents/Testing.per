@@ -202,8 +202,9 @@
     (set-goal gl-wallPoint4-x gl-myPosition-x) 
 
 
-    (up-modify-goal gl-wallPoint1-x c:+ 20) ; east
-    (up-modify-goal gl-wallPoint1-y c:+ 20) 
+    (up-modify-goal gl-wallPoint1-x c:- 20) ; east
+    (up-modify-goal gl-wallPoint1-y c:- 20) 
+
     (up-chat-data-to-all "POINT 1 X = %d" g: gl-wallPoint1-x) 
     (up-chat-data-to-all "POINT 1 Y = %d" g: gl-wallPoint1-y) 
     (up-chat-data-to-all "POINT 1 X = %d" c: gl-wallPoint1-x) 
