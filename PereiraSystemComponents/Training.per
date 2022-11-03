@@ -1033,8 +1033,8 @@
 (defrule
     (unit-type-count-total fire-ship-line < 1)
     (wood-amount > 190)    
-    (or(players-unit-type-count any-enemy galley-line > 0)
-    (or(players-building-type-count any-enemy dock > 0)))
+    (or (players-unit-type-count any-enemy galley-line > 0)
+        (players-building-type-count any-enemy dock > 0))
     (can-train fire-ship-line)
 =>
     (train fire-ship-line)
