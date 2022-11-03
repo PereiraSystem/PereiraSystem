@@ -28,7 +28,8 @@
     (current-age == feudal-age)
     (not
         (and
-            (research-available castle-age)
+            ;(research-available castle-age)
+            (up-research-status c: castle-age == research-available)
             (and
                 (food-amount g:>= gl-castleAgeFoodCost)
                 (gold-amount g:>= gl-castleAgeGoldCost)
