@@ -166,8 +166,21 @@
     (false)
 =>  
     (up-chat-data-to-self "MY POS X = %d" g: gl-myPosition-x)
-    (up-chat-data-to-self "MY POS Y = %d" g: gl-myPosition-y)    
+    (up-chat-data-to-self "MY POS Y = %d" g: gl-myPosition-y)  
 )
+(defrule
+    (true)
+=>    
+    (set-goal gl-mapSizeDivider1-x 80) ;north
+    (set-goal gl-mapSizeDivider1-y 40)
+    (set-goal gl-mapSizeDivider2-x 80) ;east
+    (set-goal gl-mapSizeDivider2-y 80)
+    (set-goal gl-mapSizeDivider3-x 40) ;south
+    (set-goal gl-mapSizeDivider3-y 80)
+    (set-goal gl-mapSizeDivider4-x 40) ;west
+    (set-goal gl-mapSizeDivider4-y 40)
+)
+
 
 ; TOP X
 (defrule
@@ -181,22 +194,18 @@
     (set-goal gl-wall-other-end-x 80)
     (set-goal gl-wall-other-end-y 120)
     (set-goal gl-positionCode 1)        
-    (chat-to-allies "IM AT THE EAST, IN THE CORNER!")
     (disable-self)
 )
 
 (defrule
-    (true)
+    (up-compare-goal gl-positionXisHigh == 1)
+    (up-compare-goal gl-positionYisHigh == 1)
+    (game-time > 2)
 =>    
-    (set-goal gl-mapSizeDivider1-x 80) ;north
-    (set-goal gl-mapSizeDivider1-y 40)
-    (set-goal gl-mapSizeDivider2-x 80) ;east
-    (set-goal gl-mapSizeDivider2-y 80)
-    (set-goal gl-mapSizeDivider3-x 40) ;south
-    (set-goal gl-mapSizeDivider3-y 80)
-    (set-goal gl-mapSizeDivider4-x 40) ;west
-    (set-goal gl-mapSizeDivider4-y 40)
+    (chat-to-allies "IM AT THE EAST, IN THE CORNER!")
+    (disable-self)
 )
+
 
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
@@ -222,6 +231,14 @@
     (up-modify-goal gl-wall-final-y c:+ 3)
 
     (set-goal gl-positionCode 2)         
+    (disable-self)  
+)
+
+(defrule
+    (up-compare-goal gl-positionXisHigh == 1)
+    (up-compare-goal gl-positionYisMedium == 1)
+    (game-time > 4)
+=>  
     (chat-to-allies "IM AT THE NORTH EAST!")
     (disable-self)  
 )
@@ -237,10 +254,18 @@
     (set-goal gl-wall-other-end-x 80)
     (set-goal gl-wall-other-end-y 0)   
     (set-goal gl-positionCode 3)       
-    (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
+
     (disable-self)  
 )
 
+(defrule
+    (up-compare-goal gl-positionXisHigh == 1)
+    (up-compare-goal gl-positionYisLow == 1)
+    (game-time > 6)
+=>  
+    (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
+    (disable-self)  
+)
 ; CENTER X
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)
