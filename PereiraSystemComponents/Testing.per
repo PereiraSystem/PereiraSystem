@@ -552,7 +552,8 @@
 
 (defrule
     (building-type-count-total 793 > 0)
-    (wood-amount g:> gl-minimumWoodForLC) 
+    (wood-amount g:> gl-minimumWoodForLC)
+    (building-type-count-total watch-tower-line < 2)       
     (up-can-build 0 c: watch-tower-line)
 =>
     (up-set-placement-data my-player-number 793 c: -3)
@@ -562,6 +563,7 @@
 (defrule
     (building-type-count-total 798 > 0)
     (wood-amount g:> gl-minimumWoodForLC) 
+    (building-type-count-total watch-tower-line < 2)      
     (up-can-build 0 c: watch-tower-line)
 =>
     (up-set-placement-data my-player-number 798 c: -3)
