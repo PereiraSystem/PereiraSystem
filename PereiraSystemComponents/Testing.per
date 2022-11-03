@@ -175,31 +175,24 @@
     (disable-self)           
 )
 
-; TOP X
-
+; 9 POSITIONS
 (defrule
-    (up-compare-goal gl-positionXisHigh == 1)
-    (up-compare-goal gl-positionYisHigh == 1)
+    (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisHigh == 1)
     (game-time > 2)
 =>    
-    (chat-to-allies "IM AT THE EAST, IN THE CORNER!")
-    (disable-self)
+    (chat-to-allies "IM AT THE EAST, IN THE CORNER!")(disable-self)
 )
 (defrule
-    (up-compare-goal gl-positionXisHigh == 1)
-    (up-compare-goal gl-positionYisMedium == 1)
+    (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisMedium == 1)
     (game-time > 4)
 =>  
-    (chat-to-allies "IM AT THE NORTH EAST!")
-    (disable-self)  
+    (chat-to-allies "IM AT THE NORTH EAST!")(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-positionXisHigh == 1)
-    (up-compare-goal gl-positionYisLow == 1)
+    (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisLow == 1)
     (game-time > 6)
 =>  
-    (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
-    (disable-self)  
+    (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")(disable-self)  
 )
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisHigh == 1)
@@ -208,32 +201,30 @@
     (chat-to-allies "IM AT THE SOUTH EAST!")(disable-self)
 )
 (defrule
-    (up-compare-goal gl-positionXisMedium == 1)
-    (up-compare-goal gl-positionYisMedium == 1)
+    (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisMedium == 1)
 =>  
     (chat-to-allies "IM IN THE MIDDLE OF THE MAP")(disable-self)
 )
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisLow == 1)
-    (game-time > 10)
+    (game-time > 13)
 =>  
     (chat-to-allies "IM AT THE NORTH WEST!")(disable-self)
 )
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisHigh == 1)
-    (game-time > 12)
+    (game-time > 14)
 => 
     (chat-to-allies "IM AT THE SOUTH, IN THE CORNER!")(disable-self)
 ) 
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisMedium == 1)
-    (game-time > 14)
+    (game-time > 16)
 =>
     (chat-to-allies "IM AT THE SOUTH WEST!")(disable-self)  
 )    
 (defrule
-    (up-compare-goal gl-positionXisLow == 1)
-    (up-compare-goal gl-positionYisLow == 1)
+    (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisLow == 1)
 =>     
     (chat-to-allies "IM AT THE WEST, IN THE CORNER!")(disable-self)  
 ) 
