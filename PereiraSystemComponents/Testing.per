@@ -440,14 +440,6 @@
     (chat-to-allies "IM AT THE WEST, IN THE CORNER!")(disable-self)  
 ) 
 
-(defrule
-    (up-compare-goal gl-positionXisMedium == 1) 
-    (up-compare-goal gl-positionYisMedium == 1)
-    (can-build-wall 2 palisade-wall)
-=>
-    (build-wall 2 palisade-wall)
-    (disable-self)    
-)
 
 (defrule
     (wood-amount g:> gl-minimumWoodForLC)     
