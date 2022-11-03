@@ -202,21 +202,24 @@
     (up-compare-goal gl-positionXisHigh == 1)
     (up-compare-goal gl-positionYisHigh == 1)
 =>  
-    (chat-to-allies "IM AT THE CORNER TOP")  
+    (chat-to-allies "IM AT THE CORNER TOP")  (disable-self)  
+)
 )
 
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
     (up-compare-goal gl-positionYisMedium == 1)
 =>  
-    (chat-to-allies "IM AT MIDDLE OF Y AXIS CLOSE TO THE X BORDER")  
+    (chat-to-allies "IM AT MIDDLE OF Y AXIS CLOSE TO THE X BORDER")  (disable-self)  
+)
 )
 
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
     (up-compare-goal gl-positionYisLow == 1)
 =>  
-    (chat-to-allies "IM AT CORNER HIGH X LOW Y")  
+    (chat-to-allies "IM AT CORNER HIGH X LOW Y")  (disable-self)  
+)
 )
 
 ;medium x
@@ -224,21 +227,24 @@
     (up-compare-goal gl-positionXisMedium == 1)
     (up-compare-goal gl-positionYisHigh == 1)
 =>  
-    (chat-to-allies "IM AT MIDDLE OF X AXIS CLOSE TO HIGH Y BORDER")  
+    (chat-to-allies "IM AT MIDDLE OF X AXIS CLOSE TO HIGH Y BORDER")  (disable-self)  
+)
 )
 
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)
     (up-compare-goal gl-positionYisMedium == 1)
 =>  
-    (chat-to-allies "IM IN THE MIDDLE OF THE MAP")  
+    (chat-to-allies "IM IN THE MIDDLE OF THE MAP")  (disable-self)  
+)
 )
 
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)
     (up-compare-goal gl-positionYisLow == 1)
 =>  
-    (chat-to-allies "IM AT MIDDLE OF X AXIS CLOSE TO LOW Y BORDER")  
+    (chat-to-allies "IM AT MIDDLE OF X AXIS CLOSE TO LOW Y BORDER")  (disable-self)  
+)
 )
 
 ; low x
@@ -246,7 +252,8 @@
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal  gl-positionYisHigh == 1)
 =>  
-    (chat-to-allies "IM AT CORNER LOW X HIGH Y")  
+    (chat-to-allies "IM AT CORNER LOW X HIGH Y") (disable-self)  
+) 
 )
 
 (defrule
@@ -254,14 +261,16 @@
     (up-compare-goal gl-positionYisMedium == 1)
 =>  
 
-    (chat-to-allies "IM AT MIDDLE OF Y AXIS CLOSE TO LOW X BORDER")  
+    (chat-to-allies "IM AT MIDDLE OF Y AXIS CLOSE TO LOW X BORDER")(disable-self)  
+)  
 )
 
 (defrule
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal gl-positionYisLow == 1)
 =>  
-    (chat-to-allies "IM AT CORNER LOW X LOQ Y")  
+    (chat-to-allies "IM AT CORNER LOW X LOQ Y") (disable-self)  
+) 
 )
 
 
