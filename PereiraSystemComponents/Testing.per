@@ -297,6 +297,20 @@
     (up-chat-data-to-self "Y TOP = %d" g: gl-positionYisHigh)     
 )
 
+; TIMER 31 POSITION 
+(defrule(true)=>(enable-timer 31 8)(disable-self)) 
+(defrule
+    (timer-triggered 31)
+=>  
+    (disable-timer 31)
+    (enable-timer 31 15)
+    (up-chat-data-to-self "X BOTTOM = %d" g: gl-positionXisLow)
+    (up-chat-data-to-self "X CENTER = %d" g: gl-positionXisMedium) 
+    (up-chat-data-to-self "X TOP = %d" g: gl-positionXisHigh)             
+    (up-chat-data-to-self "Y BOTTOM = %d" g: gl-positionYisLow)
+    (up-chat-data-to-self "Y MEDIUM = %d" g: gl-positionYisMedium) 
+    (up-chat-data-to-self "Y TOP = %d" g: gl-positionYisHigh)     
+)
 ; ----
 (defrule
     (up-compare-goal gl-point-x > gl-center-x)
