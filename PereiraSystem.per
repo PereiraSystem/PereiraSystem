@@ -231,7 +231,10 @@
 
 (defrule(true)=>(enable-timer 21 2100)(disable-self)) ;35 min
 (defrule
-    (timer-triggered 21)
+    (or
+        (timer-triggered 21)
+        (and(food-amount > 6000)(wood-amount > 4000))
+    )
     (current-age == imperial-age)
     (population-headroom == 0)
     (housing-headroom == 0)
