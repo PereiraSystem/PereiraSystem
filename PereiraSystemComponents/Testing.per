@@ -219,6 +219,8 @@
 )
 
 
+
+
 (defrule
     (true)
 =>    
@@ -536,6 +538,7 @@
 )
 
 (defrule
+    (false)
     (unit-type-count-total villager > 6)
     (building-type-count-total barracks > 0)     
     (building-type-count palisade-wall > 4)
@@ -546,6 +549,7 @@
 )
 
 (defrule ; corners need no third wall
+    (false)
     (not
         (or
             (or
