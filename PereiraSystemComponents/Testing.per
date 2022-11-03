@@ -184,17 +184,17 @@
     (up-get-point position-self gl-wallPoint3-x)
     (up-get-point position-self gl-wallPoint4-x)
 
-    (up-modify-goal gl-wallPoint1-x c:+ 20) ; 1 north
-    (up-modify-goal gl-wallPoint1-y c:- 20) 
+    (up-modify-goal gl-wallPoint1-x c:+ 19) ; 1 north
+    (up-modify-goal gl-wallPoint1-y c:- 19) 
 
-    (up-modify-goal gl-wallPoint2-x c:+ 20) ; 2 east
-    (up-modify-goal gl-wallPoint2-y c:+ 20) 
+    (up-modify-goal gl-wallPoint2-x c:+ 19) ; 2 east
+    (up-modify-goal gl-wallPoint2-y c:+ 19) 
 
-    (up-modify-goal gl-wallPoint3-x c:- 20) ; 3 south
-    (up-modify-goal gl-wallPoint3-y c:+ 20) 
+    (up-modify-goal gl-wallPoint3-x c:- 19) ; 3 south
+    (up-modify-goal gl-wallPoint3-y c:+ 19) 
 
-    (up-modify-goal gl-wallPoint4-x c:- 20) ; 4 west
-    (up-modify-goal gl-wallPoint4-y c:- 20)  
+    (up-modify-goal gl-wallPoint4-x c:- 19) ; 4 west
+    (up-modify-goal gl-wallPoint4-y c:- 19)  
     (disable-self)           
 )
 
@@ -359,7 +359,47 @@
     (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: palisade-wall)
 )
 
+; FINISHED GATES, NOW THE stonewa
+(defrule ;along Y axis, right side
+    (unit-type-count-total villager > 5)
+    (building-type-count-total barracks > 0)     
+    (wood-amount > 200) 
+=>    
+    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: stone-wall-line)
+    (set-strategic-number sn-defense-distance 40)
+)
 
+(defrule
+    (true)
+    (unit-type-count-total villager > 6)
+    (building-type-count-total barracks > 0)     
+    (building-type-count palisade-wall > 4)
+    (wood-amount > 200)   
+=>
+    (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: stone-wall-line)
+)
+
+(defrule
+    (true)
+    (unit-type-count-total villager > 7)
+    (building-type-count-total barracks > 0)      
+    (wood-amount > 200)    
+    (building-type-count palisade-wall > 8)  
+=>
+    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: stone-wall-line)
+)
+
+(defrule
+    (true)
+    (unit-type-count-total villager > 7)
+    (building-type-count-total barracks > 0)      
+    (wood-amount > 200)    
+    (building-type-count palisade-wall > 8)  
+=>
+    (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: stone-wall-line)
+)
+
+; some outposts
 (defrule
     (building-type-count-total palisade-wall > 30)
     (wood-amount g:> gl-minimumWoodForLC)
