@@ -51,7 +51,16 @@
 )
 
 ; USER PATCH WALL
-(defconst gl-point-x 480) ; limit constant 510
+(defconst gl-positionXisHigh 470) 
+(defconst gl-positionXisMedium 471)
+(defconst gl-positionXisLow 472)
+(defconst gl-positionYisHigh 473) 
+(defconst gl-positionYisMedium 474)
+(defconst gl-positionYisLow 475)
+(defconst gl-point-y 477)
+(defconst gl-other-x 478)
+(defconst gl-other-y 479)
+(defconst gl-point-x 480) 
 (defconst gl-point-y 481)
 (defconst gl-other-x 482)
 (defconst gl-other-y 483)
@@ -67,8 +76,14 @@
 (defrule
     (true) ;just in case
 =>
-    (set-goal gl-point-x 0)
-    (set-goal gl-point-y 0)
+    (set-goal gl-positionXisHigh 0) 
+    (set-goal gl-positionXisMedium 0)
+    (set-goal gl-positionXisLow 0)
+    (set-goal gl-positionYisHigh 0) 
+    (set-goal gl-positionYisMedium 0)
+    (set-goal gl-positionYisLow 0)
+    (set-goal gl-myPosition-x 0)
+    (set-goal gl-myPosition-y 0)
     (set-goal gl-other-x 0)    
     (set-goal gl-other-y 0)
     (set-goal gl-wall-start-x 0)
@@ -83,17 +98,8 @@
 (defrule
     (true)
 =>
-    (up-get-point position-self gl-point-x)    ; the next constant y gets auto filled 
-    (up-get-point position-center gl-center-x)
+    (up-get-point position-self gl-myPosition-x)
     (disable-self)   
-)
-
-(defrule
-    (true)
-=>  
-    (up-chat-data-to-self "CENTER X = %d" g: gl-center-x)
-    (up-chat-data-to-self "CENTER Y = %d" g: gl-center-y)
-    (disable-self) 
 )
 
 ; TIMER 30 POSITION TO SELF
@@ -107,181 +113,140 @@
     (up-chat-data-to-self "MY POS Y = %d" g: gl-point-y)
 )
 
-; TIMER 31 POSITION TO ALLIES
-(defrule(true)=>(enable-timer 31 6)(disable-self))
-(defrule
-    (timer-triggered 31)
-=>  
-    (disable-timer 31)
-    (enable-timer 31 60)
-    (up-chat-data-to-player any-ally "MY POS X = %d" g: gl-point-x)
-    (up-chat-data-to-player any-ally "MY POS Y = %d" g: gl-point-y) 
-)
 ; CHECK OUR POSITION - BASIC POINTS
+; HIGH
 (defrule
-    (up-compare-goal gl-point-x g:> gl-center-x)
+    (up-compare-goal gl-point-x g:> 80)
 =>
-    (chat-to-all "IM AT HIGH X ZONE")(disable-self)  
+    (set-goal gl-positionXisHigh 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-point-x g:< gl-center-x) 
+    (up-compare-goal gl-point-y g:> 80)
 =>
-    (chat-to-all "IM AT LOW X ZONE")(disable-self)  
+    (set-goal gl-positionYisHigh 1)(disable-self)  
+)
+; MID
+(defrule
+    (up-compare-goal gl-point-x g:< 80)
+    (up-compare-goal gl-point-x g:> 40)
+=>
+    (set-goal gl-positionXisMedium 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-point-y g:> gl-center-y)
+    (up-compare-goal gl-point-y g:< 80)
+    (up-compare-goal gl-point-y g:> 40)
 =>
-    (chat-to-all "IM AT HIGH Y ZONE")(disable-self)  
+    (set-goal gl-positionYisMedium 1)(disable-self)  
+)
+
+; BOTTOM
+(defrule
+    (up-compare-goal gl-point-x g:< 40)
+=>
+    (set-goal gl-positionXisLow 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-point-y g:< gl-center-y) 
+    (up-compare-goal gl-point-y g:< 40)
 =>
-    (chat-to-all "IM AT LOW Y ZONE")(disable-self)  
+    (set-goal gl-positionYisLow 1)(disable-self)  
 )
 
 ; TIMER 32 POSITION STUFF
+; HIGH X
 (defrule(true)=>(enable-timer 32 8)(disable-self)) 
 (defrule
-    (up-compare-goal gl-point-x < 40) 
+    (goal positionXisHigh 1)
+    (goal positionYisHigh 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
     (enable-timer 32 60)
-    (chat-to-all "IM CLOSE TO THE LOW X BORDER")  
+    (chat-to-allies "IM AT THE CORNER TOP")  
 )
 
 (defrule
-    (up-compare-goal gl-point-x > 80) 
+    (goal positionXisHigh 1)
+    (goal positionYisMedium 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
     (enable-timer 32 60)
-    (chat-to-all "IM CLOSE TO THE HIGH X BORDER")  
+    (chat-to-allies "IM AT THE TOP LEFT OF THE MAP, CLOSE TO THE BORDER")  
 )
 
 (defrule
-    (up-compare-goal gl-point-y < 40) 
+    (goal positionXisHigh 1)
+    (goal positionYisLow 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
     (enable-timer 32 60)
-    (chat-to-all "IM CLOSE TO THE LOW Y BORDER")  
+    (chat-to-allies "IM AT CORNER LEFT")  
 )
 
+;medium x
+
 (defrule
-    (up-compare-goal gl-point-y > 80) 
+    (goal positionXisMedium 1)
+    (goal positionYisHigh 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
     (enable-timer 32 60)
-    (chat-to-all "IM CLOSE TO THE HIGH Y BORDER")  
-)
-
-; TIMER 33 POSITION STUFF
-(defrule(true)=>(enable-timer 32 10)(disable-self)) 
-(defrule
-    (up-compare-goal gl-point-x g:> 40)
-    (up-compare-goal gl-point-x g:< 80)    
-    (timer-triggered 33)
-=>  
-    (disable-timer 33)
-    (enable-timer 33 60)
-    (chat-to-all "IM IN THE MIDDLE OF THE X AXIS")  
+    (chat-to-allies "IMT AT THE TOP RIGHT OF THE MAP CLOSE TO THE BORDER")  
 )
 
 (defrule
-    (up-compare-goal gl-point-y g:> 40)
-    (up-compare-goal gl-point-y g:< 80)    
-    (timer-triggered 33)
+    (goal positionXisMedium 1)
+    (goal positionYisMedium 1)
+    (timer-triggered 32)
 =>  
-    (disable-timer 33)
-    (enable-timer 33 60)
-    (chat-to-all "IM IN THE MIDDLE OF THE Y AXIS")  
-)
-
-; TIMER 34 POSITION STUFF
-(defrule(true)=>(enable-timer 34 12)(disable-self)) 
-(defrule
-    (up-compare-goal gl-point-x g:< 40)   
-    (timer-triggered 34)
-=>  
-    (disable-timer 34)
-    (enable-timer 34 60)
-    (chat-to-all "Y LOW")  
+    (disable-timer 32)
+    (enable-timer 32 60)
+    (chat-to-allies "IM IN THE MIDDLE OF THE MAP")  
 )
 
 (defrule
-    (up-compare-goal gl-point-x g:> 80)    
-    (timer-triggered 34)
+    (goal positionXisMedium 1)
+    (goal positionYisLow 1)
+    (timer-triggered 32)
 =>  
-    (disable-timer 34)
-    (enable-timer 34 60)
-    (chat-to-all "X HIGH")  
+    (disable-timer 32)
+    (enable-timer 32 60)
+    (chat-to-allies "IM AT THE BOTTOM LEFT OF THE MAP CLOSE TO THE BORDER")  
 )
 
-
-; TIMER 36 POSITION STUFF
-(defrule(true)=>(enable-timer 36 17)(disable-self)) 
-(defrule
-    (up-compare-goal gl-point-x g:< 40)
-    (up-compare-goal gl-point-y g:< 40)        
-    (timer-triggered 36)
-=>  
-    (disable-timer 36)
-    (enable-timer 36 60)
-    (chat-to-all "CORNER A")  
-)
+; low x
 
 (defrule
-    (up-compare-goal gl-point-x g:> 80)
-    (up-compare-goal gl-point-y g:> 80)        
-    (timer-triggered 36)
+    (goal positionXisLow 1)
+    (goal positionYisHigh 1)
+    (timer-triggered 32)
 =>  
-    (disable-timer 36)
-    (enable-timer 36 60)
-    (chat-to-all "CORNER B")  
-)
-(defrule
-    (up-compare-goal gl-point-x g:< 40)
-    (up-compare-goal gl-point-y g:> 80)        
-    (timer-triggered 36)
-=>  
-    (disable-timer 36)
-    (enable-timer 36 60)
-    (chat-to-all "CORNER C")  
-)
-(defrule
-    (up-compare-goal gl-point-x g:> 80)
-    (up-compare-goal gl-point-y g:< 40)        
-    (timer-triggered 36)
-=>  
-    (disable-timer 36)
-    (enable-timer 36 60)
-    (chat-to-all "CORNER D")  
-)
-
-; TIMER 36 POSITION STUFF COMBINED
-(defrule(true)=>(enable-timer 35 15)(disable-self)) 
-(defrule
-    (up-compare-goal gl-point-y g:< 40)   
-    (timer-triggered 35)
-=>  
-    (disable-timer 35)
-    (enable-timer 35 60)
-    (chat-to-all "Y LOW")  
+    (disable-timer 32)
+    (enable-timer 32 60)
+    (chat-to-allies "IM AT THE CORNER RIGHT")  
 )
 
 (defrule
-    (up-compare-goal gl-point-y g:> 80)    
-    (timer-triggered 35)
+    (goal positionXisLow 1)
+    (goal positionYisMedium 1)
+    (timer-triggered 32)
 =>  
-    (disable-timer 35)
-    (enable-timer 35 60)
-    (chat-to-all "Y HIGH")  
+    (disable-timer 32)
+    (enable-timer 32 60)
+    (chat-to-allies "IM AT THE TOP RIGHT OF THE MAP, CLOSE TO THE BORDER")  
 )
 
-
-
+(defrule
+    (goal positionXisLow 1)
+    (goal positionYisLow 1)
+    (timer-triggered 32)
+=>  
+    (disable-timer 32)
+    (enable-timer 32 60)
+    (chat-to-allies "IM AT CORNER BOTTOM")  
+)
 
 
 (defrule
@@ -296,8 +261,6 @@
     (chat-to-all "MY Y IS LOWER THAN X")
     (disable-self)  
 )
-
-
 
 
 ; ----
