@@ -194,13 +194,10 @@
     (set-goal gl-wallPoint4-x 0) 
     (set-goal gl-wallPoint4-y 0)
 
-    (set-goal gl-wallPoint1-x gl-myPosition-x) 
-  
-    (set-goal gl-wallPoint2-x gl-myPosition-x) 
-
-    (set-goal gl-wallPoint3-x gl-myPosition-x) 
-
-    (set-goal gl-wallPoint4-x gl-myPosition-x) 
+    (up-get-point position-self gl-wallPoint1-x)
+    (up-get-point position-self gl-wallPoint2-x)
+    (up-get-point position-self gl-wallPoint3-x)
+    (up-get-point position-self gl-wallPoint4-x)
 
 
     (up-modify-goal gl-wallPoint1-x c:- 20) 
