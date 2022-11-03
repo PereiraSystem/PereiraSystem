@@ -218,18 +218,6 @@
     (disable-self)           
 )
 
-
-
-
-(defrule
-    (true)
-=>    
-
-    (up-chat-data-to-all "POINT 1 X = %d" g: gl-wallPoint1-x) 
-    (up-chat-data-to-all "POINT 1 Y = %d" g: gl-wallPoint1-y)         
-      
-)
-
 ; TOP X
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)
