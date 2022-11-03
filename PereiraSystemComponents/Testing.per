@@ -476,6 +476,7 @@
 (defrule  
     (building-type-count-total 789 == 0)
     (building-type-count-total palisade-wall == 0)
+    (up-compare-goal gl-positionCode == 1)    
 =>
     (up-build-line gl-wall-start-x gl-other-end-x c: 789)
     (chat-local-to-self "BUILDING THE WALL GATES !")
