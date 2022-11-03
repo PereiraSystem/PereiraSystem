@@ -268,8 +268,7 @@
 )
 ; CENTER X
 (defrule
-    (up-compare-goal gl-positionXisMedium == 1)
-    (up-compare-goal gl-positionYisHigh == 1)
+    (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisHigh == 1)
 =>  
     (set-goal gl-wall-start-x 80)
     (set-goal gl-wall-start-y 80)
@@ -289,6 +288,13 @@
     (up-modify-goal gl-wall-final-x c:+ 2)
 
     (set-goal gl-positionCode 4)     
+    (disable-self)
+)
+
+(defrule
+    (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisHigh == 1)
+    (game-time > 8)
+=>  
     (chat-to-allies "IM AT THE SOUTH EAST!")
     (disable-self)
 )
@@ -328,6 +334,14 @@
     (disable-self)
 )
 
+(defrule
+    (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisLow == 1)
+    (game-time > 10)
+=>  
+    (chat-to-allies "IM AT THE NORTH WEST!")
+    (disable-self)
+)
+
 ; BOTTOM X
 (defrule
     (up-compare-goal gl-positionXisLow == 1)
@@ -345,6 +359,14 @@
 )
 
 (defrule
+    (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisHigh == 1)
+    (game-time > 12)
+=> 
+    (chat-to-allies "IM AT THE SOUTH, IN THE CORNER!")
+    (disable-self)
+) 
+
+(defrule
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal gl-positionYisMedium == 1)
 =>  
@@ -357,8 +379,16 @@
     (set-goal gl-wall-final-x 0)
     (set-goal gl-wall-final-y 80)      
     (set-goal gl-positionCode 8)     
-    (chat-to-allies "IM AT THE SOUTH WEST!")(disable-self)  
+    (disable-self)  
 )  
+
+(defrule
+    (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisMedium == 1)
+    (game-time > 14)
+=>
+    (chat-to-allies "IM AT THE SOUTH WEST!")
+    (disable-self)  
+)    
 
 (defrule
     (up-compare-goal gl-positionXisLow == 1)
