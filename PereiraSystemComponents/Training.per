@@ -135,7 +135,7 @@
 
 ; FISHING SHIPS
 (defrule 
-    (wood-amount > 200)
+    (wood-amount > 350)
     (unit-type-count-total fishing-ship g:< gl-fishingShipsQty)
 =>
 	(train fishing-ship)
@@ -973,7 +973,7 @@
 (defrule
     (unit-type-count-total galley-line < 1)
     (or(wood-amount > 275)(building-type-count town-center > 0))    
-    (wood-amount > 190)
+    (wood-amount > 350)
     (can-train galley-line)
 =>
     (train galley-line)
