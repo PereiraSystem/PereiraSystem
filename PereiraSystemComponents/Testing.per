@@ -227,7 +227,7 @@
     (up-modify-goal gl-wall-start-y c:+ 3)
     (up-modify-goal gl-wall-end-x c:+ 3)    
     (up-modify-goal gl-wall-end-y c:+ 3) 
-    (up-modify-goal gl-wall-other-end-y c:- 3)    
+    (up-modify-goal gl-wall-other-end-y c:+ 3)    
     (up-modify-goal gl-wall-final-y c:+ 3)
 
     (set-goal gl-positionCode 2)         
@@ -561,11 +561,11 @@
 )
 
 (defrule
-    (building-type-count-total 798 > 0)
+    (building-type-count-total 789 > 0)
     (wood-amount g:> gl-minimumWoodForLC) 
     (building-type-count-total watch-tower-line < 2)      
     (up-can-build 0 c: watch-tower-line)
 =>
-    (up-set-placement-data my-player-number 798 c: -3)
+    (up-set-placement-data my-player-number 789 c: -3)
     (up-build place-control 0 c: watch-tower-line)
 )
