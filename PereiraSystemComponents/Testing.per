@@ -361,7 +361,7 @@
 
 ; FINISHED GATES, NOW THE stonewa
 (defrule ;along Y axis, right side
-    (town-center > 1)
+    (building-type-count-total town-center > 1)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
 =>    
