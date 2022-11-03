@@ -484,24 +484,23 @@
 
 (defrule
     (true)
-    (not
-        (or
-            (or
-                (up-compare-goal gl-positionCode == 1)
-                (up-compare-goal gl-positionCode == 3)
-            )
-            (or
-                (up-compare-goal gl-positionCode == 7)
-                (up-compare-goal gl-positionCode == 9)
-            )
-        )
-    )
     (unit-type-count-total villager > 7)
     (building-type-count-total barracks > 0)      
     (wood-amount > 200)    
     (building-type-count palisade-wall > 8)  
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint1-x c: palisade-wall)
+    ;(chat-local-to-self "BUILDING THE WALL SECTION C !")
+)
+
+(defrule
+    (true)
+    (unit-type-count-total villager > 7)
+    (building-type-count-total barracks > 0)      
+    (wood-amount > 200)    
+    (building-type-count palisade-wall > 8)  
+=>
+    (up-build-line gl-wallPoint1-x gl-wallPoint4-x c: palisade-wall)
     ;(chat-local-to-self "BUILDING THE WALL SECTION C !")
 )
 
