@@ -84,14 +84,18 @@
 (defconst gl-mapSizeTwoThirds 510)
 
 #load-if-defined TINY-MAP
-(set-goal gl-mapSizeDivider1-x 80) ;north
-(set-goal gl-mapSizeDivider1-y 40)
-(set-goal gl-mapSizeDivider2-x 80) ;east
-(set-goal gl-mapSizeDivider2-y 80)
-(set-goal gl-mapSizeDivider3-x 40) ;south
-(set-goal gl-mapSizeDivider3-y 80)
-(set-goal gl-mapSizeDivider4-x 40) ;west
-(set-goal gl-mapSizeDivider4-y 40)
+(defrule
+    (true)
+=>    
+    (set-goal gl-mapSizeDivider1-x 80) ;north
+    (set-goal gl-mapSizeDivider1-y 40)
+    (set-goal gl-mapSizeDivider2-x 80) ;east
+    (set-goal gl-mapSizeDivider2-y 80)
+    (set-goal gl-mapSizeDivider3-x 40) ;south
+    (set-goal gl-mapSizeDivider3-y 80)
+    (set-goal gl-mapSizeDivider4-x 40) ;west
+    (set-goal gl-mapSizeDivider4-y 40)
+)
 #end-if
 
 
