@@ -468,7 +468,7 @@
 (defrule
     (building-type-count-total dock == 0)
     (or(up-gaia-type-count-total c: ocean-fish-class > 0)
-    (up-gaia-type-count-total c: shore-fish-class > 0))
+    (up-gaia-type-count-total c: shore-fish-class > 3))
     (can-build dock)
 =>
     (chat-local-to-self "Trying To Build Dock 1 (Fish Detected)")
