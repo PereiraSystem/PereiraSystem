@@ -123,6 +123,7 @@
     (up-modify-goal gl-mapSizeTwoThirds c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:* 2)
     (set-goal gl-myWallPerimeter gl-posMapSize-x)
+    (up-chat-data-to-all "my wall perimeter preop %d" g: gl-myWallPerimeter)
     (up-modify-goal gl-myWallPerimeter c:/ 10)
     (up-modify-goal gl-myWallPerimeter c:+ 10)    
     (up-chat-data-to-all "map size 1/3 %d" g: gl-mapSizeThird)
