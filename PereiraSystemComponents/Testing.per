@@ -443,8 +443,8 @@
         )           
     )
     (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 == 0)
-    (building-type-count-total palisade-wall < 2)
+    (building-type-count-total 793 < 2)
+    (building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: 793)
     (chat-local-to-self "BUILDING THE WALL GATES!")
@@ -474,8 +474,8 @@
         )           
     )
     (wood-amount g:> gl-minimumWoodForLC) 
-    (building-type-count-total 789 == 0)
-    (building-type-count-total palisade-wall < 2)
+    (building-type-count-total 789 < 2)
+    (building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: 789)
     (chat-local-to-self "BUILDING THE WALL GATES!")
@@ -549,14 +549,14 @@
 )
 
 (defrule
-    (building-type-count-total 793 > 3)
+    (building-type-count 793 > 3)
 =>
     (delete-building 793)
     (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")
 )
 
 (defrule
-    (building-type-count-total 789 > 3)
+    (building-type-count 789 > 3)
 =>
     (delete-building 789)
     (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")    
