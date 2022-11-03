@@ -155,6 +155,14 @@
 
 ; TIMER 32 POSITION STUFF
 ; HIGH X
+
+(defrule
+    (up-compare-goal gl-positionXisHigh == 1)
+=>
+    (chat-to-allies "x hihh") 
+    (disable-self)  
+)
+
 (defrule(true)=>(enable-timer 32 8)(disable-self)) 
 (defrule
     (goal gl-positionXisHigh 1)
