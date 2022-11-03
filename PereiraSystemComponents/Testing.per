@@ -59,7 +59,7 @@
 (defconst gl-positionYisLow 475)
 (defconst gl-myPosition-x 476)
 (defconst gl-myPosition-y 477)
-
+(defconst gl-positionCode 478)
 (defconst gl-wall-start-x 484)
 (defconst gl-wall-start-y 485)
 (defconst gl-wall-end-x 486)
@@ -82,6 +82,7 @@
     (set-goal gl-positionYisLow 0)
     (set-goal gl-myPosition-x 0)
     (set-goal gl-myPosition-y 0)
+    (set-goal gl-positionCode 0)    
     (set-goal gl-wall-start-x 0)
     (set-goal gl-wall-start-y 0)
     (set-goal gl-wall-end-x 0)
@@ -157,6 +158,7 @@
     (set-goal gl-wall-end-y 70)
     (set-goal gl-wall-other-end-x 70)
     (set-goal gl-wall-other-end-y 120)
+    (set-goal gl-positionCode 1)        
     (chat-to-allies "IM AT THE EAST, IN THE CORNER!")
     (disable-self)
 )
@@ -170,7 +172,8 @@
     (set-goal gl-wall-end-x 85)
     (set-goal gl-wall-end-y 40)
     (set-goal gl-wall-other-end-x 120)
-    (set-goal gl-wall-other-end-y 80)      
+    (set-goal gl-wall-other-end-y 80)
+    (set-goal gl-positionCode 2)         
     (chat-to-allies "IM AT THE NORTH EAST!")
     (disable-self)  
 )
@@ -184,7 +187,8 @@
     (set-goal gl-wall-end-x 120)
     (set-goal gl-wall-end-y 50)
     (set-goal gl-wall-other-end-x 70)
-    (set-goal gl-wall-other-end-y 0)    
+    (set-goal gl-wall-other-end-y 0)
+    (set-goal gl-positionCode 3)       
     (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
     (disable-self)  
 )
@@ -199,7 +203,8 @@
     (set-goal gl-wall-end-x 40)
     (set-goal gl-wall-end-y 80)
     (set-goal gl-wall-other-end-x 80)
-    (set-goal gl-wall-other-end-y 120)  
+    (set-goal gl-wall-other-end-y 120)
+    (set-goal gl-positionCode 4)     
     (chat-to-allies "IM AT THE SOUTH EAST!")
     (disable-self)
 )
@@ -208,6 +213,7 @@
     (up-compare-goal gl-positionXisMedium == 1)
     (up-compare-goal gl-positionYisMedium == 1)
 =>  
+    (set-goal gl-positionCode 5) 
     (chat-to-allies "IM IN THE MIDDLE OF THE MAP")
     (disable-self)
 )
@@ -221,7 +227,8 @@
     (set-goal gl-wall-end-x 35)
     (set-goal gl-wall-end-y 35)
     (set-goal gl-wall-other-end-x 75)
-    (set-goal gl-wall-other-end-y 0)    
+    (set-goal gl-wall-other-end-y 0)
+    (set-goal gl-positionCode 6)     
     (chat-to-allies "IM AT THE NORTH WEST!")
     (disable-self)
 )
@@ -237,6 +244,7 @@
     (set-goal gl-wall-end-y 120)
     (set-goal gl-wall-other-end-x 0)
     (set-goal gl-wall-other-end-y 75)
+    (set-goal gl-positionCode 7)     
     (chat-to-allies "IM AT THE SOUTH, IN THE CORNER!")
     (disable-self)
 )
@@ -250,7 +258,8 @@
     (set-goal gl-wall-end-x 40)
     (set-goal gl-wall-end-y 80)
     (set-goal gl-wall-other-end-x 0)
-    (set-goal gl-wall-other-end-y 40)    
+    (set-goal gl-wall-other-end-y 40)
+    (set-goal gl-positionCode 8)     
     (chat-to-allies "IM AT THE SOUTH WEST!")(disable-self)  
 )  
 
@@ -263,7 +272,8 @@
     (set-goal gl-wall-end-x 50)
     (set-goal gl-wall-end-y 0)
     (set-goal gl-wall-other-end-x 0)
-    (set-goal gl-wall-other-end-y 50) 
+    (set-goal gl-wall-other-end-y 50)
+    (set-goal gl-positionCode 9)        
     (chat-to-allies "IM AT THE WEST, IN THE CORNER!")(disable-self)  
 ) 
 
@@ -279,8 +289,28 @@
 
 
 (defrule
-    (up-compare-goal gl-positionXisLow == 1) ; left corner
-    (up-compare-goal gl-positionYisLow == 1)
+    (or
+        (or
+            (or
+                    (up-compare-goal gl-positionCode 1)
+                    (up-compare-goal gl-positionCode 2)
+            )
+            (or
+                    (up-compare-goal gl-positionCode 3)
+                    (up-compare-goal gl-positionCode 4)
+            )
+        )   
+        (or
+            (or
+                    (up-compare-goal gl-positionCode 5)
+                    (up-compare-goal gl-positionCode 6)
+            )
+            (or
+                    (up-compare-goal gl-positionCode 7)
+                    (up-compare-goal gl-positionCode 8)
+            )
+        )           
+    )
     (building-type-count-total 793 == 0)
     (building-type-count-total palisade-wall == 0)
 =>
@@ -289,32 +319,32 @@
 )
 
 (defrule    
-    (up-compare-goal gl-positionXisHigh == 1) 
-    (up-compare-goal gl-positionYisHigh == 1)
+    (or
+        (or
+            (or
+                    (up-compare-goal gl-positionCode 9)
+                    (up-compare-goal gl-positionCode 9)
+            )
+            (or
+                    (up-compare-goal gl-positionCode 9)
+                    (up-compare-goal gl-positionCode 9)
+            )
+        )   
+        (or
+            (or
+                    (up-compare-goal gl-positionCode 9)
+                    (up-compare-goal gl-positionCode 9)
+            )
+            (or
+                    (up-compare-goal gl-positionCode 9)
+                    (up-compare-goal gl-positionCode 9)
+            )
+        )           
+    )
     (building-type-count-total 789 == 0)
     (building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: 789)
-    (chat-local-to-self "BUILDING THE WALL GATES !")
-)
-
-(defrule    
-    (up-compare-goal gl-positionXisLow == 1) 
-    (up-compare-goal gl-positionYisMedium == 1)
-    (building-type-count-total 793 == 0)
-    (building-type-count-total palisade-wall == 0)
-=>
-    (up-build-line gl-wall-start-x gl-wall-end-x c: 793)
-    (chat-local-to-self "BUILDING THE WALL GATES !")
-)
-
-(defrule    
-    (up-compare-goal gl-positionXisHigh == 1) 
-    (up-compare-goal gl-positionYisMedium == 1)
-    (building-type-count-total 793 == 0)
-    (building-type-count-total palisade-wall == 0)
-=>
-    (up-build-line gl-wall-start-x gl-wall-end-x c: 793)
     (chat-local-to-self "BUILDING THE WALL GATES !")
 )
 
