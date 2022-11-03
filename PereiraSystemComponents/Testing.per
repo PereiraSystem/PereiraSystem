@@ -285,10 +285,19 @@
     (set-goal gl-wall-start-y 40)
     (set-goal gl-wall-end-x 40)
     (set-goal gl-wall-end-y 40)
-    (set-goal gl-wall-other-end-x 40)
+    (set-goal gl-wall-other-end-x 80)
     (set-goal gl-wall-other-end-y 0)
-    (set-goal gl-wall-final-x 80)
-    (set-goal gl-wall-final-y 0)      
+    (set-goal gl-wall-final-x 40)
+    (set-goal gl-wall-final-y 0) 
+
+     ; make wall smaller
+    (up-modify-goal gl-wall-start-x c:- 3)
+    (up-modify-goal gl-wall-start-y c:- 2)
+    (up-modify-goal gl-wall-end-x c:+ 2)    
+    (up-modify-goal gl-wall-end-y c:- 2) 
+    (up-modify-goal gl-wall-other-end-x c:- 3)    
+    (up-modify-goal gl-wall-final-x c:+ 2)   
+
     (set-goal gl-positionCode 6)     
     (chat-to-allies "IM AT THE NORTH WEST!")
     (disable-self)
