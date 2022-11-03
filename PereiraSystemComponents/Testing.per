@@ -216,9 +216,19 @@
     (up-modify-goal gl-wallPoint3-y c:+ 20) 
 
     (up-modify-goal gl-wallPoint4-x c:- 20) ; west
-    (up-modify-goal gl-wallPoint4-y c:- 20)             
+    (up-modify-goal gl-wallPoint4-y c:- 20)  
+    (disable-self)           
 )
 
+
+(defrule
+    (true)
+=>    
+
+    (up-chat-data-to-all "POINT 1 X = %d" g: gl-wallPoint1-x) 
+    (up-chat-data-to-all "POINT 1 Y = %d" g: gl-wallPoint1-y)         
+      
+)
 
 ; TOP X
 (defrule
