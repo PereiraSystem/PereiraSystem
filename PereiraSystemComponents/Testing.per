@@ -577,3 +577,11 @@
     (up-set-placement-data my-player-number palisade-wall c: -3)
     (up-build place-control 0 c: watch-tower-line)
 )
+
+(defrule
+    (cheats-enabled)
+    (player-number my-player-number == 6)
+=>
+    (chat-to-all "LET´S SAVE TIME WITH AEGIS CHEAT!")
+    (up-cc-send-cheat "aegis")
+)
