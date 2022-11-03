@@ -163,6 +163,13 @@
     (disable-self)  
 )
 
+(defrule
+    (up-compare-goal gl-positionXisMedium == 1)
+=>
+    (chat-to-allies "x med") 
+    (disable-self)  
+)
+
 (defrule(true)=>(enable-timer 32 8)(disable-self)) 
 (defrule
     (goal gl-positionXisHigh 1)
