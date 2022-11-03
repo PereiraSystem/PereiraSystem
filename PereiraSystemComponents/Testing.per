@@ -72,8 +72,8 @@
 (defconst gl-wall-final-y 491)
 (defconst gl-center-x 492)
 (defconst gl-center-y 493)
-(defconst gl_mapSizeThird 509)
-(defconst gl_mapSizeTwoThirds 510)
+(defconst gl-mapSizeThird 506)
+(defconst gl-mapSizeTwoThirds 508)
 
 
 (defrule
@@ -96,8 +96,8 @@
     (set-goal gl-wall-other-end-y 0)
     (set-goal gl-wall-final-x 0)
     (set-goal gl-wall-final-y 0) 
-    (set-goal gl_mapSizeThird 40)         
-    (set-goal gl_mapSizeTwoThirds 80) 
+    (set-goal gl-mapSizeThird 40)         
+    (set-goal gl-mapSizeTwoThirds 80) 
     (disable-self)  
 )
 
@@ -119,37 +119,37 @@
 ; CHECK OUR POSITION - BASIC POINTS
 ; HIGH
 (defrule
-    (up-compare-goal gl-myPosition-x g:>= gl_mapSizeTwoThirds)
+    (up-compare-goal gl-myPosition-x g:>= gl-mapSizeTwoThirds)
 =>
     (set-goal gl-positionXisHigh 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-myPosition-y g:>= gl_mapSizeTwoThirds)
+    (up-compare-goal gl-myPosition-y g:>= gl-mapSizeTwoThirds)
 =>
     (set-goal gl-positionYisHigh 1)(disable-self)  
 )
 ; MID
 (defrule
-    (up-compare-goal gl-myPosition-x g:< gl_mapSizeTwoThirds)
-    (up-compare-goal gl-myPosition-x g:> gl_mapSizeThird)
+    (up-compare-goal gl-myPosition-x g:< gl-mapSizeTwoThirds)
+    (up-compare-goal gl-myPosition-x g:> gl-mapSizeThird)
 =>
     (set-goal gl-positionXisMedium 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-myPosition-y g:< gl_mapSizeTwoThirds)
-    (up-compare-goal gl-myPosition-y g:> gl_mapSizeThird)
+    (up-compare-goal gl-myPosition-y g:< gl-mapSizeTwoThirds)
+    (up-compare-goal gl-myPosition-y g:> gl-mapSizeThird)
 =>
     (set-goal gl-positionYisMedium 1)(disable-self)  
 )
 
 ; BOTTOM
 (defrule
-    (up-compare-goal gl-myPosition-x g:<= gl_mapSizeThird)
+    (up-compare-goal gl-myPosition-x g:<= gl-mapSizeThird)
 =>
     (set-goal gl-positionXisLow 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-myPosition-y g:<= gl_mapSizeThird)
+    (up-compare-goal gl-myPosition-y g:<= gl-mapSizeThird)
 =>
     (set-goal gl-positionYisLow 1)(disable-self)  
 )
@@ -185,7 +185,8 @@
     (set-goal gl-wall-start-x 80)
     (set-goal gl-wall-start-y 80)
     (set-goal gl-wall-end-x 80)
-    (set-goal gl-wall-end-y g: gl_mapSizeThird)
+    (set-goal gl-wall-end-y c: gl-mapSizeThird)
+    ;(set-goal gl-wall-end-y 40)    
     (set-goal gl-wall-other-end-x 120)
     (set-goal gl-wall-other-end-y 80)
     (set-goal gl-wall-final-x 120)
