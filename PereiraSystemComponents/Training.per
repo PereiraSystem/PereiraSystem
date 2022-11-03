@@ -1031,10 +1031,18 @@
 
 ; FIRE SHIP
 (defrule
-    (unit-type-count-total fire-ship-line < 1)
+    (unit-type-count-total fire-ship-line < 4)
     (wood-amount > 190)    
-    (or (players-unit-type-count any-enemy galley-line > 0)
-        (players-building-type-count any-enemy dock > 0))
+    (or
+        (or 
+            (players-unit-type-count any-enemy galley-line > 0)
+            (players-building-type-count any-enemy dock > 0)
+        )
+        (or 
+            (players-unit-type-count any-enemy warship-class > 0)
+            (players-unit-type-count any-enemy cannon-galleon-line > 0)
+        )        
+    )
     (can-train fire-ship-line)
 =>
     (train fire-ship-line)
