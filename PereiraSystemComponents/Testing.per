@@ -253,14 +253,6 @@
 )
 
 (defrule
-    (or 
-        (up-compare-goal gl-positionXisHigh == 1)
-        (or
-            (up-compare-goal gl-positionXisMedium == 1)
-            (up-compare-goal gl-positionXisLow == 1)            
-        )
-    )    
-    (up-compare-goal gl-positionYisHigh == 1)
     (building-type-count-total 789 == 0)
     (building-type-count-total palisade-wall < 4)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
