@@ -109,12 +109,12 @@
 ; CHECK OUR POSITION - BASIC POINTS
 ; HIGH
 (defrule
-    (up-compare-goal gl-myPosition-x > 80)
+    (up-compare-goal gl-myPosition-x >= 80)
 =>
     (set-goal gl-positionXisHigh 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-myPosition-y > 80)
+    (up-compare-goal gl-myPosition-y >= 80)
 =>
     (set-goal gl-positionYisHigh 1)(disable-self)  
 )
@@ -134,19 +134,19 @@
 
 ; BOTTOM
 (defrule
-    (up-compare-goal gl-myPosition-x < 40)
+    (up-compare-goal gl-myPosition-x <= 40)
 =>
     (set-goal gl-positionXisLow 1)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-myPosition-y < 40)
+    (up-compare-goal gl-myPosition-y <= 40)
 =>
     (set-goal gl-positionYisLow 1)(disable-self)  
 )
 
 ; WE GOT THE POSITIONS
 (defrule
-    (false)
+    (true)
 =>  
     (up-chat-data-to-self "MY POS X = %d" g: gl-myPosition-x)
     (up-chat-data-to-self "MY POS Y = %d" g: gl-myPosition-y)    
@@ -328,6 +328,10 @@
 )
 
 (defrule
+    (or
+        (up-compare-goal gl-positionYisLow == 1)
+        (up-compare-goal gl-positionYisHigh == 1)
+    )
     (building-type-count-total 789 == 0)
     (building-type-count-total palisade-wall == 0)
 =>
