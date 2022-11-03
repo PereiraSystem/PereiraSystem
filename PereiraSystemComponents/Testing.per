@@ -549,14 +549,14 @@
 )
 
 (defrule
-    (building-type-count 793 > 3)
+    (building-type-count 793 > 2)
 =>
     (delete-building 793)
     (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")
 )
 
 (defrule
-    (building-type-count 789 > 3)
+    (building-type-count 789 > 2)
 =>
     (delete-building 789)
     (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")    
