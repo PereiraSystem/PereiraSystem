@@ -157,8 +157,8 @@
 ; HIGH X
 (defrule(true)=>(enable-timer 32 8)(disable-self)) 
 (defrule
-    (goal positionXisHigh 1)
-    (goal positionYisHigh 1)
+    (goal gl-positionXisHigh 1)
+    (goal gl-positionYisHigh 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -167,8 +167,8 @@
 )
 
 (defrule
-    (goal positionXisHigh 1)
-    (goal positionYisMedium 1)
+    (goal gl-positionXisHigh 1)
+    (goal gl-positionYisMedium 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -177,8 +177,8 @@
 )
 
 (defrule
-    (goal positionXisHigh 1)
-    (goal positionYisLow 1)
+    (goal gl-positionXisHigh 1)
+    (goal gl-positionYisLow 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -189,8 +189,8 @@
 ;medium x
 
 (defrule
-    (goal positionXisMedium 1)
-    (goal positionYisHigh 1)
+    (goal gl-positionXisMedium 1)
+    (goal gl-positionYisHigh 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -199,8 +199,8 @@
 )
 
 (defrule
-    (goal positionXisMedium 1)
-    (goal positionYisMedium 1)
+    (goal gl-positionXisMedium 1)
+    (goal gl-positionYisMedium 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -209,8 +209,8 @@
 )
 
 (defrule
-    (goal positionXisMedium 1)
-    (goal positionYisLow 1)
+    (goal gl-positionXisMedium 1)
+    (goal gl-positionYisLow 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -221,8 +221,8 @@
 ; low x
 
 (defrule
-    (goal positionXisLow 1)
-    (goal positionYisHigh 1)
+    (goal gl-positionXisLow 1)
+    (goal gl-positionYisHigh 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -231,8 +231,8 @@
 )
 
 (defrule
-    (goal positionXisLow 1)
-    (goal positionYisMedium 1)
+    (goal gl-positionXisLow 1)
+    (goal gl-positionYisMedium 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
@@ -241,8 +241,8 @@
 )
 
 (defrule
-    (goal positionXisLow 1)
-    (goal positionYisLow 1)
+    (goal gl-positionXisLow 1)
+    (goal gl-positionYisLow 1)
     (timer-triggered 32)
 =>  
     (disable-timer 32)
