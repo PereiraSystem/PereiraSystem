@@ -338,8 +338,18 @@
 )
 
 (defrule    
-    (up-compare-goal gl-positionXisHigh == 1) ; left corner
+    (up-compare-goal gl-positionXisHigh == 1) 
     (up-compare-goal gl-positionYisHigh == 1)
+    (building-type-count-total 789 == 0)
+    (building-type-count-total palisade-wall == 0)
+=>
+    (up-build-line gl-wall-start-x gl-wall-end-x c: 789)
+    (chat-local-to-self "BUILDING THE WALL GATES !")
+)
+
+(defrule    
+    (up-compare-goal gl-positionXisLow == 1) 
+    (up-compare-goal gl-positionYisMedium == 1)
     (building-type-count-total 789 == 0)
     (building-type-count-total palisade-wall == 0)
 =>
