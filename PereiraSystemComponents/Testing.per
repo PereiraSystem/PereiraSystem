@@ -478,7 +478,8 @@
 
 ; FINISHED GATES, NOW THE PALISADE
 (defrule
-    (unit-type-count-total villager > 5)    
+    (unit-type-count-total villager > 5)
+    (building-type-count-total barracks > 0)     
     (wood-amount g:> gl-minimumWoodForLC)    
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
@@ -487,6 +488,7 @@
 
 (defrule
     (unit-type-count-total villager > 6)
+    (building-type-count-total barracks > 0)     
     (building-type-count palisade-wall > 4)
     (wood-amount g:> gl-minimumWoodForLC)    
 =>
@@ -507,7 +509,8 @@
             )
         )
     )
-    (unit-type-count-total villager > 7)    
+    (unit-type-count-total villager > 7)
+    (building-type-count-total barracks > 0)      
     (wood-amount g:> gl-minimumWoodForLC)    
     (building-type-count palisade-wall > 8)  
 =>
