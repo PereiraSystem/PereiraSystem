@@ -422,3 +422,19 @@
 =>
     (delete-building 798)
 )
+
+(defrule
+    (building-type-count-total 793 > 0)
+    (up-can-build 0 c: watch-tower-line)
+=>
+    (up-set-placement-data my-player-number 793 c: -3)
+    (up-build place-control 0 c: watch-tower-line)
+)
+
+(defrule
+    (building-type-count-total 798 > 0)
+    (up-can-build 0 c: watch-tower-line)
+=>
+    (up-set-placement-data my-player-number 798 c: -3)
+    (up-build place-control 0 c: watch-tower-line)
+)
