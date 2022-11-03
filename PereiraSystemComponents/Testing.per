@@ -383,3 +383,11 @@
     ;(chat-to-player my-player-number "BUILDING THE GATES TO THE WALL FRONT")
     (do-nothing)
 )
+
+(defrule
+    (building-type-count-total palisade-wall > 30)
+    (can-build outpost)
+=>
+    (up-set-placement-data palisade-wall c: -1)
+    (up-build place-control 0 c: outpost)
+)
