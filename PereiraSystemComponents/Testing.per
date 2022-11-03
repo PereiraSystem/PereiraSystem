@@ -411,3 +411,14 @@
     (up-build place-control 0 c: outpost)
 )
 
+(defrule
+    (building-type-count-total 793 > 1)
+=>
+    (delete-building 793)
+)
+
+(defrule
+    (building-type-count-total 798 > 1)
+=>
+    (delete-building 798)
+)
