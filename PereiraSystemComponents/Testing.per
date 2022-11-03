@@ -146,7 +146,7 @@
 
 ; WE GOT THE POSITIONS
 (defrule
-    (true)
+    (false)
 =>  
     (up-chat-data-to-self "MY POS X = %d" g: gl-myPosition-x)
     (up-chat-data-to-self "MY POS Y = %d" g: gl-myPosition-y)    
@@ -222,7 +222,7 @@
     (up-compare-goal gl-positionXisLow == 1)
     (up-compare-goal gl-positionYisLow == 1)
 =>  
-    (chat-to-allies "IM AT THE WEST, IN THE CORNER!") (disable-self)  
+    (chat-to-allies "IM AT THE WEST, IN THE CORNER!")(disable-self)  
 ) 
 
 ; PREPARING WALL POINTS ACCORDING TO THE POSITIONS WE GOT BEFORE
@@ -306,8 +306,8 @@
     (up-compare-goal gl-positionYisLow == 1)
 =>
     (set-goal gl-wall-start-x 50)
-    (set-goal gl-wall-start-y 50)
-    (set-goal gl-wall-end-x 0)
+    (set-goal gl-wall-start-y 0)
+    (set-goal gl-wall-end-x 50)
     (set-goal gl-wall-end-y 50)
     (set-goal gl-wall-other-end-x 50)
     (set-goal gl-wall-other-end-y 0)    
