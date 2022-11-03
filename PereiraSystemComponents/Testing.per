@@ -297,7 +297,7 @@
             )
             (or
                     (up-compare-goal gl-positionCode == 9)
-                    (up-compare-goal gl-positionCode == 4)
+                    (up-compare-goal gl-positionCode == 9)
             )
         )   
         (or
@@ -327,7 +327,7 @@
             )
             (or
                     (up-compare-goal gl-positionCode == 6)
-                    (up-compare-goal gl-positionCode == 1)
+                    (up-compare-goal gl-positionCode == 4)
             )
         )   
         (or
@@ -367,11 +367,11 @@
 )
 
 (defrule
-    (false)
+    (true)
     (building-type-count palisade-wall > 18)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
-    (up-build-line gl-wall-end-x position-flank c: palisade-wall)
+    (up-build-line gl-wall-end-x position-corner c: palisade-wall)
     (chat-local-to-self "BUILDING THE WALL SECTION C !")
 )
 
