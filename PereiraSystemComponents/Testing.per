@@ -240,6 +240,14 @@
 )
 
 (defrule
+    (building-type-count-total 793 < 3)
+    ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
+=>
+    (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-gate)
+    (chat-local-to-self "BUILDING THE WALL GATES !")
+)
+
+(defrule
     (true)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
