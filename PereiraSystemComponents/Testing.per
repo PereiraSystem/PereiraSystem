@@ -174,12 +174,11 @@
     (set-goal gl-positionYisLow 1)(disable-self)  
 )
 
-; WE GOT THE POSITIONS
 (defrule
     (true)
 =>  
-    (up-chat-data-to-self "MY POS X = %d" g: gl-myPosition-x)
-    (up-chat-data-to-self "MY POS Y = %d" g: gl-myPosition-y)  
+    ;(up-chat-data-to-self "MY POS X = %d" g: gl-myPosition-x)
+    ;(up-chat-data-to-self "MY POS Y = %d" g: gl-myPosition-y)  
 )
 
 (defrule
