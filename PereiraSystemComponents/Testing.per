@@ -82,8 +82,7 @@
     (set-goal gl-positionYisMedium 0)
     (set-goal gl-positionYisLow 0)
     (set-goal gl-myPosition-x 0)
-    (set-goal gl-myPosition-y 0)
-    (set-goal gl-positionCode 0)    
+    (set-goal gl-myPosition-y 0)   
     (set-goal gl-mapSizeThird 0)         
     (set-goal gl-mapSizeTwoThirds 0) 
     (disable-self)  
@@ -106,7 +105,6 @@
     (true)
 =>
     (up-get-point position-self gl-myPosition-x)
-    (up-get-point position-border gl-posBorderX)
     (up-get-point position-map-size gl-mapSizeThird)
     (up-get-point position-map-size gl-mapSizeTwoThirds)    
     (up-modify-goal gl-mapSizeThird c:/ 3)
