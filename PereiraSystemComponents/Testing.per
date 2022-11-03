@@ -208,6 +208,8 @@
     (set-goal gl-wall-end-y 80)
     (set-goal gl-wall-other-end-x 80)
     (set-goal gl-wall-other-end-y 120)
+    (set-goal gl-wall-final-x 40)
+    (set-goal gl-wall-final-y 120)      
     (set-goal gl-positionCode 4)     
     (chat-to-allies "IM AT THE SOUTH EAST!")
     (disable-self)
@@ -386,7 +388,7 @@
     (building-type-count palisade-wall > 18)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
-    ;(up-build-line gl-wall-end-x gl-posBorderX c: palisade-wall)
+    (up-build-line gl-wall-end-x gl-posBorderX c: palisade-wall)
     (chat-local-to-self "BUILDING THE WALL SECTION C !")
 )
 
