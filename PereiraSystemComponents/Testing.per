@@ -227,15 +227,9 @@
     (disable-self)           
 )
 
-; avoid building a wall next to abyss
-(defrule ; x is veryx low
-    (false)
-    (up-compare-goal gl-wallPoint1-y < 10)
-=> 
-    (set-goal gl-wallPoint1-x 0)
-)
 
-; 9 POSITIONS
+
+; SAY 1 OF 9 POSITIONS TO ALLIES
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisHigh == 1)
     (game-time > 2)
@@ -368,7 +362,8 @@
 )
 
 (defrule
-    (current-age == castle-age)  
+    (current-age == castle-age)
+    (game-time > 240)  
 =>
     (set-goal gl-buildingInnerWall 1)
 )
