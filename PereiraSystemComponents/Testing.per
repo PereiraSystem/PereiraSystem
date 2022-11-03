@@ -360,10 +360,17 @@
     (building-type-count palisade-wall > 24)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
-    (disable-timer 35)
     (up-build-line gl-wall-start-x gl-wall-other-end-x c: palisade-wall)
     (chat-local-to-self "BUILDING THE WALL SECTION B !")
+)
 
+(defrule
+    (true)
+    (building-type-count palisade-wall > 34)
+    ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
+=>
+    (up-build-line gl-wall-end-x position-corner c: palisade-wall)
+    (chat-local-to-self "BUILDING THE WALL SECTION C !")
 )
 
 (defrule
