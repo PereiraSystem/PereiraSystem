@@ -220,8 +220,8 @@
     (set-goal gl-wall-start-y 40)
     (set-goal gl-wall-end-x 40)
     (set-goal gl-wall-end-y 40)
-    (set-goal gl-wall-other-end-x 0)
-    (set-goal gl-wall-other-end-y 40)    
+    (set-goal gl-wall-other-end-x 40)
+    (set-goal gl-wall-other-end-y 0)    
     (chat-to-allies "IM AT THE NORTH WEST!")
     (disable-self)
 )
@@ -266,8 +266,6 @@
     (set-goal gl-wall-other-end-y 50) 
     (chat-to-allies "IM AT THE WEST, IN THE CORNER!")(disable-self)  
 ) 
-
-
 
 (defrule
     (up-compare-goal gl-positionXisMedium == 1) 
