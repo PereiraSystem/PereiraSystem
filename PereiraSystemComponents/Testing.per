@@ -72,8 +72,27 @@
 (defconst gl-wall-final-y 491)
 (defconst gl-center-x 492)
 (defconst gl-center-y 493)
-(defconst gl-mapSizeThird 506)
-(defconst gl-mapSizeTwoThirds 508)
+(defconst gl-mapSizeDivider1-x 501)
+(defconst gl-mapSizeDivider1-y 502)
+(defconst gl-mapSizeDivider2-x 503)
+(defconst gl-mapSizeDivider2-y 504)
+(defconst gl-mapSizeDivider3-x 505)
+(defconst gl-mapSizeDivider3-y 506)
+(defconst gl-mapSizeDivider4-x 507)
+(defconst gl-mapSizeDivider4-y 508)
+(defconst gl-mapSizeThird 509)
+(defconst gl-mapSizeTwoThirds 510)
+
+#load-if-defined TINY-MAP
+(set-goal gl-mapSizeDivider1-x 80) ;north
+(set-goal gl-mapSizeDivider1-y 40)
+(set-goal gl-mapSizeDivider2-x 80) ;east
+(set-goal gl-mapSizeDivider2-y 80)
+(set-goal gl-mapSizeDivider3-x 40) ;south
+(set-goal gl-mapSizeDivider3-y 80)
+(set-goal gl-mapSizeDivider4-x 40) ;west
+(set-goal gl-mapSizeDivider4-y 40)
+#end-if
 
 
 (defrule
