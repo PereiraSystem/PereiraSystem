@@ -420,20 +420,20 @@
 
 
 (defrule
-    (true)
+    (can-build palisade-wall)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: palisade-wall)
-    (chat-local-to-self "BUILDING THE WALL SECTION A !")
+    ;(chat-local-to-self "BUILDING THE WALL SECTION A !")
 )
 
 (defrule
-    (true)
+    (can-build palisade-wall)
     (building-type-count palisade-wall > 14)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
 =>
     (up-build-line gl-wall-start-x gl-wall-other-end-x c: palisade-wall)
-    (chat-local-to-self "BUILDING THE WALL SECTION B !")
+    ;(chat-local-to-self "BUILDING THE WALL SECTION B !")
 )
 
 (defrule ; corners need no third wall
@@ -451,9 +451,10 @@
     ) 
     (building-type-count palisade-wall > 18)
     ;(up-can-build-line 0 gl-wall-start-x c: palisade-wall)
+    (can-build palisade-wall)    
 =>
     (up-build-line gl-wall-end-x gl-wall-final-x c: palisade-wall)
-    (chat-local-to-self "BUILDING THE WALL SECTION C !")
+    ;(chat-local-to-self "BUILDING THE WALL SECTION C !")
 )
 
 (defrule
