@@ -441,7 +441,7 @@
     (building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: 793)
-    (chat-local-to-self "BUILDING THE WALL GATES !")
+    (chat-local-to-self "BUILDING THE WALL GATE!")
 )
 
 (defrule    
@@ -472,7 +472,7 @@
     (building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wall-start-x gl-wall-end-x c: 789)
-    (chat-local-to-self "BUILDING THE WALL GATES !")
+    (chat-local-to-self "BUILDING THE WALL GATES!")
 )
 
 
@@ -546,12 +546,14 @@
     (building-type-count-total 793 > 2)
 =>
     (delete-building 793)
+    (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")
 )
 
 (defrule
     (building-type-count-total 789 > 2)
 =>
     (delete-building 789)
+    (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")    
 )
 
 (defrule
