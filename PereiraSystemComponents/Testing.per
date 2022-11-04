@@ -447,9 +447,7 @@
 )
 
 (defrule
-    (not
-        (up-compare-goal gl-positionQuadrantCode == 4)
-    )
+    (not(up-compare-goal gl-positionQuadrantCode == 4))
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
@@ -457,6 +455,7 @@
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
+     (not(up-compare-goal gl-positionQuadrantCode == 4))   
     (not
         (up-compare-goal gl-positionQuadrantCode == 8)
     )
