@@ -707,7 +707,6 @@
     (can-build krepost)
 =>
     (build krepost)
-    ;(up-modify-sn sn-maximum-town-size c:+ 1)   
 )
 
 (defrule
@@ -715,8 +714,7 @@
     (building-type-count-total donjon < 64)
     (can-build donjon)    
 =>
-    (build donjon)
-    ;(up-modify-sn sn-maximum-town-size c:+ 1)   
+    (build donjon) 
 )
 
 ; MILITARY PRODUCTION BUILDINGS
@@ -756,9 +754,7 @@
     (military-population > 40)    
     (can-build barracks)
 =>  
-    (chat-local-to-self "Trying To Build Barracks 2")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
-    (up-modify-sn sn-minimum-town-size c:+ 1)        
+    (chat-local-to-self "Trying To Build Barracks 2")       
     (build barracks)
 )
 
@@ -774,8 +770,6 @@
     (can-build barracks)(military-population > 51)
 =>
     (build barracks)(chat-local-to-self "Trying To Build Barracks 3")
-    (up-modify-sn sn-maximum-town-size c:+ 1)    
-    (up-modify-sn sn-minimum-town-size c:+ 3)
 )
 
 
@@ -788,7 +782,6 @@
     (can-build barracks)
 =>
     (build barracks)(chat-local-to-self "Trying To Build Gothic Barracks")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
 ; BUILD STABLES
@@ -807,7 +800,6 @@
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable 1")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-set-placement-data my-player-number barracks c: 2)
     (up-build place-control 0 c: stable)     
     ;(build stable)         
@@ -828,12 +820,8 @@
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>  
-    (up-modify-sn sn-minimum-town-size c:+ 3)
     (build stable)(chat-local-to-self "Trying To Build Stable 2")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
 )
-
-
 
 
 (defrule
@@ -867,7 +855,6 @@
     (or(civ-selected cumans)(civ-selected sicilians))
 =>
     (chat-local-to-self "Trying To Build Archery Range 1")
-    (up-modify-sn sn-maximum-town-size c:+ 1)
     (build archery-range)
 )
 
@@ -893,7 +880,6 @@
     (not(civ-selected gothic))
     (can-build archery-range)(military-population > 60)
 =>
-    (up-modify-sn sn-minimum-town-size c:+ 3)
     (build archery-range)(chat-local-to-self "Trying To Build Archery Range 3")
 )
 
@@ -904,7 +890,6 @@
     (not(civ-selected gothic))
     (can-build archery-range)(wood-amount > 4000)
 =>  
-    (up-modify-sn sn-minimum-town-size c:+ 3)
     (build archery-range)(chat-local-to-self "Trying To Build Archery Range")   
 )
 
