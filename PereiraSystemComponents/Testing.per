@@ -362,10 +362,11 @@
 )
 
 (defrule
-    (current-age == castle-age)
+    (current-age >= castle-age)
     (game-time > 240)  
 =>
     (set-goal gl-buildingInnerWall 1)
+    (disable-self)
 )
 
 ; FINISHED GATES, NOW THE stonewa
