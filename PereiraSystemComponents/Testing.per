@@ -463,7 +463,7 @@
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>    
-    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: stone-wall)
+    (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
 )
 
 (defrule
@@ -472,13 +472,13 @@
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
-    (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: stone-wall)
+    (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1) 
 =>
-    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: stone-wall)
+    (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
 )
 
 (defrule
@@ -487,7 +487,7 @@
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
-    (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: stone-wall)
+    (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
 )
 
 ; some outposts
