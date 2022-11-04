@@ -258,7 +258,7 @@
 
 (defrule
     (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 789 < 3)
+    (building-type-count-total 789 < 2)
     (building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
@@ -276,7 +276,7 @@
 
 (defrule
     (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 789 < 5)
+    (building-type-count-total 789 < 4)
     (building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
@@ -469,14 +469,14 @@
 )
 
 (defrule
-    (building-type-count 793 > 7)(game-time > 50)
+    (building-type-count 793 > 4)(game-time > 50)
 =>
     (delete-building 793)
     (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")
 )
 
 (defrule
-    (building-type-count 789 > 7)
+    (building-type-count 789 > 4)
     (game-time > 50)
 =>
     (delete-building 789)
