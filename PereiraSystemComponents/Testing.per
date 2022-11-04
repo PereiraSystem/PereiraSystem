@@ -126,9 +126,12 @@
     (set-goal gl-wallPoint4-y 0)
     (disable-self)  
 )
-
-
-
+(defrule
+    (true)
+=>
+    (set-goal gl-innerWallPerimeter 19)     ;trying to put towers next to inner wall
+    (set-goal gl-outerWallPerimeter 22)
+)
 (defrule
     (true)
 =>
