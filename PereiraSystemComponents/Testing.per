@@ -476,7 +476,10 @@
 )
 
 (defrule
-    (up-compare-goal gl-buildingInnerWall == 1) 
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (not
+        (up-compare-goal gl-positionQuadrantCode == 9) ;west
+    )    
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
 )
