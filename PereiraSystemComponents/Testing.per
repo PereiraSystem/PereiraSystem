@@ -63,6 +63,8 @@
 (defconst gl-posMapSize-x 478)
 (defconst gl-posMapSize-y 479)
 
+(defconst gl-positionQuadrantCode 493)
+
 (defconst gl-mapSizeThird 494)
 (defconst gl-mapSizeTwoThirds 495)
 
@@ -94,7 +96,10 @@
     (set-goal gl-myPosition-y 0)
 
     (set-goal gl-buildingInnerWall 0)
-    (set-goal gl-myWallModifier 0)          
+    (set-goal gl-myWallModifier 0)   
+
+    (set-goal gl-positionQuadrantCode 0)  
+
     (set-goal gl-mapSizeThird 0)         
     (set-goal gl-mapSizeTwoThirds 0) 
     (disable-self)  
@@ -131,7 +136,8 @@
 (defrule
     (up-compare-goal gl-myPosition-x g:>= gl-mapSizeTwoThirds)
 =>
-    (set-goal gl-positionXisHigh 1)(disable-self)  
+    (set-goal gl-positionXisHigh 1)
+    (disable-self)  
 )
 (defrule
     (up-compare-goal gl-myPosition-y g:>= gl-mapSizeTwoThirds)
@@ -167,6 +173,7 @@
     (game-time > 2)
 =>    
     (chat-to-allies "IM AT THE EAST, IN THE CORNER!")
+    (set-goal gl-positionQuadrantCode 1)    
     (up-send-flare position-self)(disable-self)
 )
 (defrule
@@ -174,6 +181,7 @@
     (game-time > 4)
 =>  
     (chat-to-allies "IM AT THE NORTH EAST!")
+    (set-goal gl-positionQuadrantCode 2) 
     (up-send-flare position-self)(disable-self)  
 )
 (defrule
@@ -181,6 +189,7 @@
     (game-time > 6)
 =>  
     (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
+(set-goal gl-positionQuadrantCode 3)     
     (up-send-flare position-self)(disable-self)  
 )
 (defrule
@@ -188,12 +197,14 @@
     (game-time > 8)
 =>  
     (chat-to-allies "IM AT THE SOUTH EAST!")
+(set-goal gl-positionQuadrantCode 4)     
     (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisMedium == 1)
 =>  
     (chat-to-allies "IM IN THE MIDDLE OF THE MAP")
+    (set-goal gl-positionQuadrantCode 5)     
     (up-send-flare position-self)(disable-self)
 )
 (defrule
@@ -201,6 +212,7 @@
     (game-time > 13)
 =>  
     (chat-to-allies "IM AT THE NORTH WEST!")
+    (set-goal gl-positionQuadrantCode 6)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
@@ -208,6 +220,7 @@
     (game-time > 14)
 => 
     (chat-to-allies "IM AT THE SOUTH, IN THE CORNER!")
+    (set-goal gl-positionQuadrantCode 7)
     (up-send-flare position-self)(disable-self)
 ) 
 (defrule
@@ -215,12 +228,14 @@
     (game-time > 16)
 =>
     (chat-to-allies "IM AT THE SOUTH WEST!")
+    (set-goal gl-positionQuadrantCode 8)    
     (up-send-flare position-self)(disable-self)  
 )    
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisLow == 1)
 =>     
     (chat-to-allies "IM AT THE WEST, IN THE CORNER!")
+    (set-goal gl-positionQuadrantCode 9)
     (up-send-flare position-self)(disable-self)  
 )
 
@@ -421,9 +436,9 @@
 )
 
 ; INNER STONE WALL
-(defrule ;along Y axis, right side
+(defrule 
     (not
-        (up-compare-goal gl-positionXisHigh == 1)
+        (up-compare-goal gl-positionQuadrantCode 2)
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>    
