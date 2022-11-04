@@ -496,24 +496,14 @@
 
 
 (defrule
-    (building-type-count-total 793 > 0)
+    (building-type-count-total palisade-wall > 15)
     (wood-amount g:> gl-minimumWoodForLC)
     (building-type-count-total watch-tower-line < 4)       
     (up-can-build 0 c: watch-tower-line)
 =>
-    (up-set-placement-data my-player-number town-center c: +18)
+    (up-set-placement-data my-player-number town-center c: +17)
     (up-build place-control 0 c: watch-tower-line)
 )
 
-(defrule
-    ;(building-type-count-total 789 > 0)
-    (building-type-count-total palisade-wall > 0)
-    (wood-amount g:> gl-minimumWoodForLC) 
-    (building-type-count-total watch-tower-line < 4)      
-    (up-can-build 0 c: watch-tower-line)
-=>
-    ;(up-set-placement-data my-player-number 789 c: -3)
-    (up-set-placement-data my-player-number town-center c: +18)
-    (up-build place-control 0 c: watch-tower-line)
-)
+
 
