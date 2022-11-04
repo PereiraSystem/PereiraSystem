@@ -369,18 +369,16 @@
 )
 
 (defrule
-    (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 64 < 2)
-    (building-type-count-total palisade-wall == 0)
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (building-type-count-total 64 < 4)
 =>
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 64)
     (chat-local-to-self "BUILDING THE WALL GATES!")
 )
 
 (defrule
-    (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 88 < 2)
-    (building-type-count-total palisade-wall == 0)
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (building-type-count-total 88 < 4)
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 88)
     (chat-local-to-self "BUILDING THE WALL GATES!")
