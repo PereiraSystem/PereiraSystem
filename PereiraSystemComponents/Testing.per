@@ -458,7 +458,7 @@
 
 (defrule
     (not
-        (up-compare-goal gl-positionYisHigh == 1)
+        (up-compare-goal gl-positionQuadrantCode == 1) ;east corner
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
@@ -466,9 +466,6 @@
 )
 
 (defrule
-    (not
-        (up-compare-goal gl-positionXisLow == 1)
-    )
     (up-compare-goal gl-buildingInnerWall == 1) 
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: stone-wall)
@@ -476,7 +473,7 @@
 
 (defrule
     (not
-        (up-compare-goal gl-positionYisLow == 1)
+        (up-compare-goal gl-positionQuadrantCode == 3) ;north corner
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
