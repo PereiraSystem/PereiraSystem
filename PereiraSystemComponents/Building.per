@@ -28,7 +28,7 @@
         (building-type-count siege-workshop > 0)
         (or(civ-selected gothic)(civ-selected bohemians))
     )
-    (can-build town-center)
+    ;(can-build town-center)
     (up-can-build 0 c: town-center)    
 =>
     ;(set-strategic-number sn-town-center-placement lumber-camp)
@@ -47,7 +47,10 @@
     (military-population > 10)
     (can-build town-center)    
 =>
-    (build town-center)(chat-local-to-self "Trying To Build Town Center 3")
+ (up-can-build 0 c: town-center)  
+    (build town-center)
+       (up-set-placement-data my-player-number -1 c: -28)
+    (up-build place-control 0 c: town-center)   (chat-local-to-self "Trying To Build Town Center 3")
 )
 
 (defrule
