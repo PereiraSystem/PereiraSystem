@@ -362,7 +362,7 @@
 
 (defrule
     (current-age >= castle-age)
-    (game-time > 600)  
+    (or(game-time > 600)(cheats-enabled))
 =>
     (set-goal gl-buildingInnerWall 1)
     
