@@ -1087,7 +1087,7 @@
     (up-can-build 0 c: watch-tower)    
 =>  
     ;(build watch-tower-line)
-    (up-set-placement-data my-player-number -1 c: +3)    
+    (up-set-placement-data my-player-number town-center g: gl-outerWallPerimeter)    
     (up-build place-control 0 c: watch-tower)  
 )
 
@@ -1097,7 +1097,10 @@
     (not(civ-selected teutonic))(not(civ-selected portuguese))
     (building-type-count watch-tower-line < 4)
     (not(can-build bombard-tower))    
-    (can-build watch-tower-line)
+    (up-can-build 0 c: watch-tower)     
+    ;(can-build watch-tower-line)
 =>
-    (build watch-tower-line)(up-modify-sn sn-maximum-town-size c:+ 1)   
+    ;(build watch-tower-line)
+    (up-set-placement-data my-player-number town-center g: gl-outerWallPerimeter)    
+    (up-build place-control 0 c: watch-tower)  
 )
