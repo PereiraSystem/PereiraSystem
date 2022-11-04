@@ -490,7 +490,7 @@
     (building-type-count-total outpost < 5)    
     (up-can-build 0 c: outpost)
 =>
-    (up-set-placement-data my-player-number town-center g: gl-outerWallPerimeter)
+    (up-set-placement-data my-player-number town-center c: +18)
     (up-build place-control 0 c: outpost)
 )
 
@@ -502,7 +502,7 @@
     (building-type-count-total watch-tower-line < 4)       
     (up-can-build 0 c: watch-tower-line)
 =>
-    (up-set-placement-data my-player-number town-center g: gl-outerWallPerimeter)
+    (up-set-placement-data my-player-number town-center c: +18)
     (up-build place-control 0 c: watch-tower-line)
 )
 
@@ -514,7 +514,7 @@
     (up-can-build 0 c: watch-tower-line)
 =>
     ;(up-set-placement-data my-player-number 789 c: -3)
-    (up-set-placement-data my-player-number town-center g: gl-outerWallPerimeter)
+    (up-set-placement-data my-player-number town-center c: +18)
     (up-build place-control 0 c: watch-tower-line)
 )
 
