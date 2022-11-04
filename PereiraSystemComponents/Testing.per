@@ -338,6 +338,18 @@
     (chat-local-to-self "BUILDING THE NORTH WEST PALISADE GATES!")
 )
 
+(defrule
+    (building-type-count 793 > 4)
+=>
+    (delete-building 793)
+)
+
+(defrule
+    (building-type-count 789 > 4)
+=>
+    (delete-building 789)  
+)
+
 ; FINISHED GATES, NOW THE PALISADE
 (defrule ;along Y axis, right side
     (true)
@@ -411,7 +423,7 @@
     (disable-self)           
 )
 
-(defrule ;DOESNT WORK!!!!!!!!!!! 
+(defrule ;DOESNT WORK WITH 64 OR 88!!!!!!!!!!! 
     (up-compare-goal gl-buildingInnerWall == 1)
     (building-type-count-total 64 < 6)
 =>
@@ -482,20 +494,7 @@
     (up-build place-control 0 c: outpost)
 )
 
-(defrule(false)
-    (building-type-count 793 > 4)(game-time > 50)
-=>
-    (delete-building 793)
-    (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")
-)
 
-(defrule(false)
-    (building-type-count 789 > 4)
-    (game-time > 50)
-=>
-    (delete-building 789)
-    (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")    
-)
 
 (defrule
     (building-type-count-total 793 > 0)
