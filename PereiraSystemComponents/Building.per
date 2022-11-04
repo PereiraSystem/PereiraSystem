@@ -209,8 +209,9 @@
     (wood-amount g:> gl-minimumWoodForLC)
     (or
         (and(housing-headroom < 3)(population-headroom > 0))
-        (wood-amount > 9000)
+        (wood-amount > 20000)
     )
+    (building-type-count-total house g:< gl-posMapSize-x) ;120 to 512
     (up-can-build 0 c: house)
 =>
     (chat-local-to-self "Trying To Build House")

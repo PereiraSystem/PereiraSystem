@@ -440,6 +440,9 @@
 )
 
 (defrule
+    (not
+        (up-compare-goal gl-positionXisLow == 1)
+    )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
     (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: stone-wall)
