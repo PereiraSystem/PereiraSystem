@@ -278,42 +278,52 @@
 )
 
 ; GATES Y AXIS
+(defrule(true)=>(enable-timer 49 1))
+
 (defrule
-    (true)
-    ;(wood-amount g:> gl-minimumWoodForLC)     
+    (timer-triggered 49)
+    (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 793 < 2)
-    ;(building-type-count-total palisade-wall == 0)
+    (building-type-count-total palisade-wall < 6)
 =>
+    ;(disable-timer 49)
+    (enable-timer 49 15)
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)
     (chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
 )
 
 (defrule
-    (true)
-    ;(wood-amount g:> gl-minimumWoodForLC)     
+    (timer-triggered 49)
+    (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 789 < 3)
-    ;(building-type-count-total palisade-wall == 0)
+    (building-type-count-total palisade-wall < 6)
 =>
+    ;(disable-timer 49)
+    (enable-timer 49 15)
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
     (chat-local-to-self "BUILDING THE SOUTH EAST PALISADE GATES!")
 )
 
 (defrule
-    (true)
-    ;(wood-amount g:> gl-minimumWoodForLC)     
+    (timer-triggered 49)
+    (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 793 < 2)
-    ;(building-type-count-total palisade-wall == 0)
+    (building-type-count-total palisade-wall < 6)
 =>
+    ;(disable-timer 49)
+    (enable-timer 49 15)
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: 793)
     (chat-local-to-self "BUILDING THE SOUTH WEST PALISADE GATES!")
 )
 
 (defrule
-    (true)
-    ;(wood-amount g:> gl-minimumWoodForLC)     
+    (timer-triggered 49)
+    (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 789 < 3)
-    ;(building-type-count-total palisade-wall == 0)
+    (building-type-count-total palisade-wall < 6)
 =>
+    ;(disable-timer 49)
+    (enable-timer 49 15)
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
     (chat-local-to-self "BUILDING THE NORTH WEST PALISADE GATES!")
 )
@@ -431,9 +441,6 @@
     (not
         (up-compare-goal gl-positionQuadrantCode == 4)
     )
-    (not
-        (up-compare-goal gl-positionQuadrantCode == 3)
-    )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
@@ -457,6 +464,9 @@
     )
     (not
         (up-compare-goal gl-positionQuadrantCode == 7)
+    )
+    (not
+        (up-compare-goal gl-positionQuadrantCode == 3)
     )    
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
