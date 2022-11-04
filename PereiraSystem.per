@@ -22,7 +22,7 @@
 ; TIMERS AND ATTACKS IN THIS FILE
 
 ; TIMER 1 INCREASES TOWN SIZE
-(defrule(true)=>(enable-timer 1 720)(disable-self)) 
+(defrule(false)=>(enable-timer 1 720)(disable-self)) 
 (defrule
 	(timer-triggered 1)
 =>
