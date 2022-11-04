@@ -180,10 +180,9 @@
     (set-goal gl-positionYisLow 1)(disable-self)  
 )
 
-; SAY 1 OF 9 POSITIONS TO ALLIES
+; SAY 1 OF 9 POSITIONS TO ALLIES AND STORE POSITION IN A CODE WHILE WE ARE AT IT
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisHigh == 1)
- 
 =>    
     (chat-to-allies "IM AT THE EAST, IN THE CORNER!")
     (set-goal gl-positionQuadrantCode 1)    
@@ -191,7 +190,6 @@
 )
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisMedium == 1)
-
 =>  
     (chat-to-allies "IM AT THE NORTH EAST!")
     (set-goal gl-positionQuadrantCode 2) 
@@ -199,18 +197,16 @@
 )
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisLow == 1)
-  
 =>  
     (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
-(set-goal gl-positionQuadrantCode 3)     
+    (set-goal gl-positionQuadrantCode 3)     
     (up-send-flare position-self)(disable-self)  
 )
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisHigh == 1)
-
 =>  
     (chat-to-allies "IM AT THE SOUTH EAST!")
-(set-goal gl-positionQuadrantCode 4)     
+    (set-goal gl-positionQuadrantCode 4)     
     (up-send-flare position-self)(disable-self)
 )
 (defrule
@@ -222,7 +218,6 @@
 )
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisLow == 1)
-
 =>  
     (chat-to-allies "IM AT THE NORTH WEST!")
     (set-goal gl-positionQuadrantCode 6)
@@ -230,7 +225,6 @@
 )
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisHigh == 1)
- 
 => 
     (chat-to-allies "IM AT THE SOUTH, IN THE CORNER!")
     (set-goal gl-positionQuadrantCode 7)
@@ -238,7 +232,6 @@
 ) 
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisMedium == 1)
- 
 =>
     (chat-to-allies "IM AT THE SOUTH WEST!")
     (set-goal gl-positionQuadrantCode 8)    
