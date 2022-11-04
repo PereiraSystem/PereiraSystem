@@ -396,11 +396,12 @@
     (or(building-type-count siege-workshop > 0)(not(civ-selected cumans)))
     ;(players-unit-type-count any-ally villager > 0)
     (building-type-count-total market == 0)    
-    (can-build market)
+    ;(can-build market)
     (up-can-build 0 c: market)    
 =>
-    (chat-local-to-self "Trying To Build Market 1")   
-    (build market)
+        (up-set-placement-data my-player-number -1 c: +26)
+    (up-build place-control 0 c: market)
+    ;(build market)
 )
 
 (defrule ;if ally has market we build one-if has many villagers only (cant trade)we check wood 
