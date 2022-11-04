@@ -81,6 +81,10 @@
 (defconst gl-innerWallPoint3-y 496)
 (defconst gl-innerWallPoint4-x 497)
 (defconst gl-innerWallPoint4-y 498)
+
+(defconst gl-tempX 499)
+(defconst gl-tempY 500)
+
 (defconst gl-wallPoint1-x 501)
 (defconst gl-wallPoint1-y 502)
 (defconst gl-wallPoint2-x 503)
@@ -292,7 +296,7 @@
 (defrule
     ;(timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 < 2)
+    (building-type-count-total 793 < 1)
     ;(building-type-count-total palisade-wall < 6)
 =>
     ;(disable-timer 49)
@@ -304,7 +308,7 @@
 (defrule
     (timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 789 < 3)
+    (building-type-count-total 789 < 2)
     ;(building-type-count-total palisade-wall < 6)
 =>
     (disable-timer 49)
@@ -316,7 +320,7 @@
 (defrule
     (timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 < 2)
+    (building-type-count-total 793 < 1)
     ;(building-type-count-total palisade-wall < 6)
 =>
     (disable-timer 49)
@@ -328,7 +332,7 @@
 (defrule
     (timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 789 < 3)
+    (building-type-count-total 789 < 2)
     ;(building-type-count-total palisade-wall < 6)
 =>
     (disable-timer 49)
@@ -337,17 +341,7 @@
     (chat-local-to-self "BUILDING THE NORTH WEST PALISADE GATES!")
 )
 
-(defrule
-    (building-type-count 793 > 4)
-=>
-    (delete-building 793)
-)
 
-(defrule
-    (building-type-count 789 > 4)
-=>
-    (delete-building 789)  
-)
 
 ; FINISHED GATES, NOW THE PALISADE
 (defrule ;along Y axis, right side
