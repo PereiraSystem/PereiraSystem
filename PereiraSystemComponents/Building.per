@@ -45,10 +45,11 @@
     (building-type-count-total university > 0)  
     (building-type-count-total castle > 0)
     (military-population > 10)
-    (can-build town-center)    
+    ;(can-build town-center)    
+     (up-can-build 0 c: town-center)  
 =>
- (up-can-build 0 c: town-center)  
-    (build town-center)
+
+    ;(build town-center)
        (up-set-placement-data my-player-number -1 c: -28)
     (up-build place-control 0 c: town-center)   (chat-local-to-self "Trying To Build Town Center 3")
 )
