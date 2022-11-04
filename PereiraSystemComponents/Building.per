@@ -765,37 +765,17 @@
         (civ-selected gothic)
     )
     (military-population > 40)    
-    (can-build barracks)
+    (up-can-build 0 c: barracks)
 =>  
     (chat-local-to-self "Trying To Build Barracks 2")       
-    (build barracks)
-)
-
-(defrule
-	(current-age == imperial-age)(unit-type-count villager > 40)
-	(building-type-count-total barracks == 2)
-    (building-type-count town-center > 0)
-    (wood-amount > 600)(food-amount > 600)
-    (or
-        (and(building-type-count-total siege-workshop > 0)(building-type-count-total castle > 0))
-        (civ-selected gothic)
-    )
-    (can-build barracks)(military-population > 51)
-=>
-    (build barracks)(chat-local-to-self "Trying To Build Barracks 3")
+    (up-set-placement-data my-player-number -1 c: +32)
+    (up-build place-control 0 c: barracks)   
 )
 
 
 
 
-(defrule
-    (civ-selected gothic)
-    (current-age == imperial-age)
-    (wood-amount > 3000)
-    (can-build barracks)
-=>
-    (build barracks)(chat-local-to-self "Trying To Build Gothic Barracks")
-)
+
 
 ; BUILD STABLES
 (defrule
@@ -883,30 +863,24 @@
 =>
     (build archery-range)
     (chat-local-to-self "Trying To Build Archery Range 2")
-    (up-set-placement-data my-player-number town-center c: +26)
+    (up-set-placement-data my-player-number town-center c: +32)
     (up-build place-control 0 c: archery-range)       
 )
 
 (defrule
-	(current-age == imperial-age)(unit-type-count villager > 40)
-    (wood-amount > 600)(food-amount > 600)
-	(building-type-count-total archery-range == 2)
-    (building-type-count-total university > 0)
-    
+    (military-population > 5)
+	(or(current-age == imperial-age)(enemy-buildings-in-town))
+    (building-type-count-total market > 0)
+    (building-type-count-total town-center > 1)
+	(building-type-count-total archery-range == 1)
+    (research-completed ri-ballistics)
     (not(civ-selected gothic))
-    (can-build archery-range)(military-population > 60)
+    (can-build archery-range)
 =>
-    (build archery-range)(chat-local-to-self "Trying To Build Archery Range 3")
-)
-
-(defrule
-	(current-age == imperial-age)(unit-type-count villager > 40)
-    (building-type-count-total archery-range < 5)
-    (building-type-count-total archery-range >= 3)
-    (not(civ-selected gothic))
-    (can-build archery-range)(wood-amount > 4000)
-=>  
-    (build archery-range)(chat-local-to-self "Trying To Build Archery Range")   
+    (build archery-range)
+    (chat-local-to-self "Trying To Build Archery Range 3")
+    (up-set-placement-data my-player-number town-center c: +34)
+    (up-build place-control 0 c: archery-range)       
 )
 
 (defrule
