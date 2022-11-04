@@ -4,8 +4,11 @@
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
 
+(defconst gl-house-distance-mod 4)
+
 (defconst gl-minimumWoodForTC 10)
 (defconst gl-minimumWoodForLC 11)
+
 
 (defconst gl-feudalAgeFoodCost 12)
 (defconst gl-castleAgeFoodCost 12)
@@ -140,6 +143,8 @@
 =>
     (set-goal gl-minimumWoodForTC 275)
     (set-goal gl-minimumWoodForLC 100)
+
+      (set-goal gl-houseDistanceMod 12)  
     (set-goal gl-feudalAgeFoodCost 500)
     (set-goal gl-castleAgeFoodCost 800)
     (set-goal gl-castleAgeGoldCost 200)
