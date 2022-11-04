@@ -59,13 +59,16 @@
 (defconst gl-positionYisLow 475)
 (defconst gl-myPosition-x 476)
 (defconst gl-myPosition-y 477)
+
 (defconst gl-posMapSize-x 478)
 (defconst gl-posMapSize-y 479)
-(defconst gl-center-x 492)
-(defconst gl-center-y 493)
+
+(defconst gl-mapSizeThird 494)
+(defconst gl-mapSizeTwoThirds 495)
 
 (defconst gl-buildingInnerWall 495)
 (defconst gl-myWallModifier 496)
+
 (defconst gl-wallPoint1-x 501)
 (defconst gl-wallPoint1-y 502)
 (defconst gl-wallPoint2-x 503)
@@ -75,8 +78,7 @@
 (defconst gl-wallPoint4-x 507)
 (defconst gl-wallPoint4-y 508)
 
-(defconst gl-mapSizeThird 509)
-(defconst gl-mapSizeTwoThirds 510)
+
 
 (defrule
     (true) ;just in case
@@ -97,20 +99,7 @@
     (set-goal gl-mapSizeTwoThirds 0) 
     (disable-self)  
 )
-(defrule
-    (true) ;just in case
-=>
-    (set-goal gl-wallPoint1-x 0)
-    (set-goal gl-wallPoint1-y 0)
-    (set-goal gl-wallPoint2-x 0)
-    (set-goal gl-wallPoint2-y 0)
-    (set-goal gl-wallPoint3-x 0)
-    (set-goal gl-wallPoint3-y 0)
-    (set-goal gl-wallPoint4-x 0)
-    (set-goal gl-wallPoint4-y 0)
-    (set-goal gl-mapSizeThird 0)
-    (disable-self)
-)
+
 (defrule
     (true)
 =>
