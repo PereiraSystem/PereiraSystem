@@ -353,7 +353,7 @@
     (up-get-point position-self gl-wallPoint2-x)
     (up-get-point position-self gl-wallPoint3-x)
     (up-get-point position-self gl-wallPoint4-x)
-        (set-goal gl-myWallModifier 19)
+    (set-goal gl-myWallModifier 19)
     (up-modify-goal gl-wallPoint1-x g:+ gl-myWallModifier) ; 1 north
     (up-modify-goal gl-wallPoint1-y g:- gl-myWallModifier) 
 
@@ -372,20 +372,20 @@
 (defrule ;along Y axis, right side
     (up-compare-goal gl-buildingInnerWall == 1)
 =>    
-    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: palisade-wall)
+    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: stone-wall)
     (set-strategic-number sn-defense-distance 40)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
-    (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: palisade-wall)
+    (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: stone-wall)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1) 
 =>
-    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: palisade-wall)
+    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: stone-wall)
 )
 
 (defrule
