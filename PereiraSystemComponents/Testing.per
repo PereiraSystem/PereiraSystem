@@ -372,26 +372,26 @@
 (defrule ;along Y axis, right side
     (up-compare-goal gl-buildingInnerWall == 1)
 =>    
-    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: stone-wall-line)
+    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: palisade-wall)
     (set-strategic-number sn-defense-distance 40)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
-    (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: stone-wall-line)
+    (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: palisade-wall)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1) 
 =>
-    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: stone-wall-line)
+    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: palisade-wall)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
-    (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: stone-wall-line)
+    (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: stone-wall)
 )
 
 ; some outposts
