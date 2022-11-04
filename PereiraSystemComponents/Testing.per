@@ -144,6 +144,9 @@
     ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
     ;(up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
     (up-chat-data-to-self "My wall modifier: %d" g: gl-myWallModifier)      
+
+    (set-goal gl-myInnerWallModifier gl-myWallModifier)
+    (up-modify-goal gl-myInnerWallModifier c:- 3)
     (disable-self)   
 )
 
@@ -377,7 +380,6 @@
     (up-get-point position-self gl-innerWallPoint2-x)
     (up-get-point position-self gl-innerWallPoint3-x)
     (up-get-point position-self gl-innerWallPoint4-x)
-    (set-goal gl-myInnerWallModifier 18)
     (up-modify-goal gl-innerWallPoint1-x g:+ gl-myInnerWallModifier) ; 1 north
     (up-modify-goal gl-innerWallPoint1-y g:- gl-myInnerWallModifier) 
 
