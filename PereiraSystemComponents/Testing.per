@@ -338,10 +338,10 @@
 
 (defrule
     (current-age >= castle-age)
-    (game-time > 240)  
+    (game-time > 150)  
 =>
     (set-goal gl-buildingInnerWall 1)
-    (set-goal gl-myWallModifier 19)    
+    
     (chat-to-all "TIME FOR INNER WALL")
     (disable-self)
 )
@@ -353,7 +353,7 @@
     (up-get-point position-self gl-wallPoint2-x)
     (up-get-point position-self gl-wallPoint3-x)
     (up-get-point position-self gl-wallPoint4-x)
-
+        (set-goal gl-myWallModifier 19)
     (up-modify-goal gl-wallPoint1-x g:+ gl-myWallModifier) ; 1 north
     (up-modify-goal gl-wallPoint1-y g:- gl-myWallModifier) 
 
