@@ -366,6 +366,8 @@
     (game-time > 240)  
 =>
     (set-goal gl-buildingInnerWall 1)
+    (up-modify-goal gl-myWallPerimeter c:- 2)    
+    (chat-to-all "TIME FOR INNER WALL")
     (disable-self)
 )
 
