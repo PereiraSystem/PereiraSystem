@@ -479,12 +479,12 @@
 (defrule
     (building-type-count-total palisade-wall > 25)
     (wood-amount g:> gl-minimumWoodForLC)
-    (building-type-count-total outpost < 5)    
+    (building-type-count-total outpost < 7)    
     ;(up-can-build 0 c: outpost)
     (can-build outpost)
 =>
     ;(up-set-placement-data my-player-number town-center c: +25)
-    (up-build place-control 0 c: outpost)
+    ;(up-build place-control 0 c: outpost)
     (build outpost)
 )
 
