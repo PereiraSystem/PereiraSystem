@@ -274,7 +274,7 @@
     (up-send-flare position-self)(disable-self)  
 )
 
-(defrule
+(defrule ;outer wall
     (true)
 =>    
     (up-get-point position-self gl-wallPoint1-x)
@@ -477,7 +477,7 @@
 ; INNER STONE WALL
 (defrule 
     (not
-        (up-compare-goal gl-positionQuadrantCode == 2) ;north east
+        (up-compare-goal gl-positionQuadrantCode == 2)
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>    
@@ -486,7 +486,7 @@
 
 (defrule
     (not
-        (up-compare-goal gl-positionQuadrantCode == 1) ;east corner
+        (up-compare-goal gl-positionQuadrantCode == 4)
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
@@ -496,7 +496,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (not
-        (up-compare-goal gl-positionQuadrantCode == 9) ;west
+        (up-compare-goal gl-positionQuadrantCode == 8)
     )    
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
@@ -504,7 +504,7 @@
 
 (defrule
     (not
-        (up-compare-goal gl-positionQuadrantCode == 3) ;north corner
+        (up-compare-goal gl-positionQuadrantCode == 6)
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
