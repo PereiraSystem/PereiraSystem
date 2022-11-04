@@ -64,14 +64,23 @@
 (defconst gl-posMapSize-x 478)
 (defconst gl-posMapSize-y 479)
 
-(defconst gl-positionQuadrantCode 493)
+(defconst gl-positionQuadrantCode 480)
 
-(defconst gl-mapSizeThird 494)
-(defconst gl-mapSizeTwoThirds 495)
+(defconst gl-mapSizeThird 481)
+(defconst gl-mapSizeTwoThirds 482)
 
-(defconst gl-buildingInnerWall 496)
-(defconst gl-myWallModifier 497)
+(defconst gl-buildingInnerWall 483)
+(defconst gl-myWallModifier 484)
+(defconst gl-myInnerWallModifier 485)
 
+(defconst gl-innerWallPoint1-x 491)
+(defconst gl-innerWallPoint1-y 492)
+(defconst gl-innerWallPoint2-x 493)
+(defconst gl-innerWallPoint2-y 494)
+(defconst gl-innerWallPoint3-x 495)
+(defconst gl-innerWallPoint3-y 496)
+(defconst gl-innerWallPoint4-x 497)
+(defconst gl-innerWallPoint4-y 498)
 (defconst gl-wallPoint1-x 501)
 (defconst gl-wallPoint1-y 502)
 (defconst gl-wallPoint2-x 503)
@@ -362,24 +371,24 @@
 )
 
 (defrule
-    (up-compare-goal gl-buildingInnerWall == 1) ; inner wall
+    (true) ; inner wall
 =>    
-    (up-get-point position-self gl-wallPoint1-x)
-    (up-get-point position-self gl-wallPoint2-x)
-    (up-get-point position-self gl-wallPoint3-x)
-    (up-get-point position-self gl-wallPoint4-x)
-    (set-goal gl-myWallModifier 18)
-    (up-modify-goal gl-wallPoint1-x g:+ gl-myWallModifier) ; 1 north
-    (up-modify-goal gl-wallPoint1-y g:- gl-myWallModifier) 
+    (up-get-point position-self gl-innerWallPoint1-x)
+    (up-get-point position-self gl-innerWallPoint2-x)
+    (up-get-point position-self gl-innerWallPoint3-x)
+    (up-get-point position-self gl-innerWallPoint4-x)
+    (set-goal gl-myInnerWallModifier 18)
+    (up-modify-goal gl-innerWallPoint1-x g:+ gl-myInnerWallModifier) ; 1 north
+    (up-modify-goal gl-innerWallPoint1-y g:- gl-myInnerWallModifier) 
 
-    (up-modify-goal gl-wallPoint2-x g:+ gl-myWallModifier) ; 2 east
-    (up-modify-goal gl-wallPoint2-y g:+ gl-myWallModifier) 
+    (up-modify-goal gl-innerWallPoint2-x g:+ gl-myInnerWallModifier) ; 2 east
+    (up-modify-goal gl-innerWallPoint2-y g:+ gl-myInnerWallModifier) 
 
-    (up-modify-goal gl-wallPoint3-x g:- gl-myWallModifier) ; 3 south
-    (up-modify-goal gl-wallPoint3-y g:+ gl-myWallModifier) 
+    (up-modify-goal gl-innerWallPoint3-x g:- gl-myInnerWallModifier) ; 3 south
+    (up-modify-goal gl-innerWallPoint3-y g:+ gl-myInnerWallModifier) 
 
-    (up-modify-goal gl-wallPoint4-x g:- gl-myWallModifier) ; 4 west
-    (up-modify-goal gl-wallPoint4-y g:- gl-myWallModifier)  
+    (up-modify-goal gl-innerWallPoint4-x g:- gl-myInnerWallModifier) ; 4 west
+    (up-modify-goal gl-innerWallPoint4-y g:- gl-myInnerWallModifier)  
     (disable-self)           
 )
 
