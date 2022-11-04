@@ -411,68 +411,12 @@
     (disable-self)           
 )
 
-(defrule
+(defrule ;DOESNT WORK!!!!!!!!!!! 
     (up-compare-goal gl-buildingInnerWall == 1)
-    (building-type-count-total 64 < 7)
+    (building-type-count-total 64 < 6)
 =>
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 64)
-    (chat-local-to-self "BUILDING THE WALL GATES!")
-)
-
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (building-type-count-total 64 < 7)
-=>
-    (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 64)
-    (chat-local-to-self "BUILDING THE WALL GATES!")
-)
-
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (building-type-count-total 64 < 7)
-=>
-    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: 64)
-    (chat-local-to-self "BUILDING THE WALL GATES!")
-)
-
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (building-type-count-total 64 < 7)
-=>
-    (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: 64)
-    (chat-local-to-self "BUILDING THE WALL GATES!")
-)
-
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (building-type-count-total 88 < 7)
-=>
-    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 88)
-    (chat-local-to-self "BUILDING THE WALL GATES!")
-)
-
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (building-type-count-total 88 < 7)
-=>
-    (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 88)
-    (chat-local-to-self "BUILDING THE WALL GATES!")
-)
-
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (building-type-count-total 88 < 7)
-=>
-    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: 88)
-    (chat-local-to-self "BUILDING THE WALL GATES!")
-)
-
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (building-type-count-total 88 < 7)
-=>
-    (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: 88)
-    (chat-local-to-self "BUILDING THE WALL GATES!")
+    ;(chat-local-to-self "BUILDING THE WALL GATES!")
 )
 
 ; INNER STONE WALL
