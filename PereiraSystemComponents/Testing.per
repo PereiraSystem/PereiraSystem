@@ -278,13 +278,13 @@
 )
 
 ; GATES Y AXIS
-(defrule(true)=>(enable-timer 49 5))
+(defrule(true)=>(enable-timer 45 15))
 
 (defrule
-    (timer-triggered 49)
+    (timer-triggered 45)
 =>
-    (disable-timer 49)
-    (enable-timer 49 15)
+    (disable-timer 45)
+    (enable-timer 45 15)
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)
     (chat-local-to-self "TIMER TIMER!")
 )
