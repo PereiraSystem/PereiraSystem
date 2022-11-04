@@ -290,17 +290,21 @@
         (town-under-attack)(enemy-buildings-in-town)
     )
 =>
-    (up-assign-builders c: castle c: 30)   
+    (up-assign-builders c: castle c: 30)
     (disable-self)
 )
 
-; TOWN SIZE AND TOWN CENTER
-(defrule 
+; TOWN CENTER, TOWN SIZE AND WALL SIZE
+(defrule
     (true)
 =>
-    (set-strategic-number sn-minimum-town-size 23)
-    (set-strategic-number sn-maximum-town-size 24)
-    (set-strategic-number sn-town-center-placement 0)          
+    (set-strategic-number sn-town-center-placement 0)
+    (set-strategic-number sn-minimum-town-size 17)
+    (set-strategic-number sn-maximum-town-size 18)
+    (set-goal gl-innerWallPerimeter 19)     ;trying to put towers next to inner wall
+    (set-goal gl-outerWallPerimeter 22)
+    (up-chat-data-to-self "Inner wall perimeter: %d" g: gl-innerWallPerimeter)    
+    (up-chat-data-to-self "Outer wall perimeter: %d" g: gl-outerWallPerimeter)     
     (disable-self)
 )
 
