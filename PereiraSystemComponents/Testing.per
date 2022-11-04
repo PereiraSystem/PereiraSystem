@@ -144,8 +144,8 @@
     ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
     ;(up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
     (up-chat-data-to-self "My wall modifier: %d" g: gl-myWallModifier)
-    
-         
+
+
     (up-chat-data-to-self "My inner wall modifier: %d" g: gl-myInnerWallModifier) 
 
     
@@ -159,9 +159,17 @@
 )
 
 (defrule
-    (up-compare-goal gl-myWallModifier < 13)
+    (up-compare-goal gl-myWallModifier < 14)
 =>
-    (set-goal gl-myWallModifier 13)
+    (set-goal gl-myWallModifier 14)
+    (up-chat-data-to-self "My wall modifier corrected: %d" g: gl-myWallModifier)
+    (disable-self)      
+)
+
+(defrule
+    (up-compare-goal gl-myInnerWallModifier < 12)
+=>
+    (set-goal gl-myInnerWallModifier 12)
     (up-chat-data-to-self "My wall modifier corrected: %d" g: gl-myWallModifier)
     (disable-self)      
 )
