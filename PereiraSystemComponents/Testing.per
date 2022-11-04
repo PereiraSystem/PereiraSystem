@@ -259,27 +259,7 @@
     (disable-self)           
 )
 
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1) ; inner wall
-=>    
-    (up-get-point position-self gl-wallPoint1-x)
-    (up-get-point position-self gl-wallPoint2-x)
-    (up-get-point position-self gl-wallPoint3-x)
-    (up-get-point position-self gl-wallPoint4-x)
 
-    (up-modify-goal gl-wallPoint1-x c:+ 19) ; 1 north
-    (up-modify-goal gl-wallPoint1-y c:- 19) 
-
-    (up-modify-goal gl-wallPoint2-x c:+ 19) ; 2 east
-    (up-modify-goal gl-wallPoint2-y c:+ 19) 
-
-    (up-modify-goal gl-wallPoint3-x c:- 19) ; 3 south
-    (up-modify-goal gl-wallPoint3-y c:+ 19) 
-
-    (up-modify-goal gl-wallPoint4-x c:- 19) ; 4 west
-    (up-modify-goal gl-wallPoint4-y c:- 19)  
-    (disable-self)           
-)
 
 
 
@@ -366,9 +346,31 @@
     (game-time > 240)  
 =>
     (set-goal gl-buildingInnerWall 1)
-    (up-modify-goal gl-myWallPerimeter c:- 2)    
+    (set-goal gl-myWallPerimeter 19)    
     (chat-to-all "TIME FOR INNER WALL")
     (disable-self)
+)
+
+(defrule
+    (up-compare-goal gl-buildingInnerWall == 1) ; inner wall
+=>    
+    (up-get-point position-self gl-wallPoint1-x)
+    (up-get-point position-self gl-wallPoint2-x)
+    (up-get-point position-self gl-wallPoint3-x)
+    (up-get-point position-self gl-wallPoint4-x)
+
+    (up-modify-goal gl-wallPoint1-x g:+ gl-myWallPerimeter) ; 1 north
+    (up-modify-goal gl-wallPoint1-y g:- gl-myWallPerimeter) 
+
+    (up-modify-goal gl-wallPoint2-x g:+ gl-myWallPerimeter) ; 2 east
+    (up-modify-goal gl-wallPoint2-y g:+ gl-myWallPerimeter) 
+
+    (up-modify-goal gl-wallPoint3-x g:- gl-myWallPerimeter) ; 3 south
+    (up-modify-goal gl-wallPoint3-y g:+ gl-myWallPerimeter) 
+
+    (up-modify-goal gl-wallPoint4-x g:- gl-myWallPerimeter) ; 4 west
+    (up-modify-goal gl-wallPoint4-y g:- gl-myWallPerimeter)  
+    (disable-self)           
 )
 
 ; FINISHED GATES, NOW THE stonewa
@@ -377,7 +379,6 @@
 =>    
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: stone-wall-line)
     (set-strategic-number sn-defense-distance 40)
-        (chat-to-all "BUILD IT!!")
 )
 
 (defrule
