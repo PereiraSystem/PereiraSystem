@@ -211,7 +211,7 @@
         (and(housing-headroom < 3)(population-headroom > 0))
         (wood-amount > 20000)
     )
-    (building-type-count-total house g:< 256)
+    (building-type-count-total house < 256)
     (up-can-build 0 c: house)
 =>
     (chat-local-to-self "Trying To Build House")
