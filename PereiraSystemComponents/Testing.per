@@ -278,13 +278,13 @@
 )
 
 ; GATES Y AXIS
-(defrule(true)=>(enable-timer 49 1))
+(defrule(true)=>(enable-timer 49 5))
 
 (defrule
     (timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 793 < 2)
-    (building-type-count-total palisade-wall < 6)
+    ;(building-type-count-total palisade-wall < 6)
 =>
     ;(disable-timer 49)
     (enable-timer 49 15)
@@ -296,7 +296,7 @@
     (timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 789 < 3)
-    (building-type-count-total palisade-wall < 6)
+    ;(building-type-count-total palisade-wall < 6)
 =>
     ;(disable-timer 49)
     (enable-timer 49 15)
@@ -308,7 +308,7 @@
     (timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 793 < 2)
-    (building-type-count-total palisade-wall < 6)
+    ;(building-type-count-total palisade-wall < 6)
 =>
     ;(disable-timer 49)
     (enable-timer 49 15)
@@ -320,7 +320,7 @@
     (timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 789 < 3)
-    (building-type-count-total palisade-wall < 6)
+    ;(building-type-count-total palisade-wall < 6)
 =>
     ;(disable-timer 49)
     (enable-timer 49 15)
