@@ -798,13 +798,7 @@
     ;(build stable)         
 )
 
-(defrule
-    (current-age == castle-age)
-    (can-build stable)(building-type-count-total stable < 1)
-=>
-    (build stable)
-    (chat-local-to-self "Trying To Build Stable 1") 
-)
+
 
 (defrule
 	(current-age == imperial-age)(food-amount > 400)
@@ -813,7 +807,8 @@
 	(not(civ-selected gothic))	
     (can-build stable)(military-population > 60)
 =>  
-    (build stable)(chat-local-to-self "Trying To Build Stable 2")
+    (build stable)    (up-set-placement-data my-player-number town-center c: 26)
+    (up-build place-control 0 c: stable)(chat-local-to-self "Trying To Build Stable 2")
 )
 
 
