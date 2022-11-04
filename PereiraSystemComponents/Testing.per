@@ -500,4 +500,15 @@
 )
 
 
+(defrule
+    (game-time > 700)
+=>
+    (delete-building lumber-camp)
+)
 
+(defrule
+    (game-time > 900)
+=>
+    (delete-building mining-camp)
+    (delete-building mill)    
+)
