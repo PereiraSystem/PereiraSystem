@@ -494,6 +494,7 @@
 )
 
 (defrule
+    (current-age >= feudal-age)
     (building-type-count-total palisade-wall > 15)
     (wood-amount g:> gl-minimumWoodForLC)
     (building-type-count-total watch-tower-line < 4)       
