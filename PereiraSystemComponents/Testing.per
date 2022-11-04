@@ -422,18 +422,27 @@
 
 ; INNER STONE WALL
 (defrule ;along Y axis, right side
+    (not
+        (up-compare-goal gl-positionXisHigh == 1)
+    )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>    
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: stone-wall)
 )
 
 (defrule
+    (not
+        (up-compare-goal gl-positionYisHigh == 1)
+    )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: stone-wall)
 )
 
 (defrule
+    (not
+        (up-compare-goal gl-positionXisLow == 1)
+    )
     (up-compare-goal gl-buildingInnerWall == 1) 
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: stone-wall)
@@ -441,7 +450,7 @@
 
 (defrule
     (not
-        (up-compare-goal gl-positionXisLow == 1)
+        (up-compare-goal gl-positionYisLow == 1)
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
