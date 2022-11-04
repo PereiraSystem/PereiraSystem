@@ -457,14 +457,14 @@
 )
 
 (defrule
-    (building-type-count 793 > 7)(game-time > 333)
+    (building-type-count 793 > 4)(game-time > 333)
 =>
     (delete-building 793)
     (chat-local-to-self "TOO MANY GATES! DESTROY THAT!")
 )
 
 (defrule
-    (building-type-count 789 > 7)
+    (building-type-count 789 > 4)
     (game-time > 333)
 =>
     (delete-building 789)
