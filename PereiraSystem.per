@@ -239,7 +239,7 @@
     (population-headroom == 0)
     (housing-headroom == 0)
     (wood-amount > 800)(food-amount > 800)
-    (players-stance any enemy)
+    (players-stance any-enemy == enemy)
 =>
 	(disable-timer 21)
     (enable-timer 21 3)
