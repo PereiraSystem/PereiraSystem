@@ -50,6 +50,7 @@
 	(delete-unit trade-cart)
 )
 
+
 ; USER PATCH WALL
 (defconst gl-positionXisHigh 470) 
 (defconst gl-positionXisMedium 471)
@@ -83,7 +84,7 @@
 
 
 (defrule
-    (true) ;just in case
+    (true) 
 =>
     (set-goal gl-positionXisHigh 0) 
     (set-goal gl-positionXisMedium 0)
@@ -91,17 +92,28 @@
     (set-goal gl-positionYisHigh 0) 
     (set-goal gl-positionYisMedium 0)
     (set-goal gl-positionYisLow 0)
-
     (set-goal gl-myPosition-x 0)
     (set-goal gl-myPosition-y 0)
 
+    (set-goal gl-posMapSize-x 0)
+    (set-goal gl-posMapSize-y 0)
+
+    (set-goal gl-positionQuadrantCode 0)
+
+    (set-goal gl-mapSizeThird 0)
+    (set-goal gl-mapSizeTwoThirds 0)
+
     (set-goal gl-buildingInnerWall 0)
-    (set-goal gl-myWallModifier 0)   
+    (set-goal gl-myWallModifier 0)
 
-    (set-goal gl-positionQuadrantCode 0)  
-
-    (set-goal gl-mapSizeThird 0)         
-    (set-goal gl-mapSizeTwoThirds 0) 
+    (set-goal gl-wallPoint1-x10)
+    (set-goal gl-wallPoint1-y 0)
+    (set-goal gl-wallPoint2-x 0)
+    (set-goal gl-wallPoint2-y 0)
+    (set-goal gl-wallPoint3-x 0)
+    (set-goal gl-wallPoint3-y 0)
+    (set-goal gl-wallPoint4-x 0)
+    (set-goal gl-wallPoint4-y 0)
     (disable-self)  
 )
 
@@ -264,36 +276,36 @@
 
 ; GATES Y AXIS
 (defrule
-    (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 < 2)
-    (building-type-count-total palisade-wall == 0)
+    ;(wood-amount g:> gl-minimumWoodForLC)     
+    ;(building-type-count-total 793 < 3)
+    ;(building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)
     (chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
 )
 
 (defrule
-    (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 789 < 2)
-    (building-type-count-total palisade-wall == 0)
+    ;(wood-amount g:> gl-minimumWoodForLC)     
+    ;(building-type-count-total 789 < 3)
+    ;(building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
     (chat-local-to-self "BUILDING THE SOUTH EAST PALISADE GATES!")
 )
 
 (defrule
-    (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 < 4)
-    (building-type-count-total palisade-wall == 0)
+    ;(wood-amount g:> gl-minimumWoodForLC)     
+    ;(building-type-count-total 793 < 4)
+    ;(building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: 793)
     (chat-local-to-self "BUILDING THE SOUTH WEST PALISADE GATES!")
 )
 
 (defrule
-    (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 789 < 4)
-    (building-type-count-total palisade-wall == 0)
+    ;(wood-amount g:> gl-minimumWoodForLC)     
+    ;(building-type-count-total 789 < 4)
+    ;(building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
     (chat-local-to-self "BUILDING THE NORTH WEST PALISADE GATES!")
