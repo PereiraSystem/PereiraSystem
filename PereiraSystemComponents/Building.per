@@ -354,7 +354,8 @@
     (can-build blacksmith)
 =>
     (chat-local-to-self "Trying to build blacksmith")
-    (build blacksmith)(up-modify-sn sn-maximum-town-size c:- 7)    
+    (build blacksmith)
+
 )
 
 ; MARKET
@@ -367,7 +368,6 @@
     (can-build market)
 =>
     (chat-local-to-self "Trying To Build Saracen Market 1") 
-    (up-modify-sn sn-maximum-town-size c:+ 2)
     (build market)
 )
 
@@ -385,7 +385,6 @@
     (up-can-build 0 c: market)    
 =>
     (chat-local-to-self "Trying To Build Market 1") 
-    (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-set-placement-data my-player-number -1 c: +24)
     (up-build place-control 0 c: market)    
     ;(build market)
@@ -403,7 +402,6 @@
     (can-build market)
 =>
     (chat-local-to-self "Trying To Build Market 1 - TRADE WITH ME FRIEND") 
-    (up-modify-sn sn-maximum-town-size c:+ 1)
     (up-set-placement-data my-player-number -1 c: +16)
     (up-build place-control 0 c: market)
     ;(build market)
@@ -462,7 +460,6 @@
     (can-build university)
 =>
     (chat-local-to-self "Trying To Build University")
-    (up-modify-sn sn-maximum-town-size c:+ 2) 
     (build university)    
 )
 
@@ -888,7 +885,7 @@
     (chat-local-to-self "Trying To Build Archery Range 1")
     (up-modify-sn sn-maximum-town-size c:+ 1)
     ;(build archery-range)
-    (up-set-placement-data my-player-number town-center c: -1)
+    (up-set-placement-data my-player-number town-center c: -4)
     (up-build place-control 0 c: archery-range)    
 )
 
@@ -964,7 +961,6 @@
     ;(can-build siege-workshop)    
 =>
     (chat-local-to-self "Trying To Build Siege Workshop 1")     
-    (up-modify-sn sn-maximum-town-size c:+ 1)
     ;(build siege-workshop)  
     (up-set-placement-data my-player-number archery-range c: -4)
     (up-build place-control 0 c: siege-workshop)       
@@ -1068,7 +1064,7 @@
     (gold-amount > 301)
     (building-type-count-total castle > 0)
 =>
-    (build bombard-tower)(up-modify-sn sn-maximum-town-size c:+ 1)  
+    (build bombard-tower) 
 )
 
 ; NORMAL TOWER
