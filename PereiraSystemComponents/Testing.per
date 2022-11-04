@@ -438,7 +438,7 @@
 ; INNER STONE WALL
 (defrule 
     (not
-        (up-compare-goal gl-positionQuadrantCode 2)
+        (up-compare-goal gl-positionQuadrantCode == 2) ;north east
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>    
