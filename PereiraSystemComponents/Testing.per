@@ -134,35 +134,26 @@
     (up-get-point position-self gl-myPosition-x)
     (up-get-point position-map-size gl-mapSizeThird)
     (up-get-point position-map-size gl-mapSizeTwoThirds)
-    (up-get-point position-map-size gl-posMapSize-x)          
+    (up-get-point position-map-size gl-posMapSize-x)        
     (up-modify-goal gl-mapSizeThird c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:* 2)
 
-    (up-get-point position-map-size gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPerimeter c:/ 10)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)    
-    (up-chat-data-to-self "Map Size: %d" g: gl-posMapSize-x)  
+    (up-chat-data-to-self "Map Size: %d" g: gl-posMapSize-x)
     ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
     ;(up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
+
+    (up-get-point position-map-size gl-outerWallPerimeter)
+    (up-modify-goal gl-outerWallPerimeter c:/ 10)
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)
     (up-chat-data-to-self "Outer wall perimeter: %d" g: gl-outerWallPerimeter)
 
-
-    (up-chat-data-to-self "Inner wall perimeter: %d" g: gl-innerWallPerimeter) 
-
-    
     (up-get-point position-map-size gl-innerWallPerimeter)
-
     (up-modify-goal gl-innerWallPerimeter c:/ 12)
     (up-modify-goal gl-innerWallPerimeter c:+ 4)
-
-    (up-chat-data-to-self "My inner wall perimeter now: %d" g: gl-innerWallPerimeter)     
+    (up-chat-data-to-self "Inner wall perimeter: %d" g: gl-innerWallPerimeter)
     (disable-self)   
 )
-
-
-
-
 
 ; CHECK OUR POSITION IN 9 SQUARES
 (defrule
@@ -290,7 +281,7 @@
 (defrule
     (true)
     ;(wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 < 3)
+    (building-type-count-total 793 < 2)
     ;(building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)
@@ -310,7 +301,7 @@
 (defrule
     (true)
     ;(wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 < 4)
+    (building-type-count-total 793 < 2)
     ;(building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: 793)
@@ -320,7 +311,7 @@
 (defrule
     (true)
     ;(wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 789 < 4)
+    (building-type-count-total 789 < 3)
     ;(building-type-count-total palisade-wall == 0)
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
