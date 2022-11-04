@@ -479,6 +479,12 @@
     (not
         (up-compare-goal gl-positionQuadrantCode == 2)
     )
+    (not
+        (up-compare-goal gl-positionQuadrantCode == 1)
+    )    
+    (not
+        (up-compare-goal gl-positionQuadrantCode == 5)
+    )    
     (up-compare-goal gl-buildingInnerWall == 1)
 =>    
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
@@ -487,6 +493,9 @@
 (defrule
     (not
         (up-compare-goal gl-positionQuadrantCode == 4)
+    )
+    (not
+        (up-compare-goal gl-positionQuadrantCode == 3)
     )
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
@@ -497,7 +506,10 @@
     (up-compare-goal gl-buildingInnerWall == 1)
     (not
         (up-compare-goal gl-positionQuadrantCode == 8)
-    )    
+    )
+    (not
+        (up-compare-goal gl-positionQuadrantCode == 9)
+    )       
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
 )
@@ -506,6 +518,9 @@
     (not
         (up-compare-goal gl-positionQuadrantCode == 6)
     )
+    (not
+        (up-compare-goal gl-positionQuadrantCode == 7)
+    )    
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
     (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
