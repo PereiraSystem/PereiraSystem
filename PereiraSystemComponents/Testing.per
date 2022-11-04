@@ -147,22 +147,22 @@
     (up-chat-data-to-self "My wall modifier: %d" g: gl-outerWallPerimeter)
 
 
-    (up-chat-data-to-self "My inner wall modifier: %d" g: gl-innerWallPerimeter) 
+    (up-chat-data-to-self "My inner wall perimeter: %d" g: gl-innerWallPerimeter) 
 
     
     (up-get-point position-map-size gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPerimeter c:/ 10)
 
+    (up-modify-goal gl-innerWallPerimeter c:/ 11)
+    (up-modify-goal gl-innerWallPerimeter c:+ 4)
 
-    (up-modify-goal gl-innerWallPerimeter c:- 3)
-    (up-chat-data-to-self "My inner wall modifier now: %d" g: gl-innerWallPerimeter)     
+    (up-chat-data-to-self "My inner wall perimetr now: %d" g: gl-innerWallPerimeter)     
     (disable-self)   
 )
 
 (defrule
-    (up-compare-goal gl-outerWallPerimeter < 14)
+    (up-compare-goal gl-outerWallPerimeter < 15)
 =>
-    (set-goal gl-outerWallPerimeter 14)
+    (set-goal gl-outerWallPerimeter 15)
     (up-chat-data-to-self "My wall modifier corrected: %d" g: gl-outerWallPerimeter)
     (disable-self)      
 )
