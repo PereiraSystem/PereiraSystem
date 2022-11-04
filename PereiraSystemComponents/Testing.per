@@ -129,7 +129,7 @@
     (up-chat-data-to-self "Map Size: %d" g: gl-posMapSize-x)  
     ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
     ;(up-chat-data-to-all "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
-    ;(up-chat-data-to-self "My wall perimeter: %d" g: gl-myWallModifier)      
+    (up-chat-data-to-self "My wall modifier: %d" g: gl-myWallModifier)      
     (disable-self)   
 )
 
@@ -236,7 +236,6 @@
     (up-send-flare position-self)(disable-self)  
 )
 
-
 (defrule
     (up-compare-goal gl-buildingInnerWall == 0)
 =>    
@@ -258,10 +257,6 @@
     (up-modify-goal gl-wallPoint4-y g:- gl-myWallModifier)  
     (disable-self)           
 )
-
-
-
-
 
 ; GATES Y AXIS
 (defrule
