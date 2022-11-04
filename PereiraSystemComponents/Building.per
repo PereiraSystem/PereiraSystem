@@ -22,15 +22,19 @@
 
 (defrule
 	(building-type-count-total town-center == 1)
-    (civilian-population > 35)
+    ;(civilian-population > 35)
+    
     (or
         (building-type-count siege-workshop > 0)
         (or(civ-selected gothic)(civ-selected bohemians))
     )
-    (can-build town-center)    
+    (can-build town-center)
+    (up-can-build 0 c: town-center)    
 =>
     (chat-local-to-self "Trying To Build Town Center 2") 
-    (build town-center)
+    (up-set-placement-data my-player-number -1 c:+ 17)
+    (up-build place-control 0 c: town-center)   
+    ;(build town-center)
 )
 
 (defrule
