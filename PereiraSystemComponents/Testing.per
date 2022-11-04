@@ -129,7 +129,8 @@
 (defrule
     (up-compare-goal gl-myWallModifier < 22)
 =>
-    (set-goal gl-myWallModifier 22)      
+    (set-goal gl-myWallModifier 22)
+    (up-chat-data-to-self "My wall modifier corrected: %d" g: gl-myWallModifier)      
 )
 
 ; CHECK OUR POSITION IN 9 SQUARES
