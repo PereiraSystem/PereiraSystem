@@ -509,6 +509,23 @@
     (cheats-enabled)
 =>
     (chat-to-all "LET´S SAVE TIME WITH 'AEGIS' CHEAT!")
+    (chat-to-all "SEND TAUNT 'NO' /2 BEFORE 15 SECONDS TO CANCEL)")   
+    (enable-timer 49 15)
+)
+
+(defrule
+    (game-time < 15)
+    (taunt-detected any-ally 31)
+=>
+    (chat-to-all "OK LET´S CHILL")
+	(acknowledge-taunt any-ally 31)
+    (disable-self)
+)
+
+(defrule
+    (timer-triggered 49)
+=>
+    (chat-to-all "YOU DIDN´T CANCEL... USING THE CHEAT CODE")   
     (up-cc-send-cheat "aegis")
     (disable-self)
 )
