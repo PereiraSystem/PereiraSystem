@@ -777,20 +777,8 @@
     (up-modify-sn sn-minimum-town-size c:+ 3)
 )
 
-(defrule
-	(current-age == imperial-age)(building-type-count-total barracks < 4)
-    (can-build barracks)(wood-amount > 2000)(food-amount > 400)
-=>
-    (chat-local-to-self "Trying To Build Barracks")
-    (up-modify-sn sn-maximum-town-size c:+ 1)(build barracks)
-)
 
-(defrule
-	(game-time > 2400)(building-type-count-total barracks >= 4)
-=>
-    (chat-local-to-self "DELETING FIRST BARRACKS!")
-    (delete-building barracks)(disable-self)
-)
+
 
 (defrule
     (civ-selected gothic)
@@ -844,26 +832,7 @@
     (up-modify-sn sn-maximum-town-size c:+ 1)
 )
 
-(defrule
-	(current-age == imperial-age)(unit-type-count villager > 40)
-    (wood-amount > 600)(food-amount > 600)
-	(building-type-count-total stable == 2)
-    (building-type-count-total university > 0)
-	(not(civ-selected gothic))	
-    (can-build stable)(military-population > 60)
-=>
-    (build stable)(chat-local-to-self "Trying To Build Stable 3")
-    (up-modify-sn sn-maximum-town-size c:+ 1) 
-)
 
-(defrule
-	(current-age == imperial-age)(unit-type-count villager > 40)
-    (building-type-count-total stable < 5)
-    (can-build stable)(wood-amount > 4000)
-    (not(civ-selected gothic))
-=>
-    (build stable)(chat-local-to-self "Trying To Build Stable")
-)
 
 
 (defrule
@@ -979,18 +948,7 @@
 
 )
 
-(defrule
-	(current-age == imperial-age)(unit-type-count villager > 40)
-	(building-type-count-total siege-workshop < 4)
-    (building-type-count-total university > 0)(building-type-count-total castle > 0)
-    (military-population > 60)
-    (wood-amount > 2000)(food-amount > 600)
-    (not(civ-selected gothic)) 
-    (can-build siege-workshop)
-=>
-    
-    (build siege-workshop)(chat-local-to-self "Trying To Build Siege Workshop")
-)
+
 
 ; MONASTERY             
 (defrule
