@@ -245,17 +245,17 @@
     (up-get-point position-self gl-wallPoint3-x)
     (up-get-point position-self gl-wallPoint4-x)
 
-    (up-modify-goal gl-wallPoint1-x c:+ 22) ; 1 north
-    (up-modify-goal gl-wallPoint1-y c:- 22) 
+    (up-modify-goal gl-wallPoint1-x g:+ gl-myWallPerimeter) ; 1 north
+    (up-modify-goal gl-wallPoint1-y g:- gl-myWallPerimeter) 
 
-    (up-modify-goal gl-wallPoint2-x c:+ 22) ; 2 east
-    (up-modify-goal gl-wallPoint2-y c:+ 22) 
+    (up-modify-goal gl-wallPoint2-x g:+ gl-myWallPerimeter) ; 2 east
+    (up-modify-goal gl-wallPoint2-y g:+ gl-myWallPerimeter) 
 
-    (up-modify-goal gl-wallPoint3-x c:- 22) ; 3 south
-    (up-modify-goal gl-wallPoint3-y c:+ 22) 
+    (up-modify-goal gl-wallPoint3-x g:- gl-myWallPerimeter) ; 3 south
+    (up-modify-goal gl-wallPoint3-y g:+ gl-myWallPerimeter) 
 
-    (up-modify-goal gl-wallPoint4-x c:- 22) ; 4 west
-    (up-modify-goal gl-wallPoint4-y c:- 22)  
+    (up-modify-goal gl-wallPoint4-x g:- gl-myWallPerimeter) ; 4 west
+    (up-modify-goal gl-wallPoint4-y g:- gl-myWallPerimeter)  
     (disable-self)           
 )
 
