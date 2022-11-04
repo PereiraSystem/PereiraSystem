@@ -281,6 +281,15 @@
 (defrule(true)=>(enable-timer 49 5))
 
 (defrule
+    (timer-triggered 49)
+=>
+    (disable-timer 49)
+    (enable-timer 49 15)
+    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)
+    (chat-local-to-self "TIMER TIMER!")
+)
+
+(defrule
     ;(timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 793 < 2)
