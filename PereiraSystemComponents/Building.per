@@ -970,9 +970,11 @@
     (wood-amount > 600)(food-amount > 600)
     (current-age == imperial-age)(building-type-count-total university > 0)(building-type-count-total castle > 0)
     (building-type-count-total siege-workshop == 1)
-    (can-build siege-workshop)
+    ;(can-build siege-workshop)
+        (up-can-build 0 c: siege-workshop)
 =>  
-    (up-modify-sn sn-minimum-town-size c:+ 3)
+    (up-set-placement-data my-player-number town-center c: 30)
+    (up-build place-control 0 c: siege-workshop)   
     (build siege-workshop)(chat-local-to-self "Trying To Build Siege Workshop 2")
 
 )
