@@ -724,6 +724,7 @@
 )
 
 (defrule
+    (not(up-compare-goal gl-wallPoint1-x < 10))
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)      
     (wood-amount > 200)    
