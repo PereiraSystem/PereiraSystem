@@ -518,10 +518,38 @@
 )
 
 (defrule
+    (map-size medium)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 2)
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+)
+
+(defrule
+    (map-size normal)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 2)
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+)
+
+(defrule
+    (map-size large)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 2)
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+)
+
+(defrule
+    (map-size giant)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 2)
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+)
+
+
+
+(defrule
     (true)
 =>
-
-
     (up-chat-data-to-self "Inner wall perimeter: %d" g: gl-innerWallPerimeter)    
     (up-chat-data-to-self "Outer wall perimeter: %d" g: gl-outerWallPerimeter)
     (disable-self)    
@@ -545,7 +573,13 @@
     (disable-self)   
 )
 
-
+(defrule
+    (up-compare-goal gl-posMapSize-x > 256)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 2)
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+    (chat-local-to-self "LUDICROUS MAP SIZE!!!")
+)
 
 ; CHECK OUR POSITION IN 9 SQUARES
 (defrule
