@@ -859,7 +859,18 @@
     (set-goal gl-innerWallPoint4-y 0)(disable-self)     
 )
 
+; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
+; north east
+(defrule 
+    (up-compare-goal gl-positionCode == 2)
+=>    
+ 
 
+    ;(up-modify-goal gl-innerWallPoint3-y g:+ ) 
+
+    (up-modify-goal gl-innerWallPoint4-y c:- 2)  
+    (disable-self)           
+)
 ; GATES Y AXIS
 
 (defrule ; no gates on north east if point 1 too close to north corner
@@ -954,10 +965,7 @@
 )
 
 
-
-; ALTER THE SHAPE OF THE INNER WALL
    
-
 (defrule ;DOESNT WORK WITH 64 OR 88!!!!!!!!!!! 
     (up-compare-goal gl-buildingInnerWall == 1)
     (building-type-count-total 64 < 6)
