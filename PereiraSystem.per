@@ -679,8 +679,7 @@
     (up-get-point position-map-size gl-posMapSize-x)        
     (up-get-point position-map-size gl-maxDimensionOfMap)
 
-    (up-modify-goal gl-maxDimensionOfMap c:/ 3)
-    (up-modify-goal gl-maxDimensionOfMap c:* 3)    
+   
 
     (up-modify-goal gl-mapSizeThird c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:/ 3)
@@ -688,7 +687,8 @@
     (up-modify-goal gl-mapSizeTenth c:/ 10)
     (up-modify-goal gl-mapSizeNineTenths g:- gl-mapSizeTenth)
 
-    (up-chat-data-to-self "Map Size x: %d" g: gl-posMapSize-x)
+    ;(up-chat-data-to-self "Map Size x: %d" g: gl-posMapSize-x)
+    ; getting it manually
     (up-chat-data-to-self "Map Size: %d" g: gl-maxDimensionOfMap)
     ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
     ;(up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
@@ -929,7 +929,7 @@
     (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint1-x gl-posMapSize-x)
-    (set-goal gl-innerWallPoint1-x 120)(disable-self)   
+    (set-goal gl-innerWallPoint1-x gl-di)(disable-self)   
 )
 (defrule 
     (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
