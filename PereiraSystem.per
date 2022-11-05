@@ -935,34 +935,28 @@
 (defrule 
     (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
 =>
-    (set-goal gl-dontBuildNorthEastWall 1)   
+    (set-goal gl-dontBuildNorthEastWall 1) (disable-self)   
 )
 
 (defrule ; no south east if point 2 too close to east corner
     (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
 =>
-    (set-goal gl-dontBuildSouthEastWall 1) 
+    (set-goal gl-dontBuildSouthEastWall 1) (disable-self) 
 )
 
 (defrule ; no  south west if point 3 too close to south corner
     (up-compare-goal gl-wallPoint3-x g:< gl-mapSizeTenth)
 =>
-    (set-goal gl-dontBuildSouthWestWall 1)
+    (set-goal gl-dontBuildSouthWestWall 1)(disable-self) 
 )
 
 (defrule ; no  north west if point 4 too close to west corner
     (up-compare-goal gl-wallPoint4-y g:< gl-mapSizeTenth)
 =>
-    (set-goal gl-dontBuildNorthWestWall 1)
+    (set-goal gl-dontBuildNorthWestWall 1)(disable-self) 
 )
 
-; make the gate lines smaller DOENST 
-(defrule ; 
-    (up-compare-goal gl-positionQuadrantCode == 2)
-=>
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 10)
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 10)    
-)
+
 
 ; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
 (defrule ; 
@@ -988,7 +982,9 @@
     (up-compare-goal gl-positionQuadrantCode == 8) 
     ;(up-compare-goal gl-palisadeGateCounter < 5)         
 =>
-    (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 793)
+    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 789)    
+    ;(up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 793)
+    (up-chat-data-to-self "gate point 1 x value: %d" g: gl-outerWallGatePoint1-x)    
     (chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
     (up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
     (up-modify-goal gl-palisadeGateCounter c:+ 1)    
