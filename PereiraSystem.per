@@ -930,8 +930,8 @@
     (do-nothing)
     (disable-self)           
 )
-; GATES Y AXIS
 
+; GATES Y AXIS
 (defrule ; no gates on north east if point 1 too close to north corner
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     ;(up-compare-goal gl-palisadeGateCounter < 5)         
@@ -942,8 +942,7 @@
 )
 
 (defrule ; no gates on south east if point 2 too close to east corner
-    (true)
-    ;(up-compare-goal gl-dontBuildSouthEastWall == 0)
+    (up-compare-goal gl-dontBuildSouthEastWall == 0)
     ;(up-compare-goal gl-palisadeGateCounter < 5)     
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
