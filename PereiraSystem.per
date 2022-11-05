@@ -813,12 +813,7 @@
 )
 
 ; ALTER THE SHAPE OF THE INNER WALL
-(defrule
-    (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisLow == 1)
-=>     
-    (chat-to-allies "IM AT THE WEST, IN THE CORNER!")
-    (set-goal gl-positionQuadrantCode 9)
-)    
+   
 
 (defrule ;DOESNT WORK WITH 64 OR 88!!!!!!!!!!! 
     (up-compare-goal gl-buildingInnerWall == 1)
