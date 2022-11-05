@@ -489,6 +489,17 @@
     (up-chat-data-to-self "Outer wall perimeter: %d" g: gl-outerWallPerimeter)
     (disable-self)    
 )
+
+#load-if-defined TINY-MAP
+(defrule
+    (true)
+=>
+    (set-goal gl-innerWallPerimeter 11)
+    (set-goal gl-outerWallPerimeter 13)
+)
+#end-if
+
+
 (defrule
     (true)
 =>
