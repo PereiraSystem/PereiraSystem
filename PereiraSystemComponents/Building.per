@@ -377,21 +377,7 @@
 )
 
 ; MARKET
-(defrule
-    (or
-        (or(food-amount > 1400)(stone-amount > 700))
-        (or(wood-amount > 600)(gold-amount > 700))
-    )
-    (building-type-count town-center > 0)
-    (or(wood-amount > 275)(and(civ-selected japanese)(wood-amount > 225)))
-    (or(building-type-count siege-workshop > 0)(not(civ-selected cumans)))
-    ;(players-unit-type-count any-ally villager > 0)
-    (building-type-count-total market == 0)    
-    (can-build market)
-=>
 
-    (build market)
-)
 
 
 ; UNIVERSITY
