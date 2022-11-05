@@ -481,14 +481,20 @@
 )
 
 
-#load-if-defined TINY-MAP
+
 (defrule
     (true)
 =>
     (set-goal gl-innerWallPerimeter 10)
     (set-goal gl-outerWallPerimeter 11)
 )
-#end-if
+
+(defrule
+    (up-players-in-game any < 8)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 1)
+    (up-modify-goal gl-outerWallPerimeter c:+ 2)
+)
 
 (defrule
     (true)
