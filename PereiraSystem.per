@@ -724,63 +724,63 @@
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisHigh == 1)
 =>    
-    ;(chat-to-allies "IM AT THE EAST, IN THE CORNER!")
+    (chat-to-allies "IM AT THE EAST, IN THE CORNER!")
     (set-goal gl-positionQuadrantCode 1)    
     (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisMedium == 1)
 =>  
-    ;(chat-to-allies "IM AT THE NORTH EAST!")
+    (chat-to-allies "IM AT THE NORTH EAST!")
     (set-goal gl-positionQuadrantCode 2) 
     (up-send-flare position-self)(disable-self)  
 )
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisLow == 1)
 =>  
-    ;(chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
+    (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
     (set-goal gl-positionQuadrantCode 3)     
     (up-send-flare position-self)(disable-self)  
 )
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisHigh == 1)
 =>  
-    ;(chat-to-allies "IM AT THE SOUTH EAST!")
+    (chat-to-allies "IM AT THE SOUTH EAST!")
     (set-goal gl-positionQuadrantCode 4)     
     (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisMedium == 1)
 =>  
-    ;(chat-to-allies "IM IN THE MIDDLE OF THE MAP")
+    (chat-to-allies "IM IN THE MIDDLE OF THE MAP")
     (set-goal gl-positionQuadrantCode 5)     
     (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisLow == 1)
 =>  
-    ;(chat-to-allies "IM AT THE NORTH WEST!")
+    (chat-to-allies "IM AT THE NORTH WEST!")
     (set-goal gl-positionQuadrantCode 6)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisHigh == 1)
 => 
-    ;(chat-to-allies "IM AT THE SOUTH, IN THE CORNER!")
+    (chat-to-allies "IM AT THE SOUTH, IN THE CORNER!")
     (set-goal gl-positionQuadrantCode 7)
     (up-send-flare position-self)(disable-self)
 ) 
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisMedium == 1)
 =>
-    ;(chat-to-allies "IM AT THE SOUTH WEST!")
+    (chat-to-allies "IM AT THE SOUTH WEST!")
     (set-goal gl-positionQuadrantCode 8)    
     (up-send-flare position-self)(disable-self)  
 )    
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisLow == 1)
 =>     
-    ;(chat-to-allies "IM AT THE WEST, IN THE CORNER!")
+    (chat-to-allies "IM AT THE WEST, IN THE CORNER!")
     (set-goal gl-positionQuadrantCode 9)
     (up-send-flare position-self)(disable-self)  
 )
