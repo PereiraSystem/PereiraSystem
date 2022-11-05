@@ -974,7 +974,7 @@
 ; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
 (defrule ; 
     (false)
-    (up-compare-goal gl-positionQuadrantCode == 2)
+    (up-compare-goal gl-positionQuadrantCode == 8)
 =>
     (up-modify-goal gl-innerWallPoint1-x c:+ 2) ; 1 north
     (up-modify-goal gl-innerWallPoint1-y c:+ 2) 
@@ -983,10 +983,10 @@
     (up-modify-goal gl-innerWallPoint2-y c:+ 2) 
 
     (up-modify-goal gl-innerWallPoint3-x c:+ 2) ; 3 south
-    (up-modify-goal gl-innerWallPoint3-y c:+ 2) 
+    ;(up-modify-goal gl-innerWallPoint3-y c:+ 2) 
 
     (up-modify-goal gl-innerWallPoint4-x c:+ 2) ; 4 west
-    (up-modify-goal gl-innerWallPoint4-y c:+ 2)  
+    ;(up-modify-goal gl-innerWallPoint4-y c:+ 2)  
 )
 
 ; GATES Y AXIS
