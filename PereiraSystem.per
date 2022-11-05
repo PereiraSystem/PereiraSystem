@@ -942,50 +942,19 @@
 )
 
 ; make the walls reach the borders
-;point 1
-(defrule
-    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
-=>    
-    (set-goal gl-wallPoint1-x gl-posMapSize-x)
-    (set-goal gl-innerWallPoint1-x gl-posMapSize-x)(disable-self)   
-)
+; low point coords set to 0
 (defrule
     (up-compare-goal gl-wallPoint1-y g:< gl-mapSizeTenth)
 =>    
     (set-goal gl-wallPoint1-y 0)
     (set-goal gl-innerWallPoint1-y 0)(disable-self)
 )
-
-;point 2
-(defrule 
-    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
-=>    
-    (set-goal gl-wallPoint2-x gl-posMapSize-x)
-    (set-goal gl-innerWallPoint2-x gl-posMapSize-x)(disable-self)
-)
-
-(defrule 
-    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
-=>    
-    (set-goal gl-wallPoint2-y gl-posMapSize-y)
-    (set-goal gl-innerWallPoint2-y gl-posMapSize-y)(disable-self)
-)
-
-;point 3
 (defrule 
     (up-compare-goal gl-wallPoint3-x g:< gl-mapSizeTenth)
 =>    
     (set-goal gl-wallPoint3-x 0)
     (set-goal gl-innerWallPoint3-x 0)(disable-self)     
 )
-(defrule 
-    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
-=>    
-    (set-goal gl-innerWallPoint3-y 120)
-    (disable-self)      
-)
-
-;point 4
 (defrule 
     (up-compare-goal gl-wallPoint4-x g:< gl-mapSizeTenth)
 =>    
@@ -998,6 +967,33 @@
     (set-goal gl-wallPoint4-y 0)
     (set-goal gl-innerWallPoint4-y 0)(disable-self)     
 )
+
+; high point coords set to ??? MAP SIZE OR MANUALLY
+(defrule
+    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint1-x gl-posMapSize-x)
+    (set-goal gl-innerWallPoint1-x gl-posMapSize-x)(disable-self)   
+)
+(defrule 
+    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint2-x gl-posMapSize-x)
+    (set-goal gl-innerWallPoint2-x gl-posMapSize-x)(disable-self)
+)
+(defrule 
+    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint2-y gl-posMapSize-y)
+    (set-goal gl-innerWallPoint2-y gl-posMapSize-y)(disable-self)
+)
+(defrule 
+    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint3-y gl-posMapSize-y)
+    (set-goal gl-innerWallPoint3-y gl-posMapSize-y)(disable-self)      
+)
+
 
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
@@ -1038,7 +1034,7 @@
     (disable-self)
 )
 
-(defrule ; 
+(defrule 
     (up-compare-goal gl-positionQuadrantCode == 6)
 =>
     (up-modify-goal gl-innerWallPoint1-y c:+ 3) 
@@ -1047,42 +1043,21 @@
     (disable-self)
 )
 
-
-
-(defrule  
-    (up-compare-goal gl-positionQuadrantCode == 1)
-=>
-    ;(up-modify-goal gl-innerWallPoint1-x c:- 2) ; 1 north
-    ;(up-modify-goal gl-innerWallPoint1-y c:+ 2) 
-
-    (up-modify-goal gl-innerWallPoint2-x c:- 2) ; 2 east
-    ;(up-modify-goal gl-innerWallPoint2-y c:+ 2) 
-
-    ;(up-modify-goal gl-innerWallPoint3-x c:+ 2) ; 3 south
-    ;(up-modify-goal gl-innerWallPoint3-y c:+ 2) 
-
-    ;(up-modify-goal gl-innerWallPoint4-x c:+ 2) ; 4 west
-    (up-modify-goal gl-innerWallPoint4-y c:+ 2)  
-    (disable-self)
-)
-
-(defrule  (true)
+(defrule 
     (up-compare-goal gl-positionQuadrantCode == 4)
 =>
-    ;(up-modify-goal gl-innerWallPoint1-x c:- 2) ; 1 north
-    ;(up-modify-goal gl-innerWallPoint1-y c:+ 2) 
-
-    ;(up-modify-goal gl-innerWallPoint2-x c:- 2) ; 2 east
     (up-modify-goal gl-innerWallPoint2-y c:- 2) 
-
-    ;(up-modify-goal gl-innerWallPoint3-x c:+ 2) ; 3 south
     (up-modify-goal gl-innerWallPoint3-y c:- 2) 
-
-    ;(up-modify-goal gl-innerWallPoint4-x c:+ 2) ; 4 west
-    ;(up-modify-goal gl-innerWallPoint4-y c:+ 2)  
     (disable-self)
 )
 
+(defrule 
+    (up-compare-goal gl-positionQuadrantCode == 2)
+=>
+    (up-modify-goal gl-innerWallPoint1-x c:- 2) 
+    (up-modify-goal gl-innerWallPoint2-x c:- 2) 
+    (disable-self)
+)
 
 
 ; GATES Y AXIS
