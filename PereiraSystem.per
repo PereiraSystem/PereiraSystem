@@ -972,10 +972,11 @@
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 8) 
-    (up-compare-goal gl-palisadeGateCounter < 5)         
+    ;(up-compare-goal gl-palisadeGateCounter < 5)         
 =>
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)
     (chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
+    (up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
     (up-modify-goal gl-palisadeGateCounter c:+ 1)    
 )
 
