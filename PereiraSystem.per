@@ -887,6 +887,40 @@
     ;(up-modify-goal gl-outerWallGatePoint4-y c:- 5)  
     (disable-self)
 )
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 2) 
+=>    
+
+    ;(up-modify-goal gl-outerWallGatePoint1-x c:- 1) 
+    ;(up-modify-goal gl-outerWallGatePoint1-y c:+ 15) 
+
+    ;(up-modify-goal gl-outerWallGatePoint2-x c:- 16) 
+    ;(up-modify-goal gl-outerWallGatePoint2-y c:- 15) 
+
+    ;(up-modify-goal gl-outerWallGatePoint3-x c:- 16) 
+    (up-modify-goal gl-outerWallGatePoint3-y c:+ 16) 
+
+    ;(up-modify-goal gl-outerWallGatePoint4-x c:- 5) 
+    (up-modify-goal gl-outerWallGatePoint4-y c:- 16)  
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 4) 
+=>    
+
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 16) 
+    ;(up-modify-goal gl-outerWallGatePoint1-y c:+ 15) 
+
+    ;(up-modify-goal gl-outerWallGatePoint2-x c:- 16) 
+    ;(up-modify-goal gl-outerWallGatePoint2-y c:- 15) 
+
+    ;(up-modify-goal gl-outerWallGatePoint3-x c:- 16) 
+    ;(up-modify-goal gl-outerWallGatePoint3-y c:+ 5) 
+
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 16) 
+    ;(up-modify-goal gl-outerWallGatePoint4-y c:- 5)  
+    (disable-self)
+)
 
 
 (defrule
