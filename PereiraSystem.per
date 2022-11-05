@@ -1010,7 +1010,8 @@
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
 )
 
-(defrule  
+(defrule 
+    (up-compare-goal gl-buildingInnerWall == 1) 
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
 )
