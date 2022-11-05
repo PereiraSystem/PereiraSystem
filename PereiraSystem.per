@@ -972,15 +972,26 @@
 
 
 ; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
-
-
+; dont build the section of wall that has now moved
 (defrule ; 
     (up-compare-goal gl-positionQuadrantCode == 8)
 =>
-    (up-modify-goal gl-innerWallPoint3-x c:+ 2)
-    (up-modify-goal gl-innerWallPoint4-x c:+ 2)
+    (up-modify-goal gl-innerWallPoint3-x c:+ 3)
+    (up-modify-goal gl-innerWallPoint4-x c:+ 3)
+    (set-goal gl-dontBuildSouthWestWall 1)    
     (disable-self)
 )
+
+(defrule ; 
+    (up-compare-goal gl-positionQuadrantCode == 6)
+=>
+    (up-modify-goal gl-innerWallPoint1-y c:+ 3) 
+    (up-modify-goal gl-innerWallPoint4-y c:+ 3)
+    (set-goal gl-dontBuildNorthWestWall 1)     
+    (disable-self)
+)
+
+
 
 (defrule  
     (up-compare-goal gl-positionQuadrantCode == 1)
@@ -1016,22 +1027,7 @@
     (disable-self)
 )
 
-(defrule ; 
-    (up-compare-goal gl-positionQuadrantCode == 6)
-=>
-    ;(up-modify-goal gl-innerWallPoint1-x c:- 2) ; 1 north
-    (up-modify-goal gl-innerWallPoint1-y c:+ 3) 
 
-    ;(up-modify-goal gl-innerWallPoint2-x c:- 2) ; 2 east
-    ;(up-modify-goal gl-innerWallPoint2-y c:- 2) 
-
-    ;(up-modify-goal gl-innerWallPoint3-x c:+ 2) ; 3 south
-    ;(up-modify-goal gl-innerWallPoint3-y c:- 2) 
-
-    ;(up-modify-goal gl-innerWallPoint4-x c:+ 2) ; 4 west
-    (up-modify-goal gl-innerWallPoint4-y c:+ 3)  
-    (disable-self)
-)
 
 ; GATES Y AXIS
 (defrule 
@@ -1156,8 +1152,8 @@
     (up-compare-goal gl-dontBuildSouthWestWall == 0)    
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
-    (up-chat-data-to-all "inner wall south west start y: %d" g: gl-innerWallPoint3-y)     
-    (up-chat-data-to-all "inner wall south west end y: %d" g: gl-innerWallPoint4-y)    
+    ;(up-chat-data-to-all "inner wall south west start y: %d" g: gl-innerWallPoint3-y)     
+    ;(up-chat-data-to-all "inner wall south west end y: %d" g: gl-innerWallPoint4-y)    
 )
 
 (defrule  
