@@ -486,14 +486,14 @@
     (true)
 =>
     (set-goal gl-innerWallPerimeter 10)
-    (set-goal gl-outerWallPerimeter 11)
+    (set-goal gl-outerWallPerimeter 11)(disable-self)  
 )
 
 (defrule
     (up-players-in-game any < 8)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 2)
+    (up-modify-goal gl-outerWallPerimeter c:+ 2)(disable-self)  
 )
 
 (defrule
@@ -799,7 +799,7 @@
 )
 
 (defrule
-    (false)
+    (true)
     (current-age >= castle-age)
     (or(game-time > 600)(cheats-enabled))
 =>
