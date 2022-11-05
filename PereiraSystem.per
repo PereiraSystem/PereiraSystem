@@ -833,7 +833,7 @@
 )
 
 (defrule
-    (true) 
+    (true) ;copy the outer wall shape to outer gate lines shap
 =>    
 
     (up-modify-goal gl-outerWallGatePoint1-x g:+ gl-outerWallPerimeter) ; 1 north
@@ -850,6 +850,23 @@
     (disable-self)           
 )
 
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 2) ; make the gate lines shorter
+=>    
+
+    ;(up-modify-goal gl-outerWallGatePoint1-x g:+ 5) ; 1 north
+    (up-modify-goal gl-outerWallGatePoint1-y g:+ 5) 
+
+    ;(up-modify-goal gl-outerWallGatePoint2-x g:+ 5) ; 2 east
+    (up-modify-goal gl-outerWallGatePoint2-y g:- 5) 
+
+    ;(up-modify-goal gl-outerWallGatePoint3-x g:- 5) ; 3 south
+    (up-modify-goal gl-outerWallGatePoint3-y g:+ 5) 
+
+    ;(up-modify-goal gl-outerWallGatePoint4-x g:- 5) ; 4 west
+    ;(up-modify-goal gl-outerWallGatePoint4-y g:- 5)  
+    (disable-self)
+)
 (defrule
     (true) 
 =>    
