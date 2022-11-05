@@ -980,6 +980,7 @@
 
 (defrule ; no gates on south east if point 2 too close to east corner
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
+    (not(up-compare-goal gl-positionQuadrantCode == 2))
     ;(up-compare-goal gl-palisadeGateCounter < 5)     
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
@@ -998,6 +999,7 @@
 
 (defrule ; no gates on north west if point 4 too close to west corner
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
+    (not(up-compare-goal gl-positionQuadrantCode == 2))    
     ;(up-compare-goal gl-palisadeGateCounter < 5)  
 =>
     (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: 789)
