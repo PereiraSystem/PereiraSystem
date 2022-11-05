@@ -497,6 +497,13 @@
 )
 
 (defrule
+    (up-players-in-game any < 7)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 1)
+    (up-modify-goal gl-outerWallPerimeter c:+ 2)(disable-self)  
+)
+
+(defrule
     (true)
 =>
 
