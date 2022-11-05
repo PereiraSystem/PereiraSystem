@@ -887,10 +887,10 @@
 
 ; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
 ; north east
-(defrule 
+(defrule (false)
     (up-compare-goal gl-positionQuadrantCode == 2)
 =>    
-    (up-modify-goal gl-innerWallGatePoint1-x g:+ ) 
+    ;(up-modify-goal gl-innerWallGatePoint1-x g:+ ) 
  
     (disable-self)           
 )
