@@ -866,7 +866,7 @@
     (not(up-compare-goal gl-wallPoint1-y g:< gl-mapSizeTenth))
     (not(up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths))
     (building-type-count-total 793 < 2)
-    (up-compare-goal gl-palisadeGateCounter < 5)         
+    (up-compare-goal gl-palisadeGateCounter < 3)         
 =>
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)
     (chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
@@ -877,29 +877,31 @@
 (defrule ; no gates on south east if point 2 too close to east corner
     (not(up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths))
     (not(up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths))
-    (building-type-count-total 789 < 2)
+    (up-compare-goal gl-palisadeGateCounter < 3)     
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
     (chat-local-to-self "BUILDING THE SOUTH EAST PALISADE GATES!")
+    (up-modify-goal gl-palisadeGateCounter c:+ 1)  
 )
 
 (defrule ; no gates on south west if point 3 too close to south corner
     (not(up-compare-goal gl-wallPoint3-x g:< gl-mapSizeTenth))
     (not(up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths))
-    (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 < 2)
+    (up-compare-goal gl-palisadeGateCounter < 3)  
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: 793)
     (chat-local-to-self "BUILDING THE SOUTH WEST PALISADE GATES!")
+    (up-modify-goal gl-palisadeGateCounter c:+ 1)  
 )
 
 (defrule ; no gates on north west if point 4 too close to west corner
     (not(up-compare-goal gl-wallPoint4-x g:< gl-mapSizeTenth))  
     (not(up-compare-goal gl-wallPoint4-y g:< gl-mapSizeTenth))
-    (building-type-count-total 789 < 2)
+    (up-compare-goal gl-palisadeGateCounter < 3)  
 =>
     (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: 789)
     (chat-local-to-self "BUILDING THE NORTH WEST PALISADE GATES!")
+    (up-modify-goal gl-palisadeGateCounter c:+ 1)  
 )
 
 
