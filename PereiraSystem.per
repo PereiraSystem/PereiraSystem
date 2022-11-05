@@ -404,6 +404,16 @@
 )
 
 ; UP WALL CONSTANTS - YEAH I KIND OFLIKE IT THAT WAY
+(defconst gl-innerWallGatePoint1-x 461)
+(defconst gl-innerWallGatePoint1-y 462)
+(defconst gl-innerWallGatePoint2-x 463)
+(defconst gl-innerWallGatePoint2-y 464)
+(defconst gl-innerWallGatePoint3-x 465)
+(defconst gl-innerWallGatePoint3-y 466)
+(defconst gl-innerWallGatePoint4-x 467)
+(defconst gl-innerWallGatePoint4-y 468)
+
+
 (defconst gl-positionXisHigh 470) 
 (defconst gl-positionXisMedium 471)
 (defconst gl-positionXisLow 472)
@@ -436,8 +446,6 @@
 (defconst gl-innerWallPoint4-x 497)
 (defconst gl-innerWallPoint4-y 498)
 
-(defconst gl-tempX 499)
-(defconst gl-tempY 500)
 
 (defconst gl-wallPoint1-x 501)
 (defconst gl-wallPoint1-y 502)
@@ -801,6 +809,24 @@
     (disable-self)           
 )
 
+(defrule
+    (true) 
+=>    
+
+    (up-modify-goal gl-innerWallGatePoint1-x g:+ gl-innerWallPerimeter) ; 1 north
+    (up-modify-goal gl-innerWallGatePoint1-y g:- gl-innerWallPerimeter) 
+
+    (up-modify-goal gl-innerWallGatePoint2-x g:+ gl-innerWallPerimeter) ; 2 east
+    (up-modify-goal gl-innerWallGatePoint2-y g:+ gl-innerWallPerimeter) 
+
+    (up-modify-goal gl-innerWallGatePoint3-x g:- gl-innerWallPerimeter) ; 3 south
+    (up-modify-goal gl-innerWallGatePoint3-y g:+ gl-innerWallPerimeter) 
+
+    (up-modify-goal gl-innerWallGatePoint4-x g:- gl-innerWallPerimeter) ; 4 west
+    (up-modify-goal gl-innerWallGatePoint4-y g:- gl-innerWallPerimeter)  
+    (disable-self)           
+)
+
 ; make the walls reach the borders
 ;point 1
 (defrule
@@ -864,11 +890,8 @@
 (defrule 
     (up-compare-goal gl-positionQuadrantCode == 2)
 =>    
+    (up-modify-goal gl-innerWallGatePoint1-x g:+ ) 
  
-
-    ;(up-modify-goal gl-innerWallPoint3-y g:+ ) 
-
-    (up-modify-goal gl-innerWallPoint4-y c:+ 13)  
     (disable-self)           
 )
 ; GATES Y AXIS
@@ -976,50 +999,23 @@
 
 ; INNER STONE WALL
 (defrule 
-    (not
-        (up-compare-goal gl-positionQuadrantCode == 2)
-    )
-    (not
-        (up-compare-goal gl-positionQuadrantCode == 1)
-    )    
-    (not
-        (up-compare-goal gl-positionQuadrantCode == 5)
-    )    
     (up-compare-goal gl-buildingInnerWall == 1)
 =>    
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
 )
 
 (defrule
-    (not(up-compare-goal gl-positionQuadrantCode == 4))
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
 )
 
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1)
-     (not(up-compare-goal gl-positionQuadrantCode == 4))   
-    (not
-        (up-compare-goal gl-positionQuadrantCode == 8)
-    )
-    (not
-        (up-compare-goal gl-positionQuadrantCode == 9)
-    )       
+(defrule  
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
 )
 
-(defrule
-    (not
-        (up-compare-goal gl-positionQuadrantCode == 6)
-    )
-    (not
-        (up-compare-goal gl-positionQuadrantCode == 7)
-    )
-    (not
-        (up-compare-goal gl-positionQuadrantCode == 3)
-    )    
+(defrule  
     (up-compare-goal gl-buildingInnerWall == 1)
 =>
     (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
