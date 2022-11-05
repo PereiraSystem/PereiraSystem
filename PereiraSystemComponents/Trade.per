@@ -185,59 +185,8 @@
 
 ; TRIBUTE, just randomly give resources to anyone for now
 ; TRIBUTE IN FEUDAL AGE
-(defrule
-    (current-age == feudal-age)
-    (wood-amount > 600)
-=>
-    (tribute-to-player any-ally wood 100)
-)
 
-(defrule
-    (current-age == feudal-age)
-    (food-amount > 1200)
-=>
-    (tribute-to-player any-ally food 100)
-)
 
-(defrule
-    (current-age == feudal-age)
-    (gold-amount > 800)
-=>
-    (tribute-to-player any-ally gold 100)
-)
-
-; TRIBUTE IN CASTLE AGE
-(defrule
-    (current-age == castle-age)
-    (wood-amount > 800)
-=>
-    ;(tribute-to-player any-ally wood 100)
-    (do-nothing)
-)
-
-(defrule
-    (current-age == castle-age)
-    (food-amount > 1200)
-=>
-    ;(tribute-to-player any-ally food 100)
-    (do-nothing)
-)
-
-(defrule
-    (current-age == castle-age)
-    (gold-amount > 1400)
-=>
-    ;(tribute-to-player any-ally gold 100)
-    (do-nothing)
-)
-
-(defrule
-    (current-age == castle-age)
-    (stone-amount > 800)
-=>
-    ;(tribute-to-player any-ally stone 100)
-    (do-nothing)    
-)
 
 ; TRIBUTE IN IMPERIAL AGE
 (defrule
