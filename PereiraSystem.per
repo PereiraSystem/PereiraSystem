@@ -404,6 +404,16 @@
 )
 
 ; UP WALL CONSTANTS - YEAH I KIND OFLIKE IT THAT WAY
+
+(defconst gl-outerWallGatePoint1-x 441)
+(defconst gl-outerWallGatePoint1-y 442)
+(defconst gl-outerWallGatePoint2-x 443)
+(defconst gl-outerWallGatePoint2-y 444)
+(defconst gl-outerWallGatePoint3-x 445)
+(defconst gl-outerWallGatePoint3-y 446)
+(defconst gl-outerWallGatePoint4-x 447)
+(defconst gl-outerWallGatePoint4-y 448)
+
 (defconst gl-dontBuildNorthEastWall 455)
 (defconst gl-dontBuildSouthEastWall 456)
 (defconst gl-dontBuildNorthWestWall 457)
@@ -786,6 +796,14 @@
     (up-get-point position-self gl-innerWallPoint2-x)
     (up-get-point position-self gl-innerWallPoint3-x)
     (up-get-point position-self gl-innerWallPoint4-x)
+    (up-get-point position-self gl-outerWallGatePoint1-x )
+    (up-get-point position-self gl-outerWallGatePoint1-y )
+    (up-get-point position-self gl-outerWallGatePoint2-x )
+    (up-get-point position-self gl-outerWallGatePoint2-y )
+    (up-get-point position-self gl-outerWallGatePoint3-x )
+    (up-get-point position-self gl-outerWallGatePoint3-y )
+    (up-get-point position-self gl-outerWallGatePoint4-x )
+    (up-get-point position-self gl-outerWallGatePoint4-y ) 
     (disable-self)           
 )
 
@@ -815,6 +833,24 @@
 
     (up-modify-goal gl-innerWallPoint4-x g:- gl-innerWallPerimeter) ; 4 west
     (up-modify-goal gl-innerWallPoint4-y g:- gl-innerWallPerimeter)  
+    (disable-self)           
+)
+
+(defrule
+    (true) 
+=>    
+
+    (up-modify-goal gl-outerWallGatePoint1-x g:+ gl-outerWallPerimeter) ; 1 north
+    (up-modify-goal gl-outerWallGatePoint1-y g:- gl-outerWallPerimeter) 
+
+    (up-modify-goal gl-outerWallGatePoint2-x g:+ gl-outerWallPerimeter) ; 2 east
+    (up-modify-goal gl-outerWallGatePoint2-y g:+ gl-outerWallPerimeter) 
+
+    (up-modify-goal gl-outerWallGatePoint3-x g:- gl-outerWallPerimeter) ; 3 south
+    (up-modify-goal gl-outerWallGatePoint3-y g:+ gl-outerWallPerimeter) 
+
+    (up-modify-goal gl-outerWallGatePoint4-x g:- gl-outerWallPerimeter) ; 4 west
+    (up-modify-goal gl-outerWallGatePoint4-y g:- gl-outerWallPerimeter)  
     (disable-self)           
 )
 
@@ -922,13 +958,13 @@
 
 
 ; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
-; north east
-(defrule (false)
+
+; make the gate points smaller
+(defrule ; 
     (up-compare-goal gl-positionQuadrantCode == 2)
-=>    
-    (up-modify-goal gl-innerWallGatePoint1-x c:+ 3) 
-    (do-nothing)
-    (disable-self)           
+=>
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 10)
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 10)    
 )
 
 ; GATES Y AXIS
