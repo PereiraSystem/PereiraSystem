@@ -922,7 +922,7 @@
     (set-goal gl-wallPoint4-y 0)
     (set-goal gl-innerWallPoint4-y 0)(disable-self)     
 )
-
+#load-if-defined TINY-MAP
 ; high point coords set to ??? MAP SIZE OR MANUALLY
 (defrule 
     (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
@@ -948,6 +948,61 @@
     (set-goal gl-wallPoint3-y 120)
     (set-goal gl-innerWallPoint3-y 120)(disable-self)      
 )
+#end-if
+#load-if-defined SMALL-MAP
+; high point coords set to ??? MAP SIZE OR MANUALLY
+(defrule 
+    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint1-x 144)
+    (set-goal gl-innerWallPoint1-x 144)(disable-self)   
+)
+(defrule 
+    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint2-x 144)
+    (set-goal gl-innerWallPoint2-x 144)(disable-self)
+)
+(defrule
+    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint2-y 144)
+    (set-goal gl-innerWallPoint2-y 144)(disable-self)
+)
+(defrule
+    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint3-y 144)
+    (set-goal gl-innerWallPoint3-y 144)(disable-self)      
+)
+#end-if
+#load-if-defined MEDIUM-MAP
+; high point coords set to ??? MAP SIZE OR MANUALLY
+(defrule 
+    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint1-x 144)
+    (set-goal gl-innerWallPoint1-x 144)(disable-self)   
+)
+(defrule 
+    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint2-x 144)
+    (set-goal gl-innerWallPoint2-x 144)(disable-self)
+)
+(defrule
+    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint2-y 144)
+    (set-goal gl-innerWallPoint2-y 144)(disable-self)
+)
+(defrule
+    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint3-y 144)
+    (set-goal gl-innerWallPoint3-y 144)(disable-self)      
+)
+#end-if
 
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
@@ -1006,8 +1061,8 @@
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 2)
 =>
-    (up-modify-goal gl-innerWallPoint1-x c:- 3) 
-    (up-modify-goal gl-innerWallPoint2-x c:- 3) 
+    (up-modify-goal gl-innerWallPoint1-x c:- 6) 
+    (up-modify-goal gl-innerWallPoint2-x c:- 6) 
     (disable-self)
 )
 
