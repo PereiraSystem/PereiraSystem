@@ -974,6 +974,7 @@
 ; FINISHED GATES, NOW THE PALISADE
 (defrule ;along Y axis, right side
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (building-type-count 793 > 0)
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
@@ -983,6 +984,7 @@
 
 (defrule
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
+    (building-type-count 789 > 0)    
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200)   
