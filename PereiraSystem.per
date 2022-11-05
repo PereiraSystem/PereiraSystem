@@ -511,6 +511,13 @@
 )
 
 (defrule
+    (map-size small)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 2)
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+)
+
+(defrule
     (true)
 =>
 
