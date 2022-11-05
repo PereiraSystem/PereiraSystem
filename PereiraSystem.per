@@ -1104,43 +1104,48 @@
     (disable-self)
 )
 
-
 ; INNER STONE WALL
-(defrule 
+(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-=>    
+=>
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
+    ;(up-chat-data-to-all "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
+    ;(up-chat-data-to-all "inner wall north east end y: %d" g: gl-innerWallPoint2-y)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildSouthEastWall == 0)    
+    (up-compare-goal gl-dontBuildSouthEastWall == 0)
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
+    ;(up-chat-data-to-all "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
+    ;(up-chat-data-to-all "inner wall south east end y: %d" g: gl-innerWallPoint3-y) 
 )
 
-(defrule 
-    (up-compare-goal gl-buildingInnerWall == 1) 
-    (up-compare-goal gl-dontBuildSouthWestWall == 0)    
+(defrule
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (up-compare-goal gl-dontBuildSouthWestWall == 0)
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
-    ;(up-chat-data-to-all "inner wall south west start y: %d" g: gl-innerWallPoint3-y)     
-    ;(up-chat-data-to-all "inner wall south west end y: %d" g: gl-innerWallPoint4-y)    
+    ;(up-chat-data-to-all "inner wall south west start y: %d" g: gl-innerWallPoint3-y)
+    ;(up-chat-data-to-all "inner wall south west end y: %d" g: gl-innerWallPoint4-y)  
 )
 
-(defrule  
+(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthWestWall == 0)    
+    (up-compare-goal gl-dontBuildNorthWestWall == 0)
 =>
     (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
+    ;(up-chat-data-to-all "inner wall north west start y: %d" g: gl-innerWallPoint3-y)
+    ;(up-chat-data-to-all "inner wall north west end y: %d" g: gl-innerWallPoint4-y)      
 )
 
 ; some outposts
 (defrule
     (building-type-count-total palisade-wall > 25)
     (wood-amount g:> gl-minimumWoodForLC)
-    (building-type-count-total outpost < 4)    
+    (building-type-count-total outpost < 4)
     ;(up-can-build 0 c: outpost)
     (can-build outpost)
 =>
@@ -1153,15 +1158,12 @@
     (current-age >= feudal-age)
     (building-type-count-total palisade-wall > 15)
     (wood-amount g:> gl-minimumWoodForLC)
-    (building-type-count-total watch-tower-line < 4)       
+    (building-type-count-total watch-tower-line < 4)
     (up-can-build 0 c: watch-tower-line)
 =>
     (up-set-placement-data my-player-number town-center c: +17)
     (up-build place-control 0 c: watch-tower-line)
 )
-
-
-
 
 (defrule
 	(game-time > 180)
