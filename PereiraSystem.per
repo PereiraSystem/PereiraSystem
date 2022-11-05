@@ -956,16 +956,17 @@
     (set-goal gl-dontBuildNorthWestWall 1)
 )
 
-
-; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
-
-; make the gate points smaller
+; make the gate lines smaller
 (defrule ; 
     (up-compare-goal gl-positionQuadrantCode == 2)
 =>
     (up-modify-goal gl-outerWallGatePoint3-y c:- 10)
     (up-modify-goal gl-outerWallGatePoint4-y c:+ 10)    
 )
+
+; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
+
+
 
 ; GATES Y AXIS
 (defrule ; no gates on north east if point 1 too close to north corner
