@@ -657,8 +657,9 @@
     (up-get-point position-map-size gl-mapSizeTenth)     
     (up-get-point position-map-size gl-mapSizeNineTenths)    
     (up-get-point position-map-size gl-posMapSize-x)        
+    (up-get-point position-map-size gl-maxDimensionOfMap)
 
-    (set-goal gl-maxDimensionOfMap gl-posMapSize-x)
+    (up-modify-goal gl-maxDimensionOfMap c:* 1)
 
     (up-modify-goal gl-mapSizeThird c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:/ 3)
