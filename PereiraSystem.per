@@ -708,7 +708,6 @@
 
 ; FINISHED GATES, NOW THE PALISADE
 (defrule ;along Y axis, right side
-    (not(up-compare-goal gl-wallPoint1-y < 10))
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
