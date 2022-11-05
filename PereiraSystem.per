@@ -659,7 +659,7 @@
     (up-get-point position-map-size gl-posMapSize-x)        
     (up-get-point position-map-size gl-maxDimensionOfMap)
 
-    (up-modify-goal gl-maxDimensionOfMap c:* 1)
+    ;(up-modify-goal gl-maxDimensionOfMap c:* 1)
 
     (up-modify-goal gl-mapSizeThird c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:/ 3)
@@ -667,6 +667,7 @@
     (up-modify-goal gl-mapSizeTenth c:/ 10)
     (up-modify-goal gl-mapSizeNineTenths g:- gl-mapSizeTenth)
 
+    (up-chat-data-to-self "Map Size x: %d" g: gl-posMapSize-x)
     (up-chat-data-to-self "Map Size: %d" g: gl-maxDimensionOfMap)
     ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
     ;(up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
@@ -690,35 +691,34 @@
 (defrule
     (up-compare-goal gl-myPosition-x g:>= gl-mapSizeTwoThirds)
 =>
-    (set-goal gl-positionXisHigh 1)
-    (disable-self)  
+    (set-goal gl-positionXisHigh 1)(disable-self) 
 )
 (defrule
     (up-compare-goal gl-myPosition-y g:>= gl-mapSizeTwoThirds)
 =>
-    (set-goal gl-positionYisHigh 1)(disable-self)  
+    (set-goal gl-positionYisHigh 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-x g:< gl-mapSizeTwoThirds)
     (up-compare-goal gl-myPosition-x g:> gl-mapSizeThird)
 =>
-    (set-goal gl-positionXisMedium 1)(disable-self)  
+    (set-goal gl-positionXisMedium 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-y g:< gl-mapSizeTwoThirds)
     (up-compare-goal gl-myPosition-y g:> gl-mapSizeThird)
 =>
-    (set-goal gl-positionYisMedium 1)(disable-self)  
+    (set-goal gl-positionYisMedium 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-x g:<= gl-mapSizeThird)
 =>
-    (set-goal gl-positionXisLow 1)(disable-self)  
+    (set-goal gl-positionXisLow 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-y g:<= gl-mapSizeThird)
 =>
-    (set-goal gl-positionYisLow 1)(disable-self)  
+    (set-goal gl-positionYisLow 1)(disable-self)
 )
 
 ; SAY 1 OF 9 POSITIONS TO ALLIES AND STORE POSITION IN A CODE WHILE WE ARE AT IT
