@@ -862,35 +862,20 @@
 
 
 ; GATES Y AXIS
-(defrule(true)=>(enable-timer 45 15))
 
-(defrule(false)
-    (timer-triggered 45)
-    (not(up-compare-goal gl-wallPoint1-y < 10))
+(defrule ; no gates on north east if point 1 too close to north corner
+    (not(up-compare-goal gl-wallPoint1-y g:< gl-mapSizeTenth))
+    (not(up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths))
+    (building-type-count-total 793 < 2)        
 =>
-    (disable-timer 45)
-    (enable-timer 45 15)
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)
-    (chat-local-to-self "TIMER TIMER!")
 )
 
-(defrule(false)
-    ;(timer-triggered 49)
-    (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 < 1)
-    ;(building-type-count-total palisade-wall < 6)
-=>
-    ;(disable-timer 49)
-    (enable-timer 49 15)
-    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)
-    (chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
-)
 
-(defrule(false)
-    (timer-triggered 49)
-    (wood-amount g:> gl-minimumWoodForLC)     
+(defrule ; no gates on south east if point 2 too close to east corner
+    (not(up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths))
+    (not(up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths))
     (building-type-count-total 789 < 2)
-    ;(building-type-count-total palisade-wall < 6)
 =>
     (disable-timer 49)
     (enable-timer 49 15)
