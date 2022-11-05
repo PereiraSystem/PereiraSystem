@@ -630,6 +630,18 @@
     (disable-self)           
 )
 
+(defrule ;outer wall
+    (up-compare-goal gl-wallPoint1-y < 10)
+=>    
+    (set-goal gl-wallPoint1-y 0)
+)
+
+(defrule ;outer wall
+    (up-compare-goal gl-wallPoint4-y < 10)
+=>    
+    (set-goal gl-wallPoint4-y 0)
+)
+
 ; GATES Y AXIS
 (defrule(true)=>(enable-timer 45 15))
 
