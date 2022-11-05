@@ -757,13 +757,17 @@
     (up-send-flare position-self)(disable-self)  
 )
 
-(defrule ;outer wall
+(defrule 
     (true)
 =>    
     (up-get-point position-self gl-wallPoint1-x)
     (up-get-point position-self gl-wallPoint2-x)
     (up-get-point position-self gl-wallPoint3-x)
     (up-get-point position-self gl-wallPoint4-x)
+    (up-get-point position-self gl-innerWallPoint1-x)
+    (up-get-point position-self gl-innerWallPoint2-x)
+    (up-get-point position-self gl-innerWallPoint3-x)
+    (up-get-point position-self gl-innerWallPoint4-x)
 
     (up-modify-goal gl-wallPoint1-x g:+ gl-outerWallPerimeter) ; 1 north
     (up-modify-goal gl-wallPoint1-y g:- gl-outerWallPerimeter) 
@@ -784,13 +788,13 @@
     (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint1-x gl-posMapSize-x)
-    (set-goal gl-innerWallPoint1-x gl-posMapSize-x)    
+    (set-goal gl-innerWallPoint1-x gl-posMapSize-x) (disable-self)   
 )
 (defrule
     (up-compare-goal gl-wallPoint1-y g:< gl-mapSizeTenth)
 =>    
     (set-goal gl-wallPoint1-y 0)
-    (set-goal gl-innerWallPoint1-y 0) 
+    (set-goal gl-innerWallPoint1-y 0) (disable-self)
 )
 
 ;point 2
@@ -798,14 +802,14 @@
     (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint2-x gl-posMapSize-x)
-    (set-goal gl-innerWallPoint2-x gl-posMapSize-x) 
+    (set-goal gl-innerWallPoint2-x gl-posMapSize-x) (disable-self)
 )
 
 (defrule 
     (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint2-y gl-posMapSize-y)
-    (set-goal gl-innerWallPoint2-y gl-posMapSize-y) 
+    (set-goal gl-innerWallPoint2-y gl-posMapSize-y) (disable-self)
 )
 
 ;point 3
@@ -813,13 +817,13 @@
     (up-compare-goal gl-wallPoint3-x g:< gl-mapSizeTenth)
 =>    
     (set-goal gl-wallPoint3-x 0)
-    (set-goal gl-innerWallPoint3-x gl-posMapSize-x)       
+    (set-goal gl-innerWallPoint3-x 0)  (disable-self)     
 )
 (defrule 
     (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint3-y gl-posMapSize-y)
-    (set-goal gl-innerWallPoint3-y gl-posMapSize-y)      
+    (set-goal gl-innerWallPoint3-y gl-posMapSize-y)(disable-self)      
 )
 
 ;point 4
@@ -827,20 +831,20 @@
     (up-compare-goal gl-wallPoint4-x g:< gl-mapSizeTenth)
 =>    
     (set-goal gl-wallPoint4-x 0)
-    (set-goal gl-innerWallPoint4-x 0)       
+    (set-goal gl-innerWallPoint4-x 0) (disable-self)      
 )
 (defrule 
     (up-compare-goal gl-wallPoint4-y g:< gl-mapSizeTenth)
 =>    
     (set-goal gl-wallPoint4-y 0)
-    (set-goal gl-innerWallPoint4-y 0)      
+    (set-goal gl-innerWallPoint4-y 0) (disable-self)     
 )
 
 
 ; GATES Y AXIS
 (defrule(true)=>(enable-timer 45 15))
 
-(defrule
+(defrule(false)
     (timer-triggered 45)
     (not(up-compare-goal gl-wallPoint1-y < 10))
 =>
@@ -850,7 +854,7 @@
     (chat-local-to-self "TIMER TIMER!")
 )
 
-(defrule
+(defrule(false)
     ;(timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 793 < 1)
@@ -862,7 +866,7 @@
     (chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
 )
 
-(defrule
+(defrule(false)
     (timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 789 < 2)
@@ -874,7 +878,7 @@
     (chat-local-to-self "BUILDING THE SOUTH EAST PALISADE GATES!")
 )
 
-(defrule
+(defrule(false)
     (timer-triggered 49)
     (wood-amount g:> gl-minimumWoodForLC)     
     (building-type-count-total 793 < 1)
@@ -886,7 +890,7 @@
     (chat-local-to-self "BUILDING THE SOUTH WEST PALISADE GATES!")
 )
 
-(defrule
+(defrule(false)
     (timer-triggered 49)
     (not(up-compare-goal gl-wallPoint1-y < 10))
     (wood-amount g:> gl-minimumWoodForLC)     
@@ -952,10 +956,7 @@
 (defrule
     (true) ; inner wall
 =>    
-    (up-get-point position-self gl-innerWallPoint1-x)
-    (up-get-point position-self gl-innerWallPoint2-x)
-    (up-get-point position-self gl-innerWallPoint3-x)
-    (up-get-point position-self gl-innerWallPoint4-x)
+
     (up-modify-goal gl-innerWallPoint1-x g:+ gl-innerWallPerimeter) ; 1 north
     (up-modify-goal gl-innerWallPoint1-y g:- gl-innerWallPerimeter) 
 
