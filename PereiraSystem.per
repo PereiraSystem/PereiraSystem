@@ -793,15 +793,15 @@
 
 ;point 2
 (defrule 
-    (up-compare-goal gl-wallPoint2-x > 110)
+    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x 120)
+    (set-goal gl-wallPoint2-x gl-posMapSize-x)
 )
 
 (defrule 
-    (up-compare-goal gl-wallPoint2-y > 110)
+    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y 120)
+    (set-goal gl-wallPoint2-y gl-posMapSize-y)
 )
 
 ;point 3
@@ -811,9 +811,9 @@
     (set-goal gl-wallPoint3-x 0)
 )
 (defrule 
-    (up-compare-goal gl-wallPoint3-y > 110)
+    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint3-y 120)
+    (set-goal gl-wallPoint3-y gl-posMapSize-y)
 )
 
 ;point 4
