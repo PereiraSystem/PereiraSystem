@@ -1110,8 +1110,8 @@
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
 =>
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
-    ;(up-chat-data-to-all "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
-    ;(up-chat-data-to-all "inner wall north east end y: %d" g: gl-innerWallPoint2-y)
+    (up-chat-data-to-all "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
+    (up-chat-data-to-all "inner wall north east end y: %d" g: gl-innerWallPoint2-y)
 )
 
 (defrule
@@ -1119,8 +1119,8 @@
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
-    ;(up-chat-data-to-all "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
-    ;(up-chat-data-to-all "inner wall south east end y: %d" g: gl-innerWallPoint3-y) 
+    (up-chat-data-to-all "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
+    (up-chat-data-to-all "inner wall south east end y: %d" g: gl-innerWallPoint3-y) 
 )
 
 (defrule
