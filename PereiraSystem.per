@@ -855,30 +855,30 @@
 (defrule ; move the gate lines 
     (up-compare-goal gl-positionQuadrantCode == 8) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-y c:+ 15) 
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 15) 
+    (up-modify-goal gl-outerWallGatePoint1-y c:+ 14) 
+    (up-modify-goal gl-outerWallGatePoint2-y c:- 14) 
     (disable-self)
 )
 
 (defrule ; move the gate lines 
     (up-compare-goal gl-positionQuadrantCode == 6) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint2-x c:- 15) 
-    (up-modify-goal gl-outerWallGatePoint3-x c:+ 15) 
+    (up-modify-goal gl-outerWallGatePoint2-x c:- 14) 
+    (up-modify-goal gl-outerWallGatePoint3-x c:+ 14) 
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 2) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 15) 
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 15)  
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 14) 
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 14)  
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 4) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 15) 
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 15) 
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 14) 
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 14) 
     (disable-self)
 )
 
@@ -1070,7 +1070,7 @@
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 8) 
-    (up-compare-goal gl-palisadeGateCounter < 55)
+    (up-compare-goal gl-palisadeGateCounter < 75)
     (building-type-count palisade-wall > 0)         
 =>
     ;(up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)    
@@ -1087,7 +1087,7 @@
 (defrule 
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 6)
-    (up-compare-goal gl-palisadeGateCounter < 55)
+    (up-compare-goal gl-palisadeGateCounter < 75)
     (building-type-count palisade-wall > 0)          
 =>
     (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 789)
@@ -1100,7 +1100,7 @@
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 2)
     (building-type-count-total palisade-wall > 0)    
-    (up-compare-goal gl-palisadeGateCounter < 55)  
+    (up-compare-goal gl-palisadeGateCounter < 75)  
 =>
     (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 793)
     ;(chat-local-to-self "BUILDING THE SOUTH WEST PALISADE GATES!")
@@ -1111,7 +1111,7 @@
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 4)   
-    (up-compare-goal gl-palisadeGateCounter < 55)
+    (up-compare-goal gl-palisadeGateCounter < 75)
     (building-type-count palisade-wall > 0)       
 =>
     (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 789)
