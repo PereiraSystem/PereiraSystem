@@ -838,10 +838,10 @@
     (set-goal gl-innerWallPoint3-x 0)(disable-self)     
 )
 (defrule 
-    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-wallPoint3-y g:< gl-mapSizeTenth)
 =>    
-    (set-goal gl-wallPoint3-y gl-posMapSize-y)
-    (set-goal gl-innerWallPoint3-y gl-posMapSize-y)(disable-self)      
+    (set-goal gl-wallPoint3-y 0)
+    (set-goal gl-innerWallPoint3-y 0)(disable-self)      
 )
 
 ;point 4
@@ -883,11 +883,10 @@
     (chat-local-to-self "BUILDING THE SOUTH EAST PALISADE GATES!")
 )
 
-(defrule(false)
-    (timer-triggered 49)
+(defrule ; no gates on south west if point 3 too close to south corner
+
     (wood-amount g:> gl-minimumWoodForLC)     
-    (building-type-count-total 793 < 1)
-    ;(building-type-count-total palisade-wall < 6)
+    (building-type-count-total 793 < 2)
 =>
     (disable-timer 49)
     (enable-timer 49 15)
