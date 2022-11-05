@@ -986,7 +986,57 @@
 
     (up-modify-goal gl-innerWallPoint4-x c:+ 2) ; 4 west
     ;(up-modify-goal gl-innerWallPoint4-y c:+ 2)  
-    (do-nothing)
+    (disable-self)
+)
+
+(defrule ; 
+    (up-compare-goal gl-positionQuadrantCode == 2)
+=>
+    (up-modify-goal gl-innerWallPoint1-x c:- 2) ; 1 north
+    ;(up-modify-goal gl-innerWallPoint1-y c:+ 2) 
+
+    (up-modify-goal gl-innerWallPoint2-x c:- 2) ; 2 east
+    ;(up-modify-goal gl-innerWallPoint2-y c:+ 2) 
+
+    ;(up-modify-goal gl-innerWallPoint3-x c:+ 2) ; 3 south
+    ;(up-modify-goal gl-innerWallPoint3-y c:+ 2) 
+
+    ;(up-modify-goal gl-innerWallPoint4-x c:+ 2) ; 4 west
+    ;(up-modify-goal gl-innerWallPoint4-y c:+ 2)  
+    (disable-self)
+)
+
+(defrule ; 
+    (up-compare-goal gl-positionQuadrantCode == 4)
+=>
+    ;(up-modify-goal gl-innerWallPoint1-x c:- 2) ; 1 north
+    ;(up-modify-goal gl-innerWallPoint1-y c:+ 2) 
+
+    ;(up-modify-goal gl-innerWallPoint2-x c:- 2) ; 2 east
+    (up-modify-goal gl-innerWallPoint2-y c:- 2) 
+
+    ;(up-modify-goal gl-innerWallPoint3-x c:+ 2) ; 3 south
+    (up-modify-goal gl-innerWallPoint3-y c:- 2) 
+
+    ;(up-modify-goal gl-innerWallPoint4-x c:+ 2) ; 4 west
+    ;(up-modify-goal gl-innerWallPoint4-y c:+ 2)  
+    (disable-self)
+)
+
+(defrule ; 
+    (up-compare-goal gl-positionQuadrantCode == 6)
+=>
+    ;(up-modify-goal gl-innerWallPoint1-x c:- 2) ; 1 north
+    (up-modify-goal gl-innerWallPoint1-y c:+ 2) 
+
+    ;(up-modify-goal gl-innerWallPoint2-x c:- 2) ; 2 east
+    ;(up-modify-goal gl-innerWallPoint2-y c:- 2) 
+
+    ;(up-modify-goal gl-innerWallPoint3-x c:+ 2) ; 3 south
+    ;(up-modify-goal gl-innerWallPoint3-y c:- 2) 
+
+    ;(up-modify-goal gl-innerWallPoint4-x c:+ 2) ; 4 west
+    (up-modify-goal gl-innerWallPoint4-y c:+ 2)  
     (disable-self)
 )
 
