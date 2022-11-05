@@ -479,25 +479,26 @@
     (set-goal gl-wallPoint4-y 0)
     (disable-self)  
 )
-(defrule
-    (true)
-=>
-    (set-goal gl-innerWallPerimeter 11)     ;trying to put towers next to inner wall
-    (set-goal gl-outerWallPerimeter 13)
 
-    (up-chat-data-to-self "Inner wall perimeter: %d" g: gl-innerWallPerimeter)    
-    (up-chat-data-to-self "Outer wall perimeter: %d" g: gl-outerWallPerimeter)
-    (disable-self)    
-)
 
 #load-if-defined TINY-MAP
 (defrule
     (true)
 =>
     (set-goal gl-innerWallPerimeter 11)
-    (set-goal gl-outerWallPerimeter 13)
+    (set-goal gl-outerWallPerimeter 12)
 )
 #end-if
+
+(defrule
+    (true)
+=>
+
+
+    (up-chat-data-to-self "Inner wall perimeter: %d" g: gl-innerWallPerimeter)    
+    (up-chat-data-to-self "Outer wall perimeter: %d" g: gl-outerWallPerimeter)
+    (disable-self)    
+)
 
 
 (defrule
