@@ -493,59 +493,121 @@
     (up-players-in-game any < 8)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 2)(disable-self)  
+    (up-modify-goal gl-outerWallPerimeter c:+ 2)
+    (up-modify-sn sn-maximum-town-size c:+ 2)    
+    (up-modify-sn sn-minimum-town-size c:+ 2)    
+    (disable-self)  
 )
 
 (defrule
     (up-players-in-game any < 7)
 =>
     ;(up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 1)(disable-self)  
+    (up-modify-goal gl-outerWallPerimeter c:+ 1)
+    (up-modify-sn sn-maximum-town-size c:+ 1)    
+    (up-modify-sn sn-minimum-town-size c:+ 1)       
+    (disable-self)  
 )
 
 (defrule
     (up-players-in-game any < 6)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 1)(disable-self)  
+    (up-modify-goal gl-outerWallPerimeter c:+ 1)
+    (up-modify-sn sn-maximum-town-size c:+ 1)    
+    (up-modify-sn sn-minimum-town-size c:+ 1)       
+    (disable-self)  
+)
+
+(defrule
+    (up-players-in-game any < 5)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 1)
+    (up-modify-goal gl-outerWallPerimeter c:+ 1)
+    (up-modify-sn sn-maximum-town-size c:+ 1)    
+    (up-modify-sn sn-minimum-town-size c:+ 1)       
+    (disable-self)  
+)
+
+(defrule
+    (up-players-in-game any < 4)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 1)
+    (up-modify-goal gl-outerWallPerimeter c:+ 1)
+    (up-modify-sn sn-maximum-town-size c:+ 1)    
+    (up-modify-sn sn-minimum-town-size c:+ 1)       
+    (disable-self)  
+)
+
+(defrule
+    (up-players-in-game any < 3)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 1)
+    (up-modify-goal gl-outerWallPerimeter c:+ 1)
+    (up-modify-sn sn-maximum-town-size c:+ 1)    
+    (up-modify-sn sn-minimum-town-size c:+ 1)       
+    (disable-self)  
+)
+
+(defrule
+    (up-players-in-game any < 2)
+=>
+    (up-modify-goal gl-innerWallPerimeter c:+ 24)
+    (up-modify-goal gl-outerWallPerimeter c:+ 30)
+    (up-modify-sn sn-maximum-town-size c:+ 30)    
+    (up-modify-sn sn-minimum-town-size c:+ 30)       
+    (disable-self)  
 )
 
 (defrule
     (map-size small)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 2)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)
+    (up-modify-sn sn-maximum-town-size c:+ 4)    
+    (up-modify-sn sn-minimum-town-size c:+ 4)       
+    (disable-self)  
 )
 
 (defrule
     (map-size medium)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 2)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)
+    (up-modify-sn sn-maximum-town-size c:+ 4)    
+    (up-modify-sn sn-minimum-town-size c:+ 4) 
+    (disable-self)  
 )
 
 (defrule
     (map-size normal)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 2)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)
+    (up-modify-sn sn-maximum-town-size c:+ 4)    
+    (up-modify-sn sn-minimum-town-size c:+ 4) 
+    (disable-self)  
 )
 
 (defrule
     (map-size large)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 2)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)
+    (up-modify-sn sn-maximum-town-size c:+ 4)    
+    (up-modify-sn sn-minimum-town-size c:+ 4) 
+    (disable-self)  
 )
 
 (defrule
     (map-size giant)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 2)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)
+    (up-modify-sn sn-maximum-town-size c:+ 4)    
+    (up-modify-sn sn-minimum-town-size c:+ 4) 
+    (disable-self)  
 )
-
-
 
 (defrule
     (true)
@@ -577,7 +639,10 @@
     (up-compare-goal gl-posMapSize-x > 256)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 2)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)(disable-self)  
+    (up-modify-goal gl-outerWallPerimeter c:+ 4)
+    (up-modify-sn sn-maximum-town-size c:+ 4)    
+    (up-modify-sn sn-minimum-town-size c:+ 4)     
+    (disable-self)  
     (chat-local-to-self "LUDICROUS MAP SIZE!!!")
 )
 
