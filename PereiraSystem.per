@@ -894,7 +894,8 @@
     (set-goal gl-innerWallPoint4-y 0)(disable-self)     
 )
 
-; DISABLE THE WALLS WE DON-T NEED BY CHECKING THE FIRST OF THE 2 POINTS
+; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
+; BY CHECKING THE FIRST OF THE 2 POINTS
 (defrule 
     (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
 =>
