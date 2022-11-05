@@ -1020,7 +1020,7 @@
     (up-compare-goal gl-positionQuadrantCode == 6)
 =>
     ;(up-modify-goal gl-innerWallPoint1-x c:- 2) ; 1 north
-    (up-modify-goal gl-innerWallPoint1-y c:+ 2) 
+    (up-modify-goal gl-innerWallPoint1-y c:+ 3) 
 
     ;(up-modify-goal gl-innerWallPoint2-x c:- 2) ; 2 east
     ;(up-modify-goal gl-innerWallPoint2-y c:- 2) 
@@ -1029,7 +1029,7 @@
     ;(up-modify-goal gl-innerWallPoint3-y c:- 2) 
 
     ;(up-modify-goal gl-innerWallPoint4-x c:+ 2) ; 4 west
-    (up-modify-goal gl-innerWallPoint4-y c:+ 2)  
+    (up-modify-goal gl-innerWallPoint4-y c:+ 3)  
     (disable-self)
 )
 
@@ -1037,7 +1037,7 @@
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 8) 
-    ;(up-compare-goal gl-palisadeGateCounter < 5)         
+    (up-compare-goal gl-palisadeGateCounter < 40)         
 =>
     ;(up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)    
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 793)
@@ -1053,7 +1053,7 @@
 (defrule 
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 6)
-    ;(up-compare-goal gl-palisadeGateCounter < 5)     
+    (up-compare-goal gl-palisadeGateCounter < 40)     
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
     (chat-local-to-self "BUILDING THE SOUTH EAST PALISADE GATES!")
@@ -1065,7 +1065,7 @@
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 2)
     (building-type-count-total palisade-wall > 0)    
-    (up-compare-goal gl-palisadeGateCounter < 50)  
+    (up-compare-goal gl-palisadeGateCounter < 40)  
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: 793)
     (chat-local-to-self "BUILDING THE SOUTH WEST PALISADE GATES!")
@@ -1076,7 +1076,7 @@
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 4)   
-    ;(up-compare-goal gl-palisadeGateCounter < 5)  
+    (up-compare-goal gl-palisadeGateCounter < 40)  
 =>
     (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: 789)
     (chat-local-to-self "BUILDING THE NORTH WEST PALISADE GATES!")
