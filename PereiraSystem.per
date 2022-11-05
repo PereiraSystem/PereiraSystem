@@ -858,8 +858,8 @@
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 2) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint3-y c:+ 16) 
-    (up-modify-goal gl-outerWallGatePoint4-y c:- 16)  
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 16) 
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 16)  
     (disable-self)
 )
 (defrule
@@ -873,13 +873,13 @@
 (defrule
     (true) 
 =>    
-    (up-modify-goal gl-innerWallGatePoint1-x g:+ gl-innerWallPerimeter) ; 1 north
+    (up-modify-goal gl-innerWallGatePoint1-x g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallGatePoint1-y g:- gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallGatePoint2-x g:+ gl-innerWallPerimeter) ; 2 east
+    (up-modify-goal gl-innerWallGatePoint2-x g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallGatePoint2-y g:+ gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallGatePoint3-x g:- gl-innerWallPerimeter) ; 3 south
+    (up-modify-goal gl-innerWallGatePoint3-x g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallGatePoint3-y g:+ gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallGatePoint4-x g:- gl-innerWallPerimeter) ; 4 west
+    (up-modify-goal gl-innerWallGatePoint4-x g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallGatePoint4-y g:- gl-innerWallPerimeter)  
     (disable-self)           
 )
@@ -942,13 +942,13 @@
 (defrule 
     (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
 =>
-    (set-goal gl-dontBuildNorthEastWall 1) (disable-self)   
+    (set-goal gl-dontBuildNorthEastWall 1)(disable-self)   
 )
 
 (defrule ; no south east if point 2 too close to east corner
     (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
 =>
-    (set-goal gl-dontBuildSouthEastWall 1) (disable-self) 
+    (set-goal gl-dontBuildSouthEastWall 1)(disable-self) 
 )
 
 (defrule ; no south west if point 3 too close to south corner
@@ -1052,7 +1052,6 @@
     ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
     (up-modify-goal gl-palisadeGateCounter c:+ 1)  
 )
-
 
 ; FINISHED GATES, NOW THE PALISADE
 (defrule ;along Y axis, right side
