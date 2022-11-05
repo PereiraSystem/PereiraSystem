@@ -989,13 +989,13 @@
     (disable-self)
 )
 
-(defrule  (false)
+(defrule  
     (up-compare-goal gl-positionQuadrantCode == 2)
 =>
-    (up-modify-goal gl-innerWallPoint1-x c: -2) ; 1 north
+    (up-modify-goal gl-innerWallPoint1-x c:- 2) ; 1 north
     ;(up-modify-goal gl-innerWallPoint1-y c:+ 2) 
 
-    (up-modify-goal gl-innerWallPoint2-x c: -2) ; 2 east
+    (up-modify-goal gl-innerWallPoint2-x c:- 2) ; 2 east
     ;(up-modify-goal gl-innerWallPoint2-y c:+ 2) 
 
     ;(up-modify-goal gl-innerWallPoint3-x c:+ 2) ; 3 south
@@ -1013,7 +1013,7 @@
     ;(up-modify-goal gl-innerWallPoint1-y c:+ 2) 
 
     ;(up-modify-goal gl-innerWallPoint2-x c:- 2) ; 2 east
-    (up-modify-goal gl-innerWallPoint2-y c: -2) 
+    (up-modify-goal gl-innerWallPoint2-y c:- 2) 
 
     ;(up-modify-goal gl-innerWallPoint3-x c:+ 2) ; 3 south
     (up-modify-goal gl-innerWallPoint3-y c:- 2) 
