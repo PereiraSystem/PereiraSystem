@@ -691,45 +691,35 @@
 )
 
 
-
 ; FINISHED GATES, NOW THE PALISADE
 (defrule ;along Y axis, right side
-    (true)
-    ;    (up-compare-goal gl-buildingInnerWall == 0)
-    ;(unit-type-count-total villager > 5)
-    ;(building-type-count-total barracks > 0)     
-    ;(wood-amount > 200) 
+    (unit-type-count-total villager > 5)
+    (building-type-count-total barracks > 0)     
+    (wood-amount > 200) 
 =>    
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: palisade-wall)
 )
 
 (defrule
-    (true)
-    ;(up-compare-goal gl-buildingInnerWall == 0)
-    ;(unit-type-count-total villager > 6)
-    ;(building-type-count-total barracks > 0)     
-    ;(building-type-count palisade-wall > 4)
-    ;(wood-amount > 200)   
+    (unit-type-count-total villager > 5)
+    (building-type-count-total barracks > 0)     
+    (wood-amount > 200)   
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: palisade-wall)
 )
 
 (defrule
-    (true)
-    ;(up-compare-goal gl-buildingInnerWall == 0)
-    ;(unit-type-count-total villager > 7)
-    ;(building-type-count-total barracks > 0)      
-    ;(wood-amount > 200)    
+    (unit-type-count-total villager > 5)
+    (building-type-count-total barracks > 0)      
+    (wood-amount > 200)    
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: palisade-wall)
 )
 
-(defrule    (true)
-    ;(up-compare-goal gl-buildingInnerWall == 0)
-    ;(unit-type-count-total villager > 7)
-    ;(building-type-count-total barracks > 0)      
-    ;(wood-amount > 200)    
-    ;(building-type-count palisade-wall > 8)  
+(defrule
+    (unit-type-count-total villager > 5)
+    (building-type-count-total barracks > 0)      
+    (wood-amount > 200)     
 =>
     (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: palisade-wall)
 )
