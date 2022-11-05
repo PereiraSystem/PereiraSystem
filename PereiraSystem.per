@@ -404,10 +404,10 @@
 )
 
 ; UP WALL CONSTANTS - YEAH I KIND OFLIKE IT THAT WAY
-(defconst gl-dontBuildNorthEastWall 461)
-(defconst gl-dontBuildSouthEastWall 462)
-(defconst gl-dontBuildNorthEastWall 463)
-(defconst gl-dontBuildNorthEastWall 464)
+(defconst gl-dontBuildNorthEastWall 455)
+(defconst gl-dontBuildSouthEastWall 456)
+(defconst gl-dontBuildNorthWestWall 457)
+(defconst gl-dontBuildSouthWestWall 458)
 
 (defconst gl-innerWallGatePoint1-x 461)
 (defconst gl-innerWallGatePoint1-y 462)
@@ -502,6 +502,10 @@
 (defrule
     (true)
 =>
+    (set-goal gl-dontBuildNorthEastWall 0)
+    (set-goal gl-dontBuildSouthEastWall 0)
+    (set-goal gl-dontBuildNorthWestWall 0)
+    (set-goal gl-dontBuildSouthWestWall 0)
     (set-goal gl-innerWallPerimeter 10)
     (set-goal gl-outerWallPerimeter 11)(disable-self)  
 )
@@ -890,6 +894,32 @@
     (set-goal gl-innerWallPoint4-y 0)(disable-self)     
 )
 
+; DISABLE THE WALLS WE DON-T NEED BY CHECKING THE FIRST OF THE 2 POINTS
+(defrule 
+    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+=>
+    (set-goal gl-dontBuildNorthEastWall 1)   
+)
+
+(defrule ; no south east if point 2 too close to east corner
+    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+=>
+    (set-goal gl-dontBuildSouthEastWall 1) 
+)
+
+(defrule ; no  south west if point 3 too close to south corner
+    (up-compare-goal gl-wallPoint3-x g:< gl-mapSizeTenth)
+=>
+    (set-goal gl-dontBuildSouthWestWall 1)
+)
+
+(defrule ; no  north west if point 4 too close to west corner
+    (up-compare-goal gl-wallPoint4-y g:< gl-mapSizeTenth)
+=>
+    (set-goal gl-dontBuildNorthWestWall 1)
+)
+
+
 ; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
 ; north east
 (defrule (false)
@@ -902,8 +932,7 @@
 ; GATES Y AXIS
 
 (defrule ; no gates on north east if point 1 too close to north corner
-    (not(up-compare-goal gl-wallPoint1-y g:< gl-mapSizeTenth))
-    (not(up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths))
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (building-type-count-total 793 < 2)
     (up-compare-goal gl-palisadeGateCounter < 3)         
 =>
@@ -912,10 +941,8 @@
     (up-modify-goal gl-palisadeGateCounter c:+ 1)    
 )
 
-
 (defrule ; no gates on south east if point 2 too close to east corner
-    (not(up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths))
-    (not(up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths))
+    (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-palisadeGateCounter < 3)     
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
@@ -924,8 +951,7 @@
 )
 
 (defrule ; no gates on south west if point 3 too close to south corner
-    (not(up-compare-goal gl-wallPoint3-x g:< gl-mapSizeTenth))
-    (not(up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths))
+    (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-palisadeGateCounter < 3)  
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: 793)
@@ -934,8 +960,7 @@
 )
 
 (defrule ; no gates on north west if point 4 too close to west corner
-    (not(up-compare-goal gl-wallPoint4-x g:< gl-mapSizeTenth))  
-    (not(up-compare-goal gl-wallPoint4-y g:< gl-mapSizeTenth))
+    (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-palisadeGateCounter < 3)  
 =>
     (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: 789)
