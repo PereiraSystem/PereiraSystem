@@ -890,8 +890,8 @@
 (defrule (false)
     (up-compare-goal gl-positionQuadrantCode == 2)
 =>    
-    ;(up-modify-goal gl-innerWallGatePoint1-x g:+ ) 
- 
+    (up-modify-goal gl-innerWallGatePoint1-x c:+ 3) 
+    
     (disable-self)           
 )
 ; GATES Y AXIS
