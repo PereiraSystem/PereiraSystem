@@ -451,7 +451,7 @@
 (defconst gl-outerWallPerimeter 486)
 (defconst gl-innerWallPerimeter 487)
 (defconst gl-palisadeGateCounter 488)
-
+(defconst gl-maxDimensionOfMap 489)
 (defconst gl-innerWallPoint1-x 491)
 (defconst gl-innerWallPoint1-y 492)
 (defconst gl-innerWallPoint2-x 493)
@@ -496,6 +496,8 @@
     (set-goal gl-outerWallPerimeter 0)
     (set-goal gl-innerWallPerimeter 0)    
     (set-goal gl-palisadeGateCounter 0)
+    (set-goal gl-maxDimensionOfMap 0)
+
     (set-goal gl-wallPoint1-x 0)
     (set-goal gl-wallPoint1-y 0)
     (set-goal gl-wallPoint2-x 0)
@@ -506,8 +508,6 @@
     (set-goal gl-wallPoint4-y 0)
     (disable-self)  
 )
-
-
 
 (defrule
     (true)
@@ -648,17 +648,17 @@
     (disable-self)    
 )
 
-
 (defrule
     (true)
 =>
-    (up-get-point position-self gl-myPosition-x)
     (up-get-point position-self gl-myPosition-x)
     (up-get-point position-map-size gl-mapSizeThird)
     (up-get-point position-map-size gl-mapSizeTwoThirds)
     (up-get-point position-map-size gl-mapSizeTenth)     
     (up-get-point position-map-size gl-mapSizeNineTenths)    
     (up-get-point position-map-size gl-posMapSize-x)        
+
+    (set-goal gl-maxDimensionOfMap gl-posMapSize-x)
 
     (up-modify-goal gl-mapSizeThird c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:/ 3)
@@ -808,25 +808,19 @@
 =>    
     (up-modify-goal gl-wallPoint1-x g:+ gl-outerWallPerimeter) ; 1 north
     (up-modify-goal gl-wallPoint1-y g:- gl-outerWallPerimeter) 
-
     (up-modify-goal gl-wallPoint2-x g:+ gl-outerWallPerimeter) ; 2 east
     (up-modify-goal gl-wallPoint2-y g:+ gl-outerWallPerimeter) 
-
     (up-modify-goal gl-wallPoint3-x g:- gl-outerWallPerimeter) ; 3 south
     (up-modify-goal gl-wallPoint3-y g:+ gl-outerWallPerimeter) 
-
     (up-modify-goal gl-wallPoint4-x g:- gl-outerWallPerimeter) ; 4 west
     (up-modify-goal gl-wallPoint4-y g:- gl-outerWallPerimeter)  
 
     (up-modify-goal gl-innerWallPoint1-x g:+ gl-innerWallPerimeter) ; 1 north
     (up-modify-goal gl-innerWallPoint1-y g:- gl-innerWallPerimeter) 
-
     (up-modify-goal gl-innerWallPoint2-x g:+ gl-innerWallPerimeter) ; 2 east
     (up-modify-goal gl-innerWallPoint2-y g:+ gl-innerWallPerimeter) 
-
     (up-modify-goal gl-innerWallPoint3-x g:- gl-innerWallPerimeter) ; 3 south
     (up-modify-goal gl-innerWallPoint3-y g:+ gl-innerWallPerimeter) 
-
     (up-modify-goal gl-innerWallPoint4-x g:- gl-innerWallPerimeter) ; 4 west
     (up-modify-goal gl-innerWallPoint4-y g:- gl-innerWallPerimeter)  
     (disable-self)           
@@ -835,107 +829,56 @@
 (defrule
     (true) ;copy the outer wall shape to outer gate lines shap
 =>    
-
     (up-modify-goal gl-outerWallGatePoint1-x g:+ gl-outerWallPerimeter) ; 1 north
     (up-modify-goal gl-outerWallGatePoint1-y g:- gl-outerWallPerimeter) 
-
     (up-modify-goal gl-outerWallGatePoint2-x g:+ gl-outerWallPerimeter) ; 2 east
     (up-modify-goal gl-outerWallGatePoint2-y g:+ gl-outerWallPerimeter) 
-
     (up-modify-goal gl-outerWallGatePoint3-x g:- gl-outerWallPerimeter) ; 3 south
     (up-modify-goal gl-outerWallGatePoint3-y g:+ gl-outerWallPerimeter) 
-
     (up-modify-goal gl-outerWallGatePoint4-x g:- gl-outerWallPerimeter) ; 4 west
     (up-modify-goal gl-outerWallGatePoint4-y g:- gl-outerWallPerimeter)  
     (disable-self)           
 )
 
 (defrule ; move the gate lines 
-(true)
     (up-compare-goal gl-positionQuadrantCode == 8) 
 =>    
-
-    ;(up-modify-goal gl-outerWallGatePoint1-x c:- 1) 
     (up-modify-goal gl-outerWallGatePoint1-y c:+ 16) 
-
-    ;(up-modify-goal gl-outerWallGatePoint2-x c:- 1) 
     (up-modify-goal gl-outerWallGatePoint2-y c:- 16) 
-
-    ;(up-modify-goal gl-outerWallGatePoint3-x c:- 5) 
-    ;(up-modify-goal gl-outerWallGatePoint3-y c:+ 5) 
-
-    ;(up-modify-goal gl-outerWallGatePoint4-x c:- 5) 
-    ;(up-modify-goal gl-outerWallGatePoint4-y c:- 5)  
     (disable-self)
 )
 
 (defrule ; move the gate lines 
-(true)
     (up-compare-goal gl-positionQuadrantCode == 6) 
 =>    
-
-    ;(up-modify-goal gl-outerWallGatePoint1-x c:- 1) 
-    ;(up-modify-goal gl-outerWallGatePoint1-y c:+ 15) 
-
     (up-modify-goal gl-outerWallGatePoint2-x c:- 16) 
-    ;(up-modify-goal gl-outerWallGatePoint2-y c:- 15) 
-
-    (up-modify-goal gl-outerWallGatePoint3-x c:- 16) 
-    ;(up-modify-goal gl-outerWallGatePoint3-y c:+ 5) 
-
-    ;(up-modify-goal gl-outerWallGatePoint4-x c:- 5) 
-    ;(up-modify-goal gl-outerWallGatePoint4-y c:- 5)  
+    (up-modify-goal gl-outerWallGatePoint3-x c:+ 16) 
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 2) 
 =>    
-
-    ;(up-modify-goal gl-outerWallGatePoint1-x c:- 1) 
-    ;(up-modify-goal gl-outerWallGatePoint1-y c:+ 15) 
-
-    ;(up-modify-goal gl-outerWallGatePoint2-x c:- 16) 
-    ;(up-modify-goal gl-outerWallGatePoint2-y c:- 15) 
-
-    ;(up-modify-goal gl-outerWallGatePoint3-x c:- 16) 
     (up-modify-goal gl-outerWallGatePoint3-y c:+ 16) 
-
-    ;(up-modify-goal gl-outerWallGatePoint4-x c:- 5) 
     (up-modify-goal gl-outerWallGatePoint4-y c:- 16)  
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 4) 
 =>    
-
     (up-modify-goal gl-outerWallGatePoint1-x c:- 16) 
-    ;(up-modify-goal gl-outerWallGatePoint1-y c:+ 15) 
-
-    ;(up-modify-goal gl-outerWallGatePoint2-x c:- 16) 
-    ;(up-modify-goal gl-outerWallGatePoint2-y c:- 15) 
-
-    ;(up-modify-goal gl-outerWallGatePoint3-x c:- 16) 
-    ;(up-modify-goal gl-outerWallGatePoint3-y c:+ 5) 
-
     (up-modify-goal gl-outerWallGatePoint4-x c:+ 16) 
-    ;(up-modify-goal gl-outerWallGatePoint4-y c:- 5)  
     (disable-self)
 )
-
 
 (defrule
     (true) 
 =>    
-
     (up-modify-goal gl-innerWallGatePoint1-x g:+ gl-innerWallPerimeter) ; 1 north
     (up-modify-goal gl-innerWallGatePoint1-y g:- gl-innerWallPerimeter) 
-
     (up-modify-goal gl-innerWallGatePoint2-x g:+ gl-innerWallPerimeter) ; 2 east
     (up-modify-goal gl-innerWallGatePoint2-y g:+ gl-innerWallPerimeter) 
-
     (up-modify-goal gl-innerWallGatePoint3-x g:- gl-innerWallPerimeter) ; 3 south
     (up-modify-goal gl-innerWallGatePoint3-y g:+ gl-innerWallPerimeter) 
-
     (up-modify-goal gl-innerWallGatePoint4-x g:- gl-innerWallPerimeter) ; 4 west
     (up-modify-goal gl-innerWallGatePoint4-y g:- gl-innerWallPerimeter)  
     (disable-self)           
@@ -994,7 +937,6 @@
     (set-goal gl-innerWallPoint3-y gl-posMapSize-y)(disable-self)      
 )
 
-
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
 (defrule 
@@ -1009,19 +951,17 @@
     (set-goal gl-dontBuildSouthEastWall 1) (disable-self) 
 )
 
-(defrule ; no  south west if point 3 too close to south corner
+(defrule ; no south west if point 3 too close to south corner
     (up-compare-goal gl-wallPoint3-x g:< gl-mapSizeTenth)
 =>
     (set-goal gl-dontBuildSouthWestWall 1)(disable-self) 
 )
 
-(defrule ; no  north west if point 4 too close to west corner
+(defrule ; no north west if point 4 too close to west corner
     (up-compare-goal gl-wallPoint4-y g:< gl-mapSizeTenth)
 =>
     (set-goal gl-dontBuildNorthWestWall 1)(disable-self) 
 )
-
-
 
 ; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
 ; dont build the section of wall that has now moved
@@ -1046,19 +986,18 @@
 (defrule 
     (up-compare-goal gl-positionQuadrantCode == 4)
 =>
-    (up-modify-goal gl-innerWallPoint2-y c:- 2) 
-    (up-modify-goal gl-innerWallPoint3-y c:- 2) 
+    (up-modify-goal gl-innerWallPoint2-y c:- 3) 
+    (up-modify-goal gl-innerWallPoint3-y c:- 3) 
     (disable-self)
 )
 
 (defrule 
     (up-compare-goal gl-positionQuadrantCode == 2)
 =>
-    (up-modify-goal gl-innerWallPoint1-x c:- 2) 
-    (up-modify-goal gl-innerWallPoint2-x c:- 2) 
+    (up-modify-goal gl-innerWallPoint1-x c:- 3) 
+    (up-modify-goal gl-innerWallPoint2-x c:- 3) 
     (disable-self)
 )
-
 
 ; GATES Y AXIS
 (defrule 
@@ -1070,9 +1009,9 @@
     ;(up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)    
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 793)
     ;(up-chat-data-to-all "palisade point 1 y value: %d" g: gl-wallPoint1-y)
-    (up-chat-data-to-all "gate point 1 y value: %d" g: gl-outerWallGatePoint1-y)
+    ;(up-chat-data-to-all "gate point 1 y value: %d" g: gl-outerWallGatePoint1-y)
     ;(up-chat-data-to-all "palisade point 2 y value: %d" g: gl-wallPoint2-y)
-    (up-chat-data-to-all "gate point 2 y value: %d" g: gl-outerWallGatePoint2-y)
+    ;(up-chat-data-to-all "gate point 2 y value: %d" g: gl-outerWallGatePoint2-y)
     (chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
     (up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
     (up-modify-goal gl-palisadeGateCounter c:+ 1)
