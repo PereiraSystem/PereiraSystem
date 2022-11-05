@@ -850,15 +850,15 @@
     (disable-self)           
 )
 
-(defrule
-    (up-compare-goal gl-positionQuadrantCode == 8) ; make the gate lines shorter
+(defrule ; move the gate lines 
+    (up-compare-goal gl-positionQuadrantCode == 8) 
 =>    
 
     ;(up-modify-goal gl-outerWallGatePoint1-x g:+ 5) ; 1 north
-    (up-modify-goal gl-outerWallGatePoint1-y g:+ 5) 
+    (up-modify-goal gl-outerWallGatePoint1-y g:+ 10) 
 
     ;(up-modify-goal gl-outerWallGatePoint2-x g:+ 5) ; 2 east
-    (up-modify-goal gl-outerWallGatePoint2-y g:- 5) 
+    (up-modify-goal gl-outerWallGatePoint2-y g:- 10) 
 
     ;(up-modify-goal gl-outerWallGatePoint3-x g:- 5) ; 3 south
     ;(up-modify-goal gl-outerWallGatePoint3-y g:+ 5) 
