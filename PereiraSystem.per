@@ -885,7 +885,7 @@
     (disable-self)           
 )
 
-; make the walls reach the borders
+; make the walls reach the borders 
 ; low point coords set to 0
 (defrule
     (up-compare-goal gl-wallPoint1-y g:< gl-mapSizeTenth)
@@ -917,25 +917,25 @@
     (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint1-x gl-posMapSize-x)
-    (set-goal gl-innerWallPoint1-x gl-posMapSize-x)(disable-self)   
+    (set-goal gl-innerWallPoint1-x 120)(disable-self)   
 )
 (defrule 
     (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint2-x gl-posMapSize-x)
-    (set-goal gl-innerWallPoint2-x gl-posMapSize-x)(disable-self)
+    (set-goal gl-innerWallPoint2-x 120)(disable-self)
 )
 (defrule 
     (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint2-y gl-posMapSize-y)
-    (set-goal gl-innerWallPoint2-y gl-posMapSize-y)(disable-self)
+    (set-goal gl-innerWallPoint2-y 120)(disable-self)
 )
 (defrule 
     (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint3-y gl-posMapSize-y)
-    (set-goal gl-innerWallPoint3-y gl-posMapSize-y)(disable-self)      
+    (set-goal gl-innerWallPoint3-y 120)(disable-self)      
 )
 
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
