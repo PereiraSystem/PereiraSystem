@@ -924,23 +924,23 @@
 )
 
 ; high point coords set to ??? MAP SIZE OR MANUALLY
-(defrule (true)
+(defrule 
     (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint1-x 120)
     (set-goal gl-innerWallPoint1-x 120)(disable-self)   
 )
-(defrule (false)
+(defrule 
     (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x gl-posMapSize-x)
-    (set-goal gl-innerWallPoint2-x gl-maxDimensionOfMap)(disable-self)
+    (set-goal gl-wallPoint2-x 120)
+    (set-goal gl-innerWallPoint2-x 120)(disable-self)
 )
-(defrule (false)
+(defrule
     (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y gl-posMapSize-y)
-    (set-goal gl-innerWallPoint2-y gl-maxDimensionOfMap)(disable-self)
+    (set-goal gl-wallPoint2-y 120)
+    (set-goal gl-innerWallPoint2-y 120)(disable-self)
 )
 (defrule
     (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
@@ -995,7 +995,7 @@
     (disable-self)
 )
 
-(defrule (false)
+(defrule
     (up-compare-goal gl-positionQuadrantCode == 4)
 =>
     (up-modify-goal gl-innerWallPoint2-y c:- 3) 
@@ -1003,7 +1003,7 @@
     (disable-self)
 )
 
-(defrule (false)
+(defrule
     (up-compare-goal gl-positionQuadrantCode == 2)
 =>
     (up-modify-goal gl-innerWallPoint1-x c:- 3) 
