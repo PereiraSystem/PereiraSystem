@@ -629,14 +629,51 @@
     (up-modify-goal gl-wallPoint4-y g:- gl-outerWallPerimeter)  
     (disable-self)           
 )
-
-(defrule ;outer wall
+; make the wall reach the borders
+;point 1
+(defrule
+    (up-compare-goal gl-wallPoint1-x > 110)
+=>    
+    (set-goal gl-wallPoint1-x 120)
+)
+(defrule
     (up-compare-goal gl-wallPoint1-y < 10)
 =>    
     (set-goal gl-wallPoint1-y 0)
 )
 
-(defrule ;outer wall
+;point 2
+(defrule 
+    (up-compare-goal gl-wallPoint2-x > 110)
+=>    
+    (set-goal gl-wallPoint2-x 120)
+)
+
+(defrule 
+    (up-compare-goal gl-wallPoint2-y > 110)
+=>    
+    (set-goal gl-wallPoint2-y 120)
+)
+
+;point 3
+(defrule 
+    (up-compare-goal gl-wallPoint3-x < 10)
+=>    
+    (set-goal gl-wallPoint3-x 0)
+)
+(defrule 
+    (up-compare-goal gl-wallPoint3-y > 110)
+=>    
+    (set-goal gl-wallPoint3-y 120)
+)
+
+;point 4
+(defrule 
+    (up-compare-goal gl-wallPoint4-x < 10)
+=>    
+    (set-goal gl-wallPoint4-x 0)
+)
+(defrule 
     (up-compare-goal gl-wallPoint4-y < 10)
 =>    
     (set-goal gl-wallPoint4-y 0)
