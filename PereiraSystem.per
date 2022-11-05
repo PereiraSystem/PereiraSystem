@@ -972,6 +972,8 @@
 
 
 ; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
+
+
 (defrule ; 
     (up-compare-goal gl-positionQuadrantCode == 8)
 =>
@@ -997,7 +999,7 @@
     (disable-self)
 )
 
-(defrule  (false)
+(defrule  (true)
     (up-compare-goal gl-positionQuadrantCode == 4)
 =>
     ;(up-modify-goal gl-innerWallPoint1-x c:- 2) ; 1 north
