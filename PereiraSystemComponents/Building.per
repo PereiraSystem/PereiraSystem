@@ -378,18 +378,6 @@
 
 ; MARKET
 (defrule
-    (civ-selected saracen)
-    (building-type-count town-center > 0)
-    (wood-amount > 175)
-    (building-type-count-total market == 0) 
-    (building-type-count archery-range > 0)   
-    (can-build market)
-=>
-    (chat-local-to-self "Trying To Build Saracen Market 1") 
-    (build market)
-)
-
-(defrule
     (or
         (or(food-amount > 1400)(stone-amount > 700))
         (or(wood-amount > 600)(gold-amount > 700))
@@ -402,7 +390,7 @@
     ;(can-build market)
     (up-can-build 0 c: market)    
 =>
-        (up-set-placement-data my-player-number -1 c: +23)
+        (up-set-placement-data my-player-number -1 c: +25)
     (up-build place-control 0 c: market)
     ;(build market)
 )
@@ -419,7 +407,7 @@
     (can-build market)
 =>
     (chat-local-to-self "Trying To Build Market 1 - TRADE WITH ME FRIEND") 
-    (up-set-placement-data my-player-number -1 c: +16)
+    (up-set-placement-data my-player-number -1 c: +25)
     (up-build place-control 0 c: market)
     ;(build market)
 )
@@ -435,7 +423,7 @@
 =>
     (chat-local-to-self "Trying To Build Market 2")
     ;(build market)
-    (up-set-placement-data my-player-number -1 c: +32)
+    (up-set-placement-data my-player-number -1 c: +60)
     (up-build place-control 0 c: market)
 )
 
@@ -449,19 +437,8 @@
     (can-build market)
 =>
     (chat-local-to-self "Trying To Build Market 3")
-    (up-set-placement-data my-player-number -1 c: -38)
+    (up-set-placement-data my-player-number -1 c: -60)
     (up-build place-control 0 c: market)
-)
-
-(defrule
-    (players-building-type-count any-ally market > 0)
-    (building-type-count-total market == 3)
-    (current-age == imperial-age)
-    (building-type-count-total university > 0)(building-type-count-total castle > 0)
-    (building-type-count-total barracks > 1)(military-population > 65)
-    (can-build market)
-=>
-    (chat-local-to-self "Trying To Build Market 4")(build market) 
 )
 
 ; UNIVERSITY
