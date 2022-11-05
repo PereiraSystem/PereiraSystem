@@ -421,9 +421,10 @@
 (defconst gl-mapSizeThird 481)
 (defconst gl-mapSizeTwoThirds 482)
 (defconst gl-mapSizeTenth 483)
-(defconst gl-buildingInnerWall 484)
-(defconst gl-outerWallPerimeter 485)
-(defconst gl-innerWallPerimeter 486)
+(defconst gl-mapSizeNineTenths 484)
+(defconst gl-buildingInnerWall 485)
+(defconst gl-outerWallPerimeter 486)
+(defconst gl-innerWallPerimeter 487)
 
 (defconst gl-innerWallPoint1-x 491)
 (defconst gl-innerWallPoint1-y 492)
@@ -464,7 +465,8 @@
 
     (set-goal gl-mapSizeThird 0)
     (set-goal gl-mapSizeTwoThirds 0)
-    (set-goal gl-mapSizeTenth 0)    
+    (set-goal gl-mapSizeTenth 0)
+    (set-goal gl-mapSizeNineTenths 0)        
 
     (set-goal gl-buildingInnerWall 0)
     (set-goal gl-outerWallPerimeter 0)
@@ -627,16 +629,20 @@
     (up-get-point position-map-size gl-mapSizeThird)
     (up-get-point position-map-size gl-mapSizeTwoThirds)
     (up-get-point position-map-size gl-mapSizeTenth)     
+    (up-get-point position-map-size gl-mapSizeNineTenths)    
     (up-get-point position-map-size gl-posMapSize-x)        
 
     (up-modify-goal gl-mapSizeThird c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:* 2)
-    (up-modify-goal gl-mapSizeTenth c:/ 10)    
+    (up-modify-goal gl-mapSizeTenth c:/ 10)
+    (up-modify-goal gl-mapSizeNineTenths g:- gl-mapSizeTenth)
+
     (up-chat-data-to-self "Map Size: %d" g: gl-posMapSize-x)
     ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
     ;(up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
     (up-chat-data-to-self "Map Size 1/10 %d" g: gl-mapSizeTenth)    
+    (up-chat-data-to-self "Map Size 9/10 %d" g: gl-mapSizeTenth)       
     (disable-self)   
 )
 
@@ -777,7 +783,7 @@
 (defrule
     (up-compare-goal gl-wallPoint1-x > 110)
 =>    
-    (set-goal gl-wallPoint1-x 120)
+    (set-goal gl-wallPoint1-x gl-posMapSize)
 )
 (defrule
     (up-compare-goal gl-wallPoint1-y g:< gl-mapSizeTenth)
