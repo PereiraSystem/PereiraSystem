@@ -1055,7 +1055,8 @@
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 8) 
-    (up-compare-goal gl-palisadeGateCounter < 50)         
+    (up-compare-goal gl-palisadeGateCounter < 45)
+    (building-type-count palisade-gate > 0)         
 =>
     ;(up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)    
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 793)
