@@ -404,6 +404,11 @@
 )
 
 ; UP WALL CONSTANTS - YEAH I KIND OFLIKE IT THAT WAY
+(defconst gl-dontBuildNorthEastWall 461)
+(defconst gl-dontBuildSouthEastWall 462)
+(defconst gl-dontBuildNorthEastWall 463)
+(defconst gl-dontBuildNorthEastWall 464)
+
 (defconst gl-innerWallGatePoint1-x 461)
 (defconst gl-innerWallGatePoint1-y 462)
 (defconst gl-innerWallGatePoint2-x 463)
@@ -941,7 +946,8 @@
 
 ; FINISHED GATES, NOW THE PALISADE
 (defrule ;along Y axis, right side
-    (not(up-compare-goal gl-wallPoint1-x > 110))
+    (not(up-compare-goal gl-wallPoint1-y g:< gl-mapSizeTenth))
+    (not(up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths))
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
@@ -950,7 +956,8 @@
 )
 
 (defrule
-    (not(up-compare-goal gl-wallPoint2-y > 110))
+    (not(up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths))
+    (not(up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths))
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200)   
@@ -1000,6 +1007,7 @@
 ; INNER STONE WALL
 (defrule 
     (up-compare-goal gl-buildingInnerWall == 1)
+
 =>    
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
 )
