@@ -193,6 +193,7 @@
     (current-age == imperial-age)
     (wood-amount > 1600)
     (players-current-age any-ally < imperial-age)
+    (up-allied-resource-amount any-ally wood < 200)    
 =>
     (tribute-to-player this-any-ally wood 500)
 )
@@ -201,6 +202,7 @@
     (current-age == imperial-age)
     (food-amount > 2100)
     (players-current-age any-ally < imperial-age)
+        (up-allied-resource-amount any-ally food < 200)       
 =>
     (tribute-to-player this-any-ally food 500)
 )
@@ -209,6 +211,7 @@
     (current-age == imperial-age)
     (gold-amount > 2000)
     (players-current-age any-ally < imperial-age)    
+    (up-allied-resource-amount any-ally gold < 200)       
 =>
     (tribute-to-player this-any-ally gold 500)
 )
@@ -217,6 +220,7 @@
     (current-age == imperial-age)
     (building-type-count castle > 0)
     (players-building-type-count any-ally castle == 0)
+    (up-allied-resource-amount any-ally stone < 650)       
     (stone-amount > 800)
 =>
     (tribute-to-player this-any-ally stone 650)
