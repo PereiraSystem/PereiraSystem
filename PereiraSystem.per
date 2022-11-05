@@ -980,8 +980,8 @@
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 8)
 =>
-    (up-modify-goal gl-innerWallPoint3-x c:+ 3)
-    (up-modify-goal gl-innerWallPoint4-x c:+ 3)
+    (up-modify-goal gl-innerWallPoint3-x c:+ 6)
+    (up-modify-goal gl-innerWallPoint4-x c:+ 6)
     (set-goal gl-dontBuildSouthWestWall 1)    
     (disable-self)
 )
@@ -989,8 +989,8 @@
 (defrule 
     (up-compare-goal gl-positionQuadrantCode == 6)
 =>
-    (up-modify-goal gl-innerWallPoint1-y c:+ 3) 
-    (up-modify-goal gl-innerWallPoint4-y c:+ 3)
+    (up-modify-goal gl-innerWallPoint1-y c:+ 6) 
+    (up-modify-goal gl-innerWallPoint4-y c:+ 6)
     (set-goal gl-dontBuildNorthWestWall 1)     
     (disable-self)
 )
