@@ -933,8 +933,9 @@
 ; GATES Y AXIS
 
 (defrule ; no gates on north east if point 1 too close to north corner
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-palisadeGateCounter < 5)         
+    ;(up-compare-goal gl-dontBuildNorthEastWall == 0)
+    ;(up-compare-goal gl-palisadeGateCounter < 5)         
+    (true)
 =>
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)
     (chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
@@ -942,8 +943,9 @@
 )
 
 (defrule ; no gates on south east if point 2 too close to east corner
-    (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-palisadeGateCounter < 5)     
+    (true)
+    ;(up-compare-goal gl-dontBuildSouthEastWall == 0)
+    ;(up-compare-goal gl-palisadeGateCounter < 5)     
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: 789)
     (chat-local-to-self "BUILDING THE SOUTH EAST PALISADE GATES!")
