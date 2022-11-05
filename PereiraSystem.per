@@ -781,7 +781,7 @@
 ; make the wall reach the borders
 ;point 1
 (defrule
-    (up-compare-goal gl-wallPoint1-x > 110)
+    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
     (set-goal gl-wallPoint1-x gl-posMapSize-x)
 )
