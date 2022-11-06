@@ -747,13 +747,12 @@
     )
     (building-type-count-total stable == 0)
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
-    ;(can-build stable)    
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable 1")
-    (up-set-placement-data my-player-number town-center c: 2)
-    (up-build place-control 0 c: stable)     
-    ;(build stable)         
+    ;(up-set-placement-data my-player-number town-center c: 2)
+    (up-set-placement-data my-player-number town-center c: 1)    
+    (up-build place-control 0 c: stable)        
 )
 
 
