@@ -1158,7 +1158,7 @@
             )            
         )
     )
-    ;(up-compare-goal gl-palisadeGateCounter < 150)
+    (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
     (building-type-count 792 < 6)
     (can-build 792)          
 =>
@@ -1184,11 +1184,9 @@
     )
 
     (building-type-count-total 796 < 3) ;palisade gate descending foundations
-    (building-type-count-total 793 < 3) ;closed
-    (building-type-count-total 794 < 3) ;open           
-    ;(can-build 796)
+    ;(building-type-count-total 793 < 3) ;closed
+    ;(building-type-count-total 794 < 3) ;open           
     (up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
-    ;(up-compare-goal gl-palisadeGateCounter < 150)
 =>
     (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
     (up-chat-data-to-self "SOUTH WEST PALISADE GATE BUILDING ATTEMPT COUNT: %d" g: gl-palisadeGateCounter)
