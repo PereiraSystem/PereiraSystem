@@ -1177,9 +1177,8 @@
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (or
         (up-compare-goal gl-positionQuadrantCode == 6) ;north west center position
-        (and ;POS 3 WHEN ITS CLOSER TO 6 THAN 2
-            ;(up-compare-goal gl-myPosition-y g:>= gl-myPosition-x)
-            (true)
+        (and ;POS 3 WHEN ITS CLOSER TO 6 THAN 2 ( x is higher)
+            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)            
             (up-compare-goal gl-positionQuadrantCode == 3)            
         )
     )
