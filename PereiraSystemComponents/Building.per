@@ -383,11 +383,24 @@
 (defrule(true)
     (building-type-count town-center > 0)    
     (building-type-count-total market == 0)
-    ;(can-build market)
+    (or
+        (or
+            (or
+                (wood-amount > 450)
+                (food-amount > 900)
+            )
+            (or
+                (gold-amount > 500)
+                (stone-amount > 800)
+            )
+        )  
+        (players-building-type-count any-ally market > 0)
+    )
     (up-can-build 0 c: market)
 =>
     (chat-local-to-self "Trying To Build Market 1 - place control")
-    (up-set-placement-data my-player-number town-center c: 32)
+    (up-set-placement-data my-player-number town-center c:+ 32)
+    ;(up-set-placement-data my-player-number town-center c: 32)    
     (up-build place-control 0 c: market)   
     ;(build market)    
 )
