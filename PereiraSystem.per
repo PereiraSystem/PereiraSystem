@@ -1161,15 +1161,38 @@
     (chat-to-all "my x is lower than y")(disable-self)
 )
 
+(defrule ;put pos 5 later!
+    (true)
+    (or
+        (or
+            (up-compare-goal gl-positionQuadrantCode == 1)
+            (up-compare-goal gl-positionQuadrantCode == 3)
+        )
+        (or
+            (up-compare-goal gl-positionQuadrantCode == 7)
+            (up-compare-goal gl-positionQuadrantCode == 9)
+        )        
+    )
+    (up-compare-goal gl-myPosition-y g:== gl-myPosition-x)
+=>    
+    (chat-to-all "my x is EQUAL TO y")(disable-self)
+)
+
 ; BUILD THE OUTER PALISADE GATES - NOT CORNER POSITIONS ALWAYS GET THE SAME
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (or
         (up-compare-goal gl-positionQuadrantCode == 8) ;south west center 
-        (and 
-            (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-            (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
-        )
+        (or
+            (and 
+                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
+                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
+            )
+            (and 
+                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
+                (up-compare-goal gl-positionQuadrantCode == 9)            
+            )  
+        )         
     )
     ;(up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)         
@@ -1183,9 +1206,15 @@
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (or
         (up-compare-goal gl-positionQuadrantCode == 6) ;north west center 
-        (and 
-            (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-            (up-compare-goal gl-positionQuadrantCode == 3)            
+        (or
+            (and 
+                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
+                (up-compare-goal gl-positionQuadrantCode == 3)            
+            )
+            (and 
+                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
+                (up-compare-goal gl-positionQuadrantCode == 9)            
+            )            
         )
     )
     ;(up-compare-goal gl-palisadeGateCounter < 150)
