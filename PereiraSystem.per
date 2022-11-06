@@ -907,16 +907,16 @@
 (defrule ; move the inner gate lines 
     (up-compare-goal gl-positionQuadrantCode == 8) 
 =>    
-    (up-modify-goal gl-innerWallGatePoint1-y c:+ 5) 
-    (up-modify-goal gl-innerWallGatePoint2-y c:- 5) 
+    (up-modify-goal gl-innerWallGatePoint1-y c:+ 8) 
+    (up-modify-goal gl-innerWallGatePoint2-y c:- 8) 
     (disable-self)
 )
 
 (defrule 
     (up-compare-goal gl-positionQuadrantCode == 6) 
 =>    
-    (up-modify-goal gl-innerWallGatePoint2-x c:- 5) 
-    (up-modify-goal gl-innerWallGatePoint3-x c:+ 5) 
+    (up-modify-goal gl-innerWallGatePoint2-x c:- 8) 
+    (up-modify-goal gl-innerWallGatePoint3-x c:+ 8) 
     (disable-self)
 )
 (defrule
@@ -929,8 +929,8 @@
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 4) 
 =>    
-    (up-modify-goal gl-innerWallGatePoint1-x c:- 5) 
-    (up-modify-goal gl-innerWallGatePoint4-x c:+ 5) 
+    (up-modify-goal gl-innerWallGatePoint1-x c:- 8) 
+    (up-modify-goal gl-innerWallGatePoint4-x c:+ 8) 
     (disable-self)
 )
 
