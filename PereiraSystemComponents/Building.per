@@ -399,10 +399,9 @@
     (up-can-build 0 c: market)
 =>
     (chat-local-to-self "Trying To Build Market 1 - place control")
-    (up-set-placement-data my-player-number town-center c:+ 32)
-    ;(up-set-placement-data my-player-number town-center c: 32)    
+    ;(up-set-placement-data my-player-number market c:+ 32)
+    (up-set-placement-data my-player-number town-center c: 32)    
     (up-build place-control 0 c: market)   
-    ;(build market)    
 )
 
 (defrule(false)
@@ -420,14 +419,16 @@
     (or(building-type-count-total monastery > 0)
     (players-building-type-count any-ally monastery > 0))
     (building-type-count-total market > 0)
-    (or(unit-type-count villager > 24)(building-type-count-total siege-workshop > 0))
+    (or(unit-type-count villager > 24)
+    (building-type-count-total siege-workshop > 0))
     (research-completed ri-hand-cart)
     (research-completed ri-bow-saw)
     (building-type-count-total university == 0)    
     (can-build university)
 =>
     (chat-local-to-self "Trying To Build University")
-    (build university)    
+    (up-set-placement-data my-player-number town-center c: 5)    
+    (up-build place-control 0 c: university)   
 )
 
 ; DOCK
