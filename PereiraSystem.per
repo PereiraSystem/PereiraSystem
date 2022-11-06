@@ -250,7 +250,7 @@
     (set-strategic-number sn-percent-attack-soldiers 100)
 	(set-strategic-number sn-garrison-rams 1)     
     (set-goal gl-weAreAttacking 1)      
-    (attack-now)(chat-to-allies "31")    
+    (attack-now)(chat-to-allies "31 ATTACK!")    
 )
 
 
@@ -1169,8 +1169,8 @@
     ;(up-chat-data-to-all "gate point 1 y value: %d" g: gl-outerWallGatePoint1-y)
     ;(up-chat-data-to-all "palisade point 2 y value: %d" g: gl-wallPoint2-y)
     ;(up-chat-data-to-all "gate point 2 y value: %d" g: gl-outerWallGatePoint2-y)
-    (chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
-    (up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
+    ;(chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
+    ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
     (up-modify-goal gl-palisadeGateCounter c:+ 1)
 )
 
