@@ -1164,7 +1164,16 @@
 ; BUILD THE OUTER PALISADE GATES - NOT CORNER POSITIONS ALWAYS GET THE SAME
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 8)
+    (or
+        (up-compare-goal gl-positionQuadrantCode == 8) ;not corner
+        (and                
+            (up-compare-goal gl-myPosition-y g:> gl-myPosition-x) ;corners close to low x                   
+            (or
+                (up-compare-goal gl-positionQuadrantCode == 7)
+                (up-compare-goal gl-positionQuadrantCode == 9)
+            )
+        )            
+    )
     ;(up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)         
 =>   
@@ -1175,7 +1184,16 @@
 
 (defrule 
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 6)
+    (or
+        (up-compare-goal gl-positionQuadrantCode == 6) ;not corner
+        (and                
+            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x) ;corners close to low y                   
+            (or
+                (up-compare-goal gl-positionQuadrantCode == 3)
+                (up-compare-goal gl-positionQuadrantCode == 7)
+            )
+        )            
+    )
     ;(up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)          
 =>
@@ -1206,7 +1224,16 @@
 
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 4)   
+    (or
+        (up-compare-goal gl-positionQuadrantCode == 4) ;not corner
+        (and                
+            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x) ;corners close to high y                   
+            (or
+                (up-compare-goal gl-positionQuadrantCode == 1)
+                (up-compare-goal gl-positionQuadrantCode == 9)
+            )
+        )            
+    )
     ;(up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)       
 =>
