@@ -1182,13 +1182,10 @@
             )          
         )
     )
-    (and
-        (building-type-count-total 796 < 2) ;palisade gate descending foundations
-        (and
-            (building-type-count-total 793 < 2) ;closed
-            (building-type-count-total 794 < 2) ;open           
-        )
-    )        
+
+    (building-type-count-total 796 < 2) ;palisade gate descending foundations
+    (building-type-count-total 793 < 2) ;closed
+    (building-type-count-total 794 < 2) ;open           
     (can-build 796)
     ;(up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
     ;(up-compare-goal gl-palisadeGateCounter < 150)
