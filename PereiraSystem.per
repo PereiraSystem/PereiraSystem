@@ -968,7 +968,7 @@
 =>    
     (set-goal gl-wallPoint2-y 144)
     (set-goal gl-innerWallPoint2-y 144)(disable-self)
-)
+)inner wal
 (defrule
     (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
@@ -981,26 +981,26 @@
 (defrule 
     (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint1-x 160)
-    (set-goal gl-innerWallPoint1-x 160)(disable-self)   
+    (set-goal gl-wallPoint1-x 168)
+    (set-goal gl-innerWallPoint1-x 168)(disable-self)   
 )
 (defrule 
     (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x 160)
-    (set-goal gl-innerWallPoint2-x 160)(disable-self)
+    (set-goal gl-wallPoint2-x 168)
+    (set-goal gl-innerWallPoint2-x 168)(disable-self)
 )
 (defrule
     (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y 160)
-    (set-goal gl-innerWallPoint2-y 160)(disable-self)
+    (set-goal gl-wallPoint2-y 168)
+    (set-goal gl-innerWallPoint2-y 168)(disable-self)
 )
 (defrule
     (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint3-y 160)
-    (set-goal gl-innerWallPoint3-y 160)(disable-self)      
+    (set-goal gl-wallPoint3-y 168)
+    (set-goal gl-innerWallPoint3-y 168)(disable-self)      
 )
 #end-if
 #load-if-defined NORMAL-MAP
