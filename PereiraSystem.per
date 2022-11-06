@@ -800,20 +800,8 @@
 )
 
 ; CHECK X COMPARED TO Y FOR CORNER POSITIONS
-(defrule
-    (up-compare-goal gl-positionQuadrantCode == 1)
-    (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
-=>
-    (chat-to-all "my x is lower than y")
-)
-(defrule
-    (up-compare-goal gl-positionQuadrantCode == 1)
-    (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
-=>
-    (chat-to-all "my x is higher than y")
-)
 
-(defrule
+(defrule ;put pos 5 later!
     (or
         (or
             (up-compare-goal gl-positionQuadrantCode == 1)
@@ -824,9 +812,27 @@
             (up-compare-goal gl-positionQuadrantCode == 9)
         )        
     )
+    (up-compare-goal gl-positionQuadrantCode == 1)
+    (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
 =>    
-    (up-chat-data-to-all "POS X: %d" g: gl-myPosition-x) 
-    (up-chat-data-to-all "POS Y: %d" g: gl-myPosition-y)   
+    (chat-to-all "my x is higher than y")  
+)
+
+(defrule ;put pos 5 later!
+    (or
+        (or
+            (up-compare-goal gl-positionQuadrantCode == 1)
+            (up-compare-goal gl-positionQuadrantCode == 3)
+        )
+        (or
+            (up-compare-goal gl-positionQuadrantCode == 7)
+            (up-compare-goal gl-positionQuadrantCode == 9)
+        )        
+    )
+    (up-compare-goal gl-positionQuadrantCode == 1)
+    (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
+=>    
+    (chat-to-all "my x is lower than y")  
 )
 
 (defrule 
