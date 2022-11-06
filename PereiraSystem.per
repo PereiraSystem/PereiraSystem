@@ -799,43 +799,7 @@
     (up-send-flare position-self)(disable-self)  
 )
 
-; CHECK X COMPARED TO Y FOR CORNER POSITIONS
 
-(defrule
-    (true) ;put pos 5 later!
-    (or 
-        (or
-            (up-compare-goal gl-positionQuadrantCode == 1)
-            (up-compare-goal gl-positionQuadrantCode == 3)
-        )
-        (or
-            (up-compare-goal gl-positionQuadrantCode == 7)
-            (up-compare-goal gl-positionQuadrantCode == 9)
-        )        
-    )
-    (up-compare-goal gl-positionQuadrantCode == 1)
-    (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
-=>    
-    (chat-to-all "my x is higher than y")(disable-self)  
-)
-
-(defrule ;put pos 5 later!
-    (true)
-    (or
-        (or
-            (up-compare-goal gl-positionQuadrantCode == 1)
-            (up-compare-goal gl-positionQuadrantCode == 3)
-        )
-        (or
-            (up-compare-goal gl-positionQuadrantCode == 7)
-            (up-compare-goal gl-positionQuadrantCode == 9)
-        )        
-    )
-    (up-compare-goal gl-positionQuadrantCode == 1)
-    (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
-=>    
-    (chat-to-all "my x is lower than y")(disable-self)
-)
 
 (defrule 
     (true)
@@ -1159,6 +1123,42 @@
     (up-modify-goal gl-outerWallGatePoint1-x c:- 10) 
     (up-modify-goal gl-outerWallGatePoint4-x c:+ 10) 
     (disable-self)
+)
+
+; CHECK X COMPARED TO Y FOR CORNER POSITIONS
+
+(defrule
+    (true) ;put pos 5 later!
+    (or 
+        (or
+            (up-compare-goal gl-positionQuadrantCode == 1)
+            (up-compare-goal gl-positionQuadrantCode == 3)
+        )
+        (or
+            (up-compare-goal gl-positionQuadrantCode == 7)
+            (up-compare-goal gl-positionQuadrantCode == 9)
+        )        
+    )
+    (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
+=>    
+    (chat-to-all "my x is higher than y")(disable-self)  
+)
+
+(defrule ;put pos 5 later!
+    (true)
+    (or
+        (or
+            (up-compare-goal gl-positionQuadrantCode == 1)
+            (up-compare-goal gl-positionQuadrantCode == 3)
+        )
+        (or
+            (up-compare-goal gl-positionQuadrantCode == 7)
+            (up-compare-goal gl-positionQuadrantCode == 9)
+        )        
+    )
+    (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
+=>    
+    (chat-to-all "my x is lower than y")(disable-self)
 )
 
 ; BUILD THE OUTER PALISADE GATES - NOT CORNER POSITIONS ALWAYS GET THE SAME
