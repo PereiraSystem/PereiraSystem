@@ -378,7 +378,7 @@
 )
 
 ; MARKET
-(defrule
+(defrule(false)
     (building-type-count town-center > 0)    
     (building-type-count-total market == 0)
     ;(can-build market)
@@ -390,7 +390,7 @@
     ;(build market)    
 )
 
-(defrule(false)
+(defrule(true)
     (building-type-count town-center > 0)    
     (building-type-count-total market == 0)
     (can-build market)
