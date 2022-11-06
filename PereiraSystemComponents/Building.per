@@ -405,12 +405,14 @@
 )
 
 (defrule(false)
+    (up-players-in-game ally == 1)
     (building-type-count town-center > 0)    
     (building-type-count-total market == 0)
-    (can-build market)
+    (up-can-build 0 c: market)
 =>
-    (chat-local-to-self "Trying To Build Market 1 - normal placing") 
-    (build market)    
+    (chat-local-to-self "Trying To Build Market 1 inside town") 
+    (up-set-placement-data my-player-number town-center c:+ 1)    
+    (up-build place-control 0 c: market)     
 )
 
 ; UNIVERSITY
