@@ -888,35 +888,7 @@
     (disable-self)
 )
 
-(defrule ; move the inner gate lines 
-    (up-compare-goal gl-positionQuadrantCode == 8) 
-=>    
-    (up-modify-goal gl-innerWallGatePoint1-y c:+ 2) 
-    (up-modify-goal gl-innerWallGatePoint2-y c:- 2) 
-    (disable-self)
-)
 
-(defrule 
-    (up-compare-goal gl-positionQuadrantCode == 6) 
-=>    
-    (up-modify-goal gl-innerWallGatePoint2-x c:- 2) 
-    (up-modify-goal gl-innerWallGatePoint3-x c:+ 2) 
-    (disable-self)
-)
-(defrule
-    (up-compare-goal gl-positionQuadrantCode == 2) 
-=>    
-    (up-modify-goal gl-innerWallGatePoint3-y c:- 2) 
-    (up-modify-goal gl-innerWallGatePoint4-y c:+ 2)  
-    (disable-self)
-)
-(defrule
-    (up-compare-goal gl-positionQuadrantCode == 4) 
-=>    
-    (up-modify-goal gl-innerWallGatePoint1-x c:- 2) 
-    (up-modify-goal gl-innerWallGatePoint4-x c:+ 2) 
-    (disable-self)
-)
 
 (defrule
     (true) 
@@ -930,6 +902,36 @@
     (up-modify-goal gl-innerWallGatePoint4-x g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallGatePoint4-y g:- gl-innerWallPerimeter)  
     (disable-self)           
+)
+
+(defrule ; move the inner gate lines 
+    (up-compare-goal gl-positionQuadrantCode == 8) 
+=>    
+    (up-modify-goal gl-innerWallGatePoint1-y c:+ 5) 
+    (up-modify-goal gl-innerWallGatePoint2-y c:- 5) 
+    (disable-self)
+)
+
+(defrule 
+    (up-compare-goal gl-positionQuadrantCode == 6) 
+=>    
+    (up-modify-goal gl-innerWallGatePoint2-x c:- 5) 
+    (up-modify-goal gl-innerWallGatePoint3-x c:+ 5) 
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 2) 
+=>    
+    (up-modify-goal gl-innerWallGatePoint3-y c:- 5) 
+    (up-modify-goal gl-innerWallGatePoint4-y c:+ 5)  
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 4) 
+=>    
+    (up-modify-goal gl-innerWallGatePoint1-x c:- 5) 
+    (up-modify-goal gl-innerWallGatePoint4-x c:+ 5) 
+    (disable-self)
 )
 
 ; make the walls reach the borders 
@@ -1340,8 +1342,8 @@
     ;(building-type-count 497 < 8)      
 =>
     (up-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 497)
-    ;(up-chat-data-to-self "inner wall gate north west start y: %d" g: gl-innerWallGatePoint3-y)
-    ;(up-chat-data-to-self "inner wall gate north west end y: %d" g: gl-innerWallGatePoint4-y)      
+    ;(up-chat-data-to-self "inner wall gate north west start y: %d" g: gl-innerWallGatePoint4-y)
+    ;(up-chat-data-to-self "inner wall gate north west end y: %d" g: gl-innerWallGatePoint1-y)      
 )
 
 ; INNER STONE WALL
