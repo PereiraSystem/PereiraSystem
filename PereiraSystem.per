@@ -1164,7 +1164,13 @@
 ; BUILD THE OUTER PALISADE GATES - NOT CORNER POSITIONS ALWAYS GET THE SAME
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 8) ;south west center position
+    (or
+        (up-compare-goal gl-positionQuadrantCode == 8) ;south west center 
+        (and 
+            (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
+            (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
+        )
+    )
     ;(up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)         
 =>   
@@ -1176,9 +1182,9 @@
 (defrule 
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (or
-        (up-compare-goal gl-positionQuadrantCode == 6) ;north west center position
-        (and ;POS 3 WHEN ITS CLOSER TO 6 THAN 2 ( x is higher)
-            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)            
+        (up-compare-goal gl-positionQuadrantCode == 6) ;north west center 
+        (and 
+            (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
             (up-compare-goal gl-positionQuadrantCode == 3)            
         )
     )
@@ -1192,9 +1198,9 @@
 
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (or(up-compare-goal gl-positionQuadrantCode == 2) ;north east center position-map-size
-        (and ;POS 3 WHEN ITS CLOSER TO 2 THAN 6 ( y is higher)
-            (up-compare-goal gl-myPosition-y g:>= gl-myPosition-x)            
+    (or(up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
+        (and 
+            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)            
             (up-compare-goal gl-positionQuadrantCode == 3)            
         )    
     )
@@ -1208,7 +1214,7 @@
 
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 4) ;south east center position
+    (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
     ;(up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)       
 =>
