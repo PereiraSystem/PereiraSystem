@@ -1192,7 +1192,12 @@
 
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 2) ;north east center position
+    (or(up-compare-goal gl-positionQuadrantCode == 2) ;north east center position-map-size
+        (and ;POS 3 WHEN ITS CLOSER TO 2 THAN 6 ( y is higher)
+            (up-compare-goal gl-myPosition-y g:>= gl-myPosition-x)            
+            (up-compare-goal gl-positionQuadrantCode == 3)            
+        )    
+    )
     ;(building-type-count-total palisade-wall > 0)
     ;(up-compare-goal gl-palisadeGateCounter < 150)
 =>
