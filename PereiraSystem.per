@@ -1213,7 +1213,7 @@
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 3)
-    (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)        
+    ;(up-compare-goal gl-myPosition-y g:< gl-myPosition-x)        
 =>
     (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
     (chat-local-to-self "BUILDING THE SOUTH WEST PALISADE GATES!")
@@ -1224,7 +1224,7 @@
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 3)
-    (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)  
+    ;(up-compare-goal gl-myPosition-y g:> gl-myPosition-x)  
 =>
     (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
     ;(up-chat-data-to-all "gate point 1 y value: %d" g: gl-outerWallGatePoint4-x)
