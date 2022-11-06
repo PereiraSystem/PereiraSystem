@@ -483,35 +483,7 @@
     (disable-self)  
 )
 
-(defrule
-    (up-players-in-game any < 4)
-=>
-    (up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 1)
-    (up-modify-sn sn-maximum-town-size c:+ 1)    
-    (up-modify-sn sn-minimum-town-size c:+ 1)       
-    (disable-self)  
-)
 
-(defrule
-    (up-players-in-game any < 3)
-=>
-    (up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 1)
-    (up-modify-sn sn-maximum-town-size c:+ 1)    
-    (up-modify-sn sn-minimum-town-size c:+ 1)       
-    (disable-self)  
-)
-
-(defrule
-    (up-players-in-game any < 2)
-=>
-    (up-modify-goal gl-innerWallPerimeter c:+ 24)
-    (up-modify-goal gl-outerWallPerimeter c:+ 30)
-    (up-modify-sn sn-maximum-town-size c:+ 30)    
-    (up-modify-sn sn-minimum-town-size c:+ 30)       
-    (disable-self)  
-)
 
 (defrule
     (map-size small)
