@@ -1269,6 +1269,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-positionQuadrantCode == 8)     
     (building-type-count 490 < 6)
 =>
     (up-build-line gl-innerWallGatePoint1-x gl-innerWallGatePoint2-x c: 490)
@@ -1289,6 +1290,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
+    (up-compare-goal gl-positionQuadrantCode == 2)     
     (building-type-count 490 < 6)    
 =>
     (up-build-line gl-innerWallGatePoint3-x gl-innerWallGatePoint4-x c: 490)
