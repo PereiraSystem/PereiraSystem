@@ -1273,7 +1273,7 @@
     ;(up-chat-data-to-self "inner wall gate north east end y: %d" g: gl-innerWallGatePoint2-y)
 )
 
-(defrule
+(defrule(false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (building-type-count 497 < 6)      
