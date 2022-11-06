@@ -741,24 +741,6 @@
 
 
 
-(defrule
-	(current-age == imperial-age)(food-amount > 400)
-	(building-type-count-total stable == 1)
-    (building-type-count-total university > 0)
-	(not(civ-selected gothic))	
-    (can-build stable)(military-population > 60)
-=>  
-    (build stable)    (up-set-placement-data my-player-number town-center c:+ 32)
-    (up-build place-control 0 c: stable)(chat-local-to-self "Trying To Build Stable 2")
-)
-
-
-(defrule
-	(game-time > 2400)(building-type-count-total stable >= 3)
-=>
-    (chat-local-to-self "DELETING FIRST STABLE!")
-    (delete-building stable)(disable-self)
-)
 
 ; BUILD ARCHERY RANGE
 (defrule
@@ -773,7 +755,7 @@
     (build archery-range)
     ;(up-set-placement-data my-player-number town-center c: 1)
     ;(up-build place-control 0 c: archery-range)
-    (up-set-placement-data my-player-number -1 c: -3)
+    (up-set-placement-data my-player-number town-center c: -4)
     (up-build place-control 0 c: archery-range)
     (chat-local-to-self "Trying To Build Archery Range 1 - Place control")             
 )
@@ -801,20 +783,7 @@
     (up-build place-control 0 c: siege-workshop)       
 )
 
-(defrule
-    (military-population > 60)(unit-type-count villager > 40)
-    (wood-amount > 600)(food-amount > 600)
-    (current-age == imperial-age)(building-type-count-total university > 0)(building-type-count-total castle > 0)
-    (building-type-count-total siege-workshop == 1)
-    ;(can-build siege-workshop)
-        (up-can-build 0 c: siege-workshop)
-=>  
-    (up-set-placement-data my-player-number town-center c: +36)
-    (up-build place-control 0 c: siege-workshop)   
-    ;(build siege-workshop)
-    (chat-local-to-self "Trying To Build Siege Workshop 2")
 
-)
 
 
 
