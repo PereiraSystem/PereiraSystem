@@ -1148,7 +1148,7 @@
 
 ; ALTER THE SHAPE OF THE INNER WALL SO IT LEAVES AN OPENING
 ; dont build the section of wall that has now moved
-(defrule(false)
+(defrule
     (up-compare-goal gl-positionQuadrantCode == 8)
 =>
     (up-modify-goal gl-innerWallPoint3-x c:+ 6)
