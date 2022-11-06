@@ -1209,9 +1209,11 @@
     (up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)       
 =>
-    (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 782)
-    ;(chat-local-to-self "BUILDING THE NORTH WEST PALISADE GATES!")
-    ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
+    (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
+    ;(up-chat-data-to-all "gate point 1 y value: %d" g: gl-outerWallGatePoint4-x)
+    ;(up-chat-data-to-all "gate point 2 y value: %d" g: gl-outerWallGatePoint1-x)    
+    (chat-local-to-self "BUILDING THE NORTH WEST PALISADE GATES!")
+    (up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
     (up-modify-goal gl-palisadeGateCounter c:+ 1)  
 )
 
