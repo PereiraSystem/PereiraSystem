@@ -1,5 +1,5 @@
 ; TRADE ---------------------------------------------------
-(defrule(true)=>(chat-local-to-self "> 6. Trade Loaded")(disable-self))
+(defrule(true)=>;(chat-local-to-self "> 6. Trade Loaded")(disable-self))
 
 ; ALL AGES TRADE RULES
 (defrule ;BUY WOOD
@@ -8,7 +8,7 @@
     (wood-amount < 300)
 =>
     (buy-commodity wood)
-    (chat-local-to-self "BUYING WOOD (GOLD > 1600)")       
+    ;(chat-local-to-self "BUYING WOOD (GOLD > 1600)")       
 )
 
 (defrule ;BUY FOOD
@@ -17,7 +17,7 @@
     (food-amount < 300)
 =>
     (buy-commodity food)
-    (chat-local-to-self "BUYING FOOD (GOLD > 1600)")       
+    ;(chat-local-to-self "BUYING FOOD (GOLD > 1600)")       
 )
 
 (defrule ;BUY FOOD
@@ -26,7 +26,7 @@
     (food-amount < 50)
 =>
     (buy-commodity food)
-    (chat-local-to-self "BUYING FOOD (FOOD < 50)")       
+    ;(chat-local-to-self "BUYING FOOD (FOOD < 50)")       
 )
 
 ; FEUDAL AGE TRADE                       
@@ -36,7 +36,7 @@
     (can-sell-commodity wood)    
 =>
     (sell-commodity wood)
-    (chat-local-to-self "SELLING WOOD (> 500)")       
+    ;(chat-local-to-self "SELLING WOOD (> 500)")       
 )
 
 (defrule
@@ -50,7 +50,7 @@
 	(gold-amount < 1100)
 =>
     (sell-commodity food)
-    (chat-local-to-self "SELLING FOOD (> 900)")      
+    ;(chat-local-to-self "SELLING FOOD (> 900)")      
 )
 
 (defrule
@@ -59,7 +59,7 @@
     (gold-amount > 300)(food-amount < 800)
 =>
     (buy-commodity food)
-    (chat-local-to-self "BUYING FOOD (GOLD > 300)")     
+    ;(chat-local-to-self "BUYING FOOD (GOLD > 300)")     
 )
 
 (defrule
@@ -69,7 +69,7 @@
     (research-available castle-age)    
 =>
     (sell-commodity stone)
-    (chat-local-to-self "SELLING STONE TO GET TO CASTLE AGE")      
+    ;(chat-local-to-self "SELLING STONE TO GET TO CASTLE AGE")      
 )
 
 ; CASTLE AGE TRADE      
@@ -79,7 +79,7 @@
     (can-sell-commodity wood)    
 =>
     (sell-commodity wood)
-    (chat-local-to-self "SELLING WOOD (> 600)")    
+    ;(chat-local-to-self "SELLING WOOD (> 600)")    
 )
 
 (defrule
@@ -92,7 +92,7 @@
     (can-buy-commodity wood)    
 =>
     (sell-commodity wood)
-    (chat-local-to-self "BUYING WOOD FOR THE SIEGE WORKSHOP / UNIV")    
+    ;(chat-local-to-self "BUYING WOOD FOR THE SIEGE WORKSHOP / UNIV")    
 )
 
 (defrule
@@ -103,7 +103,7 @@
     (can-sell-commodity food)    
 =>
     (sell-commodity food)
-    (chat-local-to-self "SELLING FOOD TO BUY PRIESTS")
+    ;(chat-local-to-self "SELLING FOOD TO BUY PRIESTS")
 )
 
 (defrule
@@ -112,7 +112,7 @@
 	(can-buy-commodity food)    
 =>
     (buy-commodity food)
-    (chat-local-to-self "BUYING FOOD TO GET TO IMPERIAL AGE")      
+    ;(chat-local-to-self "BUYING FOOD TO GET TO IMPERIAL AGE")      
 )
 
 ; IMPERIAL AGE TRADE
@@ -123,7 +123,7 @@
     (can-sell-commodity wood)    
 =>
     (sell-commodity wood)
-    (chat-local-to-self "SELLING WOOD (> 1600)")     
+    ;(chat-local-to-self "SELLING WOOD (> 1600)")     
 )
 
 (defrule
@@ -133,7 +133,7 @@
     (can-sell-commodity food)    
 =>
     (sell-commodity food)
-    (chat-local-to-self "SELLING FOOD (> 2400)")     
+    ;(chat-local-to-self "SELLING FOOD (> 2400)")     
 )
 
 (defrule
@@ -148,7 +148,7 @@
     (can-sell-commodity stone)    
 =>
     (sell-commodity stone)
-    (chat-local-to-self "SELLING STONE (> 300), 3 CASTLES AND NO B.T.")     
+    ;(chat-local-to-self "SELLING STONE (> 300), 3 CASTLES AND NO B.T.")     
 )
 
 (defrule ;imperial age with no castle, we buy stone
@@ -159,7 +159,7 @@
 	(can-buy-commodity stone)    
 =>
     (buy-commodity stone)
-    (chat-local-to-self "BUYING STONE (NO CASTLE)")      
+    ;(chat-local-to-self "BUYING STONE (NO CASTLE)")      
 )
 
 (defrule ;imperial age with no castle, we buy stone
@@ -170,7 +170,7 @@
 	(can-buy-commodity stone)    
 =>
     (buy-commodity stone)
-    (chat-local-to-self "BUYING STONE (NO CASTLE)")      
+    ;(chat-local-to-self "BUYING STONE (NO CASTLE)")      
 )
 
 (defrule ;imperial age with no castle, we buy stone
@@ -180,7 +180,7 @@
 	(can-buy-commodity stone)    
 =>
     (buy-commodity stone)
-    (chat-local-to-self "BUYING STONE (NO CASTLE)")      
+    ;(chat-local-to-self "BUYING STONE (NO CASTLE)")      
 )
 
 ; TRIBUTE, just randomly give resources to anyone for now
