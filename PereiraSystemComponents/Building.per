@@ -4,6 +4,7 @@
 ; CIVILIAN BUILDINGS
 ; WONDER                          
 (defrule
+    (game-type == 6) ;wonder race
     (unit-type-count villager > 15)
     (building-type-count-total wonder == 0)
     (can-build wonder)    
