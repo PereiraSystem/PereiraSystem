@@ -1182,7 +1182,12 @@
             )          
         )
     )
-    (building-type-count-total 796 < 2)
+    (and
+        (building-type-count-total 796 < 2) ;palisade gate descending foundations
+        (and
+            (building-type-count-total 793 < 2) ;closed
+            (building-type-count-total 794 < 2) ;open           
+        )
     (can-build 796)
     ;(up-compare-goal gl-palisadeGateCounter < 150)
 =>
