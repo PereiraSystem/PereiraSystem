@@ -1188,14 +1188,17 @@
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (or
         (up-compare-goal gl-positionQuadrantCode == 2)
-        (up-compare-goal gl-positionQuadrantCode == 3)        
+        (and
+            (up-compare-goal gl-positionQuadrantCode == 1)
+            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
+        )
     )
-    ;(building-type-count-total palisade-wall > 0)    
-    ;(up-compare-goal gl-palisadeGateCounter < 150)  
+    ;(building-type-count-total palisade-wall > 0)
+    ;(up-compare-goal gl-palisadeGateCounter < 150)
 =>
     (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
-    ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
-    (up-modify-goal gl-palisadeGateCounter c:+ 1)  
+    ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
+    (up-modify-goal gl-palisadeGateCounter c:+ 1)
 )
 
 (defrule
