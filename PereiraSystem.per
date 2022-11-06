@@ -1092,6 +1092,21 @@
     (disable-self)
 )
 
+(defrule
+    (building-type-count palisade-wall > 0)
+=>
+    (enable-timer 49 30)
+    (disable-self)
+)
+
+(defrule
+    (timer-triggered 49)
+=>
+    (disable-timer 49)
+    (up-modify-goal gl-palisadeGateCounter c:+ 30)
+    (enable-timer 49 60)
+)
+
 ; GATES Y AXIS
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
