@@ -379,8 +379,9 @@
 )
 
 ; MARKET
-(defrule(true)
-    (game-time > 120) ; so they explore a bit
+(defrule
+    (up-players-in-game ally > 1)
+    (game-time > 120) ; so they dont build it inside
     (building-type-count town-center > 0)  
     (building-type-count-total market == 0)
     (or
@@ -398,19 +399,19 @@
     )
     (up-can-build 0 c: market)
 =>
-    (chat-local-to-self "Trying To Build Market 1 - place control")
+    (chat-local-to-self "Trying To Build Market 1 outside")
     ;(up-set-placement-data my-player-number market c:+ 32)
     (up-set-placement-data my-player-number town-center c:+ 32)    
     (up-build place-control 0 c: market)   
 )
 
-(defrule(false)
+(defrule
     (up-players-in-game ally == 1)
     (building-type-count town-center > 0)    
     (building-type-count-total market == 0)
     (up-can-build 0 c: market)
 =>
-    (chat-local-to-self "Trying To Build Market 1 inside town") 
+    (chat-local-to-self "Trying To Build Market 1 inside") 
     (up-set-placement-data my-player-number town-center c:+ 1)    
     (up-build place-control 0 c: market)     
 )
