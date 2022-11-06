@@ -238,8 +238,7 @@
     (current-age == imperial-age)
     (population-headroom == 0)
     (housing-headroom == 0)
-    (wood-amount > 800)(food-amount > 800)
-    (players-stance any-enemy enemy)
+    ;(wood-amount > 800)(food-amount > 800)
 =>
 	(disable-timer 21)
     (enable-timer 21 3)
@@ -252,8 +251,6 @@
     (set-goal gl-weAreAttacking 1)      
     (attack-now)(chat-to-allies "31 ATTACK!")    
 )
-
-
 
 (defrule
     (current-age == imperial-age)(goal gl-weAreAttacking 1)
