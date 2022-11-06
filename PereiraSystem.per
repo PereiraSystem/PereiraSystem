@@ -1161,7 +1161,7 @@
     (disable-self)
 )
 
-; BUILD THE OUTER PALISADE GATES 
+; BUILD THE OUTER PALISADE GATES - NOT CORNER POSITIONS ALWAYS GET THE SAME
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-positionQuadrantCode == 8)
@@ -1226,10 +1226,11 @@
     ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
     (up-modify-goal gl-palisadeGateCounter c:+ 1)  
 )
-
+; POSITION 3 WHEN CLOSER TO HIGH X
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 3)    
+    (up-compare-goal gl-positionQuadrantCode == 3)
+    (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)        
     ;(building-type-count-total palisade-wall > 0)    
     ;(up-compare-goal gl-palisadeGateCounter < 150)  
 =>
