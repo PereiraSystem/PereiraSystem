@@ -1127,7 +1127,8 @@
 
 (defrule 
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 6)
+    (or(up-compare-goal gl-positionQuadrantCode == 6)
+    (up-compare-goal gl-positionQuadrantCode == 1))
     (up-compare-goal gl-palisadeGateCounter < 75)
     (building-type-count palisade-wall > 0)          
 =>
