@@ -1190,13 +1190,7 @@
 
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 2)
-        
-            ;(up-compare-goal gl-positionQuadrantCode == 3)
-            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x); its closer to ne border          
-        
-    )
+    (up-compare-goal gl-positionQuadrantCode == 2)
     ;(building-type-count-total palisade-wall > 0)    
     ;(up-compare-goal gl-palisadeGateCounter < 150)  
 =>
@@ -1219,6 +1213,20 @@
     ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
     (up-modify-goal gl-palisadeGateCounter c:+ 1)  
 )
+
+; BUILDING GATES FOR CORNER POSITIONS - SEPARATED UNTIL BUGS RESOLVED
+(defrule
+    (up-compare-goal gl-dontBuildSouthWestWall == 0)
+    (up-compare-goal gl-positionQuadrantCode == 3)
+    ;(building-type-count-total palisade-wall > 0)    
+    ;(up-compare-goal gl-palisadeGateCounter < 150)  
+=>
+    (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
+    (chat-local-to-self "BUILDING THE SOUTH WEST PALISADE GATES!")
+    (up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
+    (up-modify-goal gl-palisadeGateCounter c:+ 1)  
+)
+
 
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
