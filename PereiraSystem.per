@@ -1153,11 +1153,18 @@
 (defrule (false)
     (up-compare-goal gl-positionQuadrantCode == 6) 
 =>    
-    (up-modify-goal gl-innerWallGatePoint2-x c:- 8) 
-    (up-modify-goal gl-innerWallGatePoint3-x c:+ 8) 
+    (up-modify-goal gl-innerWallGatePoint2-x c:- 6) 
+    (up-modify-goal gl-innerWallGatePoint3-x c:+ 6) 
     (disable-self)
 )
 
+(defrule (false)
+    (up-compare-goal gl-positionQuadrantCode == 4) 
+=>    
+    (up-modify-goal gl-innerWallGatePoint4-x c:- 6) 
+    (up-modify-goal gl-innerWallGatePoint1-x c:+ 6) 
+    (disable-self)
+)
 
 ; GATES Y AXIS
 (defrule 
