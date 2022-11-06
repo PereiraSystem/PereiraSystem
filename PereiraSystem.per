@@ -1162,15 +1162,12 @@
 ; BUILD THE OUTER PALISADE GATES 
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 8) ; south west player always gets this gate 
+    (up-compare-goal gl-positionQuadrantCode == 8)
     ;(up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)         
-=>
-    ;(up-build-line gl-wallPoint1-x gl-wallPoint2-x c: 793)    
+=>   
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
-    ;(up-chat-data-to-all "palisade point 1 y value: %d" g: gl-wallPoint1-y)
     ;(up-chat-data-to-all "gate point 1 y value: %d" g: gl-outerWallGatePoint1-y)
-    ;(up-chat-data-to-all "palisade point 2 y value: %d" g: gl-wallPoint2-y)
     ;(up-chat-data-to-all "gate point 2 y value: %d" g: gl-outerWallGatePoint2-y)
     ;(chat-local-to-self "BUILDING THE NORTH EAST PALISADE GATES!")
     ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
@@ -1183,7 +1180,7 @@
     ;(up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)          
 =>
-    (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792) ;792
+    (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
     ;(chat-local-to-self "BUILDING THE SOUTH EAST PALISADE GATES!")
     ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
     (up-modify-goal gl-palisadeGateCounter c:+ 1)  
@@ -1191,7 +1188,13 @@
 
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 2)
+    (or
+        (up-compare-goal gl-positionQuadrantCode == 2)
+        (and
+            (up-compare-goal gl-positionQuadrantCode == 3)
+            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x); its closer to ne border          
+        )
+    )
     ;(building-type-count-total palisade-wall > 0)    
     ;(up-compare-goal gl-palisadeGateCounter < 150)  
 =>
