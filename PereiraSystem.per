@@ -1213,10 +1213,11 @@
     (disable-self)
 )
 
-; INNER  WALL gates 490 descending foundation, 497 ascending
+; INNER  WALL gates 490 descending foundation, 497 ascending f
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (building-type-count 490 < 4)
 =>
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: 490)
     ;(up-chat-data-to-self "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
@@ -1226,6 +1227,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
+    (building-type-count 497 < 4)      
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: 497l)
     ;(up-chat-data-to-self "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
@@ -1235,6 +1237,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
+     (building-type-count 490 < 4)    
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: 490)
     ;(up-chat-data-to-self "inner wall south west start y: %d" g: gl-innerWallPoint3-y)
@@ -1244,6 +1247,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
+    (building-type-count 497 < 4)      
 =>
     (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: 497)
     ;(up-chat-data-to-self "inner wall north west start y: %d" g: gl-innerWallPoint3-y)
