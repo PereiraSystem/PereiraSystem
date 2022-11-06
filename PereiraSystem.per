@@ -738,7 +738,7 @@
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisHigh == 1)
 =>    
-    (chat-to-allies "IM AT THE EAST, IN THE CORNER!")
+    (chat-to-allies "IM AT THE EAST, IN THE CORNER! - POS 1")
     (set-goal gl-positionQuadrantCode 1)    
     (up-send-flare position-self)(disable-self)
 )
@@ -752,7 +752,7 @@
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisLow == 1)
 =>  
-    (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER!")
+    (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER! - POS 3")
     (set-goal gl-positionQuadrantCode 3)     
     (up-send-flare position-self)(disable-self)  
 )
@@ -766,7 +766,7 @@
 (defrule
     (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisMedium == 1)
 =>  
-    (chat-to-allies "IM IN THE MIDDLE OF THE MAP")
+    (chat-to-allies "IM IN THE MIDDLE OF THE MAP - POS 5")
     (set-goal gl-positionQuadrantCode 5)     
     (up-send-flare position-self)(disable-self)
 )
@@ -780,7 +780,7 @@
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisHigh == 1)
 => 
-    (chat-to-allies "IM AT THE SOUTH, IN THE CORNER!")
+    (chat-to-allies "IM AT THE SOUTH, IN THE CORNER! - POS 7")
     (set-goal gl-positionQuadrantCode 7)
     (up-send-flare position-self)(disable-self)
 ) 
@@ -794,7 +794,7 @@
 (defrule
     (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisLow == 1)
 =>     
-    (chat-to-allies "IM AT THE WEST, IN THE CORNER!")
+    (chat-to-allies "IM AT THE WEST, IN THE CORNER! - POS 9")
     (set-goal gl-positionQuadrantCode 9)
     (up-send-flare position-self)(disable-self)  
 )
@@ -1175,7 +1175,13 @@
 
 (defrule 
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 6) ;north west center position
+    (or
+        (up-compare-goal gl-positionQuadrantCode == 6) ;north west center position
+        (and ;POS 3 WHEN ITS CLOSER TO 6 THAN 2
+            (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
+            (up-compare-goal gl-positionQuadrantCode == 3)            
+        )
+    )
     ;(up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)          
 =>
