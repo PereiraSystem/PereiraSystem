@@ -1138,7 +1138,7 @@
     ;(building-type-count palisade-wall > 0)         
 =>   
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
-    ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
+    (up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
     (up-modify-goal gl-palisadeGateCounter c:+ 1)
 )
 
@@ -1161,7 +1161,7 @@
     ;(building-type-count palisade-wall > 0)          
 =>
     (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
-    ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
+    (up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
     (up-modify-goal gl-palisadeGateCounter c:+ 1)  
 )
 
@@ -1184,7 +1184,7 @@
     ;(up-compare-goal gl-palisadeGateCounter < 150)
 =>
     (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
-    ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
+    (up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)
     (up-modify-goal gl-palisadeGateCounter c:+ 1)
 )
 
