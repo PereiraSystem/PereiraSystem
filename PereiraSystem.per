@@ -496,10 +496,10 @@
 (defrule
     (up-players-in-game any < 3)
 =>
-    (up-modify-goal gl-innerWallPerimeter c:+ 3)
-    (up-modify-goal gl-outerWallPerimeter c:+ 5)
-    (up-modify-sn sn-maximum-town-size c:+ 5)    
-    (up-modify-sn sn-minimum-town-size c:+ 5)       
+    (up-modify-goal gl-innerWallPerimeter c:+ 1)
+    (up-modify-goal gl-outerWallPerimeter c:+ 1)
+    (up-modify-sn sn-maximum-town-size c:+ 1)    
+    (up-modify-sn sn-minimum-town-size c:+ 1)       
     (disable-self)  
 )
 
