@@ -902,28 +902,7 @@
     (disable-self)           
 )
 
-(defrule ; move the inner gate lines 
-    (up-compare-goal gl-positionQuadrantCode == 8) 
-=>    
-    (up-modify-goal gl-innerWallGatePoint1-y c:+ 8) 
-    (up-modify-goal gl-innerWallGatePoint2-y c:- 8) 
-    (disable-self)
-)
 
-(defrule 
-    (up-compare-goal gl-positionQuadrantCode == 6) 
-=>    
-    (up-modify-goal gl-innerWallGatePoint2-x c:- 8) 
-    (up-modify-goal gl-innerWallGatePoint3-x c:+ 8) 
-    (disable-self)
-)
-(defrule
-    (up-compare-goal gl-positionQuadrantCode == 2) 
-=>    
-    (up-modify-goal gl-innerWallGatePoint3-y c:- 8) 
-    (up-modify-goal gl-innerWallGatePoint4-y c:+ 8)  
-    (disable-self)
-)
 
 
 ; make the walls reach the borders 
@@ -1155,6 +1134,30 @@
     (up-modify-goal gl-palisadeGateCounter c:+ 30)
     (enable-timer 49 60)
 )
+
+(defrule ; move the inner gate lines 
+    (up-compare-goal gl-positionQuadrantCode == 8) 
+=>    
+    (up-modify-goal gl-innerWallGatePoint1-y c:+ 8) 
+    (up-modify-goal gl-innerWallGatePoint2-y c:- 8) 
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 2) 
+=>    
+    (up-modify-goal gl-innerWallGatePoint3-y c:- 8) 
+    (up-modify-goal gl-innerWallGatePoint4-y c:+ 8)  
+    (disable-self)
+)
+
+(defrule (false)
+    (up-compare-goal gl-positionQuadrantCode == 6) 
+=>    
+    (up-modify-goal gl-innerWallGatePoint2-x c:- 8) 
+    (up-modify-goal gl-innerWallGatePoint3-x c:+ 8) 
+    (disable-self)
+)
+
 
 ; GATES Y AXIS
 (defrule 
