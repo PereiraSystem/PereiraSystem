@@ -801,8 +801,9 @@
 
 ; CHECK X COMPARED TO Y FOR CORNER POSITIONS
 
-(defrule ;put pos 5 later!
-    (or
+(defrule
+    (false) ;put pos 5 later!
+    (or 
         (or
             (up-compare-goal gl-positionQuadrantCode == 1)
             (up-compare-goal gl-positionQuadrantCode == 3)
@@ -819,6 +820,7 @@
 )
 
 (defrule ;put pos 5 later!
+    (false)
     (or
         (or
             (up-compare-goal gl-positionQuadrantCode == 1)
