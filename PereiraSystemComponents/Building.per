@@ -746,39 +746,16 @@
     (building-type-count lumber-camp > 0)
     (not(civ-selected cumans))(not(civ-selected sicilians))
     (up-can-build 0 c: archery-range)
-    (can-build archery-range)
+    ;(can-build archery-range)
 =>
     (chat-local-to-self "Trying To Build Archery Range 1")
-    (build archery-range)
-    ;(up-set-placement-data my-player-number town-center c: -3)
-    ;(up-build place-control 0 c: archery-range)    
-)
-
-
-(defrule
-    (military-population > 5)
-	(or(current-age == imperial-age)(enemy-buildings-in-town))
-    (building-type-count-total market > 0)
-    (building-type-count-total town-center > 1)
-	(building-type-count-total archery-range == 1)
-    (research-completed ri-ballistics)
-    (not(civ-selected gothic))
-    (can-build archery-range)
-=>
-    (build archery-range)
-    (chat-local-to-self "Trying To Build Archery Range 2")
-    (up-set-placement-data my-player-number town-center c: +32)
-    (up-build place-control 0 c: archery-range)       
+    ;(build archery-range)
+    (up-set-placement-data my-player-number town-center c: -1)
+    (up-build place-control 0 c: archery-range)    
 )
 
 
 
-(defrule
-	(game-time > 2400)(building-type-count-total archery-range >= 3)
-=>
-    (chat-local-to-self "DELETING FIRST ARCHERY RANGE!")
-    (delete-building archery-range)(disable-self)
-)
 
 ; BUILD SIEGE WORKSHOP
 (defrule
