@@ -1200,7 +1200,7 @@
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (or(up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
         (and 
-            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)            
+            (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
             (up-compare-goal gl-positionQuadrantCode == 3)            
         )    
     )
@@ -1214,7 +1214,13 @@
 
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
+    (or
+        (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
+        (and 
+            (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
+            (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
+        )
+    )              
     ;(up-compare-goal gl-palisadeGateCounter < 150)
     ;(building-type-count palisade-wall > 0)       
 =>
