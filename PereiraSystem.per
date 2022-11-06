@@ -1198,11 +1198,18 @@
 
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (or(up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
-        (and 
-            (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-            (up-compare-goal gl-positionQuadrantCode == 3)            
-        )    
+    (or
+        (up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
+        (or
+            (and 
+                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
+                (up-compare-goal gl-positionQuadrantCode == 3)            
+            )
+            (and 
+                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
+                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
+            )          
+        )
     )
     ;(building-type-count-total palisade-wall > 0)
     ;(up-compare-goal gl-palisadeGateCounter < 150)
@@ -1216,9 +1223,15 @@
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (or
         (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
-        (and 
-            (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-            (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
+        (or
+            (and 
+                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
+                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
+            )
+            (and 
+                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
+                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
+            )                          
         )
     )              
     ;(up-compare-goal gl-palisadeGateCounter < 150)
