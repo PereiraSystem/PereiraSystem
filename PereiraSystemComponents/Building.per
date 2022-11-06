@@ -380,19 +380,19 @@
 )
 
 ; MARKET
-(defrule(false)
+(defrule(true)
     (building-type-count town-center > 0)    
     (building-type-count-total market == 0)
     ;(can-build market)
     (up-can-build 0 c: market)
 =>
     (chat-local-to-self "Trying To Build Market 1 - place control")
-    (up-set-placement-data my-player-number -1 c:+ 32)
+    (up-set-placement-data my-player-number town-center c: 32)
     (up-build place-control 0 c: market)   
     ;(build market)    
 )
 
-(defrule(true)
+(defrule(false)
     (building-type-count town-center > 0)    
     (building-type-count-total market == 0)
     (can-build market)
@@ -749,12 +749,8 @@
     (building-type-count town-center > 0)
     (building-type-count lumber-camp > 0)
     (up-can-build 0 c: archery-range)
-    ;(can-build archery-range)
 =>
     (chat-local-to-self "Trying To Build Archery Range 1")
-    ;(build archery-range)
-    ;(up-set-placement-data my-player-number town-center c: 1)
-    ;(up-build place-control 0 c: archery-range)
     (up-set-placement-data my-player-number town-center c: 2)
     (up-build place-control 0 c: archery-range)
     (chat-local-to-self "Trying To Build Archery Range 1 - Place control")             
