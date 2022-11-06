@@ -802,7 +802,7 @@
 ; CHECK X COMPARED TO Y FOR CORNER POSITIONS
 
 (defrule
-    (false) ;put pos 5 later!
+    (true) ;put pos 5 later!
     (or 
         (or
             (up-compare-goal gl-positionQuadrantCode == 1)
@@ -816,11 +816,11 @@
     (up-compare-goal gl-positionQuadrantCode == 1)
     (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
 =>    
-    (chat-to-all "my x is higher than y")  
+    (chat-to-all "my x is higher than y")(disable-self)  
 )
 
 (defrule ;put pos 5 later!
-    (false)
+    (true)
     (or
         (or
             (up-compare-goal gl-positionQuadrantCode == 1)
@@ -834,7 +834,7 @@
     (up-compare-goal gl-positionQuadrantCode == 1)
     (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
 =>    
-    (chat-to-all "my x is lower than y")  
+    (chat-to-all "my x is lower than y")(disable-self)
 )
 
 (defrule 
