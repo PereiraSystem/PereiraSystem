@@ -1186,7 +1186,10 @@
 
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 2)
+    (or
+        (up-compare-goal gl-positionQuadrantCode == 2)
+        (up-compare-goal gl-positionQuadrantCode == 3)        
+    )
     ;(building-type-count-total palisade-wall > 0)    
     ;(up-compare-goal gl-palisadeGateCounter < 150)  
 =>
@@ -1206,33 +1209,7 @@
     (up-modify-goal gl-palisadeGateCounter c:+ 1)  
 )
 
-; BUILDING GATES FOR CORNER POSITIONS - SEPARATED UNTIL BUGS RESOLVED
-; POSITION 1
 
-; POSITION 3 WHEN CLOSER TO HIGH X
-(defrule
-    (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 3)
-    (up-compare-goal gl-myPosition-y < gl-myPosition-x)      
-=>
-    (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
-    (chat-local-to-self "BUILDING THE SOUTH WEST PALISADE GATES!")
-    ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
-    (up-modify-goal gl-palisadeGateCounter c:+ 1)  
-)
-; POSITION 3 WHEN CLOSER TO HIGH Y
-(defrule
-    (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-positionQuadrantCode == 3)
-    ;(up-compare-goal gl-myPosition-y g:> gl-myPosition-x)  
-=>
-    (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
-    ;(up-chat-data-to-all "gate point 1 y value: %d" g: gl-outerWallGatePoint4-x)
-    ;(up-chat-data-to-all "gate point 2 y value: %d" g: gl-outerWallGatePoint1-x)    
-    (chat-local-to-self "BUILDING THE NORTH WEST PALISADE GATES!")
-    ;(up-chat-data-to-self "PALISADE GATE COUNT: %d" g: gl-palisadeGateCounter)    
-    (up-modify-goal gl-palisadeGateCounter c:+ 1)  
-)
 
 ; POSITION 7
 
