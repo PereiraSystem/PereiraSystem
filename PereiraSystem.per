@@ -810,6 +810,10 @@
     (up-get-point position-self gl-innerWallPoint2-x)
     (up-get-point position-self gl-innerWallPoint3-x)
     (up-get-point position-self gl-innerWallPoint4-x)
+    (up-get-point position-self gl-innerWallGatePoint1-x)
+    (up-get-point position-self gl-innerWallGatePoint2-x)
+    (up-get-point position-self gl-innerWallGatePoint3-x)
+    (up-get-point position-self gl-innerWallGatePoint4-x)    
     (up-get-point position-self gl-outerWallGatePoint1-x )
     (up-get-point position-self gl-outerWallGatePoint2-x )
     (up-get-point position-self gl-outerWallGatePoint3-x )
@@ -887,30 +891,30 @@
 (defrule ; move the inner gate lines 
     (up-compare-goal gl-positionQuadrantCode == 8) 
 =>    
-    (up-modify-goal gl-innerWallGatePoint1-y c:+ 8) 
-    (up-modify-goal gl-innerWallGatePoint2-y c:- 8) 
+    (up-modify-goal gl-innerWallGatePoint1-y c:+ 2) 
+    (up-modify-goal gl-innerWallGatePoint2-y c:- 2) 
     (disable-self)
 )
 
 (defrule 
     (up-compare-goal gl-positionQuadrantCode == 6) 
 =>    
-    (up-modify-goal gl-innerWallGatePoint2-x c:- 8) 
-    (up-modify-goal gl-innerWallGatePoint3-x c:+ 8) 
+    (up-modify-goal gl-innerWallGatePoint2-x c:- 2) 
+    (up-modify-goal gl-innerWallGatePoint3-x c:+ 2) 
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 2) 
 =>    
-    (up-modify-goal gl-innerWallGatePoint3-y c:- 8) 
-    (up-modify-goal gl-innerWallGatePoint4-y c:+ 8)  
+    (up-modify-goal gl-innerWallGatePoint3-y c:- 2) 
+    (up-modify-goal gl-innerWallGatePoint4-y c:+ 2)  
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 4) 
 =>    
-    (up-modify-goal gl-innerWallGatePoint1-x c:- 8) 
-    (up-modify-goal gl-innerWallGatePoint4-x c:+ 8) 
+    (up-modify-goal gl-innerWallGatePoint1-x c:- 2) 
+    (up-modify-goal gl-innerWallGatePoint4-x c:+ 2) 
     (disable-self)
 )
 
@@ -1303,7 +1307,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (building-type-count 490 < 8)
+    ;(building-type-count 490 < 8)
 =>
     (up-build-line gl-innerWallGatePoint1-x gl-innerWallGatePoint2-x c: 490)
     ;(up-chat-data-to-self "inner wall gate north east start y: %d" g: gl-innerWallPoint1-y)
@@ -1313,7 +1317,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (building-type-count 497 < 8)      
+    ;(building-type-count 497 < 8)      
 =>
     (up-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 497l)
     ;(up-chat-data-to-self "inner wall gate south east start y: %d" g: gl-innerWallPoint2-y)
@@ -1323,7 +1327,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-     (building-type-count 490 < 8)    
+    ;(building-type-count 490 < 8)    
 =>
     (up-build-line gl-innerWallGatePoint3-x gl-innerWallGatePoint4-x c: 490)
     ;(up-chat-data-to-self "inner wall gate south west start y: %d" g: gl-innerWallPoint3-y)
@@ -1333,7 +1337,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (building-type-count 497 < 8)      
+    ;(building-type-count 497 < 8)      
 =>
     (up-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 497)
     (up-chat-data-to-self "inner wall gate north west start y: %d" g: gl-innerWallPoint3-y)
