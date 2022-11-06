@@ -855,30 +855,30 @@
 (defrule ; move the gate lines 
     (up-compare-goal gl-positionQuadrantCode == 8) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-y c:+ 14) 
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 14) 
+    (up-modify-goal gl-outerWallGatePoint1-y c:+ 10) 
+    (up-modify-goal gl-outerWallGatePoint2-y c:- 10) 
     (disable-self)
 )
 
 (defrule ; move the gate lines 
     (up-compare-goal gl-positionQuadrantCode == 6) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint2-x c:- 14) 
-    (up-modify-goal gl-outerWallGatePoint3-x c:+ 14) 
+    (up-modify-goal gl-outerWallGatePoint2-x c:- 10) 
+    (up-modify-goal gl-outerWallGatePoint3-x c:+ 10) 
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 2) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 14) 
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 14)  
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 10) 
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 10)  
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-positionQuadrantCode == 4) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 14) 
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 14) 
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 10) 
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 10) 
     (disable-self)
 )
 
