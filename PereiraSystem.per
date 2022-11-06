@@ -734,6 +734,7 @@
     (set-goal gl-positionYisLow 1)(disable-self)
 )
 
+
 ; SAY 1 OF 9 POSITIONS TO ALLIES AND STORE POSITION IN A CODE WHILE WE ARE AT IT
 (defrule
     (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisHigh == 1)
@@ -797,6 +798,20 @@
     (chat-to-allies "IM AT THE WEST, IN THE CORNER!")
     (set-goal gl-positionQuadrantCode 9)
     (up-send-flare position-self)(disable-self)  
+)
+
+; CHECK X COMPARED TO Y FOR CORNER POSITIONS
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 1)
+    (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
+=>
+    (chat-to-all "my x is lower than y")(disable-self)
+)
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 1)
+    (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
+=>
+    (chat-to-all "my x is higher than y")(disable-self)
 )
 
 (defrule 
