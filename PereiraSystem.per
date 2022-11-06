@@ -1187,11 +1187,14 @@
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (or
-        (up-compare-goal gl-positionQuadrantCode == 2)
-        (and
-            (up-compare-goal gl-positionQuadrantCode == 1)
-            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
-        )
+        (up-compare-goal gl-positionQuadrantCode == 2) ;not corner
+        (and                
+            (up-compare-goal gl-myPosition-y g:< gl-myPosition-x) ;corners close to high x                   
+            (or
+                (up-compare-goal gl-positionQuadrantCode == 3)
+                (up-compare-goal gl-positionQuadrantCode == 1)
+            )
+        )            
     )
     ;(building-type-count-total palisade-wall > 0)
     ;(up-compare-goal gl-palisadeGateCounter < 150)
