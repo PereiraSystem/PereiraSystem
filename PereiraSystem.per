@@ -1308,14 +1308,15 @@
     (up-chat-data-to-self "inner wall gate south east end y: %d" g: gl-innerWallGatePoint3-y) 
 )
 
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
+    (up-compare-goal gl-positionQuadrantCode == 4)
     (building-type-count 497 < 6)      
 =>
     (up-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 497)
-    ;(up-chat-data-to-self "inner wall gate north west start y: %d" g: gl-innerWallGatePoint4-y)
-    ;(up-chat-data-to-self "inner wall gate north west end y: %d" g: gl-innerWallGatePoint1-y)      
+    (up-chat-data-to-self "inner wall gate north west start y: %d" g: gl-innerWallGatePoint4-y)
+    (up-chat-data-to-self "inner wall gate north west end y: %d" g: gl-innerWallGatePoint1-y)      
 )
 
 ; INNER STONE WALL
