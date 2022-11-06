@@ -380,7 +380,6 @@
 
 ; MARKET
 (defrule(true)
-    (amount-exploration > 3)
     (building-type-count town-center > 0)  
     (building-type-count-total market == 0)
     (or
@@ -400,7 +399,7 @@
 =>
     (chat-local-to-self "Trying To Build Market 1 - place control")
     ;(up-set-placement-data my-player-number market c:+ 32)
-    (up-set-placement-data my-player-number town-center c: 32)    
+    (up-set-placement-data my-player-number town-center c:+ 32)    
     (up-build place-control 0 c: market)   
 )
 
