@@ -821,72 +821,52 @@
     (disable-self)           
 )
 
+; CREATE OUTER WALL SHAPE ACCORDING TO OUTER PERIMETER SIZE
 (defrule
     (true) 
 =>    
-    (up-modify-goal gl-wallPoint1-x g:+ gl-outerWallPerimeter) ; 1 north
+    (up-modify-goal gl-wallPoint1-x g:+ gl-outerWallPerimeter)
     (up-modify-goal gl-wallPoint1-y g:- gl-outerWallPerimeter) 
-    (up-modify-goal gl-wallPoint2-x g:+ gl-outerWallPerimeter) ; 2 east
+    (up-modify-goal gl-wallPoint2-x g:+ gl-outerWallPerimeter)
     (up-modify-goal gl-wallPoint2-y g:+ gl-outerWallPerimeter) 
-    (up-modify-goal gl-wallPoint3-x g:- gl-outerWallPerimeter) ; 3 south
+    (up-modify-goal gl-wallPoint3-x g:- gl-outerWallPerimeter)
     (up-modify-goal gl-wallPoint3-y g:+ gl-outerWallPerimeter) 
-    (up-modify-goal gl-wallPoint4-x g:- gl-outerWallPerimeter) ; 4 west
+    (up-modify-goal gl-wallPoint4-x g:- gl-outerWallPerimeter)
     (up-modify-goal gl-wallPoint4-y g:- gl-outerWallPerimeter)  
-
-    (up-modify-goal gl-innerWallPoint1-x g:+ gl-innerWallPerimeter) ; 1 north
-    (up-modify-goal gl-innerWallPoint1-y g:- gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallPoint2-x g:+ gl-innerWallPerimeter) ; 2 east
-    (up-modify-goal gl-innerWallPoint2-y g:+ gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallPoint3-x g:- gl-innerWallPerimeter) ; 3 south
-    (up-modify-goal gl-innerWallPoint3-y g:+ gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallPoint4-x g:- gl-innerWallPerimeter) ; 4 west
-    (up-modify-goal gl-innerWallPoint4-y g:- gl-innerWallPerimeter)  
-    (disable-self)           
+    (disable-self)
 )
 
+; CREATE OUTER GATES SHAPE ACCORDING TO PERIMETER SIZE
 (defrule
-    (true) ;copy the outer wall shape to outer gate lines shap
+    (true) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-x g:+ gl-outerWallPerimeter) ; 1 north
+    (up-modify-goal gl-outerWallGatePoint1-x g:+ gl-outerWallPerimeter) 
     (up-modify-goal gl-outerWallGatePoint1-y g:- gl-outerWallPerimeter) 
-    (up-modify-goal gl-outerWallGatePoint2-x g:+ gl-outerWallPerimeter) ; 2 east
+    (up-modify-goal gl-outerWallGatePoint2-x g:+ gl-outerWallPerimeter)
     (up-modify-goal gl-outerWallGatePoint2-y g:+ gl-outerWallPerimeter) 
-    (up-modify-goal gl-outerWallGatePoint3-x g:- gl-outerWallPerimeter) ; 3 south
+    (up-modify-goal gl-outerWallGatePoint3-x g:- gl-outerWallPerimeter)
     (up-modify-goal gl-outerWallGatePoint3-y g:+ gl-outerWallPerimeter) 
-    (up-modify-goal gl-outerWallGatePoint4-x g:- gl-outerWallPerimeter) ; 4 west
+    (up-modify-goal gl-outerWallGatePoint4-x g:- gl-outerWallPerimeter)
     (up-modify-goal gl-outerWallGatePoint4-y g:- gl-outerWallPerimeter)  
     (disable-self)           
 )
 
-(defrule ; move the gate lines 
-    (up-compare-goal gl-positionQuadrantCode == 8) 
-=>    
-    (up-modify-goal gl-outerWallGatePoint1-y c:+ 10) 
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 10) 
-    (disable-self)
-)
+; CREATE INNER WALL SHAPE ACCORDING TO INNER PERIMETER SIZE
 (defrule
-    (up-compare-goal gl-positionQuadrantCode == 6) 
-=>    
-    (up-modify-goal gl-outerWallGatePoint2-x c:- 10) 
-    (up-modify-goal gl-outerWallGatePoint3-x c:+ 10) 
-    (disable-self)
-)
-(defrule
-    (up-compare-goal gl-positionQuadrantCode == 2) 
-=>    
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 10) 
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 10)  
-    (disable-self)
-)
-(defrule
-    (up-compare-goal gl-positionQuadrantCode == 4) 
-=>    
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 10) 
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 10) 
-    (disable-self)
+    (true) 
+=>   
+    (up-modify-goal gl-innerWallPoint1-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallPoint1-y g:- gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerWallPoint2-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallPoint2-y g:+ gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerWallPoint3-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallPoint3-y g:+ gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerWallPoint4-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallPoint4-y g:- gl-innerWallPerimeter)  
+    (disable-self)           
 )
 
+; CREATE INNER GATES SHAPE ACCORDING TO PERIMETER SIZE
 (defrule
     (true) 
 =>    
@@ -1112,6 +1092,36 @@
     (set-goal gl-dontBuildNorthWestWall 1)(disable-self) 
 ) ; problem, now the corners might have 2 walls disabled
 
+; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
+; NOT CORNER POSITIONS
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 8) 
+=>    
+    (up-modify-goal gl-outerWallGatePoint1-y c:+ 10) 
+    (up-modify-goal gl-outerWallGatePoint2-y c:- 10) 
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 6) 
+=>    
+    (up-modify-goal gl-outerWallGatePoint2-x c:- 10) 
+    (up-modify-goal gl-outerWallGatePoint3-x c:+ 10) 
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 2) 
+=>    
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 10) 
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 10)  
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-positionQuadrantCode == 4) 
+=>    
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 10) 
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 10) 
+    (disable-self)
+)
 
 ; BUILD THE OUTER PALISADE GATES 
 (defrule 
@@ -1205,7 +1215,7 @@
     (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: palisade-wall)
 )
 
-; INNER STONE WALL
+; INNER STONE WALL SECTION
 (defrule
     (true)
     (current-age >= castle-age)
@@ -1217,7 +1227,7 @@
     (disable-self)
 )
 
-; MAKING THE INNER WALL GATE SECTION SMALLER THAN INNER WALL SECTION
+; MAKE THE INNER WALL GATE SECTION SMALLER THAN INNER WALL SECTION
 ; NOT CORNER POSITIONS
 (defrule 
     (up-compare-goal gl-positionQuadrantCode == 8) 
