@@ -1758,18 +1758,16 @@
     ;(up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
 =>
     (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
-    (chat-local-to-self "BUILDING SOUTH EAST PALISADE GATES")
+    ;(chat-local-to-self "BUILDING SOUTH EAST PALISADE GATES")
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
-    (building-type-count-total 796 < 3)
-    (building-type-count-total 793 < 3)
-    (building-type-count-total 794 < 3)
-    (up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
+    ;(building-type-count-total 796 < 3)
+    ;(up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
 =>
     (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
-    (chat-local-to-self "BUILDING SOUTH WEST PALISADE GATES")
+    ;(chat-local-to-self "BUILDING SOUTH WEST PALISADE GATES")
 )
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
@@ -1778,13 +1776,12 @@
     ;(up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)    
 =>
     (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
-    (chat-local-to-self "BUILDING NORTH WEST PALISADE GATES")
+    ;(chat-local-to-self "BUILDING NORTH WEST PALISADE GATES")
 )
 
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (or(building-type-count 792 > 0)(building-type-count 796 > 0))
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
@@ -1792,19 +1789,18 @@
     (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: palisade-wall)
 )
 (defrule
-    (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    ;(building-type-count 789 > 0)    
+    (up-compare-goal gl-dontBuildSouthEastWall == 0) 
     (unit-type-count-total villager > 5)
-    (building-type-count-total barracks > 0)     
-    (wood-amount > 200)   
+    (building-type-count-total barracks > 0)
+    (wood-amount > 200)
 =>
     (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: palisade-wall)
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (unit-type-count-total villager > 5)
-    (building-type-count-total barracks > 0)      
-    (wood-amount > 200)    
+    (building-type-count-total barracks > 0)
+    (wood-amount > 200)
 =>
     (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: palisade-wall)
 )
@@ -1840,30 +1836,28 @@
 )
 
 (defrule
-    (up-compare-goal gl-buildSouthWestGates == 1) 
-=>    
-    (up-modify-goal gl-innerWallGatePoint3-y c:- 8) 
+    (up-compare-goal gl-buildSouthWestGates == 1)
+=>
+    (up-modify-goal gl-innerWallGatePoint3-y c:- 8)
     (up-modify-goal gl-innerWallGatePoint4-y c:+ 8)  
     (disable-self)
 )
 
-(defrule 
-    (up-compare-goal gl-buildSouthEastGates == 1) 
-=>    
-    (up-modify-goal gl-innerWallGatePoint2-x c:- 8) 
+(defrule
+    (up-compare-goal gl-buildSouthEastGates == 1)
+=>
+    (up-modify-goal gl-innerWallGatePoint2-x c:- 8)
     (up-modify-goal gl-innerWallGatePoint3-x c:+ 8) 
     (disable-self)
 )
 
-(defrule 
-    (up-compare-goal gl-buildNorthWestGates == 1)   
-=>    
-    (up-modify-goal gl-innerWallGatePoint4-x c:+ 8) 
-    (up-modify-goal gl-innerWallGatePoint1-x c:- 8) 
+(defrule
+    (up-compare-goal gl-buildNorthWestGates == 1)
+=>
+    (up-modify-goal gl-innerWallGatePoint4-x c:+ 8)
+    (up-modify-goal gl-innerWallGatePoint1-x c:- 8)
     (disable-self)
 )
-
-
 
 ; BUILDING THE INNER WALL GATES
 ; 490 descending foundation, 497 ascending f
@@ -1871,7 +1865,7 @@
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)
-    (building-type-count 490 < 6)
+    (building-type-count 490 < 4)
     ;(up-can-build-line gl-innerWallGatePoint1-x gl-innerWallGatePoint2-x c: 490)    
 =>
     (up-build-line gl-innerWallGatePoint1-x gl-innerWallGatePoint2-x c: 490)
@@ -1884,35 +1878,35 @@
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
     (building-type-count 490 < 4)
-    (up-can-build-line gl-innerWallGatePoint3-x gl-innerWallGatePoint4-x c: 490)        
+    (up-can-build-line gl-innerWallGatePoint3-x gl-innerWallGatePoint4-x c: 490)
 =>
     (up-build-line gl-innerWallGatePoint3-x gl-innerWallGatePoint4-x c: 490)
     ;(up-chat-data-to-self "inner wall gate south west start y: %d" g: gl-innerWallGatePoint3-y)
-    ;(up-chat-data-to-self "inner wall gate south west end y: %d" g: gl-innerWallGatePoint4-y)  
+    ;(up-chat-data-to-self "inner wall gate south west end y: %d" g: gl-innerWallGatePoint4-y)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-buildSouthEastGates == 1) 
+    (up-compare-goal gl-buildSouthEastGates == 1)
     (building-type-count 487 < 4)
-    (up-can-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 487)         
+    (up-can-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 487)
 =>
     (up-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 487)
     ;(up-chat-data-to-self "inner wall gate south east start y: %d" g: gl-innerWallGatePoint2-y)
-    ;(up-chat-data-to-self "inner wall gate south east end y: %d" g: gl-innerWallGatePoint3-y) 
+    ;(up-chat-data-to-self "inner wall gate south east end y: %d" g: gl-innerWallGatePoint3-y)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-buildNorthWestGates == 1)   
+    (up-compare-goal gl-buildNorthWestGates == 1)
     (building-type-count 487 < 4)
-    (up-can-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 487)         
+    (up-can-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 487)
 =>
     (up-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 487)
     ;(up-chat-data-to-self "inner wall gate north west start y: %d" g: gl-innerWallGatePoint4-y)
-    ;(up-chat-data-to-self "inner wall gate north west end y: %d" g: gl-innerWallGatePoint1-y)      
+    ;(up-chat-data-to-self "inner wall gate north west end y: %d" g: gl-innerWallGatePoint1-y)
 )
 
 ; BUILDING THE INNER STONE WALL
@@ -1931,7 +1925,7 @@
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
-    ;(up-chat-data-to-self "inner wall south east end y: %d" g: gl-innerWallPoint3-y) 
+    ;(up-chat-data-to-self "inner wall south east end y: %d" g: gl-innerWallPoint3-y)
 )
 
 (defrule
@@ -1940,7 +1934,7 @@
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south west start y: %d" g: gl-innerWallPoint3-y)
-    ;(up-chat-data-to-self "inner wall south west end y: %d" g: gl-innerWallPoint4-y)  
+    ;(up-chat-data-to-self "inner wall south west end y: %d" g: gl-innerWallPoint4-y)
 )
 
 (defrule
@@ -1949,15 +1943,5 @@
 =>
     (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north west start y: %d" g: gl-innerWallPoint3-y)
-    ;(up-chat-data-to-self "inner wall north west end y: %d" g: gl-innerWallPoint4-y)      
-)
-
-
-
-(defrule
-	(game-time > 180)
-=>
-	(up-drop-resources food c: 15)
-    (chat-local-to-self "DROP THAT FOOD!")
-	(disable-self)
+    ;(up-chat-data-to-self "inner wall north west end y: %d" g: gl-innerWallPoint4-y)
 )
