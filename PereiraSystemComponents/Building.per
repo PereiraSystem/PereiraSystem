@@ -1585,8 +1585,8 @@
         (up-compare-goal gl-positionQuadrantCode == 8) ;south west center 
         (or
             (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
+                (up-compare-goal gl-myPosition-x g:< gl-mapSizeOneTenth)            
+                (up-compare-goal gl-positionQuadrantCode == 7)           
             )
             (and 
                 (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
@@ -1622,8 +1622,8 @@
         (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
         (or
             (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
+                (up-compare-goal gl-myPosition-x g:>= gl-mapSizeOneTenth)            
+                (up-compare-goal gl-positionQuadrantCode == 7)           
             )
             (and 
                 (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
