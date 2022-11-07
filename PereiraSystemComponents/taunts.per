@@ -55,6 +55,13 @@
 )
 
 (defrule
+	(taunt-detected any-ally 31)
+	(up-players-in-game enemy == 0)
+=>
+	(acknowledge-taunt any-ally 31)
+    (chat-to-allies "WE HAVE NO ENEMIES RETARD!")
+)
+(defrule
 	(town-under-attack)
 	(up-compare-sn sn-maximum-town-size < 40)
 	(game-time < 1500) ; 25 min

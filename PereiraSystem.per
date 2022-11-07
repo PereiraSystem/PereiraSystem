@@ -145,10 +145,11 @@
 )
 
 ; ATTACK TIMER 21
-(defrule(true)=>(enable-timer 21 2100)(disable-self)) ;35 min
+(defrule(up-players-in-game enemy > 0)=>(enable-timer 21 2100)(disable-self)) ;35 min
 
 (defrule
     (timer-triggered 21)
+    (up-players-in-game enemy > 0)
 =>
 	(disable-timer 21)
     (enable-timer 21 3)
@@ -163,7 +164,7 @@
 )
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(up-players-in-game enemy > 0)
 =>
     (chat-local-to-self "IMPERIAL AGE ATTACK!")
     (set-strategic-number sn-number-attack-groups 1)
@@ -195,7 +196,7 @@
     (disable-self)
 )
 
-(defrule(true)=>(enable-timer 22 3300)(disable-self)) ; 55 min
+(defrule(up-players-in-game enemy > 0)=>(enable-timer 22 3300)(disable-self)) ; 55 min
 (defrule
     (or
         (timer-triggered 22)
@@ -217,7 +218,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)
+	(current-age == imperial-age)(up-players-in-game enemy > 0)
 =>
 	(up-retreat-now)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
@@ -227,7 +228,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)
+	(current-age == imperial-age)(up-players-in-game enemy > 0)
     (population-headroom == 0)
     (housing-headroom == 0)
 =>
@@ -239,7 +240,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)
+	(current-age == imperial-age)(up-players-in-game enemy > 0)
     (research-completed my-unique-research)
 =>
 	(up-retreat-now)
@@ -250,7 +251,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)
+	(current-age == imperial-age)(up-players-in-game enemy > 0)
     (research-completed my-unique-unit-upgrade)
 =>
 	(up-retreat-now)
@@ -261,7 +262,7 @@
 )
 
 (defrule
-	(current-age == imperial-age)
+	(current-age == imperial-age)(up-players-in-game enemy > 0)
     (military-population < 40)
     (players-building-type-count focus-player castle > 0)
 =>
