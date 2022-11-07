@@ -89,7 +89,7 @@
 
 (defrule
 	(unit-type-count-total villager > 1)
-    (wood-amount > 15000)(food-amount > 15000)
+    (wood-amount > 11000)(food-amount > 11000)
 =>
 	(chat-local-to-self "DELETING VILLAGERS!")  
     (up-delete-idle-units idle-type-villager)
