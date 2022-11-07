@@ -125,7 +125,7 @@
 	(enemy-buildings-in-town)
 =>
 	(acknowledge-taunt any-ally 48)
-    (chat-to-allies "I Cant Help You, Enemy Buildings In My Town!")	
+    (chat-to-allies "I Can´t Help You, Enemy Buildings In My Town!")	
 )
 
 (defrule
@@ -133,7 +133,7 @@
 	(town-under-attack)
 =>
 	(acknowledge-taunt any-ally 48)
-    (chat-to-allies "I Cant Help You, Im Under Attack!")	
+    (chat-to-allies "I Can´t Help You, Im Under Attack!")	
 )
 
 (defrule
@@ -141,7 +141,7 @@
 	(military-population == 0)
 =>
 	(acknowledge-taunt any-ally 48)
-    (chat-to-allies "I Cant Help You, I Have No Soldiers Dude!")	
+    (chat-to-allies "I Can´t Help You, I Have No Soldiers Dude!")	
 )
 
 ; ACCEPT
@@ -176,7 +176,7 @@
 	(taunt-detected any-ally 45)
 =>
 	(acknowledge-taunt any-ally 45)    
-	(chat-to-allies "Ok We Retreat!")	
+	(chat-to-allies "Ok, We Retreat!")	
 )
 
 

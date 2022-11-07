@@ -1690,7 +1690,7 @@
 
 ; BUILD THE OUTER PALISADE GATES
 (defrule
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0) ;CAN REMOVE?
     (up-compare-goal gl-buildNorthEastGates == 1)  
     (up-can-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
 =>   
@@ -1755,6 +1755,26 @@
 =>
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint4-x c: 792)
     (chat-local-to-self "BUILDING NORTH WEST PALISADE GATES BACKWARDS")
+)
+
+; TRYING TO BUILD SECONDARY PALISADE GATES
+(defrule
+    ;(false)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)  
+    (up-can-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint1-x c: 792)
+=>   
+    (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint1-x c: 792)
+    (chat-local-to-self "BUILDING SECONDARY GATES!!!!!!")    
+)
+(defrule
+    ;(false)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)  
+    (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint2-x c: 792)
+=>   
+    (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint2-x c: 792)
+    (chat-local-to-self "BUILDING SECONDARY GATES!!!!!!")    
 )
 
 ; CHECK IF WE ALREADY BUILT SOME PALISADE GATES BEFORE BUILDING THE PALISADE
