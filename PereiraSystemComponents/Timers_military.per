@@ -1,4 +1,4 @@
-
+; MILITARY TIMERS 26 TO 50 RESERVED
 ; TIMER 11 MILITARY REPORT
 (defrule(true)=>(enable-timer 11 60)(disable-self)) 
 (defrule
@@ -48,23 +48,11 @@
     (set-strategic-number sn-maximum-attack-group-size 150)
     (set-strategic-number sn-percent-attack-soldiers 100)
 	(set-strategic-number sn-garrison-rams 1)     
+    ;(set-strategic-number sn-target-player-number 0) ; <- cancels helping!!!
+    ; better auto cancel after some time
     (set-goal gl-weAreAttacking 1)      
     (attack-now)
     (chat-to-allies "31 TIMER ATTACK!")    
-)
-
-
-
-(defrule
-    (current-age == imperial-age)(goal gl-weAreAttacking 1)
-    (military-population < 40)
-    (food-amount < 3000)
-=>
-	(up-retreat-now)(chat-local-to-self "IMPERIAL AGE RETREAT!")
-    (set-strategic-number sn-number-attack-groups 0)
-    (set-strategic-number sn-enemy-sighted-response-distance 1)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)    
-    (set-goal gl-weAreAttacking 0)        
 )
 
 (defrule 
@@ -86,7 +74,7 @@
     (housing-headroom == 0)    
 =>
 	(disable-timer 22)
-    (enable-timer 22 10)
+    (enable-timer 22 30)
     (chat-local-to-self "FINAL ATTACK! NO RETREATING*!")
     (set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 1)
@@ -95,61 +83,17 @@
     (set-strategic-number sn-maximum-town-size 512)    
     ;(set-goal gl-weAreAttacking 1)      
     (attack-now)
-    (chat-to-allies "48")    
+    (chat-to-allies "48 FINAL ATTACK!")    
 )
 
+; RETREAT
 (defrule
 	(current-age == imperial-age)(up-players-in-game enemy > 0)
-=>
-	(up-retreat-now)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "IMPERIAL AGE, EVERYONE GO BACK!")
-    (chat-to-allies "45")
-	(disable-self)
-)
-
-(defrule
-	(current-age == imperial-age)(up-players-in-game enemy > 0)
-    (population-headroom == 0)
-    (housing-headroom == 0)
-=>
-	(up-retreat-now)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "MAX POP, EVERYONE GO BACK!")
-    (chat-to-allies "45")
-	(disable-self)
-)
-
-(defrule
-	(current-age == imperial-age)(up-players-in-game enemy > 0)
-    (research-completed my-unique-research)
-=>
-	(up-retreat-now)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "UNIQUE RESEARCH COMPLETE, EVERYONE GO BACK!")
-    (chat-to-allies "45")
-	(disable-self)
-)
-
-(defrule
-	(current-age == imperial-age)(up-players-in-game enemy > 0)
-    (research-completed my-unique-unit-upgrade)
-=>
-	(up-retreat-now)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "UNIQUE UNIT UPGRADE COMPLETE, EVERYONE GO BACK!")
-    (chat-to-allies "45")
-	(disable-self)
-)
-
-(defrule
-	(current-age == imperial-age)(up-players-in-game enemy > 0)
-    (military-population < 40)
+    (military-population < 2)
     (players-building-type-count focus-player castle > 0)
 =>
 	(up-retreat-now)
     (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "ENEMY HAS CASTLE, MIL POP LOW, GO BACK!")
-    (chat-to-allies "45")
+    (chat-to-allies "45 I HAVE NO SOLDIERS TO DESTROY A CASTLE!")
 	(disable-self)
 )
