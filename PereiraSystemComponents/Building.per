@@ -1322,10 +1322,13 @@
 =>   
     (up-modify-goal gl-innerWallGatePoint1-x g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallGatePoint1-y g:- gl-innerWallPerimeter)
+
     (up-modify-goal gl-innerWallGatePoint2-x g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallGatePoint2-y g:+ gl-innerWallPerimeter)
+
     (up-modify-goal gl-innerWallGatePoint3-x g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallGatePoint3-y g:+ gl-innerWallPerimeter)
+
     (up-modify-goal gl-innerWallGatePoint4-x g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallGatePoint4-y g:- gl-innerWallPerimeter)
     (disable-self)           
@@ -1336,14 +1339,20 @@
 =>    
     (up-modify-goal gl-innerWallSecondaryGatePoint1-x g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallSecondaryGatePoint1-y g:- gl-innerWallPerimeter) 
+
     (up-modify-goal gl-innerWallSecondaryGatePoint2-x g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallSecondaryGatePoint2-y g:- gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallSecondaryGatePoint3-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallSecondaryGatePoint3-y g:+ gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallSecondaryGatePoint4-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallSecondaryGatePoint4-y g:- gl-innerWallPerimeter)     
 
-  
+    (up-modify-goal gl-innerWallSecondaryGatePoint3-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallSecondaryGatePoint3-y g:+ gl-innerWallPerimeter)
+
+    (up-modify-goal gl-innerWallSecondaryGatePoint4-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallSecondaryGatePoint4-y g:- gl-innerWallPerimeter)   
+
+    (up-chat-data-to-self "INNER WALL POINT 1-x: %d" g: gl-innerWallPoint1-x)
+    (up-chat-data-to-self "INNER WALL POINT 1-y: %d" g: gl-innerWallPoint1-y)    
+    (up-chat-data-to-self "SEC. GATE 1X: %d" g: gl-innerWallSecondaryGatePoint1-x)
+    (up-chat-data-to-self "SEC. GATE 1Y: %d" g: gl-innerWallSecondaryGatePoint1-y)    
 
     (disable-self)           
 )
@@ -2064,11 +2073,11 @@
     (up-compare-goal gl-buildNorthEastGates == 1)
     ;(up-can-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 497)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallGatePoint1-x c: 497)
-    (up-chat-data-to-self "NORTH EAST INNER SEC. GATE START X: %d" g: gl-innerWallSecondaryGatePoint4-x)
-    (up-chat-data-to-self "NORTH EAST INNER SEC. GATE START Y: %d" g: gl-innerWallSecondaryGatePoint4-y)    
-    (up-chat-data-to-self "NORTH EAST INNER SEC. GATE END X: %d" g: gl-innerWallSecondaryGatePoint1-x)
-    (up-chat-data-to-self "NORTH EAST INNER SEC. GATE END Y: %d" g: gl-innerWallSecondaryGatePoint1-y) 
+    (up-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallGatePoint4-x c: 497)
+    (up-chat-data-to-self " SEC. GATE  1X: %d" g: gl-innerWallSecondaryGatePoint1-x)
+    (up-chat-data-to-self " SEC. GATE 1Y: %d" g: gl-innerWallSecondaryGatePoint1-y)    
+    (up-chat-data-to-self "SEC. GATE 4X: %d" g: gl-innerWallSecondaryGatePoint4-x)
+    (up-chat-data-to-self "SEC. GATE 4Y: %d" g: gl-innerWallSecondaryGatePoint4-y) 
 )
 ; BUILDING THE INNER WALL GATES
 ; (CAN TRY TO BUILD IN 2 DIRECTIONS) (1 TO 2 AND 2 TO 1)
