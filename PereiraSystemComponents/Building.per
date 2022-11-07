@@ -1824,32 +1824,32 @@
 (defrule 
     (up-compare-goal gl-buildNorthEastGates == 1)
 =>    
-    (up-modify-goal gl-innerWallGatePoint1-y c:+ 8) 
-    (up-modify-goal gl-innerWallGatePoint2-y c:- 8) 
+    (up-modify-goal gl-innerWallGatePoint1-y c:+ 6) 
+    (up-modify-goal gl-innerWallGatePoint2-y c:- 6) 
     (disable-self)
 )
 
 (defrule
     (up-compare-goal gl-buildSouthWestGates == 1)
 =>
-    (up-modify-goal gl-innerWallGatePoint3-y c:- 8)
-    (up-modify-goal gl-innerWallGatePoint4-y c:+ 8)  
+    (up-modify-goal gl-innerWallGatePoint3-y c:- 6)
+    (up-modify-goal gl-innerWallGatePoint4-y c:+ 6)  
     (disable-self)
 )
 
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
 =>
-    (up-modify-goal gl-innerWallGatePoint2-x c:- 8)
-    (up-modify-goal gl-innerWallGatePoint3-x c:+ 8) 
+    (up-modify-goal gl-innerWallGatePoint2-x c:- 6)
+    (up-modify-goal gl-innerWallGatePoint3-x c:+ 6) 
     (disable-self)
 )
 
 (defrule
     (up-compare-goal gl-buildNorthWestGates == 1)
 =>
-    (up-modify-goal gl-innerWallGatePoint4-x c:+ 8)
-    (up-modify-goal gl-innerWallGatePoint1-x c:- 8)
+    (up-modify-goal gl-innerWallGatePoint4-x c:+ 6)
+    (up-modify-goal gl-innerWallGatePoint1-x c:- 6)
     (disable-self)
 )
 
