@@ -1794,6 +1794,7 @@
     )    
 =>    
     (set-goal gl-weAlreadyGotPalisadeGates 1)
+    (chat-local-to-self "SOME PALISADE GATES BUILT!")    
 )
 
 ; BUILDING THE OUTER PALISADE WALL
@@ -1883,14 +1884,20 @@
 (defrule
     (or
         (or
-            (building-type-count-total 490 > 0)
+            (or
+                (building-type-count-total 490 > 0)
+                (building-type-count-total 95 > 0)
+
             (or
                 (building-type-count-total 88 > 0)
                 (building-type-count-total 91 > 0)
             )
         )
         (or
-            (building-type-count-total 487 > 0)
+            (or
+                (building-type-count-total 487 > 0)
+                (building-type-count-total 81 > 0)
+            )
             (or
                 (building-type-count-total 64 > 0)
                 (building-type-count-total 78 > 0)
@@ -1899,6 +1906,7 @@
     )    
 =>    
     (set-goal gl-weAlreadyGotStoneGates 1)
+    (chat-local-to-self "SOME STONE GATES BUILT!")
 )
 
 ; BUILDING THE INNER WALL GATES
