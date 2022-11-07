@@ -150,3 +150,39 @@
     (set-goal gl-dudeHasMilitia 0)    
 )
 
+; DETECTING SHIPS
+(defrule
+    (players-unit-type-count any-enemy galley-line > 0)
+=>  
+    (set-goal gl-dudeHasGalleys 1)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy galley-line == 0)
+=>  
+    (set-goal gl-dudeHasGalleys 0)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy cannon-galleon-line > 0)
+=>  
+    (set-goal gl-dudeHasCannonShips 1)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy cannon-galleon-line == 0)
+=>  
+    (set-goal gl-dudeHasCannonShips 0)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy fire-ship > 0)
+=>  
+    (set-goal gl-dudeHasFireShips 1)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy fire-ship == 0)
+=>  
+    (set-goal gl-dudeHasFireShips 0)    
+)

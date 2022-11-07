@@ -1027,71 +1027,23 @@
 
 ; FIRE SHIP
 (defrule
-    (unit-type-count-total fire-ship-line < 4)
-    (wood-amount > 190)    
-    (or
-        (or 
-            (players-unit-type-count any-enemy galley-line > 0)
-            (players-building-type-count any-enemy dock > 0)
-        )
-        (or 
-            (players-unit-type-count any-enemy warship-class > 0)
-            (players-unit-type-count any-enemy cannon-galleon-line > 0)
-        )        
-    )
-    (can-train fire-ship-line)
-=>
-    (train fire-ship-line)
-)
-
-(defrule
-    (unit-type-count-total fire-ship-line < 5)
-    (building-type-count dock > 1)    
-    (wood-amount > 190)
-    (players-building-type-count any-enemy warship-class > 0)    
-    (can-train fire-ship-line)
-=>
-    (train fire-ship-line)
-)
-
-(defrule
-    (unit-type-count-total fire-ship-line < 7)
-    (building-type-count dock > 2)    
-    (wood-amount > 190)
-    (players-building-type-count any-enemy warship-class > 0)    
-    (can-train fire-ship-line)
-=>
-    (train fire-ship-line)
-)
-
-(defrule
-    (unit-type-count-total fire-ship-line < 9)
-    (building-type-count dock > 3)    
-    (wood-amount > 190)
-    (players-building-type-count any-enemy warship-class > 0)    
-    (can-train fire-ship-line)
-=>
-    (train fire-ship-line)
-)
-
-(defrule
-    (unit-type-count-total fire-ship-line < 11)
-    (building-type-count dock > 4)    
-    (wood-amount > 190)
-    (players-building-type-count any-enemy warship-class > 0)    
-    (can-train fire-ship-line)
-=>
-    (train fire-ship-line)
-)
-
-(defrule
-    (current-age == imperial-age)
-    (research-completed ri-careening)
-    (players-building-type-count any-enemy warship-class > 0)    
+    (or(up-compare-goal gl-dudeHasGalleys == 1)
+    (up-compare-goal gl-dudeHasCannonShips == 1))
+    (wood-amount > 190)     
     (unit-type-count-total fire-ship-line < 4)
     (can-train fire-ship-line)
 =>
     (train fire-ship-line)
+)
+
+; DEMO SHIP
+(defrule
+    (up-compare-goal gl-dudeHasFireShips == 1)
+    (wood-amount > 190)     
+    (unit-type-count-total demolition-ship-line < 4)
+    (can-train demolition-ship-line)
+=>
+    (train demolition-ship-line)
 )
 
 ; STABLE
