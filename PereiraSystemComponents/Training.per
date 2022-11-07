@@ -922,9 +922,7 @@
 ; SPECIAL SHIPS
 ; KOREANS
 (defrule
-    (unit-type-count-total turtle-ship-line < 4)
-    (research-completed ri-careening)
-    (current-age == imperial-age)    
+    (unit-type-count-total turtle-ship-line < 4)  
     (can-train turtle-ship-line)
 =>
     (train turtle-ship-line)
@@ -932,8 +930,7 @@
 
 ; VIKINGS
 (defrule
-    (unit-type-count-total longboat-line < 4)(research-completed ri-careening)
-    (current-age == imperial-age)    
+    (unit-type-count-total longboat-line < 4)  
     (can-train longboat-line)
 =>
     (train longboat-line)
@@ -941,8 +938,7 @@
 
 ; PORTUGUESE   
 (defrule
-    (unit-type-count-total caravel-line < 4)(research-completed ri-careening)
-    (current-age == imperial-age)
+    (unit-type-count-total caravel-line < 4)
     (can-train caravel-line)
 =>
     (train caravel-line)
@@ -951,15 +947,6 @@
 ; CANNON GALLEON
 (defrule
     (unit-type-count-total cannon-galleon-line < 4)
-    (can-train elite-cannon-galleon)
-=>
-    (train elite-cannon-galleon)
-)
-
-(defrule
-    (current-age == imperial-age)
-    (research-completed ri-careening)
-    (unit-type-count-total cannon-galleon-line < 4)
     (can-train cannon-galleon-line)
 =>
     (train cannon-galleon-line)
@@ -967,59 +954,9 @@
 
 ; GALLEY
 (defrule
-    (unit-type-count-total galley-line < 1)
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
+    (up-compare-goal gl-dudeHasExplosiveShips == 1)       
     (wood-amount > 350)
-    (can-train galley-line)
-=>
-    (train galley-line)
-)
-
-(defrule
-    (unit-type-count-total galley-line < 5)
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
-    (building-type-count dock > 1)    
-    (wood-amount > 190)
-    (can-train galley-line)
-=>
-    (train galley-line)
-)
-
-(defrule
-    (unit-type-count-total galley-line < 7)
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
-    (building-type-count dock > 2)    
-    (wood-amount > 190)
-    (can-train galley-line)
-=>
-    (train galley-line)
-)
-
-(defrule
-    (unit-type-count-total galley-line < 9)
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
-    (building-type-count dock > 3)    
-    (wood-amount > 190)
-    (can-train galley-line)
-=>
-    (train galley-line)
-)
-
-(defrule
-    (unit-type-count-total galley-line < 11)
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
-    (building-type-count dock > 4)    
-    (wood-amount > 190)
-    (can-train galley-line)
-=>
-    (train galley-line)
-)
-
-(defrule
-    (current-age == imperial-age)
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
-    (research-completed ri-careening)
-    (unit-type-count-total galley-line < 4)
+    (unit-type-count-total galley-line < 4)    
     (can-train galley-line)
 =>
     (train galley-line)
@@ -1029,7 +966,7 @@
 (defrule
     (or(up-compare-goal gl-dudeHasGalleys == 1)
     (up-compare-goal gl-dudeHasCannonShips == 1))
-    (wood-amount > 190)     
+    (wood-amount > 350)
     (unit-type-count-total fire-ship-line < 4)
     (can-train fire-ship-line)
 =>
@@ -1039,7 +976,7 @@
 ; DEMO SHIP
 (defrule
     (up-compare-goal gl-dudeHasFireShips == 1)
-    (wood-amount > 190)     
+    (wood-amount > 350)   
     (unit-type-count-total demolition-ship-line < 4)
     (can-train demolition-ship-line)
 =>
