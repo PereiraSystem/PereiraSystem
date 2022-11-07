@@ -89,6 +89,7 @@
 
 (defrule
 	(unit-type-count-total villager > 1)
+    (game-time > 240)
     (wood-amount > 11000)(food-amount > 11000)
 =>
 	(chat-local-to-self "DELETING VILLAGERS!")  
