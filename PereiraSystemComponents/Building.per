@@ -1882,29 +1882,9 @@
 
 ; CHECK IF WE ALREADY BUILT SOME STONE GATES BEFORE BUILDING THE WALL
 (defrule
-    (or
-        (or
-            (or
-                (building-type-count-total 490 > 0)
-                ;(building-type-count-total 95 > 0) ; ENDPIECES
-                (building-type-count-total 490 > 0)
-            )
-            (or
-                (building-type-count-total 88 > 0)
-                (building-type-count-total 91 > 0)
-            )
-        )
-        (or
-            (or
-                (building-type-count-total 487 > 0)
-                ;(building-type-count-total 81 > 0); ENDPIECES
-                (building-type-count-total 487 > 0)
-            )
-            (or
-                (building-type-count-total 64 > 0)
-                (building-type-count-total 78 > 0)
-            )
-        )
+    (or 
+        (building-type-count-total 490 > 0)
+        (building-type-count-total 487 > 0)
     )    
 =>    
     (set-goal gl-weAlreadyGotStoneGates 1)
