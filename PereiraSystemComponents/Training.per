@@ -922,6 +922,7 @@
 ; SPECIAL SHIPS
 ; KOREANS
 (defrule
+    (building-type-count-total dock > 1)
     (unit-type-count-total turtle-ship-line < 4)  
     (can-train turtle-ship-line)
 =>
@@ -930,6 +931,7 @@
 
 ; VIKINGS
 (defrule
+    (building-type-count-total dock > 1)
     (unit-type-count-total longboat-line < 4)  
     (can-train longboat-line)
 =>
@@ -938,6 +940,7 @@
 
 ; PORTUGUESE   
 (defrule
+    (building-type-count-total dock > 1)
     (unit-type-count-total caravel-line < 4)
     (can-train caravel-line)
 =>
