@@ -1884,66 +1884,76 @@
 )
 
 ; CHECK IF WE ALREADY BUILT SOME STONE GATES BEFORE BUILDING THE WALL
-
-(defrule ;DESCENDING
-    (or
-        (or ;NORMAL
-            (or
-                (building-type-count-total 490 > 0)
-                (building-type-count-total 490 > 0)            
-                ;(building-type-count-total 95 > 0) ; ENDPIECES
-            )
-            (or
-                (building-type-count-total 88 > 0) ;CLOSED
-                (building-type-count-total 91 > 0) ;OPEN
-            )
+;DESCENDING
+(defrule (false)
+    (or ;NORMAL
+        (or
+            (building-type-count-total 490 > 0)
+            (building-type-count-total 490 > 0)            
+            ;(building-type-count-total 95 > 0) ; ENDPIECES
         )
-        (or ;FORTIFIED
-            (or
-                (building-type-count-total 491 > 0)
-                (building-type-count-total 491 > 0)            
-                ;(building-type-count-total 92 > 0) ; ENDPIECES
-            )
-            (or
-                (building-type-count-total 85 > 0) ;CLOSED
-                (building-type-count-total 90 > 0) ;OPEN
-            )
-        )        
-    )
-=>    
-    (set-goal gl-weAlreadyGotStoneGates 1)
-    (chat-local-to-self "SOME 'DESCENDING' STONE GATES BUILT!")
-)
-
-(defrule ;ASCENDING
-    (or
-        (or ;NORMAL
-            (or
-                (building-type-count-total 487 > 0)
-                (building-type-count-total 487 > 0)            
-                ;(building-type-count-total 81 > 0) ; ENDPIECES
-            )
-            (or
-                (building-type-count-total 64 > 0) ;CLOSED
-                (building-type-count-total 78 > 0) ;OPEN
-            )
-        )
-        (or ;FORTIFIED
-            (or
-                (building-type-count-total 488 > 0)
-                (building-type-count-total 488 > 0)            
-                ;(building-type-count-total 80 > 0) ; ENDPIECES
-            )
-            (or
-                (building-type-count-total 63 > 0) ;CLOSED
-                (building-type-count-total 67 > 0) ;OPEN
-            )
+        (or
+            (building-type-count-total 88 > 0) ;CLOSED
+            (building-type-count-total 91 > 0) ;OPEN
         )
     )
 =>    
     (set-goal gl-weAlreadyGotStoneGates 1)
-    (chat-local-to-self "SOME 'ASCENDING' STONE GATES BUILT!")
+    (chat-local-to-self "SOME NORMAL 'DESCENDING' STONE GATES BUILT!")
 )
+
+(defrule (false)
+    (or ;FORTIFIED
+        (or
+            (building-type-count-total 491 > 0)
+            (building-type-count-total 491 > 0)            
+            ;(building-type-count-total 92 > 0) ; ENDPIECES
+        )
+        (or
+            (building-type-count-total 85 > 0) ;CLOSED
+            (building-type-count-total 90 > 0) ;OPEN
+        )
+    )        
+=>    
+    (set-goal gl-weAlreadyGotStoneGates 1)
+    (chat-local-to-self "SOME FORTIFIED 'DESCENDING' STONE GATES BUILT!")
+)
+;ASCENDING
+
+(defrule 
+    (or ;NORMAL
+        (or
+            (building-type-count-total 487 > 0)
+            (building-type-count-total 487 > 0)            
+            ;(building-type-count-total 81 > 0) ; ENDPIECES
+        )
+        (or
+            (building-type-count-total 64 > 0) ;CLOSED
+            (building-type-count-total 78 > 0) ;OPEN
+        )
+    )
+=>    
+    (set-goal gl-weAlreadyGotStoneGates 1)
+    (chat-local-to-self "SOME NORMAL 'ASCENDING' STONE GATES BUILT!")
+)
+
+(defrule
+    (or ;FORTIFIED
+        (or
+            (building-type-count-total 488 > 0)
+            (building-type-count-total 488 > 0)            
+            ;(building-type-count-total 80 > 0) ; ENDPIECES
+        )
+        (or
+            (building-type-count-total 63 > 0) ;CLOSED
+            (building-type-count-total 67 > 0) ;OPEN
+        )
+    )
+=>    
+    (set-goal gl-weAlreadyGotStoneGates 1)
+    (chat-local-to-self "SOME FORTIFIED 'ASCENDING' STONE GATES BUILT!")
+)
+
 
 (defrule(false)
     (or(building-type-count 490 > 0)
