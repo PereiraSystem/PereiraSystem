@@ -2043,31 +2043,22 @@
 ;----------------------------
 ; trying to build secondary wall gates
 ;south east side secondary gates
-(defrule (false)
+(defrule (true)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)
-    ;(up-can-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint3-x c: 497)    
+    (up-can-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint3-x c: 497)    
 =>
     (up-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint3-x c: 497)
-    (up-chat-data-to-self "secondary inner wall gate start x: %d" g: gl-innerWallSecondaryGatePoint2-x)    
-    (up-chat-data-to-self "secondary inner wall gate start y: %d" g: gl-innerWallSecondaryGatePoint2-y)
-    (up-chat-data-to-self "secondary inner wall gate end x: %d" g: gl-innerWallSecondaryGatePoint3-x)    
-    (up-chat-data-to-self "secondary inner wall gate end y: %d" g: gl-innerWallSecondaryGatePoint3-y)
 )
 
-(defrule (false)
+(defrule (true)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)
-    ;(up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 497)    
+    (up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 497)    
 =>
     (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 497)
-    (up-chat-data-to-self "secondary inner wall gate start x: %d" g: gl-innerWallSecondaryGatePoint2-x)    
-    (up-chat-data-to-self "secondary inner wall gate start y: %d" g: gl-innerWallSecondaryGatePoint2-y)
-    (up-chat-data-to-self "secondary inner wall gate end x: %d" g: gl-innerWallSecondaryGatePoint3-x)    
-    (up-chat-data-to-self "secondary inner wall gate end y: %d" g: gl-innerWallSecondaryGatePoint3-y)
-)
 
 ;north east secondary gates
 (defrule (true)
@@ -2089,9 +2080,7 @@
     (up-can-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 497)    
 =>
     (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallGatePoint1-x c: 497)
-    (up-chat-data-to-self " SEC. GATE  1X: %d" g: gl-innerWallSecondaryGatePoint1-x)
     (up-chat-data-to-self " SEC. GATE 1Y: %d" g: gl-innerWallSecondaryGatePoint1-y)    
-    (up-chat-data-to-self "SEC. GATE 4X: %d" g: gl-innerWallSecondaryGatePoint4-x)
     (up-chat-data-to-self "SEC. GATE 4Y: %d" g: gl-innerWallSecondaryGatePoint4-y) 
 )
 ; BUILDING THE INNER WALL GATES
