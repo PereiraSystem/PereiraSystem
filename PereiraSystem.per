@@ -114,6 +114,7 @@
 (defrule
 	(timer-triggered 11)
     (up-players-in-game enemy > 0)
+    (up-compare-goal gl-attackSoldierAmount > 0) 
 =>
 	(disable-timer 11)
     (enable-timer 11 90)               
