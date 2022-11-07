@@ -139,6 +139,7 @@
 (defrule
 	(taunt-detected any-ally 48)
 =>
+	(acknowledge-taunt any-ally 48)
     ;(set-strategic-number sn-task-ungrouped-soldiers 1)	
 	(set-strategic-number sn-target-player-number -1) ;put back to 0 when??
 	; sn-coop-share-attacking SET TO 1
@@ -164,8 +165,8 @@
 (defrule
 	(taunt-detected any-ally 45)
 =>
-    (chat-to-allies "OK WE RETREAT!")
-	(acknowledge-taunt any-ally 45)	
+	(acknowledge-taunt any-ally 45)    
+	(chat-to-allies "OK WE RETREAT!")	
 )
 
 

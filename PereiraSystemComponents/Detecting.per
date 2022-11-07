@@ -176,13 +176,25 @@
 )
 
 (defrule
-    (players-unit-type-count any-enemy fire-ship > 0)
+    (players-unit-type-count any-enemy fire-ship-line > 0)
 =>  
     (set-goal gl-dudeHasFireShips 1)    
 )
 
 (defrule
-    (players-unit-type-count any-enemy fire-ship == 0)
+    (players-unit-type-count any-enemy fire-ship-line == 0)
 =>  
     (set-goal gl-dudeHasFireShips 0)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy demolition-ship-line > 0)
+=>  
+    (set-goal gl-dudeHasExplosiveShips 1)    
+)
+
+(defrule
+    (players-unit-type-count any-enemy demolition-ship-line == 0)
+=>  
+    (set-goal gl-dudeHasExplosiveShips 0)    
 )
