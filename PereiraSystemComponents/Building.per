@@ -2044,15 +2044,6 @@
     (up-chat-data-to-self "secondary inner wall gate end y: %d" g: gl-innerWallSecondaryGatePoint3-y)
 )
 
-(defrule
-    (true)   
-=>
-    (up-chat-data-to-self "secondary inner wall gate start x: %d" g: gl-innerWallSecondaryGatePoint2-x)    
-    (up-chat-data-to-self "secondary inner wall gate start y: %d" g: gl-innerWallSecondaryGatePoint2-y)
-    (up-chat-data-to-self "secondary inner wall gate end x: %d" g: gl-innerWallSecondaryGatePoint3-x)    
-    (up-chat-data-to-self "secondary inner wall gate end y: %d" g: gl-innerWallSecondaryGatePoint3-y)
-)
-
 (defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
