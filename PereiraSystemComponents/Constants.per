@@ -219,24 +219,24 @@
 (defrule
     (current-age == feudal-age)
 =>
-    (up-modify-goal gl-fishingShipsQty g:* 1,1) 
+    (up-modify-goal gl-fishingShipsQty c:* 1,1) 
     (disable-self)
 )
 
 (defrule
     (current-age == castle-age)
 =>
-    (up-modify-goal gl-tradeCartsQty g:* 1,5)
-    (up-modify-goal gl-tradeShipsQty g:* 1,5)
-    (up-modify-goal gl-fishingShipsQty g:* 1,1)  (disable-self)  
+    (up-modify-goal gl-tradeCartsQty c:* 1,5)
+    (up-modify-goal gl-tradeShipsQty c:* 1,5)
+    (up-modify-goal gl-fishingShipsQty c:* 1,1)  (disable-self)  
 )
 
 (defrule
     (current-age == imperial-age)
 =>
-    (up-modify-goal gl-tradeCartsQty g:* 1,5)
-    (up-modify-goal gl-tradeShipsQty g:* 1,5)
-    (up-modify-goal gl-fishingShipsQty g:* 1,1)(disable-self)    
+    (up-modify-goal gl-tradeCartsQty c:* 1,5)
+    (up-modify-goal gl-tradeShipsQty c:* 1,5)
+    (up-modify-goal gl-fishingShipsQty c:* 1,1)(disable-self)    
 )
 
 (defrule
