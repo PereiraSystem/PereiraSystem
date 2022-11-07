@@ -1777,24 +1777,27 @@
 ; CHECK IF WE ALREADY BUILT SOME PALISADE GATES BEFORE BUILDING THE PALISADE
 (defrule
     (or
+        (building-type-count-total 796 > 0)
         (or
-            (building-type-count-total 796 > 0)
-            (or
-                (building-type-count-total 794 > 0)
-                (building-type-count-total 793 > 0)
-            )
+            (building-type-count-total 794 > 0)
+            (building-type-count-total 793 > 0)
         )
-        (or
-            (building-type-count-total 792 > 0)
-            (or
-                (building-type-count-total 789 > 0)
-                (building-type-count-total 790 > 0)
-            )
-        )
-    )    
+    )   
 =>    
     (set-goal gl-weAlreadyGotPalisadeGates 1)
-    ;(chat-local-to-self "SOME PALISADE GATES BUILT!")    
+    (chat-local-to-self "SOME 'DESCENDING' PALISADE GATES BUILT!")    
+)
+(defrule
+    (or
+        (building-type-count-total 792 > 0)
+        (or
+            (building-type-count-total 789 > 0)
+            (building-type-count-total 790 > 0)
+        )
+    )  
+=>    
+    (set-goal gl-weAlreadyGotPalisadeGates 1)
+    (chat-local-to-self "SOME 'ASCENDING' PALISADE GATES BUILT!")    
 )
 
 ; BUILDING THE OUTER PALISADE WALL
