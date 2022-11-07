@@ -1727,9 +1727,20 @@
     (current-age == imperial-age)
     (wood-amount > 325)(gold-amount > 445)
     (or
-        (or(civ-selected portuguese)(civ-selected saracen))
+        (or(civ-selected saracen)(civ-selected saracen))
         (or(civ-selected vietnamese)(civ-selected vietnamese))    
     )
+    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+	(can-train archer-line)
+=>
+	(train archer-line)
+)
+(defrule
+    (current-age == imperial-age)
+    (wood-amount > 325)(gold-amount > 445)
+    (civ-selected portuguese)   
+    (not(can-train hand-cannoneer))
     (up-compare-goal gl-dudeHasSpearmen == 1)    
     (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
 	(can-train archer-line)
