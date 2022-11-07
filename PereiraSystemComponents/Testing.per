@@ -68,3 +68,61 @@
     (up-modify-goal gl-tempX c:+ 1)
     (chat-local-to-self "BUILDING BARRIER OF CRAZY")    
 )
+
+
+; experimental strategy to move the city to the coast
+  (defrule (false)
+
+    ; can build dock doesnt really check the water
+    (can-build dock)
+    (not(up-research-status c: feudal-age == research-pending))
+    (not(up-research-status c: ri-wheel-barrow == research-pending))
+    (current-age < castle-age)
+    (wood-amount > 325)
+    (building-type-count lumber-camp > 0)
+    (or
+        (civ-selected italian)
+        (or
+            (civ-selected spanish)(civ-selected malay)
+        )                
+    )
+    (enemy-buildings-in-town)
+    (building-type-count-total dock < 1)
+=>
+    (chat-to-player my-player-number "MOVING TO THE COAST!")
+    (set-strategic-number sn-town-center-placement lumber-camp)
+    (up-modify-sn sn-mining-camp-max-distance c:+ 64)
+    (up-modify-sn sn-lumber-camp-max-distance c:+ 64)                
+    (up-assign-builders c: dock c:+ 3)
+    (build dock)(delete-building town-center)              
+    (build town-center)
+    (set-strategic-number sn-maximum-food-drop-distance 0)
+    (set-goal gl-weMovedPlace 1)
+    (delete-building farm)(delete-building farm)(delete-building farm)
+    (disable-self) 
+)
+
+(defrule
+    (up-compare-goal gl-weMovedPlace > 0)
+    (building-type-count town-center < 1)
+    (building-type-count farm > 0)
+=>
+    (delete-building farm)(delete-building mill)
+    (delete-building archery-range)(delete-building barracks)          
+    ;(up-modify-sn sn-food-gatherer-percentage c: -12)
+    ;(up-modify-sn sn-gold-gatherer-percentage c: +8)
+    ;(set-strategic-number sn-maximum-gold-drop-distance 6)
+    ;(up-modify-sn sn-stone-gatherer-percentage c: +4)
+    (chat-local-to-self "Deleting farms cause no town center")                
+)
+
+(defrule
+    (up-compare-goal gl-weMovedPlace > 0)
+    (building-type-count town-center > 0)
+    (building-type-count dock > 0)
+    (building-type-count lumber-camp > 0)                
+=>
+    (set-strategic-number sn-maximum-food-drop-distance 19)
+    (chat-local-to-self "FOOD DROP DISTANCE = 19")           
+    (disable-self)
+)

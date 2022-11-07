@@ -47,47 +47,56 @@
 
 
 ; SEND TAUNTS TO OTHERS
+; WHEN TOWN UNDER ATTACK
 (defrule
 	(town-under-attack)
 	(up-compare-sn sn-maximum-town-size < 40)
 	(game-time < 1500) ; 25 min
-	(up-timer-status 50 == timer-disabled)
+	(up-timer-status 40 == timer-disabled)
 =>
-    (enable-timer 50 1)
+    (enable-timer 40 1)
 )
 
+(defrule
+	(timer-triggered 40)
+	(town-under-attack)
+=>
+    (disable-timer 40)
+	(enable-timer 40 90)
+	(chat-to-allies "48 HELP ME - MY TOWN IS UNDER ATTACK!")			
+)
+
+(defrule
+	(timer-triggered 40)
+	(not(town-under-attack))
+=>
+    (disable-timer 40)	
+)
+
+; WHEN ENEMY BUILDINGS IN TOWN
 (defrule
 	(enemy-buildings-in-town)
 	(up-compare-sn sn-maximum-town-size < 30)
 	(game-time < 1500) ; 25 min
-	(up-timer-status 50 == timer-disabled)
+	(up-timer-status 41 == timer-disabled)
 =>
-    (enable-timer 50 1)
+    (enable-timer 41 1)
 )
 
 (defrule
-	(timer-triggered 50)
-	(town-under-attack)
+	(enemy-buildings-in-town)
+	(timer-triggered 41)
 =>
-    (disable-timer 50)
-	(enable-timer 50 90)
-	(chat-to-allies "48")
-	(chat-to-allies "HELP ME - MY TOWN IS UNDER ATTACK OR ENEMY BUILDINGS IN MY TOWN!")			
-)
-
-; DISABLE THE TAUNTS
-(defrule
-	(timer-triggered 50)
-	(not(town-under-attack))
-=>
-    (disable-timer 50)	
+    (disable-timer 41)
+	(enable-timer 41 90)
+	(chat-to-allies "48 HELP ME - ENEMY BUILDINGS IN MY TOWN!")			
 )
 
 (defrule
-	(timer-triggered 50)
+	(timer-triggered 41)
 	(not(enemy-buildings-in-town))
 =>
-    (disable-timer 50)	
+    (disable-timer 41)	
 )
 
 ; RESPOND TO TAUNTS
