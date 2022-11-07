@@ -69,6 +69,7 @@
 (defrule
     (current-age == imperial-age)(goal gl-weAreAttacking 1)
     (military-population < 40)
+    (food-amount < 3000)
 =>
 	(up-retreat-now)(chat-local-to-self "IMPERIAL AGE RETREAT!")
     (set-strategic-number sn-number-attack-groups 0)
