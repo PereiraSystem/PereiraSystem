@@ -1789,6 +1789,20 @@
     (chat-local-to-self "PALISADE G. ASCENDING (X AXIS) PARTS DETECTED!")    
 )
 
+; NO PALISADE GATE PARTS
+(defrule
+    (building-type-count 793 == 0)
+    (building-type-count 794 == 0)
+    (building-type-count 795 == 0)
+    (building-type-count 796 == 0)
+    (building-type-count 789 == 0)
+    (building-type-count 790 == 0)
+    (building-type-count 791 == 0)
+    (building-type-count 792 == 0)
+=>    
+    (set-goal gl-weAlreadyGotPalisadeGates 0)
+    (chat-local-to-self "NO PALISADE GATE PARTS DETECTED!")    
+)
 
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
@@ -1874,6 +1888,37 @@
 )
 
 ; CHECK IF WE ALREADY BUILT SOME STONE GATES BEFORE BUILDING THE WALL
+;ASCENDING
+; NORMAL
+(defrule
+(or
+    (or
+        (building-type-count 487 > 0)(building-type-count 64 > 0)
+    )
+    (or
+        (building-type-count 78 > 0)(building-type-count 81 > 0)
+    )
+)    
+=>    
+    (set-goal gl-weAlreadyGotStoneGates 1)
+    ;(chat-local-to-self "STONE GATE ASCENDING (X AXIS) PARTS DETECTED!")
+)
+
+; FORTIFIED
+(defrule 
+    (or
+        (or
+            (building-type-count 488 > 0)(building-type-count 63 > 0)
+        )
+        (or
+            (building-type-count 67 > 0)(building-type-count 80 > 0)
+        )
+    )
+=>    
+    (set-goal gl-weAlreadyGotStoneGates 1)
+    ;(chat-local-to-self "FORTIFIED GATE ASCENDING (X AXIS) PARTS DETECTED!")
+)
+
 ;DESCENDING
 ; NORMAL
 (defrule
@@ -1887,7 +1932,7 @@
 )    
 =>    
     (set-goal gl-weAlreadyGotStoneGates 1)
-    (chat-local-to-self "STONE GATE DESCENDING (Y AXIS) PARTS DETECTED!")
+    ;(chat-local-to-self "STONE GATE DESCENDING (Y AXIS) PARTS DETECTED!")
 )
 
 ; FORTIFIED
@@ -1902,40 +1947,41 @@
     )
 =>    
     (set-goal gl-weAlreadyGotStoneGates 1)
-    (chat-local-to-self "FORTIFIED GATE DESCENDING (Y AXIS) PARTS DETECTED!")
+    ;(chat-local-to-self "FORTIFIED GATE DESCENDING (Y AXIS) PARTS DETECTED!")
 )
 
-;ASCENDING
-; NORMAL
+; NO STONE GATE PARTS
 (defrule 
-(or
-    (or
-        (building-type-count 487 > 0)(building-type-count 64 > 0)
-    )
-    (or
-        (building-type-count 78 > 0)(building-type-count 81 > 0)
-    )
-)
+        (building-type-count 487 == 0)
+        (building-type-count 64 == 0)
+        (building-type-count 78 == 0)
+        (building-type-count 81 == 0)
+        (building-type-count 488 == 0)
+        (building-type-count 63 == 0)
+        (building-type-count 67 == 0)
+        (building-type-count 80 == 0)
+        (building-type-count 490 == 0)
+        (building-type-count 88 == 0)
+        (building-type-count 91 == 0)
+        (building-type-count 95 == 0)
+        (building-type-count 491 == 0)
+        (building-type-count 85 == 0)
+        (building-type-count 90 == 0)
+        (building-type-count 92 == 0)
+        (building-type-count 487 == 0)
+        (building-type-count 64 == 0)
+        (building-type-count 78 == 0)
+        (building-type-count 81 == 0)
+        (building-type-count 488 == 0)
+        (building-type-count 63 == 0)
+        (building-type-count 67 == 0)
+        (building-type-count 80 == 0)
 =>    
-    (set-goal gl-weAlreadyGotStoneGates 1)
-    (chat-local-to-self "STONE GATE ASCENDING (X AXIS) PARTS DETECTED!")
+    (set-goal gl-weAlreadyGotStoneGates 0)
+    ;(chat-local-to-self "NO STONE GATE PARTS DETECTED!")
 )
 
-; FORTIFIED
-(defrule 
-(or
-    (or   
-        (building-type-count 488 > 0)(building-type-count 63 > 0)
-    )
-    (or 
-        (building-type-count 67 > 0)(building-type-count 80 > 0)
-    )
-)    
-=>    
-    (set-goal gl-weAlreadyGotStoneGates 1)
-    (chat-local-to-self "FORTIFIED GATE ASCENDING (X AXIS) PARTS DETECTED!")
-)
-
+;----------------------------
 ; BUILDING THE INNER WALL GATES
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
