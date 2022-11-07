@@ -1775,31 +1775,64 @@
 )
 
 ; CHECK IF WE ALREADY BUILT SOME PALISADE GATES BEFORE BUILDING THE PALISADE
+; DESCENDING
 (defrule
-    (or
-        (building-type-count-total 796 > 0)
-        (or
-            (building-type-count-total 794 > 0)
-            (building-type-count-total 793 > 0)
-        )
-    )   
+    (building-type-count-total 793 > 0)
 =>    
     (set-goal gl-weAlreadyGotPalisadeGates 1)
-    (chat-local-to-self "SOME 'DESCENDING' PALISADE GATES BUILT!")    
+    (chat-local-to-self "PALISADE GATE 'DESCENDING' CLOSED DETECTED!")    
 )
 
 (defrule
-    (or
-        (building-type-count-total 792 > 0)
-        (or
-            (building-type-count-total 789 > 0)
-            (building-type-count-total 790 > 0)
-        )
-    )  
+    (building-type-count-total 794 > 0)
 =>    
     (set-goal gl-weAlreadyGotPalisadeGates 1)
-    (chat-local-to-self "SOME 'ASCENDING' PALISADE GATES BUILT!")    
+    (chat-local-to-self "PALISADE GATE 'DESCENDING' OPEN DETECTED!")    
 )
+
+(defrule
+    (building-type-count-total 795 > 0)
+=>    
+    (set-goal gl-weAlreadyGotPalisadeGates 1)
+    (chat-local-to-self "PALISADE GATE 'DESCENDING' ENDPIECES DETECTED!")    
+)
+
+(defrule
+    (building-type-count-total 796 > 0)
+=>    
+    (set-goal gl-weAlreadyGotPalisadeGates 1)
+    (chat-local-to-self "PALISADE GATE 'DESCENDING' FOUNDATION DETECTED!")    
+)
+
+; ASCENDING
+(defrule
+    (building-type-count-total 789 > 0)
+=>    
+    (set-goal gl-weAlreadyGotPalisadeGates 1)
+    (chat-local-to-self "PALISADE GATE 'ASCENDING' CLOSED DETECTED!")    
+)
+
+(defrule
+    (building-type-count-total 790 > 0)
+=>    
+    (set-goal gl-weAlreadyGotPalisadeGates 1)
+    (chat-local-to-self "PALISADE GATE 'ASCENDING' OPEN DETECTED!")    
+)
+
+(defrule
+    (building-type-count-total 791 > 0)
+=>    
+    (set-goal gl-weAlreadyGotPalisadeGates 1)
+    (chat-local-to-self "PALISADE GATE 'ASCENDING' ENDPIECES DETECTED!")    
+)
+
+(defrule
+    (building-type-count-total 792 > 0)
+=>    
+    (set-goal gl-weAlreadyGotPalisadeGates 1)
+    (chat-local-to-self "PALISADE GATE 'ASCENDING' FOUNDATION DETECTED!")    
+)
+
 
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
