@@ -1070,19 +1070,18 @@
 )
 
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
-; NOT CORNER POSITIONS
 (defrule
     (up-compare-goal gl-buildNorthEastGates == 1) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-y c:+ 10) 
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 10) 
+    (up-modify-goal gl-outerWallGatePoint1-y c:+ 6)
+    (up-modify-goal gl-outerWallGatePoint2-y c:- 6)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint2-x c:- 10) 
-    (up-modify-goal gl-outerWallGatePoint3-x c:+ 10) 
+    (up-modify-goal gl-outerWallGatePoint2-x c:- 6)
+    (up-modify-goal gl-outerWallGatePoint3-x c:+ 6)
     (disable-self)
 )
 
@@ -1090,16 +1089,16 @@
 (defrule
     (up-compare-goal gl-buildSouthWestGates == 1) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 10) 
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 10)  
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 6)
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 6)
     (disable-self)
 )
 
 (defrule
     (up-compare-goal gl-buildNorthWestGates == 1)  
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 10) 
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 10) 
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 6)
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 6)
     (disable-self)
 )
 
