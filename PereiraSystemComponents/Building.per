@@ -1600,15 +1600,16 @@
 
 (defrule
     (or
-        (up-compare-goal gl-positionQuadrantCode == 6) ;north west center 
+        (up-compare-goal gl-positionQuadrantCode == 6) ;n w center always gets the same
         (or
             (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 3)            
+                (up-compare-goal gl-positionQuadrantCode == 3)
+                ; y is always gonna be lower than x for pos 3
+                (up-compare-goal gl-myPosition-y g:<= gl-mapSizeOneTenth)            
             )
             (and 
+                (up-compare-goal gl-positionQuadrantCode == 9)   
                 (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 9)            
             )            
         )
     )
@@ -1639,8 +1640,10 @@
         (up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
         (or
             (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 3)            
+                (up-compare-goal gl-positionQuadrantCode == 3)
+                ; y is always gonna be lower than x for pos 3                              
+                (up-compare-goal gl-myPosition-y g:> gl-mapSizeOneTenth)          
+        
             )
             (and 
                 (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
