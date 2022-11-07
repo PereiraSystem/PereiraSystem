@@ -1742,20 +1742,16 @@
 ; ALONG X AXIS = "ASCENDING" 792: FOUNDATIONS, 789: CLOSED , 790: OPEN
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastGates == 1)
-    (building-type-count-total 796 < 1)
-    (building-type-count-total 793 < 1)
-    (building-type-count-total 794 < 1)   
+    (up-compare-goal gl-buildNorthEastGates == 1)  
     (up-can-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
 =>   
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
-    (chat-local-to-self "BUILDING NORTH EAST PALISADE GATES")    
+    ;(chat-local-to-self "BUILDING NORTH EAST PALISADE GATES")    
 )
 (defrule 
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
-    ;(building-type-count 792 < 6)
-    ;(up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
+    (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
 =>
     (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
     ;(chat-local-to-self "BUILDING SOUTH EAST PALISADE GATES")
@@ -1763,8 +1759,7 @@
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
-    ;(building-type-count-total 796 < 3)
-    ;(up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
+    (up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
 =>
     (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
     ;(chat-local-to-self "BUILDING SOUTH WEST PALISADE GATES")
@@ -1772,8 +1767,7 @@
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
-    ;(building-type-count-total 792 < 6)
-    ;(up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)    
+    (up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)    
 =>
     (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
     ;(chat-local-to-self "BUILDING NORTH WEST PALISADE GATES")
