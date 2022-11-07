@@ -1032,6 +1032,7 @@
 =>
     (set-goal gl-buildSouthEastGates 1)    
 )
+
 (defrule
     (or
         (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
@@ -1049,6 +1050,7 @@
 =>
     (set-goal gl-buildNorthWestGates 1)    
 )
+
 (defrule
     (or
         (up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
@@ -1070,76 +1072,31 @@
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
 ; NOT CORNER POSITIONS
 (defrule
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 8) ;south west center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 9)            
-            )  
-        )         
-    )
+    (up-compare-goal gl-buildNorthEastGates == 1) 
 =>    
     (up-modify-goal gl-outerWallGatePoint1-y c:+ 10) 
     (up-modify-goal gl-outerWallGatePoint2-y c:- 10) 
     (disable-self)
 )
 (defrule
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 6) ;north west center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 3)            
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 9)            
-            )            
-        )
-    )
+    (up-compare-goal gl-buildSouthEastGates == 1) 
 =>    
     (up-modify-goal gl-outerWallGatePoint2-x c:- 10) 
     (up-modify-goal gl-outerWallGatePoint3-x c:+ 10) 
     (disable-self)
 )
+
+
 (defrule
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 3)            
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
-            )          
-        )
-    )
+    (up-compare-goal gl-buildSouthWestGates == 1) 
 =>    
     (up-modify-goal gl-outerWallGatePoint3-y c:- 10) 
     (up-modify-goal gl-outerWallGatePoint4-y c:+ 10)  
     (disable-self)
 )
+
 (defrule
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
-            )                          
-        )
-    )   
+    (up-compare-goal gl-buildNorthWestGates == 1)  
 =>    
     (up-modify-goal gl-outerWallGatePoint1-x c:- 10) 
     (up-modify-goal gl-outerWallGatePoint4-x c:+ 10) 
@@ -1203,90 +1160,43 @@
 ; POS 3 AND 9 ALWAYS GET THE SAME ?
 (defrule 
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 8) ;south west center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 9)            
-            )  
-        )         
-    )
+    (up-compare-goal gl-buildNorthEastGates == 1)
     (building-type-count-total 796 < 6)
     (up-can-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
 =>   
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
+    (chat-local-to-self "BUILDING NORTH EAST PALISADE GATES")    
 )
 
 (defrule 
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 6) ;north west center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 3)            
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 9)            
-            )            
-        )
-    )
+    (up-compare-goal gl-buildSouthEastGates == 1)
+    (building-type-count 792 < 6)
     (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
-    (building-type-count 792 < 6)        
 =>
     (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
-    (chat-local-to-self "BUILDING SE PALISADE GATES")
+    (chat-local-to-self "BUILDING SOUTH EAST PALISADE GATES")
 )
 
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 3)            
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
-            )          
-        )
-    )
-
-    (building-type-count-total 796 < 6) ;palisade gate descending foundations         
+    (up-compare-goal gl-buildSouthWestGates == 1)
+    (building-type-count-total 796 < 6)
     (up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
 =>
     (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
+    (chat-local-to-self "BUILDING SOUTH WEST PALISADE GATES")
 )
 
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
-            )                          
-        )
-    )              
-    ;(up-compare-goal gl-palisadeGateCounter < 150)
-    (building-type-count-total 792 < 6)       
+    (up-compare-goal gl-buildNorthWestGates == 1)
+    (building-type-count-total 792 < 6)
+    (up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)    
 =>
     (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
+    (chat-local-to-self "BUILDING NORTH WEST PALISADE GATES")
 )
-
 
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
@@ -1339,19 +1249,7 @@
 ; MAKE THE INNER WALL GATE SECTION SMALLER THAN INNER WALL SECTION
 ; NOT CORNER POSITIONS
 (defrule 
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 8) ;south west center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 9)            
-            )  
-        )         
-    )
+    (up-compare-goal gl-buildNorthEastGates == 1)
 =>    
     (up-modify-goal gl-innerWallGatePoint1-y c:+ 8) 
     (up-modify-goal gl-innerWallGatePoint2-y c:- 8) 
@@ -1359,19 +1257,7 @@
 )
 
 (defrule
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 3)            
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
-            )          
-        )
-    )
+    (up-compare-goal gl-buildSouthWestGates == 1) 
 =>    
     (up-modify-goal gl-innerWallGatePoint3-y c:- 8) 
     (up-modify-goal gl-innerWallGatePoint4-y c:+ 8)  
@@ -1379,19 +1265,7 @@
 )
 
 (defrule 
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 6) ;north west center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 3)            
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 9)            
-            )            
-        )
-    )
+    (up-compare-goal gl-buildSouthEastGates == 1) 
 =>    
     (up-modify-goal gl-innerWallGatePoint2-x c:- 8) 
     (up-modify-goal gl-innerWallGatePoint3-x c:+ 8) 
@@ -1399,19 +1273,7 @@
 )
 
 (defrule 
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
-            )                          
-        )
-    )     
+    (up-compare-goal gl-buildNorthWestGates == 1)   
 =>    
     (up-modify-goal gl-innerWallGatePoint4-x c:+ 8) 
     (up-modify-goal gl-innerWallGatePoint1-x c:- 8) 
@@ -1420,25 +1282,12 @@
 
 
 
-
 ; BUILDING THE INNER WALL GATES
 ; 490 descending foundation, 497 ascending f
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 8) ;south west center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 9)            
-            )  
-        )         
-    )  
+    (up-compare-goal gl-buildNorthEastGates == 1)
     (building-type-count 490 < 6)
     ;(up-can-build-line gl-innerWallGatePoint1-x gl-innerWallGatePoint2-x c: 490)    
 =>
@@ -1450,19 +1299,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 3)            
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
-            )          
-        )
-    )
+    (up-compare-goal gl-buildSouthWestGates == 1)
     (building-type-count 490 < 4)
     (up-can-build-line gl-innerWallGatePoint3-x gl-innerWallGatePoint4-x c: 490)        
 =>
@@ -1474,19 +1311,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 6) ;north west center 
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 3)            
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 9)            
-            )            
-        )
-    )  
+    (up-compare-goal gl-buildSouthEastGates == 1) 
     (building-type-count 487 < 4)
     (up-can-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 487)         
 =>
@@ -1498,19 +1323,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (or
-        (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
-        (or
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 7) ; !!!!           
-            )
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
-            )                          
-        )
-    )     
+    (up-compare-goal gl-buildNorthWestGates == 1)   
     (building-type-count 487 < 4)
     (up-can-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 487)         
 =>
@@ -1555,9 +1368,6 @@
     ;(up-chat-data-to-self "inner wall north west start y: %d" g: gl-innerWallPoint3-y)
     ;(up-chat-data-to-self "inner wall north west end y: %d" g: gl-innerWallPoint4-y)      
 )
-
-
-
 
 
 
