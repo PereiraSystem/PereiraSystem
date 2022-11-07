@@ -453,9 +453,35 @@
     (building-type-count-total dock == 1)
     (can-build dock)    
 =>
-    (up-set-placement-data my-player-number town-center c: 64)    
+    (up-set-placement-data my-player-number town-center c: 46)    
     (up-build place-control 0 c: dock) 
-    (chat-local-to-self "Trying To Build Dock 2")
+    (chat-local-to-self "Trying To Build Dock 2 - c46")
+)
+
+(defrule
+    (current-age == castle-age)
+    (building-type-count lumber-camp > 0)
+    (building-type-count town-center > 0)        
+    (wood-amount > 275)
+    (building-type-count-total dock == 1)
+    (can-build dock)    
+=>
+    (up-set-placement-data my-player-number town-center c:+ 46)    
+    (up-build place-control 0 c: dock) 
+    (chat-local-to-self "Trying To Build Dock 2 - c+ 46")
+)
+
+(defrule
+    (current-age == castle-age)
+    (building-type-count lumber-camp > 0)
+    (building-type-count town-center > 0)        
+    (wood-amount > 275)
+    (building-type-count-total dock == 1)
+    (can-build dock)    
+=>
+    (up-set-placement-data my-player-number town-center c:- 46)    
+    (up-build place-control 0 c: dock) 
+    (chat-local-to-self "Trying To Build Dock 2 - c- 46")
 )
 
 (defrule
