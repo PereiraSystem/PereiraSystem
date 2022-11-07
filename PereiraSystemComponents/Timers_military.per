@@ -1,6 +1,6 @@
 ; MILITARY TIMERS 26 TO 50 RESERVED
 ; TIMER 11 MILITARY REPORT
-(defrule(true)=>(enable-timer 11 60)(disable-self)) 
+(defrule(false)=>(enable-timer 11 60)(disable-self)) 
 (defrule
 	(timer-triggered 11)
     (up-players-in-game enemy > 0)
