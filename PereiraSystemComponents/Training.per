@@ -946,6 +946,7 @@
 
 ; CANNON GALLEON
 (defrule
+    (building-type-count-total dock > 1)
     (unit-type-count-total cannon-galleon-line < 4)
     (can-train cannon-galleon-line)
 =>
@@ -954,6 +955,7 @@
 
 ; GALLEY
 (defrule
+    (building-type-count-total dock > 1)
     (up-compare-goal gl-dudeHasExplosiveShips == 1)       
     (wood-amount > 350)
     (unit-type-count-total galley-line < 4)    
@@ -964,6 +966,7 @@
 
 ; FIRE SHIP
 (defrule
+    (building-type-count-total dock > 1)
     (or(up-compare-goal gl-dudeHasGalleys == 1)
     (up-compare-goal gl-dudeHasCannonShips == 1))
     (wood-amount > 350)
@@ -975,6 +978,7 @@
 
 ; DEMO SHIP
 (defrule
+    (building-type-count-total dock > 1)
     (up-compare-goal gl-dudeHasFireShips == 1)
     (wood-amount > 350)   
     (unit-type-count-total demolition-ship-line < 4)
