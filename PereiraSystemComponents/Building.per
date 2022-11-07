@@ -1230,8 +1230,6 @@
     (up-send-flare position-self)(disable-self)  
 )
 
-
-
 (defrule 
     (true)
 =>    
@@ -1779,6 +1777,22 @@
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (or
+        (or
+            (building-type-count-total 796 > 0)
+            (or
+                (building-type-count-total 794 > 0)
+                (building-type-count-total 793 > 0)
+            )
+        )
+    )
+    (or
+        (building-type-count-total 792 > 0)
+        (or
+            (building-type-count-total 789 > 0)
+            (building-type-count-total 790 > 0)
+        )
+    )
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
