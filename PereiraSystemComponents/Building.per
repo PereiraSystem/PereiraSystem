@@ -2056,9 +2056,9 @@
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)
-    (up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 497)    
+    (up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 490)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 497)
+    (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 490)
 )
 
 ;north east secondary gates
@@ -2066,22 +2066,21 @@
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)
-    (up-can-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint4-x c: 490)    
+    (up-can-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint4-x c: 497)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint4-x c: 490)
+    (up-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint4-x c: 497)
 )
 (defrule (true)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)
-    (up-can-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 497)    
+    (up-can-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 490)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 497)
+    (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 490)
 
 )
 ; BUILDING THE INNER WALL GATES
-; (CAN TRY TO BUILD IN 2 DIRECTIONS) (1 TO 2 AND 2 TO 1)
-; NORTH EAST 
+; COULD TRY TO BUILD IN 2 DIRECTIONS) (point 1 TO 2 AND 2 TO 1)
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
