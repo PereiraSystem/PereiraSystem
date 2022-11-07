@@ -1201,7 +1201,7 @@
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    ;(building-type-count 793 > 0)
+    (or(building-type-count 792 > 0)(building-type-count 796 > 0))
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
