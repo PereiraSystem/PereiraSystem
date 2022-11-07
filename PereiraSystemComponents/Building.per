@@ -854,6 +854,14 @@
 
 
 ; UP WALL CONSTANTS - YEAH I KIND OFLIKE IT THAT WAY
+(defconst gl-innerWallSecondaryGatePoint1-x 431)
+(defconst gl-innerWallSecondaryGatePoint1-y 432)
+(defconst gl-innerWallSecondaryGatePoint2-x 433)
+(defconst gl-innerWallSecondaryGatePoint2-y 434)
+(defconst gl-innerWallSecondaryGatePoint3-x 435)
+(defconst gl-innerWallSecondaryGatePoint3-y 436)
+(defconst gl-innerWallSecondaryGatePoint4-x 437)
+(defconst gl-innerWallSecondaryGatePoint4-y 438)
 
 (defconst gl-outerWallGatePoint1-x 441)
 (defconst gl-outerWallGatePoint1-y 442)
@@ -1253,7 +1261,15 @@
     (up-get-point position-self gl-outerWallGatePoint4-x )
     (disable-self)           
 )
-
+(defrule 
+    (true)
+=>    
+    (up-get-point position-self gl-innerWallSecondaryGatePoint1-x)
+    (up-get-point position-self gl-innerWallSecondaryGatePoint2-x)
+    (up-get-point position-self gl-innerWallSecondaryGatePoint3-x)
+    (up-get-point position-self gl-innerWallSecondaryGatePoint4-x)
+    (disable-self)           
+)
 ; CREATE OUTER WALL SHAPE ACCORDING TO OUTER PERIMETER SIZE
 (defrule
     (true) 
@@ -1303,14 +1319,14 @@
 (defrule
     (true) 
 =>    
-    (up-modify-goal gl-innerWallGatePoint1-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallGatePoint1-y g:- gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallGatePoint2-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallGatePoint2-y g:+ gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallGatePoint3-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallGatePoint3-y g:+ gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallGatePoint4-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallGatePoint4-y g:- gl-innerWallPerimeter)  
+    (up-modify-goal gl-innerWallSecondaryGatePoint1-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallSecondaryGatePoint1-y g:- gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerWallSecondaryGatePoint2-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallSecondaryGatePoint2-y g:- gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerWallSecondaryGatePoint3-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallSecondaryGatePoint4-y g:- gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerWallSecondaryGatePoint4-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallSecondaryGatePoint4-y g:- gl-innerWallPerimeter)     
     (disable-self)           
 )
 
@@ -1688,6 +1704,26 @@
     (disable-self)
 )
 
+; TRYING TO BUILD SECONDARY PALISADE GATES
+(defrule
+    ;(false)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)  
+    (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
+=>   
+    (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
+    (chat-local-to-self "BUILDING SECONDARY GATES!!!!!!")    
+)
+(defrule
+    ;(false)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)  
+    (up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
+=>   
+    (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
+    (chat-local-to-self "BUILDING SECONDARY GATES!!!!!!")    
+)
+
 ; BUILD THE OUTER PALISADE GATES
 (defrule
     (up-compare-goal gl-dontBuildNorthEastWall == 0) ;CAN REMOVE?
@@ -1757,25 +1793,7 @@
     (chat-local-to-self "BUILDING NORTH WEST PALISADE GATES BACKWARDS")
 )
 
-; TRYING TO BUILD SECONDARY PALISADE GATES
-(defrule
-    ;(false)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastGates == 1)  
-    (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
-=>   
-    (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
-    (chat-local-to-self "BUILDING SECONDARY GATES!!!!!!")    
-)
-(defrule
-    ;(false)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastGates == 1)  
-    (up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
-=>   
-    (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
-    (chat-local-to-self "BUILDING SECONDARY GATES!!!!!!")    
-)
+
 
 ; CHECK IF WE ALREADY BUILT SOME PALISADE GATES BEFORE BUILDING THE PALISADE
 ; DESCENDING
@@ -1878,7 +1896,11 @@
     (up-compare-goal gl-buildNorthEastGates == 1)
 =>    
     (up-modify-goal gl-innerWallGatePoint1-y c:+ 6) 
-    (up-modify-goal gl-innerWallGatePoint2-y c:- 6) 
+    (up-modify-goal gl-innerWallGatePoint2-y c:- 6)
+    (up-modify-goal gl-innerWallSecondaryGatePoint1-x c:- 5)
+    (up-modify-goal gl-innerWallSecondaryGatePoint2-x c:- 5)
+    (up-modify-goal gl-innerWallSecondaryGatePoint3-x c:+ 5)
+    (up-modify-goal gl-innerWallSecondaryGatePoint4-x c:+ 5)     
     (disable-self)
 )
 
@@ -2001,6 +2023,19 @@
 )
 
 ;----------------------------
+; trying to build secondary wall gates
+
+(defrule
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)
+    (up-can-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 487)    
+=>
+    (up-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint3-x c: 487)
+    (chat-local-to-self "building sec gate")
+)
+
+
 ; BUILDING THE INNER WALL GATES
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
