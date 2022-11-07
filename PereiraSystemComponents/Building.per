@@ -870,8 +870,8 @@
 (defconst gl-dontBuildSouthEastWall 456)
 (defconst gl-dontBuildNorthWestWall 457)
 (defconst gl-dontBuildSouthWestWall 458)
-(defconst gl-tempX 459)
-(defconst gl-tempY 460)
+(defconst gl-weAlreadyGotPalisadeGates 459)
+(defconst gl-weAlreadyGotStoneGates 460)
 (defconst gl-innerWallGatePoint1-x 461)
 (defconst gl-innerWallGatePoint1-y 462)
 (defconst gl-innerWallGatePoint2-x 463)
@@ -1774,9 +1774,9 @@
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint4-x c: 792)
     (chat-local-to-self "BUILDING NORTH WEST PALISADE GATES BACKWARDS")
 )
-; BUILDING THE OUTER PALISADE WALL
+
+; CHECK IF WE ALREADY BUILT SOME PALISADE GATES BEFORE BUILDING THE PALISADE
 (defrule
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (or
         (or
             (building-type-count-total 796 > 0)
@@ -1792,7 +1792,15 @@
                 (building-type-count-total 790 > 0)
             )
         )
-    )        
+    )    
+=>    
+    (set-goal gl-weAlreadyGotPalisadeGates == 1)
+)
+
+; BUILDING THE OUTER PALISADE WALL
+(defrule
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-weAlreadyGotPalisadeGates == 1)
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200) 
@@ -1801,22 +1809,7 @@
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (or
-        (or
-            (building-type-count-total 796 > 0)
-            (or
-                (building-type-count-total 794 > 0)
-                (building-type-count-total 793 > 0)
-            )
-        )
-        (or
-            (building-type-count-total 792 > 0)
-            (or
-                (building-type-count-total 789 > 0)
-                (building-type-count-total 790 > 0)
-            )
-        )
-    )      
+    (up-compare-goal gl-weAlreadyGotPalisadeGates == 1)   
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)
     (wood-amount > 200)
@@ -1825,22 +1818,7 @@
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (or
-        (or
-            (building-type-count-total 796 > 0)
-            (or
-                (building-type-count-total 794 > 0)
-                (building-type-count-total 793 > 0)
-            )
-        )
-        (or
-            (building-type-count-total 792 > 0)
-            (or
-                (building-type-count-total 789 > 0)
-                (building-type-count-total 790 > 0)
-            )
-        )
-    )      
+    (up-compare-goal gl-weAlreadyGotPalisadeGates == 1) 
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)
     (wood-amount > 200)
@@ -1849,22 +1827,7 @@
 )
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (or
-        (or
-            (building-type-count-total 796 > 0)
-            (or
-                (building-type-count-total 794 > 0)
-                (building-type-count-total 793 > 0)
-            )
-        )
-        (or
-            (building-type-count-total 792 > 0)
-            (or
-                (building-type-count-total 789 > 0)
-                (building-type-count-total 790 > 0)
-            )
-        )
-    )      
+    (up-compare-goal gl-weAlreadyGotPalisadeGates == 1)    
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)      
     (wood-amount > 200)     
