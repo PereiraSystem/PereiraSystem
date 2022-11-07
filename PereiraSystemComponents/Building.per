@@ -1847,7 +1847,6 @@
 )
 
 ; MAKE THE INNER WALL GATE SECTION SMALLER THAN INNER WALL SECTION
-; NOT CORNER POSITIONS
 (defrule 
     (up-compare-goal gl-buildNorthEastGates == 1)
 =>    
@@ -1880,8 +1879,29 @@
     (disable-self)
 )
 
+; CHECK IF WE ALREADY BUILT SOME STONE GATES BEFORE BUILDING THE WALL
+(defrule
+    (or
+        (or
+            (building-type-count-total 490 > 0)
+            (or
+                (building-type-count-total 88 > 0)
+                (building-type-count-total 91 > 0)
+            )
+        )
+        (or
+            (building-type-count-total 487 > 0)
+            (or
+                (building-type-count-total 64 > 0)
+                (building-type-count-total 78 > 0)
+            )
+        )
+    )    
+=>    
+    (set-goal gl-weAlreadyGotStoneGates 1)
+)
+
 ; BUILDING THE INNER WALL GATES
-; 490 descending foundation, 497 ascending f
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
@@ -1940,6 +1960,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-weAlreadyGotStoneGates == 1)     
 =>
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
