@@ -42,7 +42,7 @@
     (up-players-in-game enemy > 0)
 =>
 	(disable-timer 21)
-    (enable-timer 21 3)
+    (enable-timer 21 5)
     (chat-local-to-self "TIMER ATTACK!")
     (set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 1)
@@ -53,18 +53,7 @@
     (attack-now)(chat-to-allies "31 ATTACK!")    
 )
 
-(defrule
-    (current-age == imperial-age)(up-players-in-game enemy > 0)
-=>
-    (chat-local-to-self "IMPERIAL AGE ATTACK!")
-    (set-strategic-number sn-number-attack-groups 1)
-    (set-strategic-number sn-minimum-attack-group-size 1)
-    (set-strategic-number sn-maximum-attack-group-size 150)
-    (set-strategic-number sn-percent-attack-soldiers 100)
-	(set-strategic-number sn-garrison-rams 1)     
-    (set-goal gl-weAreAttacking 1)      
-    (attack-now)(chat-to-allies "31 ATTACK!")    
-)
+
 
 (defrule
     (current-age == imperial-age)(goal gl-weAreAttacking 1)
@@ -97,7 +86,7 @@
     (housing-headroom == 0)    
 =>
 	(disable-timer 22)
-    (enable-timer 22 5)
+    (enable-timer 22 10)
     (chat-local-to-self "FINAL ATTACK! NO RETREATING*!")
     (set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 1)
@@ -105,7 +94,8 @@
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-strategic-number sn-maximum-town-size 512)    
     ;(set-goal gl-weAreAttacking 1)      
-    (attack-now)(chat-to-allies "48")    
+    (attack-now)
+    (chat-to-allies "48")    
 )
 
 (defrule
