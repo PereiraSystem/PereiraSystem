@@ -1316,16 +1316,31 @@
 )
 
 ; CREATE INNER GATES SHAPE ACCORDING TO PERIMETER SIZE
+; primery----
 (defrule
-    (false) 
+    (true) 
+=>   
+    (up-modify-goal gl-innerWallGatePoint1-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallGatePoint1-y g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallGatePoint2-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallGatePoint2-y g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallGatePoint3-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallGatePoint3-y g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallGatePoint4-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallGatePoint4-y g:- gl-innerWallPerimeter)
+    (disable-self)           
+)
+; secondary---
+(defrule
+    (true) 
 =>    
     (up-modify-goal gl-innerWallSecondaryGatePoint1-x g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallSecondaryGatePoint1-y g:- gl-innerWallPerimeter) 
     (up-modify-goal gl-innerWallSecondaryGatePoint2-x g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallSecondaryGatePoint2-y g:- gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallSecondaryGatePoint3-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallSecondaryGatePoint4-y g:- gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallSecondaryGatePoint4-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallSecondaryGatePoint3-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerWallSecondaryGatePoint3-y g:+ gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerWallSecondaryGatePoint4-x g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallSecondaryGatePoint4-y g:- gl-innerWallPerimeter)     
     (disable-self)           
 )
@@ -1876,7 +1891,8 @@
     (up-compare-goal gl-buildNorthEastGates == 1)
 =>    
     (up-modify-goal gl-innerWallGatePoint1-y c:+ 6) 
-    (up-modify-goal gl-innerWallGatePoint2-y c:- 6)   
+    (up-modify-goal gl-innerWallGatePoint2-y c:- 6)
+    (chat-local-to-self "BUILD NORTH EAST")
     (disable-self)
 )
 
