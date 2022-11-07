@@ -38,20 +38,23 @@
 (defrule(up-players-in-game enemy > 0)=>(enable-timer 21 1800)(disable-self)) ;30  min
 
 (defrule
-    (timer-triggered 21)
+    (or
+        (timer-triggered 21)
+        (food-amount > 4000)
+    )
     (up-players-in-game enemy > 0)
 =>
 	(disable-timer 21)
     (enable-timer 21 30)
     (set-strategic-number sn-number-attack-groups 1)
-    (set-strategic-number sn-minimum-attack-group-size 1)
+    (set-strategic-number sn-minimum-attack-group-size 50)
     (set-strategic-number sn-maximum-attack-group-size 150)
     (set-strategic-number sn-percent-attack-soldiers 100)
 	(set-strategic-number sn-garrison-rams 1)     
     (set-strategic-number sn-target-player-number 0)
     (set-goal gl-weAreAttacking 1)      
     (attack-now)
-    (chat-to-allies "31 TIMER ATTACK!")    
+    (chat-to-allies "31 ATTACK! (TIMER OR RESOURCES)")    
 )
 
 (defrule 
