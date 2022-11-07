@@ -1523,12 +1523,15 @@
 ) 
 
 ; CHOOSE GATES POSITION 
+; 2, 4 , 6 AND 8 GET FIXED GATES
+; 1 AND 9 CORNERS DEPEND ON X AND Y
+; 3 AND 7 CORNERS DEPENDS ON NOT BUILDING A WALL
 (defrule
     (or
         (up-compare-goal gl-positionQuadrantCode == 8) ;south west center 
         (or
             (and 
-                (up-compare-goal gl-myPosition-x g:< gl-mapSizeTenth)            
+                (up-compare-goal gl-dontBuildSouthWestWall == 1)            
                 (up-compare-goal gl-positionQuadrantCode == 7)           
             )
             (and 
@@ -1548,7 +1551,7 @@
             (and 
                 (up-compare-goal gl-positionQuadrantCode == 3)
                 ; y is always gonna be lower than x for pos 3 and viceversa for 7
-                (up-compare-goal gl-myPosition-y g:<= gl-mapSizeTenth)            
+                (up-compare-goal gl-dontBuildNorthEastWall)            
             )
             (and 
                 (up-compare-goal gl-positionQuadrantCode == 9)   
