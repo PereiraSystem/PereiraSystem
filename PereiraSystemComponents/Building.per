@@ -1950,26 +1950,37 @@
     (chat-local-to-self "GATE ASCENDING END PIECES DETECTED!")
 )
 
+(defrule 
+    (building-type-count-total 488 > 0)
 
-
-
-
-(defrule
-    (or ;FORTIFIED
-        (or
-            (building-type-count-total 488 > 0)
-            (building-type-count-total 488 > 0)            
-            ;(building-type-count-total 80 > 0) ; ENDPIECES
-        )
-        (or
-            (building-type-count-total 63 > 0) ;CLOSED
-            (building-type-count-total 67 > 0) ;OPEN
-        )
-    )
 =>    
     (set-goal gl-weAlreadyGotStoneGates 1)
-    (chat-local-to-self "SOME FORTIFIED 'ASCENDING' STONE GATES BUILT!")
+    (chat-local-to-self "FORTIFIED GATE ASCENDING FOUNDATION DETECTED!")
 )
+(defrule 
+    (building-type-count-total 63 > 0)
+
+=>    
+    (set-goal gl-weAlreadyGotStoneGates 1)
+    (chat-local-to-self "FORTIFIED GATE ASCENDING CLOSED DETECTED!")
+)
+(defrule 
+    (building-type-count-total 67 > 0)
+
+=>    
+    (set-goal gl-weAlreadyGotStoneGates 1)
+    (chat-local-to-self "FORTIFIED GATE ASCENDING OPEN DETECTED!")
+)
+(defrule 
+    (building-type-count-total 80 > 0)
+
+=>    
+    (set-goal gl-weAlreadyGotStoneGates 1)
+    (chat-local-to-self "FORTIFIED GATE ASCENDING END PIECES DETECTED!")
+)
+
+
+
 
 ; BUILDING THE INNER WALL GATES
 (defrule
