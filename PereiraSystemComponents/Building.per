@@ -1749,6 +1749,14 @@
     (chat-local-to-self "BUILDING NORTH EAST PALISADE GATES")    
 )
 (defrule 
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)  
+    (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint1-x c: 796)
+=>   
+    (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
+    (chat-local-to-self "BUILDING NORTH EAST PALISADE GATES BACKWARDS")    
+)
+(defrule 
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
     (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
