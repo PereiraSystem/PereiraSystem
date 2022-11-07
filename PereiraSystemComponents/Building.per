@@ -1881,6 +1881,8 @@
 )
 
 ; CHECK IF WE ALREADY BUILT SOME STONE GATES BEFORE BUILDING THE WALL
+
+
 (defrule
     (building-type-count 490 > 0)
     ;(building-type-count-total 487 > 0) 
@@ -1894,7 +1896,15 @@
     ;(building-type-count-total 487 > 0) 
 =>    
     (set-goal gl-weAlreadyGotStoneGates 1)
-    (chat-local-to-self "SOME STONE GATES 490 BUILT!")
+    (chat-local-to-self "SOME STONE GATES 487 BUILT!")
+)
+
+(defrule
+    (or(building-type-count 490 > 0)
+    (building-type-count-total 487 > 0))
+=>    
+    (set-goal gl-weAlreadyGotStoneGates 1)
+    (chat-local-to-self "SOME STONE GATES BUILT!")
 )
 
 ; BUILDING THE INNER WALL GATES
