@@ -329,7 +329,8 @@
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
 =>
-    (up-chat-data-to-self "Trying To Build Mining Camp (Stone 1) - Max Distance: %d" s: sn-mining-camp-max-distance)      
+    ;(up-chat-data-to-self "Trying To Build Mining Camp (Stone 1) - Max Distance: %d" s: sn-mining-camp-max-distance)      
+    (chat-local-to-self "Trying To Build Mining Camp (Stone 1)")
     (build mining-camp) 
 )
 
