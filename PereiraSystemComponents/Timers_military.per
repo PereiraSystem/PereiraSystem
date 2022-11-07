@@ -37,17 +37,24 @@
 ; ATTACK TIMER 21
 (defrule(up-players-in-game enemy > 0)=>(enable-timer 21 1800)(disable-self)) ;30  min
 
+; ATTACK CAUSE WE GOT PLENTY OF RESOURCES
 (defrule
-    (or
-        (timer-triggered 21)
-        (food-amount > 4000)
-    )
+    (food-amount > 4000) 
+    (up-players-in-game enemy > 0)
+    (military-population > 0)
+=>
+    (enable-timer 21 5)
+)
+
+; ATTACK!
+(defrule
+    (timer-triggered 21)
     (up-players-in-game enemy > 0)
     (military-population > 0)
 =>
 	(disable-timer 21)
     (enable-timer 21 30)
-    (set-strategic-number sn-number-attack-groups 1)
+    (set-strategic-number sn-number-attack-groups 5)
     (set-strategic-number sn-minimum-attack-group-size 30)
     (set-strategic-number sn-maximum-attack-group-size 150)
     (set-strategic-number sn-percent-attack-soldiers 100)
@@ -56,8 +63,7 @@
     (set-goal gl-weAreAttacking 1)      
     (attack-now)
     (chat-to-allies "31 ATTACK! (TIMER OR RESOURCES)")
-    (up-chat-data-to-player any-ally "I HAVE %d SOLDIERS READY!" g: gl-attackSoldierAmount)	
-
+    (up-chat-data-to-player any-ally "I HAVE %d SOLDIERS READY!" g: gl-attackSoldierAmount)
 )
 
 (defrule 
