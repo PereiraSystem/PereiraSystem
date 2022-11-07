@@ -958,6 +958,12 @@
 
 ; GALLEY
 (defrule
+    (can-train galley-line)
+=>
+    (train galley-line)(disable-self)
+)
+
+(defrule
     (building-type-count-total dock > 1)
     (up-compare-goal gl-dudeHasExplosiveShips == 1)       
     (wood-amount > 350)

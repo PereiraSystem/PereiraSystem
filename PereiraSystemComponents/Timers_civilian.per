@@ -86,3 +86,11 @@
     (enable-timer 10 600)    
     (up-delete-idle-units idle-type-villager)
 )
+
+(defrule
+	(unit-count-total villager > 1)
+    (wood-amount > 15000)(food-amount > 15000)
+=>
+	(chat-local-to-self "DELETING VILLAGERS!")  
+    (up-delete-idle-units idle-type-villager)
+)
