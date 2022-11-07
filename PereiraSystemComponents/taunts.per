@@ -107,7 +107,7 @@
 =>
 	(attack-now)
 	(acknowledge-taunt any-ally 31)
-    (up-chat-data-to-player this-any-ally "I Have %d Soldiers Attacking!" g: gl-attackSoldierAmount)	
+    (up-chat-data-to-player this-any-ally "Im Already Attacking With %d Soldiers!" g: gl-attackSoldierAmount)	
 )
 
 (defrule
@@ -152,7 +152,7 @@
     ;(set-strategic-number sn-task-ungrouped-soldiers 1)	
 	(set-strategic-number sn-target-player-number -1) ;put back to 0 when??
 	; sn-coop-share-attacking SET TO 1
-    (chat-to-allies "I Will Help You! - My Attacks Will Be Directed Around Your Town Center For 4 Minutes!")	
+    (chat-to-allies "My Attacks Will Be Directed Around Your Town Center For 4 Minutes!")	
 )
 
 ; DISABLE HELP 
@@ -167,7 +167,8 @@
 
 =>
     (disable-timer 49)
-	(set-strategic-number sn-target-player-number 0)	
+	(set-strategic-number sn-target-player-number 0)
+    (chat-to-allies "Back To Attacking The Frontlines!")	
 )
 
 ; RETREAT TAUNT 45
