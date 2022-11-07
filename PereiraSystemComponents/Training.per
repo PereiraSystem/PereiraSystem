@@ -2246,7 +2246,7 @@
 )
 
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(gold-amount < 3000)
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 125)    
     (up-compare-goal gl-dudeHasCavalry == 1)
