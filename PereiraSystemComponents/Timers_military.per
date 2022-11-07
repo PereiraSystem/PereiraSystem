@@ -62,8 +62,8 @@
     (set-strategic-number sn-target-player-number 0)
     (set-goal gl-weAreAttacking 1)      
     (attack-now)
-    (chat-to-allies "31 ATTACK! (TIMER OR RESOURCES)")
-    (up-chat-data-to-player any-ally "I HAVE %d SOLDIERS READY!" g: gl-attackSoldierAmount)
+    ;(chat-to-allies "31 Attack!")
+    (up-chat-data-to-player any-ally "31 Attack! I Have %d Soldiers Ready!" g: gl-attackSoldierAmount)
 )
 
 (defrule 
@@ -71,7 +71,7 @@
     (not(town-under-attack))
 =>
     (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self "SOLDIERS SPREAD!")
+    (chat-local-to-self ">>> Soldiers spread!")
     (disable-self)
 )
 
