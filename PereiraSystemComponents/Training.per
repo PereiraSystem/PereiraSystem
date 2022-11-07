@@ -1929,7 +1929,9 @@
 (defrule
     (current-age == imperial-age)
     (or
-        (civ-selected mayan)(civ-selected aztec)
+        (or
+            (civ-selected mayan)(civ-selected aztec)
+        )
         (or
             (civ-selected dravidians)(civ-selected aztec)
         )
