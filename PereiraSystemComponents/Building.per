@@ -2154,3 +2154,22 @@
     ;(up-chat-data-to-self "inner wall north west start y: %d" g: gl-innerWallPoint3-y)
     ;(up-chat-data-to-self "inner wall north west end y: %d" g: gl-innerWallPoint4-y)
 )
+
+
+
+
+(defrule
+    (or
+        (up-compare-goal gl-weAlreadyGotStoneGates == 1)
+        (up-compare-goal gl-weAlreadyGotPalisadeGates == 1)
+    )
+=>
+    (set-strategic-number sn-wood-gatherer-percentage 50)
+    (set-strategic-number sn-gold-gatherer-percentage 5)
+    (set-strategic-number sn-stone-gatherer-percentage 5)
+    (set-strategic-number sn-maximum-wood-drop-distance 22)
+    (set-strategic-number sn-maximum-gold-drop-distance 22)
+    (set-strategic-number sn-maximum-stone-drop-distance 22)   
+    (chat-local-to-self "WE GOT WALLS! CLEAN THE CITY MODE! REMOVE THOSE TREES AND SHIT!")  
+    (disable-self)
+)
