@@ -327,6 +327,7 @@
     (or(stone-amount < 650)(and(civ-selected frankish)(stone-amount < 490)))    
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
+    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)    
     (can-build mining-camp)
 =>
     ;(up-chat-data-to-self "Trying To Build Mining Camp (Stone 1) - Max Distance: %d" s: sn-mining-camp-max-distance)      
@@ -341,6 +342,7 @@
     (wood-amount > 276)
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
+    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)    
     (can-build mining-camp)
 =>
     (up-chat-data-to-self "Trying To Build Mining Camp (Stone 2) - Max Distance: %d" s: sn-mining-camp-max-distance)      
