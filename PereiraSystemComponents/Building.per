@@ -1317,7 +1317,7 @@
 
 ; CREATE INNER GATES SHAPE ACCORDING TO PERIMETER SIZE
 (defrule
-    (true) 
+    (false) 
 =>    
     (up-modify-goal gl-innerWallSecondaryGatePoint1-x g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallSecondaryGatePoint1-y g:- gl-innerWallPerimeter) 
@@ -2004,16 +2004,6 @@
 
 ;----------------------------
 ; trying to build secondary wall gates
-
-(defrule(false)
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastGates == 1)
-    (up-can-build-line gl-innerWallGatePoint2-y gl-innerWallGatePoint3-y c: 497)    
-=>
-    (up-build-line gl-innerWallSecondaryGatePoint2-y gl-innerWallSecondaryGatePoint3-y c: 487)
-    (chat-local-to-self "AAAAAAAAAAAAAAAAAAAAAAAAAAA")
-)
 
 
 ; BUILDING THE INNER WALL GATES
