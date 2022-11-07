@@ -2032,9 +2032,17 @@
     (up-can-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 487)    
 =>
     (up-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint3-x c: 487)
-    (chat-local-to-self "building sec gate")
+    (chat-local-to-self "building sec gate west")
 )
-
+(defrule
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)
+    (up-can-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 487)    
+=>
+    (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 487)
+    (chat-local-to-self "building sec gate east")
+)
 
 ; BUILDING THE INNER WALL GATES
 (defrule
