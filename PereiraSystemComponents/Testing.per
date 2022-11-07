@@ -1,1 +1,50 @@
 
+
+; GUARD
+(defrule
+    (unit-type-count monk > 0)
+=>	
+    (up-full-reset-search)	
+    (up-find-local c: spearman-line c: 1)
+	;(up-find-local c: all-units-class c: 240)	
+	;(up-remove-objects search-local object-data-hitpoints < 50)
+    (up-guard-unit monk c: spearman-line)
+)
+
+
+; REMOVE CHEAP UNITS
+(defrule
+	(current-age == imperial-age)
+    (population-headroom == 0)
+    (housing-headroom == 0)
+    (wood-amount > 1000)(food-amount > 1000)(gold-amount > 1000)
+    (game-time > 2100); 35 min
+    (unit-type-count skirmisher-line > 0)
+    (can-train hand-cannoneer)    
+=>
+	(delete-unit skirmisher-line)
+    (train hand-cannoneer)
+    (chat-local-to-self "'CHANGING' SKIRMISHERS FOR HAND CANNONEERS")
+)
+
+(defrule
+	(current-age == imperial-age)
+    (population-headroom == 0)
+    (housing-headroom == 0)
+    (wood-amount > 1300)(food-amount > 1300)(gold-amount > 1300)
+    (game-time > 2100); 35 min
+    (not(civ-selected gothic))(not(civ-selected japanese))    
+    (unit-type-count spearman-line > 0)
+    (can-train knight-line)    
+=>
+	(delete-unit spearman)(delete-unit pikeman)(delete-unit halberdier)
+    (train knight-line)
+    (chat-local-to-self "'CHANGING' SPEARMEN FOR KNIGHTS")
+)
+
+(defrule
+	(not	(player-in-game any-ally))
+	(unit-type-count trade-cart > 0)
+=>
+	(delete-unit trade-cart)
+)
