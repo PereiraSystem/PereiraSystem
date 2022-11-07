@@ -1892,6 +1892,8 @@
 =>    
     (up-modify-goal gl-innerWallGatePoint1-y c:+ 6) 
     (up-modify-goal gl-innerWallGatePoint2-y c:- 6)
+
+
     (chat-local-to-self "BUILD NORTH EAST")
     (disable-self)
 )
@@ -2016,7 +2018,16 @@
 
 ;----------------------------
 ; trying to build secondary wall gates
-
+(defrule
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)
+    (up-can-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint2-x c: 497)    
+=>
+    (up-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 497)
+    (up-chat-data-to-self "secondaryinner wall gate north east start y: %d" g: gl-innerWallGatePoint1-y)
+    (up-chat-data-to-self "secondary inner wall gate north east end y: %d" g: gl-innerWallGatePoint2-y)
+)
 
 ; BUILDING THE INNER WALL GATES
 ; (CAN TRY TO BUILD IN 2 DIRECTIONS) (1 TO 2 AND 2 TO 1)
