@@ -2022,13 +2022,22 @@
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)
-    (up-can-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 497)    
+    (up-can-build-line innerWallSecondaryGatePoint2-x innerWallSecondaryGatePoint3-x c: 497)    
 =>
-    (up-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 497)
+    (up-build-line innerWallSecondaryGatePoint2-x innerWallSecondaryGatePoint3-x c: 497)
     (up-chat-data-to-self "secondary inner wall gate north east start y: %d" g: gl-innerWallGatePoint1-y)
     (up-chat-data-to-self "secondary inner wall gate north east end y: %d" g: gl-innerWallGatePoint2-y)
 )
-
+(defrule
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)
+    (up-can-build-line innerWallSecondaryGatePoint4-x innerWallSecondaryGatePoint1-x c: 497)    
+=>
+    (up-build-line innerWallSecondaryGatePoint4-x gl-innerWallGatePoint1-x c: 497)
+    (up-chat-data-to-self "secondary inner wall gate north east start y: %d" g: gl-innerWallGatePoint1-y)
+    (up-chat-data-to-self "secondary inner wall gate north east end y: %d" g: gl-innerWallGatePoint2-y)
+)
 ; BUILDING THE INNER WALL GATES
 ; (CAN TRY TO BUILD IN 2 DIRECTIONS) (1 TO 2 AND 2 TO 1)
 ; NORTH EAST 
