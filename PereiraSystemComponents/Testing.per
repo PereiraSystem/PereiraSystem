@@ -49,15 +49,6 @@
 	(delete-unit trade-cart)
 )
 
-; DROP RESOURCES
-(defrule
-	(game-time > 180)
-=>
-	(up-drop-resources food c: 15)
-    (chat-local-to-self "DROP THAT FOOD!")
-	(disable-self)
-)
-
 
 
 ; experimental strategy to move the city to the coast

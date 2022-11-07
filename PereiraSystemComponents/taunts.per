@@ -63,7 +63,7 @@
 =>
     (disable-timer 40)
 	(enable-timer 40 90)
-	(chat-to-allies "48 HELP ME - MY TOWN IS UNDER ATTACK!")			
+	(chat-to-allies "48 Help Me - My Town Is Under Attack!")			
 )
 
 (defrule
@@ -89,7 +89,7 @@
 =>
     (disable-timer 41)
 	(enable-timer 41 90)
-	(chat-to-allies "48 HELP ME - ENEMY BUILDINGS IN MY TOWN!")			
+	(chat-to-allies "48 Help Me - Enemy Buildings In My Town!")			
 )
 
 (defrule
@@ -107,8 +107,7 @@
 =>
 	(attack-now)
 	(acknowledge-taunt any-ally 31)
-    (chat-to-allies "IM ATTACKING BRO!")
-    (up-chat-data-to-player this-any-ally "I HAVE %d SOLDIERS ON IT!" g: gl-attackSoldierAmount)	
+    (up-chat-data-to-player this-any-ally "I Have %D Soldiers Attacking!" g: gl-attackSoldierAmount)	
 )
 
 (defrule
@@ -116,7 +115,7 @@
 	(up-players-in-game enemy == 0)
 =>
 	(acknowledge-taunt any-ally 31)
-    (chat-to-allies "WE HAVE NO ENEMIES RETARD!")
+    (chat-to-allies "We Have No Enemies Retard!")
 )
 
 ; HELP TAUNT 48
@@ -126,7 +125,7 @@
 	(enemy-buildings-in-town)
 =>
 	(acknowledge-taunt any-ally 48)
-    (chat-to-allies "I CANT HELP YOU, ENEMY BUILDINGS IN MY TOWN!")	
+    (chat-to-allies "I Cant Help You, Enemy Buildings In My Town!")	
 )
 
 (defrule
@@ -134,7 +133,7 @@
 	(town-under-attack)
 =>
 	(acknowledge-taunt any-ally 48)
-    (chat-to-allies "I CANT HELP YOU, IM UNDER ATTACK!")	
+    (chat-to-allies "I Cant Help You, Im Under Attack!")	
 )
 
 (defrule
@@ -142,7 +141,7 @@
 	(military-population == 0)
 =>
 	(acknowledge-taunt any-ally 48)
-    (chat-to-allies "I CANT HELP YOU, I HAVE NO SOLDIERS DUDE!")	
+    (chat-to-allies "I Cant Help You, I Have No Soldiers Dude!")	
 )
 
 ; ACCEPT
@@ -153,7 +152,7 @@
     ;(set-strategic-number sn-task-ungrouped-soldiers 1)	
 	(set-strategic-number sn-target-player-number -1) ;put back to 0 when??
 	; sn-coop-share-attacking SET TO 1
-    (chat-to-allies "I WILL HELP YOU! - MY ATTACKS WILL BE DIRECTED AROUND YOUR TOWN CENTER FOR 4 MINUTES!")	
+    (chat-to-allies "I Will Help You! - My Attacks Will Be Directed Around Your Town Center For 4 Minutes!")	
 )
 
 ; DISABLE HELP 
@@ -176,7 +175,7 @@
 	(taunt-detected any-ally 45)
 =>
 	(acknowledge-taunt any-ally 45)    
-	(chat-to-allies "OK WE RETREAT!")	
+	(chat-to-allies "Ok We Retreat!")	
 )
 
 
