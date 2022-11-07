@@ -1882,24 +1882,67 @@
 
 ; CHECK IF WE ALREADY BUILT SOME STONE GATES BEFORE BUILDING THE WALL
 
-
-(defrule
-    (building-type-count 490 > 0)
-    ;(building-type-count-total 487 > 0) 
+(defrule ;DESCENDING
+    (or
+        (or ;NORMAL
+            (or
+                (building-type-count-total 490 > 0)
+                (building-type-count-total 490 > 0)            
+                ;(building-type-count-total 95 > 0) ; ENDPIECES
+            )
+            (or
+                (building-type-count-total 88 > 0) ;CLOSED
+                (building-type-count-total 91 > 0) ;OPEN
+            )
+        )
+        (or ;FORTIFIED
+            (or
+                (building-type-count-total 491 > 0)
+                (building-type-count-total 491 > 0)            
+                ;(building-type-count-total 92 > 0) ; ENDPIECES
+            )
+            (or
+                (building-type-count-total 85 > 0) ;CLOSED
+                (building-type-count-total 90 > 0) ;OPEN
+            )
+        )        
+    )
 =>    
     (set-goal gl-weAlreadyGotStoneGates 1)
-    (chat-local-to-self "SOME STONE GATES TYPE A BUILT!")
+    (chat-local-to-self "SOME STONE GATES DESCENDING BUILT!")
 )
 
-(defrule
-    (building-type-count 487 > 0)
-    ;(building-type-count-total 487 > 0) 
+(defrule ;ASCENDING
+    (or
+        (or ;NORMAL
+            (or
+                (building-type-count-total 487 > 0)
+                (building-type-count-total 487 > 0)            
+                ;(building-type-count-total 81 > 0) ; ENDPIECES
+            )
+            (or
+                (building-type-count-total 64 > 0) ;CLOSED
+                (building-type-count-total 78 > 0) ;OPEN
+            )
+        )
+        (or ;FORTIFIED
+            (or
+                (building-type-count-total 488 > 0)
+                (building-type-count-total 488 > 0)            
+                ;(building-type-count-total 80 > 0) ; ENDPIECES
+            )
+            (or
+                (building-type-count-total 63 > 0) ;CLOSED
+                (building-type-count-total 67 > 0) ;OPEN
+            )
+        )
+
 =>    
     (set-goal gl-weAlreadyGotStoneGates 1)
     (chat-local-to-self "SOME STONE GATES TYPE B BUILT!")
 )
 
-(defrule
+(defrule(false)
     (or(building-type-count 490 > 0)
     (building-type-count-total 487 > 0))
 =>    
