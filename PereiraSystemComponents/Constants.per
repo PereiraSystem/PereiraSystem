@@ -142,7 +142,6 @@
 (defconst gl-specialShipQty 339)
 
 
-
 ; SETTING CIVILIAN CONSTANTS
 (defrule
     (true)
@@ -150,7 +149,7 @@
     (set-goal gl-minimumWoodForTC 275)
     (set-goal gl-minimumWoodForLC 100)
 
-      (set-goal gl-house-distance-mod 12)  
+    (set-goal gl-house-distance-mod 12)  
     (set-goal gl-feudalAgeFoodCost 500)
     (set-goal gl-castleAgeFoodCost 800)
     (set-goal gl-castleAgeGoldCost 200)
@@ -171,27 +170,15 @@
 )
 
 (defrule
-    (or
-        (or
-            (civ-selected aztec)(civ-selected mayan)       
-        )
-        (or
-            (civ-selected italian)(civ-selected korean)
-        )
-    )
+    (or     (or(civ-selected aztec)(civ-selected mayan))
+            (or(civ-selected italian)(civ-selected korean)))
 =>
     (set-goal gl-civNeedsArchersSoon 1)(disable-self)
 )
 
 (defrule
-    (or
-        (or
-            (civ-selected bulgarians)(civ-selected bulgarians)     
-        )
-        (or
-            (civ-selected bulgarians)(civ-selected bulgarians)
-        )
-    )
+    (or     (or(civ-selected bulgarians)(civ-selected bulgarians))
+            (or(civ-selected bulgarians)(civ-selected bulgarians)))
 =>
     (set-goal gl-civNeedsCavalrySoon 1)(disable-self)
 )
@@ -294,7 +281,7 @@
 
     (set-goal gl-ramQtyLow 2)
     (set-goal gl-ramQtyMedium 6)
-    (set-goal gl-ramQtyHigh 16)
+    (set-goal gl-ramQtyHigh 8)
 
     (set-goal gl-scorpionQty 4)
 
