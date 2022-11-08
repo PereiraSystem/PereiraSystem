@@ -2073,7 +2073,7 @@
 )
 
 ;1 TO 4 with 490
-(defrule (false)
+(defrule (true)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)
@@ -2082,9 +2082,8 @@
     (up-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint4-x c: 490)
 )
 
-
-; 4 TO 1 490
-(defrule (true)
+; 4 TO 1 
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)
@@ -2093,16 +2092,7 @@
     (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 490)
 
 )
-; 4 TO 1 497
-(defrule (false)
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastGates == 1)
-    (up-can-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 497)    
-=>
-    (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 497)
 
-)
 ; BUILDING THE INNER WALL GATES
 ; COULD TRY TO BUILD IN 2 DIRECTIONS) (point 1 TO 2 AND 2 TO 1)
 (defrule
