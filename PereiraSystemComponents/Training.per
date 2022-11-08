@@ -671,6 +671,17 @@
 	(train my-unique-unit-line)
 )
 
+; VIKING UU
+(defrule
+    (civ-selected viking)
+	(current-age == imperial-age)
+	(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
+    (gold-amount > 201)
+	(can-train my-unique-unit-line)
+=>
+	(train my-unique-unit-line)
+)
+
 ; SIEGE WORKSHOP
 ; BOMBARD CANNON , trebuchets have better AI
 (defrule
