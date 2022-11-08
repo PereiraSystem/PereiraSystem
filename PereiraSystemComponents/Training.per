@@ -676,12 +676,25 @@
 ; VIKING UU
 (defrule
     (civ-selected viking)
-	(current-age == imperial-age)
-	(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
-    (gold-amount > 201)
+     (not(research-completed my-unique-unit-upgrade))
+	;(current-age == imperial-age)
+	;(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
+    ;(gold-amount > 201)
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
+    (chat-local-to-self "uu")
+)
+(defrule
+    (civ-selected viking)
+    (research-completed my-unique-unit-upgrade)
+	;(current-age == imperial-age)
+	;(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
+    ;(gold-amount > 201)
+	(can-train my-unique-unit-line)
+=>
+	(train my-unique-unit-line)
+    (chat-local-to-self "uu 2")    
 )
 
 ; SIEGE WORKSHOP
