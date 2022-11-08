@@ -298,14 +298,14 @@
 (defrule
     (building-type-count barracks == 0)
 =>
-    (up-modify-sn sn-maximum-town-size c:- 5)
+    (up-modify-sn sn-maximum-town-size c:- 8)
     (disable-self)
 )
 
 (defrule
     (building-type-count barracks > 0)
 =>
-    (up-modify-sn sn-maximum-town-size c:+ 5)
+    (up-modify-sn sn-maximum-town-size c:+ 8)
     (disable-self)
 )
 
