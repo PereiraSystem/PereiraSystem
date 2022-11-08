@@ -2045,7 +2045,7 @@
 
 ;secondary gates to principal north east gates (and south west too)
 
-; 4 TO 1 
+; north west
 (defrule (true)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
@@ -2053,6 +2053,16 @@
     (up-can-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 487)    
 =>
     (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 487)
+
+)
+; south east
+(defrule (true)
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)
+    (up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 487)    
+=>
+    (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 487)
 
 )
 
