@@ -38,7 +38,7 @@
 (defrule
     (up-players-in-game enemy > 0)
 =>
-    (enable-timer 21 120)
+    (enable-timer 21 900)
     (chat-to-allies "ATTACK TIMER SET")
     (disable-self)
 )
