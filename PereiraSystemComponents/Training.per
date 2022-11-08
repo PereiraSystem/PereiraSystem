@@ -676,10 +676,10 @@
 ; VIKING UU
 (defrule
     (civ-selected viking)
-     (not(research-completed my-unique-unit-upgrade))
+    (not(research-completed my-unique-unit-upgrade))
 	;(current-age == imperial-age)
 	;(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
-    ;(gold-amount > 201)
+    (gold-amount > 100)
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
