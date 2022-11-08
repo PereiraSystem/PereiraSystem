@@ -318,16 +318,13 @@
 
 ; STONE MINING CAMP
 (defrule
-    (or(building-type-count castle < 1)(stone-amount < 650))
-    (or
-        (building-type-count university > 0)
-        (and(building-type-count town-center < 0)(stone-amount < 100))
-    )
-    (wood-amount > 276)
-    (or(stone-amount < 650)(and(civ-selected frankish)(stone-amount < 490)))    
+    (or(building-type-count monastery > 0)(building-type-count university > 0))
+    (or(building-type-count town-center > 0)(stone-amount < 100))
+    (wood-amount > 200)   
     (resource-found stone) 
     (dropsite-min-distance stone > 3)
-    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)    
+    ;(building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
+    (building-type-count-total mining-camp < 4)     
     (can-build mining-camp)
 =>
     ;(up-chat-data-to-self "Trying To Build Mining Camp (Stone 1) - Max Distance: %d" s: sn-mining-camp-max-distance)      
@@ -681,11 +678,6 @@
     (up-set-placement-data my-player-number -1 c: +32)
     (up-build place-control 0 c: barracks)   
 )
-
-
-
-
-
 
 ; BUILD STABLES
 (defrule
