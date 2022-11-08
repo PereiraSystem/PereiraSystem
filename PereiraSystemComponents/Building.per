@@ -892,7 +892,7 @@
 (defconst gl-innerWallGatePoint4-x 467)
 (defconst gl-innerWallGatePoint4-y 468)
 
-(defconst gl-innerWallGateCounter 469)
+
 
 (defconst gl-positionXisHigh 470) 
 (defconst gl-positionXisMedium 471)
@@ -915,7 +915,7 @@
 (defconst gl-buildingInnerWall 485)
 (defconst gl-outerWallPerimeter 486)
 (defconst gl-innerWallPerimeter 487)
-(defconst gl-palisadeGateCounter 488)
+
 (defconst gl-maxDimensionOfMap 489)
 (defconst gl-innerWallPoint1-x 491)
 (defconst gl-innerWallPoint1-y 492)
@@ -938,7 +938,7 @@
 (defrule
     (true) 
 =>
-    (set-goal gl-innerWallGateCounter 40)
+
     (set-goal gl-positionXisHigh 0) 
     (set-goal gl-positionXisMedium 0)
     (set-goal gl-positionXisLow 0)
@@ -1912,7 +1912,7 @@
     (up-modify-goal gl-innerWallSecondaryGatePoint2-x c:- 6)
     (up-modify-goal gl-innerWallSecondaryGatePoint3-x c:+ 6)    
 
-    (chat-local-to-self "BUILD NORTH EAST")
+ 
     (disable-self)
 )
 
@@ -1920,7 +1920,13 @@
     (up-compare-goal gl-buildSouthWestGates == 1)
 =>
     (up-modify-goal gl-innerWallGatePoint3-y c:- 6)
-    (up-modify-goal gl-innerWallGatePoint4-y c:+ 6)   
+    (up-modify-goal gl-innerWallGatePoint4-y c:+ 6)  
+
+   (up-modify-goal gl-innerWallSecondaryGatePoint1-x c:- 6)
+    (up-modify-goal gl-innerWallSecondaryGatePoint4-x c:+ 6)
+
+    (up-modify-goal gl-innerWallSecondaryGatePoint2-x c:- 6)
+    (up-modify-goal gl-innerWallSecondaryGatePoint3-x c:+ 6)      
     (disable-self)
 )
 
@@ -2087,7 +2093,22 @@
 )
 
 ;north east
-
+(defrule (false)
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (or
+        (and
+            (up-compare-goal gl-dontBuildSouthEastWall == 0)
+            (up-compare-goal gl-buildSouthEastGates == 1)
+        )
+        (and
+            (up-compare-goal gl-dontBuildNorthWestWall == 0)
+            (up-compare-goal gl-buildNorthWestGates == 1)
+        )        
+    )
+    (up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 487)    
+=>
+    (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 487)
+)
 ; BUILDING THE INNER WALL GATES
 ; COULD TRY TO BUILD IN 2 DIRECTIONS) (point 1 TO 2 AND 2 TO 1)
 (defrule
