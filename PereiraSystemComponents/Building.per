@@ -2049,7 +2049,6 @@
 ; trying to build secondary wall gates
 
 ;secondary gates when principal NE or SW 
-
 (defrule 
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
@@ -2068,7 +2067,7 @@
 
 )
 
-(defrule (true)
+(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
         (and
@@ -2085,7 +2084,7 @@
     (up-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint3-x c: 487)
 )
 
-;secondary gates to principal SE or NW gates
+;secondary gates when principal SE or NW gates
 (defrule 
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
@@ -2103,7 +2102,7 @@
     (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 490)
 )
 
-(defrule (false)
+(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
         (and
