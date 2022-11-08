@@ -285,15 +285,6 @@
     (disable-self)
 )
 
-(defrule
-    (or
-        (town-under-attack)(enemy-buildings-in-town)
-    )
-=>
-    (up-assign-builders c: castle c: 30)
-    (disable-self)
-)
-
 ; TOWN CENTER, TOWN SIZE AND
 (defrule
     (true)
