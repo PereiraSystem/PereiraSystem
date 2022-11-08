@@ -1380,6 +1380,32 @@
     (set-goal gl-innerWallPoint4-y 0)(disable-self)     
 )
 
+; DEFAULT: LUDICROUS
+(defrule 
+    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint1-x 480)
+    (set-goal gl-innerWallPoint1-x 480)(disable-self)   
+)
+(defrule 
+    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint2-x 480)
+    (set-goal gl-innerWallPoint2-x 480)(disable-self)
+)
+(defrule
+    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint2-y 480)
+    (set-goal gl-innerWallPoint2-y 480)(disable-self)
+)
+(defrule
+    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+=>    
+    (set-goal gl-wallPoint3-y 480)
+    (set-goal gl-innerWallPoint3-y 480)(disable-self)      
+)
+
 ; HIGHER POINTS SET TO MAP SIZE MANUALLY - TRY TO GET FROM GOAL
 #load-if-defined TINY-MAP
 (defrule 
@@ -1515,26 +1541,26 @@
 (defrule 
     (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint1-x 220)
-    (set-goal gl-innerWallPoint1-x 220)(disable-self)   
+    (set-goal gl-wallPoint1-x 240)
+    (set-goal gl-innerWallPoint1-x 240)(disable-self)   
 )
 (defrule 
     (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x 220)
-    (set-goal gl-innerWallPoint2-x 220)(disable-self)
+    (set-goal gl-wallPoint2-x 240)
+    (set-goal gl-innerWallPoint2-x 240)(disable-self)
 )
 (defrule
     (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y 220)
-    (set-goal gl-innerWallPoint2-y 220)(disable-self)
+    (set-goal gl-wallPoint2-y 240)
+    (set-goal gl-innerWallPoint2-y 240)(disable-self)
 )
 (defrule
     (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint3-y 220)
-    (set-goal gl-innerWallPoint3-y 220)(disable-self)      
+    (set-goal gl-wallPoint3-y 240)
+    (set-goal gl-innerWallPoint3-y 240)(disable-self)      
 )
 #end-if
 
