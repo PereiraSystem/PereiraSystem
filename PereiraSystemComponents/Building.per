@@ -1745,6 +1745,7 @@
 ; BUILD THE OUTER PALISADE GATES
 (defrule 
     (wood-amount > 175)(building-type-count town-center > 0)
+    (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthEastWall == 0) ;CAN REMOVE?
     (up-compare-goal gl-buildNorthEastGates == 1)  
     (up-can-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
@@ -1753,6 +1754,7 @@
     (chat-local-to-self "BUILDING NORTH EAST PALISADE GATES")    
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
+    (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)  
     (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint1-x c: 796)
@@ -1762,6 +1764,7 @@
 )
 
 (defrule (wood-amount > 175)(building-type-count town-center > 0)
+    (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
     (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
@@ -1770,6 +1773,7 @@
     (chat-local-to-self "BUILDING SOUTH EAST PALISADE GATES")
 )
 (defrule (wood-amount > 175)(building-type-count town-center > 0)
+    (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
     (up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint2-x c: 792)
@@ -1779,6 +1783,7 @@
 )
 
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
+    (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
     (up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
@@ -1787,6 +1792,7 @@
     (chat-local-to-self "BUILDING SOUTH WEST PALISADE GATES")
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
+    (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
     (up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint3-x c: 796)
@@ -1796,6 +1802,7 @@
 )
 
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
+    (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
     (up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)    
@@ -1804,6 +1811,7 @@
     (chat-local-to-self "BUILDING NORTH WEST PALISADE GATES")
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
+    (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
     (up-can-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint4-x c: 792)    
