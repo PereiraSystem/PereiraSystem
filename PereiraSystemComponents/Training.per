@@ -597,6 +597,7 @@
 =>
     (train my-unique-unit-line)
 )
+
 ; CUMANS UU
 (defrule
     (research-completed my-unique-unit-upgrade)
@@ -644,6 +645,7 @@
     (can-train stable-tarkan)
 =>
     (train stable-tarkan)
+    (chat-local-to-self "Training Stable Tarkan")
 )
 
 ; MALAY UU
@@ -685,7 +687,7 @@
 ; SIEGE WORKSHOP
 ; BOMBARD CANNON , trebuchets have better AI
 (defrule
-	(unit-type-count-total houfnice < 16)
+	(unit-type-count-total houfnice < 12)
 	(can-train houfnice)
 =>
 	(train houfnice)
