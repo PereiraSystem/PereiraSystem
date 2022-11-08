@@ -642,20 +642,17 @@
 (defrule 
 	(building-type-count-total barracks == 0)
     (building-type-count town-center > 0)
-    (or
-    	(or
-            (and(building-type-count-total lumber-camp > 0)(wood-amount > 275))
-            (and
-                (and(building-type-count-total lumber-camp > 0)(wood-amount > 225))
-                (civ-selected japanese)
-            )            
+    (or    	
+        (and
+            (building-type-count-total lumber-camp > 0)
+            (wood-amount g:> gl-minimumWoodForLC)
         )
         (wood-amount > 305)
     )
     (up-can-build 0 c: barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks 1")
-    (up-set-placement-data my-player-number -1 c:+ 2)
+    (up-set-placement-data my-player-number -1 c:+ 1)
     (up-build place-control 0 c: barracks)    
 )
 
