@@ -51,7 +51,7 @@
     (military-population > 0)
 =>
 	(disable-timer 21)
-    (enable-timer 21 30)
+    (enable-timer 21 60)
     (set-strategic-number sn-number-attack-groups 5)
     (set-strategic-number sn-minimum-attack-group-size 30)
     (set-strategic-number sn-maximum-attack-group-size 150)
@@ -61,7 +61,7 @@
     (set-goal gl-weAreAttacking 1)      
     (attack-now)
     ;(chat-to-allies "31 Attack!")
-    (up-chat-data-to-player any-ally "31 Attack! I Have %d Soldiers Ready!" g: gl-attackSoldierAmount)
+    (up-chat-data-to-player any-ally "31 Attack!" g: gl-attackSoldierAmount)
 )
 
 (defrule 

@@ -75,7 +75,7 @@
 )
 
 ; TIMER 10 DELETES VILLAGERS
-(defrule(true)=>(enable-timer 10 2400)(disable-self)) 
+(defrule(true)=>(enable-timer 10 1200)(disable-self)) 
 (defrule
 	(timer-triggered 10)
     (current-age == imperial-age)(building-type-count town-center > 0)
@@ -83,7 +83,7 @@
 =>
 	(chat-local-to-self "DELETING IDLE VILLAGERS!")
 	(disable-timer 10)
-    (enable-timer 10 600)    
+    (enable-timer 10 150)    
     (up-delete-idle-units idle-type-villager)
 )
 
