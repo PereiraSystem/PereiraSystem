@@ -1916,11 +1916,8 @@
 
     (up-modify-goal gl-innerWallSecondaryGatePoint2-x c:- 6)
     (up-modify-goal gl-innerWallSecondaryGatePoint3-x c:+ 6)    
-
- 
     (disable-self)
 )
-
 (defrule
     (up-compare-goal gl-buildSouthWestGates == 1)
 =>
@@ -1934,14 +1931,13 @@
     (up-modify-goal gl-innerWallSecondaryGatePoint3-x c:+ 6)      
     (disable-self)
 )
-
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
 =>
     (up-modify-goal gl-innerWallGatePoint2-x c:- 6)
     (up-modify-goal gl-innerWallGatePoint3-x c:+ 6) 
 
-        ; SECONDARY WGATES
+    ; SECONDARY WGATES
     (up-modify-goal gl-innerWallSecondaryGatePoint1-y c:+ 6)
     (up-modify-goal gl-innerWallSecondaryGatePoint2-y c:- 6)
 
@@ -1950,14 +1946,13 @@
   
     (disable-self)
 )
-
 (defrule
     (up-compare-goal gl-buildNorthWestGates == 1)
 =>
     (up-modify-goal gl-innerWallGatePoint4-x c:+ 6)
     (up-modify-goal gl-innerWallGatePoint1-x c:- 6)
 
-         ; SECONDARY WGATES
+    ; SECONDARY WGATES
     (up-modify-goal gl-innerWallSecondaryGatePoint1-y c:+ 6)
     (up-modify-goal gl-innerWallSecondaryGatePoint2-y c:- 6)
 
@@ -2213,8 +2208,8 @@
     (up-can-build-line gl-innerWallGatePoint1-x gl-innerWallGatePoint2-x c: 490)
 =>
     (up-build-line gl-innerWallGatePoint1-x gl-innerWallGatePoint2-x c: 490)
-    (up-chat-data-to-self "inner wall gate north east start y: %d" g: gl-innerWallGatePoint1-y)
-    (up-chat-data-to-self "inner wall gate north east end y: %d" g: gl-innerWallGatePoint2-y)
+    ;(up-chat-data-to-self "inner wall gate north east start y: %d" g: gl-innerWallGatePoint1-y)
+    ;(up-chat-data-to-self "inner wall gate north east end y: %d" g: gl-innerWallGatePoint2-y)
 )
 
 (defrule
@@ -2224,8 +2219,8 @@
     (up-can-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 487)
 =>
     (up-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 487)
-    (up-chat-data-to-self "inner wall gate south east start y: %d" g: gl-innerWallGatePoint2-y)
-    (up-chat-data-to-self "inner wall gate south east end y: %d" g: gl-innerWallGatePoint3-y)
+    ;(up-chat-data-to-self "inner wall gate south east start y: %d" g: gl-innerWallGatePoint2-y)
+    ;(up-chat-data-to-self "inner wall gate south east end y: %d" g: gl-innerWallGatePoint3-y)
 )
 
 (defrule
@@ -2235,8 +2230,8 @@
     (up-can-build-line gl-innerWallGatePoint3-x gl-innerWallGatePoint4-x c: 490)
 =>
     (up-build-line gl-innerWallGatePoint3-x gl-innerWallGatePoint4-x c: 490)
-    (up-chat-data-to-self "inner wall gate south west start y: %d" g: gl-innerWallGatePoint3-y)
-    (up-chat-data-to-self "inner wall gate south west end y: %d" g: gl-innerWallGatePoint4-y)
+    ;(up-chat-data-to-self "inner wall gate south west start y: %d" g: gl-innerWallGatePoint3-y)
+    ;(up-chat-data-to-self "inner wall gate south west end y: %d" g: gl-innerWallGatePoint4-y)
 )
 
 (defrule
@@ -2246,8 +2241,8 @@
     (up-can-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 487)
 =>
     (up-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 487)
-    (up-chat-data-to-self "inner wall gate north west start y: %d" g: gl-innerWallGatePoint4-y)
-    (up-chat-data-to-self "inner wall gate north west end y: %d" g: gl-innerWallGatePoint1-y)
+    ;(up-chat-data-to-self "inner wall gate north west start y: %d" g: gl-innerWallGatePoint4-y)
+    ;(up-chat-data-to-self "inner wall gate north west end y: %d" g: gl-innerWallGatePoint1-y)
 )
 
 ; BUILDING THE INNER STONE WALL

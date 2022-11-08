@@ -35,16 +35,14 @@
 )
 
 ; ATTACK TIMER 21
-(defrule(up-players-in-game enemy > 0)=>(enable-timer 21 1800)(disable-self)) ;30  min
-
-; ATTACK CAUSE WE GOT PLENTY OF RESOURCES
 (defrule
-    (food-amount > 4000) 
     (up-players-in-game enemy > 0)
-    (military-population > 0)
 =>
-    (enable-timer 21 5)
+    (enable-timer 21 120)
+    (chat-to-allies "ATTACK TIMER SET")
+    (disable-self)
 )
+
 
 ; ATTACK!
 (defrule

@@ -152,14 +152,14 @@
     ;(set-strategic-number sn-task-ungrouped-soldiers 1)	
 	(set-strategic-number sn-target-player-number -1) ;put back to 0 when??
 	; sn-coop-share-attacking SET TO 1
-    (chat-to-allies "My Attacks Will Be Directed Around Your Town Center For 4 Minutes!")	
+    (chat-to-allies "My Attacks Will Be Directed Around Your Town Center For 2 Minutes!")	
 )
 
 ; DISABLE HELP 
 (defrule
 	(up-compare-sn sn-target-player-number == -1) ; (attacks directed to ally)
 =>
-    (enable-timer 49 240) ; disable help in 4 minutes
+    (enable-timer 49 120)
 )
 
 (defrule
