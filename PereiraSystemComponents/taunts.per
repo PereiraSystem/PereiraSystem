@@ -59,6 +59,7 @@
 
 (defrule
 	(timer-triggered 40)
+	(game-time < 1500)	
 	(town-under-attack)
 =>
     (disable-timer 40)
@@ -85,6 +86,7 @@
 
 (defrule
 	(enemy-buildings-in-town)
+	(game-time < 1500)	
 	(timer-triggered 41)
 =>
     (disable-timer 41)
@@ -120,6 +122,14 @@
 
 ; HELP TAUNT 48
 ; REJECT
+(defrule
+	(taunt-detected any-ally 48)
+	(game-time > 1500)
+=>
+	(acknowledge-taunt any-ally 48)
+    (chat-to-allies "Just Attack The Enemy Base!")	
+)
+
 (defrule
 	(taunt-detected any-ally 48)
 	(enemy-buildings-in-town)
