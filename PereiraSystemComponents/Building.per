@@ -2048,10 +2048,9 @@
 ;----------------------------
 ; trying to build secondary wall gates
 
-;secondary gates to principal north east gates (and south west too)
+;secondary gates when principal NE or SW 
 
-; north west
-(defrule (true) ;works
+(defrule 
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
         (and
@@ -2068,19 +2067,26 @@
     (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 487)
 
 )
-; south east
+
 (defrule (true)
     (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastGates == 1)
+    (or
+        (and
+            (up-compare-goal gl-dontBuildNorthEastWall == 0)
+            (up-compare-goal gl-buildNorthEastGates == 1)
+        )
+        (and
+            (up-compare-goal gl-dontBuildSouthWestWall == 0)
+            (up-compare-goal gl-buildSouthWestGates == 1)
+        )        
+    )
     (up-can-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint3-x c: 487)    
 =>
     (up-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint3-x c: 487)
 )
 
-;secondary gates to principal south east gates (and north west too)
-; south west
-(defrule (false)
+;secondary gates to principal SE or NW gates
+(defrule 
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
         (and
@@ -2092,12 +2098,11 @@
             (up-compare-goal gl-buildNorthWestGates == 1)
         )        
     )
-    (up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 487)    
+    (up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 490)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 487)
+    (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 490)
 )
 
-;north east
 (defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
@@ -2110,9 +2115,9 @@
             (up-compare-goal gl-buildNorthWestGates == 1)
         )        
     )
-    (up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 487)    
+    (up-can-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint2-x c: 490)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 487)
+    (up-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint2-x c: 490)
 )
 ; BUILDING THE INNER WALL GATES
 ; COULD TRY TO BUILD IN 2 DIRECTIONS) (point 1 TO 2 AND 2 TO 1)
