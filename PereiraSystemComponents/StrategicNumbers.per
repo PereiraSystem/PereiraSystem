@@ -297,7 +297,7 @@
 
 
 (defrule
-    (building-type-count barracks > 0)
+    (game-time > 360)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 10)
     (up-modify-sn sn-minimum-town-size c:+ 10)      
