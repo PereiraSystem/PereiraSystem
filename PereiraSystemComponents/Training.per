@@ -133,6 +133,15 @@
 	(train trade-cart)
 )
 
+; TRADE SHIP
+(defrule 
+    (players-building-type-count any-ally dock > 0)
+    (unit-type-count-total trade-cog == 0)    
+    (can-train trade-cog)
+=>
+	(train trade-cog)
+)
+
 ; FISHING SHIPS
 (defrule 
     (wood-amount > 350)
