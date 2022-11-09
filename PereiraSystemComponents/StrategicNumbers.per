@@ -127,6 +127,27 @@
     (disable-self)
 )
 
+(defrule (false)
+    (or
+        (unit-type-count-total fishing-ship > 0)
+        (unit-type-count-total trade-cog > 0))
+=>  
+    (up-modify-sn sn-total-number-explorers c:+ 1) 
+    (up-modify-sn sn-number-explore-groups c:+ 1)
+    (chat-local-to-self "WE CAN EXPLORE THE SEA!")
+    (disable-self)
+)
+
+(defrule 
+    (unit-type-count-total warship-class > 0)
+=>  
+    (up-modify-sn sn-total-number-explorers c:+ 1) 
+    (up-modify-sn sn-number-explore-groups c:+ 1)
+    (chat-local-to-self "WE CAN EXPLORE THE SEA WITH WARSHIPS!")
+    (disable-self)
+)
+
+
 ; SCOUT STYLES
 (defrule
 	(true)

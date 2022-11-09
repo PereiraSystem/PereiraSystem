@@ -144,6 +144,14 @@
 
 ; FISHING SHIPS
 (defrule 
+    (up-gaia-type-count-total c: ocean-fish-class > 0)
+=>
+	(train fishing-ship)
+    (chat-local-to-self ">>> Ocean Fish Detected")
+    (disable-self)
+)
+
+(defrule 
     (wood-amount > 350)
     (unit-type-count-total fishing-ship g:< gl-fishingShipsQty)
 =>
@@ -994,7 +1002,8 @@
 (defrule
     (can-train galley-line)
 =>
-    (train galley-line)(disable-self)
+    (train galley-line)
+    (disable-self)
 )
 
 (defrule
@@ -1008,6 +1017,15 @@
 )
 
 ; FIRE SHIP
+(defrule
+    (or(up-compare-goal gl-dudeHasGalleys == 1)
+    (up-compare-goal gl-dudeHasCannonShips == 1))
+    (unit-type-count-total fire-ship-line < 2)
+    (can-train fire-ship-line)
+=>
+    (train fire-ship-line)
+)
+
 (defrule
     (building-type-count-total dock > 1)
     (or(up-compare-goal gl-dudeHasGalleys == 1)
