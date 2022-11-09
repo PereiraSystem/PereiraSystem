@@ -390,7 +390,7 @@
 (defrule 
     (current-age == dark-age)
 =>  
-    (set-strategic-number sn-maximum-hunt-drop-distance 16)
+    (set-strategic-number sn-maximum-hunt-drop-distance 22)
     (set-strategic-number sn-maximum-food-drop-distance 9)
     (set-strategic-number sn-maximum-wood-drop-distance 9)
     (set-strategic-number sn-maximum-gold-drop-distance 0)
@@ -410,7 +410,6 @@
     (or(civ-selected incan)(or(civ-selected mayan)(civ-selected aztec)))
     (game-time > 420)
 =>  
-    (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 9)
     (set-strategic-number sn-maximum-wood-drop-distance 9)
     (set-strategic-number sn-maximum-gold-drop-distance 14)
@@ -444,7 +443,6 @@
 (defrule 
     (current-age == feudal-age)
 =>  
-    (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-maximum-food-drop-distance 6) ;to make them use mills
     (set-strategic-number sn-maximum-stone-drop-distance 0)
     (set-strategic-number sn-food-gatherer-percentage 50)
@@ -461,6 +459,7 @@
     (building-type-count archery-range > 0))    
     (building-type-count-total lumber-camp > 1)    
 =>
+    (set-strategic-number sn-maximum-hunt-drop-distance 16)
     (set-strategic-number sn-food-gatherer-percentage 60)
     (set-strategic-number sn-wood-gatherer-percentage 28)
     (set-strategic-number sn-gold-gatherer-percentage 12)
