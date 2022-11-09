@@ -644,6 +644,8 @@
     ;(up-set-placement-data my-player-number house c:+ 1)
     ;(up-build place-control 0 c: barracks)    
     (build barracks)
+    (up-chat-data-to-player my-player-number "MAX TS: %d" s: sn-maximum-town-size)
+    
 )
 
 (defrule
