@@ -268,6 +268,22 @@
 )
 
 (defrule
+    (unit-type-count villager > 12)
+=>
+    (up-assign-builders c: stone-wall-line c: 3)      
+    (up-assign-builders c: palisade-wall c: 3)        
+    (disable-self)
+)
+
+(defrule
+    (unit-type-count villager > 16)
+=>
+    (up-assign-builders c: stone-wall-line c: 4)      
+    (up-assign-builders c: palisade-wall c: 4)        
+    (disable-self)
+)
+
+(defrule
     (current-age == castle-age)
 =>
     (up-assign-builders c: house c: 2)
