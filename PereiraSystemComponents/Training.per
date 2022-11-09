@@ -151,16 +151,10 @@
 	(train fishing-ship)
     (chat-local-to-self ">>> Ocean Fish Detected")
     (disable-self)
-)(defrule 
-    (up-gaia-type-count-total c: ocean-fish-class > 0)
-    (can-train fishing-ship)    
-=>
-	(train fishing-ship)
-    (disable-self)
 )
 
 (defrule 
-    (wood-amount > 350)
+    (up-gaia-type-count-total c: ocean-fish-class > 1)
     (unit-type-count-total fishing-ship g:< gl-fishingShipsQty)
 =>
 	(train fishing-ship)
@@ -168,8 +162,8 @@
 
 ; FISH TRAPS
 (defrule 
-    (can-build fish-trap)(civ-selected malay)
-    (building-type-count-total fish-trap < 8)
+    (can-build fish-trap)
+    (building-type-count-total fish-trap < 1)
 =>
 	(build fish-trap)
 )
@@ -1033,10 +1027,7 @@
     (train galley-line)
     (disable-self)
 )(defrule
-    (can-train galley-line)
-    (not(can-train longboat-line))
-    (not(can-train turtle-ship-line))
-    (not(can-train caravel-line))        
+    (can-train galley-line)     
 =>
     (train galley-line)
     (disable-self)
@@ -1056,29 +1047,18 @@
 (defrule
     (or(up-compare-goal gl-dudeHasGalleys == 1)
     (up-compare-goal gl-dudeHasCannonShips == 1))
-    (unit-type-count-total fire-ship-line < 2)
-    (can-train fire-ship-line)
-=>
-    (train fire-ship-line)
-)
-
-(defrule
-    (building-type-count-total dock > 1)
-    (or(up-compare-goal gl-dudeHasGalleys == 1)
-    (up-compare-goal gl-dudeHasCannonShips == 1))
-    (wood-amount > 350)
     (unit-type-count-total fire-ship-line < 4)
     (can-train fire-ship-line)
 =>
     (train fire-ship-line)
 )
 
+
 ; DEMO SHIP
 (defrule
-    (building-type-count-total dock > 1)
     (up-compare-goal gl-dudeHasFireShips == 1)
     (wood-amount > 350)   
-    (unit-type-count-total demolition-ship-line < 4)
+    (unit-type-count-total demolition-ship-line < 1)
     (can-train demolition-ship-line)
 =>
     (train demolition-ship-line)
