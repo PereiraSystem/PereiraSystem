@@ -439,7 +439,16 @@
     (building-type-count-total dock == 0)
     (can-build dock)
 =>
-    (chat-local-to-self "Trying To Build Dock 1")
+    (chat-local-to-self "Trying To Build Dock 1 - Place Control")
+    (up-set-placement-data my-player-number town-center c: -16)    
+    (up-build place-control 0 c: dock) 
+)
+
+(defrule
+    (building-type-count-total dock == 0)
+    (can-build dock)
+=>
+    (chat-local-to-self "Trying To Build Dock 1 - Normal mode")
     (build dock)    
 )
 
