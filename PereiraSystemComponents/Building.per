@@ -460,9 +460,9 @@
     (building-type-count-total dock == 1)
     (can-build dock)    
 =>
-    (up-set-placement-data my-player-number town-center c:+ 32)    
+    (up-set-placement-data my-player-number dock c:- 32)    
     (up-build place-control 0 c: dock) 
-    (chat-local-to-self "Trying To Build Dock 2")
+    (chat-local-to-self "Trying To Build Dock 2 - Place Control")
 )
 
 (defrule
@@ -473,10 +473,11 @@
     (building-type-count-total dock == 1)
     (can-build dock)    
 =>
-    (up-set-placement-data my-player-number town-center c:- 32)    
-    (up-build place-control 0 c: dock) 
-    (chat-local-to-self "Trying To Build Dock 2 -")
+    (chat-local-to-self "Trying To Build Dock 2")
+    (build-dock)
 )
+
+
 
 
 (defrule
