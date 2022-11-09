@@ -145,6 +145,7 @@
 ; FISHING SHIPS
 (defrule 
     (up-gaia-type-count-total c: ocean-fish-class > 0)
+    (can-train fishing-ship)    
 =>
 	(train fishing-ship)
     (chat-local-to-self ">>> Ocean Fish Detected")
