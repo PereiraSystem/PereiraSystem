@@ -1741,8 +1741,8 @@
 
 ; BUILD THE OUTER PALISADE GATES
 ; TRYING TO BUILD SECONDARY PALISADE GATES
-(defrule 
-    (wood-amount > 175)(building-type-count town-center > 0)
+(defrule (false)
+    (wood-amount > 175)(building-type-count town-center > 0)(false)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthEastWall == 0) ;CAN REMOVE?
     (up-compare-goal gl-buildNorthEastGates == 1)  
@@ -1750,7 +1750,7 @@
 =>   
     (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint4-x c: 792)
     (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")    
-)(defrule 
+)(defrule (false)
     (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthEastWall == 0) ;CAN REMOVE?
@@ -1761,7 +1761,8 @@
     (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")    
 )
 
-(defrule (wood-amount > 175)(building-type-count town-center > 0)
+(defrule (false)
+(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
@@ -1769,7 +1770,8 @@
 =>
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint1-x c: 796)
     (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")
-)(defrule (wood-amount > 175)(building-type-count town-center > 0)
+)(defrule (false)
+(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
@@ -1779,7 +1781,8 @@
     (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")
 )
 
-(defrule(wood-amount > 175)(building-type-count town-center > 0)
+(defrule (false)
+(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
@@ -1787,7 +1790,8 @@
 =>
     (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint1-x c: 792)
     (chat-local-to-self "BUILDING SEC PALISADE GATES")
-)(defrule(wood-amount > 175)(building-type-count town-center > 0)
+)(defrule (false)
+(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
@@ -1797,7 +1801,8 @@
     (chat-local-to-self "BUILDING SEC PALISADE GATES")
 )
 
-(defrule(wood-amount > 175)(building-type-count town-center > 0)
+(defrule (false)
+(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
@@ -1806,7 +1811,9 @@
     (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint2-x c: 792)
     (chat-local-to-self "BUILDING SEC PALISADE GATES")
 )
-(defrule(wood-amount > 175)(building-type-count town-center > 0)
+(defrule (false)
+
+(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
