@@ -384,6 +384,7 @@
     (set-strategic-number sn-maximum-wood-drop-distance 9)
 )
 
+
 ; PERCENT VILLAGER BUILDERS
 (defrule
     (current-age == dark-age)
@@ -651,3 +652,14 @@
     (chat-local-to-self "We Need More Wood, Less Gold")     
     (disable-self)
 )
+
+(defrule
+    (true)
+=>
+    (set-strategic-number sn-maximum-wood 30000)
+    (set-strategic-number sn-maximum-food 40000)
+    (set-strategic-number sn-maximum-gold 20000)
+    (set-strategic-number sn-maximum-stone 1800)    
+    (disable-self)
+)
+
