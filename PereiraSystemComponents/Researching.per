@@ -16,7 +16,6 @@
 )
 
 (defrule
-    (military-population > 15)
     (can-research imperial-age)   
 =>
     (research imperial-age)
@@ -1332,15 +1331,11 @@
 (defrule
  	(research-completed ri-hand-cart)
  	(research-completed ri-bow-saw)    
-    (unit-type-count-total archer-line > 3)
-    (or
-        (not(civ-selected bohemians))
-        (building-type-count siege-workshop < 0)  
-    )
+    (unit-type-count-total archer-line > 2)
     (or
         (or
-            (unit-type-count-total monk > 4)
-            (and(gold-amount > 500)(building-type-count monastery == 0))       
+            (players-unit-type-count any-ally monk > 4)
+            (and(gold-amount > 400)(building-type-count monastery == 0))       
         )
         (current-age == imperial-age)
     )
