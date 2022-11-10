@@ -849,26 +849,30 @@
 (defconst gl-innerWallSecondaryGatePoint4-x 437)
 (defconst gl-innerWallSecondaryGatePoint4-y 438)
 
-(defconst gl-outerWallGatePoint1-x 441)
-(defconst gl-outerWallGatePoint1-y 442)
-(defconst gl-outerWallGatePoint2-x 443)
-(defconst gl-outerWallGatePoint2-y 444)
-(defconst gl-outerWallGatePoint3-x 445)
-(defconst gl-outerWallGatePoint3-y 446)
-(defconst gl-outerWallGatePoint4-x 447)
-(defconst gl-outerWallGatePoint4-y 448)
+(defconst gl-outerWallGatePoint1-x 439)
+(defconst gl-outerWallGatePoint1-y 440)
+(defconst gl-outerWallGatePoint2-x 441)
+(defconst gl-outerWallGatePoint2-y 442)
+(defconst gl-outerWallGatePoint3-x 443)
+(defconst gl-outerWallGatePoint3-y 444)
+(defconst gl-outerWallGatePoint4-x 445)
+(defconst gl-outerWallGatePoint4-y 446)
 
-(defconst gl-buildNorthEastGates 450)
-(defconst gl-buildSouthEastGates 451)
-(defconst gl-buildNorthWestGates 452)
-(defconst gl-buildSouthWestGates 453)
+(defconst gl-weAlreadyGotAscendingPalisadeGates 447)
+(defconst gl-weAlreadyGotDescendingPalisadeGates 448)
+(defconst gl-weAlreadyGotAscendingStoneGates 449)
+(defconst gl-weAlreadyGotDescendingStoneGates 450)
+
+(defconst gl-buildNorthEastGates 451)
+(defconst gl-buildSouthEastGates 452)
+(defconst gl-buildNorthWestGates 453)
+(defconst gl-buildSouthWestGates 454)
 
 (defconst gl-dontBuildNorthEastWall 455)
 (defconst gl-dontBuildSouthEastWall 456)
 (defconst gl-dontBuildNorthWestWall 457)
 (defconst gl-dontBuildSouthWestWall 458)
-(defconst gl-weAlreadyGotPalisadeGates 459)
-(defconst gl-weAlreadyGotStoneGates 460)
+
 
 (defconst gl-innerWallGatePoint1-x 461)
 (defconst gl-innerWallGatePoint1-y 462)
@@ -1904,21 +1908,6 @@
 
 
 ; CHECK IF WE ALREADY BUILT SOME PALISADE GATES BEFORE BUILDING THE PALISADE
-; DESCENDING
-(defrule
-    (or   
-        (or
-            (building-type-count 793 > 0)(building-type-count 794 > 0)
-        )
-        (or
-            (building-type-count 795 > 0)(building-type-count 796 > 0)
-        )
-    )
-=>    
-    (set-goal gl-weAlreadyGotPalisadeGates 1)
-    ;(chat-local-to-self "PALISADE G. DESCENDING (Y AXIS) PARTS DETECTED!")    
-)
-
 ; ASCENDING
 (defrule
     (or
@@ -1930,29 +1919,53 @@
         )
     )
 =>    
-    (set-goal gl-weAlreadyGotPalisadeGates 1)
+    (set-goal gl-weAlreadyGotAscendingPalisadeGates 1)
     ;(chat-local-to-self "PALISADE G. ASCENDING (X AXIS) PARTS DETECTED!")    
 )
 
-; NO PALISADE GATE PARTS
+
+; DESCENDING
 (defrule
-    (building-type-count 793 == 0)
-    (building-type-count 794 == 0)
-    (building-type-count 795 == 0)
-    (building-type-count 796 == 0)
+    (or   
+        (or
+            (building-type-count 793 > 0)(building-type-count 794 > 0)
+        )
+        (or
+            (building-type-count 795 > 0)(building-type-count 796 > 0)
+        )
+    )
+=>    
+    (set-goal gl-weAlreadyGotDescendingPalisadeGates 1)
+    ;(chat-local-to-self "PALISADE G. DESCENDING (Y AXIS) PARTS DETECTED!")    
+)
+
+
+; NO ASCENDING PALISADE GATE PARTS
+(defrule
     (building-type-count 789 == 0)
     (building-type-count 790 == 0)
     (building-type-count 791 == 0)
     (building-type-count 792 == 0)
 =>    
-    (set-goal gl-weAlreadyGotPalisadeGates 0)
-    ;(chat-local-to-self "NO PALISADE GATE PARTS DETECTED!")    
+    (set-goal gl-weAlreadyGotAscendingPalisadeGates 0)
+    ;(chat-local-to-self "NO ASCENDING PALISADE GATE PARTS DETECTED!")    
+)
+
+; NO DESCENDING PALISADE GATE PARTS
+(defrule
+    (building-type-count 793 == 0)
+    (building-type-count 794 == 0)
+    (building-type-count 795 == 0)
+    (building-type-count 796 == 0)
+=>    
+    (set-goal gl-weAlreadyGotDescendingPalisadeGates 0)
+    ;(chat-local-to-self "NO DESCENDING PALISADE GATE PARTS DETECTED!")    
 )
 
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-weAlreadyGotPalisadeGates == 1)
+    (up-compare-goal gl-weAlreadyGotDescendingPalisadeGates == 1)
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200)(building-type-count town-center > 0) 
@@ -1961,7 +1974,7 @@
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-weAlreadyGotPalisadeGates == 1)   
+    (up-compare-goal gl-weAlreadyGotAscendingPalisadeGates == 1)   
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)
     (wood-amount > 200)(building-type-count town-center > 0) 
@@ -1970,7 +1983,7 @@
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-weAlreadyGotPalisadeGates == 1) 
+    (up-compare-goal gl-weAlreadyGotDescendingPalisadeGates == 1) 
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)
     (wood-amount > 200)(building-type-count town-center > 0) 
@@ -1979,7 +1992,7 @@
 )
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-weAlreadyGotPalisadeGates == 1)    
+    (up-compare-goal gl-weAlreadyGotAscendingPalisadeGates == 1)    
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)      
     (wood-amount > 200)(building-type-count town-center > 0)   
@@ -2071,7 +2084,7 @@
     )
 )    
 =>    
-    (set-goal gl-weAlreadyGotStoneGates 1)
+    (set-goal gl-weAlreadyGotAscendingStoneGates 1)
     ;(chat-local-to-self "STONE GATE ASCENDING (X AXIS) PARTS DETECTED!")
 )
 
@@ -2086,7 +2099,7 @@
         )
     )
 =>    
-    (set-goal gl-weAlreadyGotStoneGates 1)
+    (set-goal gl-weAlreadyGotAscendingStoneGates 1)
     ;(chat-local-to-self "FORTIFIED GATE ASCENDING (X AXIS) PARTS DETECTED!")
 )
 
@@ -2102,7 +2115,7 @@
     )
 )    
 =>    
-    (set-goal gl-weAlreadyGotStoneGates 1)
+    (set-goal gl-weAlreadyGotDescendingStoneGates 1)
     ;(chat-local-to-self "STONE GATE DESCENDING (Y AXIS) PARTS DETECTED!")
 )
 
@@ -2117,40 +2130,44 @@
         )
     )
 =>    
-    (set-goal gl-weAlreadyGotStoneGates 1)
+    (set-goal gl-weAlreadyGotDescendingStoneGates 1)
     ;(chat-local-to-self "FORTIFIED GATE DESCENDING (Y AXIS) PARTS DETECTED!")
 )
 
-; NO STONE GATE PARTS
+; NO ASCENDING STONE GATE PARTS
 (defrule 
-        (building-type-count 487 == 0)
+        (building-type-count 487 == 0) ;normal
         (building-type-count 64 == 0)
         (building-type-count 78 == 0)
         (building-type-count 81 == 0)
-        (building-type-count 488 == 0)
+
+        (building-type-count 488 == 0) ;fort
         (building-type-count 63 == 0)
         (building-type-count 67 == 0)
         (building-type-count 80 == 0)
         (building-type-count 490 == 0)
+=>    
+    (set-goal gl-weAlreadyGotAscendingStoneGates 0)
+    ;(chat-local-to-self "NO ASCENDING STONE GATE PARTS DETECTED!")
+)
+
+; NO DESCENDING STONE GATE PARTS
+(defrule 
+        (building-type-count 490 == 0) ;normal
         (building-type-count 88 == 0)
         (building-type-count 91 == 0)
         (building-type-count 95 == 0)
-        (building-type-count 491 == 0)
+
+        (building-type-count 491 == 0) ;fort
         (building-type-count 85 == 0)
         (building-type-count 90 == 0)
         (building-type-count 92 == 0)
-        (building-type-count 487 == 0)
-        (building-type-count 64 == 0)
-        (building-type-count 78 == 0)
-        (building-type-count 81 == 0)
-        (building-type-count 488 == 0)
-        (building-type-count 63 == 0)
-        (building-type-count 67 == 0)
-        (building-type-count 80 == 0)
 =>    
-    (set-goal gl-weAlreadyGotStoneGates 0)
-    ;(chat-local-to-self "NO STONE GATE PARTS DETECTED!")
+    (set-goal gl-weAlreadyGotDescendingStoneGates 0)
+    ;(chat-local-to-self "NO DESCENDING STONE GATE PARTS DETECTED!")
 )
+
+
 
 ;----------------------------
 ; trying to build secondary wall gates
@@ -2346,7 +2363,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-weAlreadyGotStoneGates == 1)     
+    (up-compare-goal gl-weAlreadyGotDescendingStoneGates == 1)     
 =>
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
@@ -2356,7 +2373,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-weAlreadyGotStoneGates == 1)     
+    (up-compare-goal gl-weAlreadyGotAscendingStoneGates == 1)     
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
@@ -2366,7 +2383,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-weAlreadyGotStoneGates == 1)     
+    (up-compare-goal gl-weAlreadyGotDescendingStoneGates == 1)     
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south west start y: %d" g: gl-innerWallPoint3-y)
@@ -2376,7 +2393,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-weAlreadyGotStoneGates == 1)     
+    (up-compare-goal gl-weAlreadyGotAscendingStoneGates == 1)     
 =>
     (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north west start y: %d" g: gl-innerWallPoint3-y)
@@ -2386,18 +2403,3 @@
 
 
 
-(defrule
-    (or
-        (up-compare-goal gl-weAlreadyGotStoneGates == 1)
-        (up-compare-goal gl-weAlreadyGotPalisadeGates == 1)
-    )
-=>
-    (set-strategic-number sn-wood-gatherer-percentage 50)
-    (set-strategic-number sn-gold-gatherer-percentage 5)
-    (set-strategic-number sn-stone-gatherer-percentage 5)
-    (set-strategic-number sn-maximum-wood-drop-distance 22)
-    (set-strategic-number sn-maximum-gold-drop-distance 22)
-    (set-strategic-number sn-maximum-stone-drop-distance 22)   
-    (chat-local-to-self "WE GOT WALLS! CLEAN THE CITY MODE! REMOVE THOSE TREES AND SHIT!")  
-    (disable-self)
-)
