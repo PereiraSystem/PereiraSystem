@@ -1453,7 +1453,7 @@
 )
 
 ; NORTH EAST SECONDARY GATES
-(defrule=>(generate-random-number 100)(disable-self))
+(defrule(true)=>(generate-random-number 100)(disable-self))
 
 (defrule
     (up-compare-goal gl-buildNorthEastGates == 1)
