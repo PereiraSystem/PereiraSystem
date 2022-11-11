@@ -1432,11 +1432,7 @@
 )
 
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
-(defrule
-=>
-    (generate-random-number 100)
-    (disable-self)
-)
+(defrule(true)=>(generate-random-number 100)(disable-self))
 
 ; NORTH EAST MAIN GATES
 (defrule
@@ -1482,15 +1478,15 @@
     (random-number >= 50)
 =>
     (up-modify-goal gl-outerGatePoint2-x c:- 1)
-    (up-modify-goal gl-outerGatePoint3-x c:+ 8)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 9)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 5)
-    (up-modify-goal gl-outerGatePoint3-x c:+ 5)
+    (up-modify-goal gl-outerGatePoint2-x c:- 9)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 1)
     (disable-self)
 )
 
