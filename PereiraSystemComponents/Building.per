@@ -1778,7 +1778,7 @@
 ; SECONDARY: NORTH EAST AND SOUTH WEST
 (defrule (true)
     (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildSouthEastWall == 0)
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
 =>
@@ -1788,7 +1788,7 @@
 )
 (defrule (true)
     (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildSouthEastWall == 0)
+    (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 796)
 =>
@@ -1849,37 +1849,32 @@
 (defrule
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-gotNorthEastPalisadeGates == 1)
-    (unit-type-count-total villager > 5)
-    (building-type-count-total barracks > 0)
-    (wood-amount > 200)(building-type-count town-center > 0)
-    (up-can-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)    
+    (up-compare-goal gl-buildingOuterWall == 1)
+    (up-can-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-gotSouthEastPalisadeGates == 1)
-    (unit-type-count-total villager > 5)
-    (building-type-count-total barracks > 0)
-    (wood-amount > 200)(building-type-count town-center > 0)
+    (up-compare-goal gl-buildingOuterWall == 1)
+    (up-can-build-line gl-outerWallPoint2-x gl-outerWallPoint3-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint2-x gl-outerWallPoint3-x c: palisade-wall)
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-gotSouthWestPalisadeGates == 1)
-    (unit-type-count-total villager > 5)
-    (building-type-count-total barracks > 0)
-    (wood-amount > 200)(building-type-count town-center > 0)
+    (up-compare-goal gl-buildingOuterWall == 1)
+    (up-can-build-line gl-outerWallPoint3-x gl-outerWallPoint4-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint3-x gl-outerWallPoint4-x c: palisade-wall)
 )
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-gotNorthWestPalisadeGates == 1)
-    (unit-type-count-total villager > 5)
-    (building-type-count-total barracks > 0)
-    (wood-amount > 200)(building-type-count town-center > 0)
+    (up-compare-goal gl-buildingOuterWall == 1)
+    (up-can-build-line gl-outerWallPoint4-x gl-outerWallPoint1-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint4-x gl-outerWallPoint1-x c: palisade-wall)
 )
