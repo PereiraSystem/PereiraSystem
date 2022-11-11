@@ -1481,14 +1481,14 @@
     (random-number >= 50)
 
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:+ 12)
+    (up-modify-goal gl-outerGatePoint2-x c:+ 8)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 12)
+    (up-modify-goal gl-outerGatePoint2-x c:- 8)
     (disable-self)
 )
 ;GATE 2
@@ -1497,19 +1497,17 @@
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
     (random-number >= 50)
-
 =>
-    (up-modify-goal gl-outerGatePoint3-x c:+ 6)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 8)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint3-x c:- 6)
+    (up-modify-goal gl-outerGatePoint3-x c:- 8)
     (disable-self)
 )
-
 
 ; SOUTH EAST SECONDARY GATES
 (defrule(true)=>(generate-random-number 100)(disable-self))
