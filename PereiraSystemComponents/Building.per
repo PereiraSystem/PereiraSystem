@@ -1489,6 +1489,13 @@
     (set-goal gl-innerWallPoint3-y 240)(disable-self)
 )
 #end-if
+
+(defrule
+    (true)
+=>
+    (up-chat-data-to-self "OUTER GATE POINT CORRECTED 1 X: %d" g: gl-outerGatePoint1-x)
+    (up-chat-data-to-self "OUTER GATE POINT CORRECTED 1 Y: %d" g: gl-outerGatePoint1-y)
+)
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
 (defrule  ; no north east (1 to 2) if point 1 too close to north border
