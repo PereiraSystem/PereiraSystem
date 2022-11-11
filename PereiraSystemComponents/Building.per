@@ -1475,7 +1475,8 @@
 ; SOUTH EAST MAIN GATES
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
-    (random-number >= 50)
+    ;(random-number >= 50)
+    (false)
 =>
     (up-modify-goal gl-outerGatePoint2-x c:- 1)
     (up-modify-goal gl-outerGatePoint3-x c:+ 15)
@@ -1483,10 +1484,11 @@
 )
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
-    (random-number < 50)
+    ;(random-number < 50)
+    (true)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 15)
-    (up-modify-goal gl-outerGatePoint3-x c:+ 1)
+    (up-modify-goal gl-outerGatePoint2-x c:- 8)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 8)
     (disable-self)
 )
 
