@@ -1066,23 +1066,29 @@
     (up-chat-data-to-self "Map Size x: %d" g: gl-posMapSize-x)
     ; getting it manually
     (up-chat-data-to-self "Map Size manually entered: %d" g: gl-maxDimensionOfMap)
-    ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
-    ;(up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
-    ;(up-chat-data-to-self "Map Size 1/10 %d" g: gl-mapSizeTenth)
+    (up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
+    (up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
+    (up-chat-data-to-self "Map Size 1/10 %d" g: gl-mapSizeTenth)
     (up-chat-data-to-self "POS X: %d" g: gl-myPosition-x)
     (up-chat-data-to-self "POS Y: %d" g: gl-myPosition-y)
     (disable-self)
 )
+
+
 ; CHECK OUR POSITION IN 9 SQUARES
 (defrule
     (up-compare-goal gl-myPosition-x g:>= gl-mapSizeTwoThirds)
 =>
-    (set-goal gl-posXisHigh 1)(disable-self)
+    (set-goal gl-posXisHigh 1)
+    (chat-to-allies "IM CLOSE TO THE HIGH X BORDER")
+    (disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-y g:>= gl-mapSizeTwoThirds)
 =>
-    (set-goal gl-posYisHigh 1)(disable-self)
+    (set-goal gl-posYisHigh 1)
+    (chat-to-allies "IM CLOSE TO THE HIGH Y BORDER")
+    (disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-x g:< gl-mapSizeTwoThirds)
@@ -1099,12 +1105,16 @@
 (defrule
     (up-compare-goal gl-myPosition-x g:<= gl-mapSizeThird)
 =>
-    (set-goal gl-posXisLow 1)(disable-self)
+    (set-goal gl-posXisLow 1)
+    (chat-to-allies "IM CLOSE TO THE LOW X BORDER")
+    (disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-y g:<= gl-mapSizeThird)
 =>
-    (set-goal gl-posYisLow 1)(disable-self)
+    (set-goal gl-posYisLow 1)
+    (chat-to-allies "IM CLOSE TO THE LOW Y BORDER")
+    (disable-self)
 )
 ; SAY 1 OF 9 POSITIONS TO ALLIES AND STORE POSITION IN A CODE WHILE WE ARE AT IT
 (defrule
