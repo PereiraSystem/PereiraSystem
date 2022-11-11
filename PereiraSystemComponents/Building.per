@@ -1432,6 +1432,7 @@
 )
 
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
+; GROUPED BY SIDE
 (defrule(true)=>(generate-random-number 100)(disable-self))
 
 ; NORTH EAST MAIN GATES
@@ -1472,7 +1473,8 @@
     (disable-self)
 )
 
-; SOUTH EAST MAIN GATES
+
+; SOUTH EAST MAIN PALISADE GATES -----------------------------------------
 ;GATE 1
 (defrule(true)=>(generate-random-number 100)(disable-self))
 
@@ -1509,27 +1511,46 @@
     (disable-self)
 )
 
-; SOUTH EAST SECONDARY GATES
+; SOUTH EAST SECONDARY PALISADE GATES -----------------------------------------
+; GATE 1
 (defrule(true)=>(generate-random-number 100)(disable-self))
+
 (defrule
     (up-compare-goal gl-buildSouthWestGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-x c:- 5)
-    (up-modify-goal gl-outerGatePoint2-x c:- 12)
+    (up-modify-goal gl-outerGatePoint1-x c:+ 8)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthWestGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint3-y c:- 5)
-    (up-modify-goal gl-outerGatePoint4-y c:+ 5)
+    (up-modify-goal gl-outerGatePoint1-x c:- 8)
     (disable-self)
 )
 
-; NORTH WEST
+; GATE 2
 (defrule(true)=>(generate-random-number 100)(disable-self))
+
+(defrule
+    (up-compare-goal gl-buildSouthWestGates == 1)
+    (random-number >= 50)
+=>
+    (up-modify-goal gl-outerGatePoint4-x c:+ 8)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-buildSouthWestGates == 1)
+    (random-number < 50)
+=>
+    (up-modify-goal gl-outerGatePoint4-x c:- 8)
+    (disable-self)
+)
+
+; NORTH WEST MAIN PALISADE GATES -----------------------------------------
+(defrule(true)=>(generate-random-number 100)(disable-self))
+
 (defrule
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number >= 50)
@@ -1538,6 +1559,7 @@
     (up-modify-goal gl-outerGatePoint4-x c:+ 6)
     (disable-self)
 )
+
 (defrule
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number < 50)
@@ -1546,6 +1568,8 @@
     (up-modify-goal gl-outerGatePoint4-x c:+ 10)
     (disable-self)
 )
+
+
 (defrule
     (true)
 =>
