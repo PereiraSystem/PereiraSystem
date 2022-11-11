@@ -1085,6 +1085,8 @@
 =>
     (set-goal gl-posXisHigh 1)
     (chat-to-allies "IM CLOSE TO THE HIGH X BORDER")
+    (up-chat-data-to-self "this is x : %d" g: gl-myPosition-x)
+    (up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
     (disable-self)
 )
 (defrule
@@ -1092,6 +1094,9 @@
 =>
     (set-goal gl-posYisHigh 1)
     (chat-to-allies "IM CLOSE TO THE HIGH Y BORDER")
+    (up-chat-data-to-self "this is y : %d" g: gl-myPosition-x)
+    (up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
+
     (disable-self)
 )
 (defrule
@@ -1111,6 +1116,8 @@
 =>
     (set-goal gl-posXisLow 1)
     (chat-to-allies "IM CLOSE TO THE LOW X BORDER")
+    (up-chat-data-to-self "this is x : %d" g: gl-myPosition-x)
+    (up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
     (disable-self)
 )
 (defrule
@@ -1118,6 +1125,8 @@
 =>
     (set-goal gl-posYisLow 1)
     (chat-to-allies "IM CLOSE TO THE LOW Y BORDER")
+    (up-chat-data-to-self "this is y : %d" g: gl-myPosition-y)
+    (up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
     (disable-self)
 )
 ; SAY 1 OF 9 POSITIONS TO ALLIES AND STORE POSITION IN A CODE WHILE WE ARE AT IT
