@@ -1483,17 +1483,17 @@
     (random-number >= 50)
 
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:+ 8)
+    (up-modify-goal gl-outerGatePoint2-x c:- 8)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 8)
+    (up-modify-goal gl-outerGatePoint2-x c:- 3)
     (disable-self)
 )
-; SECONDARY GATE 2
+; MAIN GATE 2
 (defrule(true)=>(generate-random-number 100)(disable-self))
 
 (defrule
@@ -1507,7 +1507,7 @@
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint3-x c:- 8)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 3)
     (disable-self)
 )
 
@@ -1516,17 +1516,17 @@
 (defrule(true)=>(generate-random-number 100)(disable-self))
 
 (defrule
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-x c:+ 8)
+    (up-modify-goal gl-outerGatePoint1-y c:+ 3)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-x c:- 8)
+    (up-modify-goal gl-outerGatePoint1-y c:+ 7)
     (disable-self)
 )
 
@@ -1534,17 +1534,17 @@
 (defrule(true)=>(generate-random-number 100)(disable-self))
 
 (defrule
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint4-x c:+ 8)
+    (up-modify-goal gl-outerGatePoint4-y c:+ 3)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint4-x c:- 8)
+    (up-modify-goal gl-outerGatePoint4-y c:+ 7)
     (disable-self)
 )
 
@@ -1797,7 +1797,6 @@
     (chat-local-to-self "BUILDING SEC PALISADE GATE P4")
 )
 
-
 ; MAIN: SOUTH - WEST
 ; SECONDARY: NORTH WEST AND SOUTH EAST
 (defrule
@@ -1853,6 +1852,7 @@
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)
     (wood-amount > 200)(building-type-count town-center > 0)
+    (up-can-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)    
 =>
     (up-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)
 )
