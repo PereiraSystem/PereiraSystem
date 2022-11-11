@@ -1669,8 +1669,8 @@
     (up-modify-goal gl-outerWallGatePoint1-y c:+ 5)
     (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
 
-    (up-modify-goal gl-outerWallGatePoint3-x c:+ 8)
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 3)
+    (up-modify-goal gl-outerWallGatePoint3-x c:+ 12)
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 5)
     (disable-self)
 )
 (defrule
@@ -1680,8 +1680,8 @@
     (up-modify-goal gl-outerWallGatePoint1-y c:+ 5)
     (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
 
-    (up-modify-goal gl-outerWallGatePoint3-x c:+ 3)
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 8)
+    (up-modify-goal gl-outerWallGatePoint3-x c:+ 5)
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 12)
     (disable-self)
 )
 
@@ -1699,8 +1699,8 @@
     (up-modify-goal gl-outerWallGatePoint2-x c:- 5)
     (up-modify-goal gl-outerWallGatePoint3-x c:+ 5)
 
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 3)
-    (up-modify-goal gl-outerWallGatePoint1-y c:+ 8)
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
+    (up-modify-goal gl-outerWallGatePoint1-y c:+ 12)
     (disable-self)
 )
 
@@ -1710,8 +1710,8 @@
     (up-modify-goal gl-outerWallGatePoint2-x c:- 5)
     (up-modify-goal gl-outerWallGatePoint3-x c:+ 5)
 
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 8)
-    (up-modify-goal gl-outerWallGatePoint1-y c:+ 3)
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 12)
+    (up-modify-goal gl-outerWallGatePoint1-y c:+ 5)
     (disable-self)
 )
 
@@ -1729,8 +1729,8 @@
     (up-modify-goal gl-outerWallGatePoint3-y c:- 5)
     (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
 
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 3)
-    (up-modify-goal gl-outerWallGatePoint2-x c:- 8)
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 5)
+    (up-modify-goal gl-outerWallGatePoint2-x c:- 12)
     (disable-self)
 )
 (defrule
@@ -1740,8 +1740,30 @@
     (up-modify-goal gl-outerWallGatePoint3-y c:- 5)
     (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
 
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 8)
-    (up-modify-goal gl-outerWallGatePoint2-x c:- 3)
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 12)
+    (up-modify-goal gl-outerWallGatePoint2-x c:- 5)
+    (disable-self)
+)
+
+
+; NORTH WEST 
+(defrule(true)=>(generate-random-number 100)(disable-self))
+
+(defrule
+    (up-compare-goal gl-buildNorthWestGates == 1)
+    (random-number >= 50)
+=>    
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 6)
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 6) 
+    (disable-self)
+)
+
+(defrule
+    (up-compare-goal gl-buildNorthWestGates == 1)
+    (random-number < 50)
+=>    
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 10)
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 10) 
     (disable-self)
 )
 
@@ -1756,11 +1778,8 @@
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number >= 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 5)
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 5)
-
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 3)
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 8)    
+    (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 12)    
     (disable-self)
 )
 
@@ -1768,11 +1787,8 @@
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number < 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 5)
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 5)
-
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 8)
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 3)    
+    (up-modify-goal gl-outerWallGatePoint2-y c:- 12)
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 5)    
     (disable-self)
 )
 
