@@ -1690,7 +1690,26 @@
 )
 
 (defrule
-    (up-compare-goal gl-buildNorthWestGates == 1)  
+    (true)
+=>   
+    (generate-random-number)
+)
+
+(defrule
+    (up-compare-goal gl-buildNorthWestGates == 1)
+    (random-number >= 50)
+=>    
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 5)
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 5)
+
+    (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 5)    
+    (disable-self)
+)
+
+(defrule
+    (up-compare-goal gl-buildNorthWestGates == 1)
+    (random-number < 50)
 =>    
     (up-modify-goal gl-outerWallGatePoint1-x c:- 5)
     (up-modify-goal gl-outerWallGatePoint4-x c:+ 5)
