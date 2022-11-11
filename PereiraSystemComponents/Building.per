@@ -1671,17 +1671,17 @@
 =>
     (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 792)
     (set-goal gl-gotSouthEastPalisadeGates 1)
-    (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATE - A")
+    (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATE 1")
 )
 (defrule (true)
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
-    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint2-x c: 792)
+    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
 =>
-    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint2-x c: 792)
+    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
     (set-goal gl-gotSouthEastPalisadeGates 1)
-    (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATE - B")
+    (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATE 2")
 )
 
 ; SOUTH WEST
