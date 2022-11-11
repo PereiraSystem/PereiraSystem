@@ -1776,7 +1776,7 @@
 
 ; MAIN: SOUTH - EAST
 ; SECONDARY: NORTH EAST AND SOUTH WEST
-(defrule (false)
+(defrule (true)
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
@@ -1786,7 +1786,7 @@
     (set-goal gl-gotNorthEastPalisadeGates 1)
     (chat-local-to-self "BUILDING SEC PALISADE GATE P1")
 )
-(defrule (false)
+(defrule (true)
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
