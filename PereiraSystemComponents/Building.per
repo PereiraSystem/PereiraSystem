@@ -939,6 +939,9 @@
 (defconst gl-gotSouthWestStoneGates 494)
 (defconst gl-gotNorthWestStoneGates 495)
 
+(defconst gl-weHaveTownCenterAndWoodForLC 500)
+(defconst gl-weHaveBarracksAndSomeVillagers 501)
+
 (defrule
     (true)
 =>
@@ -2007,16 +2010,19 @@
     (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint2-x c: 796)
 =>   
     (up-build-line gl-outerGatePoint1-x gl-outerGatePoint2-x c: 796)
-    (chat-local-to-self "BUILDING NORTH EAST PALISADE GATES")    
+    (set-goal gl-gotNorthEastPalisadeGates == 1)
+    (chat-local-to-self "BUILDING MAIN NORTH EAST PALISADE GATES - A")  
 )
-(defrule(wood-amount > 175)(building-type-count town-center > 0)
+
+(defrule
+    (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)  
     (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint1-x c: 796)
 =>   
     (up-build-line gl-outerGatePoint2-x gl-outerGatePoint1-x c: 796)
-    (chat-local-to-self "BUILDING NORTH EAST PALISADE GATES BACKWARDS")    
+    (chat-local-to-self "BUILDING MAIN NORTH EAST PALISADE GATES - B")    
 )
 
 (defrule (wood-amount > 175)(building-type-count town-center > 0)
@@ -2077,10 +2083,10 @@
 )
 
 
-
 ; CHECK IF WE ALREADY BUILT SOME PALISADE GATES BEFORE BUILDING THE PALISADE
 ; ASCENDING
-(defrule
+
+(defrule (false)
     (or
         (or
             (building-type-count 789 > 0)(building-type-count 790 > 0)
@@ -2096,7 +2102,7 @@
 
 
 ; DESCENDING
-(defrule
+(defrule (false)
     (or   
         (or
             (building-type-count 793 > 0)(building-type-count 794 > 0)
@@ -2112,7 +2118,7 @@
 
 
 ; NO ASCENDING PALISADE GATE PARTS
-(defrule
+(defrule (false)
     (building-type-count 789 == 0)
     (building-type-count 790 == 0)
     (building-type-count 791 == 0)
@@ -2123,7 +2129,7 @@
 )
 
 ; NO DESCENDING PALISADE GATE PARTS
-(defrule
+(defrule (false)
     (building-type-count 793 == 0)
     (building-type-count 794 == 0)
     (building-type-count 795 == 0)
@@ -2136,7 +2142,8 @@
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-gotDescendingPalisadeGates == 1)
+    ;(up-compare-goal gl-gotDescendingPalisadeGates == 1)gl-gotNorthEastPalisadeGates
+    (up-compare-goal gl-gotNorthEastPalisadeGates == 1)
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200)(building-type-count town-center > 0) 
