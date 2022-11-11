@@ -1473,28 +1473,46 @@
 )
 
 ; SOUTH EAST MAIN GATES
+;GATE 1
+(defrule(true)=>(generate-random-number 100)(disable-self))
+
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
-    ;(random-number >= 50)
-    (false)
+    (random-number >= 50)
+
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 1)
-    (up-modify-goal gl-outerGatePoint3-x c:+ 15)
+    (up-modify-goal gl-outerGatePoint2-x c:+ 12)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
-    ;(random-number < 50)
-    (true)
+    (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 18)
+    (up-modify-goal gl-outerGatePoint2-x c:- 12)
+    (disable-self)
+)
+;GATE 2
+(defrule(true)=>(generate-random-number 100)(disable-self))
+
+(defrule
+    (up-compare-goal gl-buildSouthEastGates == 1)
+    (random-number >= 50)
+
+=>
     (up-modify-goal gl-outerGatePoint3-x c:+ 6)
     (disable-self)
 )
+(defrule
+    (up-compare-goal gl-buildSouthEastGates == 1)
+    (random-number < 50)
+=>
+    (up-modify-goal gl-outerGatePoint3-x c:- 6)
+    (disable-self)
+)
+
 
 ; SOUTH EAST SECONDARY GATES
-(defrule(true)=>(generate-random-number 100)(disable-self)
-)
+(defrule(true)=>(generate-random-number 100)(disable-self))
 (defrule
     (up-compare-goal gl-buildSouthWestGates == 1)
     (random-number >= 50)
@@ -1655,7 +1673,7 @@
     (set-goal gl-gotSouthEastPalisadeGates 1)
     (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATE - A")
 )
-(defrule (false)
+(defrule (true)
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
