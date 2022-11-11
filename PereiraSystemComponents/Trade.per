@@ -1,6 +1,5 @@
 ; TRADE ---------------------------------------------------
 ;(chat-local-to-self "> 6. Trade Loaded")(disable-self))
-
 ; ALL AGES TRADE RULES
 (defrule ;BUY WOOD
 	(can-buy-commodity wood)
@@ -10,7 +9,6 @@
     (buy-commodity wood)
     ;(chat-local-to-self "BUYING WOOD (GOLD > 1600)")       
 )
-
 (defrule ;BUY FOOD
 	(can-buy-commodity food)
     (gold-amount > 1600)
@@ -19,7 +17,6 @@
     (buy-commodity food)
     ;(chat-local-to-self "BUYING FOOD (GOLD > 1600)")       
 )
-
 (defrule ;BUY FOOD
 	(can-buy-commodity food)
     (gold-amount > 500)
@@ -28,7 +25,6 @@
     (buy-commodity food)
     ;(chat-local-to-self "BUYING FOOD (FOOD < 50)")       
 )
-
 ; FEUDAL AGE TRADE                       
 (defrule
     (current-age == feudal-age)
@@ -38,7 +34,6 @@
     (sell-commodity wood)
     ;(chat-local-to-self "SELLING WOOD (> 500)")       
 )
-
 (defrule
     (current-age == feudal-age)
     (can-sell-commodity food)
@@ -52,7 +47,6 @@
     (sell-commodity food)
     ;(chat-local-to-self "SELLING FOOD (> 900)")      
 )
-
 (defrule
 	(current-age == feudal-age)
 	(can-buy-commodity food)
@@ -61,7 +55,6 @@
     (buy-commodity food)
     ;(chat-local-to-self "BUYING FOOD (GOLD > 300)")     
 )
-
 (defrule
 	(current-age == feudal-age)
 	(can-sell-commodity stone)
@@ -71,7 +64,6 @@
     (sell-commodity stone)
     ;(chat-local-to-self "SELLING STONE TO GET TO CASTLE AGE")      
 )
-
 ; CASTLE AGE TRADE      
 (defrule
     (current-age == castle-age)
@@ -81,7 +73,6 @@
     (sell-commodity wood)
     ;(chat-local-to-self "SELLING WOOD (> 600)")    
 )
-
 (defrule
     (current-age == castle-age)
     (building-type-count monastery > 0)
@@ -94,7 +85,6 @@
     (sell-commodity wood)
     ;(chat-local-to-self "BUYING WOOD FOR THE SIEGE WORKSHOP / UNIV")    
 )
-
 (defrule
     (current-age == castle-age) ;
     (food-amount > 300)
@@ -105,7 +95,6 @@
     (sell-commodity food)
     ;(chat-local-to-self "SELLING FOOD TO BUY PRIESTS")
 )
-
 (defrule
 	(current-age == castle-age)
     (gold-amount > 900)(food-amount < 800)
@@ -114,7 +103,6 @@
     (buy-commodity food)
     ;(chat-local-to-self "BUYING FOOD TO GET TO IMPERIAL AGE")      
 )
-
 ; IMPERIAL AGE TRADE
 (defrule ;SELL WOOD
     (current-age == imperial-age)
@@ -125,7 +113,6 @@
     (sell-commodity wood)
     ;(chat-local-to-self "SELLING WOOD (> 1600)")     
 )
-
 (defrule
     (current-age == imperial-age)
     (food-amount > 2200)
@@ -135,7 +122,6 @@
     (sell-commodity food)
     ;(chat-local-to-self "SELLING FOOD (> 2400)")     
 )
-
 (defrule
     (current-age == imperial-age)
     (not(civ-selected cumans));to get mercs
@@ -150,7 +136,6 @@
     (sell-commodity stone)
     ;(chat-local-to-self "SELLING STONE (> 300), 3 CASTLES AND NO B.T.")     
 )
-
 (defrule ;imperial age with no castle, we buy stone
     (current-age == imperial-age)
     (building-type-count-total castle == 0)
@@ -161,7 +146,6 @@
     (buy-commodity stone)
     ;(chat-local-to-self "BUYING STONE (NO CASTLE)")      
 )
-
 (defrule ;imperial age with no castle, we buy stone
     (current-age == imperial-age)
     (building-type-count-total castle == 0)
@@ -172,7 +156,6 @@
     (buy-commodity stone)
     ;(chat-local-to-self "BUYING STONE (NO CASTLE)")      
 )
-
 (defrule ;imperial age with no castle, we buy stone
     (current-age == imperial-age)
     (building-type-count-total castle == 0)
@@ -182,12 +165,8 @@
     (buy-commodity stone)
     ;(chat-local-to-self "BUYING STONE (NO CASTLE)")      
 )
-
 ; TRIBUTE, just randomly give resources to anyone for now
 ; TRIBUTE IN FEUDAL AGE
-
-
-
 ; TRIBUTE IN IMPERIAL AGE
 (defrule
     (current-age == imperial-age)
@@ -197,7 +176,6 @@
 =>
     (tribute-to-player this-any-ally wood 500)
 )
-
 (defrule
     (current-age == imperial-age)
     (food-amount > 2100)
@@ -206,7 +184,6 @@
 =>
     (tribute-to-player this-any-ally food 500)
 )
-
 (defrule
     (current-age == imperial-age)
     (gold-amount > 2000)
@@ -215,7 +192,6 @@
 =>
     (tribute-to-player this-any-ally gold 500)
 )
-
 (defrule
     (current-age == imperial-age)
     (building-type-count castle > 0)
@@ -233,7 +209,6 @@
 =>
     (tribute-to-player this-any-ally wood 1000)
 )
-
 (defrule
     (current-age == imperial-age)
     (food-amount > 4000)
@@ -241,7 +216,6 @@
 =>
     (tribute-to-player this-any-ally food 1000)
 )
-
 (defrule
     (current-age == imperial-age)
     (gold-amount > 4000)
@@ -249,7 +223,6 @@
 =>
     (tribute-to-player this-any-ally gold 1000)
 )
-
 (defrule
     (current-age == imperial-age)
     (stone-amount > 4000)

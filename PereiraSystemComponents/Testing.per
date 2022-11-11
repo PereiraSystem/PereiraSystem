@@ -1,5 +1,3 @@
-
-
 ; GUARD
 (defrule
     (unit-type-count monk > 0)
@@ -10,8 +8,6 @@
 	;(up-remove-objects search-local object-data-hitpoints < 50)
     (up-guard-unit monk c: spearman-line)
 )
-
-
 ; REMOVE CHEAP UNITS
 (defrule
 	(current-age == imperial-age)
@@ -26,7 +22,6 @@
     (train hand-cannoneer)
     (chat-local-to-self "'CHANGING' SKIRMISHERS FOR HAND CANNONEERS")
 )
-
 (defrule
 	(current-age == imperial-age)
     (population-headroom == 0)
@@ -41,19 +36,14 @@
     (train knight-line)
     (chat-local-to-self "'CHANGING' SPEARMEN FOR KNIGHTS")
 )
-
 (defrule
 	(not	(player-in-game any-ally))
 	(unit-type-count trade-cart > 0)
 =>
 	(delete-unit trade-cart)
 )
-
-
-
 ; experimental strategy to move the city to the coast
   (defrule (false)
-
     ; can build dock doesnt really check the water
     (can-build dock)
     (not(up-research-status c: feudal-age == research-pending))
@@ -82,7 +72,6 @@
     (delete-building farm)(delete-building farm)(delete-building farm)
     (disable-self) 
 )
-
 (defrule
     (up-compare-goal gl-weMovedPlace > 0)
     (building-type-count town-center < 1)
@@ -96,7 +85,6 @@
     ;(up-modify-sn sn-stone-gatherer-percentage c: +4)
     (chat-local-to-self "Deleting farms cause no town center")                
 )
-
 (defrule
     (up-compare-goal gl-weMovedPlace > 0)
     (building-type-count town-center > 0)

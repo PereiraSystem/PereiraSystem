@@ -1,7 +1,6 @@
 ; TAUNTS AND PLAYER NAMES -------------------------------------------------------
 ; TESTING -------------------------------------------------------
 (defrule(true)=>(chat-local-to-self "> 3. Taunts Loaded")(disable-self))
-
 (defrule(civ-selected aztec)=>(up-change-name "PereiraSystem AZTC"))
 (defrule(civ-selected bengalis)=>(up-change-name "PereiraSystem BENG"))
 (defrule(civ-selected berbers)=>(up-change-name "PereiraSystem BERB"))
@@ -44,8 +43,6 @@
 (defrule(civ-selected turkish)=>(up-change-name "PereiraSystem TURK"))
 (defrule(civ-selected vietnamese)=>(up-change-name "PereiraSystem VIET"))
 (defrule(civ-selected viking)=>(up-change-name "PereiraSystem VKNG"))
-
-
 ; SEND TAUNTS TO OTHERS
 ; WHEN TOWN UNDER ATTACK
 (defrule
@@ -56,7 +53,6 @@
 =>
     (enable-timer 40 1)
 )
-
 (defrule
 	(timer-triggered 40)
 	(game-time < 1500)	
@@ -66,14 +62,12 @@
 	(enable-timer 40 90)
 	(chat-to-allies "48 Help! My Town Is Under Attack!")			
 )
-
 (defrule
 	(timer-triggered 40)
 	(not(town-under-attack))
 =>
     (disable-timer 40)	
 )
-
 ; WHEN ENEMY BUILDINGS IN TOWN
 (defrule
 	(enemy-buildings-in-town)
@@ -83,7 +77,6 @@
 =>
     (enable-timer 41 1)
 )
-
 (defrule
 	(enemy-buildings-in-town)
 	(game-time < 1500)	
@@ -93,14 +86,12 @@
 	(enable-timer 41 90)
 	(chat-to-allies "48 Help! Enemy Buildings In My Town!")			
 )
-
 (defrule
 	(timer-triggered 41)
 	(not(enemy-buildings-in-town))
 =>
     (disable-timer 41)	
 )
-
 ; RESPOND TO TAUNTS
 ; ATTACK TAUNT 31
 (defrule
@@ -111,7 +102,6 @@
 	(acknowledge-taunt any-ally 31)
     (chat-to-player this-any-ally "I´m Already Attacking!!")	
 )
-
 (defrule
 	(taunt-detected any-ally 31)
 	(up-players-in-game enemy == 0)
@@ -119,7 +109,6 @@
 	(acknowledge-taunt any-ally 31)
     (chat-to-allies "We Have No Enemies Retard!")
 )
-
 ; HELP TAUNT 48
 ; REJECT
 (defrule
@@ -129,7 +118,6 @@
 	(acknowledge-taunt any-ally 48)
     (chat-to-allies "Just Attack The Enemy Base!")	
 )
-
 (defrule
 	(taunt-detected any-ally 48)
 	(enemy-buildings-in-town)
@@ -137,7 +125,6 @@
 	(acknowledge-taunt any-ally 48)
     (chat-to-allies "I Can´t Help You, Enemy Buildings In My Town!")	
 )
-
 (defrule
 	(taunt-detected any-ally 48)
 	(town-under-attack)
@@ -145,7 +132,6 @@
 	(acknowledge-taunt any-ally 48)
     (chat-to-allies "I Can´t Help You, Im Under Attack!")	
 )
-
 (defrule
 	(taunt-detected any-ally 48)
 	(military-population == 0)
@@ -153,7 +139,6 @@
 	(acknowledge-taunt any-ally 48)
     (chat-to-allies "I Can´t Help You, I Have No Soldiers Dude!")	
 )
-
 ; ACCEPT
 (defrule
 	(taunt-detected any-ally 48)
@@ -164,23 +149,19 @@
 	; sn-coop-share-attacking SET TO 1
     (chat-to-allies "My Attacks Will Be Directed Around Your Town Center For 2 Minutes!")	
 )
-
 ; DISABLE HELP 
 (defrule
 	(up-compare-sn sn-target-player-number == -1) ; (attacks directed to ally)
 =>
     (enable-timer 49 120)
 )
-
 (defrule
 	(timer-triggered 49)
-
 =>
     (disable-timer 49)
 	(set-strategic-number sn-target-player-number 0)
     (chat-to-allies "Back To Attacking The Frontlines!")	
 )
-
 ; RETREAT TAUNT 45
 (defrule
 	(taunt-detected any-ally 45)
@@ -188,5 +169,3 @@
 	(acknowledge-taunt any-ally 45)    
 	(chat-to-allies "Ok, We Retreat!")	
 )
-
-

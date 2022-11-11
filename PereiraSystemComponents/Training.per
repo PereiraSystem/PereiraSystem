@@ -1,6 +1,5 @@
 ; TRAINING -------------------------------------------------------
 (defrule(true)=>(chat-local-to-self "> 5. Training Loaded")(disable-self))
-
 ; CIVILIAN UNITS
 ; VILLAGERS
 (defrule
@@ -9,7 +8,6 @@
 =>
     (train villager)
 )
-
 (defrule
     (current-age == dark-age)
     (not
@@ -23,7 +21,6 @@
 =>
     (train villager)
 )
-
 (defrule
     (current-age == feudal-age)
     (not
@@ -41,7 +38,6 @@
 =>
     (train villager)
 )
-
 (defrule
     (current-age == castle-age)
     (not
@@ -58,7 +54,6 @@
 =>
     (train villager)
 )
-
 ; villagers imperial age
 (defrule
     (current-age == imperial-age)
@@ -67,7 +62,6 @@
 =>
     (train villager)
 )
-
 (defrule
     (current-age == imperial-age) ;save some food for soldiers after age change
     (or(military-population > 55)(food-amount > 400))
@@ -77,7 +71,6 @@
 =>
     (train villager)
 )
-
 ; TRADE CARTS
 (defrule 
     (players-building-type-count any-ally market > 0)
@@ -88,7 +81,6 @@
 =>
 	(train trade-cart)
 )
-
 (defrule
     (or(building-type-count siege-workshop > 0) 
     (building-type-count monastery > 0))
@@ -102,7 +94,6 @@
 =>
 	(train trade-cart)
 )
-
 (defrule 
     (or(current-age == imperial-age)(up-research-status c: imperial-age == research-pending))
     (players-building-type-count any-ally market > 0)
@@ -113,7 +104,6 @@
 =>
 	(train trade-cart)
 )
-
 (defrule 
     (or(current-age == imperial-age)(up-research-status c: imperial-age == research-pending))
     (players-building-type-count any-ally market > 0)
@@ -124,7 +114,6 @@
 =>
 	(train trade-cart)
 )
-
 (defrule 
     (current-age == imperial-age)
     (players-building-type-count any-ally market  > 0)
@@ -133,7 +122,6 @@
 =>
 	(train trade-cart)
 )
-
 ; TRADE SHIP
 (defrule 
     (players-building-type-count any-ally dock > 0)
@@ -142,7 +130,6 @@
 =>
 	(train trade-cog)
 )
-
 ; FISHING SHIPS
 (defrule 
     (up-gaia-type-count-total c: ocean-fish-class > 0)
@@ -152,14 +139,12 @@
     (chat-local-to-self ">>> Ocean Fish Detected")
     (disable-self)
 )
-
 (defrule 
     (up-gaia-type-count-total c: ocean-fish-class > 1)
     (unit-type-count-total fishing-ship g:< gl-fishingShipsQty)
 =>
 	(train fishing-ship)
 )
-
 ; FISH TRAPS
 (defrule 
     (can-build fish-trap)
@@ -167,7 +152,6 @@
 =>
 	(build fish-trap)
 )
-
 ; MILITARY UNITS
 ; MONASTERY  
 ; CASTLE AGE MONKS 
@@ -182,7 +166,6 @@
 =>
     (train monk)
 )
-
 (defrule
     (current-age == castle-age)
     (or
@@ -197,7 +180,6 @@
 =>
     (train monk)
 )
-
 ;IMPERIAL AGE MONKS
 (defrule ;bengalis ?
     (current-age == imperial-age)
@@ -209,7 +191,6 @@
 =>
     (train monk)
 )
-
 (defrule
     (current-age == imperial-age)
     (or
@@ -228,7 +209,6 @@
 =>
     (train monk)
 )
-
 (defrule
     (current-age == imperial-age)
     (or
@@ -247,7 +227,6 @@
 =>
     (train monk)
 )
-
 (defrule
     (current-age == imperial-age)
     (gold-amount > 1200)
@@ -255,7 +234,6 @@
 =>
     (train missionary)
 )
-
 ; MONKS FOR RELIC TRANSFUSION
 (defrule
     (or
@@ -273,7 +251,6 @@
 =>
     (train monk)
 )
-
 ; CASTLE
 ; TREBUCHET
 (defrule
@@ -290,12 +267,10 @@
         (and(civ-selected burgundians)(can-train bombard-cannon))
     )    
     (not(up-research-status c: 787 == research-available))
-  
     (can-train trebuchet)   
 =>
     (train trebuchet)
 )
-
 (defrule
     (civ-selected hun)
     (and
@@ -306,7 +281,6 @@
 =>
     (train trebuchet)
 )
-
 (defrule
     (or
         (or
@@ -324,7 +298,6 @@
 =>
     (train trebuchet)
 )
-
 ; PETARD    
 (defrule
     (current-age == imperial-age)
@@ -333,7 +306,6 @@
 =>
     (train petard)
 )
-
 ; UNIQUE UNIT
 (defrule ;flemish militia                            
     (can-train flemish-pikeman)
@@ -345,7 +317,6 @@
 =>
     (train 1699)
 )
-
 ; CASTLE AGE DEFENSE UU
 (defrule
     (current-age == castle-age)
@@ -355,7 +326,6 @@
 =>
     (train my-unique-unit-line)
 )
-
 ; IMPERIAL AGE PRE UPGRADE UU 
 ; UNIQUE UNITS WHOSE UPGRADE COSTS SAME RESOURCE, MAKE ONLY A FEW 
 ; MAGYAR DONT MAKE THEM UNTIL UPGRADE
@@ -386,7 +356,6 @@
 	(train my-unique-unit-line)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
-
 (defrule 
 	(current-age == imperial-age)(gold-amount > 500)
     (not(research-completed my-unique-unit-upgrade))
@@ -414,7 +383,6 @@
 	(train my-unique-unit-line)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
-
 (defrule 
 	(current-age == imperial-age)(gold-amount > 500)
     (not(research-completed my-unique-unit-upgrade))
@@ -442,7 +410,6 @@
 	(train my-unique-unit-line)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
-
 (defrule 
 	(current-age == imperial-age)(gold-amount > 500)
     (not(research-completed my-unique-unit-upgrade))
@@ -464,7 +431,6 @@
     (up-chat-data-to-self "Training Non Upgraded Unique Unit Nº %d" g: gl-nonUpgradedUniqueUnitsCreated)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
-
 ; UNIQUE UNITS WHOSE UPGRADE COSTS A --DIFFERENT-- RESOURCE
 ; KEEP A SMALL QTY WITH NO TOTAL LIMIT
 ; BENGALIS, BERBERS HAVE THEIR OWN SECTION
@@ -494,7 +460,6 @@
 =>
 	(train my-unique-unit-line)
 )
-
 (defrule
     (not(research-completed my-unique-unit-upgrade))
     (or
@@ -506,7 +471,6 @@
 =>
 	(train my-unique-unit-line)
 )
-
 ; IMPERIAL AGE AFTER UPGRADE UU - some civs have own section with less gold limit
 (defrule
     (current-age == imperial-age)
@@ -519,7 +483,6 @@
 =>
     (train my-unique-unit-line)
 )
-
 ; BERBER UU - upgrade costs same resource
 (defrule
     (civ-selected berbers)
@@ -534,7 +497,6 @@
 	(train my-unique-unit-line)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
-
 (defrule
     (civ-selected berbers)
     (research-completed my-unique-unit-upgrade)
@@ -547,7 +509,6 @@
 =>
 	(train my-unique-unit-line)
 )
-
 ; BENGALI UU - upgrade costs different resource
 (defrule
     (civ-selected bengalis)
@@ -562,7 +523,6 @@
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
     (up-chat-data-to-self "Training Non Upgraded Chariot %d" g: gl-nonUpgradedUniqueUnitsCreated)
 )
-
 ; BRITON UU - upgrade costs different resource
 (defrule
     (civ-selected briton)
@@ -572,7 +532,6 @@
 =>
     (train my-unique-unit-line)
 )
-
 ;BULGARIANS
 (defrule
     (civ-selected bulgarians)
@@ -583,7 +542,6 @@
 =>
     (train my-unique-unit-line)
 )
-
 (defrule
     (civ-selected bulgarians)
     (research-completed my-unique-unit-upgrade)
@@ -593,7 +551,6 @@
 =>
     (train my-unique-unit-line)
 )
-
 ; BURGUNDIANS
 (defrule
     (civ-selected burgundians)
@@ -606,7 +563,6 @@
 =>
     (train my-unique-unit-line)
 )
-
 (defrule
     (civ-selected burgundians)
     (research-completed my-unique-unit-upgrade)
@@ -616,7 +572,6 @@
 =>
     (train my-unique-unit-line)
 )
-
 ; CUMANS UU
 (defrule
     (research-completed my-unique-unit-upgrade)
@@ -632,7 +587,6 @@
 =>
 	(train mercenary-kipchak)
 )
-
 ; GOTH UU - goth spam!
 (defrule
 	(civ-selected gothic)
@@ -641,7 +595,6 @@
 	(train 761)
     (chat-local-to-self "Training Barracks Huskarl")
 )
-
 (defrule
 	(civ-selected gothic)
 	(can-train 759)
@@ -649,7 +602,6 @@
 	(train 759)
     (chat-local-to-self "Training Barracks Huskarl")    
 )
-
 (defrule
 	(civ-selected gothic)
     (not(can-train 761))(not(can-train 759))
@@ -658,7 +610,6 @@
     (chat-local-to-self "Training Castle Huskarl")    	
     (train huskarl-line)
 )
-
 ; HUN UU
 (defrule
     (can-train stable-tarkan)
@@ -666,7 +617,6 @@
     (train stable-tarkan)
     (chat-local-to-self "Training Stable Tarkan")
 )
-
 ; MALAY UU
 (defrule
     (civ-selected malay)
@@ -675,23 +625,18 @@
 =>
     (train my-unique-unit-line)
 )
-
 ; SICILIAN UU
 ;(defrule(can-train donjon-serjeant-line)=>(train donjon-serjeant-line))
-
-
 ; TATAR UU
 (defrule
     (civ-selected tatars)
 	(current-age == imperial-age)
 	(unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
     (gold-amount > 201)
-	
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
 )
-
 ; VIKING UU
 (defrule
     (civ-selected viking)
@@ -715,7 +660,6 @@
 	(train my-unique-unit-line)
     (chat-local-to-self "uu 2")    
 )
-
 ; SIEGE WORKSHOP
 ; BOMBARD CANNON , trebuchets have better AI
 (defrule
@@ -724,7 +668,6 @@
 =>
 	(train houfnice)
 )
-
 (defrule
     (gold-amount > 350) ;trebuchet priority
 	(unit-type-count-total bombard-cannon < 8)
@@ -732,7 +675,6 @@
 =>
 	(train bombard-cannon)
 )
-
 ; MANGONEL
 (defrule
     (current-age == castle-age)
@@ -743,7 +685,6 @@
 =>
     (train mangonel-line)
 )
-
 (defrule
     (current-age == castle-age)
     (building-type-count town-center > 0)    
@@ -753,7 +694,6 @@
 =>
     (train mangonel-line)
 )
-
 (defrule
     (current-age == castle-age)
     (building-type-count town-center > 0)    
@@ -763,7 +703,6 @@
 =>
     (train mangonel-line)
 )
-
 (defrule
     (current-age == castle-age) ;rest of mangonels when producing 5th monk, against arch
     (building-type-count town-center > 0)     
@@ -782,7 +721,6 @@
 =>
     (train mangonel-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (gold-amount > 251)
@@ -796,7 +734,6 @@
 =>
     (train mangonel-line)
 )
-
 (defrule
     (or
         (civ-selected korean)
@@ -807,7 +744,6 @@
 =>
     (train mangonel-line)
 )
-
 ; RAM
 (defrule
     (current-age == feudal-age)
@@ -817,7 +753,6 @@
 =>
 	(train battering-ram-line)
 )
-
 (defrule
     (current-age == castle-age)
 	(unit-type-count-total battering-ram-line g:< gl-ramQtyLow)
@@ -828,7 +763,6 @@
 =>
 	(train battering-ram-line)
 )
-
 (defrule
     (current-age == imperial-age)
 	(unit-type-count-total battering-ram-line g:< gl-ramQtyLow)
@@ -848,7 +782,6 @@
 	(train battering-ram-line)
     (chat-to-player my-player-number "TRAINING ANOTHER RAM!")
 )
-
 (defrule
     (current-age == imperial-age)
 	(unit-type-count-total battering-ram-line g:< gl-ramQtyHigh)
@@ -860,7 +793,6 @@
 	(train battering-ram-line)
     (chat-to-player my-player-number "TRAINING ANOTHER RAM - HIGH QTY!")
 )
-
 ; SCORPIONS 
 (defrule
     (current-age == castle-age)
@@ -871,7 +803,6 @@
 =>
     (train scorpion-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (gold-amount > 245)
@@ -920,7 +851,6 @@
 =>
     (train scorpion-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (gold-amount > 645)
@@ -933,7 +863,6 @@
 =>
     (train scorpion-line)
 )    
-
 (defrule
     (current-age == imperial-age)(research-completed my-unique-research)
     (can-train scorpion-line)
@@ -942,7 +871,6 @@
 =>
     (train scorpion-line)
 )
-
 ; SIEGE ELEPHANT
 (defrule
     (current-age == castle-age)(food-amount > 400)(gold-amount > 300)
@@ -953,7 +881,6 @@
 =>
 	(train armored-elephant-line)
 )
-
 (defrule
     (current-age == imperial-age)
 	(unit-type-count-total armored-elephant-line g:< gl-ramQtyHigh)
@@ -963,7 +890,6 @@
 =>
 	(train armored-elephant-line)
 )
-
 ; DOCK MILITARY SHIPS                       
 ; SPECIAL SHIPS
 ; KOREANS
@@ -972,7 +898,6 @@
 =>
     (train turtle-ship-line)(disable-self)
 )
-
 (defrule
     (building-type-count-total dock > 1)
     (unit-type-count-total turtle-ship-line < 4)  
@@ -980,14 +905,12 @@
 =>
     (train turtle-ship-line)
 )
-
 ; VIKINGS
 (defrule
     (can-train longboat-line)
 =>
     (train longboat-line)(disable-self)
 )
-
 (defrule
     (building-type-count-total dock > 1)
     (unit-type-count-total longboat-line < 4)  
@@ -995,14 +918,12 @@
 =>
     (train longboat-line)
 )
-
 ; PORTUGUESE   
 (defrule
     (can-train caravel-line)
 =>
     (train caravel-line)(disable-self)
 )
-
 (defrule
     (building-type-count-total dock > 1)
     (unit-type-count-total caravel-line < 4)
@@ -1010,7 +931,6 @@
 =>
     (train caravel-line)
 )
-
 ; CANNON GALLEON
 (defrule
     (building-type-count-total dock > 1)
@@ -1019,7 +939,6 @@
 =>
     (train cannon-galleon-line)
 )
-
 ; GALLEY
 (defrule
     (can-train galley-line)
@@ -1032,7 +951,6 @@
     (train galley-line)
     (disable-self)
 )
-
 (defrule
     (building-type-count-total dock > 1)
     (up-compare-goal gl-dudeHasExplosiveShips == 1)       
@@ -1042,7 +960,6 @@
 =>
     (train galley-line)
 )
-
 ; FIRE SHIP
 (defrule
     (or(up-compare-goal gl-dudeHasGalleys == 1)
@@ -1052,8 +969,6 @@
 =>
     (train fire-ship-line)
 )
-
-
 ; DEMO SHIP
 (defrule
     (up-compare-goal gl-dudeHasFireShips == 1)
@@ -1063,7 +978,6 @@
 =>
     (train demolition-ship-line)
 )
-
 ; STABLE
 ; STEPPE LANCER
 (defrule
@@ -1074,7 +988,6 @@
 =>
     (train steppe-lancer-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (unit-type-count-total steppe-lancer-line g:< gl-knightsQtyMedium)
@@ -1087,7 +1000,6 @@
 =>
     (train steppe-lancer-line)
 )
-
 ; ELEPHANTS
 (defrule
     (current-age == castle-age)
@@ -1101,7 +1013,6 @@
 =>
     (train battle-elephant-line)
 )
-
 (defrule
     (current-age == imperial-age)(gold-amount > 270)
 	(not(civ-selected khmer))
@@ -1109,7 +1020,6 @@
 =>
     (train battle-elephant-line)
 )
-
 ; SCOUTS
 ; DISABLE SELF SCOUTS
 (defrule
@@ -1118,14 +1028,12 @@
     (train scout-cavalry-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)(disable-self)
 )
-
 (defrule
 	(can-train scout-cavalry-line)    
 =>
     (train scout-cavalry-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)(disable-self)
 )
-
 ; FEUDAL AGE SCOUTS
 (defrule
 	(current-age == feudal-age) ; just cause they are good
@@ -1141,7 +1049,6 @@
     (train scout-cavalry-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
-
 (defrule
 	(current-age == feudal-age) ; counter to archers
     (town-under-attack)
@@ -1156,7 +1063,6 @@
     (train scout-cavalry-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
-
 ; CASTLE AGE SCOUTS
 (defrule
 	(current-age == castle-age)
@@ -1168,7 +1074,6 @@
 =>
     (train scout-cavalry-line)
 )
-
 (defrule
 	(current-age == castle-age)
     (town-under-attack)(food-amount > 1300)
@@ -1181,7 +1086,6 @@
 =>
     (train scout-cavalry-line)
 )
-
 ; IMPERIAL AGE SCOUTS
 (defrule
 	(current-age == imperial-age)(food-amount > 1500)(gold-amount < 1300)
@@ -1194,7 +1098,6 @@
 =>
     (train scout-cavalry-line)
 )
-
 (defrule
 	(can-train scout-cavalry-line)
     (research-completed my-unique-research)
@@ -1202,7 +1105,6 @@
 =>
     (train scout-cavalry-line)
 )
-
 ; CAMEL 
 (defrule
     (current-age == castle-age)
@@ -1213,7 +1115,6 @@
 =>
     (train camel-line)
 )
-
 (defrule
     (current-age == castle-age)
     (up-compare-goal gl-dudeHasCavalry == 1)
@@ -1223,7 +1124,6 @@
 =>
     (train camel-line)
 )
-
 (defrule
 	(current-age == imperial-age)
     (gold-amount > 260)
@@ -1232,7 +1132,6 @@
 =>
     (train camel-line)
 )
-
 ; GURJARAS CAVALRY
 (defrule
 	(unit-type-count-total shrivamsha-rider-line g:< gl-camelQtyMedium)
@@ -1240,7 +1139,6 @@
 =>
     (train shrivamsha-rider-line)
 )
-
 ; KNIGHTS
 ; KNIGHTS IN CASTLE AGE
 (defrule
@@ -1260,7 +1158,6 @@
 =>
     (train knight-line)
 )
-
 (defrule
     (current-age == castle-age)(gold-amount > 220)
     (unit-type-count-total knight-line g:< gl-knightsQtyLow)
@@ -1295,7 +1192,6 @@
 =>
     (train knight-line)
 )
-
 ; KNIGHTS IN IMPERIAL AGE
 (defrule
     (current-age == imperial-age) ;saracen dont even have cavalier
@@ -1306,7 +1202,6 @@
 =>
     (train knight-line)
 )
-
 ; CIVS WITH AT LEAST CAVALIER UPGRADE - try to use regional units better
 ; bohemians, briton, burmese etc
 (defrule
@@ -1321,7 +1216,6 @@
 =>
     (train knight-line)
 )
-
 ; CIVS WITH PALADIN UPGRADE
 ; burg, byz, celt, cumans, franks, huns, lithuanians, magyars, persians, spanish, teutons
 (defrule
@@ -1357,7 +1251,6 @@
 =>
     (train knight-line)
 )
-
 ; PUT HERE CIVS WITH FULLY UPG PALADIN OR GOOD UPGRADE
 ; FU PALADIN:
 (defrule
@@ -1378,7 +1271,6 @@
 =>
     (train knight-line)
 )
-
 ; GOOD UPGRADES
 (defrule
     (current-age == imperial-age)
@@ -1399,7 +1291,6 @@
 =>
     (train knight-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (gold-amount > 375)
@@ -1412,7 +1303,6 @@
 =>
     (train knight-line)
 )
-
 (defrule
     (civ-selected bulgarians) ;sa
     (current-age == imperial-age)
@@ -1423,7 +1313,6 @@
 =>
     (train knight-line)
 )
-
 (defrule
     (civ-selected poles)
     (current-age == imperial-age)
@@ -1434,7 +1323,6 @@
 =>
     (train knight-line)
 )
-
 (defrule
     (civ-selected malian)
     (current-age == imperial-age)
@@ -1445,7 +1333,6 @@
 =>
     (train knight-line)
 )
-
 ; ARCHERY RANGE
 ; ARCHER
 (defrule
@@ -1456,7 +1343,6 @@
 =>
     (train archer-line)(disable-self)
 )
-
 (defrule
     (current-age == feudal-age) ;Cav archer not available
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
@@ -1467,7 +1353,6 @@
 =>
     (train archer-line)
 )
-
 ; ARCHERS CASTLE AGE
 (defrule
     (current-age == castle-age)
@@ -1491,7 +1376,6 @@
 =>
 	(train archer-line)
 )
-
 ; ARCHERS IMPERIAL AGE
 ; CIVS WITH NO CROSSWBOW
 (defrule
@@ -1519,7 +1403,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule ;civs with cav archer bonus
     (current-age == imperial-age)  
     (wood-amount > 525)(gold-amount > 545)
@@ -1534,7 +1417,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule
     (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
@@ -1546,10 +1428,8 @@
 =>
 	(train archer-line)
 )
-
 ; huns, franks, vietnamese, mongols, cumans
 ; maybe use only if theres spearmen in front
-
 (defrule ;gurjaras e-a, huns use c-a
     (current-age == imperial-age)(not(can-train hand-cannoneer))  
     (wood-amount > 525)(gold-amount > 545)
@@ -1563,7 +1443,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule
     (current-age == imperial-age) ;they have better cav archers after ca upg 
     (wood-amount > 525)(gold-amount > 545)
@@ -1579,7 +1458,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule
     (current-age == imperial-age)  
     (wood-amount > 525)(gold-amount > 545)
@@ -1591,7 +1469,6 @@
 =>
 	(train archer-line)
 )
-
 ; CIVS WITH ARBALESTER NOT FULLY UPG
 (defrule
     (current-age == imperial-age)
@@ -1610,7 +1487,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (wood-amount > 425)(gold-amount > 445)
@@ -1624,7 +1500,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (wood-amount > 425)(gold-amount > 445)
@@ -1638,7 +1513,6 @@
 =>
 	(train archer-line)
 )
-
 ; CIVS WITH ARBALESTER UPGRADED
 (defrule
     (current-age == imperial-age)
@@ -1653,7 +1527,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (wood-amount > 325)(gold-amount > 445)
@@ -1667,7 +1540,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (wood-amount > 325)(gold-amount > 445)
@@ -1678,7 +1550,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (wood-amount > 325)(gold-amount > 445)
@@ -1692,7 +1563,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (wood-amount > 325)(gold-amount > 445)
@@ -1728,7 +1598,6 @@
 =>
 	(train archer-line)
 )
-
 (defrule
     (civ-selected persian)
     (research-completed my-second-unique-research)
@@ -1739,7 +1608,6 @@
 =>
 	(train archer-line)
 )
-
 ; CAVALRY ARCHER
 (defrule
     (current-age == castle-age)
@@ -1759,7 +1627,6 @@
 =>
 	(train cavalry-archer-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (or(civ-selected frankish)(civ-selected vietnamese)) 
@@ -1769,7 +1636,6 @@
 =>
 	(train cavalry-archer-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (or
@@ -1792,7 +1658,6 @@
 =>
 	(train cavalry-archer-line)
 )
-
 ; ELEPHANT ARCHER
 (defrule
     (current-age == castle-age)   
@@ -1802,7 +1667,6 @@
 =>
 	(train elephant-archer-line)
 )
-
 (defrule
     (current-age == imperial-age)   
     (gold-amount > 260)(food-amount > 400) ;leave food for melee units
@@ -1811,7 +1675,6 @@
 =>
 	(train elephant-archer-line)
 )
-
 ; SKIRMISHERS AND GENITOURS
 ; GENITOUR
 (defrule
@@ -1824,7 +1687,6 @@
 =>
     (train genitour-line)
 )
-
 (defrule
     (current-age == imperial-age)      
     (up-compare-goal gl-dudeHasArchers == 1)
@@ -1836,7 +1698,6 @@
 =>
     (train genitour-line)
 )
-
 ; SKIRMISHER
 (defrule
     (current-age == feudal-age) 
@@ -1847,7 +1708,6 @@
 =>
     (train skirmisher-line)(disable-self)
 )
-
 (defrule
     (current-age == feudal-age) 
     (or(wood-amount > 275)(building-type-count town-center > 0))
@@ -1857,7 +1717,6 @@
 =>
     (train skirmisher-line)(disable-self)
 )
-
 (defrule
     (current-age == feudal-age)
     (or(up-compare-goal gl-dudeHasArchers == 1)
@@ -1871,7 +1730,6 @@
 =>
     (train skirmisher-line)
 )
-
 (defrule
     (current-age == castle-age)    
     (up-compare-goal gl-dudeHasArchers == 1)    
@@ -1895,7 +1753,6 @@
 =>
     (train skirmisher-line)
 )
-
 (defrule
     (current-age == imperial-age)
     (or
@@ -1917,7 +1774,6 @@
 =>
     (train skirmisher-line)
 )
-
 (defrule
     (current-age == imperial-age) ;not skirmisher civs
     (gold-amount < 1800)
@@ -1932,7 +1788,6 @@
 =>
     (train skirmisher-line)
 )
-
 ; HAND CANNONEER
 ; Only Burgundians, Franks and Gurjaras lack fully upgraded Hand Cannoneers,
 (defrule
@@ -1945,7 +1800,6 @@
 =>
     (train hand-cannoneer)
 )
-
 ; SLINGERS
 (defrule
     (current-age == imperial-age)
@@ -1954,7 +1808,6 @@
 =>
     (train slinger)
 )
-
 ; BARRACKS                                        
 ; MILITIA
 (defrule
@@ -1962,13 +1815,11 @@
 =>
     (train militiaman-line)(disable-self)
 )
-
 (defrule
     (can-train militiaman-line)(or(civ-selected incan)(civ-selected aztec))
 =>
     (train militiaman-line)(disable-self)
 )
-
 (defrule
     (current-age == feudal-age)(not(civ-selected sicilians))
     (gold-amount > 220)
@@ -1983,7 +1834,6 @@
     (train militiaman-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
-
 ; MILITIA CASTLE AGE
 (defrule
     (current-age == castle-age)
@@ -2000,7 +1850,6 @@
     (train militiaman-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
-
 ; MILITIA IMPERIAL AGE
 ; CIVS WITH NO CHAMPION (excluding mayans)
 (defrule
@@ -2034,7 +1883,6 @@
 =>
     (train militiaman-line)
 )
-
 ; CIVS WITH NOT FU CHAMPION, OR NO INTERESTING BONUS
 (defrule
     (current-age == imperial-age)(gold-amount > 500)
@@ -2067,7 +1915,6 @@
 =>
     (train militiaman-line)
 )
-
 ; CIVS WITH NOT FU CHAMPION, OR NO INTERESTING BONUS PART 2
 (defrule
     (current-age == imperial-age)(gold-amount > 500)
@@ -2107,7 +1954,6 @@
 =>
     (train militiaman-line)
 )
-
 ; civs with FU champion and cavalry / camelry
 (defrule
     (current-age == imperial-age)(gold-amount > 500)
@@ -2121,7 +1967,6 @@
 =>
     (train militiaman-line)
 )
-
 ; civs with FU champion and cavalry
 (defrule
     (current-age == imperial-age)(gold-amount > 400)
@@ -2153,8 +1998,6 @@
 =>
     (train militiaman-line)
 )
-
-
 (defrule
     (current-age == imperial-age)(gold-amount > 500)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
@@ -2173,7 +2016,6 @@
 =>
     (train militiaman-line)
 )
-
 ; civs with FU champion with BONUS
 (defrule
     (current-age == imperial-age)(gold-amount > 400)
@@ -2193,12 +2035,10 @@
 =>
     (train militiaman-line)
 )
-
 ; NO HORSE CIVS - dont check for spearmen
 (defrule
     (current-age == imperial-age)(gold-amount > 400)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
-
         (or
             (or 
                 (civ-selected aztec)
@@ -2209,12 +2049,10 @@
                 (civ-selected incan)
             )
         )   
-
     (can-train militiaman-line)    
 =>
     (train militiaman-line)
 )
-
 ; MALAY
 (defrule
     (current-age == imperial-age)
@@ -2225,7 +2063,6 @@
 =>
     (train militiaman-line)
 )
-
 ; SPEARMEN
 ; SPEARMEN FEUDAL AGE
 (defrule
@@ -2241,7 +2078,6 @@
     (train spearman-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
-
 (defrule
     (current-age == feudal-age) ;reactive
     (or
@@ -2262,7 +2098,6 @@
     (train spearman-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
-
 (defrule
     (current-age == feudal-age)(town-under-attack)
     (or
@@ -2290,14 +2125,12 @@
         (building-type-count town-center > 0)
     )    
     (wood-amount >= 125)
-    
     (up-compare-goal gl-totalSoldiersCreatedThisAge < 10)
     (can-train spearman-line)
 =>
     (train spearman-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
 )
-
 (defrule
     (current-age == castle-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))    
@@ -2315,7 +2148,6 @@
 =>
     (train spearman-line)
 )
-
 (defrule
     (current-age == imperial-age)(gold-amount < 2000)
     (or(wood-amount > 275)(building-type-count town-center > 0))
@@ -2328,7 +2160,6 @@
 =>
     (train spearman-line)  
 )
-
 (defrule ;goth
 	(current-age >= feudal-age)
 	(unit-type-count-total spearman-line < 4)
@@ -2337,7 +2168,6 @@
 =>
 	(train spearman-line)
 )
-
 ; EAGLE WARRIOR
 (defrule
     (current-age == feudal-age)
@@ -2352,7 +2182,6 @@
 =>
     (train eagle-warrior-line)
 )
-
 (defrule
     (current-age == castle-age) 
     (unit-type-count-total eagle-warrior-line g:< gl-eagleQtyMedium)
@@ -2360,7 +2189,6 @@
 =>
     (train eagle-warrior-line)
 )
-
 (defrule
     (current-age == imperial-age)(gold-amount > 250)
     (unit-type-count-total eagle-warrior-line g:< gl-eagleQtyHigh)
@@ -2368,7 +2196,6 @@
 =>
     (train eagle-warrior-line)
 )
-
 ; CONDOTTIERO
 (defrule
     (unit-type-count-total condottiero g:< gl-militiaQtyMedium)

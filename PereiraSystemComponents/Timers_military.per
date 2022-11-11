@@ -11,7 +11,6 @@
     (up-chat-data-to-self "NOT ATTACK NOW SOLDIERS: %d" g: gl-defendSoldierAmount)      
     (up-chat-data-to-self "ATTACK NOW SOLDIERS: %d" g: gl-attackSoldierAmount)
 )
-
 ; TIMER 12 ENEMY BUILDINGS IN TOWN REPORT
 (defrule(true)=>(enable-timer 12 15)(disable-self)) 
 (defrule
@@ -22,18 +21,15 @@
     (up-chat-data-to-self "ENEMY BUILDINGS IN TOWN: %d" g: gl-enemyBuildingsInTown)
     (up-chat-data-to-self "TOWN SIZE: %d" s: sn-maximum-town-size)                 
 )
-
 ; TIMER 13 SOLDIERS CREATED REPORT- only counting feudal age soldiers atm
 (defrule(true)=>(enable-timer 13 240)(disable-self)) 
 (defrule
 	(timer-triggered 13)(current-age == feudal-age)
-
 =>
 	(disable-timer 13)
     (enable-timer 13 60)           
     ;(up-chat-data-to-self "SOLDIERS CREATED THIS AGE: %d" g: gl-totalSoldiersCreatedThisAge)    
 )
-
 ; ATTACK TIMER 21
 (defrule
     (up-players-in-game enemy > 0)
@@ -42,8 +38,6 @@
     (chat-to-allies "ATTACK TIMER SET")
     (disable-self)
 )
-
-
 ; ATTACK!
 (defrule
     (timer-triggered 21)
@@ -62,7 +56,6 @@
     (attack-now)
     (chat-to-allies "31 Attack!")
 )
-
 (defrule 
     (military-population > 25)
     (not(town-under-attack))
@@ -71,7 +64,6 @@
     (chat-local-to-self ">>> Soldiers spread!")
     (disable-self)
 )
-
 (defrule(up-players-in-game enemy > 0)=>(enable-timer 22 3300)(disable-self)) ; 55 min
 (defrule
     (or
@@ -93,7 +85,6 @@
     (attack-now)
     (chat-to-allies "48 Final Attack!")    
 )
-
 ; RETREAT
 (defrule
 	(current-age == imperial-age)(up-players-in-game enemy > 0)

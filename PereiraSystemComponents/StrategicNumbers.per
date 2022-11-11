@@ -1,12 +1,10 @@
 ; STRATEGIC NUMBERS DECLARATION -------------------------------------------------------
 (defrule(true)=>(chat-local-to-self "> 2. Strategic Numbers Loaded")(disable-self))
-
 (defrule
     (true)
 =>  (set-strategic-number sn-do-not-scale-for-difficulty-level 1)
     (disable-self)
 )
-
 ; COMBAT                             
 ; DEFENSE 
 (defrule 
@@ -15,13 +13,11 @@
     (set-strategic-number sn-allow-civilian-defense 1)         
     (disable-self)
 )
-
 (defrule 
     (game-time > 360)(military-population < 2)
 =>
     (set-strategic-number sn-allow-civilian-defense 2)         
 )
-
 (defrule 
     (true)
 =>
@@ -31,7 +27,6 @@
     (set-strategic-number sn-task-ungrouped-soldiers 0)         
     (disable-self)
 )
-
 (defrule ;DEFENSE PRIORITIES
 	(true)
 =>
@@ -40,7 +35,6 @@
 	(up-set-defense-priority c: farm c: 20000)       
 	(disable-self)
 )
-
 (defrule ;OFFENSE PRIORITIES
 	(true)
 =>
@@ -53,12 +47,10 @@
     (up-set-offense-priority c: villager c: 4)    
     (up-set-offense-priority c: town-center c: 5)
 	(up-set-offense-priority c: castle c: 6)      
-
 	(up-set-offense-priority c: cavalry-class c: 11)
 	(up-set-offense-priority c: archery-class c: 5)    
 	(disable-self)
 )
-
 ; ATTACK    
 ; CHOOSING TARGET 
 (defrule 
@@ -81,9 +73,7 @@
     (set-strategic-number sn-ignore-attack-group-under-attack 0)        
     (set-strategic-number sn-enable-patrol-attack 1)
     (set-strategic-number sn-percentage-explore-exterminators 50)  
-
     (set-strategic-number sn-disable-defend-groups 0)  
-
     (set-strategic-number sn-relic-return-distance 17)
     (set-strategic-number sn-allow-civilian-offense 0)  
     ;(set-strategic-number sn-number-civilian-militia 100) 
@@ -91,7 +81,6 @@
     (set-strategic-number sn-gather-idle-soldiers-at-center 1)     	
     (disable-self)
 )
-
 (defrule 
     (true)
 =>
@@ -99,13 +88,11 @@
     (set-strategic-number sn-attack-group-gather-spacing 2)     
     (set-strategic-number sn-percent-attack-soldiers 0)
     (set-strategic-number sn-attack-group-size-randomness 0)    
-    
     (set-strategic-number sn-minimum-attack-group-size 8)
     (set-strategic-number sn-maximum-attack-group-size 8)
     (set-strategic-number sn-number-attack-groups 0)                    
     (disable-self)
 )
-
 ; BOATS
 (defrule 
     (true)
@@ -116,7 +103,6 @@
     (set-strategic-number sn-number-boat-explore-groups 2) 
     (disable-self)
 )
-
 ; EXPLORE 
 (defrule 
     (true)
@@ -127,8 +113,6 @@
     (set-strategic-number sn-blot-exploration-map 0)
     (disable-self)
 )
-
-
 ; SCOUT STYLES
 (defrule
 	(true)
@@ -146,7 +130,6 @@
     ;(chat-to-player my-player-number "SCOUTING STYLE FLANK")      
 	(disable-self)
 )
-
 (defrule
     (game-time > 120)
 =>
@@ -154,7 +137,6 @@
     ;(chat-to-player my-player-number "SCOUTING STYLE FLANK")        
     (disable-self)
 )
-
 (defrule
     (game-time > 150)
 =>
@@ -162,7 +144,6 @@
     ;(chat-to-player my-player-number "SCOUTING STYLE CORNER")          
     (disable-self)
 )
-
 (defrule
     (game-time > 180)
 =>
@@ -170,7 +151,6 @@
     ;(chat-to-player my-player-number "SCOUTING STYLE BORDER")      
     (disable-self)
 )
-
 (defrule
     (game-time > 210)
 =>
@@ -178,7 +158,6 @@
     ;(chat-to-player my-player-number "SCOUTING STYLE FLANK")        
     (disable-self)
 )
-
 (defrule
     (game-time > 230)
 =>
@@ -186,7 +165,6 @@
     ;(chat-to-player my-player-number "SCOUTING STYLE CORNER")        
     (disable-self)
 )
-
 (defrule
     (game-time > 250)
 =>
@@ -194,7 +172,6 @@
     ;(chat-to-player my-player-number "SCOUTING STYLE CENTER")        
     (disable-self)
 )
-
 ; EXPLORE GROUPS
 (defrule 
     (current-age == castle-age)(not(town-under-attack))
@@ -203,7 +180,6 @@
     (set-strategic-number sn-number-explore-groups 3)
     (disable-self)
 )
-
 (defrule 
     (hold-relics)
 =>
@@ -211,7 +187,6 @@
     (set-strategic-number sn-number-explore-groups 0)
     (disable-self)
 )
-
 ; HUNTING
 (defrule 
     (true)
@@ -222,14 +197,12 @@
     (set-strategic-number sn-minimum-number-hunters 6)
     (disable-self)
 )
-
 (defrule 
     (unit-type-count-total villager > 7)
 =>
     (set-strategic-number sn-enable-boar-hunting 1)
     (disable-self)
 )
-
 ; BUILDING 
 (defrule
     (true)
@@ -242,7 +215,6 @@
     (set-strategic-number sn-placement-zone-size 1)
     (disable-self)
 )
-
 ; EXTRA BUILDERS
 (defrule
     (true)
@@ -262,12 +234,10 @@
     (up-assign-builders c: castle c: 5)
     (up-assign-builders c: town-center c: 3)
     (up-assign-builders c: town-center-foundation c: 8)  
-
     (up-assign-builders c: stone-wall-line c: 2)      
     (up-assign-builders c: palisade-wall c: 2)     
     (disable-self)
 )
-
 (defrule
     (unit-type-count villager > 12)
 =>
@@ -275,7 +245,6 @@
     (up-assign-builders c: palisade-wall c: 3)        
     (disable-self)
 )
-
 (defrule
     (unit-type-count villager > 16)
 =>
@@ -283,7 +252,6 @@
     (up-assign-builders c: palisade-wall c: 4)        
     (disable-self)
 )
-
 (defrule
     (current-age == castle-age)
 =>
@@ -292,7 +260,6 @@
     (up-assign-builders c: guard-tower c: 2)       
     (disable-self)
 )
-
 (defrule
     (unit-type-count villager > 40)
 =>
@@ -303,7 +270,6 @@
     (up-assign-builders c: bombard-tower c: 3)             
     (disable-self)
 )
-
 ; TOWN CENTER, TOWN SIZE AND
 (defrule
     (true)
@@ -315,8 +281,6 @@
     (set-strategic-number sn-maximum-town-size 0)   
     (disable-self)
 )
-
-
 (defrule
     (game-time > 360)
 =>
@@ -324,7 +288,6 @@
     (up-modify-sn sn-minimum-town-size c:+ 10)      
     (disable-self)
 )
-
 ; DROPSITES AND DISTANCES
 ; CANCEL SITE BUILDING IF DANGEROUS
 (defrule 
@@ -333,7 +296,6 @@
     (set-strategic-number sn-defer-dropsite-update 1)
     (disable-self)
 )
-
 (defrule 
     (true)
 =>
@@ -342,7 +304,6 @@
     (set-strategic-number sn-required-forest-tiles 8)
     (disable-self)
 )
-
 ; CAMP MAX DISTANCES AT THE START
 (defrule 
     (true)
@@ -352,21 +313,18 @@
     (set-strategic-number sn-mill-max-distance 12)  
     (disable-self)
 )
-
 (defrule 
     (enemy-buildings-in-town)
 =>     
     (up-modify-sn sn-mill-max-distance c:+ 16)  
     (disable-self)
 )
-
 (defrule 
     (enemy-buildings-in-town)
 =>
     (set-strategic-number sn-lumber-camp-max-distance 38)      
     (disable-self)
 )
-
 ; INDUSTRIAL MODE LUMBER
 (defrule 
     (building-type-count-total lumber-camp > 3)
@@ -377,14 +335,11 @@
     (chat-local-to-self ">>> Industrial lumber mode!")
     (disable-self)
 )
-
 (defrule 
     (building-type-count-total lumber-camp < 3)
 =>  
     (set-strategic-number sn-maximum-wood-drop-distance 9)
 )
-
-
 ; PERCENT VILLAGER BUILDERS
 (defrule
     (current-age == dark-age)
@@ -394,7 +349,6 @@
     (set-strategic-number sn-cap-civilian-builders 40)
     (disable-self)
 )    
-
 ; PERCENT GATHERERS AND DROP DISTANCES
 (defrule
     (current-age == dark-age)
@@ -405,7 +359,6 @@
     (set-strategic-number sn-stone-gatherer-percentage 0)
     (disable-self)
 )
-
 (defrule 
     (current-age == dark-age)
 =>  
@@ -416,14 +369,12 @@
     (set-strategic-number sn-maximum-stone-drop-distance 0)
     (disable-self)
 )
-
 (defrule 
     (current-age == dark-age)(civ-selected mongol)
 =>  
     (set-strategic-number sn-maximum-hunt-drop-distance 26)
     (disable-self)
 )
-
 (defrule 
     (current-age == dark-age)
     (or(civ-selected incan)(or(civ-selected mayan)(civ-selected aztec)))
@@ -436,7 +387,6 @@
     (chat-to-player my-player-number "Gold and Stone mining avaiable")    
     (disable-self)
 )
-
 (defrule 
     (current-age == dark-age)
     (civ-selected poles)
@@ -447,7 +397,6 @@
     (chat-to-player my-player-number "Gold and Stone mining avaiable")    
     (disable-self)
 )
-
 (defrule
     (up-research-status c: feudal-age == research-pending)
 =>
@@ -458,7 +407,6 @@
     (set-strategic-number sn-maximum-gold-drop-distance 14)    
     (disable-self)
 )
-
 (defrule 
     (current-age == feudal-age)
 =>  
@@ -469,7 +417,6 @@
     (set-strategic-number sn-gold-gatherer-percentage 10) ;    
     (disable-self)
 )
-
 (defrule
     (current-age == feudal-age)
     (or(building-type-count blacksmith > 0) ;goths use only barracks
@@ -486,7 +433,6 @@
     (set-strategic-number sn-maximum-gold-drop-distance 6)    
     (disable-self)
 )
-
 ; DROP DISTANCE CASTLE AGE
 (defrule 
     (up-research-status c: castle-age == research-pending)
@@ -502,7 +448,6 @@
     (set-strategic-number sn-stone-gatherer-percentage 0)
     (disable-self)
 )
-
 (defrule 
     (current-age == castle-age)
     (players-building-type-count any-ally monastery > 0)
@@ -518,7 +463,6 @@
     (chat-local-to-self "STONE MINING AVAILABLE")     
     (disable-self)
 )
-
 (defrule 
     (current-age == castle-age)
     (wood-amount > 1200)
@@ -527,7 +471,6 @@
     (up-modify-sn sn-wood-gatherer-percentage c:- 16)
      (disable-self)   
 )
-
 (defrule 
     (current-age == castle-age)
     (gold-amount > 1200)
@@ -536,7 +479,6 @@
     (up-modify-sn sn-gold-gatherer-percentage c:- 16)  
      (disable-self)
 )
-
 (defrule
     (up-research-status c: imperial-age == research-pending)
 =>
@@ -546,7 +488,6 @@
     (set-strategic-number sn-stone-gatherer-percentage 6)  
     (disable-self)
 )
-
 (defrule
     (current-age == imperial-age)(not(hold-relics))
 =>
@@ -557,7 +498,6 @@
     (chat-local-to-self  "Imperial Age With No Relics - Sending More Villagers For Gold")     
     (disable-self)
 )
-
 (defrule
     (current-age == imperial-age)(hold-relics)
 =>
@@ -568,7 +508,6 @@
     (chat-local-to-self "Imperial Age With All Relics - Sending Less Villagers For Gold")     
     (disable-self)
 )
-
 (defrule
     (current-age == imperial-age)
     (not(civ-selected cumans)); to get mercenaries
@@ -581,7 +520,6 @@
     (chat-local-to-self "CASTLE BUILT! STONE DISTANCE 0, PERCENTAGE 0")      
     (disable-self)
 )
-
 (defrule
     (current-age == imperial-age)(food-amount > 400)
     (building-type-count market > 0)    
@@ -594,7 +532,6 @@
     (chat-local-to-self "TWO TOWN CENTERS, 2 BARRACK: STONE DISTANCE 9 AGAIN")     
     (disable-self)
 )
-
 ; CHANGE PERCENTAGES WHEN TOO MANY OF SOMETHING - THEY TEND TO GET MORE GOLD THAN NEEDED
 ; EXCESS FOOD
 (defrule
@@ -605,7 +542,6 @@
     (chat-local-to-self  "We Need More Wood, Less Food")     
     (disable-self)
 )
-
 (defrule
     (food-amount > 2600)(gold-amount < 500)
 =>
@@ -614,7 +550,6 @@
     (chat-local-to-self  "We Need More Gold, Less Food")     
     (disable-self)
 )
-
 ; EXCESS WOOD
 (defrule
     (wood-amount > 2500)(food-amount < 500)
@@ -624,7 +559,6 @@
     (chat-local-to-self  "We Need More Food, Less Wood")     
     (disable-self)
 )
-
 (defrule
     (wood-amount > 2600)(gold-amount < 500)
 =>
@@ -633,7 +567,6 @@
     (chat-local-to-self  "We Need More Gold, Less Wood")     
     (disable-self)
 )
-
 ; EXCESS GOLD
 (defrule
     (gold-amount > 1600)(food-amount < 500)
@@ -643,7 +576,6 @@
     (chat-local-to-self "We Need More Food, Less Gold")     
     (disable-self)
 )
-
 (defrule
     (gold-amount > 1600)(food-amount < 500)
 =>
@@ -652,5 +584,3 @@
     (chat-local-to-self "We Need More Wood, Less Gold")     
     (disable-self)
 )
-
-

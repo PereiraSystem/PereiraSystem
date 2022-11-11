@@ -11,7 +11,6 @@
     (up-chat-data-to-self "Town size max increased = %d" s: sn-maximum-town-size)
     (up-chat-data-to-self "Town size min increased = %d" s: sn-minimum-town-size)
 )
-
 ; TIMER 2 INCREASES LUMBER CAMPS QUANTITY
 (defrule(building-type-count lumber-camp > 0)=>(enable-timer 2 120)(disable-self))
 (defrule
@@ -22,7 +21,6 @@
     (up-modify-goal gl-max-lumber-camps-qty c:+ 1) 
     ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: gl-max-lumber-camps-qty)
 )
-
 ; TIMER 3 INCREASES LUMBER CAMPS DISTANCE FAST WHEN WE HAVE NONE
 (defrule(true)=>(enable-timer 3 320)(disable-self))
 (defrule
@@ -33,7 +31,6 @@
     (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
     ;(up-chat-data-to-self "NO LCs! - Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
 )
-
 (defrule
 	(building-type-count-total lumber-camp > 0)
 =>
@@ -41,7 +38,6 @@
     (enable-timer 4 90)
     (disable-self)
 )
-
 ; TIMER 4 INCREASES LUMBER CAMPS DISTANCE SLOWLY AFTER BUILDING ONE
 (defrule
 	(timer-triggered 4)
@@ -51,7 +47,6 @@
     (up-modify-sn sn-lumber-camp-max-distance c:+ 1) 
     ;(up-chat-data-to-self "Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
 )
-
 ; TIMER 5 INCREASES MINING CAMPS QUANTITY
 (defrule(building-type-count mining-camp > 0)=>(enable-timer 5 180)(disable-self)) 
 (defrule
@@ -62,7 +57,6 @@
     (up-modify-goal gl-max-mining-camps-qty c:+ 1)    
     ;(up-chat-data-to-self "Mining camps max qty increased = %d" g: gl-max-mining-camps-qty)	
 )
-
 ; TIMER 6 INCREASES MINING CAMPS DISTANCE (FAST THEN SLOWER)
 (defrule(current-age == feudal-age)=>(enable-timer 6 60)(disable-self))
 (defrule
@@ -73,7 +67,6 @@
     (up-modify-sn sn-mining-camp-max-distance c:+ 1) 
     ;(up-chat-data-to-self "Mining camps max distance increased = %d" s: sn-mining-camp-max-distance)
 )
-
 ; TIMER 10 DELETES VILLAGERS
 (defrule(true)=>(enable-timer 10 1200)(disable-self)) 
 (defrule
@@ -86,7 +79,6 @@
     (enable-timer 10 150)    
     (up-delete-idle-units idle-type-villager)
 )
-
 (defrule
 	(unit-type-count-total villager > 1)
     (game-time > 240)
