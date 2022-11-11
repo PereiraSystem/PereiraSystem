@@ -840,154 +840,219 @@
 
 
 ; UP WALL CONSTANTS - YEAH I KIND OFLIKE IT THAT WAY
-(defconst gl-innerWallSecondaryGatePoint1-x 431)
-(defconst gl-innerWallSecondaryGatePoint1-y 432)
-(defconst gl-innerWallSecondaryGatePoint2-x 433)
-(defconst gl-innerWallSecondaryGatePoint2-y 434)
-(defconst gl-innerWallSecondaryGatePoint3-x 435)
-(defconst gl-innerWallSecondaryGatePoint3-y 436)
-(defconst gl-innerWallSecondaryGatePoint4-x 437)
-(defconst gl-innerWallSecondaryGatePoint4-y 438)
+(defconst gl-posMapSize-x 400)
+(defconst gl-posMapSize-y 401)
+(defconst gl-mapSizeThird 402)
+(defconst gl-mapSizeTwoThirds 403)
+(defconst gl-mapSizeTenth 404)
+(defconst gl-mapSizeNineTenths 405)
+(defconst gl-maxDimensionOfMap 406)
 
-(defconst gl-outerWallGatePoint1-x 439)
-(defconst gl-outerWallGatePoint1-y 440)
-(defconst gl-outerWallGatePoint2-x 441)
-(defconst gl-outerWallGatePoint2-y 442)
-(defconst gl-outerWallGatePoint3-x 443)
-(defconst gl-outerWallGatePoint3-y 444)
-(defconst gl-outerWallGatePoint4-x 445)
-(defconst gl-outerWallGatePoint4-y 446)
+(defconst gl-myPosition-x 407)
+(defconst gl-myPosition-y 408)
 
-(defconst gl-weAlreadyGotAscendingPalisadeGates 447)
-(defconst gl-weAlreadyGotDescendingPalisadeGates 448)
-(defconst gl-weAlreadyGotAscendingStoneGates 449)
-(defconst gl-weAlreadyGotDescendingStoneGates 450)
+(defconst gl-posXisHigh 409) 
+(defconst gl-posXisMed 410)
+(defconst gl-posXisLow 411)
+(defconst gl-posYisHigh 412) 
+(defconst gl-posYisMed 413)
+(defconst gl-posYisLow 414)
+(defconst gl-posQuadrantCode 415)
 
-(defconst gl-buildNorthEastGates 451)
-(defconst gl-buildSouthEastGates 452)
-(defconst gl-buildNorthWestGates 453)
-(defconst gl-buildSouthWestGates 454)
+(defconst gl-outerWallPerimeter 416)
+(defconst gl-innerWallPerimeter 417)
 
-(defconst gl-dontBuildNorthEastWall 455)
-(defconst gl-dontBuildSouthEastWall 456)
-(defconst gl-dontBuildNorthWestWall 457)
-(defconst gl-dontBuildSouthWestWall 458)
+(defconst gl-outerWallPoint1-x 421)
+(defconst gl-outerWallPoint1-y 422)
+(defconst gl-outerWallPoint2-x 423)
+(defconst gl-outerWallPoint2-y 424)
+(defconst gl-outerWallPoint3-x 425)
+(defconst gl-outerWallPoint3-y 426)
+(defconst gl-outerWallPoint4-x 427)
+(defconst gl-outerWallPoint4-y 428)
 
+(defconst gl-outerGatePoint1-x 430)
+(defconst gl-outerGatePoint1-y 431)
+(defconst gl-outerGatePoint2-x 432)
+(defconst gl-outerGatePoint2-y 433)
+(defconst gl-outerGatePoint3-x 434)
+(defconst gl-outerGatePoint3-y 435)
+(defconst gl-outerGatePoint4-x 436)
+(defconst gl-outerGatePoint4-y 437)
 
-(defconst gl-innerWallGatePoint1-x 461)
-(defconst gl-innerWallGatePoint1-y 462)
-(defconst gl-innerWallGatePoint2-x 463)
-(defconst gl-innerWallGatePoint2-y 464)
-(defconst gl-innerWallGatePoint3-x 465)
-(defconst gl-innerWallGatePoint3-y 466)
-(defconst gl-innerWallGatePoint4-x 467)
-(defconst gl-innerWallGatePoint4-y 468)
+(defconst gl-innerWallPoint1-x 441)
+(defconst gl-innerWallPoint1-y 442)
+(defconst gl-innerWallPoint2-x 443)
+(defconst gl-innerWallPoint2-y 444)
+(defconst gl-innerWallPoint3-x 445)
+(defconst gl-innerWallPoint3-y 446)
+(defconst gl-innerWallPoint4-x 447)
+(defconst gl-innerWallPoint4-y 448)
 
+(defconst gl-innerGatePoint1-x 451)
+(defconst gl-innerGatePoint1-y 452)
+(defconst gl-innerGatePoint2-x 453)
+(defconst gl-innerGatePoint2-y 454)
+(defconst gl-innerGatePoint3-x 455)
+(defconst gl-innerGatePoint3-y 456)
+(defconst gl-innerGatePoint4-x 457)
+(defconst gl-innerGatePoint4-y 458)
 
+(defconst gl-innerSecGatePoint1-x 461)
+(defconst gl-innerSecGatePoint1-y 462)
+(defconst gl-innerSecGatePoint2-x 463)
+(defconst gl-innerSecGatePoint2-y 464)
+(defconst gl-innerSecGatePoint3-x 465)
+(defconst gl-innerSecGatePoint3-y 466)
+(defconst gl-innerSecGatePoint4-x 467)
+(defconst gl-innerSecGatePoint4-y 468)
 
-(defconst gl-positionXisHigh 470) 
-(defconst gl-positionXisMedium 471)
-(defconst gl-positionXisLow 472)
-(defconst gl-positionYisHigh 473) 
-(defconst gl-positionYisMedium 474)
-(defconst gl-positionYisLow 475)
+(defconst gl-buildNorthEastGates 471)
+(defconst gl-buildSouthEastGates 472)
+(defconst gl-buildNorthWestGates 473)
+(defconst gl-buildSouthWestGates 474)
 
-(defconst gl-myPosition-x 476)
-(defconst gl-myPosition-y 477)
+(defconst gl-dontBuildNorthEastWall 475)
+(defconst gl-dontBuildSouthEastWall 476)
+(defconst gl-dontBuildNorthWestWall 477)
+(defconst gl-dontBuildSouthWestWall 478)
 
-(defconst gl-posMapSize-x 478)
-(defconst gl-posMapSize-y 479)
+(defconst gl-buildingInnerWall 479)
 
-(defconst gl-positionQuadrantCode 480)
+(defconst gl-gotAscendingPalisadeGates 480)
+(defconst gl-gotDescendingPalisadeGates 481)
+(defconst gl-gotAscendingStoneGates 482)
+(defconst gl-gotDescendingStoneGates 483)
 
-(defconst gl-mapSizeThird 481)
-(defconst gl-mapSizeTwoThirds 482)
-(defconst gl-mapSizeTenth 483)
-(defconst gl-mapSizeNineTenths 484)
-(defconst gl-buildingInnerWall 485)
-(defconst gl-outerWallPerimeter 486)
-(defconst gl-innerWallPerimeter 487)
+(defconst gl-gotAscendingPalisadeGates 484)
+(defconst gl-gotDescendingPalisadeGates 485)
+(defconst gl-gotAscendingStoneGates 486)
+(defconst gl-gotDescendingStoneGates 487)
 
-(defconst gl-maxDimensionOfMap 489)
-(defconst gl-innerWallPoint1-x 491)
-(defconst gl-innerWallPoint1-y 492)
-(defconst gl-innerWallPoint2-x 493)
-(defconst gl-innerWallPoint2-y 494)
-(defconst gl-innerWallPoint3-x 495)
-(defconst gl-innerWallPoint3-y 496)
-(defconst gl-innerWallPoint4-x 497)
-(defconst gl-innerWallPoint4-y 498)
+(defconst gl-gotNorthEastPalisadeGates 488)
+(defconst gl-gotSouthEastPalisadeGates 489)
+(defconst gl-gotSouthWestPalisadeGates 490)
+(defconst gl-gotNorthWestPalisadeGates 491)
 
+(defconst gl-gotNorthEastStoneGates 492)
+(defconst gl-gotSouthEastStoneGates 493)
+(defconst gl-gotSouthWestStoneGates 494)
+(defconst gl-gotNorthWestStoneGates 495)
 
-(defconst gl-wallPoint1-x 501)
-(defconst gl-wallPoint1-y 502)
-(defconst gl-wallPoint2-x 503)
-(defconst gl-wallPoint2-y 504)
-(defconst gl-wallPoint3-x 505)
-(defconst gl-wallPoint3-y 506)
-(defconst gl-wallPoint4-x 507)
-(defconst gl-wallPoint4-y 508)
 (defrule
-    (true) 
+    (true)
 =>
-
-    (set-goal gl-positionXisHigh 0) 
-    (set-goal gl-positionXisMedium 0)
-    (set-goal gl-positionXisLow 0)
-    (set-goal gl-positionYisHigh 0) 
-    (set-goal gl-positionYisMedium 0)
-    (set-goal gl-positionYisLow 0)
-    (set-goal gl-myPosition-x 0)
-    (set-goal gl-myPosition-y 0)
-
     (set-goal gl-posMapSize-x 0)
     (set-goal gl-posMapSize-y 0)
-
-    (set-goal gl-positionQuadrantCode 0)
-
     (set-goal gl-mapSizeThird 0)
     (set-goal gl-mapSizeTwoThirds 0)
     (set-goal gl-mapSizeTenth 0)
-    (set-goal gl-mapSizeNineTenths 0)        
+    (set-goal gl-mapSizeNineTenths 0)
+    (set-goal gl-maxDimensionOfMap 0)
 
-    (set-goal gl-buildingInnerWall 0)
-    (set-goal gl-outerWallPerimeter 0)
-    (set-goal gl-innerWallPerimeter 0)    
-    
-    (set-goal gl-maxDimensionOfMap 120)
-    (set-goal gl-wallPoint1-x 0)
-    (set-goal gl-wallPoint1-y 0)
-    (set-goal gl-wallPoint2-x 0)
-    (set-goal gl-wallPoint2-y 0)
-    (set-goal gl-wallPoint3-x 0)
-    (set-goal gl-wallPoint3-y 0)
-    (set-goal gl-wallPoint4-x 0)
-    (set-goal gl-wallPoint4-y 0)
-    (disable-self)  
+    (set-goal gl-myPosition-x 0)
+    (set-goal gl-myPosition-y 0)
+
+    (set-goal gl-posXisHigh 40)
+    (set-goal gl-posXisMed 0)
+    (set-goal gl-posXisLow 0)
+    (set-goal gl-posYisHigh 40)
+    (set-goal gl-posYisMed 0)
+    (set-goal gl-posYisLow 0)
+    (set-goal gl-posQuadrantCode 0)
 )
 
 
 (defrule
     (true)
 =>
-    (set-goal gl-dontBuildNorthEastWall 0)
-    (set-goal gl-dontBuildSouthEastWall 0)
-    (set-goal gl-dontBuildNorthWestWall 0)
-    (set-goal gl-dontBuildSouthWestWall 0)
+    (set-goal gl-outerWallPerimeter 11)
+    (set-goal gl-innerWallPerimeter 10)
+
+    (set-goal gl-outerWallPoint1-x 0)
+    (set-goal gl-outerWallPoint1-y 0)
+    (set-goal gl-outerWallPoint2-x 0)
+    (set-goal gl-outerWallPoint2-y 0)
+    (set-goal gl-outerWallPoint3-x 0)
+    (set-goal gl-outerWallPoint3-y 0)
+    (set-goal gl-outerWallPoint4-x 0)
+    (set-goal gl-outerWallPoint4-y 0)
+
+    (set-goal gl-outerGatePoint1-x 0)
+    (set-goal gl-outerGatePoint1-y 0)
+    (set-goal gl-outerGatePoint2-x 0)
+    (set-goal gl-outerGatePoint2-y 0)
+    (set-goal gl-outerGatePoint3-x 0)
+    (set-goal gl-outerGatePoint3-y 0)
+    (set-goal gl-outerGatePoint4-x 0)
+    (set-goal gl-outerGatePoint4-y 0)
+)    
+
+(defrule
+    (true)
+=>
+    (set-goal gl-innerWallPoint1-x 0)
+    (set-goal gl-innerWallPoint1-y 0)
+    (set-goal gl-innerWallPoint2-x 0)
+    (set-goal gl-innerWallPoint2-y 0)
+    (set-goal gl-innerWallPoint3-x 0)
+    (set-goal gl-innerWallPoint3-y 0)
+    (set-goal gl-innerWallPoint4-x 0)
+    (set-goal gl-innerWallPoint4-y 0)
+
+    (set-goal gl-innerGatePoint1-x 0)
+    (set-goal gl-innerGatePoint1-y 0)
+    (set-goal gl-innerGatePoint2-x 0)
+    (set-goal gl-innerGatePoint2-y 0)
+    (set-goal gl-innerGatePoint3-x 0)
+    (set-goal gl-innerGatePoint3-y 0)
+    (set-goal gl-innerGatePoint4-x 0)
+    (set-goal gl-innerGatePoint4-y 0)
+
+    (set-goal gl-innerSecGatePoint1-x 0)
+    (set-goal gl-innerSecGatePoint1-y 0)
+    (set-goal gl-innerSecGatePoint2-x 0)
+    (set-goal gl-innerSecGatePoint2-y 0)
+    (set-goal gl-innerSecGatePoint3-x 0)
+    (set-goal gl-innerSecGatePoint3-y 0)
+    (set-goal gl-innerSecGatePoint4-x 0)
+    (set-goal gl-innerSecGatePoint4-y 0)
+)    
+
+(defrule
+    (true)
+=>
     (set-goal gl-buildNorthEastGates 0)
     (set-goal gl-buildSouthEastGates 0)
     (set-goal gl-buildNorthWestGates 0)
     (set-goal gl-buildSouthWestGates 0)
-    (set-goal gl-innerWallSecondaryGatePoint1-x 0)
-    (set-goal gl-innerWallSecondaryGatePoint1-y 0)
-    (set-goal gl-innerWallSecondaryGatePoint2-x 0)
-    (set-goal gl-innerWallSecondaryGatePoint2-y 0)
-    (set-goal gl-innerWallSecondaryGatePoint3-x 0)
-    (set-goal gl-innerWallSecondaryGatePoint3-y 0)
-    (set-goal gl-innerWallSecondaryGatePoint4-x 0)
-    (set-goal gl-innerWallSecondaryGatePoint4-y 0)
-    (set-goal gl-innerWallPerimeter 10)
-    (set-goal gl-outerWallPerimeter 11)(disable-self)  
+
+    (set-goal gl-dontBuildNorthEastWall 0)
+    (set-goal gl-dontBuildSouthEastWall 0)
+    (set-goal gl-dontBuildNorthWestWall 0)
+    (set-goal gl-dontBuildSouthWestWall 0)
+
+    (set-goal gl-buildingInnerWall 0)
+
+    (set-goal gl-gotAscendingPalisadeGates 0)
+    (set-goal gl-gotDescendingPalisadeGates 0)
+    (set-goal gl-gotAscendingStoneGates 0)
+    (set-goal gl-gotDescendingStoneGates 0)
+
+    (set-goal gl-gotAscendingPalisadeGates 0)
+    (set-goal gl-gotDescendingPalisadeGates 0)
+    (set-goal gl-gotAscendingStoneGates 0)
+    (set-goal gl-gotDescendingStoneGates 0)
+
+    (set-goal gl-gotNorthEastPalisadeGates 0)
+    (set-goal gl-gotSouthEastPalisadeGates 0)
+    (set-goal gl-gotSouthWestPalisadeGates 0)
+    (set-goal gl-gotNorthWestPalisadeGates 0)
+
+    (set-goal gl-gotNorthEastStoneGates 0)
+    (set-goal gl-gotSouthEastStoneGates 0)
+    (set-goal gl-gotSouthWestStoneGates 0)
+    (set-goal gl-gotNorthWestStoneGates 0)
 )
 
 ; MAP SIZE AND PLAYER NUMBER CHECKS -------------------------
@@ -1140,143 +1205,143 @@
 (defrule
     (up-compare-goal gl-myPosition-x g:>= gl-mapSizeTwoThirds)
 =>
-    (set-goal gl-positionXisHigh 1)(disable-self) 
+    (set-goal gl-posXisHigh 1)(disable-self) 
 )
 (defrule
     (up-compare-goal gl-myPosition-y g:>= gl-mapSizeTwoThirds)
 =>
-    (set-goal gl-positionYisHigh 1)(disable-self)
+    (set-goal gl-posYisHigh 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-x g:< gl-mapSizeTwoThirds)
     (up-compare-goal gl-myPosition-x g:> gl-mapSizeThird)
 =>
-    (set-goal gl-positionXisMedium 1)(disable-self)
+    (set-goal gl-posXisMed 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-y g:< gl-mapSizeTwoThirds)
     (up-compare-goal gl-myPosition-y g:> gl-mapSizeThird)
 =>
-    (set-goal gl-positionYisMedium 1)(disable-self)
+    (set-goal gl-posYisMed 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-x g:<= gl-mapSizeThird)
 =>
-    (set-goal gl-positionXisLow 1)(disable-self)
+    (set-goal gl-posXisLow 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-y g:<= gl-mapSizeThird)
 =>
-    (set-goal gl-positionYisLow 1)(disable-self)
+    (set-goal gl-posYisLow 1)(disable-self)
 )
 
 ; SAY 1 OF 9 POSITIONS TO ALLIES AND STORE POSITION IN A CODE WHILE WE ARE AT IT
 (defrule
-    (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisHigh == 1)
+    (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisHigh == 1)
 =>    
     ;(chat-to-allies "IM AT THE EAST, IN THE CORNER! - POS 1")
-    (set-goal gl-positionQuadrantCode 1)    
+    (set-goal gl-posQuadrantCode 1)    
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisMedium == 1)
+    (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisMed == 1)
 =>  
     ;(chat-to-allies "IM AT THE NORTH EAST!")
-    (set-goal gl-positionQuadrantCode 2) 
+    (set-goal gl-posQuadrantCode 2) 
     (up-send-flare position-self)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-positionXisHigh == 1)(up-compare-goal gl-positionYisLow == 1)
+    (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisLow == 1)
 =>  
     ;(chat-to-allies "IM AT AT THE NORTH, IN THE CORNER! - POS 3")
-    (set-goal gl-positionQuadrantCode 3)     
+    (set-goal gl-posQuadrantCode 3)     
     (up-send-flare position-self)(disable-self)  
 )
 (defrule
-    (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisHigh == 1)
+    (up-compare-goal gl-posXisMed == 1)(up-compare-goal gl-posYisHigh == 1)
 =>  
     ;(chat-to-allies "IM AT THE SOUTH EAST!")
-    (set-goal gl-positionQuadrantCode 4)     
+    (set-goal gl-posQuadrantCode 4)     
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisMedium == 1)
+    (up-compare-goal gl-posXisMed == 1)(up-compare-goal gl-posYisMed == 1)
 =>  
     ;(chat-to-allies "IM IN THE MIDDLE OF THE MAP - POS 5")
-    (set-goal gl-positionQuadrantCode 5)     
+    (set-goal gl-posQuadrantCode 5)     
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-positionXisMedium == 1)(up-compare-goal gl-positionYisLow == 1)
+    (up-compare-goal gl-posXisMed == 1)(up-compare-goal gl-posYisLow == 1)
 =>  
     ;(chat-to-allies "IM AT THE NORTH WEST!")
-    (set-goal gl-positionQuadrantCode 6)
+    (set-goal gl-posQuadrantCode 6)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisHigh == 1)
+    (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisHigh == 1)
 => 
     ;(chat-to-allies "IM AT THE SOUTH, IN THE CORNER! - POS 7")
-    (set-goal gl-positionQuadrantCode 7)
+    (set-goal gl-posQuadrantCode 7)
     (up-send-flare position-self)(disable-self)
 ) 
 (defrule
-    (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisMedium == 1)
+    (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisMed == 1)
 =>
     ;(chat-to-allies "IM AT THE SOUTH WEST!")
-    (set-goal gl-positionQuadrantCode 8)    
+    (set-goal gl-posQuadrantCode 8)    
     (up-send-flare position-self)(disable-self)  
 )    
 (defrule
-    (up-compare-goal gl-positionXisLow == 1)(up-compare-goal gl-positionYisLow == 1)
+    (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisLow == 1)
 =>     
     ;(chat-to-allies "IM AT THE WEST, IN THE CORNER! - POS 9")
-    (set-goal gl-positionQuadrantCode 9)
+    (set-goal gl-posQuadrantCode 9)
     (up-send-flare position-self)(disable-self)  
 )
 
 (defrule 
     (true)
 =>    
-    (up-get-point position-self gl-wallPoint1-x)
-    (up-get-point position-self gl-wallPoint2-x)
-    (up-get-point position-self gl-wallPoint3-x)
-    (up-get-point position-self gl-wallPoint4-x)
+    (up-get-point position-self gl-outerWallPoint1-x)
+    (up-get-point position-self gl-outerWallPoint2-x)
+    (up-get-point position-self gl-outerWallPoint3-x)
+    (up-get-point position-self gl-outerWallPoint4-x)
     (up-get-point position-self gl-innerWallPoint1-x)
     (up-get-point position-self gl-innerWallPoint2-x)
     (up-get-point position-self gl-innerWallPoint3-x)
     (up-get-point position-self gl-innerWallPoint4-x)
-    (up-get-point position-self gl-innerWallGatePoint1-x)
-    (up-get-point position-self gl-innerWallGatePoint2-x)
-    (up-get-point position-self gl-innerWallGatePoint3-x)
-    (up-get-point position-self gl-innerWallGatePoint4-x)    
-    (up-get-point position-self gl-outerWallGatePoint1-x )
-    (up-get-point position-self gl-outerWallGatePoint2-x )
-    (up-get-point position-self gl-outerWallGatePoint3-x )
-    (up-get-point position-self gl-outerWallGatePoint4-x )
+    (up-get-point position-self gl-innerGatePoint1-x)
+    (up-get-point position-self gl-innerGatePoint2-x)
+    (up-get-point position-self gl-innerGatePoint3-x)
+    (up-get-point position-self gl-innerGatePoint4-x)    
+    (up-get-point position-self gl-outerGatePoint1-x )
+    (up-get-point position-self gl-outerGatePoint2-x )
+    (up-get-point position-self gl-outerGatePoint3-x )
+    (up-get-point position-self gl-outerGatePoint4-x )
     (disable-self)           
 )
 (defrule 
     (true)
 =>    
-    (up-get-point position-self gl-innerWallSecondaryGatePoint1-x)
-    (up-get-point position-self gl-innerWallSecondaryGatePoint2-x)
-    (up-get-point position-self gl-innerWallSecondaryGatePoint3-x)
-    (up-get-point position-self gl-innerWallSecondaryGatePoint4-x)
+    (up-get-point position-self gl-innerSecGatePoint1-x)
+    (up-get-point position-self gl-innerSecGatePoint2-x)
+    (up-get-point position-self gl-innerSecGatePoint3-x)
+    (up-get-point position-self gl-innerSecGatePoint4-x)
     (disable-self)           
 )
 ; CREATE OUTER WALL SHAPE ACCORDING TO OUTER PERIMETER SIZE
 (defrule
     (true) 
 =>    
-    (up-modify-goal gl-wallPoint1-x g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-wallPoint1-y g:- gl-outerWallPerimeter) 
-    (up-modify-goal gl-wallPoint2-x g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-wallPoint2-y g:+ gl-outerWallPerimeter) 
-    (up-modify-goal gl-wallPoint3-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-wallPoint3-y g:+ gl-outerWallPerimeter) 
-    (up-modify-goal gl-wallPoint4-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-wallPoint4-y g:- gl-outerWallPerimeter)  
+    (up-modify-goal gl-outerWallPoint1-x g:+ gl-outerWallPerimeter)
+    (up-modify-goal gl-outerWallPoint1-y g:- gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerWallPoint2-x g:+ gl-outerWallPerimeter)
+    (up-modify-goal gl-outerWallPoint2-y g:+ gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerWallPoint3-x g:- gl-outerWallPerimeter)
+    (up-modify-goal gl-outerWallPoint3-y g:+ gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerWallPoint4-x g:- gl-outerWallPerimeter)
+    (up-modify-goal gl-outerWallPoint4-y g:- gl-outerWallPerimeter)  
     (disable-self)
 )
 
@@ -1284,14 +1349,14 @@
 (defrule
     (true) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-x g:+ gl-outerWallPerimeter) 
-    (up-modify-goal gl-outerWallGatePoint1-y g:- gl-outerWallPerimeter) 
-    (up-modify-goal gl-outerWallGatePoint2-x g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallGatePoint2-y g:+ gl-outerWallPerimeter) 
-    (up-modify-goal gl-outerWallGatePoint3-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallGatePoint3-y g:+ gl-outerWallPerimeter) 
-    (up-modify-goal gl-outerWallGatePoint4-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallGatePoint4-y g:- gl-outerWallPerimeter)  
+    (up-modify-goal gl-outerGatePoint1-x g:+ gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerGatePoint1-y g:- gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerGatePoint2-x g:+ gl-outerWallPerimeter)
+    (up-modify-goal gl-outerGatePoint2-y g:+ gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerGatePoint3-x g:- gl-outerWallPerimeter)
+    (up-modify-goal gl-outerGatePoint3-y g:+ gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerGatePoint4-x g:- gl-outerWallPerimeter)
+    (up-modify-goal gl-outerGatePoint4-y g:- gl-outerWallPerimeter)  
     (disable-self)           
 )
 
@@ -1315,241 +1380,241 @@
 (defrule
     (true) 
 =>   
-    (up-modify-goal gl-innerWallGatePoint1-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallGatePoint1-y g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerGatePoint1-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerGatePoint1-y g:- gl-innerWallPerimeter)
 
-    (up-modify-goal gl-innerWallGatePoint2-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallGatePoint2-y g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerGatePoint2-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerGatePoint2-y g:+ gl-innerWallPerimeter)
 
-    (up-modify-goal gl-innerWallGatePoint3-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallGatePoint3-y g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerGatePoint3-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerGatePoint3-y g:+ gl-innerWallPerimeter)
 
-    (up-modify-goal gl-innerWallGatePoint4-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallGatePoint4-y g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerGatePoint4-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerGatePoint4-y g:- gl-innerWallPerimeter)
     (disable-self)           
 )
 ; secondary---
 (defrule
     (true) 
 =>    
-    (up-modify-goal gl-innerWallSecondaryGatePoint1-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallSecondaryGatePoint1-y g:- gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallSecondaryGatePoint2-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallSecondaryGatePoint2-y g:+ gl-innerWallPerimeter) 
-    (up-modify-goal gl-innerWallSecondaryGatePoint3-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallSecondaryGatePoint3-y g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallSecondaryGatePoint4-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallSecondaryGatePoint4-y g:- gl-innerWallPerimeter)   
+    (up-modify-goal gl-innerSecGatePoint1-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerSecGatePoint1-y g:- gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerSecGatePoint2-x g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerSecGatePoint2-y g:+ gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerSecGatePoint3-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerSecGatePoint3-y g:+ gl-innerWallPerimeter)
+    (up-modify-goal gl-innerSecGatePoint4-x g:- gl-innerWallPerimeter)
+    (up-modify-goal gl-innerSecGatePoint4-y g:- gl-innerWallPerimeter)   
     (disable-self)           
 )
 
 ; MAKE THE OUTER AND INNER WALLS REACH THE BORDERS IF THEY ARE CLOSE
 ; LOWER POINTS SET TO ZERO
 (defrule
-    (up-compare-goal gl-wallPoint1-y g:< gl-mapSizeTenth)
+    (up-compare-goal gl-outerWallPoint1-y g:< gl-mapSizeTenth)
 =>    
-    (set-goal gl-wallPoint1-y 0)
+    (set-goal gl-outerWallPoint1-y 0)
     (set-goal gl-innerWallPoint1-y 0)(disable-self)
 )
 (defrule 
-    (up-compare-goal gl-wallPoint3-x g:< gl-mapSizeTenth)
+    (up-compare-goal gl-outerWallPoint3-x g:< gl-mapSizeTenth)
 =>    
-    (set-goal gl-wallPoint3-x 0)
+    (set-goal gl-outerWallPoint3-x 0)
     (set-goal gl-innerWallPoint3-x 0)(disable-self)     
 )
 (defrule 
-    (up-compare-goal gl-wallPoint4-x g:< gl-mapSizeTenth)
+    (up-compare-goal gl-outerWallPoint4-x g:< gl-mapSizeTenth)
 =>    
-    (set-goal gl-wallPoint4-x 0)
+    (set-goal gl-outerWallPoint4-x 0)
     (set-goal gl-innerWallPoint4-x 0)(disable-self)      
 )
 (defrule 
-    (up-compare-goal gl-wallPoint4-y g:< gl-mapSizeTenth)
+    (up-compare-goal gl-outerWallPoint4-y g:< gl-mapSizeTenth)
 =>    
-    (set-goal gl-wallPoint4-y 0)
+    (set-goal gl-outerWallPoint4-y 0)
     (set-goal gl-innerWallPoint4-y 0)(disable-self)     
 )
 
 ; DEFAULT: LUDICROUS
 (defrule 
-    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint1-x 480)
+    (set-goal gl-outerWallPoint1-x 480)
     (set-goal gl-innerWallPoint1-x 480)(disable-self)   
 )
 (defrule 
-    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x 480)
+    (set-goal gl-outerWallPoint2-x 480)
     (set-goal gl-innerWallPoint2-x 480)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y 480)
+    (set-goal gl-outerWallPoint2-y 480)
     (set-goal gl-innerWallPoint2-y 480)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint3-y 480)
+    (set-goal gl-outerWallPoint3-y 480)
     (set-goal gl-innerWallPoint3-y 480)(disable-self)      
 )
 
 ; HIGHER POINTS SET TO MAP SIZE MANUALLY - TRY TO GET FROM GOAL
 #load-if-defined TINY-MAP
 (defrule 
-    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint1-x 120)
+    (set-goal gl-outerWallPoint1-x 120)
     (set-goal gl-innerWallPoint1-x 120)(disable-self)   
 )
 (defrule 
-    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x 120)
+    (set-goal gl-outerWallPoint2-x 120)
     (set-goal gl-innerWallPoint2-x 120)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y 120)
+    (set-goal gl-outerWallPoint2-y 120)
     (set-goal gl-innerWallPoint2-y 120)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint3-y 120)
+    (set-goal gl-outerWallPoint3-y 120)
     (set-goal gl-innerWallPoint3-y 120)(disable-self)      
 )
 #end-if
 #load-if-defined SMALL-MAP
 (defrule 
-    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint1-x 144)
+    (set-goal gl-outerWallPoint1-x 144)
     (set-goal gl-innerWallPoint1-x 144)(disable-self)   
 )
 (defrule 
-    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x 144)
+    (set-goal gl-outerWallPoint2-x 144)
     (set-goal gl-innerWallPoint2-x 144)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y 144)
+    (set-goal gl-outerWallPoint2-y 144)
     (set-goal gl-innerWallPoint2-y 144)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint3-y 144)
+    (set-goal gl-outerWallPoint3-y 144)
     (set-goal gl-innerWallPoint3-y 144)(disable-self)      
 )
 #end-if
 #load-if-defined MEDIUM-MAP
 (defrule 
-    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint1-x 168)
+    (set-goal gl-outerWallPoint1-x 168)
     (set-goal gl-innerWallPoint1-x 168)(disable-self)   
 )
 (defrule 
-    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x 168)
+    (set-goal gl-outerWallPoint2-x 168)
     (set-goal gl-innerWallPoint2-x 168)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y 168)
+    (set-goal gl-outerWallPoint2-y 168)
     (set-goal gl-innerWallPoint2-y 168)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint3-y 168)
+    (set-goal gl-outerWallPoint3-y 168)
     (set-goal gl-innerWallPoint3-y 168)(disable-self)      
 )
 #end-if
 #load-if-defined NORMAL-MAP
 (defrule 
-    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint1-x 200)
+    (set-goal gl-outerWallPoint1-x 200)
     (set-goal gl-innerWallPoint1-x 200)(disable-self)   
 )
 (defrule 
-    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x 200)
+    (set-goal gl-outerWallPoint2-x 200)
     (set-goal gl-innerWallPoint2-x 200)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y 200)
+    (set-goal gl-outerWallPoint2-y 200)
     (set-goal gl-innerWallPoint2-y 200)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint3-y 200)
+    (set-goal gl-outerWallPoint3-y 200)
     (set-goal gl-innerWallPoint3-y 200)(disable-self)      
 )
 #end-if
 #load-if-defined LARGE-MAP
 (defrule 
-    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint1-x 220)
+    (set-goal gl-outerWallPoint1-x 220)
     (set-goal gl-innerWallPoint1-x 220)(disable-self)   
 )
 (defrule 
-    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x 220)
+    (set-goal gl-outerWallPoint2-x 220)
     (set-goal gl-innerWallPoint2-x 220)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y 220)
+    (set-goal gl-outerWallPoint2-y 220)
     (set-goal gl-innerWallPoint2-y 220)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint3-y 220)
+    (set-goal gl-outerWallPoint3-y 220)
     (set-goal gl-innerWallPoint3-y 220)(disable-self)      
 )
 #end-if
 #load-if-defined GIANT-MAP
 (defrule 
-    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint1-x 240)
+    (set-goal gl-outerWallPoint1-x 240)
     (set-goal gl-innerWallPoint1-x 240)(disable-self)   
 )
 (defrule 
-    (up-compare-goal gl-wallPoint2-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-x 240)
+    (set-goal gl-outerWallPoint2-x 240)
     (set-goal gl-innerWallPoint2-x 240)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint2-y 240)
+    (set-goal gl-outerWallPoint2-y 240)
     (set-goal gl-innerWallPoint2-y 240)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-wallPoint3-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
 =>    
-    (set-goal gl-wallPoint3-y 240)
+    (set-goal gl-outerWallPoint3-y 240)
     (set-goal gl-innerWallPoint3-y 240)(disable-self)      
 )
 #end-if
@@ -1557,25 +1622,25 @@
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
 (defrule  ; no north east (1 to 2) if point 1 too close to north border
-    (up-compare-goal gl-wallPoint1-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>
     (set-goal gl-dontBuildNorthEastWall 1)(disable-self)   
 )
 
 (defrule ; no south east (2 to 3) if point 2 too close to east border
-    (up-compare-goal gl-wallPoint2-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
 =>
     (set-goal gl-dontBuildSouthEastWall 1)(disable-self) 
 )
 
 (defrule ; no south west (3 to 4) if point 3 too close to south border
-    (up-compare-goal gl-wallPoint3-x g:< gl-mapSizeTenth)
+    (up-compare-goal gl-outerWallPoint3-x g:< gl-mapSizeTenth)
 =>
     (set-goal gl-dontBuildSouthWestWall 1)(disable-self) 
 )
 
 (defrule ; no north west (4 to 1) if point 4 too close to west border
-    (up-compare-goal gl-wallPoint4-y g:< gl-mapSizeTenth)
+    (up-compare-goal gl-outerWallPoint4-y g:< gl-mapSizeTenth)
 =>
     (set-goal gl-dontBuildNorthWestWall 1)(disable-self) 
 ) 
@@ -1586,15 +1651,15 @@
 ; 3 AND 7 CORNERS DEPEND ON NOT BUILDING A WALL (NE 3 AND SW 7)
 (defrule
     (or
-        (up-compare-goal gl-positionQuadrantCode == 8) ;south west center 
+        (up-compare-goal gl-posQuadrantCode == 8) ;south west center 
         (or
             (and
-                (up-compare-goal gl-positionQuadrantCode == 7)            
+                (up-compare-goal gl-posQuadrantCode == 7)            
                 (up-compare-goal gl-dontBuildSouthWestWall == 1)
             )
             (and 
                 (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 9)            
+                (up-compare-goal gl-posQuadrantCode == 9)            
             )  
         )         
     )
@@ -1604,14 +1669,14 @@
 
 (defrule
     (or
-        (up-compare-goal gl-positionQuadrantCode == 6) ;n w center always gets the same
+        (up-compare-goal gl-posQuadrantCode == 6) ;n w center always gets the same
         (or
             (and 
-                (up-compare-goal gl-positionQuadrantCode == 3)
+                (up-compare-goal gl-posQuadrantCode == 3)
                 (up-compare-goal gl-dontBuildNorthEastWall == 0)            
             )
             (and 
-                (up-compare-goal gl-positionQuadrantCode == 9)   
+                (up-compare-goal gl-posQuadrantCode == 9)   
                 (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
             )            
         )
@@ -1622,15 +1687,15 @@
 
 (defrule
     (or
-        (up-compare-goal gl-positionQuadrantCode == 4) ;south east center
+        (up-compare-goal gl-posQuadrantCode == 4) ;south east center
         (or
             (and 
-                (up-compare-goal gl-positionQuadrantCode == 7)
+                (up-compare-goal gl-posQuadrantCode == 7)
                 (up-compare-goal gl-dontBuildSouthWestWall == 0)         
             )
             (and 
                 (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 1) ; !!!!           
+                (up-compare-goal gl-posQuadrantCode == 1) ; !!!!           
             )                          
         )
     ) 
@@ -1640,15 +1705,15 @@
 
 (defrule
     (or
-        (up-compare-goal gl-positionQuadrantCode == 2) ;north east center 
+        (up-compare-goal gl-posQuadrantCode == 2) ;north east center 
         (or
             (and 
-                (up-compare-goal gl-positionQuadrantCode == 3)                          
+                (up-compare-goal gl-posQuadrantCode == 3)                          
                 (up-compare-goal gl-dontBuildNorthEastWall == 1)                   
             )
             (and 
                 (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-positionQuadrantCode == 1)          
+                (up-compare-goal gl-posQuadrantCode == 1)          
             )          
         )
     )
@@ -1666,22 +1731,22 @@
     (up-compare-goal gl-buildNorthEastGates == 1)
     (random-number >= 50) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-y c:+ 5)
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
+    (up-modify-goal gl-outerGatePoint1-y c:+ 5)
+    (up-modify-goal gl-outerGatePoint2-y c:- 5)
 
-    (up-modify-goal gl-outerWallGatePoint3-x c:+ 12)
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 5)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 12)
+    (up-modify-goal gl-outerGatePoint4-x c:+ 5)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildNorthEastGates == 1)
     (random-number < 50) 
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-y c:+ 5)
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
+    (up-modify-goal gl-outerGatePoint1-y c:+ 5)
+    (up-modify-goal gl-outerGatePoint2-y c:- 5)
 
-    (up-modify-goal gl-outerWallGatePoint3-x c:+ 5)
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 12)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 5)
+    (up-modify-goal gl-outerGatePoint4-x c:+ 12)
     (disable-self)
 )
 
@@ -1696,22 +1761,22 @@
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)  (random-number >= 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint2-x c:- 5)
-    (up-modify-goal gl-outerWallGatePoint3-x c:+ 5)
+    (up-modify-goal gl-outerGatePoint2-x c:- 5)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 5)
 
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
-    (up-modify-goal gl-outerWallGatePoint1-y c:+ 12)
+    (up-modify-goal gl-outerGatePoint4-y c:+ 5)
+    (up-modify-goal gl-outerGatePoint1-y c:+ 12)
     (disable-self)
 )
 
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)  (random-number < 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint2-x c:- 5)
-    (up-modify-goal gl-outerWallGatePoint3-x c:+ 5)
+    (up-modify-goal gl-outerGatePoint2-x c:- 5)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 5)
 
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 12)
-    (up-modify-goal gl-outerWallGatePoint1-y c:+ 5)
+    (up-modify-goal gl-outerGatePoint4-y c:+ 12)
+    (up-modify-goal gl-outerGatePoint1-y c:+ 5)
     (disable-self)
 )
 
@@ -1726,22 +1791,22 @@
     (up-compare-goal gl-buildSouthWestGates == 1) 
     (random-number >= 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 5)
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
+    (up-modify-goal gl-outerGatePoint3-y c:- 5)
+    (up-modify-goal gl-outerGatePoint4-y c:+ 5)
 
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 5)
-    (up-modify-goal gl-outerWallGatePoint2-x c:- 12)
+    (up-modify-goal gl-outerGatePoint1-x c:- 5)
+    (up-modify-goal gl-outerGatePoint2-x c:- 12)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthWestGates == 1) 
     (random-number < 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 5)
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
+    (up-modify-goal gl-outerGatePoint3-y c:- 5)
+    (up-modify-goal gl-outerGatePoint4-y c:+ 5)
 
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 12)
-    (up-modify-goal gl-outerWallGatePoint2-x c:- 5)
+    (up-modify-goal gl-outerGatePoint1-x c:- 12)
+    (up-modify-goal gl-outerGatePoint2-x c:- 5)
     (disable-self)
 )
 
@@ -1753,8 +1818,8 @@
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number >= 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 6)
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 6) 
+    (up-modify-goal gl-outerGatePoint1-x c:- 6)
+    (up-modify-goal gl-outerGatePoint4-x c:+ 6) 
     (disable-self)
 )
 
@@ -1762,8 +1827,8 @@
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number < 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 10)
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 10) 
+    (up-modify-goal gl-outerGatePoint1-x c:- 10)
+    (up-modify-goal gl-outerGatePoint4-x c:+ 10) 
     (disable-self)
 )
 
@@ -1778,8 +1843,8 @@
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number >= 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 12)    
+    (up-modify-goal gl-outerGatePoint2-y c:- 5)
+    (up-modify-goal gl-outerGatePoint3-y c:- 12)    
     (disable-self)
 )
 
@@ -1787,8 +1852,8 @@
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number < 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 12)
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 5)    
+    (up-modify-goal gl-outerGatePoint2-y c:- 12)
+    (up-modify-goal gl-outerGatePoint3-y c:- 5)    
     (disable-self)
 )
 
@@ -1797,12 +1862,12 @@
     (true) ;put pos 5 later!
     (or 
         (or
-            (up-compare-goal gl-positionQuadrantCode == 1)
-            (up-compare-goal gl-positionQuadrantCode == 3)
+            (up-compare-goal gl-posQuadrantCode == 1)
+            (up-compare-goal gl-posQuadrantCode == 3)
         )
         (or
-            (up-compare-goal gl-positionQuadrantCode == 7)
-            (up-compare-goal gl-positionQuadrantCode == 9)
+            (up-compare-goal gl-posQuadrantCode == 7)
+            (up-compare-goal gl-posQuadrantCode == 9)
         )        
     )
     (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
@@ -1815,12 +1880,12 @@
     (true)
     (or
         (or
-            (up-compare-goal gl-positionQuadrantCode == 1)
-            (up-compare-goal gl-positionQuadrantCode == 3)
+            (up-compare-goal gl-posQuadrantCode == 1)
+            (up-compare-goal gl-posQuadrantCode == 3)
         )
         (or
-            (up-compare-goal gl-positionQuadrantCode == 7)
-            (up-compare-goal gl-positionQuadrantCode == 9)
+            (up-compare-goal gl-posQuadrantCode == 7)
+            (up-compare-goal gl-posQuadrantCode == 9)
         )        
     )
     (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
@@ -1833,12 +1898,12 @@
     (true)
     (or
         (or
-            (up-compare-goal gl-positionQuadrantCode == 1)
-            (up-compare-goal gl-positionQuadrantCode == 3)
+            (up-compare-goal gl-posQuadrantCode == 1)
+            (up-compare-goal gl-posQuadrantCode == 3)
         )
         (or
-            (up-compare-goal gl-positionQuadrantCode == 7)
-            (up-compare-goal gl-positionQuadrantCode == 9)
+            (up-compare-goal gl-posQuadrantCode == 7)
+            (up-compare-goal gl-posQuadrantCode == 9)
         )        
     )
     (up-compare-goal gl-myPosition-y g:== gl-myPosition-x)
@@ -1853,21 +1918,21 @@
     ;(false)
     (wood-amount > 175)(building-type-count town-center > 0)(false)
     (building-type-count barracks > 0)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0) ;CAN REMOVE?
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)  
-    (up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint4-x c: 792)
+    (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 792)
 =>   
-    (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint4-x c: 792)
+    (up-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 792)
     (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")    
 )(defrule 
 ;(false)
     (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0) ;CAN REMOVE?
+    (up-compare-goal gl-dontBuildNorthEastWall == 0) 
     (up-compare-goal gl-buildNorthEastGates == 1)  
-    (up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint3-x c: 792)
+    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
 =>   
-    (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint3-x c: 792)
+    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
     (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")    
 )
 
@@ -1876,18 +1941,18 @@
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
-    (up-can-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint1-x c: 796)
+    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
 =>
-    (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint1-x c: 796)
+    (up-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
     (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")
 )(defrule ;(false)
 (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
-    (up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint4-x c: 796)
+    (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 796)
 =>
-    (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint4-x c: 796)
+    (up-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 796)
     (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")
 )
 
@@ -1896,18 +1961,18 @@
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
-    (up-can-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint1-x c: 792)
+    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 792)
 =>
-    (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint1-x c: 792)
+    (up-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 792)
     (chat-local-to-self "BUILDING SEC PALISADE GATES")
 )(defrule ;(false)
 (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
-    (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint2-x c: 792)
+    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 792)
 =>
-    (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint2-x c: 792)
+    (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 792)
     (chat-local-to-self "BUILDING SEC PALISADE GATES")
 )
 
@@ -1916,9 +1981,9 @@
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
-    (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint2-x c: 796)    
+    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)    
 =>
-    (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint2-x c: 796)
+    (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)
     (chat-local-to-self "BUILDING SEC PALISADE GATES")
 )
 (defrule ;(false)
@@ -1927,9 +1992,9 @@
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
-    (up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint3-x c: 796)    
+    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 796)    
 =>
-    (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint3-x c: 796)
+    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 796)
     (chat-local-to-self "BUILDING SEC PALISADE GATES")
 )
 
@@ -1939,18 +2004,18 @@
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthEastWall == 0) ;CAN REMOVE?
     (up-compare-goal gl-buildNorthEastGates == 1)  
-    (up-can-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
+    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint2-x c: 796)
 =>   
-    (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint2-x c: 796)
+    (up-build-line gl-outerGatePoint1-x gl-outerGatePoint2-x c: 796)
     (chat-local-to-self "BUILDING NORTH EAST PALISADE GATES")    
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)  
-    (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint1-x c: 796)
+    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint1-x c: 796)
 =>   
-    (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint1-x c: 796)
+    (up-build-line gl-outerGatePoint2-x gl-outerGatePoint1-x c: 796)
     (chat-local-to-self "BUILDING NORTH EAST PALISADE GATES BACKWARDS")    
 )
 
@@ -1958,18 +2023,18 @@
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
-    (up-can-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
+    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint3-x c: 792)
 =>
-    (up-build-line gl-outerWallGatePoint2-x gl-outerWallGatePoint3-x c: 792)
+    (up-build-line gl-outerGatePoint2-x gl-outerGatePoint3-x c: 792)
     (chat-local-to-self "BUILDING SOUTH EAST PALISADE GATES")
 )
 (defrule (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
-    (up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint2-x c: 792)
+    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint2-x c: 792)
 =>
-    (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint2-x c: 792)
+    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint2-x c: 792)
     (chat-local-to-self "BUILDING SOUTH EAST PALISADE GATES BACKWARDS")
 )
 
@@ -1977,18 +2042,18 @@
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
-    (up-can-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
+    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint4-x c: 796)
 =>
-    (up-build-line gl-outerWallGatePoint3-x gl-outerWallGatePoint4-x c: 796)
+    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint4-x c: 796)
     (chat-local-to-self "BUILDING SOUTH WEST PALISADE GATES")
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
-    (up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint3-x c: 796)
+    (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint3-x c: 796)
 =>
-    (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint3-x c: 796)
+    (up-build-line gl-outerGatePoint4-x gl-outerGatePoint3-x c: 796)
     (chat-local-to-self "BUILDING SOUTH WEST PALISADE GATES BACKWARDS")
 )
 
@@ -1996,18 +2061,18 @@
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
-    (up-can-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)    
+    (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint1-x c: 792)    
 =>
-    (up-build-line gl-outerWallGatePoint4-x gl-outerWallGatePoint1-x c: 792)
+    (up-build-line gl-outerGatePoint4-x gl-outerGatePoint1-x c: 792)
     (chat-local-to-self "BUILDING NORTH WEST PALISADE GATES")
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
-    (up-can-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint4-x c: 792)    
+    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint4-x c: 792)    
 =>
-    (up-build-line gl-outerWallGatePoint1-x gl-outerWallGatePoint4-x c: 792)
+    (up-build-line gl-outerGatePoint1-x gl-outerGatePoint4-x c: 792)
     (chat-local-to-self "BUILDING NORTH WEST PALISADE GATES BACKWARDS")
 )
 
@@ -2025,7 +2090,7 @@
         )
     )
 =>    
-    (set-goal gl-weAlreadyGotAscendingPalisadeGates 1)
+    (set-goal gl-gotAscendingPalisadeGates 1)
     ;(chat-local-to-self "PALISADE G. ASCENDING (X AXIS) PARTS DETECTED!")    
 )
 
@@ -2041,7 +2106,7 @@
         )
     )
 =>    
-    (set-goal gl-weAlreadyGotDescendingPalisadeGates 1)
+    (set-goal gl-gotDescendingPalisadeGates 1)
     ;(chat-local-to-self "PALISADE G. DESCENDING (Y AXIS) PARTS DETECTED!")    
 )
 
@@ -2053,7 +2118,7 @@
     (building-type-count 791 == 0)
     (building-type-count 792 == 0)
 =>    
-    (set-goal gl-weAlreadyGotAscendingPalisadeGates 0)
+    (set-goal gl-gotAscendingPalisadeGates 0)
     ;(chat-local-to-self "NO ASCENDING PALISADE GATE PARTS DETECTED!")    
 )
 
@@ -2064,46 +2129,46 @@
     (building-type-count 795 == 0)
     (building-type-count 796 == 0)
 =>    
-    (set-goal gl-weAlreadyGotDescendingPalisadeGates 0)
+    (set-goal gl-gotDescendingPalisadeGates 0)
     ;(chat-local-to-self "NO DESCENDING PALISADE GATE PARTS DETECTED!")    
 )
 
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-weAlreadyGotDescendingPalisadeGates == 1)
+    (up-compare-goal gl-gotDescendingPalisadeGates == 1)
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)     
     (wood-amount > 200)(building-type-count town-center > 0) 
 =>    
-    (up-build-line gl-wallPoint1-x gl-wallPoint2-x c: palisade-wall)
+    (up-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-weAlreadyGotAscendingPalisadeGates == 1)   
+    (up-compare-goal gl-gotAscendingPalisadeGates == 1)   
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)
     (wood-amount > 200)(building-type-count town-center > 0) 
 =>
-    (up-build-line gl-wallPoint2-x gl-wallPoint3-x c: palisade-wall)
+    (up-build-line gl-outerWallPoint2-x gl-outerWallPoint3-x c: palisade-wall)
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-weAlreadyGotDescendingPalisadeGates == 1) 
+    (up-compare-goal gl-gotDescendingPalisadeGates == 1) 
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)
     (wood-amount > 200)(building-type-count town-center > 0) 
 =>
-    (up-build-line gl-wallPoint3-x gl-wallPoint4-x c: palisade-wall)
+    (up-build-line gl-outerWallPoint3-x gl-outerWallPoint4-x c: palisade-wall)
 )
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-weAlreadyGotAscendingPalisadeGates == 1)    
+    (up-compare-goal gl-gotAscendingPalisadeGates == 1)    
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)      
     (wood-amount > 200)(building-type-count town-center > 0)   
 =>
-    (up-build-line gl-wallPoint4-x gl-wallPoint1-x c: palisade-wall)
+    (up-build-line gl-outerWallPoint4-x gl-outerWallPoint1-x c: palisade-wall)
 )
 
 ; INNER STONE WALL SECTION
@@ -2123,57 +2188,57 @@
 (defrule 
     (up-compare-goal gl-buildNorthEastGates == 1)
 =>    
-    (up-modify-goal gl-innerWallGatePoint1-y c:+ 6) 
-    (up-modify-goal gl-innerWallGatePoint2-y c:- 6)
+    (up-modify-goal gl-innerGatePoint1-y c:+ 6) 
+    (up-modify-goal gl-innerGatePoint2-y c:- 6)
 
     ; SECONDARY WGATES
-    (up-modify-goal gl-innerWallSecondaryGatePoint1-x c:- 8)
-    (up-modify-goal gl-innerWallSecondaryGatePoint4-x c:+ 4)
+    (up-modify-goal gl-innerSecGatePoint1-x c:- 8)
+    (up-modify-goal gl-innerSecGatePoint4-x c:+ 4)
 
-    (up-modify-goal gl-innerWallSecondaryGatePoint2-x c:- 8)
-    (up-modify-goal gl-innerWallSecondaryGatePoint3-x c:+ 4)    
+    (up-modify-goal gl-innerSecGatePoint2-x c:- 8)
+    (up-modify-goal gl-innerSecGatePoint3-x c:+ 4)    
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthWestGates == 1)
 =>
-    (up-modify-goal gl-innerWallGatePoint3-y c:- 6)
-    (up-modify-goal gl-innerWallGatePoint4-y c:+ 6)  
+    (up-modify-goal gl-innerGatePoint3-y c:- 6)
+    (up-modify-goal gl-innerGatePoint4-y c:+ 6)  
 
-    (up-modify-goal gl-innerWallSecondaryGatePoint1-x c:- 4)
-    (up-modify-goal gl-innerWallSecondaryGatePoint4-x c:+ 8)
+    (up-modify-goal gl-innerSecGatePoint1-x c:- 4)
+    (up-modify-goal gl-innerSecGatePoint4-x c:+ 8)
 
-    (up-modify-goal gl-innerWallSecondaryGatePoint2-x c:- 4)
-    (up-modify-goal gl-innerWallSecondaryGatePoint3-x c:+ 8)      
+    (up-modify-goal gl-innerSecGatePoint2-x c:- 4)
+    (up-modify-goal gl-innerSecGatePoint3-x c:+ 8)      
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
 =>
-    (up-modify-goal gl-innerWallGatePoint2-x c:- 6)
-    (up-modify-goal gl-innerWallGatePoint3-x c:+ 6) 
+    (up-modify-goal gl-innerGatePoint2-x c:- 6)
+    (up-modify-goal gl-innerGatePoint3-x c:+ 6) 
 
     ; SECONDARY WGATES
-    (up-modify-goal gl-innerWallSecondaryGatePoint1-y c:+ 4)
-    (up-modify-goal gl-innerWallSecondaryGatePoint2-y c:- 8)
+    (up-modify-goal gl-innerSecGatePoint1-y c:+ 4)
+    (up-modify-goal gl-innerSecGatePoint2-y c:- 8)
 
-    (up-modify-goal gl-innerWallSecondaryGatePoint4-y c:+ 4)  
-    (up-modify-goal gl-innerWallSecondaryGatePoint3-y c:- 8)
+    (up-modify-goal gl-innerSecGatePoint4-y c:+ 4)  
+    (up-modify-goal gl-innerSecGatePoint3-y c:- 8)
   
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildNorthWestGates == 1)
 =>
-    (up-modify-goal gl-innerWallGatePoint4-x c:+ 6)
-    (up-modify-goal gl-innerWallGatePoint1-x c:- 6)
+    (up-modify-goal gl-innerGatePoint4-x c:+ 6)
+    (up-modify-goal gl-innerGatePoint1-x c:- 6)
 
     ; SECONDARY WGATES
-    (up-modify-goal gl-innerWallSecondaryGatePoint1-y c:+ 8)
-    (up-modify-goal gl-innerWallSecondaryGatePoint2-y c:- 4)
+    (up-modify-goal gl-innerSecGatePoint1-y c:+ 8)
+    (up-modify-goal gl-innerSecGatePoint2-y c:- 4)
 
-    (up-modify-goal gl-innerWallSecondaryGatePoint4-y c:+ 8)  
-    (up-modify-goal gl-innerWallSecondaryGatePoint3-y c:- 4)   
+    (up-modify-goal gl-innerSecGatePoint4-y c:+ 8)  
+    (up-modify-goal gl-innerSecGatePoint3-y c:- 4)   
     (disable-self)
 )
 
@@ -2190,7 +2255,7 @@
     )
 )    
 =>    
-    (set-goal gl-weAlreadyGotAscendingStoneGates 1)
+    (set-goal gl-gotAscendingStoneGates 1)
     ;(chat-local-to-self "STONE GATE ASCENDING (X AXIS) PARTS DETECTED!")
 )
 
@@ -2205,7 +2270,7 @@
         )
     )
 =>    
-    (set-goal gl-weAlreadyGotAscendingStoneGates 1)
+    (set-goal gl-gotAscendingStoneGates 1)
     ;(chat-local-to-self "FORTIFIED GATE ASCENDING (X AXIS) PARTS DETECTED!")
 )
 
@@ -2221,7 +2286,7 @@
     )
 )    
 =>    
-    (set-goal gl-weAlreadyGotDescendingStoneGates 1)
+    (set-goal gl-gotDescendingStoneGates 1)
     ;(chat-local-to-self "STONE GATE DESCENDING (Y AXIS) PARTS DETECTED!")
 )
 
@@ -2236,7 +2301,7 @@
         )
     )
 =>    
-    (set-goal gl-weAlreadyGotDescendingStoneGates 1)
+    (set-goal gl-gotDescendingStoneGates 1)
     ;(chat-local-to-self "FORTIFIED GATE DESCENDING (Y AXIS) PARTS DETECTED!")
 )
 
@@ -2253,7 +2318,7 @@
         (building-type-count 80 == 0)
         (building-type-count 490 == 0)
 =>    
-    (set-goal gl-weAlreadyGotAscendingStoneGates 0)
+    (set-goal gl-gotAscendingStoneGates 0)
     ;(chat-local-to-self "NO ASCENDING STONE GATE PARTS DETECTED!")
 )
 
@@ -2269,7 +2334,7 @@
         (building-type-count 90 == 0)
         (building-type-count 92 == 0)
 =>    
-    (set-goal gl-weAlreadyGotDescendingStoneGates 0)
+    (set-goal gl-gotDescendingStoneGates 0)
     ;(chat-local-to-self "NO DESCENDING STONE GATE PARTS DETECTED!")
 )
 
@@ -2291,9 +2356,9 @@
             (up-compare-goal gl-buildSouthWestGates == 1)
         )        
     )
-    (up-can-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 487)    
+    (up-can-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint1-x c: 487)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint1-x c: 487)
+    (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint1-x c: 487)
 
 )
 ; 1 to 4
@@ -2309,9 +2374,9 @@
             (up-compare-goal gl-buildSouthWestGates == 1)
         )        
     )
-    (up-can-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint4-x c: 487)    
+    (up-can-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint4-x c: 487)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint4-x c: 487)
+    (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint4-x c: 487)
 
 )
 ; 2 to 3
@@ -2327,9 +2392,9 @@
             (up-compare-goal gl-buildSouthWestGates == 1)
         )        
     )
-    (up-can-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint3-x c: 487)    
+    (up-can-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint3-x c: 487)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint3-x c: 487)
+    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint3-x c: 487)
 )
 ; 3 to 2
 (defrule
@@ -2344,9 +2409,9 @@
             (up-compare-goal gl-buildSouthWestGates == 1)
         )        
     )
-    (up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 487)    
+    (up-can-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint2-x c: 487)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint2-x c: 487)
+    (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint2-x c: 487)
 )
 
 ;secondary gates when principal SE or NW gates
@@ -2363,9 +2428,9 @@
             (up-compare-goal gl-buildNorthWestGates == 1)
         )        
     )
-    (up-can-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 490)    
+    (up-can-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint4-x c: 490)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint3-x gl-innerWallSecondaryGatePoint4-x c: 490)
+    (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint4-x c: 490)
 )
 ; 4 to 3
 (defrule 
@@ -2380,9 +2445,9 @@
             (up-compare-goal gl-buildNorthWestGates == 1)
         )        
     )
-    (up-can-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint3-x c: 490)    
+    (up-can-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint3-x c: 490)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint4-x gl-innerWallSecondaryGatePoint3-x c: 490)
+    (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint3-x c: 490)
 )
 ; 1 to 2
 (defrule
@@ -2397,9 +2462,9 @@
             (up-compare-goal gl-buildNorthWestGates == 1)
         )        
     )
-    (up-can-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint2-x c: 490)    
+    (up-can-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint2-x c: 490)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint1-x gl-innerWallSecondaryGatePoint2-x c: 490)
+    (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint2-x c: 490)
 )
 ; 2 to 1
 (defrule
@@ -2414,9 +2479,9 @@
             (up-compare-goal gl-buildNorthWestGates == 1)
         )        
     )
-    (up-can-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint1-x c: 490)    
+    (up-can-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint1-x c: 490)    
 =>
-    (up-build-line gl-innerWallSecondaryGatePoint2-x gl-innerWallSecondaryGatePoint1-x c: 490)
+    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint1-x c: 490)
 )
 
 ; BUILDING THE INNER WALL GATES
@@ -2425,51 +2490,51 @@
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastGates == 1)
-    (up-can-build-line gl-innerWallGatePoint1-x gl-innerWallGatePoint2-x c: 490)
+    (up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint2-x c: 490)
 =>
-    (up-build-line gl-innerWallGatePoint1-x gl-innerWallGatePoint2-x c: 490)
-    ;(up-chat-data-to-self "inner wall gate north east start y: %d" g: gl-innerWallGatePoint1-y)
-    ;(up-chat-data-to-self "inner wall gate north east end y: %d" g: gl-innerWallGatePoint2-y)
+    (up-build-line gl-innerGatePoint1-x gl-innerGatePoint2-x c: 490)
+    ;(up-chat-data-to-self "inner wall gate north east start y: %d" g: gl-innerGatePoint1-y)
+    ;(up-chat-data-to-self "inner wall gate north east end y: %d" g: gl-innerGatePoint2-y)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
-    (up-can-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 487)
+    (up-can-build-line gl-innerGatePoint2-x gl-innerGatePoint3-x c: 487)
 =>
-    (up-build-line gl-innerWallGatePoint2-x gl-innerWallGatePoint3-x c: 487)
-    ;(up-chat-data-to-self "inner wall gate south east start y: %d" g: gl-innerWallGatePoint2-y)
-    ;(up-chat-data-to-self "inner wall gate south east end y: %d" g: gl-innerWallGatePoint3-y)
+    (up-build-line gl-innerGatePoint2-x gl-innerGatePoint3-x c: 487)
+    ;(up-chat-data-to-self "inner wall gate south east start y: %d" g: gl-innerGatePoint2-y)
+    ;(up-chat-data-to-self "inner wall gate south east end y: %d" g: gl-innerGatePoint3-y)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthWestGates == 1)
-    (up-can-build-line gl-innerWallGatePoint3-x gl-innerWallGatePoint4-x c: 490)
+    (up-can-build-line gl-innerGatePoint3-x gl-innerGatePoint4-x c: 490)
 =>
-    (up-build-line gl-innerWallGatePoint3-x gl-innerWallGatePoint4-x c: 490)
-    ;(up-chat-data-to-self "inner wall gate south west start y: %d" g: gl-innerWallGatePoint3-y)
-    ;(up-chat-data-to-self "inner wall gate south west end y: %d" g: gl-innerWallGatePoint4-y)
+    (up-build-line gl-innerGatePoint3-x gl-innerGatePoint4-x c: 490)
+    ;(up-chat-data-to-self "inner wall gate south west start y: %d" g: gl-innerGatePoint3-y)
+    ;(up-chat-data-to-self "inner wall gate south west end y: %d" g: gl-innerGatePoint4-y)
 )
 
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
-    (up-can-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 487)
+    (up-can-build-line gl-innerGatePoint4-x gl-innerGatePoint1-x c: 487)
 =>
-    (up-build-line gl-innerWallGatePoint4-x gl-innerWallGatePoint1-x c: 487)
-    ;(up-chat-data-to-self "inner wall gate north west start y: %d" g: gl-innerWallGatePoint4-y)
-    ;(up-chat-data-to-self "inner wall gate north west end y: %d" g: gl-innerWallGatePoint1-y)
+    (up-build-line gl-innerGatePoint4-x gl-innerGatePoint1-x c: 487)
+    ;(up-chat-data-to-self "inner wall gate north west start y: %d" g: gl-innerGatePoint4-y)
+    ;(up-chat-data-to-self "inner wall gate north west end y: %d" g: gl-innerGatePoint1-y)
 )
 
 ; BUILDING THE INNER STONE WALL
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-weAlreadyGotDescendingStoneGates == 1)     
+    (up-compare-goal gl-gotDescendingStoneGates == 1)     
 =>
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
@@ -2479,7 +2544,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-weAlreadyGotAscendingStoneGates == 1)     
+    (up-compare-goal gl-gotAscendingStoneGates == 1)     
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
@@ -2489,7 +2554,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-weAlreadyGotDescendingStoneGates == 1)     
+    (up-compare-goal gl-gotDescendingStoneGates == 1)     
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south west start y: %d" g: gl-innerWallPoint3-y)
@@ -2499,7 +2564,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-weAlreadyGotAscendingStoneGates == 1)     
+    (up-compare-goal gl-gotAscendingStoneGates == 1)     
 =>
     (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north west start y: %d" g: gl-innerWallPoint3-y)
