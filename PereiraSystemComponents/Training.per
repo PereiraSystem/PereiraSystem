@@ -30,9 +30,9 @@
             (and
                 (food-amount g:>= gl-castleAgeFoodCost)
                 (gold-amount g:>= gl-castleAgeGoldCost)
-            )                
+            )
         )
-    )    
+    )
     (civilian-population g:< gl-maxCiviliansFeudalAge)
     (can-train villager)
 =>
@@ -48,7 +48,7 @@
                 (gold-amount g:>= gl-imperialAgeGoldCost)
             )
         )
-    )        
+    )
     (civilian-population g:< gl-maxCiviliansCastleAge)
     (can-train villager)
 =>
@@ -72,9 +72,9 @@
     (train villager)
 )
 ; TRADE CARTS
-(defrule 
+(defrule
     (players-building-type-count any-ally market > 0)
-    (unit-type-count-total trade-cart < 1)    
+    (unit-type-count-total trade-cart < 1)
     (wood-amount > 150)
     (military-population > 10)
     (can-train trade-cart)
@@ -82,87 +82,87 @@
 	(train trade-cart)
 )
 (defrule
-    (or(building-type-count siege-workshop > 0) 
+    (or(building-type-count siege-workshop > 0)
     (building-type-count monastery > 0))
-    (or(building-type-count university > 0) 
-    (building-type-count monastery > 0))   
+    (or(building-type-count university > 0)
+    (building-type-count monastery > 0))
     (players-building-type-count any-ally market > 0)
-    (unit-type-count-total trade-cart < 3)    
+    (unit-type-count-total trade-cart < 3)
     (wood-amount > 250)
     (military-population > 10)
     (can-train trade-cart)
 =>
 	(train trade-cart)
 )
-(defrule 
+(defrule
     (or(current-age == imperial-age)(up-research-status c: imperial-age == research-pending))
     (players-building-type-count any-ally market > 0)
-    (unit-type-count-total trade-cart < 3)    
+    (unit-type-count-total trade-cart < 3)
     (civilian-population < 100)
     (military-population > 4)
     (can-train trade-cart)
 =>
 	(train trade-cart)
 )
-(defrule 
+(defrule
     (or(current-age == imperial-age)(up-research-status c: imperial-age == research-pending))
     (players-building-type-count any-ally market > 0)
-    (unit-type-count-total trade-cart < 6)    
+    (unit-type-count-total trade-cart < 6)
     (civilian-population < 100)
     (military-population > 8)
     (can-train trade-cart)
 =>
 	(train trade-cart)
 )
-(defrule 
+(defrule
     (current-age == imperial-age)
     (players-building-type-count any-ally market  > 0)
-    (unit-type-count-total trade-cart g:< gl-tradeCartsQty)    
+    (unit-type-count-total trade-cart g:< gl-tradeCartsQty)
     (civilian-population < 100)(military-population > 50)
 =>
 	(train trade-cart)
 )
 ; TRADE SHIP
-(defrule 
+(defrule
     (players-building-type-count any-ally dock > 0)
-    (unit-type-count-total trade-cog == 0)    
+    (unit-type-count-total trade-cog == 0)
     (can-train trade-cog)
 =>
 	(train trade-cog)
 )
 ; FISHING SHIPS
-(defrule 
+(defrule
     (up-gaia-type-count-total c: ocean-fish-class > 0)
-    (can-train fishing-ship)    
+    (can-train fishing-ship)
 =>
 	(train fishing-ship)
     (chat-local-to-self ">>> Ocean Fish Detected")
     (disable-self)
 )
-(defrule 
+(defrule
     (up-gaia-type-count-total c: ocean-fish-class > 1)
     (unit-type-count-total fishing-ship g:< gl-fishingShipsQty)
 =>
 	(train fishing-ship)
 )
 ; FISH TRAPS
-(defrule 
+(defrule
     (can-build fish-trap)
     (building-type-count-total fish-trap < 1)
 =>
 	(build fish-trap)
 )
 ; MILITARY UNITS
-; MONASTERY  
-; CASTLE AGE MONKS 
+; MONASTERY
+; CASTLE AGE MONKS
 (defrule
     (current-age == castle-age)
     (and
-        (unit-type-count-total monk g:< gl-monkQtyLow) 
-        (unit-type-count-total 286 g:< gl-monkQtyLow) 
+        (unit-type-count-total monk g:< gl-monkQtyLow)
+        (unit-type-count-total 286 g:< gl-monkQtyLow)
     )
     (not(hold-relics))(not(enemy-buildings-in-town))
-    (can-train monk)    
+    (can-train monk)
 =>
     (train monk)
 )
@@ -172,11 +172,11 @@
         (civ-selected bohemians)(civ-selected byzantine)
     )
     (and
-    (unit-type-count-total monk g:< gl-monkQtyMedium) 
-    (unit-type-count-total 286 g:< gl-monkQtyMedium) 
+    (unit-type-count-total monk g:< gl-monkQtyMedium)
+    (unit-type-count-total 286 g:< gl-monkQtyMedium)
     )
     (not(hold-relics))(not(enemy-buildings-in-town))
-    (can-train monk)    
+    (can-train monk)
 =>
     (train monk)
 )
@@ -186,8 +186,8 @@
     (or
         (civ-selected bohemians)(civ-selected bohemians)
     )
-    (unit-type-count-total monk g:< gl-monkQtyMedium) 
-    (can-train monk)    
+    (unit-type-count-total monk g:< gl-monkQtyMedium)
+    (can-train monk)
 =>
     (train monk)
 )
@@ -201,10 +201,10 @@
         (or
             (civ-selected teutonic)
             (civ-selected saracen)
-        )     
+        )
     )
     (gold-amount > 400)
-    (unit-type-count-total monk g:< gl-monkQtyHigh) 
+    (unit-type-count-total monk g:< gl-monkQtyHigh)
     (can-train monk)
 =>
     (train monk)
@@ -219,10 +219,10 @@
         (or
             (civ-selected aztec)
             (civ-selected aztec)
-        )     
+        )
     )
     (gold-amount > 400)
-    (unit-type-count-total monk g:< gl-monkQtyHigh) 
+    (unit-type-count-total monk g:< gl-monkQtyHigh)
     (can-train monk)
 =>
     (train monk)
@@ -244,9 +244,9 @@
         (not(enemy-captured-relics))
     )
     (and
-        (unit-type-count-total monk g:< gl-monkQtyLow) 
-        (unit-type-count-total 286 g:< gl-monkQtyLow) 
-    )    
+        (unit-type-count-total monk g:< gl-monkQtyLow)
+        (unit-type-count-total 286 g:< gl-monkQtyLow)
+    )
     (can-train monk)
 =>
     (train monk)
@@ -265,9 +265,9 @@
     )
     (not
         (and(civ-selected burgundians)(can-train bombard-cannon))
-    )    
+    )
     (not(up-research-status c: 787 == research-available))
-    (can-train trebuchet)   
+    (can-train trebuchet)
 =>
     (train trebuchet)
 )
@@ -287,7 +287,7 @@
             (and(civ-selected tatars)(research-completed my-unique-research))
             (and(civ-selected japanese)(research-completed my-unique-research))
         )
-        (and(civ-selected briton)(research-completed my-unique-research))    
+        (and(civ-selected briton)(research-completed my-unique-research))
     )
     (and
         (unit-type-count-total trebuchet g:< gl-trebuchetsQtyHigh)
@@ -298,7 +298,7 @@
 =>
     (train trebuchet)
 )
-; PETARD    
+; PETARD
 (defrule
     (current-age == imperial-age)
     (civ-selected saracen)(gold-amount > 2100)
@@ -307,12 +307,12 @@
     (train petard)
 )
 ; UNIQUE UNIT
-(defrule ;flemish militia                            
+(defrule ;flemish militia
     (can-train flemish-pikeman)
 =>
     (train flemish-pikeman)
 )
-(defrule ;flemish militia                            
+(defrule ;flemish militia
     (can-train 1699)
 =>
     (train 1699)
@@ -320,14 +320,14 @@
 ; CASTLE AGE DEFENSE UU
 (defrule
     (current-age == castle-age)
-    (town-under-attack)(gold-amount > 860)  
+    (town-under-attack)(gold-amount > 860)
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
     (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
 )
-; IMPERIAL AGE PRE UPGRADE UU 
-; UNIQUE UNITS WHOSE UPGRADE COSTS SAME RESOURCE, MAKE ONLY A FEW 
+; IMPERIAL AGE PRE UPGRADE UU
+; UNIQUE UNITS WHOSE UPGRADE COSTS SAME RESOURCE, MAKE ONLY A FEW
 ; MAGYAR DONT MAKE THEM UNTIL UPGRADE
 (defrule
 	(current-age == imperial-age)(gold-amount > 500)
@@ -340,7 +340,7 @@
             (or
                 (civ-selected gothic)(civ-selected japanese)
             )
-        )    
+        )
         (or
             (or
                 (civ-selected persian)(civ-selected saracen)
@@ -348,15 +348,15 @@
             (or
                 (civ-selected teutonic)(civ-selected turkish)
             )
-        )            
+        )
     )
-    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)    
-    (can-train my-unique-unit-line)    
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)
+    (can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
-(defrule 
+(defrule
 	(current-age == imperial-age)(gold-amount > 500)
     (not(research-completed my-unique-unit-upgrade))
     (or
@@ -367,7 +367,7 @@
             (or
                 (civ-selected spanish)(civ-selected incan)
             )
-        )    
+        )
         (or
             (or
                 (civ-selected slavic)(civ-selected ethiopian)
@@ -375,15 +375,15 @@
             (or
                 (civ-selected malian)(civ-selected khmer)
             )
-        )            
+        )
     )
-    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)    
-    (can-train my-unique-unit-line)    
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)
+    (can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
-(defrule 
+(defrule
 	(current-age == imperial-age)(gold-amount > 500)
     (not(research-completed my-unique-unit-upgrade))
     (or
@@ -394,7 +394,7 @@
             (or
                 (civ-selected lithuanians)(civ-selected tatars)
             )
-        )    
+        )
         (or
             (or
                 (civ-selected burgundians)(civ-selected sicilians)
@@ -402,15 +402,15 @@
             (or
                 (civ-selected bohemians)(civ-selected poles)
             )
-        )            
+        )
     )
-    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)    
-    (can-train my-unique-unit-line)    
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)
+    (can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
     (up-modify-goal gl-nonUpgradedUniqueUnitsCreated c:+ 1)
 )
-(defrule 
+(defrule
 	(current-age == imperial-age)(gold-amount > 500)
     (not(research-completed my-unique-unit-upgrade))
     (or
@@ -423,9 +423,9 @@
             )
         )
         (civ-selected tatars); repeated
-    )           
-    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)    
-    (can-train my-unique-unit-line)    
+    )
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 6)
+    (can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
     (up-chat-data-to-self "Training Non Upgraded Unique Unit Nº %d" g: gl-nonUpgradedUniqueUnitsCreated)
@@ -444,7 +444,7 @@
             (or
                 (civ-selected mayan)(civ-selected mongol)
             )
-        )    
+        )
         (or
             (or
                 (civ-selected italian)(civ-selected portuguese)
@@ -452,11 +452,11 @@
             (or
                 (civ-selected burmese)(civ-selected vietnamese)
             )
-        )            
+        )
     )
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
-    (gold-amount > 460) ;trebuchets and mangonels have priority   
-    (can-train my-unique-unit-line)    
+    (gold-amount > 460) ;trebuchets and mangonels have priority
+    (can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
 )
@@ -466,8 +466,8 @@
         (civ-selected cumans)(civ-selected cumans)
     )
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
-    (gold-amount > 235) ;cav archers at 260    
-    (can-train my-unique-unit-line)    
+    (gold-amount > 235) ;cav archers at 260
+    (can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
 )
@@ -477,8 +477,8 @@
     (research-completed my-unique-unit-upgrade)
     (gold-amount > 350)
     (not(civ-selected ethiopian))(not(civ-selected gothic))
-    (not(civ-selected berbers)) 
-    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
+    (not(civ-selected berbers))
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
     (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
@@ -491,7 +491,7 @@
     (gold-amount > 460)
     (or(up-compare-goal gl-dudeHasCavalryArchers == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))
-    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 10)       
+    (up-compare-goal gl-nonUpgradedUniqueUnitsCreated < 10)
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
@@ -503,8 +503,8 @@
 	(current-age == imperial-age)
     (gold-amount > 360)
     (or(up-compare-goal gl-dudeHasCavalryArchers == 1)
-    (up-compare-goal gl-dudeHasMilitia == 1)) 
-    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)    
+    (up-compare-goal gl-dudeHasMilitia == 1))
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyLow)
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
@@ -516,7 +516,7 @@
     (gold-amount > 360)
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))
-    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)    
+    (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyMedium)
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
@@ -528,7 +528,7 @@
     (civ-selected briton)
     ;(research-completed my-unique-unit-upgrade)
     (wood-amount > 200)(gold-amount > 240)
-    (can-train my-unique-unit-line)    
+    (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
 )
@@ -538,7 +538,7 @@
     (not(research-completed my-unique-unit-upgrade))
     (gold-amount > 211) ;knight has 210
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
-    (can-train my-unique-unit-line)    
+    (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
 )
@@ -547,7 +547,7 @@
     (research-completed my-unique-unit-upgrade)
     (gold-amount > 209)
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
-    (can-train my-unique-unit-line)    
+    (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
 )
@@ -559,7 +559,7 @@
         (current-age == castle-age)(gold-amount > 211)
     )
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
-    (can-train my-unique-unit-line)    
+    (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
 )
@@ -568,7 +568,7 @@
     (research-completed my-unique-unit-upgrade)
     (gold-amount > 209)
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
-    (can-train my-unique-unit-line)    
+    (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
 )
@@ -577,13 +577,13 @@
     (research-completed my-unique-unit-upgrade)
     (civ-selected cumans)
     (unit-type-count-total my-unique-unit-line g:< gl-uniqueUnitQtyHigh)
-    (gold-amount > 235) ;cav archers at 260    
-    (can-train my-unique-unit-line)    
+    (gold-amount > 235) ;cav archers at 260
+    (can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
 )
 (defrule
-    (can-train mercenary-kipchak)    
+    (can-train mercenary-kipchak)
 =>
 	(train mercenary-kipchak)
 )
@@ -600,14 +600,14 @@
 	(can-train 759)
 =>
 	(train 759)
-    (chat-local-to-self "Training Barracks Huskarl")    
+    (chat-local-to-self "Training Barracks Huskarl")
 )
 (defrule
 	(civ-selected gothic)
     (not(can-train 761))(not(can-train 759))
     (can-train huskarl-line)
 =>
-    (chat-local-to-self "Training Castle Huskarl")    	
+    (chat-local-to-self "Training Castle Huskarl")
     (train huskarl-line)
 )
 ; HUN UU
@@ -620,7 +620,7 @@
 ; MALAY UU
 (defrule
     (civ-selected malay)
-    (town-under-attack)  
+    (town-under-attack)
     (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
@@ -658,7 +658,7 @@
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
-    (chat-local-to-self "uu 2")    
+    (chat-local-to-self "uu 2")
 )
 ; SIEGE WORKSHOP
 ; BOMBARD CANNON , trebuchets have better AI
@@ -678,45 +678,45 @@
 ; MANGONEL
 (defrule
     (current-age == castle-age)
-    (building-type-count town-center > 0)    
+    (building-type-count town-center > 0)
     (unit-type-count-total monk > 2)
-    (unit-type-count-total mangonel-line < 2)    
+    (unit-type-count-total mangonel-line < 2)
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
 )
 (defrule
     (current-age == castle-age)
-    (building-type-count town-center > 0)    
+    (building-type-count town-center > 0)
     (unit-type-count-total monk > 3)
-    (unit-type-count-total mangonel-line < 3)    
+    (unit-type-count-total mangonel-line < 3)
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
 )
 (defrule
     (current-age == castle-age)
-    (building-type-count town-center > 0)    
+    (building-type-count town-center > 0)
     (unit-type-count-total monk > 4)
-    (unit-type-count-total mangonel-line < 4)    
+    (unit-type-count-total mangonel-line < 4)
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
 )
 (defrule
     (current-age == castle-age) ;rest of mangonels when producing 5th monk, against arch
-    (building-type-count town-center > 0)     
+    (building-type-count town-center > 0)
     (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
     (or ;maybe dont check this
         (up-compare-goal gl-dudeHasArchers == 0)
         (up-compare-goal gl-dudeHasCavalryArchers == 0)
     )
-    (or    
+    (or
         (unit-type-count-total monk > 4)
         (or
             (hold-relics)(town-under-attack)
         )
-    )       
+    )
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
@@ -724,13 +724,13 @@
 (defrule
     (current-age == imperial-age)
     (gold-amount > 251)
-    ;(not(and(civ-selected bohemians)(can-train bombard-cannon)))    
+    ;(not(and(civ-selected bohemians)(can-train bombard-cannon)))
     (not
         (and(civ-selected burgundians)(can-train bombard-cannon))
     )
     (not(unit-type-count-total karambit-warrior-line > 9))
     (unit-type-count-total mangonel-line g:< gl-mangonelQtyLow)
-    (can-train mangonel-line)    
+    (can-train mangonel-line)
 =>
     (train mangonel-line)
 )
@@ -749,7 +749,7 @@
     (current-age == feudal-age)
     (civ-selected cumans)
     (unit-type-count-total battering-ram-line < 2)
-    (can-train battering-ram-line)    
+    (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
 )
@@ -768,7 +768,7 @@
 	(unit-type-count-total battering-ram-line g:< gl-ramQtyLow)
     (not(civ-selected gothic))
     (not(civ-selected vietnamese)) ;they block the elephants, maybe put more ele civs here
-    (military-population > 40)  
+    (military-population > 40)
     (not
         (and
             (civ-selected bohemians)
@@ -793,13 +793,13 @@
 	(train battering-ram-line)
     (chat-to-player my-player-number "TRAINING ANOTHER RAM - HIGH QTY!")
 )
-; SCORPIONS 
+; SCORPIONS
 (defrule
     (current-age == castle-age)
     (can-train scorpion-line)
     (unit-type-count-total scorpion-line g:< gl-scorpionQty)
     (military-population > 45)
-    (civ-selected chinese)  
+    (civ-selected chinese)
 =>
     (train scorpion-line)
 )
@@ -813,41 +813,41 @@
             (or
                 (or
                     (civ-selected viking)
-                    (civ-selected celtic)  
+                    (civ-selected celtic)
                 )
                 (or
                     (civ-selected mongol)
-                    (civ-selected berbers)  
+                    (civ-selected berbers)
                 )
             )
             (or
                 (or
                     (civ-selected teutonic)
-                    (civ-selected slavic)  
+                    (civ-selected slavic)
                 )
                 (or
                     (civ-selected burmese)
-                    (civ-selected sicilians)  
-                )      
-            )            
+                    (civ-selected sicilians)
+                )
+            )
         )
         (or
             (or
                 (or
                     (civ-selected ethiopian)
-                    (civ-selected chinese)  
+                    (civ-selected chinese)
                 )
                 (or
                     (civ-selected magyar)
-                    (civ-selected malay)  
-                )                    
-            )       
+                    (civ-selected malay)
+                )
+            )
             (or
                 (civ-selected incan)
-                (civ-selected japanese)  
-            )        
+                (civ-selected japanese)
+            )
         )
-    )	
+    )
 =>
     (train scorpion-line)
 )
@@ -862,7 +862,7 @@
     )
 =>
     (train scorpion-line)
-)    
+)
 (defrule
     (current-age == imperial-age)(research-completed my-unique-research)
     (can-train scorpion-line)
@@ -890,7 +890,7 @@
 =>
 	(train armored-elephant-line)
 )
-; DOCK MILITARY SHIPS                       
+; DOCK MILITARY SHIPS
 ; SPECIAL SHIPS
 ; KOREANS
 (defrule
@@ -900,7 +900,7 @@
 )
 (defrule
     (building-type-count-total dock > 1)
-    (unit-type-count-total turtle-ship-line < 4)  
+    (unit-type-count-total turtle-ship-line < 4)
     (can-train turtle-ship-line)
 =>
     (train turtle-ship-line)
@@ -913,12 +913,12 @@
 )
 (defrule
     (building-type-count-total dock > 1)
-    (unit-type-count-total longboat-line < 4)  
+    (unit-type-count-total longboat-line < 4)
     (can-train longboat-line)
 =>
     (train longboat-line)
 )
-; PORTUGUESE   
+; PORTUGUESE
 (defrule
     (can-train caravel-line)
 =>
@@ -946,16 +946,16 @@
     (train galley-line)
     (disable-self)
 )(defrule
-    (can-train galley-line)     
+    (can-train galley-line)
 =>
     (train galley-line)
     (disable-self)
 )
 (defrule
     (building-type-count-total dock > 1)
-    (up-compare-goal gl-dudeHasExplosiveShips == 1)       
+    (up-compare-goal gl-dudeHasExplosiveShips == 1)
     (wood-amount > 350)
-    (unit-type-count-total galley-line < 4)    
+    (unit-type-count-total galley-line < 4)
     (can-train galley-line)
 =>
     (train galley-line)
@@ -972,7 +972,7 @@
 ; DEMO SHIP
 (defrule
     (up-compare-goal gl-dudeHasFireShips == 1)
-    (wood-amount > 350)   
+    (wood-amount > 350)
     (unit-type-count-total demolition-ship-line < 1)
     (can-train demolition-ship-line)
 =>
@@ -983,7 +983,7 @@
 (defrule
     (current-age == castle-age)
     (or(unit-type-count-total monk > 4)(hold-relics))
-    (unit-type-count-total steppe-lancer-line g:< gl-knightsQtyLow)   
+    (unit-type-count-total steppe-lancer-line g:< gl-knightsQtyLow)
     (can-train steppe-lancer-line)
 =>
     (train steppe-lancer-line)
@@ -995,7 +995,7 @@
         (and(up-compare-goal gl-dudeHasCavalry == 1)
             (can-train camel-line))
     )
-    (not(can-train steppe-lancer-line))    
+    (not(can-train steppe-lancer-line))
     (can-train steppe-lancer-line)
 =>
     (train steppe-lancer-line)
@@ -1008,7 +1008,7 @@
     (not
         (and(up-compare-goal gl-dudeHasCavalry == 1)
             (can-train camel-line))
-    ) 
+    )
     (can-train battle-elephant-line)
 =>
     (train battle-elephant-line)
@@ -1016,20 +1016,20 @@
 (defrule
     (current-age == imperial-age)(gold-amount > 270)
 	(not(civ-selected khmer))
-    (can-train battle-elephant-line)        
+    (can-train battle-elephant-line)
 =>
     (train battle-elephant-line)
 )
 ; SCOUTS
 ; DISABLE SELF SCOUTS
 (defrule
-	(can-train scout-cavalry-line)    
+	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)(disable-self)
 )
 (defrule
-	(can-train scout-cavalry-line)    
+	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)(disable-self)
@@ -1041,10 +1041,10 @@
     (or
         (or(civ-selected mongol)(civ-selected turkish))
         (or(civ-selected sicilians)(civ-selected burgundians))
-    ) 
-    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)    
+    )
+    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)
 	(unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)
-	(can-train scout-cavalry-line)    
+	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
@@ -1056,9 +1056,9 @@
     (up-compare-goal gl-dudeHasSkirmishers == 1))
     (not(civ-selected celtic))
     (not(civ-selected japanese))
-    (not(civ-selected portuguese))    
+    (not(civ-selected portuguese))
 	(unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
-	(can-train scout-cavalry-line)    
+	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
     (up-modify-goal gl-totalSoldiersCreatedThisAge c:+ 1)
@@ -1068,8 +1068,8 @@
 	(current-age == castle-age)
     (or(research-completed ri-hand-cart)(town-under-attack))
     (or(up-compare-goal gl-dudeHasArchers == 1)
-    (up-compare-goal gl-dudeHasSkirmishers == 1))    
-    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)    
+    (up-compare-goal gl-dudeHasSkirmishers == 1))
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyLow)
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
@@ -1078,10 +1078,10 @@
 	(current-age == castle-age)
     (town-under-attack)(food-amount > 1300)
     (or(up-compare-goal gl-dudeHasArchers == 1)
-    (up-compare-goal gl-dudeHasSkirmishers == 1))    
+    (up-compare-goal gl-dudeHasSkirmishers == 1))
     ;(up-compare-goal gl-dudeHasSpearmen == 0)
     (not(civ-selected japanese))
-    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)    
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
@@ -1090,11 +1090,11 @@
 (defrule
 	(current-age == imperial-age)(food-amount > 1500)(gold-amount < 1300)
     (research-completed ri-hand-cart)(research-completed ri-bow-saw)
-    (research-completed ri-heavy-plow)          
+    (research-completed ri-heavy-plow)
     (not(civ-selected japanese))(not(civ-selected viking))(not(civ-selected gothic))
     (or(not(civ-selected burmese))(research-completed my-unique-research))
-    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)     
-	(can-train scout-cavalry-line)    
+    (unit-type-count-total scout-cavalry-line g:< gl-scoutsQtyMedium)
+	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
 )
@@ -1105,22 +1105,22 @@
 =>
     (train scout-cavalry-line)
 )
-; CAMEL 
+; CAMEL
 (defrule
     (current-age == castle-age)
     ;(up-compare-goal gl-dudeHasCavalry == 1)
-	(unit-type-count-total monk > 4)    
+	(unit-type-count-total monk > 4)
 	(unit-type-count-total camel-line g:< gl-camelQtyMedium)
-	(can-train camel-line)    
+	(can-train camel-line)
 =>
     (train camel-line)
 )
 (defrule
     (current-age == castle-age)
     (up-compare-goal gl-dudeHasCavalry == 1)
-    (up-compare-goal gl-dudeHasSpearmen == 0)       
+    (up-compare-goal gl-dudeHasSpearmen == 0)
 	(unit-type-count-total camel-line g:< gl-camelQtyMedium)
-	(can-train camel-line)    
+	(can-train camel-line)
 =>
     (train camel-line)
 )
@@ -1128,14 +1128,14 @@
 	(current-age == imperial-age)
     (gold-amount > 260)
 	(unit-type-count-total camel-line g:< gl-camelQtyMedium)
-	(can-train camel-line)    
+	(can-train camel-line)
 =>
     (train camel-line)
 )
 ; GURJARAS CAVALRY
 (defrule
 	(unit-type-count-total shrivamsha-rider-line g:< gl-camelQtyMedium)
-	(can-train shrivamsha-rider-line)    
+	(can-train shrivamsha-rider-line)
 =>
     (train shrivamsha-rider-line)
 )
@@ -1153,7 +1153,7 @@
     (not(civ-selected turkish)) ;use light cav
     (not(civ-selected vietnamese))    ;elephants will improve later
     (not(civ-selected malay)) ;ele are cheaper
-    (not(can-train steppe-lancer-line))    
+    (not(can-train steppe-lancer-line))
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1168,25 +1168,25 @@
             (up-compare-goal gl-dudeHasSkirmishers == 1)
             (up-compare-goal gl-dudeHasCavalryArchers == 1)
         )
-    )        
+    )
     (or
         (or
             (or
-                (civ-selected bulgarians) 
+                (civ-selected bulgarians)
                 (civ-selected burgundians)
             )
-            (or 
-                (civ-selected frankish)        
+            (or
+                (civ-selected frankish)
                 (civ-selected malian)
             )
         )
         (or
-            (or 
+            (or
                 (civ-selected poles)
                 (civ-selected sicilians)
             )
-            (civ-selected teutonic)            
-        )   
+            (civ-selected teutonic)
+        )
     )
     (can-train knight-line)
 =>
@@ -1197,7 +1197,7 @@
     (current-age == imperial-age) ;saracen dont even have cavalier
     (gold-amount > 675)
     (civ-selected saracen)
-	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)  
+	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1211,7 +1211,7 @@
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (not(can-train steppe-lancer-line))
     (not(can-train battle-elephant-line))
-    (or(not(civ-selected burmese))(research-completed my-unique-research))       
+    (or(not(civ-selected burmese))(research-completed my-unique-research))
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1224,29 +1224,29 @@
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (or
         (or
-            (or 
-                (civ-selected burgundians)        
+            (or
+                (civ-selected burgundians)
                 (civ-selected byzantine)
-            )           
-            (or 
+            )
+            (or
                 (civ-selected celtic)
                 (civ-selected cumans); again in good upgrades, maybe not check for steppe lancer here
             )
         )
         (or
-            (or 
-                (civ-selected frankish)        
+            (or
+                (civ-selected frankish)
                 (civ-selected lithuanians)
-            )           
-            (or 
+            )
+            (or
                 (civ-selected teutonic)
                 (civ-selected teutonic)
             )
-        )             
+        )
     )
     (not(can-train steppe-lancer-line))
     (not(can-train cataphract-line))
-    ;(not(can-train coustillier-line))     
+    ;(not(can-train coustillier-line))
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1258,15 +1258,15 @@
     (gold-amount > 375)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (or
-        (or 
-            (civ-selected hun)        
+        (or
+            (civ-selected hun)
             (civ-selected magyar)
-        )           
-        (or 
+        )
+        (or
             (civ-selected persian)
             (civ-selected spanish)
         )
-    )  
+    )
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1277,16 +1277,16 @@
     (gold-amount > 375)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
     (or
-        (or 
-            (civ-selected cumans); maybe steppe lancer only        
+        (or
+            (civ-selected cumans); maybe steppe lancer only
             (civ-selected frankish) ;more hp
-        )           
-        (or 
+        )
+        (or
             (civ-selected lithuanians) ;attack per relic
             (civ-selected sicilians) ; defense
         )
-    )    
-    (not(can-train steppe-lancer-line))    
+    )
+    (not(can-train steppe-lancer-line))
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1295,10 +1295,10 @@
     (current-age == imperial-age)
     (gold-amount > 375)
 	(unit-type-count-total knight-line g:< gl-knightsQtyMedium)
-    (or 
-        (civ-selected portuguese)   
+    (or
+        (civ-selected portuguese)
         (civ-selected berbers)
-    )           
+    )
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1338,7 +1338,7 @@
 (defrule
     (current-age == feudal-age) ;Cav archer not available
     (gold-amount > 245)
-    (research-completed ri-wheel-barrow)              
+    (research-completed ri-wheel-barrow)
     (can-train archer-line)
 =>
     (train archer-line)(disable-self)
@@ -1347,8 +1347,8 @@
     (current-age == feudal-age) ;Cav archer not available
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
     (up-compare-goal gl-dudeHasMilitia == 1))
-    (or(gold-amount > 245)(food-amount < 100))         
-    (unit-type-count-total archer-line g:< gl-archerQtyLow)    
+    (or(gold-amount > 245)(food-amount < 100))
+    (unit-type-count-total archer-line g:< gl-archerQtyLow)
     (can-train archer-line)
 =>
     (train archer-line)
@@ -1357,33 +1357,33 @@
 (defrule
     (current-age == castle-age)
     (research-completed ri-hand-cart)
-    (building-type-count town-center > 0) 
+    (building-type-count town-center > 0)
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
-    (up-compare-goal gl-dudeHasMilitia == 1))    
+    (up-compare-goal gl-dudeHasMilitia == 1))
     (wood-amount > 145)
     (or
         (and(building-type-count siege-workshop == 0)
             (building-type-count university == 0)
         )
         (wood-amount > 300)
-    )    
+    )
 	(not(civ-selected gothic))(not(civ-selected mongol))
     (not(civ-selected frankish))(not(civ-selected cumans)) ;cav arc
-    (not(civ-selected tatars))  
-    (not(civ-selected berbers))    
-	(unit-type-count-total archer-line g:< gl-archerQtyMedium)    
-    (can-train archer-line)     
+    (not(civ-selected tatars))
+    (not(civ-selected berbers))
+	(unit-type-count-total archer-line g:< gl-archerQtyMedium)
+    (can-train archer-line)
 =>
 	(train archer-line)
 )
 ; ARCHERS IMPERIAL AGE
 ; CIVS WITH NO CROSSWBOW
 (defrule
-    (current-age == imperial-age)(not(can-train hand-cannoneer))  
+    (current-age == imperial-age)(not(can-train hand-cannoneer))
     (wood-amount > 525)(gold-amount > 545)
     (or(civ-selected bulgarians)(civ-selected spanish))
     (up-compare-goal gl-dudeHasSpearmen == 1)
-    (unit-type-count-total archer-line g:< gl-archerQtyLow)    
+    (unit-type-count-total archer-line g:< gl-archerQtyLow)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1394,36 +1394,36 @@
     (wood-amount > 525)(gold-amount > 545)
     (or
         (or(civ-selected berbers)(civ-selected berbers))
-        (or(civ-selected burmese)(civ-selected gothic))    
+        (or(civ-selected burmese)(civ-selected gothic))
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)
-    (not(can-train hand-cannoneer))        
+    (not(can-train hand-cannoneer))
 	(can-train archer-line)
 =>
 	(train archer-line)
 )
 (defrule ;civs with cav archer bonus
-    (current-age == imperial-age)  
+    (current-age == imperial-age)
     (wood-amount > 525)(gold-amount > 545)
     (or
         (or(civ-selected mongol)(civ-selected mongol))
-        (or(civ-selected frankish)(civ-selected cumans))    
+        (or(civ-selected frankish)(civ-selected cumans))
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)
-    (not(can-train cavalry-archer))(not(can-train hand-cannoneer))        
+    (not(can-train cavalry-archer))(not(can-train hand-cannoneer))
 	(can-train archer-line)
 =>
 	(train archer-line)
 )
 (defrule
-    (current-age == imperial-age)(not(can-train hand-cannoneer))  
+    (current-age == imperial-age)(not(can-train hand-cannoneer))
     (wood-amount > 525)(gold-amount > 545)
     (or(civ-selected celtic)
     (civ-selected burgundians)) ;hc bonus
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1431,40 +1431,40 @@
 ; huns, franks, vietnamese, mongols, cumans
 ; maybe use only if theres spearmen in front
 (defrule ;gurjaras e-a, huns use c-a
-    (current-age == imperial-age)(not(can-train hand-cannoneer))  
+    (current-age == imperial-age)(not(can-train hand-cannoneer))
     (wood-amount > 525)(gold-amount > 545)
     (or
         (or(civ-selected gurjaras)(civ-selected hun))
-        (or(civ-selected indian)(civ-selected lithuanians))    
+        (or(civ-selected indian)(civ-selected lithuanians))
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)   
-    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)
 	(can-train archer-line)
 =>
 	(train archer-line)
 )
 (defrule
-    (current-age == imperial-age) ;they have better cav archers after ca upg 
+    (current-age == imperial-age) ;they have better cav archers after ca upg
     (wood-amount > 525)(gold-amount > 545)
-    (or(civ-selected tatars)(civ-selected turkish))    
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (or(civ-selected tatars)(civ-selected turkish))
+    (up-compare-goal gl-dudeHasSpearmen == 1)
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)
     (or
         (not(can-train cavalry-archer))
         (not(research-completed my-second-unique-research))
     )
-    (not(can-train hand-cannoneer))    
+    (not(can-train hand-cannoneer))
 	(can-train archer-line)
 =>
 	(train archer-line)
 )
 (defrule
-    (current-age == imperial-age)  
+    (current-age == imperial-age)
     (wood-amount > 525)(gold-amount > 545)
-    (or(civ-selected slavic)(civ-selected teutonic))    
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (or(civ-selected slavic)(civ-selected teutonic))
+    (up-compare-goal gl-dudeHasSpearmen == 1)
     (unit-type-count-total archer-line g:< gl-archerQtyMedium)
-    (not(can-train hand-cannoneer))    
+    (not(can-train hand-cannoneer))
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1475,14 +1475,14 @@
     (wood-amount > 425)(gold-amount > 445)
     (or
         (or(civ-selected aztec)(civ-selected bengalis))
-        (or(civ-selected bohemians)(civ-selected khmer))    
+        (or(civ-selected bohemians)(civ-selected khmer))
     )
-    (or ; maybe better check if it has anti gunpowder like winged hussar  
+    (or ; maybe better check if it has anti gunpowder like winged hussar
         (not(civ-selected bohemians))
-        (not(research-completed ri-chemistry)) 
+        (not(research-completed ri-chemistry))
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1492,10 +1492,10 @@
     (wood-amount > 425)(gold-amount > 445)
     (or
         (or(civ-selected malian)(civ-selected mongol))
-        (or(civ-selected poles)(civ-selected khmer))    
+        (or(civ-selected poles)(civ-selected khmer))
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1505,10 +1505,10 @@
     (wood-amount > 425)(gold-amount > 445)
     (or
         (or(civ-selected viking)(civ-selected viking))
-        (or(civ-selected viking)(civ-selected viking))    
+        (or(civ-selected viking)(civ-selected viking))
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyMedium)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyMedium)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1519,10 +1519,10 @@
     (wood-amount > 325)(gold-amount > 445)
     (or
         (or(civ-selected briton)(civ-selected byzantine))
-        (or(civ-selected chinese)(civ-selected dravidians))    
+        (or(civ-selected chinese)(civ-selected dravidians))
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1532,10 +1532,10 @@
     (wood-amount > 325)(gold-amount > 445)
     (or
         (or(civ-selected ethiopian)(civ-selected incan))
-        (or(civ-selected japanese)(civ-selected japanese))    
+        (or(civ-selected japanese)(civ-selected japanese))
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1544,8 +1544,8 @@
     (current-age == imperial-age)
     (wood-amount > 325)(gold-amount > 445)
     (civ-selected italian)(not(can-train hand-cannoneer))
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1555,10 +1555,10 @@
     (wood-amount > 325)(gold-amount > 445)
     (or
         (or(civ-selected korean)(civ-selected magyar))
-        (or(civ-selected malay)(civ-selected mayan))    
+        (or(civ-selected malay)(civ-selected mayan))
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1568,10 +1568,10 @@
     (wood-amount > 325)(gold-amount > 445)
     (or
         (or(civ-selected saracen)(civ-selected saracen))
-        (or(civ-selected vietnamese)(civ-selected vietnamese))    
+        (or(civ-selected vietnamese)(civ-selected vietnamese))
     )
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1579,10 +1579,10 @@
 (defrule
     (current-age == imperial-age)
     (wood-amount > 325)(gold-amount > 445)
-    (civ-selected portuguese)   
+    (civ-selected portuguese)
     (not(can-train hand-cannoneer))
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1592,8 +1592,8 @@
     (current-age == imperial-age)
     (wood-amount > 225)(gold-amount > 245)
     (or(civ-selected ethiopian)(civ-selected ethiopian))
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total archer-line g:< gl-archerQtyHigh)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total archer-line g:< gl-archerQtyHigh)
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1602,7 +1602,7 @@
     (civ-selected persian)
     (research-completed my-second-unique-research)
     (wood-amount > 270)
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
 	(unit-type-count-total archer-line g:< gl-archerQtyHigh)
 	(can-train archer-line)
 =>
@@ -1620,16 +1620,16 @@
             (or(civ-selected frankish)(civ-selected vietnamese))
             (and(civ-selected turkish)(research-completed my-second-unique-research))
         )
-    )     
+    )
     (gold-amount > 845)(wood-amount > 400)
-	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQtyLow)    
-    (can-train cavalry-archer-line)     
+	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQtyLow)
+    (can-train cavalry-archer-line)
 =>
 	(train cavalry-archer-line)
 )
 (defrule
     (current-age == imperial-age)
-    (or(civ-selected frankish)(civ-selected vietnamese)) 
+    (or(civ-selected frankish)(civ-selected vietnamese))
     (wood-amount > 200)(gold-amount > 300)
 	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQtyMedium)
 	(can-train cavalry-archer-line)
@@ -1649,9 +1649,9 @@
         )
         (or
             (and(civ-selected magyar)(research-completed my-unique-research))
-            (and(civ-selected turkish)(research-completed my-second-unique-research))                        
+            (and(civ-selected turkish)(research-completed my-second-unique-research))
         )
-    )     
+    )
     (wood-amount > 200)(gold-amount > 260)
 	(unit-type-count-total cavalry-archer-line g:< gl-cavalryArcherQtyHigh)
 	(can-train cavalry-archer-line)
@@ -1660,18 +1660,18 @@
 )
 ; ELEPHANT ARCHER
 (defrule
-    (current-age == castle-age)   
+    (current-age == castle-age)
     (gold-amount > 1000)(food-amount > 1000)
-	(unit-type-count-total elephant-archer-line g:< gl-archerQtyLow)    
-    (can-train elephant-archer-line)     
+	(unit-type-count-total elephant-archer-line g:< gl-archerQtyLow)
+    (can-train elephant-archer-line)
 =>
 	(train elephant-archer-line)
 )
 (defrule
-    (current-age == imperial-age)   
+    (current-age == imperial-age)
     (gold-amount > 260)(food-amount > 400) ;leave food for melee units
-	(unit-type-count-total elephant-archer-line g:< gl-archerQtyMedium)    
-    (can-train elephant-archer-line)     
+	(unit-type-count-total elephant-archer-line g:< gl-archerQtyMedium)
+    (can-train elephant-archer-line)
 =>
 	(train elephant-archer-line)
 )
@@ -1679,62 +1679,62 @@
 ; GENITOUR
 (defrule
     (current-age == castle-age)
-    (up-compare-goal gl-dudeHasArchers == 1)    
+    (up-compare-goal gl-dudeHasArchers == 1)
     (or(wood-amount > 275)(building-type-count town-center > 0))
-    (building-type-count-total monastery > 0)      
-    (unit-type-count-total genitour-line g:< gl-skirmisherQtyLow) 
-    (can-train genitour-line) 
+    (building-type-count-total monastery > 0)
+    (unit-type-count-total genitour-line g:< gl-skirmisherQtyLow)
+    (can-train genitour-line)
 =>
     (train genitour-line)
 )
 (defrule
-    (current-age == imperial-age)      
+    (current-age == imperial-age)
     (up-compare-goal gl-dudeHasArchers == 1)
     (not(civ-selected khmer))(not(civ-selected spanish))
     (not(civ-selected sicilians))(not(civ-selected portuguese))
     (not(civ-selected gothic))
     (unit-type-count-total genitour-line g:< gl-skirmisherQtyMedium)
-    (can-train genitour-line)    
+    (can-train genitour-line)
 =>
     (train genitour-line)
 )
 ; SKIRMISHER
 (defrule
-    (current-age == feudal-age) 
+    (current-age == feudal-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (or(wood-amount > 135)(building-type-count lumber-camp > 0))
     (not(can-train genitour))
-    (can-train skirmisher-line)       
+    (can-train skirmisher-line)
 =>
     (train skirmisher-line)(disable-self)
 )
 (defrule
-    (current-age == feudal-age) 
+    (current-age == feudal-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (or(wood-amount > 135)(building-type-count lumber-camp > 0))
     (not(can-train genitour))
-    (can-train skirmisher-line)       
+    (can-train skirmisher-line)
 =>
     (train skirmisher-line)(disable-self)
 )
 (defrule
     (current-age == feudal-age)
     (or(up-compare-goal gl-dudeHasArchers == 1)
-    (up-compare-goal gl-dudeHasCavalryArchers == 1))    
+    (up-compare-goal gl-dudeHasCavalryArchers == 1))
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (or(wood-amount > 135)(building-type-count lumber-camp > 0))
     (not(can-train genitour))
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyLow)
     (not(civ-selected portuguese))
-    (can-train skirmisher-line)       
+    (can-train skirmisher-line)
 =>
     (train skirmisher-line)
 )
 (defrule
-    (current-age == castle-age)    
-    (up-compare-goal gl-dudeHasArchers == 1)    
+    (current-age == castle-age)
+    (up-compare-goal gl-dudeHasArchers == 1)
     (or(wood-amount > 275)(building-type-count town-center > 0))
-    (wood-amount > 135)   ; <--------------------- 
+    (wood-amount > 135)   ; <---------------------
     (or (wood-amount > 235) (building-type-count siege-workshop == 0))
     (building-type-count-total monastery > 0)
     (or ;make sure they dont interfer with mangonel creation
@@ -1745,11 +1745,11 @@
     (not(civ-selected sicilians))
     (or
         (not(civ-selected bohemians))
-        (building-type-count siege-workshop < 0)  
-    )    
+        (building-type-count siege-workshop < 0)
+    )
     (not(can-train mangonel-line))
-    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium) 
-    (can-train skirmisher-line) 
+    (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium)
+    (can-train skirmisher-line)
 =>
     (train skirmisher-line)
 )
@@ -1770,7 +1770,7 @@
     (not(civ-selected gothic))(not(civ-selected burgundians))
     (not(can-train genitour))(not(can-train conquistador-line))
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium)
-    (can-train skirmisher-line)    
+    (can-train skirmisher-line)
 =>
     (train skirmisher-line)
 )
@@ -1784,7 +1784,7 @@
     (not(civ-selected gothic))(not(civ-selected burgundians))
     (not(can-train genitour))(not(can-train conquistador-line))
     (unit-type-count-total skirmisher-line g:< gl-skirmisherQtyMedium)
-    (can-train skirmisher-line)    
+    (can-train skirmisher-line)
 =>
     (train skirmisher-line)
 )
@@ -1793,10 +1793,10 @@
 (defrule
     (gold-amount > 250)
     (or(up-compare-goal gl-dudeHasSpearmen == 1)
-    (up-compare-goal gl-dudeHasMilitia == 1))    
+    (up-compare-goal gl-dudeHasMilitia == 1))
     (unit-type-count-total hand-cannoneer g:< gl-handCannoneerQty)
-    (not(can-train conquistador))    
-    (can-train hand-cannoneer)    
+    (not(can-train conquistador))
+    (can-train hand-cannoneer)
 =>
     (train hand-cannoneer)
 )
@@ -1808,7 +1808,7 @@
 =>
     (train slinger)
 )
-; BARRACKS                                        
+; BARRACKS
 ; MILITIA
 (defrule
     (can-train militiaman-line)(or(civ-selected incan)(civ-selected aztec))
@@ -1826,8 +1826,8 @@
     (or
         (not(research-available ri-supplies))
         (research-completed ri-supplies)
-    )        
-    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)    
+    )
+    (up-compare-goal gl-totalSoldiersCreatedThisAge g:< gl-maximumSoldiersFeudal)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyLow)
     (can-train militiaman-line)
 =>
@@ -1840,11 +1840,11 @@
     (not(civ-selected sicilians))
     (research-completed ri-hand-cart)
     (game-time < 900)
-    (gold-amount > 200)        
+    (gold-amount > 200)
     (up-compare-goal gl-totalSoldiersCreatedThisAge < 15)
     (not(can-train steppe-lancer-line))
     (not(can-train battle-elephant-line))
-    (not(can-train mangonel-line))     
+    (not(can-train mangonel-line))
     (can-train militiaman-line)
 =>
     (train militiaman-line)
@@ -1858,28 +1858,28 @@
     (up-compare-goal gl-dudeHasSpearmen == 1)
     (or
         (or
-            (or 
+            (or
                 (civ-selected bulgarians)
                 (civ-selected ethiopian)
             )
-            (or 
-                (civ-selected gurjaras)        
+            (or
+                (civ-selected gurjaras)
                 (civ-selected hun)
             )
-        )   
+        )
         (or
-            (or 
+            (or
                 (civ-selected khmer)(civ-selected khmer)
                 ;(civ-selected malay) malay no militia until ut research
             )
-            (or 
+            (or
                 (civ-selected persian)
                 (civ-selected tatars)
             )
-        )       
+        )
     )
     (not(can-train steppe-lancer-line))
-    (can-train militiaman-line)    
+    (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
@@ -1890,28 +1890,28 @@
     (up-compare-goal gl-dudeHasSpearmen == 1)
     (or
         (or
-            (or 
+            (or
                 (civ-selected bengalis)
                 (civ-selected burgundians)
             )
-            (or 
-                (civ-selected byzantine)        
+            (or
+                (civ-selected byzantine)
                 (civ-selected chinese)
             )
-        )   
+        )
         (or
-            (or 
+            (or
                 (civ-selected cumans)
                 (civ-selected indian)
             )
-            (or 
+            (or
                 (civ-selected korean)
                 (civ-selected lithuanians)
             )
-        )       
+        )
     )
     (not(can-train steppe-lancer-line))
-    (can-train militiaman-line)    
+    (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
@@ -1921,36 +1921,36 @@
     (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
     (up-compare-goal gl-dudeHasSpearmen == 1)
     (or
-        (or 
-            (civ-selected magyar)        
+        (or
+            (civ-selected magyar)
             (civ-selected mongol)
         )
-        (or 
+        (or
             (civ-selected portuguese)
             (civ-selected vietnamese)
         )
     )
-    (not(can-train steppe-lancer-line))    
-    (can-train militiaman-line)    
+    (not(can-train steppe-lancer-line))
+    (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
-; CIVS WITH NOT FU CHAMPION BUT HAVE SOME BONUS 
+; CIVS WITH NOT FU CHAMPION BUT HAVE SOME BONUS
 (defrule
     (current-age == imperial-age)(gold-amount > 400)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
     (up-compare-goal gl-dudeHasSpearmen == 1)
     (or
-        (or 
+        (or
             (civ-selected celtic) ;speed
             (civ-selected gothic) ;building attack
         )
-        (or 
-            (civ-selected malian)        
+        (or
+            (civ-selected malian)
             (civ-selected malian) ;piercer armor
         )
-    )   
-    (can-train militiaman-line)    
+    )
+    (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
@@ -1959,11 +1959,11 @@
     (current-age == imperial-age)(gold-amount > 500)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
     (up-compare-goal gl-dudeHasSpearmen == 1)
-    (or 
+    (or
         (civ-selected berbers)
         (civ-selected saracen)
     )
-    (can-train militiaman-line)    
+    (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
@@ -1974,27 +1974,27 @@
     (up-compare-goal gl-dudeHasSpearmen == 1)
     (or
         (or
-            (or 
+            (or
                 (civ-selected bohemians)
                 (civ-selected briton)
             )
-            (or 
-                (civ-selected dravidians)        
+            (or
+                (civ-selected dravidians)
                 (civ-selected frankish)
             )
-        )   
+        )
         (or
-            (or 
+            (or
                 (civ-selected italian)
                 (civ-selected italian)
             )
-            (or 
+            (or
                 (civ-selected poles)
                 (civ-selected sicilians)
             )
-        )       
+        )
     )
-    (can-train militiaman-line)    
+    (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
@@ -2003,16 +2003,16 @@
     (unit-type-count-total militiaman-line g:< gl-militiaQtyMedium)
     (up-compare-goal gl-dudeHasSpearmen == 1)
         (or
-            (or 
+            (or
                 (civ-selected spanish)
                 (civ-selected spanish)
             )
-            (or 
-                (civ-selected spanish)        
+            (or
+                (civ-selected spanish)
                 (civ-selected spanish)
             )
-        )         
-    (can-train militiaman-line)    
+        )
+    (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
@@ -2022,16 +2022,16 @@
     (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
     (up-compare-goal gl-dudeHasSpearmen == 1)
         (or
-            (or 
+            (or
                 (civ-selected slavic)
                 (civ-selected japanese)
             )
-            (or 
-                (civ-selected teutonic)        
+            (or
+                (civ-selected teutonic)
                 (civ-selected viking)
             )
-        )     
-    (can-train militiaman-line)    
+        )
+    (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
@@ -2040,16 +2040,16 @@
     (current-age == imperial-age)(gold-amount > 400)
     (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
         (or
-            (or 
+            (or
                 (civ-selected aztec)
                 (civ-selected mayan)
             )
-            (or 
-                (civ-selected incan)        
+            (or
+                (civ-selected incan)
                 (civ-selected incan)
             )
-        )   
-    (can-train militiaman-line)    
+        )
+    (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
@@ -2057,8 +2057,8 @@
 (defrule
     (current-age == imperial-age)
     (civ-selected malay)(research-completed my-unique-research)
-    (up-compare-goal gl-dudeHasSpearmen == 1)    
-    (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)    
+    (up-compare-goal gl-dudeHasSpearmen == 1)
+    (unit-type-count-total militiaman-line g:< gl-militiaQtyHigh)
     (can-train militiaman-line)
 =>
     (train militiaman-line)
@@ -2070,7 +2070,7 @@
     (or
         (wood-amount >= 275)
         (building-type-count town-center > 0)
-    )    
+    )
     (wood-amount >= 125)
     (up-compare-goal gl-totalSoldiersCreatedThisAge < 4)
     (can-train spearman-line)
@@ -2083,11 +2083,11 @@
     (or
         (wood-amount >= 275)
         (building-type-count town-center > 0)
-    )    
+    )
     (or(wood-amount >= 125)
         (or
             (and(civ-selected japanese)(wood-amount >= 75))
-            (and(civ-selected malian)(wood-amount >= 110))         
+            (and(civ-selected malian)(wood-amount >= 110))
         )
     )
     (up-compare-goal gl-dudeHasCavalry == 1)
@@ -2103,15 +2103,15 @@
     (or
         (wood-amount >= 275) ;not optimized for civs with cheaper TC
         (building-type-count town-center > 0)
-    )    
+    )
     (or(wood-amount >= 125)
         (or
             (and(civ-selected japanese)(wood-amount >= 75))
-            (and(civ-selected malian)(wood-amount >= 110))         
+            (and(civ-selected malian)(wood-amount >= 110))
         )
     )
     (or(up-compare-goal gl-dudeHasCavalry == 1)(up-compare-goal gl-dudeHasCavalryArchers == 1))
-    (up-compare-goal gl-dudeHasArchers == 0)    
+    (up-compare-goal gl-dudeHasArchers == 0)
     (unit-type-count-total spearman-line < gl-spearmenQtyMedium)
     (can-train spearman-line)
 =>
@@ -2123,7 +2123,7 @@
     (or
         (wood-amount >= 275)
         (building-type-count town-center > 0)
-    )    
+    )
     (wood-amount >= 125)
     (up-compare-goal gl-totalSoldiersCreatedThisAge < 10)
     (can-train spearman-line)
@@ -2133,7 +2133,7 @@
 )
 (defrule
     (current-age == castle-age)
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
+    (or(wood-amount > 275)(building-type-count town-center > 0))
     (building-type-count-total monastery > 0)
     (wood-amount > 125)
     (or
@@ -2151,14 +2151,14 @@
 (defrule
     (current-age == imperial-age)(gold-amount < 2000)
     (or(wood-amount > 275)(building-type-count town-center > 0))
-    (wood-amount > 125)    
+    (wood-amount > 125)
     (up-compare-goal gl-dudeHasCavalry == 1)
     (not(can-train coustillier))(not(can-train flemish-pikeman))
-    (not(can-train steppe-lancer-line))    
-    (unit-type-count-total spearman-line g:< gl-spearmenQtyHigh)  
-    (can-train spearman-line)     
+    (not(can-train steppe-lancer-line))
+    (unit-type-count-total spearman-line g:< gl-spearmenQtyHigh)
+    (can-train spearman-line)
 =>
-    (train spearman-line)  
+    (train spearman-line)
 )
 (defrule ;goth
 	(current-age >= feudal-age)
@@ -2177,15 +2177,15 @@
         (not(enemy-buildings-in-town))
         (research-completed ri-supplies)
     )
-    (unit-type-count-total eagle-warrior-line g:< gl-eagleQtyLow)    
+    (unit-type-count-total eagle-warrior-line g:< gl-eagleQtyLow)
     (can-train eagle-warrior-line)
 =>
     (train eagle-warrior-line)
 )
 (defrule
-    (current-age == castle-age) 
+    (current-age == castle-age)
     (unit-type-count-total eagle-warrior-line g:< gl-eagleQtyMedium)
-    (can-train eagle-warrior-line)    
+    (can-train eagle-warrior-line)
 =>
     (train eagle-warrior-line)
 )
@@ -2199,7 +2199,7 @@
 ; CONDOTTIERO
 (defrule
     (unit-type-count-total condottiero g:< gl-militiaQtyMedium)
-    (players-unit-type-count any-enemy hand-cannoneer > 3)   
+    (players-unit-type-count any-enemy hand-cannoneer > 3)
     (can-train condottiero)
 =>
     (train condottiero)

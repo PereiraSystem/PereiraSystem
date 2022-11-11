@@ -1,19 +1,19 @@
 ; BUILDING -------------------------------------------------------
 (defrule(true)=>(chat-local-to-self "> 4. Building Loaded")(disable-self))
 ; CIVILIAN BUILDINGS
-; WONDER                          
+; WONDER
 (defrule
     (game-type == 6) ;wonder race
     (unit-type-count villager > 15)
     (building-type-count-total wonder == 0)
-    (can-build wonder)    
+    (can-build wonder)
 =>
     (build wonder)
 )
-; TOWN CENTER  
+; TOWN CENTER
 (defrule
-    (building-type-count-total town-center == 0) 
-    (can-build town-center)    
+    (building-type-count-total town-center == 0)
+    (can-build town-center)
 =>
     (chat-local-to-self "Trying To Build Town Center 1")
     (build town-center)
@@ -26,23 +26,23 @@
         (or(civ-selected gothic)(civ-selected bohemians))
     )
     ;(can-build town-center)
-    (up-can-build 0 c: town-center)    
+    (up-can-build 0 c: town-center)
 =>
     ;(set-strategic-number sn-town-center-placement lumber-camp)
-    (chat-local-to-self "Trying To Build Town Center 2") 
+    (chat-local-to-self "Trying To Build Town Center 2")
     (up-set-placement-data my-player-number -1 c: +28)
-    (up-build place-control 0 c: town-center)   
+    (up-build place-control 0 c: town-center)
     ;(build town-center)
 )
 (defrule
     (current-age == imperial-age)(food-amount > 400)
-	(building-type-count-total town-center == 2) 
+	(building-type-count-total town-center == 2)
     (building-type-count-total monastery > 0)
-    (building-type-count-total university > 0)  
+    (building-type-count-total university > 0)
     (building-type-count-total castle > 0)
     (military-population > 10)
-    ;(can-build town-center)    
-     (up-can-build 0 c: town-center)  
+    ;(can-build town-center)
+     (up-can-build 0 c: town-center)
 =>
     ;(build town-center)
        (up-set-placement-data my-player-number -1 c: -28)
@@ -50,45 +50,45 @@
 )
 (defrule
 	(current-age == imperial-age)(military-population > 60)(food-amount > 400)
-    (building-type-count-total monastery > 0) 
-    (building-type-count-total castle > 0)(building-type-count-total university > 0)  
+    (building-type-count-total monastery > 0)
+    (building-type-count-total castle > 0)(building-type-count-total university > 0)
     (building-type-count-total town-center < 4)
-    (not(research-available ri-heavy-scorpion)) 
+    (not(research-available ri-heavy-scorpion))
     (can-build town-center)
 =>
     (build town-center)(chat-local-to-self "Trying To Build Town Center")
 )
-; MILL   
-(defrule  
+; MILL
+(defrule
     (building-type-count-total mill == 0)(building-type-count town-center > 0)
     (resource-found food)
     (wood-amount > 200)
     (or(not(civ-selected poles))(wood-amount > 225))
-    ;(can-build mill)    
+    ;(can-build mill)
     (up-can-build 0 c: mill)
 =>
     ;(build mill)
     (up-set-placement-data my-player-number -1 c: -6)
-    (up-build place-control 0 c: mill)   
+    (up-build place-control 0 c: mill)
     (chat-local-to-self "Trying To Build Mill 1 (Food Found)")
 )
-(defrule  
+(defrule
     (building-type-count-total mill < 1)(building-type-count town-center > 0)
     (wood-amount > 400)(can-build mill)
 =>
     (build mill)(chat-local-to-self "Trying To Build Mill 1 (Excess Wood)")
 )
-(defrule  
+(defrule
     (building-type-count-total mill < 1)(building-type-count town-center > 0)
     (building-type-count-total lumber-camp < 1)
-    (building-type-count-total dock < 1)    
+    (building-type-count-total dock < 1)
     (game-time > 270)
     (wood-amount > 200)(not(civ-selected khmer))
-    (can-build mill)    
+    (can-build mill)
 =>
     (build mill)(chat-local-to-self "Trying To Build Mill 1 (Forced)")
 )
-(defrule  
+(defrule
     (current-age == feudal-age)(building-type-count town-center > 0)
     (building-type-count-total mill < 1)
     (wood-amount > 200)
@@ -97,11 +97,11 @@
     (build mill)
     (chat-local-to-self "Trying To Build Mill 1 (Forced - Feudal)")
 )
-(defrule  
+(defrule
     (building-type-count-total mill == 1)
     (current-age >= feudal-age)
     (wood-amount > 200)
-    (building-type-count town-center > 0)    
+    (building-type-count town-center > 0)
     (building-type-count lumber-camp > 1)
     (or(up-compare-goal gl-weMovedPlace == 0)
     (building-type-count dock > 0))
@@ -111,9 +111,9 @@
 =>
     (build mill)(chat-local-to-self "Trying To Build Mill 2")
     (up-modify-sn sn-mill-max-distance c:+ 24)
-    (set-strategic-number sn-maximum-food-drop-distance 9) 
+    (set-strategic-number sn-maximum-food-drop-distance 9)
 )
-(defrule  
+(defrule
     (military-population > 4)
     (building-type-count-total mill == 2)
     (current-age >= feudal-age)
@@ -121,22 +121,22 @@
     (wood-amount > 200)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)
-    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))        
+    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
     (not(civ-selected khmer))
 =>
     (build mill)(chat-local-to-self "Trying To Build Mill 3")
     (up-modify-sn sn-mill-max-distance c:+ 12)
 )
 (defrule
-	(current-age == imperial-age)(military-population > 40) 
+	(current-age == imperial-age)(military-population > 40)
     (resource-found food)(building-type-count-total mill < 24)
     (or(wood-amount > 9000)(building-type-count-total mill < 5))
     (dropsite-min-distance food > 3)
     (wood-amount > 800)
-    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))    
+    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
     (can-build mill)(not(civ-selected khmer))
 =>
-    (chat-local-to-self "Trying To Build Mill")   
+    (chat-local-to-self "Trying To Build Mill")
     (up-modify-sn sn-mill-max-distance c:+ 8)
     (build mill)
  )
@@ -148,7 +148,7 @@
     (building-type-count-total lumber-camp > 0)
     ;(gaia-)
 	(idle-farm-count < 1)
-	(can-build farm)    
+	(can-build farm)
 =>
 	(build farm)
 )
@@ -158,7 +158,7 @@
     (or
         (civ-selected gothic)
         (or
-            (building-type-count-total archery-range > 0)    
+            (building-type-count-total archery-range > 0)
             (building-type-count-total stable > 0)
         )
     )
@@ -170,14 +170,14 @@
 )
 ; CASTLE AGE
 (defrule
-	(current-age == castle-age)  
+	(current-age == castle-age)
     (food-amount < 1200)(wood-amount > 176)
     (or
         (building-type-count monastery > 0)
         (building-type-count siege-workshop > 0)
     )
 	(building-type-count-total farm < 20)
-    (idle-farm-count < 3)    
+    (idle-farm-count < 3)
 	(can-build farm)
 =>
 	(build farm)
@@ -202,7 +202,7 @@
     (up-can-build 0 c: house)
 =>
     (chat-local-to-self "Trying To Build House")
-    ;(build house) 
+    ;(build house)
     (up-set-placement-data my-player-number -1 c: -11)
     (up-build place-control 0 c: house)
 )
@@ -215,11 +215,11 @@
     (up-can-build 0 c: house)
 =>
     (chat-local-to-self "Trying To Build House")
-    ;(build house) 
+    ;(build house)
     (up-set-placement-data my-player-number house c: 0)
     (up-build place-control 0 c: house)
 )
-; LUMBER   
+; LUMBER
 (defrule
     (building-type-count-total lumber-camp == 0)
     (up-can-build 0 c: lumber-camp)
@@ -251,38 +251,38 @@
 (defrule
     (current-age >= feudal-age)
     (building-type-count-total lumber-camp > 0)
-    (building-type-count-total lumber-camp g:< gl-max-lumber-camps-qty) 	
+    (building-type-count-total lumber-camp g:< gl-max-lumber-camps-qty)
     (resource-found wood)
     (dropsite-min-distance wood > 3)
     (can-build lumber-camp)
 =>
     (chat-local-to-self "Trying To Build Lumber Camp")
-    (build lumber-camp)             
+    (build lumber-camp)
 )
-; MINING CAMPS                    
+; MINING CAMPS
 ; GOLD MINING CAMP
-(defrule 
+(defrule
     (current-age == feudal-age)
     (wood-amount > 200)(gold-amount < 200) ;if more than 200 they are using nearby deposit
-    (or(wood-amount > 275)(building-type-count town-center > 0))    
+    (or(wood-amount > 275)(building-type-count town-center > 0))
     (or(building-type-count archery-range > 0)(building-type-count market > 0))
     (research-completed ri-double-bit-axe)
-    (building-type-count-total mining-camp == 0) 
-    (resource-found gold) 
+    (building-type-count-total mining-camp == 0)
+    (resource-found gold)
     (dropsite-min-distance gold > 3)
     (can-build mining-camp)
 =>
-    (up-chat-data-to-self "Trying To Build Mining Camp (Gold 1) - Max Distance: %d" s: sn-mining-camp-max-distance)      
+    (up-chat-data-to-self "Trying To Build Mining Camp (Gold 1) - Max Distance: %d" s: sn-mining-camp-max-distance)
     (build mining-camp)
 )
-(defrule 
+(defrule
     (current-age >= castle-age)
-    (wood-amount > 200)    
-    (or(wood-amount > 275)(building-type-count town-center > 0))      
+    (wood-amount > 200)
+    (or(wood-amount > 275)(building-type-count town-center > 0))
     (or(building-type-count-total monastery > 0)
     (building-type-count-total dock > 1))
     (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
-    (resource-found gold) 
+    (resource-found gold)
     (dropsite-min-distance gold > 3)
     (can-build mining-camp)
 =>
@@ -293,40 +293,40 @@
 (defrule
     (or(building-type-count monastery > 0)(building-type-count university > 0))
     (or(building-type-count town-center > 0)(stone-amount < 100))
-    (wood-amount > 200)   
-    (resource-found stone) 
+    (wood-amount > 200)
+    (resource-found stone)
     (dropsite-min-distance stone > 3)
     ;(building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
-    (building-type-count-total mining-camp < 4)     
+    (building-type-count-total mining-camp < 4)
     (can-build mining-camp)
 =>
-    ;(up-chat-data-to-self "Trying To Build Mining Camp (Stone 1) - Max Distance: %d" s: sn-mining-camp-max-distance)      
+    ;(up-chat-data-to-self "Trying To Build Mining Camp (Stone 1) - Max Distance: %d" s: sn-mining-camp-max-distance)
     (chat-local-to-self "Trying To Build Mining Camp (Stone 1)")
-    (build mining-camp) 
+    (build mining-camp)
 )
 (defrule
     (building-type-count castle < 2)(stone-amount < 200)
     (or(current-age > castle-age)
-    (and(building-type-count town-center < 0)(stone-amount < 100)))    
+    (and(building-type-count town-center < 0)(stone-amount < 100)))
     (wood-amount > 276)
-    (resource-found stone) 
+    (resource-found stone)
     (dropsite-min-distance stone > 3)
-    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)    
+    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
     (can-build mining-camp)
 =>
-    (up-chat-data-to-self "Trying To Build Mining Camp (Stone 2) - Max Distance: %d" s: sn-mining-camp-max-distance)      
+    (up-chat-data-to-self "Trying To Build Mining Camp (Stone 2) - Max Distance: %d" s: sn-mining-camp-max-distance)
     (build mining-camp)
 )
-(defrule 
+(defrule
     (current-age > castle-age)
     (building-type-count-total monastery > 0)
-    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)    
-    (resource-found stone) 
+    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
+    (resource-found stone)
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
 =>
-    (up-chat-data-to-self "Trying To Build Mining Camp (Stone) - Max Distance: %d" s: sn-mining-camp-max-distance)  
-    (build mining-camp) 
+    (up-chat-data-to-self "Trying To Build Mining Camp (Stone) - Max Distance: %d" s: sn-mining-camp-max-distance)
+    (build mining-camp)
 )
 ; BLACKSMITH
 (defrule
@@ -334,23 +334,23 @@
         (not(enemy-buildings-in-town))
     )
     (building-type-count-total blacksmith == 0)(wood-amount > 275)
-    (building-type-count town-center > 0)    
+    (building-type-count town-center > 0)
     (or(building-type-count-total archery-range > 0)
         (or(civ-selected cumans)(civ-selected bohemians))
     )
-    ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)  
+    ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
     (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
     (up-can-build 0 c: blacksmith)
 =>
     (chat-local-to-self "Trying to build blacksmith")
     (up-set-placement-data my-player-number town-center c: 4)
-    (up-build place-control 0 c: blacksmith)  
+    (up-build place-control 0 c: blacksmith)
 )
 ; MARKET
 (defrule
     (up-players-in-game ally > 1)
     (game-time > 120) ; so they dont build it inside
-    (building-type-count town-center > 0)  
+    (building-type-count town-center > 0)
     (building-type-count-total market == 0)
     (or
         (or
@@ -362,29 +362,29 @@
                 (gold-amount > 500)
                 (stone-amount > 800)
             )
-        )  
+        )
         (players-building-type-count any-ally market > 0)
     )
     (up-can-build 0 c: market)
 =>
     (chat-local-to-self "Trying To Build Market 1 outside")
     ;(up-set-placement-data my-player-number market c:+ 32)
-    (up-set-placement-data my-player-number town-center c:+ 36)    
-    (up-build place-control 0 c: market)   
+    (up-set-placement-data my-player-number town-center c:+ 36)
+    (up-build place-control 0 c: market)
 )
 (defrule
     (up-players-in-game ally == 1)
-    (building-type-count town-center > 0)    
+    (building-type-count town-center > 0)
     (building-type-count-total market == 0)
     (up-can-build 0 c: market)
 =>
-    (chat-local-to-self "Trying To Build Market 1 inside") 
-    (up-set-placement-data my-player-number town-center c:+ 1)    
-    (up-build place-control 0 c: market)     
+    (chat-local-to-self "Trying To Build Market 1 inside")
+    (up-set-placement-data my-player-number town-center c:+ 1)
+    (up-build place-control 0 c: market)
 )
 ; UNIVERSITY
 (defrule
-    (building-type-count town-center > 0)    
+    (building-type-count town-center > 0)
     (or(building-type-count-total monastery > 0)
     (players-building-type-count any-ally monastery > 0))
     (building-type-count-total market > 0)
@@ -392,12 +392,12 @@
     (building-type-count-total siege-workshop > 0))
     (research-completed ri-hand-cart)
     (research-completed ri-bow-saw)
-    (building-type-count-total university == 0)    
+    (building-type-count-total university == 0)
     (can-build university)
 =>
     (chat-local-to-self "Trying To Build University")
-    (up-set-placement-data my-player-number town-center c: 5)    
-    (up-build place-control 0 c: university)   
+    (up-set-placement-data my-player-number town-center c: 5)
+    (up-build place-control 0 c: university)
 )
 ; DOCK
 (defrule
@@ -405,35 +405,35 @@
     (can-build dock)
 =>
     (chat-local-to-self "Trying To Build Dock 1 - Place Control")
-    (up-set-placement-data my-player-number town-center c: -16)    
-    (up-build place-control 0 c: dock) 
+    (up-set-placement-data my-player-number town-center c: -16)
+    (up-build place-control 0 c: dock)
 )
 (defrule
     (building-type-count-total dock == 0)
     (can-build dock)
 =>
     (chat-local-to-self "Trying To Build Dock 1 - Normal mode")
-    (build dock)    
+    (build dock)
 )
 (defrule
     (current-age == castle-age)
     (building-type-count lumber-camp > 0)
-    (building-type-count town-center > 0)        
+    (building-type-count town-center > 0)
     (wood-amount > 275)
     (building-type-count-total dock == 1)
-    (can-build dock)    
+    (can-build dock)
 =>
-    (up-set-placement-data my-player-number dock c:- 32)    
-    (up-build place-control 0 c: dock) 
+    (up-set-placement-data my-player-number dock c:- 32)
+    (up-build place-control 0 c: dock)
     (chat-local-to-self "Trying To Build Dock 2 - Place Control")
 )
 (defrule
     (current-age == castle-age)
     (building-type-count lumber-camp > 0)
-    (building-type-count town-center > 0)        
+    (building-type-count town-center > 0)
     (wood-amount > 275)
     (building-type-count-total dock == 1)
-    (can-build dock)    
+    (can-build dock)
 =>
     (chat-local-to-self "Trying To Build Dock 2")
     (build dock)
@@ -441,13 +441,13 @@
 (defrule
     (current-age == imperial-age)
     (building-type-count lumber-camp > 0)
-    (building-type-count town-center > 0)        
+    (building-type-count town-center > 0)
     (wood-amount > 275)
     (building-type-count-total dock == 2)
-    (can-build dock)    
+    (can-build dock)
 =>
-    (up-set-placement-data my-player-number town-center c: -64)    
-    (up-build place-control 0 c: dock) 
+    (up-set-placement-data my-player-number town-center c: -64)
+    (up-build place-control 0 c: dock)
     (chat-local-to-self "Trying To Build Dock 3")
 )
 ; MILITARY
@@ -458,60 +458,60 @@
 ; GATE TYPE 1 = PALISADE, 2 = STONE
 (defrule(civ-selected gothic)=>(set-strategic-number sn-gate-type-for-wall 1)(disable-self))
 ; GATES PERIMETER 1
-(defrule 
+(defrule
     (or
         (building-type-count-total 72 > 0)
         (building-type-count-total stone-wall > 0)
     )
     (can-build-gate 1)
 =>
-    (build-gate 1)  
+    (build-gate 1)
 )
 ; GATES PERIMETER 2
-(defrule 
+(defrule
     (or
         (building-type-count-total 72 > 0)
         (building-type-count-total stone-wall > 0)
     )
     (can-build-gate 2)
 =>
-    (build-gate 2)  
+    (build-gate 2)
 )
 ; WALL
 ; STONE WALL PERIMETER 1
-(defrule 
+(defrule
 	(can-build-wall 1 stone-wall-line)
     (current-age == castle-age)
     ;(building-type-count castle > 0)(current-age == imperial-age)
     ;(military-population > 75)(unit-type-count-total villager > 65)
     ;(food-amount > 1300)(gold-amount > 1300)(wood-amount > 1300)
 =>
-	(build-wall 1 stone-wall-line) 
+	(build-wall 1 stone-wall-line)
 )
 ; PALISADE WALL PERIMETER 1
 (defrule
     (building-type-count castle > 0)(current-age == imperial-age)
     (military-population > 75)(unit-type-count-total villager > 65)
     (food-amount > 1300)(gold-amount > 1300)(wood-amount > 1300)
-	(can-build-wall 1 72)  
+	(can-build-wall 1 72)
 =>
 	(build-wall 1 72)
 )
 ; STONE WALL PERIMETER 2
-(defrule 
+(defrule
 	(can-build-wall 2 stone-wall-line)
     (building-type-count-total castle > 0)(current-age == imperial-age)
 =>
 	(build-wall 2  stone-wall-line)
 )
 ; PALISADE WALL PERIMETER 2
-(defrule 
+(defrule
 	(can-build-wall 2 72)
     (building-type-count-total castle > 0)(current-age == imperial-age)
 =>
 	(build-wall 2 72)
 )
-; CASTLE            
+; CASTLE
 (defrule
     (building-type-count-total castle == 0)
     (up-can-build 0 c: castle)
@@ -519,9 +519,9 @@
 =>
     (chat-local-to-self "Trying To Build Castle 1")
     (up-set-placement-data my-player-number -1 c: -7)
-    ;(up-set-placement-data my-player-number palisade-wall c: -1)    
-    (up-build place-control 0 c: castle)       
-    (build castle) 
+    ;(up-set-placement-data my-player-number palisade-wall c: -1)
+    (up-build place-control 0 c: castle)
+    (build castle)
 )
 (defrule
     (building-type-count-total castle == 1)
@@ -530,34 +530,34 @@
 =>
     (chat-local-to-self "Trying To Build Castle 2")
     (up-set-placement-data my-player-number town-center c: +7)
-    (up-build place-control 0 c: castle)   
-    (build castle) 
+    (up-build place-control 0 c: castle)
+    (build castle)
 )
 (defrule
     (building-type-count-total castle == 2)(civilian-population > 50)
     (can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle 3")
-    (build castle) 
+    (build castle)
 )
 (defrule
     (building-type-count-total castle == 3)(unit-type-count villager > 60)
     (civilian-population > 60)(military-population > 70)
     (wood-amount > 4000)(food-amount > 4000)(gold-amount > 4000)
-    (can-build castle)    
+    (can-build castle)
 =>
     (chat-local-to-self "Trying To Build FORWARD Castle 4")
-    (build-forward castle) 
+    (build-forward castle)
 )
 (defrule
     (civ-selected cumans); when pop is at max
     (research-completed my-unique-research)
     (population-headroom == 0)
-    (housing-headroom == 0)    
+    (housing-headroom == 0)
     (can-build castle)
 =>
     (chat-local-to-self "Trying To Build Extra Cuman Castle For Mercenaries")
-    (build castle) 
+    (build castle)
 )
 ; MINI CASTLES (MEGA TOWERS?)
 (defrule
@@ -568,18 +568,18 @@
     (build krepost)
 )
 (defrule
-    (building-type-count-total castle > 1) 
+    (building-type-count-total castle > 1)
     (building-type-count-total donjon < 64)
-    (can-build donjon)    
+    (can-build donjon)
 =>
-    (build donjon) 
+    (build donjon)
 )
 ; MILITARY PRODUCTION BUILDINGS
-; BARRACKS   
-(defrule 
+; BARRACKS
+(defrule
 	(building-type-count-total barracks == 0)
     (building-type-count town-center > 0)
-    (or    	
+    (or
         (and
             (building-type-count-total lumber-camp > 0)
             (wood-amount g:> gl-minimumWoodForLC)
@@ -591,7 +591,7 @@
 =>
     (chat-local-to-self "Trying To Build Barracks 1")
     (up-set-placement-data my-player-number town-center c:+ 1)
-    (up-build place-control 0 c: barracks)    
+    (up-build place-control 0 c: barracks)
     ;(build barracks)
     (up-chat-data-to-player my-player-number "MAX TS: %d" s: sn-maximum-town-size)
     (up-chat-data-to-player my-player-number "MIN TS: %d" s: sn-minimum-town-size)
@@ -599,18 +599,18 @@
 (defrule
 	(current-age == imperial-age)
 	(building-type-count-total barracks == 1)
-    (building-type-count town-center > 0)    
+    (building-type-count town-center > 0)
     (food-amount > 400)
     (or
         (and(building-type-count-total siege-workshop > 0)(building-type-count-total castle > 0))
         (civ-selected gothic)
     )
-    (military-population > 40)    
+    (military-population > 40)
     (up-can-build 0 c: barracks)
-=>  
-    (chat-local-to-self "Trying To Build Barracks 2")       
+=>
+    (chat-local-to-self "Trying To Build Barracks 2")
     (up-set-placement-data my-player-number -1 c: +32)
-    (up-build place-control 0 c: barracks)   
+    (up-build place-control 0 c: barracks)
 )
 ; BUILD STABLES
 (defrule
@@ -628,8 +628,8 @@
 =>
     (chat-local-to-self "Trying To Build Stable 1")
     ;(up-set-placement-data my-player-number town-center c: 2)
-    (up-set-placement-data my-player-number town-center c: 1)    
-    (up-build place-control 0 c: stable)        
+    (up-set-placement-data my-player-number town-center c: 1)
+    (up-build place-control 0 c: stable)
 )
 ; BUILD ARCHERY RANGE
 (defrule
@@ -642,7 +642,7 @@
     (chat-local-to-self "Trying To Build Archery Range 1")
     (up-set-placement-data my-player-number town-center c: 4)
     (up-build place-control 0 c: archery-range)
-    (chat-local-to-self "Trying To Build Archery Range 1 - Place control")             
+    (chat-local-to-self "Trying To Build Archery Range 1 - Place control")
 )
 ; BUILD SIEGE WORKSHOP
 (defrule
@@ -656,14 +656,14 @@
     )
     (not(civ-selected gothic))
     (up-can-build 0 c: siege-workshop)
-    ;(can-build siege-workshop)    
+    ;(can-build siege-workshop)
 =>
-    (chat-local-to-self "Trying To Build Siege Workshop 1")     
-    ;(build siege-workshop)  
+    (chat-local-to-self "Trying To Build Siege Workshop 1")
+    ;(build siege-workshop)
     (up-set-placement-data my-player-number town-center c: -4)
-    (up-build place-control 0 c: siege-workshop)       
+    (up-build place-control 0 c: siege-workshop)
 )
-; MONASTERY             
+; MONASTERY
 (defrule
     (or(building-type-count-total house > 3)(civ-selected hun))
     (building-type-count-total monastery == 0)
@@ -674,8 +674,8 @@
         )
     )
     (can-build monastery)
-=>  
-    (chat-local-to-self "Trying To Build Monastery 1")  
+=>
+    (chat-local-to-self "Trying To Build Monastery 1")
     (build monastery)
 )
 (defrule
@@ -717,10 +717,10 @@
         (not(enemy-captured-relics))
     )
     (up-can-build 0 c: monastery)
-=>  
-    (chat-local-to-self "BUILDING RELIC TRANSFUSION MONASTERY")  
+=>
+    (chat-local-to-self "BUILDING RELIC TRANSFUSION MONASTERY")
     (up-set-placement-data my-player-number -1 c:- 6)
-    (up-build place-control 0 c: monastery)         
+    (up-build place-control 0 c: monastery)
 )
 ; TOWERS
 ; BOMBARD TOWER
@@ -729,7 +729,7 @@
     (gold-amount > 301)
     (building-type-count-total castle > 0)
 =>
-    (build bombard-tower) 
+    (build bombard-tower)
 )
 ; NORMAL TOWER
 (defrule
@@ -739,24 +739,24 @@
     (not(up-research-status c: castle-age == research-pending))
     (or(building-type-count stable > 0)(building-type-count blacksmith > 0))
     ;(can-build watch-tower-line)
-    (up-can-build 0 c: watch-tower)    
-=>  
+    (up-can-build 0 c: watch-tower)
+=>
     ;(build watch-tower-line)
-    (up-set-placement-data my-player-number town-center c: +16)    
-    (up-build place-control 0 c: watch-tower)  
+    (up-set-placement-data my-player-number town-center c: +16)
+    (up-build place-control 0 c: watch-tower)
 )
 (defrule
 	(current-age == imperial-age)
     (building-type-count-total castle > 1)
     (not(civ-selected teutonic))(not(civ-selected portuguese))
     (building-type-count watch-tower-line < 4)
-    (not(can-build bombard-tower))    
-    (up-can-build 0 c: watch-tower)     
+    (not(can-build bombard-tower))
+    (up-can-build 0 c: watch-tower)
     ;(can-build watch-tower-line)
 =>
     ;(build watch-tower-line)
-    (up-set-placement-data my-player-number town-center c: +16)    
-    (up-build place-control 0 c: watch-tower)  
+    (up-set-placement-data my-player-number town-center c: +16)
+    (up-build place-control 0 c: watch-tower)
 )
 ; UP WALL CONSTANTS - YEAH I KIND OFLIKE IT THAT WAY
 (defconst gl-posMapSize-x 400)
@@ -768,10 +768,10 @@
 (defconst gl-maxDimensionOfMap 406)
 (defconst gl-myPosition-x 407)
 (defconst gl-myPosition-y 408)
-(defconst gl-posXisHigh 409) 
+(defconst gl-posXisHigh 409)
 (defconst gl-posXisMed 410)
 (defconst gl-posXisLow 411)
-(defconst gl-posYisHigh 412) 
+(defconst gl-posYisHigh 412)
 (defconst gl-posYisMed 413)
 (defconst gl-posYisLow 414)
 (defconst gl-posQuadrantCode 415)
@@ -886,7 +886,7 @@
     (set-goal gl-outerGatePoint3-y 0)
     (set-goal gl-outerGatePoint4-x 0)
     (set-goal gl-outerGatePoint4-y 0)
-)    
+)
 (defrule
     (true)
 =>
@@ -914,7 +914,7 @@
     (set-goal gl-innerSecGatePoint3-y 0)
     (set-goal gl-innerSecGatePoint4-x 0)
     (set-goal gl-innerSecGatePoint4-y 0)
-)    
+)
 (defrule
     (true)
 =>
@@ -950,86 +950,86 @@
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 1)
     (up-modify-goal gl-outerWallPerimeter c:+ 2)
-    (up-modify-sn sn-maximum-town-size c:+ 2)    
-    (up-modify-sn sn-minimum-town-size c:+ 2)    
-    (disable-self)  
+    (up-modify-sn sn-maximum-town-size c:+ 2)
+    (up-modify-sn sn-minimum-town-size c:+ 2)
+    (disable-self)
 )
 (defrule
     (up-players-in-game any < 7)
 =>
     ;(up-modify-goal gl-innerWallPerimeter c:+ 1)
     (up-modify-goal gl-outerWallPerimeter c:+ 1)
-    (up-modify-sn sn-maximum-town-size c:+ 1)    
-    (up-modify-sn sn-minimum-town-size c:+ 1)       
-    (disable-self)  
+    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (up-modify-sn sn-minimum-town-size c:+ 1)
+    (disable-self)
 )
 (defrule
     (up-players-in-game any < 6)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 1)
     (up-modify-goal gl-outerWallPerimeter c:+ 1)
-    (up-modify-sn sn-maximum-town-size c:+ 1)    
-    (up-modify-sn sn-minimum-town-size c:+ 1)       
-    (disable-self)  
+    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (up-modify-sn sn-minimum-town-size c:+ 1)
+    (disable-self)
 )
 (defrule
     (up-players-in-game any < 5)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 1)
     (up-modify-goal gl-outerWallPerimeter c:+ 1)
-    (up-modify-sn sn-maximum-town-size c:+ 1)    
-    (up-modify-sn sn-minimum-town-size c:+ 1)       
-    (disable-self)  
+    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (up-modify-sn sn-minimum-town-size c:+ 1)
+    (disable-self)
 )
 (defrule
     (map-size small)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 1)
     (up-modify-goal gl-outerWallPerimeter c:+ 3)
-    (up-modify-sn sn-maximum-town-size c:+ 3)    
+    (up-modify-sn sn-maximum-town-size c:+ 3)
     (up-modify-sn sn-minimum-town-size c:+ 3)
     (set-goal gl-maxDimensionOfMap 144)
-    (disable-self)  
+    (disable-self)
 )
 (defrule
     (map-size medium)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 2)
     (up-modify-goal gl-outerWallPerimeter c:+ 4)
-    (up-modify-sn sn-maximum-town-size c:+ 4)    
+    (up-modify-sn sn-maximum-town-size c:+ 4)
     (up-modify-sn sn-minimum-town-size c:+ 4)
-    (set-goal gl-maxDimensionOfMap 168)     
-    (disable-self)  
+    (set-goal gl-maxDimensionOfMap 168)
+    (disable-self)
 )
 (defrule
     (map-size normal)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 2)
     (up-modify-goal gl-outerWallPerimeter c:+ 4)
-    (up-modify-sn sn-maximum-town-size c:+ 4)    
+    (up-modify-sn sn-maximum-town-size c:+ 4)
     (up-modify-sn sn-minimum-town-size c:+ 4)
-    (set-goal gl-maxDimensionOfMap 200)    
-    (disable-self)  
+    (set-goal gl-maxDimensionOfMap 200)
+    (disable-self)
 )
 (defrule
     (map-size large)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 2)
     (up-modify-goal gl-outerWallPerimeter c:+ 4)
-    (up-modify-sn sn-maximum-town-size c:+ 4)    
+    (up-modify-sn sn-maximum-town-size c:+ 4)
     (up-modify-sn sn-minimum-town-size c:+ 4)
     (set-goal gl-maxDimensionOfMap 220)
-    (disable-self)  
+    (disable-self)
 )
 (defrule
     (map-size giant)
 =>
     (up-modify-goal gl-innerWallPerimeter c:+ 4)
     (up-modify-goal gl-outerWallPerimeter c:+ 6)
-    (up-modify-sn sn-maximum-town-size c:+ 6)    
+    (up-modify-sn sn-maximum-town-size c:+ 6)
     (up-modify-sn sn-minimum-town-size c:+ 6)
-    (set-goal gl-maxDimensionOfMap 240)    
-    (disable-self)  
+    (set-goal gl-maxDimensionOfMap 240)
+    (disable-self)
 )
 (defrule
     (up-compare-goal gl-posMapSize-x > 256)
@@ -1044,9 +1044,9 @@
 (defrule
     (true)
 =>
-    ;(up-chat-data-to-self "Inner wall perimeter: %d" g: gl-innerWallPerimeter)    
+    ;(up-chat-data-to-self "Inner wall perimeter: %d" g: gl-innerWallPerimeter)
     ;(up-chat-data-to-self "Outer wall perimeter: %d" g: gl-outerWallPerimeter)
-    (disable-self)    
+    (disable-self)
 )
 (defrule
     (true)
@@ -1054,9 +1054,9 @@
     (up-get-point position-self gl-myPosition-x)
     (up-get-point position-map-size gl-mapSizeThird)
     (up-get-point position-map-size gl-mapSizeTwoThirds)
-    (up-get-point position-map-size gl-mapSizeTenth)     
-    (up-get-point position-map-size gl-mapSizeNineTenths)    
-    (up-get-point position-map-size gl-posMapSize-x)        
+    (up-get-point position-map-size gl-mapSizeTenth)
+    (up-get-point position-map-size gl-mapSizeNineTenths)
+    (up-get-point position-map-size gl-posMapSize-x)
     (up-get-point position-map-size gl-maxDimensionOfMap)
     (up-modify-goal gl-mapSizeThird c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:/ 3)
@@ -1068,16 +1068,16 @@
     ;(up-chat-data-to-self "Map Size manually entered: %d" g: gl-maxDimensionOfMap)
     ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
     ;(up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
-    ;(up-chat-data-to-self "Map Size 1/10 %d" g: gl-mapSizeTenth)    
-    ;(up-chat-data-to-self "POS X: %d" g: gl-myPosition-x) 
-    ;(up-chat-data-to-self "POS Y: %d" g: gl-myPosition-y)           
-    (disable-self)   
+    ;(up-chat-data-to-self "Map Size 1/10 %d" g: gl-mapSizeTenth)
+    ;(up-chat-data-to-self "POS X: %d" g: gl-myPosition-x)
+    ;(up-chat-data-to-self "POS Y: %d" g: gl-myPosition-y)
+    (disable-self)
 )
 ; CHECK OUR POSITION IN 9 SQUARES
 (defrule
     (up-compare-goal gl-myPosition-x g:>= gl-mapSizeTwoThirds)
 =>
-    (set-goal gl-posXisHigh 1)(disable-self) 
+    (set-goal gl-posXisHigh 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-myPosition-y g:>= gl-mapSizeTwoThirds)
@@ -1109,70 +1109,70 @@
 ; SAY 1 OF 9 POSITIONS TO ALLIES AND STORE POSITION IN A CODE WHILE WE ARE AT IT
 (defrule
     (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisHigh == 1)
-=>    
+=>
     ;(chat-to-allies "IM AT THE EAST, IN THE CORNER! - POS 1")
-    (set-goal gl-posQuadrantCode 1)    
+    (set-goal gl-posQuadrantCode 1)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisMed == 1)
-=>  
+=>
     ;(chat-to-allies "IM AT THE NORTH EAST!")
-    (set-goal gl-posQuadrantCode 2) 
-    (up-send-flare position-self)(disable-self)  
+    (set-goal gl-posQuadrantCode 2)
+    (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisLow == 1)
-=>  
+=>
     ;(chat-to-allies "IM AT AT THE NORTH, IN THE CORNER! - POS 3")
-    (set-goal gl-posQuadrantCode 3)     
-    (up-send-flare position-self)(disable-self)  
+    (set-goal gl-posQuadrantCode 3)
+    (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-posXisMed == 1)(up-compare-goal gl-posYisHigh == 1)
-=>  
+=>
     ;(chat-to-allies "IM AT THE SOUTH EAST!")
-    (set-goal gl-posQuadrantCode 4)     
+    (set-goal gl-posQuadrantCode 4)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-posXisMed == 1)(up-compare-goal gl-posYisMed == 1)
-=>  
+=>
     ;(chat-to-allies "IM IN THE MIDDLE OF THE MAP - POS 5")
-    (set-goal gl-posQuadrantCode 5)     
+    (set-goal gl-posQuadrantCode 5)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-posXisMed == 1)(up-compare-goal gl-posYisLow == 1)
-=>  
+=>
     ;(chat-to-allies "IM AT THE NORTH WEST!")
     (set-goal gl-posQuadrantCode 6)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
     (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisHigh == 1)
-=> 
+=>
     ;(chat-to-allies "IM AT THE SOUTH, IN THE CORNER! - POS 7")
     (set-goal gl-posQuadrantCode 7)
     (up-send-flare position-self)(disable-self)
-) 
+)
 (defrule
     (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisMed == 1)
 =>
     ;(chat-to-allies "IM AT THE SOUTH WEST!")
-    (set-goal gl-posQuadrantCode 8)    
-    (up-send-flare position-self)(disable-self)  
-)    
+    (set-goal gl-posQuadrantCode 8)
+    (up-send-flare position-self)(disable-self)
+)
 (defrule
     (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisLow == 1)
-=>     
+=>
     ;(chat-to-allies "IM AT THE WEST, IN THE CORNER! - POS 9")
     (set-goal gl-posQuadrantCode 9)
-    (up-send-flare position-self)(disable-self)  
+    (up-send-flare position-self)(disable-self)
 )
-(defrule 
+(defrule
     (true)
-=>    
+=>
     (up-get-point position-self gl-outerWallPoint1-x)
     (up-get-point position-self gl-outerWallPoint2-x)
     (up-get-point position-self gl-outerWallPoint3-x)
@@ -1184,69 +1184,69 @@
     (up-get-point position-self gl-innerGatePoint1-x)
     (up-get-point position-self gl-innerGatePoint2-x)
     (up-get-point position-self gl-innerGatePoint3-x)
-    (up-get-point position-self gl-innerGatePoint4-x)    
+    (up-get-point position-self gl-innerGatePoint4-x)
     (up-get-point position-self gl-outerGatePoint1-x )
     (up-get-point position-self gl-outerGatePoint2-x )
     (up-get-point position-self gl-outerGatePoint3-x )
     (up-get-point position-self gl-outerGatePoint4-x )
-    (disable-self)           
+    (disable-self)
 )
-(defrule 
+(defrule
     (true)
-=>    
+=>
     (up-get-point position-self gl-innerSecGatePoint1-x)
     (up-get-point position-self gl-innerSecGatePoint2-x)
     (up-get-point position-self gl-innerSecGatePoint3-x)
     (up-get-point position-self gl-innerSecGatePoint4-x)
-    (disable-self)           
+    (disable-self)
 )
 ; CREATE OUTER WALL SHAPE ACCORDING TO OUTER PERIMETER SIZE
 (defrule
-    (true) 
-=>    
+    (true)
+=>
     (up-modify-goal gl-outerWallPoint1-x g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint1-y g:- gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerWallPoint1-y g:- gl-outerWallPerimeter)
     (up-modify-goal gl-outerWallPoint2-x g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint2-y g:+ gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerWallPoint2-y g:+ gl-outerWallPerimeter)
     (up-modify-goal gl-outerWallPoint3-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint3-y g:+ gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerWallPoint3-y g:+ gl-outerWallPerimeter)
     (up-modify-goal gl-outerWallPoint4-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint4-y g:- gl-outerWallPerimeter)  
+    (up-modify-goal gl-outerWallPoint4-y g:- gl-outerWallPerimeter)
     (disable-self)
 )
 ; CREATE OUTER GATES SHAPE ACCORDING TO PERIMETER SIZE
 (defrule
-    (true) 
-=>    
-    (up-modify-goal gl-outerGatePoint1-x g:+ gl-outerWallPerimeter) 
-    (up-modify-goal gl-outerGatePoint1-y g:- gl-outerWallPerimeter) 
+    (true)
+=>
+    (up-modify-goal gl-outerGatePoint1-x g:+ gl-outerWallPerimeter)
+    (up-modify-goal gl-outerGatePoint1-y g:- gl-outerWallPerimeter)
     (up-modify-goal gl-outerGatePoint2-x g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerGatePoint2-y g:+ gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerGatePoint2-y g:+ gl-outerWallPerimeter)
     (up-modify-goal gl-outerGatePoint3-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerGatePoint3-y g:+ gl-outerWallPerimeter) 
+    (up-modify-goal gl-outerGatePoint3-y g:+ gl-outerWallPerimeter)
     (up-modify-goal gl-outerGatePoint4-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerGatePoint4-y g:- gl-outerWallPerimeter)  
-    (disable-self)           
+    (up-modify-goal gl-outerGatePoint4-y g:- gl-outerWallPerimeter)
+    (disable-self)
 )
 ; CREATE INNER WALL SHAPE ACCORDING TO INNER PERIMETER SIZE
 (defrule
-    (true) 
-=>   
+    (true)
+=>
     (up-modify-goal gl-innerWallPoint1-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint1-y g:- gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerWallPoint1-y g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallPoint2-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint2-y g:+ gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerWallPoint2-y g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallPoint3-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint3-y g:+ gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerWallPoint3-y g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerWallPoint4-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint4-y g:- gl-innerWallPerimeter)  
-    (disable-self)           
+    (up-modify-goal gl-innerWallPoint4-y g:- gl-innerWallPerimeter)
+    (disable-self)
 )
 ; CREATE INNER GATES SHAPE ACCORDING TO PERIMETER SIZE
 ; primery----
 (defrule
-    (true) 
-=>   
+    (true)
+=>
     (up-modify-goal gl-innerGatePoint1-x g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerGatePoint1-y g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerGatePoint2-x g:+ gl-innerWallPerimeter)
@@ -1255,228 +1255,228 @@
     (up-modify-goal gl-innerGatePoint3-y g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerGatePoint4-x g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerGatePoint4-y g:- gl-innerWallPerimeter)
-    (disable-self)           
+    (disable-self)
 )
 ; secondary---
 (defrule
-    (true) 
-=>    
+    (true)
+=>
     (up-modify-goal gl-innerSecGatePoint1-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerSecGatePoint1-y g:- gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerSecGatePoint1-y g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerSecGatePoint2-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerSecGatePoint2-y g:+ gl-innerWallPerimeter) 
+    (up-modify-goal gl-innerSecGatePoint2-y g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerSecGatePoint3-x g:- gl-innerWallPerimeter)
     (up-modify-goal gl-innerSecGatePoint3-y g:+ gl-innerWallPerimeter)
     (up-modify-goal gl-innerSecGatePoint4-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerSecGatePoint4-y g:- gl-innerWallPerimeter)   
-    (disable-self)           
+    (up-modify-goal gl-innerSecGatePoint4-y g:- gl-innerWallPerimeter)
+    (disable-self)
 )
 ; MAKE THE OUTER AND INNER WALLS REACH THE BORDERS IF THEY ARE CLOSE
 ; LOWER POINTS SET TO ZERO
 (defrule
     (up-compare-goal gl-outerWallPoint1-y g:< gl-mapSizeTenth)
-=>    
+=>
     (set-goal gl-outerWallPoint1-y 0)
     (set-goal gl-innerWallPoint1-y 0)(disable-self)
 )
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint3-x g:< gl-mapSizeTenth)
-=>    
+=>
     (set-goal gl-outerWallPoint3-x 0)
-    (set-goal gl-innerWallPoint3-x 0)(disable-self)     
+    (set-goal gl-innerWallPoint3-x 0)(disable-self)
 )
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint4-x g:< gl-mapSizeTenth)
-=>    
+=>
     (set-goal gl-outerWallPoint4-x 0)
-    (set-goal gl-innerWallPoint4-x 0)(disable-self)      
+    (set-goal gl-innerWallPoint4-x 0)(disable-self)
 )
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint4-y g:< gl-mapSizeTenth)
-=>    
+=>
     (set-goal gl-outerWallPoint4-y 0)
-    (set-goal gl-innerWallPoint4-y 0)(disable-self)     
+    (set-goal gl-innerWallPoint4-y 0)(disable-self)
 )
 ; DEFAULT: LUDICROUS
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint1-x 480)
-    (set-goal gl-innerWallPoint1-x 480)(disable-self)   
+    (set-goal gl-innerWallPoint1-x 480)(disable-self)
 )
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-x 480)
     (set-goal gl-innerWallPoint2-x 480)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-y 480)
     (set-goal gl-innerWallPoint2-y 480)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint3-y 480)
-    (set-goal gl-innerWallPoint3-y 480)(disable-self)      
+    (set-goal gl-innerWallPoint3-y 480)(disable-self)
 )
 ; HIGHER POINTS SET TO MAP SIZE MANUALLY - TRY TO GET FROM GOAL
 #load-if-defined TINY-MAP
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint1-x 120)
-    (set-goal gl-innerWallPoint1-x 120)(disable-self)   
+    (set-goal gl-innerWallPoint1-x 120)(disable-self)
 )
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-x 120)
     (set-goal gl-innerWallPoint2-x 120)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-y 120)
     (set-goal gl-innerWallPoint2-y 120)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint3-y 120)
-    (set-goal gl-innerWallPoint3-y 120)(disable-self)      
+    (set-goal gl-innerWallPoint3-y 120)(disable-self)
 )
 #end-if
 #load-if-defined SMALL-MAP
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint1-x 144)
-    (set-goal gl-innerWallPoint1-x 144)(disable-self)   
+    (set-goal gl-innerWallPoint1-x 144)(disable-self)
 )
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-x 144)
     (set-goal gl-innerWallPoint2-x 144)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-y 144)
     (set-goal gl-innerWallPoint2-y 144)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint3-y 144)
-    (set-goal gl-innerWallPoint3-y 144)(disable-self)      
+    (set-goal gl-innerWallPoint3-y 144)(disable-self)
 )
 #end-if
 #load-if-defined MEDIUM-MAP
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint1-x 168)
-    (set-goal gl-innerWallPoint1-x 168)(disable-self)   
+    (set-goal gl-innerWallPoint1-x 168)(disable-self)
 )
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-x 168)
     (set-goal gl-innerWallPoint2-x 168)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-y 168)
     (set-goal gl-innerWallPoint2-y 168)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint3-y 168)
-    (set-goal gl-innerWallPoint3-y 168)(disable-self)      
+    (set-goal gl-innerWallPoint3-y 168)(disable-self)
 )
 #end-if
 #load-if-defined NORMAL-MAP
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint1-x 200)
-    (set-goal gl-innerWallPoint1-x 200)(disable-self)   
+    (set-goal gl-innerWallPoint1-x 200)(disable-self)
 )
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-x 200)
     (set-goal gl-innerWallPoint2-x 200)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-y 200)
     (set-goal gl-innerWallPoint2-y 200)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint3-y 200)
-    (set-goal gl-innerWallPoint3-y 200)(disable-self)      
+    (set-goal gl-innerWallPoint3-y 200)(disable-self)
 )
 #end-if
 #load-if-defined LARGE-MAP
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint1-x 220)
-    (set-goal gl-innerWallPoint1-x 220)(disable-self)   
+    (set-goal gl-innerWallPoint1-x 220)(disable-self)
 )
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-x 220)
     (set-goal gl-innerWallPoint2-x 220)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-y 220)
     (set-goal gl-innerWallPoint2-y 220)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint3-y 220)
-    (set-goal gl-innerWallPoint3-y 220)(disable-self)      
+    (set-goal gl-innerWallPoint3-y 220)(disable-self)
 )
 #end-if
 #load-if-defined GIANT-MAP
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint1-x 240)
-    (set-goal gl-innerWallPoint1-x 240)(disable-self)   
+    (set-goal gl-innerWallPoint1-x 240)(disable-self)
 )
-(defrule 
+(defrule
     (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-x 240)
     (set-goal gl-innerWallPoint2-x 240)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint2-y 240)
     (set-goal gl-innerWallPoint2-y 240)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-=>    
+=>
     (set-goal gl-outerWallPoint3-y 240)
-    (set-goal gl-innerWallPoint3-y 240)(disable-self)      
+    (set-goal gl-innerWallPoint3-y 240)(disable-self)
 )
 #end-if
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
@@ -1484,105 +1484,105 @@
 (defrule  ; no north east (1 to 2) if point 1 too close to north border
     (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>
-    (set-goal gl-dontBuildNorthEastWall 1)(disable-self)   
+    (set-goal gl-dontBuildNorthEastWall 1)(disable-self)
 )
 (defrule ; no south east (2 to 3) if point 2 too close to east border
     (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
 =>
-    (set-goal gl-dontBuildSouthEastWall 1)(disable-self) 
+    (set-goal gl-dontBuildSouthEastWall 1)(disable-self)
 )
 (defrule ; no south west (3 to 4) if point 3 too close to south border
     (up-compare-goal gl-outerWallPoint3-x g:< gl-mapSizeTenth)
 =>
-    (set-goal gl-dontBuildSouthWestWall 1)(disable-self) 
+    (set-goal gl-dontBuildSouthWestWall 1)(disable-self)
 )
 (defrule ; no north west (4 to 1) if point 4 too close to west border
     (up-compare-goal gl-outerWallPoint4-y g:< gl-mapSizeTenth)
 =>
-    (set-goal gl-dontBuildNorthWestWall 1)(disable-self) 
-) 
-; CHOOSE GATES POSITION 
+    (set-goal gl-dontBuildNorthWestWall 1)(disable-self)
+)
+; CHOOSE GATES POSITION
 ; 2, 4 , 6 AND 8 GET FIXED GATES
 ; 1 AND 9 CORNERS DEPEND ON X AND Y RELATIONSHIP
 ; 3 AND 7 CORNERS DEPEND ON NOT BUILDING A WALL (NE 3 AND SW 7)
 (defrule
     (or
-        (up-compare-goal gl-posQuadrantCode == 8) ;south west center 
+        (up-compare-goal gl-posQuadrantCode == 8) ;south west center
         (or
             (and
-                (up-compare-goal gl-posQuadrantCode == 7)            
+                (up-compare-goal gl-posQuadrantCode == 7)
                 (up-compare-goal gl-dontBuildSouthWestWall == 1)
             )
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-posQuadrantCode == 9)            
-            )  
-        )         
+            (and
+                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
+                (up-compare-goal gl-posQuadrantCode == 9)
+            )
+        )
     )
 =>
-    (set-goal gl-buildNorthEastGates 1)    
+    (set-goal gl-buildNorthEastGates 1)
 )
 (defrule
     (or
         (up-compare-goal gl-posQuadrantCode == 6) ;n w center always gets the same
         (or
-            (and 
+            (and
                 (up-compare-goal gl-posQuadrantCode == 3)
-                (up-compare-goal gl-dontBuildNorthEastWall == 0)            
+                (up-compare-goal gl-dontBuildNorthEastWall == 0)
             )
-            (and 
-                (up-compare-goal gl-posQuadrantCode == 9)   
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-            )            
+            (and
+                (up-compare-goal gl-posQuadrantCode == 9)
+                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)
+            )
         )
     )
 =>
-    (set-goal gl-buildSouthEastGates 1)    
+    (set-goal gl-buildSouthEastGates 1)
 )
 (defrule
     (or
         (up-compare-goal gl-posQuadrantCode == 4) ;south east center
         (or
-            (and 
+            (and
                 (up-compare-goal gl-posQuadrantCode == 7)
-                (up-compare-goal gl-dontBuildSouthWestWall == 0)         
+                (up-compare-goal gl-dontBuildSouthWestWall == 0)
             )
-            (and 
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)            
-                (up-compare-goal gl-posQuadrantCode == 1) ; !!!!           
-            )                          
-        )
-    ) 
-=>
-    (set-goal gl-buildNorthWestGates 1)    
-)
-(defrule
-    (or
-        (up-compare-goal gl-posQuadrantCode == 2) ;north east center 
-        (or
-            (and 
-                (up-compare-goal gl-posQuadrantCode == 3)                          
-                (up-compare-goal gl-dontBuildNorthEastWall == 1)                   
+            (and
+                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
+                (up-compare-goal gl-posQuadrantCode == 1) ; !!!!
             )
-            (and 
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)            
-                (up-compare-goal gl-posQuadrantCode == 1)          
-            )          
         )
     )
 =>
-    (set-goal gl-buildSouthWestGates 1)    
+    (set-goal gl-buildNorthWestGates 1)
+)
+(defrule
+    (or
+        (up-compare-goal gl-posQuadrantCode == 2) ;north east center
+        (or
+            (and
+                (up-compare-goal gl-posQuadrantCode == 3)
+                (up-compare-goal gl-dontBuildNorthEastWall == 1)
+            )
+            (and
+                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)
+                (up-compare-goal gl-posQuadrantCode == 1)
+            )
+        )
+    )
+=>
+    (set-goal gl-buildSouthWestGates 1)
 )
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION(defrule
   (defrule  (true)
-=>   
+=>
     (generate-random-number 100)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildNorthEastGates == 1)
-    (random-number >= 50) 
-=>    
+    (random-number >= 50)
+=>
     (up-modify-goal gl-outerGatePoint1-y c:+ 5)
     (up-modify-goal gl-outerGatePoint2-y c:- 5)
     (up-modify-goal gl-outerGatePoint3-x c:+ 12)
@@ -1591,8 +1591,8 @@
 )
 (defrule
     (up-compare-goal gl-buildNorthEastGates == 1)
-    (random-number < 50) 
-=>    
+    (random-number < 50)
+=>
     (up-modify-goal gl-outerGatePoint1-y c:+ 5)
     (up-modify-goal gl-outerGatePoint2-y c:- 5)
     (up-modify-goal gl-outerGatePoint3-x c:+ 5)
@@ -1603,7 +1603,7 @@
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
     (random-number >= 50)
-=>    
+=>
     (up-modify-goal gl-outerGatePoint2-x c:- 5)
     (up-modify-goal gl-outerGatePoint3-x c:+ 5)
     (up-modify-goal gl-outerGatePoint4-y c:+ 5)
@@ -1622,14 +1622,14 @@
 )
 (defrule
     (true)
-=>   
+=>
     (generate-random-number 100)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-buildSouthWestGates == 1) 
+    (up-compare-goal gl-buildSouthWestGates == 1)
     (random-number >= 50)
-=>    
+=>
     (up-modify-goal gl-outerGatePoint3-y c:- 5)
     (up-modify-goal gl-outerGatePoint4-y c:+ 5)
     (up-modify-goal gl-outerGatePoint1-x c:- 5)
@@ -1637,59 +1637,59 @@
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-buildSouthWestGates == 1) 
+    (up-compare-goal gl-buildSouthWestGates == 1)
     (random-number < 50)
-=>    
+=>
     (up-modify-goal gl-outerGatePoint3-y c:- 5)
     (up-modify-goal gl-outerGatePoint4-y c:+ 5)
     (up-modify-goal gl-outerGatePoint1-x c:- 12)
     (up-modify-goal gl-outerGatePoint2-x c:- 5)
     (disable-self)
 )
-; NORTH WEST 
+; NORTH WEST
 (defrule(true)=>(generate-random-number 100)(disable-self))
 (defrule
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number >= 50)
-=>    
+=>
     (up-modify-goal gl-outerGatePoint1-x c:- 6)
-    (up-modify-goal gl-outerGatePoint4-x c:+ 6) 
+    (up-modify-goal gl-outerGatePoint4-x c:+ 6)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number < 50)
-=>    
+=>
     (up-modify-goal gl-outerGatePoint1-x c:- 10)
-    (up-modify-goal gl-outerGatePoint4-x c:+ 10) 
+    (up-modify-goal gl-outerGatePoint4-x c:+ 10)
     (disable-self)
 )
 (defrule
     (true)
-=>   
+=>
     (generate-random-number 100)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number >= 50)
-=>    
+=>
     (up-modify-goal gl-outerGatePoint2-y c:- 5)
-    (up-modify-goal gl-outerGatePoint3-y c:- 12)    
+    (up-modify-goal gl-outerGatePoint3-y c:- 12)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildNorthWestGates == 1)
     (random-number < 50)
-=>    
+=>
     (up-modify-goal gl-outerGatePoint2-y c:- 12)
-    (up-modify-goal gl-outerGatePoint3-y c:- 5)    
+    (up-modify-goal gl-outerGatePoint3-y c:- 5)
     (disable-self)
 )
 ; CHECK X COMPARED TO Y FOR CORNER POSITIONS
 (defrule
     (true) ;put pos 5 later!
-    (or 
+    (or
         (or
             (up-compare-goal gl-posQuadrantCode == 1)
             (up-compare-goal gl-posQuadrantCode == 3)
@@ -1697,12 +1697,12 @@
         (or
             (up-compare-goal gl-posQuadrantCode == 7)
             (up-compare-goal gl-posQuadrantCode == 9)
-        )        
+        )
     )
     (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
-=>    
+=>
     ;(chat-to-all "my x is higher than y")
-    (disable-self)  
+    (disable-self)
 )
 (defrule ;put pos 5 later!
     (true)
@@ -1714,10 +1714,10 @@
         (or
             (up-compare-goal gl-posQuadrantCode == 7)
             (up-compare-goal gl-posQuadrantCode == 9)
-        )        
+        )
     )
     (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
-=>    
+=>
     ;(chat-to-all "my x is lower than y")
     (disable-self)
 )
@@ -1731,38 +1731,38 @@
         (or
             (up-compare-goal gl-posQuadrantCode == 7)
             (up-compare-goal gl-posQuadrantCode == 9)
-        )        
+        )
     )
     (up-compare-goal gl-myPosition-y g:== gl-myPosition-x)
-=>    
+=>
     ;(chat-to-all "my x is EQUAL TO y")
     (disable-self)
 )
 ; BUILD THE OUTER PALISADE GATES
 ; TRYING TO BUILD SECONDARY PALISADE GATES
-(defrule 
+(defrule
     ; MAIN: NORTH - EAST
     ; SECONDARY: NORTH WEST AND SOUTH EAST
     (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastGates == 1)  
+    (up-compare-goal gl-buildNorthEastGates == 1)
     (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 792)
-=>   
+=>
     (up-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 792)
     (set-goal gl-gotNorthWestPalisadeGates 1)  ; careful!!!!!!!!!
-    (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")    
+    (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")
 )
-(defrule 
+(defrule
     (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0) 
-    (up-compare-goal gl-buildNorthEastGates == 1)  
+    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-buildNorthEastGates == 1)
     (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
-=>   
+=>
     (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
-    (set-goal gl-gotSouthWestPalisadeGates 1)  ; careful!!!!!!!!!    
-    (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")    
+    (set-goal gl-gotSouthWestPalisadeGates 1)  ; careful!!!!!!!!!
+    (chat-local-to-self "BUILDING SECONDARY PALISADE GATES")
 )
 (defrule ;(false)
 (wood-amount > 175)(building-type-count town-center > 0)
@@ -1807,7 +1807,7 @@
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
-    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)    
+    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)
 =>
     (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)
     (chat-local-to-self "BUILDING SEC PALISADE GATES")
@@ -1817,33 +1817,33 @@
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
-    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 796)    
+    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 796)
 =>
     (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 796)
     (chat-local-to-self "BUILDING SEC PALISADE GATES")
 )
 ; PRIMARY
-(defrule 
+(defrule
     (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthEastWall == 0) ;CAN REMOVE?
-    (up-compare-goal gl-buildNorthEastGates == 1)  
+    (up-compare-goal gl-buildNorthEastGates == 1)
     (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint2-x c: 796)
-=>   
+=>
     (up-build-line gl-outerGatePoint1-x gl-outerGatePoint2-x c: 796)
     (set-goal gl-gotNorthEastPalisadeGates 1)
-    (chat-local-to-self "BUILDING MAIN NORTH EAST PALISADE GATES - A")  
+    (chat-local-to-self "BUILDING MAIN NORTH EAST PALISADE GATES - A")
 )
 (defrule
     (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastGates == 1)  
+    (up-compare-goal gl-buildNorthEastGates == 1)
     (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint1-x c: 796)
-=>   
+=>
     (up-build-line gl-outerGatePoint2-x gl-outerGatePoint1-x c: 796)
-    (set-goal gl-gotNorthEastPalisadeGates 1)    
-    (chat-local-to-self "BUILDING MAIN NORTH EAST PALISADE GATES - B")    
+    (set-goal gl-gotNorthEastPalisadeGates 1)
+    (chat-local-to-self "BUILDING MAIN NORTH EAST PALISADE GATES - B")
 )
 (defrule (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
@@ -1852,7 +1852,7 @@
     (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint3-x c: 792)
 =>
     (up-build-line gl-outerGatePoint2-x gl-outerGatePoint3-x c: 792)
-    (set-goal gl-gotSouthEastPalisadeGates 1)    
+    (set-goal gl-gotSouthEastPalisadeGates 1)
     (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATES - A")
 )
 (defrule (wood-amount > 175)(building-type-count town-center > 0)
@@ -1862,7 +1862,7 @@
     (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint2-x c: 792)
 =>
     (up-build-line gl-outerGatePoint3-x gl-outerGatePoint2-x c: 792)
-    (set-goal gl-gotSouthEastPalisadeGates 1)     
+    (set-goal gl-gotSouthEastPalisadeGates 1)
     (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATES - B")
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
@@ -1872,7 +1872,7 @@
     (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint4-x c: 796)
 =>
     (up-build-line gl-outerGatePoint3-x gl-outerGatePoint4-x c: 796)
-    (set-goal gl-gotSouthWestPalisadeGates 1)     
+    (set-goal gl-gotSouthWestPalisadeGates 1)
     (chat-local-to-self "BUILDING MAIN SOUTH WEST PALISADE GATES - A")
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
@@ -1882,27 +1882,27 @@
     (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint3-x c: 796)
 =>
     (up-build-line gl-outerGatePoint4-x gl-outerGatePoint3-x c: 796)
-    (set-goal gl-gotSouthWestPalisadeGates 1)     
+    (set-goal gl-gotSouthWestPalisadeGates 1)
     (chat-local-to-self "BUILDING MAIN SOUTH WEST PALISADE GATES - B")
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
-    (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint1-x c: 792)    
+    (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint1-x c: 792)
 =>
     (up-build-line gl-outerGatePoint4-x gl-outerGatePoint1-x c: 792)
-    (set-goal gl-gotNorthWestPalisadeGates 1)     
+    (set-goal gl-gotNorthWestPalisadeGates 1)
     (chat-local-to-self "BUILDING MAIN NORTH WEST PALISADE GATES - A")
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestGates == 1)
-    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint4-x c: 792)    
+    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint4-x c: 792)
 =>
     (up-build-line gl-outerGatePoint1-x gl-outerGatePoint4-x c: 792)
-    (set-goal gl-gotNorthWestPalisadeGates 1)      
+    (set-goal gl-gotNorthWestPalisadeGates 1)
     (chat-local-to-self "BUILDING MAIN NORTH WEST PALISADE GATES - B")
 )
 ; CHECK IF WE ALREADY BUILT SOME PALISADE GATES BEFORE BUILDING THE PALISADE
@@ -1916,13 +1916,13 @@
             (building-type-count 791 > 0) (building-type-count 792 > 0)
         )
     )
-=>    
+=>
     (set-goal gl-gotAscendingPalisadeGates 1)
-    ;(chat-local-to-self "PALISADE G. ASCENDING (X AXIS) PARTS DETECTED!")    
+    ;(chat-local-to-self "PALISADE G. ASCENDING (X AXIS) PARTS DETECTED!")
 )
 ; DESCENDING
 (defrule (false)
-    (or   
+    (or
         (or
             (building-type-count 793 > 0)(building-type-count 794 > 0)
         )
@@ -1930,9 +1930,9 @@
             (building-type-count 795 > 0)(building-type-count 796 > 0)
         )
     )
-=>    
+=>
     (set-goal gl-gotDescendingPalisadeGates 1)
-    ;(chat-local-to-self "PALISADE G. DESCENDING (Y AXIS) PARTS DETECTED!")    
+    ;(chat-local-to-self "PALISADE G. DESCENDING (Y AXIS) PARTS DETECTED!")
 )
 ; NO ASCENDING PALISADE GATE PARTS
 (defrule (false)
@@ -1940,9 +1940,9 @@
     (building-type-count 790 == 0)
     (building-type-count 791 == 0)
     (building-type-count 792 == 0)
-=>    
+=>
     (set-goal gl-gotAscendingPalisadeGates 0)
-    ;(chat-local-to-self "NO ASCENDING PALISADE GATE PARTS DETECTED!")    
+    ;(chat-local-to-self "NO ASCENDING PALISADE GATE PARTS DETECTED!")
 )
 ; NO DESCENDING PALISADE GATE PARTS
 (defrule (false)
@@ -1950,9 +1950,9 @@
     (building-type-count 794 == 0)
     (building-type-count 795 == 0)
     (building-type-count 796 == 0)
-=>    
+=>
     (set-goal gl-gotDescendingPalisadeGates 0)
-    ;(chat-local-to-self "NO DESCENDING PALISADE GATE PARTS DETECTED!")    
+    ;(chat-local-to-self "NO DESCENDING PALISADE GATE PARTS DETECTED!")
 )
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
@@ -1960,35 +1960,35 @@
     ;(up-compare-goal gl-gotDescendingPalisadeGates == 1)gl-gotNorthEastPalisadeGates
     (up-compare-goal gl-gotNorthEastPalisadeGates == 1)
     (unit-type-count-total villager > 5)
-    (building-type-count-total barracks > 0)     
-    (wood-amount > 200)(building-type-count town-center > 0) 
-=>    
+    (building-type-count-total barracks > 0)
+    (wood-amount > 200)(building-type-count town-center > 0)
+=>
     (up-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-gotAscendingPalisadeGates == 1)   
+    (up-compare-goal gl-gotAscendingPalisadeGates == 1)
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)
-    (wood-amount > 200)(building-type-count town-center > 0) 
+    (wood-amount > 200)(building-type-count town-center > 0)
 =>
     (up-build-line gl-outerWallPoint2-x gl-outerWallPoint3-x c: palisade-wall)
 )
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-gotDescendingPalisadeGates == 1) 
+    (up-compare-goal gl-gotDescendingPalisadeGates == 1)
     (unit-type-count-total villager > 5)
     (building-type-count-total barracks > 0)
-    (wood-amount > 200)(building-type-count town-center > 0) 
+    (wood-amount > 200)(building-type-count town-center > 0)
 =>
     (up-build-line gl-outerWallPoint3-x gl-outerWallPoint4-x c: palisade-wall)
 )
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-gotAscendingPalisadeGates == 1)    
+    (up-compare-goal gl-gotAscendingPalisadeGates == 1)
     (unit-type-count-total villager > 5)
-    (building-type-count-total barracks > 0)      
-    (wood-amount > 200)(building-type-count town-center > 0)   
+    (building-type-count-total barracks > 0)
+    (wood-amount > 200)(building-type-count town-center > 0)
 =>
     (up-build-line gl-outerWallPoint4-x gl-outerWallPoint1-x c: palisade-wall)
 )
@@ -2004,38 +2004,38 @@
     (disable-self)
 )
 ; MAKE THE INNER WALL GATE SECTION SMALLER THAN INNER WALL SECTION
-(defrule 
+(defrule
     (up-compare-goal gl-buildNorthEastGates == 1)
-=>    
-    (up-modify-goal gl-innerGatePoint1-y c:+ 6) 
+=>
+    (up-modify-goal gl-innerGatePoint1-y c:+ 6)
     (up-modify-goal gl-innerGatePoint2-y c:- 6)
     ; SECONDARY WGATES
     (up-modify-goal gl-innerSecGatePoint1-x c:- 8)
     (up-modify-goal gl-innerSecGatePoint4-x c:+ 4)
     (up-modify-goal gl-innerSecGatePoint2-x c:- 8)
-    (up-modify-goal gl-innerSecGatePoint3-x c:+ 4)    
+    (up-modify-goal gl-innerSecGatePoint3-x c:+ 4)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthWestGates == 1)
 =>
     (up-modify-goal gl-innerGatePoint3-y c:- 6)
-    (up-modify-goal gl-innerGatePoint4-y c:+ 6)  
+    (up-modify-goal gl-innerGatePoint4-y c:+ 6)
     (up-modify-goal gl-innerSecGatePoint1-x c:- 4)
     (up-modify-goal gl-innerSecGatePoint4-x c:+ 8)
     (up-modify-goal gl-innerSecGatePoint2-x c:- 4)
-    (up-modify-goal gl-innerSecGatePoint3-x c:+ 8)      
+    (up-modify-goal gl-innerSecGatePoint3-x c:+ 8)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
 =>
     (up-modify-goal gl-innerGatePoint2-x c:- 6)
-    (up-modify-goal gl-innerGatePoint3-x c:+ 6) 
+    (up-modify-goal gl-innerGatePoint3-x c:+ 6)
     ; SECONDARY WGATES
     (up-modify-goal gl-innerSecGatePoint1-y c:+ 4)
     (up-modify-goal gl-innerSecGatePoint2-y c:- 8)
-    (up-modify-goal gl-innerSecGatePoint4-y c:+ 4)  
+    (up-modify-goal gl-innerSecGatePoint4-y c:+ 4)
     (up-modify-goal gl-innerSecGatePoint3-y c:- 8)
     (disable-self)
 )
@@ -2047,8 +2047,8 @@
     ; SECONDARY WGATES
     (up-modify-goal gl-innerSecGatePoint1-y c:+ 8)
     (up-modify-goal gl-innerSecGatePoint2-y c:- 4)
-    (up-modify-goal gl-innerSecGatePoint4-y c:+ 8)  
-    (up-modify-goal gl-innerSecGatePoint3-y c:- 4)   
+    (up-modify-goal gl-innerSecGatePoint4-y c:+ 8)
+    (up-modify-goal gl-innerSecGatePoint3-y c:- 4)
     (disable-self)
 )
 ; CHECK IF WE ALREADY BUILT SOME STONE GATES BEFORE BUILDING THE WALL
@@ -2062,13 +2062,13 @@
     (or
         (building-type-count 78 > 0)(building-type-count 81 > 0)
     )
-)    
-=>    
+)
+=>
     (set-goal gl-gotAscendingStoneGates 1)
     ;(chat-local-to-self "STONE GATE ASCENDING (X AXIS) PARTS DETECTED!")
 )
 ; FORTIFIED
-(defrule 
+(defrule
     (or
         (or
             (building-type-count 488 > 0)(building-type-count 63 > 0)
@@ -2077,7 +2077,7 @@
             (building-type-count 67 > 0)(building-type-count 80 > 0)
         )
     )
-=>    
+=>
     (set-goal gl-gotAscendingStoneGates 1)
     ;(chat-local-to-self "FORTIFIED GATE ASCENDING (X AXIS) PARTS DETECTED!")
 )
@@ -2106,12 +2106,12 @@
             (building-type-count 90 > 0)(building-type-count 92 > 0)
         )
     )
-=>    
+=>
     (set-goal gl-gotDescendingStoneGates 1)
     ;(chat-local-to-self "FORTIFIED GATE DESCENDING (Y AXIS) PARTS DETECTED!")
 )
 ; NO ASCENDING STONE GATE PARTS
-(defrule 
+(defrule
         (building-type-count 487 == 0) ;normal
         (building-type-count 64 == 0)
         (building-type-count 78 == 0)
@@ -2121,12 +2121,12 @@
         (building-type-count 67 == 0)
         (building-type-count 80 == 0)
         (building-type-count 490 == 0)
-=>    
+=>
     (set-goal gl-gotAscendingStoneGates 0)
     ;(chat-local-to-self "NO ASCENDING STONE GATE PARTS DETECTED!")
 )
 ; NO DESCENDING STONE GATE PARTS
-(defrule 
+(defrule
         (building-type-count 490 == 0) ;normal
         (building-type-count 88 == 0)
         (building-type-count 91 == 0)
@@ -2135,14 +2135,14 @@
         (building-type-count 85 == 0)
         (building-type-count 90 == 0)
         (building-type-count 92 == 0)
-=>    
+=>
     (set-goal gl-gotDescendingStoneGates 0)
     ;(chat-local-to-self "NO DESCENDING STONE GATE PARTS DETECTED!")
 )
 ;----------------------------
 ; trying to build secondary wall gates
 ; 4 to 1
-(defrule 
+(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
         (and
@@ -2152,14 +2152,14 @@
         (and
             (up-compare-goal gl-dontBuildSouthWestWall == 0)
             (up-compare-goal gl-buildSouthWestGates == 1)
-        )        
+        )
     )
-    (up-can-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint1-x c: 487)    
+    (up-can-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint1-x c: 487)
 =>
     (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint1-x c: 487)
 )
 ; 1 to 4
-(defrule 
+(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
         (and
@@ -2169,9 +2169,9 @@
         (and
             (up-compare-goal gl-dontBuildSouthWestWall == 0)
             (up-compare-goal gl-buildSouthWestGates == 1)
-        )        
+        )
     )
-    (up-can-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint4-x c: 487)    
+    (up-can-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint4-x c: 487)
 =>
     (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint4-x c: 487)
 )
@@ -2186,9 +2186,9 @@
         (and
             (up-compare-goal gl-dontBuildSouthWestWall == 0)
             (up-compare-goal gl-buildSouthWestGates == 1)
-        )        
+        )
     )
-    (up-can-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint3-x c: 487)    
+    (up-can-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint3-x c: 487)
 =>
     (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint3-x c: 487)
 )
@@ -2203,15 +2203,15 @@
         (and
             (up-compare-goal gl-dontBuildSouthWestWall == 0)
             (up-compare-goal gl-buildSouthWestGates == 1)
-        )        
+        )
     )
-    (up-can-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint2-x c: 487)    
+    (up-can-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint2-x c: 487)
 =>
     (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint2-x c: 487)
 )
 ;secondary gates when principal SE or NW gates
 ; 3 to 4
-(defrule 
+(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
         (and
@@ -2221,14 +2221,14 @@
         (and
             (up-compare-goal gl-dontBuildNorthWestWall == 0)
             (up-compare-goal gl-buildNorthWestGates == 1)
-        )        
+        )
     )
-    (up-can-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint4-x c: 490)    
+    (up-can-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint4-x c: 490)
 =>
     (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint4-x c: 490)
 )
 ; 4 to 3
-(defrule 
+(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
         (and
@@ -2238,9 +2238,9 @@
         (and
             (up-compare-goal gl-dontBuildNorthWestWall == 0)
             (up-compare-goal gl-buildNorthWestGates == 1)
-        )        
+        )
     )
-    (up-can-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint3-x c: 490)    
+    (up-can-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint3-x c: 490)
 =>
     (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint3-x c: 490)
 )
@@ -2255,9 +2255,9 @@
         (and
             (up-compare-goal gl-dontBuildNorthWestWall == 0)
             (up-compare-goal gl-buildNorthWestGates == 1)
-        )        
+        )
     )
-    (up-can-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint2-x c: 490)    
+    (up-can-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint2-x c: 490)
 =>
     (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint2-x c: 490)
 )
@@ -2272,9 +2272,9 @@
         (and
             (up-compare-goal gl-dontBuildNorthWestWall == 0)
             (up-compare-goal gl-buildNorthWestGates == 1)
-        )        
+        )
     )
-    (up-can-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint1-x c: 490)    
+    (up-can-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint1-x c: 490)
 =>
     (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint1-x c: 490)
 )
@@ -2324,7 +2324,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-gotDescendingStoneGates == 1)     
+    (up-compare-goal gl-gotDescendingStoneGates == 1)
 =>
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
@@ -2333,7 +2333,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-gotAscendingStoneGates == 1)     
+    (up-compare-goal gl-gotAscendingStoneGates == 1)
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
@@ -2342,7 +2342,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-gotDescendingStoneGates == 1)     
+    (up-compare-goal gl-gotDescendingStoneGates == 1)
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south west start y: %d" g: gl-innerWallPoint3-y)
@@ -2351,7 +2351,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-gotAscendingStoneGates == 1)     
+    (up-compare-goal gl-gotAscendingStoneGates == 1)
 =>
     (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north west start y: %d" g: gl-innerWallPoint3-y)

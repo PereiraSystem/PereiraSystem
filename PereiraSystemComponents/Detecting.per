@@ -11,7 +11,7 @@
                 (players-unit-type-count any-enemy steppe-lancer-line > 2)
                 (players-unit-type-count any-enemy tarkan-set > 2)
             )
-        ) 
+        )
         (or
             (or
                 (players-unit-type-count any-enemy konnik-set > 2)
@@ -21,9 +21,9 @@
                 (players-unit-type-count any-enemy coustillier-line > 2)
                 (players-unit-type-count any-enemy tarkan-line > 2)
             )
-        )    
+        )
     )
-=>  
+=>
     (set-goal gl-dudeHasCavalry 1)
     ;(chat-local-to-self "DUDE HAS CAVALRY!")
 )
@@ -38,7 +38,7 @@
                 (players-unit-type-count any-enemy cataphract-line > 2)
                 (players-unit-type-count any-enemy war-wagon-line > 2)
             )
-        ) 
+        )
         (or
             (or
                 (players-unit-type-count any-enemy conquistador-line > 2)
@@ -48,9 +48,9 @@
                 (players-unit-type-count any-enemy mameluke-line > 2)
                 (players-unit-type-count any-enemy boyar-line > 2)
             )
-        )    
+        )
     )
-=>  
+=>
     (set-goal gl-dudeHasCavalry 1)
     ;(chat-local-to-self "DUDE HAS CAVALRY!")
 )
@@ -70,109 +70,109 @@
     (players-unit-type-count any-enemy conquistador-line < 2)
     (players-unit-type-count any-enemy mangudai-line < 2)
     (players-unit-type-count any-enemy mameluke-line < 2)
-    (players-unit-type-count any-enemy boyar-line < 2)    
-=>  
+    (players-unit-type-count any-enemy boyar-line < 2)
+=>
     (set-goal gl-dudeHasCavalry 0)
 )
 (defrule
     (players-unit-type-count any-enemy battle-elephant-line > 0)
-=>  
+=>
     (do-nothing)
     ;(chat-local-to-self "DUDE HAS ELEPHANTS!")
 )
 (defrule
     (players-unit-type-count any-enemy skirmisher-line > 0)
-=>  
+=>
     (set-goal gl-dudeHasSkirmishers 1)
-    ;(chat-local-to-self "DUDE HAS SKIRMISHERS!")    
+    ;(chat-local-to-self "DUDE HAS SKIRMISHERS!")
 )
 (defrule
     (players-unit-type-count any-enemy skirmisher-line < 1)
-=>  
-    (set-goal gl-dudeHasSkirmishers 0)    
+=>
+    (set-goal gl-dudeHasSkirmishers 0)
 )
 (defrule
     (players-unit-type-count any-enemy archer-line > 0)
-=>  
+=>
     (set-goal gl-dudeHasArchers 1)
-    ;(chat-local-to-self "DUDE HAS ARCHERS!")        
+    ;(chat-local-to-self "DUDE HAS ARCHERS!")
 )
 (defrule
     (players-unit-type-count any-enemy cavalry-archer-line < 1)
-=>  
-    (set-goal gl-dudeHasCavalryArchers 0)    
+=>
+    (set-goal gl-dudeHasCavalryArchers 0)
 )
 (defrule
     (players-unit-type-count any-enemy cavalry-archer-line > 0)
-=>  
+=>
     (set-goal gl-dudeHasCavalryArchers 1)
-    ;(chat-local-to-self "DUDE HAS CAVALRY ARCHERS!")        
+    ;(chat-local-to-self "DUDE HAS CAVALRY ARCHERS!")
 )
 (defrule
     (players-unit-type-count any-enemy archer-line < 1)
-=>  
-    (set-goal gl-dudeHasArchers 0)    
+=>
+    (set-goal gl-dudeHasArchers 0)
 )
 (defrule
     (players-unit-type-count any-enemy spearman-line > 0)
-=>  
+=>
     (set-goal gl-dudeHasSpearmen 1)
-    ;(chat-local-to-self "DUDE HAS SPEARMEN!")        
+    ;(chat-local-to-self "DUDE HAS SPEARMEN!")
 )
 (defrule
     (players-unit-type-count any-enemy spearman-line < 1)
-=>  
-    (set-goal gl-dudeHasSpearmen 0)    
+=>
+    (set-goal gl-dudeHasSpearmen 0)
 )
 (defrule
     (players-unit-type-count any-enemy militiaman-line > 0)
-=>  
+=>
     (set-goal gl-dudeHasMilitia 1)
-    ;(chat-local-to-self "DUDE HAS MILITIA!")        
+    ;(chat-local-to-self "DUDE HAS MILITIA!")
 )
 (defrule
     (players-unit-type-count any-enemy militiaman-line < 1)
-=>  
-    (set-goal gl-dudeHasMilitia 0)    
+=>
+    (set-goal gl-dudeHasMilitia 0)
 )
 ; DETECTING SHIPS
 (defrule
     (players-unit-type-count any-enemy galley-line > 0)
-=>  
-    (set-goal gl-dudeHasGalleys 1)    
+=>
+    (set-goal gl-dudeHasGalleys 1)
 )
 (defrule
     (players-unit-type-count any-enemy galley-line == 0)
-=>  
-    (set-goal gl-dudeHasGalleys 0)    
+=>
+    (set-goal gl-dudeHasGalleys 0)
 )
 (defrule
     (players-unit-type-count any-enemy cannon-galleon-line > 0)
-=>  
-    (set-goal gl-dudeHasCannonShips 1)    
+=>
+    (set-goal gl-dudeHasCannonShips 1)
 )
 (defrule
     (players-unit-type-count any-enemy cannon-galleon-line == 0)
-=>  
-    (set-goal gl-dudeHasCannonShips 0)    
+=>
+    (set-goal gl-dudeHasCannonShips 0)
 )
 (defrule
     (players-unit-type-count any-enemy fire-ship-line > 0)
-=>  
-    (set-goal gl-dudeHasFireShips 1)    
+=>
+    (set-goal gl-dudeHasFireShips 1)
 )
 (defrule
     (players-unit-type-count any-enemy fire-ship-line == 0)
-=>  
-    (set-goal gl-dudeHasFireShips 0)    
+=>
+    (set-goal gl-dudeHasFireShips 0)
 )
 (defrule
     (players-unit-type-count any-enemy demolition-ship-line > 0)
-=>  
-    (set-goal gl-dudeHasExplosiveShips 1)    
+=>
+    (set-goal gl-dudeHasExplosiveShips 1)
 )
 (defrule
     (players-unit-type-count any-enemy demolition-ship-line == 0)
-=>  
-    (set-goal gl-dudeHasExplosiveShips 0)    
+=>
+    (set-goal gl-dudeHasExplosiveShips 0)
 )

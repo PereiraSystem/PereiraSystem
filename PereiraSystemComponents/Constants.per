@@ -38,7 +38,7 @@
 (defconst gl-nonUpgradedUniqueUnitsCreated 90)
 (defconst gl-weMovedPlace 99)
 (defconst gl-weAreAttacking 100)
-(defconst gl-maxHousesBeforeDeleting 101)    
+(defconst gl-maxHousesBeforeDeleting 101)
 (defconst gl-maxHousesNeeded 102)
 (defconst gl-farmQtyImperial 103)
 ; civilian units constants
@@ -114,13 +114,13 @@
 =>
     (set-goal gl-minimumWoodForTC 275)
     (set-goal gl-minimumWoodForLC 100)
-    (set-goal gl-house-distance-mod 12)  
+    (set-goal gl-house-distance-mod 12)
     (set-goal gl-feudalAgeFoodCost 500)
     (set-goal gl-castleAgeFoodCost 800)
     (set-goal gl-castleAgeGoldCost 200)
     (set-goal gl-imperialAgeFoodCost 1000)
     (set-goal gl-imperialAgeGoldCost 800)
-    (set-goal gl-maxHousesBeforeDeleting 21)    
+    (set-goal gl-maxHousesBeforeDeleting 21)
     (set-goal gl-maxHousesNeeded 30)
     (set-goal gl-farmQtyImperial 20)
     (set-goal gl-maxCiviliansDarkAge 16)
@@ -129,7 +129,7 @@
     (set-goal gl-maxCiviliansImperialAge 85)
     (set-goal gl-tradeCartsQty 14)
     (set-goal gl-tradeShipsQty 20)
-    (set-goal gl-fishingShipsQty 6) (disable-self)   
+    (set-goal gl-fishingShipsQty 6) (disable-self)
 )
 (defrule
     (or     (or(civ-selected aztec)(civ-selected mayan))
@@ -154,7 +154,7 @@
 =>
     (set-goal gl-minimumWoodForTC 275)
     (set-goal gl-minimumWoodForLC 100)(disable-self)
-)    
+)
 (defrule
     (civ-selected italian)
 =>
@@ -167,7 +167,7 @@
 (defrule
     (current-age == feudal-age)
 =>
-    (up-modify-goal gl-fishingShipsQty c:* 1,1) 
+    (up-modify-goal gl-fishingShipsQty c:* 1,1)
     (disable-self)
 )
 (defrule
@@ -175,14 +175,14 @@
 =>
     (up-modify-goal gl-tradeCartsQty c:* 1,5)
     (up-modify-goal gl-tradeShipsQty c:* 1,5)
-    (up-modify-goal gl-fishingShipsQty c:* 1,1)  (disable-self)  
+    (up-modify-goal gl-fishingShipsQty c:* 1,1)  (disable-self)
 )
 (defrule
     (current-age == imperial-age)
 =>
     (up-modify-goal gl-tradeCartsQty c:* 1,5)
     (up-modify-goal gl-tradeShipsQty c:* 1,5)
-    (up-modify-goal gl-fishingShipsQty c:* 1,1)(disable-self)    
+    (up-modify-goal gl-fishingShipsQty c:* 1,1)(disable-self)
 )
 (defrule
     (true)
@@ -199,7 +199,7 @@
     (set-goal gl-archerQtyLow 8)
     (set-goal gl-archerQtyMedium 16)
     (set-goal gl-archerQtyHigh 40)
-    (set-goal gl-skirmisherQtyLow 8)    
+    (set-goal gl-skirmisherQtyLow 8)
     (set-goal gl-skirmisherQtyMedium 16)
     (set-goal gl-skirmisherQtyHigh 30)
     (set-goal gl-cavalryArcherQtyLow 12)
@@ -211,10 +211,10 @@
     (set-goal gl-knightsQtyHigh 40)
     (set-goal gl-scoutsQtyLow 8)
     (set-goal gl-scoutsQtyMedium 30)
-    (set-goal gl-scoutsQtyHigh 40)    
+    (set-goal gl-scoutsQtyHigh 40)
     (set-goal gl-camelQtyLow 5)
     (set-goal gl-camelQtyMedium 15)
-    (set-goal gl-camelQtyHigh 28)(disable-self)        
+    (set-goal gl-camelQtyHigh 28)(disable-self)
 )
 (defrule
     (true)
@@ -231,9 +231,9 @@
     (set-goal gl-bombardCannonsQty 8)
     (set-goal gl-uniqueUnitQtyLow 10)
     (set-goal gl-uniqueUnitQtyMedium 24)
-    (set-goal gl-uniqueUnitQtyHigh 40)    
+    (set-goal gl-uniqueUnitQtyHigh 40)
     (set-goal gl-trebuchetsQtyLow 6)
-    (set-goal gl-trebuchetsQtyMedium 8)    
+    (set-goal gl-trebuchetsQtyMedium 8)
     (set-goal gl-trebuchetsQtyHigh 12)(disable-self)
 )
 (defrule
@@ -261,47 +261,47 @@
     (up-modify-goal gl-scoutsQtyLow c:+ 4)
     (up-modify-goal gl-skirmisherQtyLow c:- 3)
     (up-modify-goal gl-scoutsQtyLow c:+ 4)
-    (up-modify-goal gl-skirmisherQtyMedium c:- 5)    
-    (up-modify-goal gl-archerQtyLow c:- 3) 
-    (up-modify-goal gl-militiaQtyLow c:- 3)     
-    (up-modify-goal gl-knightsQtyLow c:+ 5)   
+    (up-modify-goal gl-skirmisherQtyMedium c:- 5)
+    (up-modify-goal gl-archerQtyLow c:- 3)
+    (up-modify-goal gl-militiaQtyLow c:- 3)
+    (up-modify-goal gl-knightsQtyLow c:+ 5)
     (disable-self)
 )
 (defrule
     (true)
-=>    
+=>
     (set-goal gl-max-lumber-camps-qty 3)
     (set-goal gl-max-mining-camps-qty 1)
     (set-goal gl-minimumWoodForTC 275)
     (set-goal gl-minimumWoodForLC 100)
     ;(up-chat-data-to-self "Lumber Camps Max Qty = %d" g: gl-max-lumber-camps-qty)
     ;(up-chat-data-to-self "Mining Camps Max Qty = %d" g: gl-max-mining-camps-qty)
-    (disable-self)	    
+    (disable-self)
 )
 (defrule
     (true)
-=>    
-    (set-goal gl-dudeHasCavalry 0)    
+=>
+    (set-goal gl-dudeHasCavalry 0)
     (set-goal gl-dudeHasScouts 0)
     (set-goal gl-dudeHasKnights 0)
     (set-goal gl-dudeHasCamels 0)
     (set-goal gl-dudeHasElephants 0)
     (set-goal gl-dudeHasArchers 0)
     (set-goal gl-dudeHasCavalryArchers 0)
-    (set-goal gl-dudeHasMilitia 0)        
+    (set-goal gl-dudeHasMilitia 0)
     (set-goal gl-dudeHasSkirmishers 0)
     (set-goal gl-weMovedPlace 0)
     (set-goal gl-weAreAttacking 0)
     (set-goal gl-maximumSoldiersFeudal 30)
     (set-goal gl-totalSoldiersCreatedThisAge 0)
-    (set-goal gl-nonUpgradedUniqueUnitsCreated 0)              
-    (disable-self)	    
+    (set-goal gl-nonUpgradedUniqueUnitsCreated 0)
+    (disable-self)
 )
 (defrule
     (current-age == castle-age)
-=>    
-    (set-goal gl-totalSoldiersCreatedThisAge 0)          
-    (disable-self)	    
+=>
+    (set-goal gl-totalSoldiersCreatedThisAge 0)
+    (disable-self)
 )
 (defconst gl-civPop 300)
 (defrule
