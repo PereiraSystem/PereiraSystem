@@ -906,7 +906,7 @@
     (up-compare-goal gl-myPosition-x g:>= gl-mapSizeTwoThirds)
 =>
     (set-goal gl-posXisHigh 1)
-    (chat-to-allies "IM CLOSE TO THE HIGH X BORDER")
+    (chat-to-player my-player-number "IM CLOSE TO THE HIGH X BORDER")
     ;(up-chat-data-to-self "this is x : %d" g: gl-myPosition-x)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
     (disable-self)
@@ -915,7 +915,7 @@
     (up-compare-goal gl-myPosition-y g:>= gl-mapSizeTwoThirds)
 =>
     (set-goal gl-posYisHigh 1)
-    (chat-to-allies "IM CLOSE TO THE HIGH Y BORDER")
+    (chat-to-player my-player-number "IM CLOSE TO THE HIGH Y BORDER")
     ;(up-chat-data-to-self "this is y : %d" g: gl-myPosition-x)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
 
