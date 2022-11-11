@@ -1478,14 +1478,14 @@
     (random-number >= 50)
 =>
     (up-modify-goal gl-outerGatePoint2-x c:- 1)
-    (up-modify-goal gl-outerGatePoint3-x c:+ 9)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 15)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 9)
+    (up-modify-goal gl-outerGatePoint2-x c:- 15)
     (up-modify-goal gl-outerGatePoint3-x c:+ 1)
     (disable-self)
 )
