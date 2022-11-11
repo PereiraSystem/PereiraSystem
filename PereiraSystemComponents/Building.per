@@ -1336,12 +1336,6 @@
 )
 #end-if
 
-(defrule
-    (false)
-=>
-    (up-chat-data-to-self "OUTER GATE POINT CORRECTED 1 X: %d" g: gl-outerGatePoint1-x)
-    (up-chat-data-to-self "OUTER GATE POINT CORRECTED 1 Y: %d" g: gl-outerGatePoint1-y)
-)
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
 (defrule  ; no north east (1 to 2) if point 1 too close to north border
@@ -1645,7 +1639,7 @@
 
 ; MAIN: SOUTH - EAST
 ; SECONDARY: NORTH EAST AND SOUTH WEST
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
@@ -1655,7 +1649,7 @@
     (set-goal gl-gotNorthEastPalisadeGates 1)
     (chat-local-to-self "BUILDING SEC PALISADE GATE P1")
 )
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastGates == 1)
