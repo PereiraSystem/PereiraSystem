@@ -1185,10 +1185,10 @@
     (up-get-point position-self gl-innerGatePoint2-x)
     (up-get-point position-self gl-innerGatePoint3-x)
     (up-get-point position-self gl-innerGatePoint4-x)
-    (up-get-point position-self gl-outerGatePoint1-x )
-    (up-get-point position-self gl-outerGatePoint2-x )
-    (up-get-point position-self gl-outerGatePoint3-x )
-    (up-get-point position-self gl-outerGatePoint4-x )
+    (up-get-point position-self gl-outerGatePoint1-x)
+    (up-get-point position-self gl-outerGatePoint2-x)
+    (up-get-point position-self gl-outerGatePoint3-x)
+    (up-get-point position-self gl-outerGatePoint4-x)
     (disable-self)
 )
 (defrule
@@ -1213,6 +1213,8 @@
     (up-modify-goal gl-outerWallPoint3-y g:+ gl-outerWallPerimeter)
     (up-modify-goal gl-outerWallPoint4-x g:- gl-outerWallPerimeter)
     (up-modify-goal gl-outerWallPoint4-y g:- gl-outerWallPerimeter)
+    (up-chat-data-to-self "OUTER WALL POINT 1 X: %d" g: gl-outerWallPoint1-x)
+    (up-chat-data-to-self "OUTER WALL POINT 1 Y: %d" g: gl-outerWallPoint1-y)
     (disable-self)
 )
 
@@ -1228,6 +1230,8 @@
     (up-modify-goal gl-outerGatePoint3-y g:+ gl-outerWallPerimeter)
     (up-modify-goal gl-outerGatePoint4-x g:- gl-outerWallPerimeter)
     (up-modify-goal gl-outerGatePoint4-y g:- gl-outerWallPerimeter)
+    (up-chat-data-to-self "OUTER GATE POINT 1 X: %d" g: gl-outerGatePoint1-x)
+    (up-chat-data-to-self "OUTER GATE POINT 1 Y: %d" g: gl-outerGatePoint1-y)
     (disable-self)
 )
 
