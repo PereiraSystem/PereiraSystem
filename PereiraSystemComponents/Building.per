@@ -1656,36 +1656,62 @@
     (set-goal gl-buildSouthWestGates 1)    
 )
 
-; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
+; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION(defrule
+  (defrule  (true)
+=>   
+    (generate-random-number)
+    (disable-self)
+)
 (defrule
-    (up-compare-goal gl-buildNorthEastGates == 1) 
+    (up-compare-goal gl-buildNorthEastGates == 1)
+    (random-number >= 50) 
 =>    
     (up-modify-goal gl-outerWallGatePoint1-y c:+ 5)
     (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
 
     (up-modify-goal gl-outerWallGatePoint3-x c:+ 5)
-    (up-modify-goal gl-outerWallGatePoint4-x c:+ 5)
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 3)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-buildSouthEastGates == 1) 
+    (up-compare-goal gl-buildNorthEastGates == 1)
+    (random-number < 50) 
+=>    
+    (up-modify-goal gl-outerWallGatePoint1-y c:+ 5)
+    (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
+
+    (up-modify-goal gl-outerWallGatePoint3-x c:+ 3)
+    (up-modify-goal gl-outerWallGatePoint4-x c:+ 5)
+    (disable-self)
+)
+
+
+
+(defrule
+    (true)
+=>   
+    (generate-random-number)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-buildSouthEastGates == 1)  (random-number >= 50)
 =>    
     (up-modify-goal gl-outerWallGatePoint2-x c:- 5)
     (up-modify-goal gl-outerWallGatePoint3-x c:+ 5)
 
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 3)
     (up-modify-goal gl-outerWallGatePoint1-y c:+ 5)
     (disable-self)
 )
 
 (defrule
-    (up-compare-goal gl-buildSouthWestGates == 1) 
+    (up-compare-goal gl-buildSouthEastGates == 1)  (random-number < 50)
 =>    
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 5)
-    (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
-
-    (up-modify-goal gl-outerWallGatePoint1-x c:- 5)
     (up-modify-goal gl-outerWallGatePoint2-x c:- 5)
+    (up-modify-goal gl-outerWallGatePoint3-x c:+ 5)
+
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
+    (up-modify-goal gl-outerWallGatePoint1-y c:+ 3)
     (disable-self)
 )
 
@@ -1693,6 +1719,37 @@
     (true)
 =>   
     (generate-random-number)
+    (disable-self)
+)
+
+(defrule
+    (up-compare-goal gl-buildSouthWestGates == 1) 
+    (random-number >= 50)
+=>    
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 5)
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
+
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 3)
+    (up-modify-goal gl-outerWallGatePoint2-x c:- 5)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-buildSouthWestGates == 1) 
+    (random-number < 50)
+=>    
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 5)
+    (up-modify-goal gl-outerWallGatePoint4-y c:+ 5)
+
+    (up-modify-goal gl-outerWallGatePoint1-x c:- 5)
+    (up-modify-goal gl-outerWallGatePoint2-x c:- 3)
+    (disable-self)
+)
+
+(defrule
+    (true)
+=>   
+    (generate-random-number)
+    (disable-self)
 )
 
 (defrule
@@ -1702,7 +1759,7 @@
     (up-modify-goal gl-outerWallGatePoint1-x c:- 5)
     (up-modify-goal gl-outerWallGatePoint4-x c:+ 5)
 
-    (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
+    (up-modify-goal gl-outerWallGatePoint2-y c:- 3)
     (up-modify-goal gl-outerWallGatePoint3-y c:- 5)    
     (disable-self)
 )
@@ -1715,7 +1772,7 @@
     (up-modify-goal gl-outerWallGatePoint4-x c:+ 5)
 
     (up-modify-goal gl-outerWallGatePoint2-y c:- 5)
-    (up-modify-goal gl-outerWallGatePoint3-y c:- 5)    
+    (up-modify-goal gl-outerWallGatePoint3-y c:- 3)    
     (disable-self)
 )
 
