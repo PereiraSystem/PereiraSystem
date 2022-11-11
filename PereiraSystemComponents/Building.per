@@ -1016,8 +1016,6 @@
     (up-send-flare position-self)(disable-self)
 )
 
-
-
 (defrule
     (true)
 =>
@@ -1061,8 +1059,8 @@
     (up-modify-goal gl-outerWallPoint3-y g:+ gl-outerWallPerimeter)
     (up-modify-goal gl-outerWallPoint4-x g:- gl-outerWallPerimeter)
     (up-modify-goal gl-outerWallPoint4-y g:- gl-outerWallPerimeter)
-    ;(up-chat-data-to-self "OUTER WALL POINT 1 X: %d" g: gl-outerWallPoint1-x)
-    ;(up-chat-data-to-self "OUTER WALL POINT 1 Y: %d" g: gl-outerWallPoint1-y)
+    (up-chat-data-to-self "OUTER WALL POINT 1 X: %d" g: gl-outerWallPoint1-x)
+    (up-chat-data-to-self "OUTER WALL POINT 1 Y: %d" g: gl-outerWallPoint1-y)
     (disable-self)
 )
 
