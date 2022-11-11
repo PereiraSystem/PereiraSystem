@@ -2022,6 +2022,7 @@
     (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint1-x c: 796)
 =>   
     (up-build-line gl-outerGatePoint2-x gl-outerGatePoint1-x c: 796)
+    (set-goal gl-gotNorthEastPalisadeGates 1)    
     (chat-local-to-self "BUILDING MAIN NORTH EAST PALISADE GATES - B")    
 )
 
@@ -2032,7 +2033,8 @@
     (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint3-x c: 792)
 =>
     (up-build-line gl-outerGatePoint2-x gl-outerGatePoint3-x c: 792)
-    (chat-local-to-self "BUILDING SOUTH EAST PALISADE GATES")
+    (set-goal gl-gotSouthEastPalisadeGates 1)    
+    (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATES - A")
 )
 (defrule (wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
@@ -2041,7 +2043,8 @@
     (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint2-x c: 792)
 =>
     (up-build-line gl-outerGatePoint3-x gl-outerGatePoint2-x c: 792)
-    (chat-local-to-self "BUILDING SOUTH EAST PALISADE GATES BACKWARDS")
+    (set-goal gl-gotSouthEastPalisadeGates 1)     
+    (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATES - B")
 )
 
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
@@ -2051,7 +2054,8 @@
     (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint4-x c: 796)
 =>
     (up-build-line gl-outerGatePoint3-x gl-outerGatePoint4-x c: 796)
-    (chat-local-to-self "BUILDING SOUTH WEST PALISADE GATES")
+    (set-goal gl-gotSouthWestPalisadeGates 1)     
+    (chat-local-to-self "BUILDING MAIN SOUTH WEST PALISADE GATES - A")
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
@@ -2060,7 +2064,8 @@
     (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint3-x c: 796)
 =>
     (up-build-line gl-outerGatePoint4-x gl-outerGatePoint3-x c: 796)
-    (chat-local-to-self "BUILDING SOUTH WEST PALISADE GATES BACKWARDS")
+    (set-goal gl-gotSouthWestPalisadeGates 1)     
+    (chat-local-to-self "BUILDING MAIN SOUTH WEST PALISADE GATES - B")
 )
 
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
@@ -2070,7 +2075,8 @@
     (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint1-x c: 792)    
 =>
     (up-build-line gl-outerGatePoint4-x gl-outerGatePoint1-x c: 792)
-    (chat-local-to-self "BUILDING NORTH WEST PALISADE GATES")
+    (set-goal gl-gotNorthWesttPalisadeGates 1)     
+    (chat-local-to-self "BUILDING MAIN NORTH WEST PALISADE GATES - A")
 )
 (defrule(wood-amount > 175)(building-type-count town-center > 0)
     (building-type-count barracks > 0)
@@ -2079,7 +2085,8 @@
     (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint4-x c: 792)    
 =>
     (up-build-line gl-outerGatePoint1-x gl-outerGatePoint4-x c: 792)
-    (chat-local-to-self "BUILDING NORTH WEST PALISADE GATES BACKWARDS")
+    (set-goal gl-gotNorthWesttPalisadeGates 1)      
+    (chat-local-to-self "BUILDING MAIN NORTH WEST PALISADE GATES - B")
 )
 
 
