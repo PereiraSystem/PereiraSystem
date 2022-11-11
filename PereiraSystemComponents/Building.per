@@ -883,7 +883,7 @@
 
 
 (defrule
-    (game-time > 5)
+    (game-time > 10)
 =>
     (up-chat-data-to-self "Map Size x: %d" g: gl-posMapSize-x)
     (up-chat-data-to-self "Map Size manually set: %d" g: gl-maxDimensionOfMap)
@@ -894,7 +894,7 @@
 )
 
 (defrule
-    (game-time > 10)
+    (game-time > 20)
 =>
     (up-chat-data-to-self "POS X: %d" g: gl-myPosition-x)
     (up-chat-data-to-self "POS Y: %d" g: gl-myPosition-y)
@@ -937,7 +937,7 @@
     (up-compare-goal gl-myPosition-x g:<= gl-mapSizeThird)
 =>
     (set-goal gl-posXisLow 1)
-    (chat-to-allies "IM CLOSE TO THE LOW X BORDER")
+    (chat-to-player my-player-number "IM CLOSE TO THE LOW X BORDER")
     ;(up-chat-data-to-self "this is x : %d" g: gl-myPosition-x)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
     (disable-self)
@@ -946,7 +946,7 @@
     (up-compare-goal gl-myPosition-y g:<= gl-mapSizeThird)
 =>
     (set-goal gl-posYisLow 1)
-    (chat-to-allies "IM CLOSE TO THE LOW Y BORDER")
+    (chat-to-player my-player-number "IM CLOSE TO THE LOW Y BORDER")
     ;(up-chat-data-to-self "this is y : %d" g: gl-myPosition-y)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
     (disable-self)
