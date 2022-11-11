@@ -881,8 +881,9 @@
     (disable-self)
 )
 
+
 (defrule
-    (true)
+    (game-time > 1) ;)))
 =>
     (up-chat-data-to-self "Map Size x: %d" g: gl-posMapSize-x)
     (up-chat-data-to-self "Map Size manually set: %d" g: gl-maxDimensionOfMap)
@@ -891,7 +892,6 @@
     (up-chat-data-to-self "Map Size 1/10 %d" g: gl-mapSizeTenth)
     (up-chat-data-to-self "POS X: %d" g: gl-myPosition-x)
     (up-chat-data-to-self "POS Y: %d" g: gl-myPosition-y)
-    (disable-self)
 )
 
 ; CHECK OUR POSITION IN 9 SQUARES
