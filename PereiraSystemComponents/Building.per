@@ -1894,6 +1894,15 @@
     (set-goal gl-gotSouthEastPalisadeGates 1)
     (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATE - B")
 )
+; SOUTH WEST
+(defrule
+    (true)
+    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint4-x c: 796)
+=>
+    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint4-x c: 796)
+    (set-goal gl-gotSouthWestPalisadeGates 1)
+    (chat-local-to-self "BUILDING MAIN SOUTH WEST PALISADE GATE - A")
+)
 
 (defrule
     (up-compare-goal gl-buildingOuterWall == 1)
