@@ -1846,55 +1846,6 @@
 )
 
 
-; CHECK IF WE ALREADY BUILT SOME PALISADE GATES BEFORE BUILDING THE PALISADE
-; ASCENDING
-(defrule (false)
-    (or
-        (or
-            (building-type-count 789 > 0)(building-type-count 790 > 0)
-        )
-        (or
-            (building-type-count 791 > 0) (building-type-count 792 > 0)
-        )
-    )
-=>
-    (set-goal gl-gotAscendingPalisadeGates 1)
-    ;(chat-local-to-self "PALISADE G. ASCENDING (X AXIS) PARTS DETECTED!")
-)
-; DESCENDING
-(defrule (false)
-    (or
-        (or
-            (building-type-count 793 > 0)(building-type-count 794 > 0)
-        )
-        (or
-            (building-type-count 795 > 0)(building-type-count 796 > 0)
-        )
-    )
-=>
-    (set-goal gl-gotDescendingPalisadeGates 1)
-    ;(chat-local-to-self "PALISADE G. DESCENDING (Y AXIS) PARTS DETECTED!")
-)
-; NO ASCENDING PALISADE GATE PARTS
-(defrule (false)
-    (building-type-count 789 == 0)
-    (building-type-count 790 == 0)
-    (building-type-count 791 == 0)
-    (building-type-count 792 == 0)
-=>
-    (set-goal gl-gotAscendingPalisadeGates 0)
-    ;(chat-local-to-self "NO ASCENDING PALISADE GATE PARTS DETECTED!")
-)
-; NO DESCENDING PALISADE GATE PARTS
-(defrule (false)
-    (building-type-count 793 == 0)
-    (building-type-count 794 == 0)
-    (building-type-count 795 == 0)
-    (building-type-count 796 == 0)
-=>
-    (set-goal gl-gotDescendingPalisadeGates 0)
-    ;(chat-local-to-self "NO DESCENDING PALISADE GATE PARTS DETECTED!")
-)
 ; BUILDING THE OUTER PALISADE WALL
 (defrule
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
@@ -1932,6 +1883,7 @@
 =>
     (up-build-line gl-outerWallPoint4-x gl-outerWallPoint1-x c: palisade-wall)
 )
+
 ; INNER STONE WALL SECTION
 (defrule
     (true)
@@ -1991,94 +1943,7 @@
     (up-modify-goal gl-innerSecGatePoint3-y c:- 4)
     (disable-self)
 )
-; CHECK IF WE ALREADY BUILT SOME STONE GATES BEFORE BUILDING THE WALL
-;ASCENDING
-; NORMAL
-(defrule
-(or
-    (or
-        (building-type-count 487 > 0)(building-type-count 64 > 0)
-    )
-    (or
-        (building-type-count 78 > 0)(building-type-count 81 > 0)
-    )
-)
-=>
-    (set-goal gl-gotAscendingStoneGates 1)
-    ;(chat-local-to-self "STONE GATE ASCENDING (X AXIS) PARTS DETECTED!")
-)
-; FORTIFIED
-(defrule
-    (or
-        (or
-            (building-type-count 488 > 0)(building-type-count 63 > 0)
-        )
-        (or
-            (building-type-count 67 > 0)(building-type-count 80 > 0)
-        )
-    )
-=>
-    (set-goal gl-gotAscendingStoneGates 1)
-    ;(chat-local-to-self "FORTIFIED GATE ASCENDING (X AXIS) PARTS DETECTED!")
-)
-;DESCENDING
-; NORMAL
-(defrule
-(or
-    (or
-        (building-type-count 490 > 0)(building-type-count 88 > 0)
-    )
-    (or
-        (building-type-count 91 > 0)(building-type-count 95 > 0)
-    )
-)
-=>
-    (set-goal gl-gotDescendingStoneGates 1)
-    ;(chat-local-to-self "STONE GATE DESCENDING (Y AXIS) PARTS DETECTED!")
-)
-; FORTIFIED
-(defrule
-    (or
-        (or
-            (building-type-count 491 > 0)(building-type-count 85 > 0)
-        )
-        (or
-            (building-type-count 90 > 0)(building-type-count 92 > 0)
-        )
-    )
-=>
-    (set-goal gl-gotDescendingStoneGates 1)
-    ;(chat-local-to-self "FORTIFIED GATE DESCENDING (Y AXIS) PARTS DETECTED!")
-)
-; NO ASCENDING STONE GATE PARTS
-(defrule
-        (building-type-count 487 == 0) ;normal
-        (building-type-count 64 == 0)
-        (building-type-count 78 == 0)
-        (building-type-count 81 == 0)
-        (building-type-count 488 == 0) ;fort
-        (building-type-count 63 == 0)
-        (building-type-count 67 == 0)
-        (building-type-count 80 == 0)
-        (building-type-count 490 == 0)
-=>
-    (set-goal gl-gotAscendingStoneGates 0)
-    ;(chat-local-to-self "NO ASCENDING STONE GATE PARTS DETECTED!")
-)
-; NO DESCENDING STONE GATE PARTS
-(defrule
-        (building-type-count 490 == 0) ;normal
-        (building-type-count 88 == 0)
-        (building-type-count 91 == 0)
-        (building-type-count 95 == 0)
-        (building-type-count 491 == 0) ;fort
-        (building-type-count 85 == 0)
-        (building-type-count 90 == 0)
-        (building-type-count 92 == 0)
-=>
-    (set-goal gl-gotDescendingStoneGates 0)
-    ;(chat-local-to-self "NO DESCENDING STONE GATE PARTS DETECTED!")
-)
+
 ;----------------------------
 ; trying to build secondary wall gates
 ; 4 to 1
@@ -2264,7 +2129,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-gotDescendingStoneGates == 1)
+
 =>
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
@@ -2273,7 +2138,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-gotAscendingStoneGates == 1)
+
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
@@ -2282,7 +2147,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-gotDescendingStoneGates == 1)
+
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south west start y: %d" g: gl-innerWallPoint3-y)
@@ -2291,7 +2156,7 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-gotAscendingStoneGates == 1)
+
 =>
     (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north west start y: %d" g: gl-innerWallPoint3-y)
