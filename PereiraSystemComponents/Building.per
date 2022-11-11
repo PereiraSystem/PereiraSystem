@@ -1746,8 +1746,10 @@
     (unit-type-count villager > 10)
     (wood-amount > 200)
     (building-type-count barracks > 0)
-    (or(building-type-count archery-range > 0)
-    ((building-type-count stable > 0)))
+    (or
+        (building-type-count archery-range > 0)
+        (building-type-count stable > 0)
+    )
 =>
     (set-goal gl-buildingOuterWall 1)
     (chat-to-player my-player-number "TIME FOR OUTER WALL")
