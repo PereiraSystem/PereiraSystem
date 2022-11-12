@@ -1133,25 +1133,31 @@
     (up-compare-goal gl-outerWallPoint1-y g:< gl-mapSizeTenth)
 =>
     (set-goal gl-outerWallPoint1-y 0)
-    (set-goal gl-innerWallPoint1-y 0)(disable-self)
+    (set-goal gl-innerWallPoint1-y 0)
+    (set-goal gl-innerWallGatePoint1-y 0)
+    (set-goal gl-innerWallSecGatePoint1-y 0)
+    (disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint3-x g:< gl-mapSizeTenth)
 =>
     (set-goal gl-outerWallPoint3-x 0)
-    (set-goal gl-innerWallPoint3-x 0)(disable-self)
+    (set-goal gl-innerWallPoint3-x 0)
+    (disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint4-x g:< gl-mapSizeTenth)
 =>
     (set-goal gl-outerWallPoint4-x 0)
-    (set-goal gl-innerWallPoint4-x 0)(disable-self)
+    (set-goal gl-innerWallPoint4-x 0)
+    (disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint4-y g:< gl-mapSizeTenth)
 =>
     (set-goal gl-outerWallPoint4-y 0)
-    (set-goal gl-innerWallPoint4-y 0)(disable-self)
+    (set-goal gl-innerWallPoint4-y 0)
+    (disable-self)
 )
 ; DEFAULT: LUDICROUS
 (defrule
