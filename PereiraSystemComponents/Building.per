@@ -1509,20 +1509,19 @@
 
 ; 2/4 SOUTH EAST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
-(defrule(true)=>(generate-random-number 100)(disable-self))
-
+(defrule(true)=>(generate-random-number 10)(disable-self))
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 8)
+    (up-modify-goal gl-outerGatePoint2-x c:- 10)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 3)
+    (up-modify-goal gl-outerGatePoint2-x c:- 1)
     (disable-self)
 )
 
@@ -1532,14 +1531,14 @@
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint3-x c:+ 8)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 10)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint3-x c:+ 3)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 1)
     (disable-self)
 )
 
@@ -1550,14 +1549,14 @@
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-y c:+ 4)
+    (up-modify-goal gl-outerGatePoint1-y c:+ 1)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-y c:+ 8)
+    (up-modify-goal gl-outerGatePoint1-y c:+ 10)
     (disable-self)
 )
 
@@ -1567,14 +1566,14 @@
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint4-y c:+ 4)
+    (up-modify-goal gl-outerGatePoint4-y c:+ 1)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint4-y c:+ 8)
+    (up-modify-goal gl-outerGatePoint4-y c:+ 10)
     (disable-self)
 )
 
@@ -1964,7 +1963,6 @@
 
 ; MAIN: NORTH - WEST
 ; SECONDARY: SOUTH WEST AND NORTH EAST
-
 (defrule
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
@@ -1986,8 +1984,7 @@
     (chat-local-to-self "BUILDING SEC PALISADE GATE P2")
 )
 
-
-; BUILDING THE OUTER PALISADE WALL
+; BUILDING THE OUTER PALISADE WALL --------------------------------------------------
 (defrule
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-gotNorthEastPalisadeGates == 1)
@@ -2004,7 +2001,6 @@
 =>
     (up-build-line gl-outerWallPoint2-x gl-outerWallPoint1-x c: palisade-wall)
 )
-
 
 (defrule
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
@@ -2023,7 +2019,6 @@
     (up-build-line gl-outerWallPoint3-x gl-outerWallPoint2-x c: palisade-wall)
 )
 
-
 (defrule
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-gotSouthWestPalisadeGates == 1)
@@ -2040,7 +2035,6 @@
 =>
     (up-build-line gl-outerWallPoint4-x gl-outerWallPoint3-x c: palisade-wall)
 )
-
 
 (defrule
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
