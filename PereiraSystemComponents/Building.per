@@ -2131,14 +2131,14 @@
     (up-modify-goal gl-innerSecGatePoint3-y g:- gl-randomNumber)(disable-self))    
 
 ; GATES CLOSER TO BACK
-(defrule(true)=>(generate-random-number 6)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 3)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
 =>
     (up-modify-goal gl-innerSecGatePoint1-y g:+ gl-randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 6)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 3)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
