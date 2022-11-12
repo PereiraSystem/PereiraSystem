@@ -738,8 +738,8 @@
     ;(build watch-tower-line)
     (up-set-placement-data my-player-number town-center c: +16)
     (up-build place-control 0 c: watch-tower)
-    (up-chat-data-to-self "BUILDING TOWER - MIN TOWN SIZE: %d" s: sn-minimum-town-size)
-    (up-chat-data-to-self "BUILDING TOWER - MAX TOWN SIZE: %d" s: sn-maximum-town-size)
+    (up-chat-data-to-player my-player-number "BUILDING TOWER - MIN TOWN SIZE: %d" s: sn-minimum-town-size)
+    (up-chat-data-to-player my-player-number "BUILDING TOWER - MAX TOWN SIZE: %d" s: sn-maximum-town-size)
 
 (defrule
 	(current-age == imperial-age)
