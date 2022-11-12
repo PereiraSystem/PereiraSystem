@@ -1125,13 +1125,13 @@
     (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>
     (set-goal gl-outerWallPoint1-x gl-maxDimensionOfMap)
-    (set-goal gl-innerWallPoint1-x 480)(disable-self)
+    (set-goal gl-innerWallPoint1-x gl-maxDimensionOfMap)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
 =>
-    (set-goal gl-outerWallPoint2-x 480)
-    (set-goal gl-innerWallPoint2-x 480)(disable-self)
+    (set-goal gl-outerWallPoint2-x gl-maxDimensionOfMap)
+    (set-goal gl-innerWallPoint2-x gl-maxDimensionOfMap)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
