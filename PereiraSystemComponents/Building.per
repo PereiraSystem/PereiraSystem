@@ -1636,7 +1636,7 @@
     (disable-self)
 )
 
-; BUILD THE OUTER PALISADE GATES
+; BUILD THE MAIN PALISADE GATES
 ; NORTH EAST
 (defrule
     (up-compare-goal gl-buildingOuterWall == 1)
@@ -1658,7 +1658,7 @@
 )
 
 ; SOUTH EAST
-(defrule (true)
+(defrule
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastMainGates == 1)
@@ -1667,7 +1667,7 @@
     (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 792)
     (set-goal gl-gotSouthEastPalisadeGates 1)
 )
-(defrule (true)
+(defrule
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastMainGates == 1)
@@ -1717,7 +1717,7 @@
     (set-goal gl-gotNorthWestPalisadeGates 1)
 )
 
-; BUILD SECONDARY PALISADE GATES
+; BUILD 2 SECONDARY PALISADE GATES
 ; MAIN: NORTH - EAST
 ; SECONDARY: NORTH WEST AND SOUTH EAST
 (defrule
@@ -1741,7 +1741,7 @@
 
 ; MAIN: SOUTH - EAST
 ; SECONDARY: NORTH EAST AND SOUTH WEST
-(defrule (true)
+(defrule
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildSouthEastMainGates == 1)
@@ -1750,7 +1750,7 @@
     (up-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
     (set-goal gl-gotNorthEastPalisadeGates 1)
 )
-(defrule (true)
+(defrule
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-buildSouthEastMainGates == 1)
