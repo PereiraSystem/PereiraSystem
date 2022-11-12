@@ -1549,15 +1549,13 @@
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-y c:+ 1)
-    (disable-self)
+    (up-modify-goal gl-outerGatePoint1-y c:+ 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-y c:+ 10)
-    (disable-self)
+    (up-modify-goal gl-outerGatePoint1-y c:+ 16)(disable-self)
 )
 
 ; SECONDARY GATE 2
@@ -1566,15 +1564,13 @@
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint4-y c:+ 1)
-    (disable-self)
+    (up-modify-goal gl-outerGatePoint4-y c:+ 1)(disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint4-y c:+ 10)
-    (disable-self)
+    (up-modify-goal gl-outerGatePoint4-y c:+ 16)(disable-self)
 )
 
 ; 3/4 SOUTH WEST MAIN PALISADE GATES -----------------------------------------
@@ -1584,14 +1580,14 @@
     (up-compare-goal gl-buildSouthWestMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-y c:- 3)
+    (up-modify-goal gl-outerGatePoint2-y c:- 1)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthWestMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-y c:- 8)
+    (up-modify-goal gl-outerGatePoint2-y c:- 10)
     (disable-self)
 )
 
@@ -1601,14 +1597,14 @@
     (up-compare-goal gl-buildSouthWestMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint3-y c:+ 3)
+    (up-modify-goal gl-outerGatePoint3-y c:+ 1)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthWestMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint3-y c:+ 8)
+    (up-modify-goal gl-outerGatePoint3-y c:+ 10)
     (disable-self)
 )
 
@@ -1619,7 +1615,7 @@
     (up-compare-goal gl-buildSouthWestMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-y c:- 5)
+    (up-modify-goal gl-outerGatePoint2-y c:- 1)
     (disable-self)
 )
 
@@ -1627,7 +1623,7 @@
     (up-compare-goal gl-buildSouthWestMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-y c:- 12)
+    (up-modify-goal gl-outerGatePoint2-y c:- 16)
     (disable-self)
 )
 
@@ -1637,14 +1633,14 @@
     (up-compare-goal gl-buildSouthWestMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-x c:- 5)
+    (up-modify-goal gl-outerGatePoint1-x c:- 1)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthWestMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-x c:- 12)
+    (up-modify-goal gl-outerGatePoint1-x c:- 16)
     (disable-self)
 )
 
@@ -1655,14 +1651,14 @@
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-x c:- 3)
+    (up-modify-goal gl-outerGatePoint1-x c:- 1)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-x c:- 8)
+    (up-modify-goal gl-outerGatePoint1-x c:- 10)
     (disable-self)
 )
 
@@ -1672,14 +1668,14 @@
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint4-x c:+ 3)
+    (up-modify-goal gl-outerGatePoint4-x c:+ 1)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-x c:- 8)
+    (up-modify-goal gl-outerGatePoint4-x c:+ 10)
     (disable-self)
 )
 
@@ -1691,8 +1687,7 @@
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-y c:- 5)
-    (up-modify-goal gl-outerGatePoint3-y c:- 12)
+    (up-modify-goal gl-outerGatePoint2-y c:- 1)
     (disable-self)
 )
 
@@ -1700,8 +1695,7 @@
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-y c:- 12)
-    (up-modify-goal gl-outerGatePoint3-y c:- 5)
+    (up-modify-goal gl-outerGatePoint2-y c:- 10)
     (disable-self)
 )
 
@@ -1712,8 +1706,8 @@
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-y c:- 5)
-    (up-modify-goal gl-outerGatePoint3-y c:- 12)
+
+    (up-modify-goal gl-outerGatePoint3-y c:- 1)
     (disable-self)
 )
 
@@ -1721,8 +1715,7 @@
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-y c:- 12)
-    (up-modify-goal gl-outerGatePoint3-y c:- 5)
+    (up-modify-goal gl-outerGatePoint3-y c:- 10)
     (disable-self)
 )
 ; -------------------------------------------------
