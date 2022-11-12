@@ -2098,7 +2098,7 @@
     (up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 490)
 =>
     (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 490)
-    (set-goal gl-gotNorthEastStoneGates == 1)    
+    (set-goal gl-gotNorthEastStoneGates 1)
 )
 
 ; GATE 2
@@ -2109,7 +2109,7 @@
     (up-can-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 490)
 =>
     (up-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 490)
-    (set-goal gl-gotNorthEastStoneGates == 1)    
+    (set-goal gl-gotNorthEastStoneGates 1)
 )
 
 ; 2 SOUTH EAST MAIN GATES -----------
@@ -2121,7 +2121,7 @@
     (up-can-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 487)
 =>
     (up-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 487)
-    (set-goal gl-gotSouthEastStoneGates == 1)    
+    (set-goal gl-gotSouthEastStoneGates 1)
 )
 
 ;GATE 2
@@ -2132,7 +2132,7 @@
     (up-can-build-line gl-innerGatePoint3-x gl-innerGatePoint3-x c: 487)
 =>
     (up-build-line gl-innerGatePoint3-x gl-innerGatePoint3-x c: 487)
-    (set-goal gl-gotSouthEastStoneGates == 1)       
+    (set-goal gl-gotSouthEastStoneGates 1)
 )
 
 ; 3 SOUTH WEST MAIN GATES ---------------
@@ -2144,8 +2144,7 @@
     (up-can-build-line gl-innerGatePoint3-x gl-innerGatePoint3-x c: 490)
 =>
     (up-build-line gl-innerGatePoint3-x gl-innerGatePoint3-x c: 490)
-    (set-goal gl-gotSouthWestStoneGates == 1)       
-    
+    (set-goal gl-gotSouthWestStoneGates 1)
 )
 
 ; GATE 2
@@ -2156,19 +2155,19 @@
     (up-can-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 490)
 =>
     (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 490)
-    (set-goal gl-gotSouthWestStoneGates == 1)         
+    (set-goal gl-gotSouthWestStoneGates  1)
 )
 
 ; 4 NORTH WEST MAIN GATES ---------------
 ; GATE 1
 (defrule
     (up-compare-goal gl-posQuadrantCode == 4)
-    (up-can-build-line 0 gl-innerGatePoint1-x c: 497)    
+    (up-can-build-line 0 gl-innerGatePoint1-x c: 497)
 =>
     (up-chat-data-to-all  "P1 POINT x %d" g: gl-innerGatePoint1-x)
     (up-chat-data-to-all  "P1 POINT y %d" g: gl-innerGatePoint1-y)
-    (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)   
-    (set-goal gl-gotNorthWestStoneGates == 1)          
+    (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
+    (set-goal gl-gotNorthWestStoneGates == 1)
 )
 
 (defrule
@@ -2185,17 +2184,17 @@
     (up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
 =>
     (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
-    (set-goal gl-gotNorthWestStoneGates == 1)       
+    (set-goal gl-gotNorthWestStoneGates 1)
 )
 
 ; GATE 2
 (defrule
     (up-compare-goal gl-posQuadrantCode == 4)
-    (up-can-build-line 0 gl-innerGatePoint1-x c: 497)    
+    (up-can-build-line 0 gl-innerGatePoint1-x c: 497)
 =>
     (up-chat-data-to-all  "P4 POINT x %d" g: gl-innerGatePoint4-x)
     (up-chat-data-to-all  "P4 POINT y %d" g: gl-innerGatePoint4-y)
-    (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)    
+    (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
 )
 
 (defrule
@@ -2219,7 +2218,7 @@
     (up-can-build-line 0 gl-innerSecGatePoint1-x c: 490)
 =>
     (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint1-x c: 490)
-    (set-goal gl-gotNorthEastStoneGates == 1)    
+    (set-goal gl-gotNorthEastStoneGates 1)
 )
 
 (defrule
@@ -2232,7 +2231,7 @@
     (up-can-build-line 0 gl-innerSecGatePoint2-x c: 490)
 =>
     (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint2-x c: 490)
-    (set-goal gl-gotNorthEastStoneGates == 1)      
+    (set-goal gl-gotNorthEastStoneGates 1)
 )
 
 (defrule (false)
