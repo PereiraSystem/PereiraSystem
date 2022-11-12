@@ -2274,27 +2274,9 @@
     (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 490)
 )
 
-; trying to build secondary wall gates
-; secondary INNER gates when principal NE or SW gates
-; 4
+; BUILD SECONDARY INNER WALL GATES--------------------------------
+; SECONDARY INNER GATES WHEN PRINCIPAL NE OR SW GATES
 (defrule (false)
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (or
-        (and
-            (up-compare-goal gl-dontBuildNorthEastWall == 0)
-            (up-compare-goal gl-buildNorthEastMainGates == 1)
-        )
-        (and
-            (up-compare-goal gl-dontBuildSouthWestWall == 0)
-            (up-compare-goal gl-buildSouthWestMainGates == 1)
-        )
-    )
-    (up-can-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint4-x c: 487)
-=>
-    (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint4-x c: 487)
-)
-; 1
-(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
         (and
@@ -2311,7 +2293,6 @@
     (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint1-x c: 487)
 )
 
-; 2
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
@@ -2329,7 +2310,6 @@
     (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint2-x c: 487)
 )
 
-; 3
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
@@ -2347,8 +2327,58 @@
     (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint3-x c: 487)
 )
 
-;secondary gates when principal SE or NW gates
-; 3
+(defrule (false)
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (or
+        (and
+            (up-compare-goal gl-dontBuildNorthEastWall == 0)
+            (up-compare-goal gl-buildNorthEastMainGates == 1)
+        )
+        (and
+            (up-compare-goal gl-dontBuildSouthWestWall == 0)
+            (up-compare-goal gl-buildSouthWestMainGates == 1)
+        )
+    )
+    (up-can-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint4-x c: 487)
+=>
+    (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint4-x c: 487)
+)
+
+; SECONDARY GATES WHEN PRINCIPAL SE OR NW GATES
+(defrule (false)
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (or
+        (and
+            (up-compare-goal gl-dontBuildSouthEastWall == 0)
+            (up-compare-goal gl-buildSouthEastMainGates == 1)
+        )
+        (and
+            (up-compare-goal gl-dontBuildNorthWestWall == 0)
+            (up-compare-goal gl-buildNorthWestMainGates == 1)
+        )
+    )
+    (up-can-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint1-x c: 490)
+=>
+    (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint1-x c: 490)
+)
+
+(defrule
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (or
+        (and
+            (up-compare-goal gl-dontBuildSouthEastWall == 0)
+            (up-compare-goal gl-buildSouthEastMainGates == 1)
+        )
+        (and
+            (up-compare-goal gl-dontBuildNorthWestWall == 0)
+            (up-compare-goal gl-buildNorthWestMainGates == 1)
+        )
+    )
+    (up-can-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint2-x c: 490)
+=>
+    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint2-x c: 490)
+)
+
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
@@ -2365,7 +2395,7 @@
 =>
     (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint3-x c: 490)
 )
-; 4
+
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
@@ -2378,43 +2408,9 @@
             (up-compare-goal gl-buildNorthWestMainGates == 1)
         )
     )
-    (up-can-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint3-x c: 490)
+    (up-can-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint4-x c: 490)
 =>
-    (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint3-x c: 490)
-)
-; 1 to 2
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (or
-        (and
-            (up-compare-goal gl-dontBuildSouthEastWall == 0)
-            (up-compare-goal gl-buildSouthEastMainGates == 1)
-        )
-        (and
-            (up-compare-goal gl-dontBuildNorthWestWall == 0)
-            (up-compare-goal gl-buildNorthWestMainGates == 1)
-        )
-    )
-    (up-can-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint2-x c: 490)
-=>
-    (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint2-x c: 490)
-)
-; 2 to 1
-(defrule
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (or
-        (and
-            (up-compare-goal gl-dontBuildSouthEastWall == 0)
-            (up-compare-goal gl-buildSouthEastMainGates == 1)
-        )
-        (and
-            (up-compare-goal gl-dontBuildNorthWestWall == 0)
-            (up-compare-goal gl-buildNorthWestMainGates == 1)
-        )
-    )
-    (up-can-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint1-x c: 490)
-=>
-    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint1-x c: 490)
+    (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint4-x c: 490)
 )
 
 ; BUILDING THE INNER STONE WALL ----------------------------------
