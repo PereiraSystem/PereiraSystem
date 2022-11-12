@@ -2153,6 +2153,12 @@
 ; 4 NORTH WEST MAIN GATES ---------------
 ; GATE 1
 (defrule
+    (up-compare-goal gl-posQuadrantCode == 4)
+=>
+    (up-chat-data-to-all  "P1 POINT %d" g: gl-innerGatePoint1-x)
+)
+
+(defrule
     (true)
     (up-compare-goal gl-posQuadrantCode == 4)
 =>
