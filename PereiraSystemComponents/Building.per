@@ -1541,33 +1541,31 @@
 
 ; SOUTH EAST SECONDARY PALISADE GATES --------------
 ; SECONDARY GATE 1
-(defrule(true)=>(generate-random-number 100)(disable-self))
 (defrule
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (random-number >= 50)
+    (true)
 =>
-    (up-modify-goal gl-outerGatePoint1-y c:+ 1)(disable-self)
+    (generate-random-number 16)
+    (up-get-fact random-number 0 gl-randomNumber)
+    (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-y c:+ 16)(disable-self)
+    (up-modify-goal gl-outerGatePoint1-y g:+ gl-randomNumber)(disable-self)
 )
 
 ; SECONDARY GATE 2
-(defrule(true)=>(generate-random-number 100)(disable-self))
 (defrule
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (random-number >= 50)
+    (true)
 =>
-    (up-modify-goal gl-outerGatePoint4-y c:+ 1)(disable-self)
+    (generate-random-number 16)
+    (up-get-fact random-number 0 gl-randomNumber)
+    (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint4-y c:+ 16)(disable-self)
+    (up-modify-goal gl-outerGatePoint4-y c:+ gl-randomNumber)(disable-self)
 )
 
 ; 3/4 SOUTH WEST MAIN PALISADE GATES -----------------------------------------
