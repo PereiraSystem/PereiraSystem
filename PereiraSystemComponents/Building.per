@@ -2045,7 +2045,8 @@
     (up-compare-goal gl-buildNorthWestMainGates == 1)
 =>
     ;(up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)(disable-self)
-    (up-modify-goal gl-innerGatePoint4-x c:+ 4)(disable-self)
+    ;(up-modify-goal gl-innerGatePoint4-x c:+ 4)(disable-self)
+    (do-nothing)    
 )
 
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
@@ -2054,7 +2055,8 @@
     (up-compare-goal gl-buildNorthWestMainGates == 1)
 =>
     ;(up-modify-goal gl-innerGatePoint1-x g:- gl-randomNumber)(disable-self)
-    (up-modify-goal gl-innerGatePoint1-x c:- 4)(disable-self)      
+    ;(up-modify-goal gl-innerGatePoint1-x c:- 4)(disable-self)
+    (do-nothing)
 )
 
     ; SECONDARY TO MAIN NORTH WEST GATES ( 4 POINTS)
@@ -2364,9 +2366,10 @@
 
 
 ; BUILDING THE INNER STONE WALL ----------------------------------
-(defrule (false)
+(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-gotNorthEastStoneGates == 1)
 =>
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
