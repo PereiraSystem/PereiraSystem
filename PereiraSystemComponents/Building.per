@@ -2043,7 +2043,7 @@
 (defrule
     (up-compare-goal gl-buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)(disable-self))
+    ;(up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
@@ -2156,6 +2156,15 @@
     (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
 )
 
+(defrule
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (up-compare-goal gl-dontBuildNorthWestWall == 0)
+    (up-compare-goal gl-buildNorthWestMainGates == 1)
+    (up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
+=>
+    (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
+)
+
 ; GATE 2
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
@@ -2165,7 +2174,6 @@
 =>
     (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
 )
-
 
 ; BUILD SECONDARY INNER WALL GATES--------------------------------
 ; NORTH EAST
@@ -2335,7 +2343,7 @@
 
 
 ; BUILDING THE INNER STONE WALL ----------------------------------
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
 =>
@@ -2343,7 +2351,7 @@
     ;(up-chat-data-to-self "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
     ;(up-chat-data-to-self "inner wall north east end y: %d" g: gl-innerWallPoint2-y)
 )
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
 =>
@@ -2351,7 +2359,7 @@
     ;(up-chat-data-to-self "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
     ;(up-chat-data-to-self "inner wall south east end y: %d" g: gl-innerWallPoint3-y)
 )
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
 =>
@@ -2359,7 +2367,7 @@
     ;(up-chat-data-to-self "inner wall south west start y: %d" g: gl-innerWallPoint3-y)
     ;(up-chat-data-to-self "inner wall south west end y: %d" g: gl-innerWallPoint4-y)
 )
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
 =>
