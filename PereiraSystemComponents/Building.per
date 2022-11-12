@@ -1517,14 +1517,14 @@
 (defrule
     (up-compare-goal gl-buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint2-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal gl-outerGatePoint3-y g:- gl-randomNumber)(disable-self))
 
 ; MAIN GATE 2
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
     (up-compare-goal gl-buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint3-y g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal gl-outerGatePoint4-y g:+ gl-randomNumber)(disable-self))
 
 ; SOUTH WEST SECONDARY PALISADE GATES -------------
 ; GATE 1
