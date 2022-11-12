@@ -733,12 +733,6 @@
 )
 ; NORMAL TOWER
 (defrule
-    (false) ;use only after palisade, see testing
-    (current-age < castle-age)
-    (or(town-under-attack)(unit-type-count villager > 9))
-    (not(up-research-status c: castle-age == research-pending))
-    (or(building-type-count stable > 0)(building-type-count blacksmith > 0))
-    ;(can-build watch-tower-line)
     (up-can-build 0 c: watch-tower)
 =>
     ;(build watch-tower-line)
@@ -1455,71 +1449,43 @@
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
 ; 1/4 NORTH EAST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
-(defrule(true)=>(generate-random-number 100)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint1-y c:+ 3)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (random-number < 50)
-=>
-    (up-modify-goal gl-outerGatePoint1-y c:+ 8)
+    (up-modify-goal gl-outerGatePoint1-y g:+ gl-randomNumber)
     (disable-self)
 )
 
 ; MAIN GATE 2
-(defrule(true)=>(generate-random-number 100)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-y c:- 3)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (random-number < 50)
-=>
-    (up-modify-goal gl-outerGatePoint1-y c:- 8)
+    (up-modify-goal gl-outerGatePoint2-y g:- gl-randomNumber)
     (disable-self)
 )
 
 ; NORTH EAST SECONDARY PALISADE GATES-----------------------
 ; SECONDARY GATE 1
-(defrule(true)=>(generate-random-number 100)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint3-x c:+ 12)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (random-number < 50)
-=>
-    (up-modify-goal gl-outerGatePoint3-x c:+ 5)
+    (up-modify-goal gl-outerGatePoint3-x g:+ gl-randomNumber)
     (disable-self)
 )
 
 ; SECONDARY GATE 2
-(defrule(true)=>(generate-random-number 100)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (random-number >= 50)
 =>
-    (up-modify-goal gl-outerGatePoint4-x c:+ 5)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (random-number < 50)
-=>
-    (up-modify-goal gl-outerGatePoint4-x c:+ 12)
+    (up-modify-goal gl-outerGatePoint4-x g:+ gl-randomNumber)
     (disable-self)
 )
 
