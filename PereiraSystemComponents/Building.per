@@ -1136,14 +1136,14 @@
 (defrule
     (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
 =>
-    (set-goal gl-outerWallPoint2-y 480)
-    (set-goal gl-innerWallPoint2-y 480)(disable-self)
+    (set-goal gl-outerWallPoint2-y gl-maxDimensionOfMap)
+    (set-goal gl-innerWallPoint2-y gl-maxDimensionOfMap)(disable-self)
 )
 (defrule
     (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
 =>
-    (set-goal gl-outerWallPoint3-y 480)
-    (set-goal gl-innerWallPoint3-y 480)(disable-self)
+    (set-goal gl-outerWallPoint3-y gl-maxDimensionOfMap)
+    (set-goal gl-innerWallPoint3-y gl-maxDimensionOfMap)(disable-self)
 )
 
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
