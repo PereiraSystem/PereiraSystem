@@ -1119,11 +1119,12 @@
     (set-goal gl-innerWallPoint4-y 0)
     (disable-self)
 )
-; DEFAULT: LUDICROUS
+
+; HIGHER POINTS SET TO THE MAX SIZE OF MAP
 (defrule
     (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
 =>
-    (set-goal gl-outerWallPoint1-x 480)
+    (set-goal gl-outerWallPoint1-x gl-maxDimensionOfMap)
     (set-goal gl-innerWallPoint1-x 480)(disable-self)
 )
 (defrule
@@ -1144,168 +1145,6 @@
     (set-goal gl-outerWallPoint3-y 480)
     (set-goal gl-innerWallPoint3-y 480)(disable-self)
 )
-; HIGHER POINTS SET TO MAP SIZE MANUALLY - TRY TO GET FROM GOAL
-#load-if-defined TINY-MAP
-    (defrule
-        (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint1-x 120)
-        (set-goal gl-innerWallPoint1-x 120)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-x 120)
-        (set-goal gl-innerWallPoint2-x 120)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-y 120)
-        (set-goal gl-innerWallPoint2-y 120)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint3-y 120)
-        (set-goal gl-innerWallPoint3-y 120)(disable-self)
-    )
-#end-if
-
-#load-if-defined SMALL-MAP
-    (defrule
-        (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint1-x 144)
-        (set-goal gl-innerWallPoint1-x 144)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-x 144)
-        (set-goal gl-innerWallPoint2-x 144)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-y 144)
-        (set-goal gl-innerWallPoint2-y 144)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint3-y 144)
-        (set-goal gl-innerWallPoint3-y 144)(disable-self)
-    )
-#end-if
-
-#load-if-defined MEDIUM-MAP
-    (defrule
-        (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint1-x 168)
-        (set-goal gl-innerWallPoint1-x 168)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-x 168)
-        (set-goal gl-innerWallPoint2-x 168)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-y 168)
-        (set-goal gl-innerWallPoint2-y 168)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint3-y 168)
-        (set-goal gl-innerWallPoint3-y 168)(disable-self)
-    )
-#end-if
-
-#load-if-defined NORMAL-MAP
-    (defrule
-        (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint1-x 200)
-        (set-goal gl-innerWallPoint1-x 200)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-x 200)
-        (set-goal gl-innerWallPoint2-x 200)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-y 200)
-        (set-goal gl-innerWallPoint2-y 200)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint3-y 200)
-        (set-goal gl-innerWallPoint3-y 200)(disable-self)
-    )
-#end-if
-
-#load-if-defined LARGE-MAP
-    (defrule
-        (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint1-x 220)
-        (set-goal gl-innerWallPoint1-x 220)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-x 220)
-        (set-goal gl-innerWallPoint2-x 220)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-y 220)
-        (set-goal gl-innerWallPoint2-y 220)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint3-y 220)
-        (set-goal gl-innerWallPoint3-y 220)(disable-self)
-    )
-#end-if
-
-#load-if-defined GIANT-MAP
-    (defrule
-        (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint1-x 240)
-        (set-goal gl-innerWallPoint1-x 240)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-x 240)
-        (set-goal gl-innerWallPoint2-x 240)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint2-y 240)
-        (set-goal gl-innerWallPoint2-y 240)(disable-self)
-    )
-    (defrule
-        (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
-    =>
-        (set-goal gl-outerWallPoint3-y 240)
-        (set-goal gl-innerWallPoint3-y 240)(disable-self)
-    )
-#end-if
 
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
