@@ -1874,7 +1874,7 @@
     (chat-local-to-self "BUILDING MAIN NORTH WEST PALISADE GATES - B")
 )
 
-; TRYING TO BUILD SECONDARY PALISADE GATES
+; BUILD SECONDARY PALISADE GATES
 ; MAIN: NORTH - EAST
 ; SECONDARY: NORTH WEST AND SOUTH EAST
 (defrule
@@ -2055,16 +2055,11 @@
     (chat-local-to-self "TIME FOR INNER WALL")
     (disable-self)
 )
+
 ; MAKE THE INNER WALL GATE SECTION SMALLER THAN INNER WALL SECTION
 ; 1 INNER NORTH EAST GATES -------------------------------------
 ; MAIN
-(defrule
-    (true)
-=>
-    (generate-random-number 7)
-    (up-get-fact random-number 0 gl-randomNumber)
-    (disable-self)
-)
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
@@ -2075,13 +2070,7 @@
 )
 
 ; SECONDARY
-(defrule
-    (true)
-=>
-    (generate-random-number 7)
-    (up-get-fact random-number 0 gl-randomNumber)
-    (disable-self)
-)
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
@@ -2126,20 +2115,19 @@
     (up-modify-goal gl-innerSecGatePoint3-y g:- gl-randomNumber)(disable-self))    
 
 ; GATES CLOSER TO BACK
-(defrule(true)=>(generate-random-number 3)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
 =>
     (up-modify-goal gl-innerSecGatePoint1-y g:+ gl-randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 3)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
 =>
     (up-modify-goal gl-innerSecGatePoint4-y g:+ gl-randomNumber)(disable-self))
-
 
 ; 3 INNER SOUTH WEST GATES --------------------------------------
 ; MAIN
