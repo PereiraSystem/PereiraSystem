@@ -1518,37 +1518,26 @@
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
-    ;(random-number >= 50)
-    (true)
 =>
     (up-modify-goal gl-outerGatePoint2-x g:- gl-randomNumber)
     (disable-self)
 )
+
+; MAIN GATE 2
+(defrule
+    (true)
+=>
+    (generate-random-number 10)
+    (up-get-fact random-number 0 gl-randomNumber)
+    (disable-self)
+)
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
-    ;(random-number < 50)
-    (false)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 1)
+    (up-modify-goal gl-outerGatePoint3-x g:+ gl-randomNumber)
     (disable-self)
 )
 
-; MAIN GATE 2
-(defrule(true)=>(generate-random-number 100)(disable-self))
-(defrule
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (random-number >= 50)
-=>
-    (up-modify-goal gl-outerGatePoint3-x c:+ 10)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (random-number < 50)
-=>
-    (up-modify-goal gl-outerGatePoint3-x c:+ 1)
-    (disable-self)
-)
 
 ; SOUTH EAST SECONDARY PALISADE GATES --------------
 ; SECONDARY GATE 1
