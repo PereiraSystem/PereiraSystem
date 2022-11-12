@@ -2154,9 +2154,11 @@
 ; GATE 1
 (defrule
     (up-compare-goal gl-posQuadrantCode == 4)
+    (up-can-build-line 0 gl-innerGatePoint1-x c: 497)    
 =>
     (up-chat-data-to-all  "P1 POINT x %d" g: gl-innerGatePoint1-x)
-    (up-chat-data-to-all  "P1 POINT y %d" g: gl-innerGatePoint1-d)    
+    (up-chat-data-to-all  "P1 POINT y %d" g: gl-innerGatePoint1-y)
+    (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)    
 )
 
 (defrule
@@ -2176,6 +2178,15 @@
 )
 
 ; GATE 2
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 4)
+    (up-can-build-line 0 gl-innerGatePoint1-x c: 497)    
+=>
+    (up-chat-data-to-all  "P4 POINT x %d" g: gl-innerGatePoint4-x)
+    (up-chat-data-to-all  "P4 POINT y %d" g: gl-innerGatePoint4-y)
+    (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)    
+)
+
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
