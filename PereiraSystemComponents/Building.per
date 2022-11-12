@@ -2155,7 +2155,8 @@
 (defrule
     (up-compare-goal gl-posQuadrantCode == 4)
 =>
-    (up-chat-data-to-all  "P1 POINT %d" g: gl-innerGatePoint1-x)
+    (up-chat-data-to-all  "P1 POINT x %d" g: gl-innerGatePoint1-x)
+    (up-chat-data-to-all  "P1 POINT y %d" g: gl-innerGatePoint1-d)    
 )
 
 (defrule
