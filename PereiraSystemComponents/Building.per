@@ -1845,9 +1845,8 @@
 (defrule
     (up-compare-goal gl-buildNorthWestMainGates == 1)
 =>
-    ;(up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)(disable-self)
+    (up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)(disable-self)
     ;(up-modify-goal gl-innerGatePoint4-x c:+ 4)(disable-self)
-    (do-nothing)
 )
 
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
@@ -1855,9 +1854,8 @@
 (defrule
     (up-compare-goal gl-buildNorthWestMainGates == 1)
 =>
-    ;(up-modify-goal gl-innerGatePoint1-x g:- gl-randomNumber)(disable-self)
+    (up-modify-goal gl-innerGatePoint1-x g:- gl-randomNumber)(disable-self)
     ;(up-modify-goal gl-innerGatePoint1-x c:- 4)(disable-self)
-    (do-nothing)
 )
 
     ; SECONDARY TO MAIN NORTH WEST GATES ( 4 POINTS)
