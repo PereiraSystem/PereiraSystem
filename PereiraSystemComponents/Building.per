@@ -1521,7 +1521,7 @@
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 1)
+    (up-modify-goal gl-outerGatePoint2-x c:- 2)
     (disable-self)
 )
 
@@ -1538,7 +1538,7 @@
     (up-compare-goal gl-buildSouthEastMainGates == 1)
     (random-number < 50)
 =>
-    (up-modify-goal gl-outerGatePoint3-x c:+ 1)
+    (up-modify-goal gl-outerGatePoint3-x c:+ 2)
     (disable-self)
 )
 
@@ -1826,7 +1826,7 @@
 )
 
 ; SOUTH EAST
-(defrule (true)
+(defrule (false)
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastMainGates == 1)
@@ -1836,7 +1836,7 @@
     (set-goal gl-gotSouthEastPalisadeGates 1)
     (chat-local-to-self "BUILDING MAIN SOUTH EAST PALISADE GATE 1")
 )
-(defrule (false)
+(defrule (true)
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-buildSouthEastMainGates == 1)
