@@ -2275,8 +2275,9 @@
 )
 
 ; trying to build secondary wall gates
+; secondary INNER gates when principal NE or SW gates
 ; 4
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
         (and
@@ -2309,7 +2310,8 @@
 =>
     (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint1-x c: 487)
 )
-; 2 to 3
+
+; 2
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
@@ -2322,11 +2324,12 @@
             (up-compare-goal gl-buildSouthWestMainGates == 1)
         )
     )
-    (up-can-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint3-x c: 487)
+    (up-can-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint2-x c: 487)
 =>
-    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint3-x c: 487)
+    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint2-x c: 487)
 )
-; 3 to 2
+
+; 3
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (or
@@ -2339,10 +2342,11 @@
             (up-compare-goal gl-buildSouthWestMainGates == 1)
         )
     )
-    (up-can-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint2-x c: 487)
+    (up-can-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint3-x c: 487)
 =>
-    (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint2-x c: 487)
+    (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint3-x c: 487)
 )
+
 ;secondary gates when principal SE or NW gates
 ; 3
 (defrule
