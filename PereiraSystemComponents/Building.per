@@ -1938,7 +1938,7 @@
 )
 
 ; 2 - WITH MAIN SOUTH EAST GATES -------------------------------------
-; MAIN
+    ; MAIN
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
@@ -1951,8 +1951,8 @@
 =>
     (up-modify-goal gl-innerGatePoint3-x g:+ gl-randomNumber)(disable-self))
 
-; SECONDARY - 4 POINTS INSTEAD OF 2 LIKE THE OUTER WALL
-; GATES CLOSER TO FRONT
+    ; SECONDARY - 4 POINTS INSTEAD OF 2 LIKE THE OUTER WALL
+        ; GATES CLOSER TO FRONT
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
@@ -1965,7 +1965,7 @@
 =>
     (up-modify-goal gl-innerSecGatePoint3-y g:- gl-randomNumber)(disable-self))    
 
-; GATES CLOSER TO BACK
+        ; GATES CLOSER TO BACK
 (defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
@@ -1979,7 +1979,7 @@
     (up-modify-goal gl-innerSecGatePoint4-y g:+ gl-randomNumber)(disable-self))
 
 ; 3 - WITH MAIN SOUTH WEST GATES -------------------------------------
-; MAIN SOUTH WEST GATES -----------------
+    ; MAIN SOUTH WEST GATES -----------------
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
     (up-compare-goal gl-buildSouthWestMainGates == 1)
@@ -1992,8 +1992,8 @@
 =>
     (up-modify-goal gl-innerGatePoint4-y g:+ gl-randomNumber)(disable-self))
 
-; SECONDARY TO MAIN SOUTH WEST GATES ( 4 POINTS)
-; GATES CLOSER TO FRONT
+    ; SECONDARY TO MAIN SOUTH WEST GATES ( 4 POINTS)
+        ; GATES CLOSER TO FRONT
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
     (up-compare-goal gl-buildSouthWestMainGates == 1)
@@ -2006,7 +2006,18 @@
 =>
     (up-modify-goal gl-innerSecGatePoint3-x g:+ gl-randomNumber)(disable-self))    
 
+          ; GATES CLOSER TO BACK
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule
+    (up-compare-goal gl-buildSouthWestMainGates == 1)
+=>
+    (up-modify-goal gl-innerSecGatePoint1-x g:- gl-randomNumber)(disable-self))
 
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule
+    (up-compare-goal gl-buildSouthWestMainGates == 1)
+=>
+    (up-modify-goal gl-innerSecGatePoint2-x g:- gl-randomNumber)(disable-self))
 
 ; 4 - WITH MAIN NORTH WEST GATES -------------------------------------
 
