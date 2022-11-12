@@ -2061,47 +2061,110 @@
     (disable-self)
 )
 ; MAKE THE INNER WALL GATE SECTION SMALLER THAN INNER WALL SECTION
+; 1 INNER NORTH EAST GATES -------------------------------------
+; MAIN
+(defrule
+    (true)
+=>
+    (generate-random-number 7)
+    (up-get-fact random-number 0 gl-randomNumber)
+    (disable-self)
+)
+
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-innerGatePoint1-y c:+ 7)
-    (up-modify-goal gl-innerGatePoint2-y c:- 7)
-    ; SECONDARY WGATES
+    (up-modify-goal gl-innerGatePoint1-y g:+ gl-randomNumber)
+    (up-modify-goal gl-innerGatePoint2-y g:- gl-randomNumber)
+    (disable-self)
+)
+
+; SECONDARY
+(defrule
+    (true)
+=>
+    (generate-random-number 7)
+    (up-get-fact random-number 0 gl-randomNumber)
+    (disable-self)
+)
+
+(defrule
+    (up-compare-goal gl-buildNorthEastMainGates == 1)
+=>
     (up-modify-goal gl-innerSecGatePoint1-x c:- 8)
     (up-modify-goal gl-innerSecGatePoint4-x c:+ 4)
     (up-modify-goal gl-innerSecGatePoint2-x c:- 8)
     (up-modify-goal gl-innerSecGatePoint3-x c:+ 4)
     (disable-self)
 )
+
+; 2 INNER SOUTH EAST GATES ----------------------------------
+; MAIN
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+
+(defrule
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
+=>
+    (up-modify-goal gl-innerGatePoint2-x c:- gl-randomNumber)(disable-self))
+
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+
+(defrule
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
+=>
+    (up-modify-goal gl-innerGatePoint3-x g:- gl-randomNumber)(disable-self))
+
+; SECONDARY
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+
+(defrule
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
+=>
+    (up-modify-goal gl-innerSecGatePoint2-y g:- gl-randomNumber)(disable-self))
+
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+
+(defrule
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
+=>
+    (up-modify-goal gl-innerSecGatePoint3-y g:- gl-randomNumber)(disable-self))
+
+; 3 INNER SOUTH WEST GATES --------------------------------------
+; MAIN
 (defrule
     (up-compare-goal gl-buildSouthWestMainGates == 1)
 =>
     (up-modify-goal gl-innerGatePoint3-y c:- 6)
     (up-modify-goal gl-innerGatePoint4-y c:+ 6)
+    (disable-self)
+)
+
+; SECONDARY
+(defrule
+    (up-compare-goal gl-buildSouthWestMainGates == 1)
+=>
     (up-modify-goal gl-innerSecGatePoint1-x c:- 4)
     (up-modify-goal gl-innerSecGatePoint4-x c:+ 8)
     (up-modify-goal gl-innerSecGatePoint2-x c:- 4)
     (up-modify-goal gl-innerSecGatePoint3-x c:+ 8)
     (disable-self)
 )
-(defrule
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
-=>
-    (up-modify-goal gl-innerGatePoint2-x c:- 7)
-    (up-modify-goal gl-innerGatePoint3-x c:+ 7)
-    ; SECONDARY WGATES
-    (up-modify-goal gl-innerSecGatePoint1-y c:+ 6)
-    (up-modify-goal gl-innerSecGatePoint2-y c:- 9)
-    (up-modify-goal gl-innerSecGatePoint4-y c:+ 6)
-    (up-modify-goal gl-innerSecGatePoint3-y c:- 9)
-    (disable-self)
-)
+
+
+
+; 4 INNER NORTH WEST GATES ----------------------------------
+; MAIN
 (defrule
     (up-compare-goal gl-buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal gl-innerGatePoint4-x c:+ 6)
-    (up-modify-goal gl-innerGatePoint1-x c:- 6)
-    ; SECONDARY WGATES
+    (up-modify-goal gl-innerGatePoint1-x c:- 7)
+    (disable-self)
+)
+
+; SECONDARY
+(defrule
+    (up-compare-goal gl-buildNorthWestMainGates == 1)
+=>
     (up-modify-goal gl-innerSecGatePoint1-y c:+ 8)
     (up-modify-goal gl-innerSecGatePoint2-y c:- 4)
     (up-modify-goal gl-innerSecGatePoint4-y c:+ 8)
