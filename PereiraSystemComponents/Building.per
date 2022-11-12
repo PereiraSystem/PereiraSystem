@@ -1910,7 +1910,7 @@
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-innerGatePoint1-x g:- gl-randomNumber)
+    (up-modify-goal gl-innerGatePoint1-y g:+ gl-randomNumber)
     (disable-self)
 )
 
@@ -1918,7 +1918,7 @@
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)
+    (up-modify-goal gl-innerGatePoint2-y g:- gl-randomNumber)
     (disable-self)
 )
 
@@ -1928,7 +1928,7 @@
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint1-y g:+ gl-randomNumber)
+    (up-modify-goal gl-innerSecGatePoint1-x g:- gl-randomNumber)
     (disable-self)
 )
 
@@ -1936,7 +1936,7 @@
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint4-y g:+ gl-randomNumber)
+    (up-modify-goal gl-innerSecGatePoint2-x g:- gl-randomNumber)
     (disable-self)
 )
 
@@ -1945,13 +1945,13 @@
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint2-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal gl-innerSecGatePoint4-x g:+ gl-randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint3-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal gl-innerSecGatePoint3-x g:+ gl-randomNumber)(disable-self))
 
 
 
@@ -2088,9 +2088,9 @@
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
+    (up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 490)
 =>
-    (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
+    (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 490)
 )
 
 ; GATE 2
@@ -2098,9 +2098,9 @@
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (up-can-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 497)
+    (up-can-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 490)
 =>
-    (up-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 497)
+    (up-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 490)
 )
 
 ; 2 SOUTH EAST MAIN GATES -----------
