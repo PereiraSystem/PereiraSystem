@@ -1845,18 +1845,21 @@
 (defrule
     (up-compare-goal gl-buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)(disable-self)
-    ;(up-modify-goal gl-innerGatePoint4-x c:+ 4)(disable-self)
+    (up-modify-goal gl-innerGatePoint1-x g:- gl-randomNumber)(disable-self)
+    ;(up-modify-goal gl-innerGatePoint1-x c:- 4)(disable-self)
 )
+
 
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 
 (defrule
     (up-compare-goal gl-buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal gl-innerGatePoint1-x g:- gl-randomNumber)(disable-self)
-    ;(up-modify-goal gl-innerGatePoint1-x c:- 4)(disable-self)
+    (up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)(disable-self)
+    ;(up-modify-goal gl-innerGatePoint4-x c:+ 4)(disable-self)
 )
+
+
 
     ; SECONDARY TO MAIN NORTH WEST GATES ( 4 POINTS)
         ; GATES CLOSER TO FRONT
@@ -1966,7 +1969,7 @@
     (up-can-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
 =>
     (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
-    (set-goal gl-gotNorthWestStoneGates  1)
+    (set-goal gl-gotNorthWestStoneGates 1)
 )
 
 ; GATE 2
@@ -1976,8 +1979,8 @@
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     (up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
 =>
-    (up-build-line gl-innerGatePoint4-x gl-innerGatePoint1-x c: 497)
-    (set-goal gl-gotNorthWestStoneGates  1)
+    (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
+    (set-goal gl-gotNorthWestStoneGates 1)
 )
 
 ; BUILD SECONDARY INNER WALL GATES--------------------------------
