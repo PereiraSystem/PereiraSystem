@@ -1509,18 +1509,25 @@
 
 ; 2/4 SOUTH EAST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
-(defrule(true)=>(generate-random-number 10)(disable-self))
-(set-goal gl-randomNumber random-number)
 (defrule
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (random-number >= 50)
+    (true)
 =>
-    (up-modify-goal gl-outerGatePoint2-x c:- 10)
+    (generate-random-number 10)
+    (up-get-fact random-number 0 gl-randomNumber)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (random-number < 50)
+    ;(random-number >= 50)
+    (true)
+=>
+    (up-modify-goal gl-outerGatePoint2-x c:- gl-randomNumber)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
+    ;(random-number < 50)
+    (false)
 =>
     (up-modify-goal gl-outerGatePoint2-x c:- 1)
     (disable-self)
