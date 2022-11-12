@@ -1471,7 +1471,7 @@
 
 ; NORTH EAST SECONDARY PALISADE GATES-----------------------
 ; SECONDARY GATE 1
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
@@ -1480,7 +1480,7 @@
 )
 
 ; SECONDARY GATE 2
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
