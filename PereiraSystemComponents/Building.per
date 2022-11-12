@@ -736,7 +736,7 @@
     (up-can-build 0 c: watch-tower)
 =>
     ;(build watch-tower-line)
-    (up-set-placement-data my-player-number town-center c: +16)
+    (up-set-placement-data my-player-number town-center c: +11)
     (up-build place-control 0 c: watch-tower)
     (up-chat-data-to-player my-player-number "BUILDING TOWER - MIN TOWN SIZE: %d" s: sn-minimum-town-size)
     (up-chat-data-to-player my-player-number "BUILDING TOWER - MAX TOWN SIZE: %d" s: sn-maximum-town-size)
@@ -1453,7 +1453,6 @@
 ; 1/4 NORTH EAST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
-
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
@@ -1463,7 +1462,6 @@
 
 ; MAIN GATE 2
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
-
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
@@ -1474,7 +1472,6 @@
 ; NORTH EAST SECONDARY PALISADE GATES-----------------------
 ; SECONDARY GATE 1
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
-
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
@@ -1484,7 +1481,6 @@
 
 ; SECONDARY GATE 2
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
-
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
@@ -1495,7 +1491,6 @@
 ; 2/4 SOUTH EAST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
-
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
 =>
@@ -1505,7 +1500,6 @@
 
 ; MAIN GATE 2
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
-
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
 =>
@@ -1525,7 +1519,6 @@
 
 ; SECONDARY GATE 2
 (defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
-
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
 =>
@@ -1760,21 +1753,19 @@
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint2-x c: 796)
+    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
 =>
-    (up-build-line gl-outerGatePoint1-x gl-outerGatePoint2-x c: 796)
+    (up-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
     (set-goal gl-gotNorthEastPalisadeGates 1)
-    (chat-local-to-self "BUILDING MAIN NORTH EAST PALISADE GATES - A")
 )
 (defrule
     (up-compare-goal gl-buildingOuterWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint1-x c: 796)
+    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)
 =>
-    (up-build-line gl-outerGatePoint2-x gl-outerGatePoint1-x c: 796)
+    (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)
     (set-goal gl-gotNorthEastPalisadeGates 1)
-    (chat-local-to-self "BUILDING MAIN NORTH EAST PALISADE GATES - B")
 )
 
 ; SOUTH EAST
