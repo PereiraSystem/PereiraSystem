@@ -1740,7 +1740,6 @@
 =>
     (up-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 792)
     (set-goal gl-gotNorthWestPalisadeGates 1)
-    (chat-local-to-self "BUILDING SEC PALISADE GATE P4")
 )
 (defrule
     (up-compare-goal gl-buildingOuterWall == 1)
@@ -1750,7 +1749,6 @@
 =>
     (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
     (set-goal gl-gotSouthEastPalisadeGates 1)
-    (chat-local-to-self "BUILDING SEC PALISADE GATE P3")
 )
 
 ; MAIN: SOUTH - EAST
@@ -1763,7 +1761,6 @@
 =>
     (up-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
     (set-goal gl-gotNorthEastPalisadeGates 1)
-    (chat-local-to-self "BUILDING SEC PALISADE GATE P1")
 )
 (defrule (true)
     (up-compare-goal gl-buildingOuterWall == 1)
@@ -1773,7 +1770,6 @@
 =>
     (up-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 796)
     (set-goal gl-gotSouthWestPalisadeGates 1)
-    (chat-local-to-self "BUILDING SEC PALISADE GATE P4")
 )
 
 ; MAIN: SOUTH - WEST
@@ -1786,7 +1782,6 @@
 =>
     (up-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 792)
     (set-goal gl-gotNorthWestPalisadeGates 1)
-    (chat-local-to-self "BUILDING SEC PALISADE GATE P1")
 )
 (defrule
     (up-compare-goal gl-buildingOuterWall == 1)
@@ -1796,7 +1791,6 @@
 =>
     (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 792)
     (set-goal gl-gotSouthEastPalisadeGates 1)
-    (chat-local-to-self "BUILDING SEC PALISADE GATE P2")
 )
 
 ; MAIN: NORTH - WEST
@@ -1809,7 +1803,6 @@
 =>
     (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 796)
     (set-goal gl-gotSouthWestPalisadeGates 1)
-    (chat-local-to-self "BUILDING SEC PALISADE GATE P3")
 )
 (defrule
     (up-compare-goal gl-buildingOuterWall == 1)
@@ -1819,7 +1812,6 @@
 =>
     (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)
     (set-goal gl-gotNorthEastPalisadeGates 1)
-    (chat-local-to-self "BUILDING SEC PALISADE GATE P2")
 )
 
 ; BUILDING THE OUTER PALISADE WALL --------------------------------------------------
@@ -1915,27 +1907,53 @@
 ; 1 - WITH MAIN NORTH EAST GATES -------------------------------------
 ; MAIN
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
-
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-innerGatePoint1-y g:+ gl-randomNumber)
-    (up-modify-goal gl-innerGatePoint2-y g:- gl-randomNumber)
+    (up-modify-goal gl-innerGatePoint1-x g:- gl-randomNumber)
     (disable-self)
 )
 
-; SECONDARY
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
-
 (defrule
     (up-compare-goal gl-buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint1-x c:- 8)
-    (up-modify-goal gl-innerSecGatePoint4-x c:+ 4)
-    (up-modify-goal gl-innerSecGatePoint2-x c:- 8)
-    (up-modify-goal gl-innerSecGatePoint3-x c:+ 4)
+    (up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)
     (disable-self)
 )
+
+    ; SECONDARY
+        ; GATES CLOSER TO FRONT
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule
+    (up-compare-goal gl-buildNorthEastMainGates == 1)
+=>
+    (up-modify-goal gl-innerSecGatePoint1-y g:+ gl-randomNumber)
+    (disable-self)
+)
+
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule
+    (up-compare-goal gl-buildNorthEastMainGates == 1)
+=>
+    (up-modify-goal gl-innerSecGatePoint4-y g:+ gl-randomNumber)
+    (disable-self)
+)
+
+        ; GATES CLOSER TO BACK
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule
+    (up-compare-goal gl-buildNorthEastMainGates == 1)
+=>
+    (up-modify-goal gl-innerSecGatePoint2-y g:- gl-randomNumber)(disable-self))
+
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule
+    (up-compare-goal gl-buildNorthEastMainGates == 1)
+=>
+    (up-modify-goal gl-innerSecGatePoint3-y g:- gl-randomNumber)(disable-self))
+
+
 
 ; 2 - WITH MAIN SOUTH EAST GATES -------------------------------------
     ; MAIN
