@@ -757,42 +757,7 @@
 )
 
 ; MAP SIZE AND PLAYER NUMBER CHECKS -------------------------
-(defrule
-    (up-players-in-game any < 8)
-=>
-    (up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 2)
-    (up-modify-sn sn-maximum-town-size c:+ 2)
-    (up-modify-sn sn-minimum-town-size c:+ 2)
-    (disable-self)
-)
-(defrule
-    (up-players-in-game any < 7)
-=>
-    ;(up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 1)
-    (up-modify-sn sn-maximum-town-size c:+ 1)
-    (up-modify-sn sn-minimum-town-size c:+ 1)
-    (disable-self)
-)
-(defrule
-    (up-players-in-game any < 6)
-=>
-    (up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 1)
-    (up-modify-sn sn-maximum-town-size c:+ 1)
-    (up-modify-sn sn-minimum-town-size c:+ 1)
-    (disable-self)
-)
-(defrule
-    (up-players-in-game any < 5)
-=>
-    (up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 1)
-    (up-modify-sn sn-maximum-town-size c:+ 1)
-    (up-modify-sn sn-minimum-town-size c:+ 1)
-    (disable-self)
-)
+
 (defrule
     (map-size small)
 =>
