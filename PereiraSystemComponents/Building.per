@@ -2114,20 +2114,34 @@
 =>
     (up-modify-goal gl-innerGatePoint3-x g:+ gl-randomNumber)(disable-self))
 
-; SECONDARY
-(defrule(true)=>(generate-random-number 13)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+; SECONDARY - 4 POINTS INSTEAD OF 2 LIKE THE OUTER WALL
+(defrule(true)=>(generate-random-number 12)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
 =>
     (up-modify-goal gl-innerSecGatePoint1-y g:+ gl-randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 13)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 12)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+
+(defrule
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
+=>
+    (up-modify-goal gl-innerSecGatePoint2-y g:- gl-randomNumber)(disable-self))
+
+(defrule(true)=>(generate-random-number 12)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 
 (defrule
     (up-compare-goal gl-buildSouthEastMainGates == 1)
 =>
     (up-modify-goal gl-innerSecGatePoint4-y g:+ gl-randomNumber)(disable-self))
+
+(defrule(true)=>(generate-random-number 12)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+
+(defrule
+    (up-compare-goal gl-buildSouthEastMainGates == 1)
+=>
+    (up-modify-goal gl-innerSecGatePoint3-y g:- gl-randomNumber)(disable-self))    
 
 ; 3 INNER SOUTH WEST GATES --------------------------------------
 ; MAIN
