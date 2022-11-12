@@ -2000,13 +2000,13 @@
 (defrule
     (up-compare-goal gl-buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint2-x g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal gl-innerSecGatePoint3-x g:+ gl-randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
     (up-compare-goal gl-buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint3-x g:+ gl-randomNumber)(disable-self))    
+    (up-modify-goal gl-innerSecGatePoint4-x g:+ gl-randomNumber)(disable-self))    
 
           ; GATES CLOSER TO BACK
 (defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
