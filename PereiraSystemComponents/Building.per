@@ -1819,7 +1819,7 @@
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-gotNorthEastPalisadeGates == 1)
     (up-compare-goal gl-buildingOuterWall == 1)
-    (up-can-build-line 0 gl-outerWallPoint1-x c: palisade-wall)
+    (up-can-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)
 )
@@ -1827,7 +1827,7 @@
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (up-compare-goal gl-gotNorthEastPalisadeGates == 1)
     (up-compare-goal gl-buildingOuterWall == 1)
-    (up-can-build-line 0 gl-outerWallPoint2-x c: palisade-wall)
+    (up-can-build-line gl-outerWallPoint2-x gl-outerWallPoint1-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint2-x gl-outerWallPoint1-x c: palisade-wall)
 )
@@ -1836,7 +1836,7 @@
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-gotSouthEastPalisadeGates == 1)
     (up-compare-goal gl-buildingOuterWall == 1)
-    (up-can-build-line 0 gl-outerWallPoint2-x c: palisade-wall)
+    (up-can-build-line gl-outerWallPoint2-x gl-outerWallPoint3-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint2-x gl-outerWallPoint3-x c: palisade-wall)
 )
@@ -1844,7 +1844,7 @@
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (up-compare-goal gl-gotSouthEastPalisadeGates == 1)
     (up-compare-goal gl-buildingOuterWall == 1)
-    (up-can-build-line 0 gl-outerWallPoint2-x c: palisade-wall)
+    (up-can-build-line gl-outerWallPoint3-x gl-outerWallPoint2-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint3-x gl-outerWallPoint2-x c: palisade-wall)
 )
@@ -1853,7 +1853,7 @@
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-gotSouthWestPalisadeGates == 1)
     (up-compare-goal gl-buildingOuterWall == 1)
-    (up-can-build-line 0 gl-outerWallPoint3-x c: palisade-wall)
+    (up-can-build-line gl-outerWallPoint3-x gl-outerWallPoint4-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint3-x gl-outerWallPoint4-x c: palisade-wall)
 )
@@ -1861,7 +1861,7 @@
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
     (up-compare-goal gl-gotSouthWestPalisadeGates == 1)
     (up-compare-goal gl-buildingOuterWall == 1)
-    (up-can-build-line 0 gl-outerWallPoint3-x c: palisade-wall)
+    (up-can-build-line gl-outerWallPoint4-x gl-outerWallPoint3-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint4-x gl-outerWallPoint3-x c: palisade-wall)
 )
@@ -1870,7 +1870,7 @@
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-gotNorthWestPalisadeGates == 1)
     (up-compare-goal gl-buildingOuterWall == 1)
-    (up-can-build-line 0 gl-outerWallPoint4-x c: palisade-wall)
+    (up-can-build-line gl-outerWallPoint4-x gl-outerWallPoint1-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint4-x gl-outerWallPoint1-x c: palisade-wall)
 )
@@ -1878,7 +1878,7 @@
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-gotNorthWestPalisadeGates == 1)
     (up-compare-goal gl-buildingOuterWall == 1)
-    (up-can-build-line 0 gl-outerWallPoint1-x c: palisade-wall)
+    (up-can-build-line gl-outerWallPoint1-x gl-outerWallPoint4-x c: palisade-wall)
 =>
     (up-build-line gl-outerWallPoint1-x gl-outerWallPoint4-x c: palisade-wall)
 )
