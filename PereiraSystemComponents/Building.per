@@ -952,7 +952,7 @@
 (defrule
     (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisHigh == 1)
 =>
-    ;(chat-to-allies "IM AT THE EAST, IN THE CORNER! - POS 1")
+    (chat-to-allies "IM AT THE EAST, IN THE CORNER! - POS 1")
     (set-goal gl-posQuadrantCode 1)
     (up-send-flare position-self)(disable-self)
 )
@@ -966,7 +966,7 @@
 (defrule
     (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisLow == 1)
 =>
-    ;(chat-to-allies "IM AT AT THE NORTH, IN THE CORNER! - POS 3")
+    (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER! - POS 3")
     (set-goal gl-posQuadrantCode 3)
     (up-send-flare position-self)(disable-self)
 )
@@ -994,7 +994,7 @@
 (defrule
     (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisHigh == 1)
 =>
-    ;(chat-to-allies "IM AT THE SOUTH, IN THE CORNER! - POS 7")
+    (chat-to-allies "IM AT THE SOUTH, IN THE CORNER! - POS 7")
     (set-goal gl-posQuadrantCode 7)
     (up-send-flare position-self)(disable-self)
 )
@@ -1008,7 +1008,7 @@
 (defrule
     (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisLow == 1)
 =>
-    ;(chat-to-allies "IM AT THE WEST, IN THE CORNER! - POS 9")
+    (chat-to-allies "IM AT THE WEST, IN THE CORNER! - POS 9")
     (set-goal gl-posQuadrantCode 9)
     (up-send-flare position-self)(disable-self)
 )
