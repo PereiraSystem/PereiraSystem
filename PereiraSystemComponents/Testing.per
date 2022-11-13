@@ -68,12 +68,12 @@
     (build dock)(delete-building town-center)
     (build town-center)
     (set-strategic-number sn-maximum-food-drop-distance 0)
-    (set-goal gl-weMovedPlace 1)
+    (set-goal weMovedPlace 1)
     (delete-building farm)(delete-building farm)(delete-building farm)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-weMovedPlace > 0)
+    (up-compare-goal weMovedPlace > 0)
     (building-type-count town-center < 1)
     (building-type-count farm > 0)
 =>
@@ -86,7 +86,7 @@
     (chat-local-to-self "Deleting farms cause no town center")
 )
 (defrule
-    (up-compare-goal gl-weMovedPlace > 0)
+    (up-compare-goal weMovedPlace > 0)
     (building-type-count town-center > 0)
     (building-type-count dock > 0)
     (building-type-count lumber-camp > 0)

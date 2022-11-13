@@ -103,7 +103,7 @@
     (wood-amount > 200)
     (building-type-count town-center > 0)
     (building-type-count lumber-camp > 1)
-    (or(up-compare-goal gl-weMovedPlace == 0)
+    (or(up-compare-goal weMovedPlace == 0)
     (building-type-count dock > 0))
     (not(civ-selected khmer))
     (dropsite-min-distance food > 12)
@@ -121,7 +121,7 @@
     (wood-amount > 200)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)
-    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
+    (or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (not(civ-selected khmer))
 =>
     (build mill)(chat-local-to-self "Trying To Build Mill 3")
@@ -133,7 +133,7 @@
     (or(wood-amount > 9000)(building-type-count-total mill < 5))
     (dropsite-min-distance food > 3)
     (wood-amount > 800)
-    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
+    (or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (can-build mill)(not(civ-selected khmer))
 =>
     (chat-local-to-self "Trying To Build Mill")
@@ -251,7 +251,7 @@
 (defrule
     (current-age >= feudal-age)
     (building-type-count-total lumber-camp > 0)
-    (building-type-count-total lumber-camp g:< gl-max-lumber-camps-qty)
+    (building-type-count-total lumber-camp g:< max-lumber-camps-qty)
     (resource-found wood)
     (dropsite-min-distance wood > 3)
     (can-build lumber-camp)
@@ -281,7 +281,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (or(building-type-count-total monastery > 0)
     (building-type-count-total dock > 1))
-    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
+    (building-type-count-total mining-camp g:< max-mining-camps-qty)
     (resource-found gold)
     (dropsite-min-distance gold > 3)
     (can-build mining-camp)
@@ -296,7 +296,7 @@
     (wood-amount > 200)
     (resource-found stone)
     (dropsite-min-distance stone > 3)
-    ;(building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
+    ;(building-type-count-total mining-camp g:< max-mining-camps-qty)
     (building-type-count-total mining-camp < 4)
     (can-build mining-camp)
 =>
@@ -311,7 +311,7 @@
     (wood-amount > 276)
     (resource-found stone)
     (dropsite-min-distance stone > 3)
-    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
+    (building-type-count-total mining-camp g:< max-mining-camps-qty)
     (can-build mining-camp)
 =>
     (up-chat-data-to-self "Trying To Build Mining Camp (Stone 2) - Max Distance: %d" s: sn-mining-camp-max-distance)
@@ -320,7 +320,7 @@
 (defrule
     (current-age > castle-age)
     (building-type-count-total monastery > 0)
-    (building-type-count-total mining-camp g:< gl-max-mining-camps-qty)
+    (building-type-count-total mining-camp g:< max-mining-camps-qty)
     (resource-found stone)
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)
@@ -339,7 +339,7 @@
         (or(civ-selected cumans)(civ-selected bohemians))
     )
     ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
-    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
+    (or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (up-can-build 0 c: blacksmith)
 =>
     (chat-local-to-self "Trying to build blacksmith")
@@ -623,7 +623,7 @@
         (not(civ-selected portuguese))(building-type-count archery-range > 0)
     )
     (building-type-count-total stable == 0)
-    (or(up-compare-goal gl-weMovedPlace == 0)(building-type-count dock > 0))
+    (or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable 1")
@@ -760,80 +760,80 @@
 (defrule
     (map-size tiny)
 =>
-    (set-goal gl-maxDimensionOfMap 120)
+    (set-goal maxDimensionOfMap 120)
     (disable-self)
 )
 (defrule
     (map-size small)
 =>
-    (set-goal gl-maxDimensionOfMap 144)
+    (set-goal maxDimensionOfMap 144)
     (disable-self)
 )
 (defrule
     (map-size medium)
 =>
-    (set-goal gl-maxDimensionOfMap 168)
+    (set-goal maxDimensionOfMap 168)
     (disable-self)
 )
 (defrule
     (map-size normal)
 =>
-    (set-goal gl-maxDimensionOfMap 200)
+    (set-goal maxDimensionOfMap 200)
     (disable-self)
 )
 (defrule
     (map-size large)
 =>
-    (set-goal gl-maxDimensionOfMap 220)
+    (set-goal maxDimensionOfMap 220)
     (disable-self)
 )
 (defrule
     (map-size giant)
 =>
-    (set-goal gl-maxDimensionOfMap 240)
+    (set-goal maxDimensionOfMap 240)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-posMapSize-x > 256)
+    (up-compare-goal posMapSize-x > 256)
 =>
-    (set-goal gl-maxDimensionOfMap 480)
-    (disable-self)
-)
-(defrule
-    (true)
-=>
-    ;(up-chat-data-to-self "Inner wall perimeter: %d" g: gl-innerWallPerimeter)
-    ;(up-chat-data-to-self "Outer wall perimeter: %d" g: gl-outerWallPerimeter)
+    (set-goal maxDimensionOfMap 480)
     (disable-self)
 )
 (defrule
     (true)
 =>
-    (up-get-point position-self gl-myPosition-x)
-    (up-get-point position-map-size gl-mapSizeThird)
-    (up-get-point position-map-size gl-mapSizeTwoThirds)
-    (up-get-point position-map-size gl-mapSizeTenth)
-    (up-get-point position-map-size gl-mapSizeNineTenths)
-    (up-get-point position-map-size gl-posMapSize-x)
-    (up-get-point position-map-size gl-maxDimensionOfMap)
-    (up-get-point position-center gl-mapCenter-x)
-    (up-modify-goal gl-mapSizeThird c:/ 3)
-    (up-modify-goal gl-mapSizeTwoThirds c:/ 3)
-    (up-modify-goal gl-mapSizeTwoThirds c:* 2)
-    (up-modify-goal gl-mapSizeTenth c:/ 10)
-    (up-modify-goal gl-mapSizeNineTenths g:- gl-mapSizeTenth)
+    ;(up-chat-data-to-self "Inner wall perimeter: %d" g: innerWallPerimeter)
+    ;(up-chat-data-to-self "Outer wall perimeter: %d" g: outerWallPerimeter)
+    (disable-self)
+)
+(defrule
+    (true)
+=>
+    (up-get-point position-self myPosition-x)
+    (up-get-point position-map-size mapSizeThird)
+    (up-get-point position-map-size mapSizeTwoThirds)
+    (up-get-point position-map-size mapSizeTenth)
+    (up-get-point position-map-size mapSizeNineTenths)
+    (up-get-point position-map-size posMapSize-x)
+    (up-get-point position-map-size maxDimensionOfMap)
+    (up-get-point position-center mapCenter-x)
+    (up-modify-goal mapSizeThird c:/ 3)
+    (up-modify-goal mapSizeTwoThirds c:/ 3)
+    (up-modify-goal mapSizeTwoThirds c:* 2)
+    (up-modify-goal mapSizeTenth c:/ 10)
+    (up-modify-goal mapSizeNineTenths g:- mapSizeTenth)
     (disable-self)
 )
 
 (defrule
     (game-time > 120)(false)
 =>
-    (up-chat-data-to-self "Map Size x: %d" g: gl-posMapSize-x)
-    (up-chat-data-to-self "Map Size manually set: %d" g: gl-maxDimensionOfMap)
-    (up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
-    (up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
-    (up-chat-data-to-self "Map Size 1/10 %d" g: gl-mapSizeTenth)
-    (up-chat-data-to-self "Map Center %d" g: gl-mapCenter-x) ;all maps are square so y not needed
+    (up-chat-data-to-self "Map Size x: %d" g: posMapSize-x)
+    (up-chat-data-to-self "Map Size manually set: %d" g: maxDimensionOfMap)
+    (up-chat-data-to-self "Map Size 1/3 %d" g: mapSizeThird)
+    (up-chat-data-to-self "Map Size 2/3 %d" g: mapSizeTwoThirds)
+    (up-chat-data-to-self "Map Size 1/10 %d" g: mapSizeTenth)
+    (up-chat-data-to-self "Map Center %d" g: mapCenter-x) ;all maps are square so y not needed
     (disable-self)
 )
 
@@ -841,154 +841,154 @@
     (false)
     ;(game-time > 30)
 =>
-    (up-chat-data-to-self "POS X: %d" g: gl-myPosition-x)
-    (up-chat-data-to-self "POS Y: %d" g: gl-myPosition-y)
+    (up-chat-data-to-self "POS X: %d" g: myPosition-x)
+    (up-chat-data-to-self "POS Y: %d" g: myPosition-y)
     (disable-self)
 )
 
 ; CHECK OUR POSITION IN 9 SQUARES
 (defrule
-    (up-compare-goal gl-myPosition-x g:>= gl-mapSizeTwoThirds)
+    (up-compare-goal myPosition-x g:>= mapSizeTwoThirds)
 =>
-    (set-goal gl-posXisHigh 1)
+    (set-goal posXisHigh 1)
     (chat-to-player my-player-number "IM CLOSE TO THE HIGH X BORDER")
-    ;(up-chat-data-to-self "this is x : %d" g: gl-myPosition-x)
-    ;(up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
+    ;(up-chat-data-to-self "this is x : %d" g: myPosition-x)
+    ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-myPosition-y g:>= gl-mapSizeTwoThirds)
+    (up-compare-goal myPosition-y g:>= mapSizeTwoThirds)
 =>
-    (set-goal gl-posYisHigh 1)
+    (set-goal posYisHigh 1)
     (chat-to-player my-player-number "IM CLOSE TO THE HIGH Y BORDER")
-    ;(up-chat-data-to-self "this is y : %d" g: gl-myPosition-x)
-    ;(up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
+    ;(up-chat-data-to-self "this is y : %d" g: myPosition-x)
+    ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
 
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-myPosition-x g:< gl-mapSizeTwoThirds)
-    (up-compare-goal gl-myPosition-x g:> gl-mapSizeThird)
+    (up-compare-goal myPosition-x g:< mapSizeTwoThirds)
+    (up-compare-goal myPosition-x g:> mapSizeThird)
 =>
-    (set-goal gl-posXisMed 1)(disable-self)
+    (set-goal posXisMed 1)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-myPosition-y g:< gl-mapSizeTwoThirds)
-    (up-compare-goal gl-myPosition-y g:> gl-mapSizeThird)
+    (up-compare-goal myPosition-y g:< mapSizeTwoThirds)
+    (up-compare-goal myPosition-y g:> mapSizeThird)
 =>
-    (set-goal gl-posYisMed 1)(disable-self)
+    (set-goal posYisMed 1)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-myPosition-x g:<= gl-mapSizeThird)
+    (up-compare-goal myPosition-x g:<= mapSizeThird)
 =>
-    (set-goal gl-posXisLow 1)
+    (set-goal posXisLow 1)
     (chat-to-player my-player-number "IM CLOSE TO THE LOW X BORDER")
-    ;(up-chat-data-to-self "this is x : %d" g: gl-myPosition-x)
-    ;(up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
+    ;(up-chat-data-to-self "this is x : %d" g: myPosition-x)
+    ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-myPosition-y g:<= gl-mapSizeThird)
+    (up-compare-goal myPosition-y g:<= mapSizeThird)
 =>
-    (set-goal gl-posYisLow 1)
+    (set-goal posYisLow 1)
     (chat-to-player my-player-number "IM CLOSE TO THE LOW Y BORDER")
-    ;(up-chat-data-to-self "this is y : %d" g: gl-myPosition-y)
-    ;(up-chat-data-to-self "this is map size two thirds : %d" g: gl-mapSizeTwoThirds)
+    ;(up-chat-data-to-self "this is y : %d" g: myPosition-y)
+    ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
     (disable-self)
 )
 ; SAY 1 OF 9 POSITIONS TO ALLIES AND STORE POSITION IN A CODE WHILE WE ARE AT IT
 (defrule
-    (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisHigh == 1)
+    (up-compare-goal posXisHigh == 1)(up-compare-goal posYisHigh == 1)
 =>
     (chat-to-allies "IM AT THE EAST, IN THE CORNER! - POS 1")
-    (set-goal gl-posQuadrantCode 1)
+    (set-goal posQuadrantCode 1)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisMed == 1)
+    (up-compare-goal posXisHigh == 1)(up-compare-goal posYisMed == 1)
 =>
     ;(chat-to-allies "IM AT THE NORTH EAST!")
-    (set-goal gl-posQuadrantCode 2)
+    (set-goal posQuadrantCode 2)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-posXisHigh == 1)(up-compare-goal gl-posYisLow == 1)
+    (up-compare-goal posXisHigh == 1)(up-compare-goal posYisLow == 1)
 =>
     (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER! - POS 3")
-    (set-goal gl-posQuadrantCode 3)
+    (set-goal posQuadrantCode 3)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-posXisMed == 1)(up-compare-goal gl-posYisHigh == 1)
+    (up-compare-goal posXisMed == 1)(up-compare-goal posYisHigh == 1)
 =>
     ;(chat-to-allies "IM AT THE SOUTH EAST!")
-    (set-goal gl-posQuadrantCode 4)
+    (set-goal posQuadrantCode 4)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-posXisMed == 1)(up-compare-goal gl-posYisMed == 1)
+    (up-compare-goal posXisMed == 1)(up-compare-goal posYisMed == 1)
 =>
     (chat-to-allies "IM IN THE MIDDLE OF THE MAP - POS 5")
-    (set-goal gl-posQuadrantCode 5)
+    (set-goal posQuadrantCode 5)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-posXisMed == 1)(up-compare-goal gl-posYisLow == 1)
+    (up-compare-goal posXisMed == 1)(up-compare-goal posYisLow == 1)
 =>
     ;(chat-to-allies "IM AT THE NORTH WEST!")
-    (set-goal gl-posQuadrantCode 6)
+    (set-goal posQuadrantCode 6)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisHigh == 1)
+    (up-compare-goal posXisLow == 1)(up-compare-goal posYisHigh == 1)
 =>
     (chat-to-allies "IM AT THE SOUTH, IN THE CORNER! - POS 7")
-    (set-goal gl-posQuadrantCode 7)
+    (set-goal posQuadrantCode 7)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisMed == 1)
+    (up-compare-goal posXisLow == 1)(up-compare-goal posYisMed == 1)
 =>
     ;(chat-to-allies "IM AT THE SOUTH WEST!")
-    (set-goal gl-posQuadrantCode 8)
+    (set-goal posQuadrantCode 8)
     (up-send-flare position-self)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-posXisLow == 1)(up-compare-goal gl-posYisLow == 1)
+    (up-compare-goal posXisLow == 1)(up-compare-goal posYisLow == 1)
 =>
     (chat-to-allies "IM AT THE WEST, IN THE CORNER! - POS 9")
-    (set-goal gl-posQuadrantCode 9)
+    (set-goal posQuadrantCode 9)
     (up-send-flare position-self)(disable-self)
 )
 
 (defrule
     (true)
 =>
-    (up-get-point position-self gl-outerWallPoint1-x)
-    (up-get-point position-self gl-outerWallPoint2-x)
-    (up-get-point position-self gl-outerWallPoint3-x)
-    (up-get-point position-self gl-outerWallPoint4-x)
-    (up-get-point position-self gl-innerWallPoint1-x)
-    (up-get-point position-self gl-innerWallPoint2-x)
-    (up-get-point position-self gl-innerWallPoint3-x)
-    (up-get-point position-self gl-innerWallPoint4-x)
-    (up-get-point position-self gl-innerGatePoint1-x)
-    (up-get-point position-self gl-innerGatePoint2-x)
-    (up-get-point position-self gl-innerGatePoint3-x)
-    (up-get-point position-self gl-innerGatePoint4-x)
-    (up-get-point position-self gl-outerGatePoint1-x)
-    (up-get-point position-self gl-outerGatePoint2-x)
-    (up-get-point position-self gl-outerGatePoint3-x)
-    (up-get-point position-self gl-outerGatePoint4-x)
+    (up-get-point position-self outerWallPoint1-x)
+    (up-get-point position-self outerWallPoint2-x)
+    (up-get-point position-self outerWallPoint3-x)
+    (up-get-point position-self outerWallPoint4-x)
+    (up-get-point position-self innerWallPoint1-x)
+    (up-get-point position-self innerWallPoint2-x)
+    (up-get-point position-self innerWallPoint3-x)
+    (up-get-point position-self innerWallPoint4-x)
+    (up-get-point position-self innerGatePoint1-x)
+    (up-get-point position-self innerGatePoint2-x)
+    (up-get-point position-self innerGatePoint3-x)
+    (up-get-point position-self innerGatePoint4-x)
+    (up-get-point position-self outerGatePoint1-x)
+    (up-get-point position-self outerGatePoint2-x)
+    (up-get-point position-self outerGatePoint3-x)
+    (up-get-point position-self outerGatePoint4-x)
     (disable-self)
 )
 (defrule
     (true)
 =>
-    (up-get-point position-self gl-innerSecGatePoint1-x)
-    (up-get-point position-self gl-innerSecGatePoint2-x)
-    (up-get-point position-self gl-innerSecGatePoint3-x)
-    (up-get-point position-self gl-innerSecGatePoint4-x)
+    (up-get-point position-self innerSecGatePoint1-x)
+    (up-get-point position-self innerSecGatePoint2-x)
+    (up-get-point position-self innerSecGatePoint3-x)
+    (up-get-point position-self innerSecGatePoint4-x)
     (disable-self)
 )
 
@@ -996,16 +996,16 @@
 (defrule
     (true)
 =>
-    (up-modify-goal gl-outerWallPoint1-x g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint1-y g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint2-x g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint2-y g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint3-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint3-y g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint4-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerWallPoint4-y g:- gl-outerWallPerimeter)
-    ;(up-chat-data-to-self "OUTER WALL POINT 1 X: %d" g: gl-outerWallPoint1-x)
-    ;(up-chat-data-to-self "OUTER WALL POINT 1 Y: %d" g: gl-outerWallPoint1-y)
+    (up-modify-goal outerWallPoint1-x g:+ outerWallPerimeter)
+    (up-modify-goal outerWallPoint1-y g:- outerWallPerimeter)
+    (up-modify-goal outerWallPoint2-x g:+ outerWallPerimeter)
+    (up-modify-goal outerWallPoint2-y g:+ outerWallPerimeter)
+    (up-modify-goal outerWallPoint3-x g:- outerWallPerimeter)
+    (up-modify-goal outerWallPoint3-y g:+ outerWallPerimeter)
+    (up-modify-goal outerWallPoint4-x g:- outerWallPerimeter)
+    (up-modify-goal outerWallPoint4-y g:- outerWallPerimeter)
+    ;(up-chat-data-to-self "OUTER WALL POINT 1 X: %d" g: outerWallPoint1-x)
+    ;(up-chat-data-to-self "OUTER WALL POINT 1 Y: %d" g: outerWallPoint1-y)
     (disable-self)
 )
 
@@ -1013,16 +1013,16 @@
 (defrule
     (true)
 =>
-    (up-modify-goal gl-outerGatePoint1-x g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerGatePoint1-y g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerGatePoint2-x g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerGatePoint2-y g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerGatePoint3-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerGatePoint3-y g:+ gl-outerWallPerimeter)
-    (up-modify-goal gl-outerGatePoint4-x g:- gl-outerWallPerimeter)
-    (up-modify-goal gl-outerGatePoint4-y g:- gl-outerWallPerimeter)
-    ;(up-chat-data-to-self "OUTER GATE POINT 1 X: %d" g: gl-outerGatePoint1-x)
-    ;(up-chat-data-to-self "OUTER GATE POINT 1 Y: %d" g: gl-outerGatePoint1-y)
+    (up-modify-goal outerGatePoint1-x g:+ outerWallPerimeter)
+    (up-modify-goal outerGatePoint1-y g:- outerWallPerimeter)
+    (up-modify-goal outerGatePoint2-x g:+ outerWallPerimeter)
+    (up-modify-goal outerGatePoint2-y g:+ outerWallPerimeter)
+    (up-modify-goal outerGatePoint3-x g:- outerWallPerimeter)
+    (up-modify-goal outerGatePoint3-y g:+ outerWallPerimeter)
+    (up-modify-goal outerGatePoint4-x g:- outerWallPerimeter)
+    (up-modify-goal outerGatePoint4-y g:- outerWallPerimeter)
+    ;(up-chat-data-to-self "OUTER GATE POINT 1 X: %d" g: outerGatePoint1-x)
+    ;(up-chat-data-to-self "OUTER GATE POINT 1 Y: %d" g: outerGatePoint1-y)
     (disable-self)
 )
 
@@ -1030,14 +1030,14 @@
 (defrule
     (true)
 =>
-    (up-modify-goal gl-innerWallPoint1-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint1-y g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint2-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint2-y g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint3-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint3-y g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint4-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerWallPoint4-y g:- gl-innerWallPerimeter)
+    (up-modify-goal innerWallPoint1-x g:+ innerWallPerimeter)
+    (up-modify-goal innerWallPoint1-y g:- innerWallPerimeter)
+    (up-modify-goal innerWallPoint2-x g:+ innerWallPerimeter)
+    (up-modify-goal innerWallPoint2-y g:+ innerWallPerimeter)
+    (up-modify-goal innerWallPoint3-x g:- innerWallPerimeter)
+    (up-modify-goal innerWallPoint3-y g:+ innerWallPerimeter)
+    (up-modify-goal innerWallPoint4-x g:- innerWallPerimeter)
+    (up-modify-goal innerWallPoint4-y g:- innerWallPerimeter)
     (disable-self)
 )
 
@@ -1046,14 +1046,14 @@
 (defrule
     (true)
 =>
-    (up-modify-goal gl-innerGatePoint1-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerGatePoint1-y g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerGatePoint2-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerGatePoint2-y g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerGatePoint3-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerGatePoint3-y g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerGatePoint4-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerGatePoint4-y g:- gl-innerWallPerimeter)
+    (up-modify-goal innerGatePoint1-x g:+ innerWallPerimeter)
+    (up-modify-goal innerGatePoint1-y g:- innerWallPerimeter)
+    (up-modify-goal innerGatePoint2-x g:+ innerWallPerimeter)
+    (up-modify-goal innerGatePoint2-y g:+ innerWallPerimeter)
+    (up-modify-goal innerGatePoint3-x g:- innerWallPerimeter)
+    (up-modify-goal innerGatePoint3-y g:+ innerWallPerimeter)
+    (up-modify-goal innerGatePoint4-x g:- innerWallPerimeter)
+    (up-modify-goal innerGatePoint4-y g:- innerWallPerimeter)
     (disable-self)
 )
 
@@ -1061,95 +1061,95 @@
 (defrule
     (true)
 =>
-    (up-modify-goal gl-innerSecGatePoint1-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerSecGatePoint1-y g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerSecGatePoint2-x g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerSecGatePoint2-y g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerSecGatePoint3-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerSecGatePoint3-y g:+ gl-innerWallPerimeter)
-    (up-modify-goal gl-innerSecGatePoint4-x g:- gl-innerWallPerimeter)
-    (up-modify-goal gl-innerSecGatePoint4-y g:- gl-innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint1-x g:+ innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint1-y g:- innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint2-x g:+ innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint2-y g:+ innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint3-x g:- innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint3-y g:+ innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint4-x g:- innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint4-y g:- innerWallPerimeter)
     (disable-self)
 )
 
 ; MAKE THE OUTER AND INNER WALLS REACH THE BORDERS IF THEY ARE CLOSE
 ; LOWER POINTS SET TO ZERO
 (defrule
-    (up-compare-goal gl-outerWallPoint1-y g:< gl-mapSizeTenth)
+    (up-compare-goal outerWallPoint1-y g:< mapSizeTenth)
 =>
-    (set-goal gl-outerWallPoint1-y 0)
-    (set-goal gl-innerWallPoint1-y 0)
+    (set-goal outerWallPoint1-y 0)
+    (set-goal innerWallPoint1-y 0)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-outerWallPoint3-x g:< gl-mapSizeTenth)
+    (up-compare-goal outerWallPoint3-x g:< mapSizeTenth)
 =>
-    (set-goal gl-outerWallPoint3-x 0)
-    (set-goal gl-innerWallPoint3-x 0)
+    (set-goal outerWallPoint3-x 0)
+    (set-goal innerWallPoint3-x 0)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-outerWallPoint4-x g:< gl-mapSizeTenth)
+    (up-compare-goal outerWallPoint4-x g:< mapSizeTenth)
 =>
-    (set-goal gl-outerWallPoint4-x 0)
-    (set-goal gl-innerWallPoint4-x 0)
+    (set-goal outerWallPoint4-x 0)
+    (set-goal innerWallPoint4-x 0)
     (disable-self)
 )
 (defrule
-    (up-compare-goal gl-outerWallPoint4-y g:< gl-mapSizeTenth)
+    (up-compare-goal outerWallPoint4-y g:< mapSizeTenth)
 =>
-    (set-goal gl-outerWallPoint4-y 0)
-    (set-goal gl-innerWallPoint4-y 0)
+    (set-goal outerWallPoint4-y 0)
+    (set-goal innerWallPoint4-y 0)
     (disable-self)
 )
 
 ; HIGHER POINTS SET TO THE MAX SIZE OF MAP
 (defrule
-    (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal outerWallPoint1-x g:> mapSizeNineTenths)
 =>
-    (set-goal gl-outerWallPoint1-x gl-maxDimensionOfMap)
-    (set-goal gl-innerWallPoint1-x gl-maxDimensionOfMap)(disable-self)
+    (set-goal outerWallPoint1-x maxDimensionOfMap)
+    (set-goal innerWallPoint1-x maxDimensionOfMap)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-outerWallPoint2-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal outerWallPoint2-x g:> mapSizeNineTenths)
 =>
-    (set-goal gl-outerWallPoint2-x gl-maxDimensionOfMap)
-    (set-goal gl-innerWallPoint2-x gl-maxDimensionOfMap)(disable-self)
+    (set-goal outerWallPoint2-x maxDimensionOfMap)
+    (set-goal innerWallPoint2-x maxDimensionOfMap)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal outerWallPoint2-y g:> mapSizeNineTenths)
 =>
-    (set-goal gl-outerWallPoint2-y gl-maxDimensionOfMap)
-    (set-goal gl-innerWallPoint2-y gl-maxDimensionOfMap)(disable-self)
+    (set-goal outerWallPoint2-y maxDimensionOfMap)
+    (set-goal innerWallPoint2-y maxDimensionOfMap)(disable-self)
 )
 (defrule
-    (up-compare-goal gl-outerWallPoint3-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal outerWallPoint3-y g:> mapSizeNineTenths)
 =>
-    (set-goal gl-outerWallPoint3-y gl-maxDimensionOfMap)
-    (set-goal gl-innerWallPoint3-y gl-maxDimensionOfMap)(disable-self)
+    (set-goal outerWallPoint3-y maxDimensionOfMap)
+    (set-goal innerWallPoint3-y maxDimensionOfMap)(disable-self)
 )
 
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
 (defrule  ; no north east (1 to 2) if point 1 too close to north border
-    (up-compare-goal gl-outerWallPoint1-x g:> gl-mapSizeNineTenths)
+    (up-compare-goal outerWallPoint1-x g:> mapSizeNineTenths)
 =>
-    (set-goal gl-dontBuildNorthEastWall 1)(disable-self)
+    (set-goal dontBuildNorthEastWall 1)(disable-self)
 )
 (defrule ; no south east (2 to 3) if point 2 too close to east border
-    (up-compare-goal gl-outerWallPoint2-y g:> gl-mapSizeNineTenths)
+    (up-compare-goal outerWallPoint2-y g:> mapSizeNineTenths)
 =>
-    (set-goal gl-dontBuildSouthEastWall 1)(disable-self)
+    (set-goal dontBuildSouthEastWall 1)(disable-self)
 )
 (defrule ; no south west (3 to 4) if point 3 too close to south border
-    (up-compare-goal gl-outerWallPoint3-x g:< gl-mapSizeTenth)
+    (up-compare-goal outerWallPoint3-x g:< mapSizeTenth)
 =>
-    (set-goal gl-dontBuildSouthWestWall 1)(disable-self)
+    (set-goal dontBuildSouthWestWall 1)(disable-self)
 )
 (defrule ; no north west (4 to 1) if point 4 too close to west border
-    (up-compare-goal gl-outerWallPoint4-y g:< gl-mapSizeTenth)
+    (up-compare-goal outerWallPoint4-y g:< mapSizeTenth)
 =>
-    (set-goal gl-dontBuildNorthWestWall 1)(disable-self)
+    (set-goal dontBuildNorthWestWall 1)(disable-self)
 )
 ; CHOOSE GATES POSITION
 ; 2, 4 , 6 AND 8 GET FIXED GATES
@@ -1157,105 +1157,105 @@
 ; 3 AND 7 CORNERS DEPEND ON NOT BUILDING A WALL (NE 3 AND SW 7)
 (defrule
     (or
-        (goal gl-posQuadrantCode 8) ;south west center
+        (goal posQuadrantCode 8) ;south west center
         (or
             (and
-                (goal gl-posQuadrantCode 7)
-                (up-compare-goal gl-dontBuildSouthWestWall == 1)
+                (goal posQuadrantCode 7)
+                (up-compare-goal dontBuildSouthWestWall == 1)
             )
             (and
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
-                (goal gl-posQuadrantCode 9)
+                (up-compare-goal myPosition-y g:> myPosition-x)
+                (goal posQuadrantCode 9)
             )
         )
     )
 =>
-    (set-goal gl-buildNorthEastMainGates 1)(disable-self)
+    (set-goal buildNorthEastMainGates 1)(disable-self)
 )
 (defrule
     (or
-        (up-compare-goal gl-posQuadrantCode == 6) ;n w center always gets the same
+        (up-compare-goal posQuadrantCode == 6) ;n w center always gets the same
         (or
             (and
-                (goal gl-posQuadrantCode 3)
-                (goal gl-dontBuildNorthEastWall 0)
+                (goal posQuadrantCode 3)
+                (goal dontBuildNorthEastWall 0)
             )
             (and
-                (goal gl-posQuadrantCode 9)
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)
+                (goal posQuadrantCode 9)
+                (up-compare-goal myPosition-y g:<= myPosition-x)
             )
         )
     )
 =>
-    (set-goal gl-buildSouthEastMainGates 1)(disable-self)
+    (set-goal buildSouthEastMainGates 1)(disable-self)
 )
 (defrule
     (or
-        (goal gl-posQuadrantCode 4) ;south east center
+        (goal posQuadrantCode 4) ;south east center
         (or
             (and
-                (up-compare-goal gl-posQuadrantCode == 7)
-                (up-compare-goal gl-dontBuildSouthWestWall == 0)
+                (up-compare-goal posQuadrantCode == 7)
+                (up-compare-goal dontBuildSouthWestWall == 0)
             )
             (and
-                (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
-                (goal gl-posQuadrantCode 1)
+                (up-compare-goal myPosition-y g:> myPosition-x)
+                (goal posQuadrantCode 1)
             )
         )
     )
 =>
-    (set-goal gl-buildNorthWestMainGates 1)(disable-self)
+    (set-goal buildNorthWestMainGates 1)(disable-self)
 )
 (defrule
     (or
-        (goal gl-posQuadrantCode 2) ;north east center
+        (goal posQuadrantCode 2) ;north east center
         (or
             (and
-                (goal gl-posQuadrantCode 3)
-                (goal gl-dontBuildNorthEastWall 1)
+                (goal posQuadrantCode 3)
+                (goal dontBuildNorthEastWall 1)
             )
             (and
-                (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)
-                (goal gl-posQuadrantCode 1)
+                (up-compare-goal myPosition-y g:<= myPosition-x)
+                (goal posQuadrantCode 1)
             )
         )
     )
 =>
-    (set-goal gl-buildSouthWestMainGates 1)(disable-self)
+    (set-goal buildSouthWestMainGates 1)(disable-self)
 )
 
 ; POS 5 (MIDDLE OF MAP) OWN SECTION
 ;  WHEN CLOSE TO WEST CORNER
 ; AND X LOWER THAN Y
 (defrule
-    (goal gl-posQuadrantCode 5)
-    (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
-    (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
-    (up-compare-goal gl-myPosition-x g:< gl-myPosition-y); closer to SW side
+    (goal posQuadrantCode 5)
+    (up-compare-goal myPosition-y g:< mapCenter-y)
+    (up-compare-goal myPosition-x g:< mapCenter-x)
+    (up-compare-goal myPosition-x g:< myPosition-y); closer to SW side
 =>
-    (set-goal gl-buildNorthEastMainGates 1)
+    (set-goal buildNorthEastMainGates 1)
     (chat-to-all "IM IN THE MIDDLE - WEST CORNER - CLOSE TO SOUTH WEST SIDE")
     (disable-self)
 )
 ; AND X HIGHER THAN Y
 (defrule
-    (goal gl-posQuadrantCode 5)
-    (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
-    (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
-    (up-compare-goal gl-myPosition-x g:> gl-myPosition-y) ;closer to NW side
+    (goal posQuadrantCode 5)
+    (up-compare-goal myPosition-y g:< mapCenter-y)
+    (up-compare-goal myPosition-x g:< mapCenter-x)
+    (up-compare-goal myPosition-x g:> myPosition-y) ;closer to NW side
 =>
-    (set-goal gl-buildSouthEastMainGates 1)
+    (set-goal buildSouthEastMainGates 1)
     (chat-to-all "IM IN THE MIDDLE - WEST CORNER - CLOSE TO NORTH WEST SIDE")
     (disable-self)
 )
 
 ; WHEN CLOSE TO SOUTH CORNER
 (defrule
-    (goal gl-posQuadrantCode 5)
-    (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
-    (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
+    (goal posQuadrantCode 5)
+    (up-compare-goal myPosition-y g:> mapCenter-y)
+    (up-compare-goal myPosition-x g:< mapCenter-x)
 =>
-    (set-goal gl-buildNorthWestMainGates 1)
+    (set-goal buildNorthWestMainGates 1)
     (chat-to-all "IM IN THE MIDDLE - SOUTH CORNER")
     (disable-self)
 )
@@ -1263,34 +1263,34 @@
 ; WHEN CLOSE TO EAST CORNER
 ; AND X LOWER THAN Y
 (defrule
-    (goal gl-posQuadrantCode 5)
-    (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
-    (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
-    (up-compare-goal gl-myPosition-x g:< gl-myPosition-y)
+    (goal posQuadrantCode 5)
+    (up-compare-goal myPosition-y g:> mapCenter-y)
+    (up-compare-goal myPosition-x g:> mapCenter-x)
+    (up-compare-goal myPosition-x g:< myPosition-y)
 =>
-    (set-goal gl-buildNorthWestMainGates 1)
+    (set-goal buildNorthWestMainGates 1)
     (chat-to-all "I WILL BUILD THE GATES TO THE NORTH WEST")
     (disable-self)
 )
 ; AND X HIGHER THAN Y
 (defrule
-    (goal gl-posQuadrantCode 5)
-    (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
-    (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
-    (up-compare-goal gl-myPosition-x g:> gl-myPosition-x)
+    (goal posQuadrantCode 5)
+    (up-compare-goal myPosition-y g:> mapCenter-y)
+    (up-compare-goal myPosition-x g:> mapCenter-x)
+    (up-compare-goal myPosition-x g:> myPosition-x)
 =>
-    (set-goal gl-buildNorthWestMainGates 1)
+    (set-goal buildNorthWestMainGates 1)
     (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH WEST")
     (disable-self)
 )
 
 ; WHEN CLOSE TO NORTH CORNER
 (defrule
-    (goal gl-posQuadrantCode 5)
-    (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
-    (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
+    (goal posQuadrantCode 5)
+    (up-compare-goal myPosition-y g:< mapCenter-y)
+    (up-compare-goal myPosition-x g:> mapCenter-x)
 =>
-    (set-goal gl-buildSouthEastMainGates 1)
+    (set-goal buildSouthEastMainGates 1)
     (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH EAST")
     (disable-self)
 )
@@ -1298,124 +1298,124 @@
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
 ; 1/4 NORTH EAST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
+    (up-compare-goal buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint1-y g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint1-y g:+ randomNumber)(disable-self))
 
 ; MAIN GATE 2
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
+    (up-compare-goal buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint2-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint2-y g:- randomNumber)(disable-self))
 
 ; NORTH EAST SECONDARY PALISADE GATES-----------------------
 ; SECONDARY GATE 1
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
+    (up-compare-goal buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint3-x g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint3-x g:+ randomNumber)(disable-self))
 
 ; SECONDARY GATE 2
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
+    (up-compare-goal buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint4-x g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint4-x g:+ randomNumber)(disable-self))
 
 ; 2/4 SOUTH EAST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
+    (up-compare-goal buildSouthEastMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint2-x g:- gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint2-x g:- randomNumber)(disable-self))
 
 ; MAIN GATE 2
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
+    (up-compare-goal buildSouthEastMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint3-x g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint3-x g:+ randomNumber)(disable-self))
 
 ; SOUTH EAST SECONDARY PALISADE GATES --------------
 ; SECONDARY GATE 1
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
+    (up-compare-goal buildSouthEastMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint1-y g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint1-y g:+ randomNumber)(disable-self))
 
 ; SECONDARY GATE 2
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
+    (up-compare-goal buildSouthEastMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint4-y g:+ gl-randomNumber)(disable-self)
+    (up-modify-goal outerGatePoint4-y g:+ randomNumber)(disable-self)
 )
 
 ; 3/4 SOUTH WEST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
+    (up-compare-goal buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint3-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint3-y g:- randomNumber)(disable-self))
 
 ; MAIN GATE 2
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
+    (up-compare-goal buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint4-y g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint4-y g:+ randomNumber)(disable-self))
 
 ; SOUTH WEST SECONDARY PALISADE GATES -------------
 ; GATE 1
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
+    (up-compare-goal buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint2-x g:- gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint2-x g:- randomNumber)(disable-self))
 
 ; GATE 2
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
+    (up-compare-goal buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint1-x g:- gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint1-x g:- randomNumber)(disable-self))
 
 ; 4/4 NORTH WEST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildNorthWestMainGates == 1)
+    (up-compare-goal buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint1-x g:- gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint1-x g:- randomNumber)(disable-self))
 
 ; MAIN GATE 2
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildNorthWestMainGates == 1)
+    (up-compare-goal buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint4-x g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint4-x g:+ randomNumber)(disable-self))
 
 ; NORTH WEST SECONDARY PALISADE GATES -------------
 ; GATE 1
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildNorthWestMainGates == 1)
+    (up-compare-goal buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint2-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint2-y g:- randomNumber)(disable-self))
 
 ; GATE 2
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (up-compare-goal gl-buildNorthWestMainGates == 1)
+    (up-compare-goal buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal gl-outerGatePoint3-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint3-y g:- randomNumber)(disable-self))
 
 ; -------------------------------------------------
 
@@ -1424,7 +1424,7 @@
 (defrule
     (true)
 =>
-    (set-goal gl-buildingOuterWall 1)
+    (set-goal buildingOuterWall 1)
     (chat-to-player my-player-number "TIME FOR OUTER WALL")
     (disable-self)
 )
@@ -1437,7 +1437,7 @@
     (building-type-count barracks > 0)
     (or(building-type-count archery-range > 0)(building-type-count stable > 0))
 =>
-    (set-goal gl-buildingOuterWall 1)
+    (set-goal buildingOuterWall 1)
     (chat-to-player my-player-number "TIME FOR OUTER WALL")
     (disable-self)
 )
@@ -1445,252 +1445,252 @@
 ; BUILD THE MAIN PALISADE GATES
 ; NORTH EAST
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildNorthEastWall == 0)
+    (up-compare-goal buildNorthEastMainGates == 1)
+    (up-can-build-line outerGatePoint1-x outerGatePoint1-x c: 796)
 =>
-    (up-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
-    (set-goal gl-gotNorthEastPalisadeGates 1)
+    (up-build-line outerGatePoint1-x outerGatePoint1-x c: 796)
+    (set-goal gotNorthEastPalisadeGates 1)
 )
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildNorthEastWall == 0)
+    (up-compare-goal buildNorthEastMainGates == 1)
+    (up-can-build-line outerGatePoint2-x outerGatePoint2-x c: 796)
 =>
-    (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)
-    (set-goal gl-gotNorthEastPalisadeGates 1)
+    (up-build-line outerGatePoint2-x outerGatePoint2-x c: 796)
+    (set-goal gotNorthEastPalisadeGates 1)
 )
 
 ; SOUTH EAST
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 792)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildSouthEastWall == 0)
+    (up-compare-goal buildSouthEastMainGates == 1)
+    (up-can-build-line outerGatePoint2-x outerGatePoint2-x c: 792)
 =>
-    (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 792)
-    (set-goal gl-gotSouthEastPalisadeGates 1)
+    (up-build-line outerGatePoint2-x outerGatePoint2-x c: 792)
+    (set-goal gotSouthEastPalisadeGates 1)
 )
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildSouthEastWall == 0)
+    (up-compare-goal buildSouthEastMainGates == 1)
+    (up-can-build-line outerGatePoint3-x outerGatePoint3-x c: 792)
 =>
-    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
-    (set-goal gl-gotSouthEastPalisadeGates 1)
+    (up-build-line outerGatePoint3-x outerGatePoint3-x c: 792)
+    (set-goal gotSouthEastPalisadeGates 1)
 )
 
 ; SOUTH WEST
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
-    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 796)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildSouthWestWall == 0)
+    (up-compare-goal buildSouthWestMainGates == 1)
+    (up-can-build-line outerGatePoint3-x outerGatePoint3-x c: 796)
 =>
-    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 796)
-    (set-goal gl-gotSouthWestPalisadeGates 1)
+    (up-build-line outerGatePoint3-x outerGatePoint3-x c: 796)
+    (set-goal gotSouthWestPalisadeGates 1)
 )
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
-    (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 796)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildSouthWestWall == 0)
+    (up-compare-goal buildSouthWestMainGates == 1)
+    (up-can-build-line outerGatePoint4-x outerGatePoint4-x c: 796)
 =>
-    (up-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 796)
-    (set-goal gl-gotSouthWestPalisadeGates 1)
+    (up-build-line outerGatePoint4-x outerGatePoint4-x c: 796)
+    (set-goal gotSouthWestPalisadeGates 1)
 )
 
 ; NORTH WEST
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-buildNorthWestMainGates == 1)
-    (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 792)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildNorthWestWall == 0)
+    (up-compare-goal buildNorthWestMainGates == 1)
+    (up-can-build-line outerGatePoint4-x outerGatePoint4-x c: 792)
 =>
-    (up-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 792)
-    (set-goal gl-gotNorthWestPalisadeGates 1)
+    (up-build-line outerGatePoint4-x outerGatePoint4-x c: 792)
+    (set-goal gotNorthWestPalisadeGates 1)
 )
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-buildNorthWestMainGates == 1)
-    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 792)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildNorthWestWall == 0)
+    (up-compare-goal buildNorthWestMainGates == 1)
+    (up-can-build-line outerGatePoint1-x outerGatePoint1-x c: 792)
 =>
-    (up-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 792)
-    (set-goal gl-gotNorthWestPalisadeGates 1)
+    (up-build-line outerGatePoint1-x outerGatePoint1-x c: 792)
+    (set-goal gotNorthWestPalisadeGates 1)
 )
 
 ; BUILD 2 SECONDARY PALISADE GATES
 ; MAIN: NORTH - EAST
 ; SECONDARY: NORTH WEST AND SOUTH EAST
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 792)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildNorthEastWall == 0)
+    (up-compare-goal buildNorthEastMainGates == 1)
+    (up-can-build-line outerGatePoint4-x outerGatePoint4-x c: 792)
 =>
-    (up-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 792)
-    (set-goal gl-gotNorthWestPalisadeGates 1)
+    (up-build-line outerGatePoint4-x outerGatePoint4-x c: 792)
+    (set-goal gotNorthWestPalisadeGates 1)
 )
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildNorthEastMainGates == 1)
-    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildNorthEastWall == 0)
+    (up-compare-goal buildNorthEastMainGates == 1)
+    (up-can-build-line outerGatePoint3-x outerGatePoint3-x c: 792)
 =>
-    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 792)
-    (set-goal gl-gotSouthEastPalisadeGates 1)
+    (up-build-line outerGatePoint3-x outerGatePoint3-x c: 792)
+    (set-goal gotSouthEastPalisadeGates 1)
 )
 
 ; MAIN: SOUTH - EAST
 ; SECONDARY: NORTH EAST AND SOUTH WEST
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildNorthEastWall == 0)
+    (up-compare-goal buildSouthEastMainGates == 1)
+    (up-can-build-line outerGatePoint1-x outerGatePoint1-x c: 796)
 =>
-    (up-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 796)
-    (set-goal gl-gotNorthEastPalisadeGates 1)
+    (up-build-line outerGatePoint1-x outerGatePoint1-x c: 796)
+    (set-goal gotNorthEastPalisadeGates 1)
 )
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-buildSouthEastMainGates == 1)
-    (up-can-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 796)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildSouthWestWall == 0)
+    (up-compare-goal buildSouthEastMainGates == 1)
+    (up-can-build-line outerGatePoint4-x outerGatePoint4-x c: 796)
 =>
-    (up-build-line gl-outerGatePoint4-x gl-outerGatePoint4-x c: 796)
-    (set-goal gl-gotSouthWestPalisadeGates 1)
+    (up-build-line outerGatePoint4-x outerGatePoint4-x c: 796)
+    (set-goal gotSouthWestPalisadeGates 1)
 )
 
 ; MAIN: SOUTH - WEST
 ; SECONDARY: NORTH WEST AND SOUTH EAST
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
-    (up-can-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 792)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildSouthWestWall == 0)
+    (up-compare-goal buildSouthWestMainGates == 1)
+    (up-can-build-line outerGatePoint1-x outerGatePoint1-x c: 792)
 =>
-    (up-build-line gl-outerGatePoint1-x gl-outerGatePoint1-x c: 792)
-    (set-goal gl-gotNorthWestPalisadeGates 1)
+    (up-build-line outerGatePoint1-x outerGatePoint1-x c: 792)
+    (set-goal gotNorthWestPalisadeGates 1)
 )
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-buildSouthWestMainGates == 1)
-    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 792)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildSouthWestWall == 0)
+    (up-compare-goal buildSouthWestMainGates == 1)
+    (up-can-build-line outerGatePoint2-x outerGatePoint2-x c: 792)
 =>
-    (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 792)
-    (set-goal gl-gotSouthEastPalisadeGates 1)
+    (up-build-line outerGatePoint2-x outerGatePoint2-x c: 792)
+    (set-goal gotSouthEastPalisadeGates 1)
 )
 
 ; MAIN: NORTH - WEST
 ; SECONDARY: SOUTH WEST AND NORTH EAST
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-buildNorthWestMainGates == 1)
-    (up-can-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 796)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildNorthWestWall == 0)
+    (up-compare-goal buildNorthWestMainGates == 1)
+    (up-can-build-line outerGatePoint3-x outerGatePoint3-x c: 796)
 =>
-    (up-build-line gl-outerGatePoint3-x gl-outerGatePoint3-x c: 796)
-    (set-goal gl-gotSouthWestPalisadeGates 1)
+    (up-build-line outerGatePoint3-x outerGatePoint3-x c: 796)
+    (set-goal gotSouthWestPalisadeGates 1)
 )
 (defrule
-    (up-compare-goal gl-buildingOuterWall == 1)
-    (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-buildNorthWestMainGates == 1)
-    (up-can-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)
+    (up-compare-goal buildingOuterWall == 1)
+    (up-compare-goal dontBuildNorthWestWall == 0)
+    (up-compare-goal buildNorthWestMainGates == 1)
+    (up-can-build-line outerGatePoint2-x outerGatePoint2-x c: 796)
 =>
-    (up-build-line gl-outerGatePoint2-x gl-outerGatePoint2-x c: 796)
-    (set-goal gl-gotNorthEastPalisadeGates 1)
+    (up-build-line outerGatePoint2-x outerGatePoint2-x c: 796)
+    (set-goal gotNorthEastPalisadeGates 1)
 )
 
 ; BUILDING THE OUTER PALISADE WALL --------------------------------------------------
 ; WITH UP CAN BUILD LINE THEY DONT FINISH IT SOMETIMES?
 (defrule
-    (goal gl-buildingOuterWall 1)
-    (goal gl-dontBuildNorthEastWall 0)
-    (goal gl-gotNorthEastPalisadeGates 1)
-    ;(up-can-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)
-    ;(up-can-build-line 0 gl-outerWallPoint1-x  c: palisade-wall)
+    (goal buildingOuterWall 1)
+    (goal dontBuildNorthEastWall 0)
+    (goal gotNorthEastPalisadeGates 1)
+    ;(up-can-build-line outerWallPoint1-x outerWallPoint2-x c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint1-x  c: palisade-wall)
 =>
-    (up-build-line gl-outerWallPoint1-x gl-outerWallPoint2-x c: palisade-wall)
+    (up-build-line outerWallPoint1-x outerWallPoint2-x c: palisade-wall)
 )
 (defrule
-    (goal gl-buildingOuterWall 1)
-    (goal gl-dontBuildNorthEastWall 0)
-    (goal gl-gotNorthEastPalisadeGates 1)
-    ;(up-can-build-line gl-outerWallPoint2-x gl-outerWallPoint1-x c: palisade-wall)
-    ;(up-can-build-line 0 gl-outerWallPoint2-x  c: palisade-wall)
+    (goal buildingOuterWall 1)
+    (goal dontBuildNorthEastWall 0)
+    (goal gotNorthEastPalisadeGates 1)
+    ;(up-can-build-line outerWallPoint2-x outerWallPoint1-x c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint2-x  c: palisade-wall)
 =>
-    (up-build-line gl-outerWallPoint2-x gl-outerWallPoint1-x c: palisade-wall)
-)
-
-(defrule
-    (goal gl-buildingOuterWall 1)
-    (goal gl-dontBuildSouthEastWall 0)
-    (goal gl-gotSouthEastPalisadeGates 1)
-    ;(up-can-build-line gl-outerWallPoint2-x gl-outerWallPoint3-x c: palisade-wall)
-    ;(up-can-build-line 0 gl-outerWallPoint2-x  c: palisade-wall)
-=>
-    (up-build-line gl-outerWallPoint2-x gl-outerWallPoint3-x c: palisade-wall)
-)
-(defrule
-    (goal gl-buildingOuterWall 1)
-    (goal gl-dontBuildSouthEastWall 0)
-    (goal gl-gotSouthEastPalisadeGates 1)
-    ;(up-can-build-line gl-outerWallPoint3-x gl-outerWallPoint2-x c: palisade-wall)
-    ;(up-can-build-line 0 gl-outerWallPoint3-x  c: palisade-wall)
-=>
-    (up-build-line gl-outerWallPoint3-x gl-outerWallPoint2-x c: palisade-wall)
+    (up-build-line outerWallPoint2-x outerWallPoint1-x c: palisade-wall)
 )
 
 (defrule
-    (goal gl-buildingOuterWall 1)
-    (goal gl-dontBuildSouthWestWall 0)
-    (goal gl-gotSouthWestPalisadeGates 1)
-    ;(up-can-build-line gl-outerWallPoint3-x gl-outerWallPoint4-x c: palisade-wall)
-    ;(up-can-build-line 0 gl-outerWallPoint3-x  c: palisade-wall)
+    (goal buildingOuterWall 1)
+    (goal dontBuildSouthEastWall 0)
+    (goal gotSouthEastPalisadeGates 1)
+    ;(up-can-build-line outerWallPoint2-x outerWallPoint3-x c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint2-x  c: palisade-wall)
 =>
-    (up-build-line gl-outerWallPoint3-x gl-outerWallPoint4-x c: palisade-wall)
+    (up-build-line outerWallPoint2-x outerWallPoint3-x c: palisade-wall)
 )
 (defrule
-    (goal gl-buildingOuterWall 1)
-    (goal gl-dontBuildSouthWestWall 0)
-    (goal gl-gotSouthWestPalisadeGates 1)
-    ;(up-can-build-line gl-outerWallPoint4-x gl-outerWallPoint3-x c: palisade-wall)
-    ;(up-can-build-line 0 gl-outerWallPoint4-x  c: palisade-wall)
+    (goal buildingOuterWall 1)
+    (goal dontBuildSouthEastWall 0)
+    (goal gotSouthEastPalisadeGates 1)
+    ;(up-can-build-line outerWallPoint3-x outerWallPoint2-x c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint3-x  c: palisade-wall)
 =>
-    (up-build-line gl-outerWallPoint4-x gl-outerWallPoint3-x c: palisade-wall)
+    (up-build-line outerWallPoint3-x outerWallPoint2-x c: palisade-wall)
 )
 
 (defrule
-    (goal gl-buildingOuterWall 1)
-    (goal gl-dontBuildNorthWestWall 0)
-    (goal gl-gotNorthWestPalisadeGates 1)
-    ;(up-can-build-line gl-outerWallPoint4-x gl-outerWallPoint1-x c: palisade-wall)
-    ;(up-can-build-line 0 gl-outerWallPoint4-x  c: palisade-wall)
+    (goal buildingOuterWall 1)
+    (goal dontBuildSouthWestWall 0)
+    (goal gotSouthWestPalisadeGates 1)
+    ;(up-can-build-line outerWallPoint3-x outerWallPoint4-x c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint3-x  c: palisade-wall)
 =>
-    (up-build-line gl-outerWallPoint4-x gl-outerWallPoint1-x c: palisade-wall)
+    (up-build-line outerWallPoint3-x outerWallPoint4-x c: palisade-wall)
 )
 (defrule
-    (goal gl-buildingOuterWall 1)
-    (goal gl-dontBuildNorthWestWall 0)
-    (goal gl-gotNorthWestPalisadeGates 1)
-    ;(up-can-build-line gl-outerWallPoint1-x gl-outerWallPoint4-x c: palisade-wall)
-    ;(up-can-build-line 0 gl-outerWallPoint1-x  c: palisade-wall)
+    (goal buildingOuterWall 1)
+    (goal dontBuildSouthWestWall 0)
+    (goal gotSouthWestPalisadeGates 1)
+    ;(up-can-build-line outerWallPoint4-x outerWallPoint3-x c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint4-x  c: palisade-wall)
 =>
-    (up-build-line gl-outerWallPoint1-x gl-outerWallPoint4-x c: palisade-wall)
+    (up-build-line outerWallPoint4-x outerWallPoint3-x c: palisade-wall)
+)
+
+(defrule
+    (goal buildingOuterWall 1)
+    (goal dontBuildNorthWestWall 0)
+    (goal gotNorthWestPalisadeGates 1)
+    ;(up-can-build-line outerWallPoint4-x outerWallPoint1-x c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint4-x  c: palisade-wall)
+=>
+    (up-build-line outerWallPoint4-x outerWallPoint1-x c: palisade-wall)
+)
+(defrule
+    (goal buildingOuterWall 1)
+    (goal dontBuildNorthWestWall 0)
+    (goal gotNorthWestPalisadeGates 1)
+    ;(up-can-build-line outerWallPoint1-x outerWallPoint4-x c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint1-x  c: palisade-wall)
+=>
+    (up-build-line outerWallPoint1-x outerWallPoint4-x c: palisade-wall)
 )
 
 ; INNER STONE WALL SECTION
 (defrule
     (true)
 =>
-    (set-goal gl-buildingInnerWall 1)
+    (set-goal buildingInnerWall 1)
     (chat-local-to-self "TIME FOR INNER WALL")
     (disable-self)
 )
@@ -1701,7 +1701,7 @@
     (or(building-type-count castle > 0)(building-type-count university > 0))
     (or(game-time > 600)(cheats-enabled))
 =>
-    (set-goal gl-buildingInnerWall 1)
+    (set-goal buildingInnerWall 1)
     (chat-local-to-self "TIME FOR INNER WALL")
     (disable-self)
 )
@@ -1709,397 +1709,397 @@
 ; MAKE THE INNER WALL GATE SECTION SMALLER THAN INNER WALL SECTION
 ; 1 - WITH MAIN NORTH EAST GATES -------------------------------------
 ; MAIN
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthEastMainGates 1)
+    (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerGatePoint1-y g:+ gl-randomNumber)
+    (up-modify-goal innerGatePoint1-y g:+ randomNumber)
     (disable-self)
 )
 
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthEastMainGates 1)
+    (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerGatePoint2-y g:- gl-randomNumber)
+    (up-modify-goal innerGatePoint2-y g:- randomNumber)
     (disable-self)
 )
 
     ; SECONDARY
         ; GATES CLOSER TO FRONT
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthEastMainGates 1)
+    (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint1-x g:- gl-randomNumber)
+    (up-modify-goal innerSecGatePoint1-x g:- randomNumber)
     (disable-self)
 )
 
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthEastMainGates 1)
+    (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint2-x g:- gl-randomNumber)
+    (up-modify-goal innerSecGatePoint2-x g:- randomNumber)
     (disable-self)
 )
 
         ; GATES CLOSER TO BACK
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthEastMainGates 1)
+    (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint4-x g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint4-x g:+ randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthEastMainGates 1)
+    (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint3-x g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint3-x g:+ randomNumber)(disable-self))
 
 
 
 ; 2 - WITH MAIN SOUTH EAST GATES -------------------------------------
     ; MAIN
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthEastMainGates 1)
+    (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerGatePoint2-x g:- gl-randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint2-x g:- randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthEastMainGates 1)
+    (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerGatePoint3-x g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint3-x g:+ randomNumber)(disable-self))
 
     ; SECONDARY - 4 POINTS INSTEAD OF 2 LIKE THE OUTER WALL
         ; GATES CLOSER TO FRONT
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthEastMainGates 1)
+    (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint2-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint2-y g:- randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthEastMainGates 1)
+    (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint3-y g:- gl-randomNumber)(disable-self))    
+    (up-modify-goal innerSecGatePoint3-y g:- randomNumber)(disable-self))    
 
         ; GATES CLOSER TO BACK
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthEastMainGates 1)
+    (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint1-y g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint1-y g:+ randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthEastMainGates 1)
+    (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint4-y g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint4-y g:+ randomNumber)(disable-self))
 
 ; 3 - WITH MAIN SOUTH WEST GATES -------------------------------------
     ; MAIN SOUTH WEST GATES -----------------
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthWestMainGates 1)
+    (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerGatePoint3-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint3-y g:- randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthWestMainGates 1)
+    (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerGatePoint4-y g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint4-y g:+ randomNumber)(disable-self))
 
     ; SECONDARY TO MAIN SOUTH WEST GATES ( 4 POINTS)
         ; GATES CLOSER TO FRONT
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthWestMainGates 1)
+    (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint3-x g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint3-x g:+ randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthWestMainGates 1)
+    (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint4-x g:+ gl-randomNumber)(disable-self))    
+    (up-modify-goal innerSecGatePoint4-x g:+ randomNumber)(disable-self))    
 
           ; GATES CLOSER TO BACK
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthWestMainGates 1)
+    (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint1-x g:- gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint1-x g:- randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildSouthWestMainGates 1)
+    (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint2-x g:- gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint2-x g:- randomNumber)(disable-self))
 
 
 
 ; 4 -WITH MAIN NORTH WEST GATES ---
     ; MAIN
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthWestMainGates 1)
+    (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerGatePoint1-x g:- gl-randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint1-x g:- randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthWestMainGates 1)
+    (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)(disable-self))    
+    (up-modify-goal innerGatePoint4-x g:+ randomNumber)(disable-self))    
 
 
     ; SECONDARY TO MAIN NORTH WEST GATES ( 4 POINTS)
         ; GATES CLOSER TO FRONT
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthWestMainGates 1)
+    (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint1-y g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint1-y g:+ randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthWestMainGates 1)
+    (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint4-y g:+ gl-randomNumber)(disable-self))    
+    (up-modify-goal innerSecGatePoint4-y g:+ randomNumber)(disable-self))    
 
           ; GATES CLOSER TO BACK
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthWestMainGates 1)
+    (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint2-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint2-y g:- randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
+(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
-    (goal gl-buildNorthWestMainGates 1)
+    (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal gl-innerSecGatePoint3-y g:- gl-randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint3-y g:- randomNumber)(disable-self))
 
 ; BUILDING THE MAIN INNER WALL GATES
 ; 1 NORTH EAST MAIN GATES -------------
 ; GATE 1
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildNorthEastWall 0)
-    (goal gl-buildNorthEastMainGates 1)
-    (up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 490)
+    (goal buildingInnerWall 1)
+    (goal dontBuildNorthEastWall 0)
+    (goal buildNorthEastMainGates 1)
+    (up-can-build-line innerGatePoint1-x innerGatePoint1-x c: 490)
 =>
-    (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 490)
-    (set-goal gl-gotNorthEastStoneGates 1)
+    (up-build-line innerGatePoint1-x innerGatePoint1-x c: 490)
+    (set-goal gotNorthEastStoneGates 1)
 )
 
 ; GATE 2
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildNorthEastWall 0)
-    (goal gl-buildNorthEastMainGates 1)
-    (up-can-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 490)
+    (goal buildingInnerWall 1)
+    (goal dontBuildNorthEastWall 0)
+    (goal buildNorthEastMainGates 1)
+    (up-can-build-line innerGatePoint2-x innerGatePoint2-x c: 490)
 =>
-    (up-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 490)
-    (set-goal gl-gotNorthEastStoneGates 1)
+    (up-build-line innerGatePoint2-x innerGatePoint2-x c: 490)
+    (set-goal gotNorthEastStoneGates 1)
 )
 
 ; 2 SOUTH EAST MAIN GATES -----------
 ;GATE 1
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildSouthEastWall 0)
-    (goal gl-buildSouthEastMainGates 1)
-    (up-can-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 487)
+    (goal buildingInnerWall 1)
+    (goal dontBuildSouthEastWall 0)
+    (goal buildSouthEastMainGates 1)
+    (up-can-build-line innerGatePoint2-x innerGatePoint2-x c: 487)
 =>
-    (up-build-line gl-innerGatePoint2-x gl-innerGatePoint2-x c: 487)
-    (set-goal gl-gotSouthEastStoneGates 1)
+    (up-build-line innerGatePoint2-x innerGatePoint2-x c: 487)
+    (set-goal gotSouthEastStoneGates 1)
 )
 
 ;GATE 2
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildSouthEastWall 0)
-    (goal gl-buildSouthEastMainGates 1)
-    (up-can-build-line gl-innerGatePoint3-x gl-innerGatePoint3-x c: 487)
+    (goal buildingInnerWall 1)
+    (goal dontBuildSouthEastWall 0)
+    (goal buildSouthEastMainGates 1)
+    (up-can-build-line innerGatePoint3-x innerGatePoint3-x c: 487)
 =>
-    (up-build-line gl-innerGatePoint3-x gl-innerGatePoint3-x c: 487)
-    (set-goal gl-gotSouthEastStoneGates 1)
+    (up-build-line innerGatePoint3-x innerGatePoint3-x c: 487)
+    (set-goal gotSouthEastStoneGates 1)
 )
 
 ; 3 SOUTH WEST MAIN GATES ---------------
 ; GATE 1
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildSouthWestWall 0)
-    (goal gl-buildSouthWestMainGates 1)
-    (up-can-build-line gl-innerGatePoint3-x gl-innerGatePoint3-x c: 490)
+    (goal buildingInnerWall 1)
+    (goal dontBuildSouthWestWall 0)
+    (goal buildSouthWestMainGates 1)
+    (up-can-build-line innerGatePoint3-x innerGatePoint3-x c: 490)
 =>
-    (up-build-line gl-innerGatePoint3-x gl-innerGatePoint3-x c: 490)
-    (set-goal gl-gotSouthWestStoneGates 1)
+    (up-build-line innerGatePoint3-x innerGatePoint3-x c: 490)
+    (set-goal gotSouthWestStoneGates 1)
 )
 
 ; GATE 2
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildSouthWestWall 0)
-    (goal gl-buildSouthWestMainGates 1)
-    (up-can-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 490)
+    (goal buildingInnerWall 1)
+    (goal dontBuildSouthWestWall 0)
+    (goal buildSouthWestMainGates 1)
+    (up-can-build-line innerGatePoint4-x innerGatePoint4-x c: 490)
 =>
-    (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 490)
-    (set-goal gl-gotSouthWestStoneGates  1)
+    (up-build-line innerGatePoint4-x innerGatePoint4-x c: 490)
+    (set-goal gotSouthWestStoneGates  1)
 )
 
 ; 4 NORTH WEST MAIN GATES ---------------
 ; GATE 1
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildNorthWestWall 0)
-    (goal gl-buildNorthWestMainGates 1)
-    (up-can-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 487)
+    (goal buildingInnerWall 1)
+    (goal dontBuildNorthWestWall 0)
+    (goal buildNorthWestMainGates 1)
+    (up-can-build-line innerGatePoint4-x innerGatePoint4-x c: 487)
 =>
-    (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 487)
-    (set-goal gl-gotNorthWestStoneGates 1)
+    (up-build-line innerGatePoint4-x innerGatePoint4-x c: 487)
+    (set-goal gotNorthWestStoneGates 1)
 )
 
 ; GATE 2
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildNorthWestWall 0)
-    (goal gl-buildNorthWestMainGates 1)
-    (up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 487)
+    (goal buildingInnerWall 1)
+    (goal dontBuildNorthWestWall 0)
+    (goal buildNorthWestMainGates 1)
+    (up-can-build-line innerGatePoint1-x innerGatePoint1-x c: 487)
 =>
-    (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 487)
-    (set-goal gl-gotNorthWestStoneGates 1)
+    (up-build-line innerGatePoint1-x innerGatePoint1-x c: 487)
+    (set-goal gotNorthWestStoneGates 1)
 )
 
 ; BUILD SECONDARY INNER WALL GATES--------------------------------
 ; NORTH EAST (USED BY SE AND NW MAIN GATES)
 (defrule (true)
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (or(goal gl-buildSouthEastMainGates 1)(goal gl-buildNorthWestMainGates 1))
-    (up-can-build-line 0 gl-innerSecGatePoint1-x c: 490)
+    (up-compare-goal buildingInnerWall == 1)
+    (up-compare-goal dontBuildNorthEastWall == 0)
+    (or(goal buildSouthEastMainGates 1)(goal buildNorthWestMainGates 1))
+    (up-can-build-line 0 innerSecGatePoint1-x c: 490)
 =>
-    (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint1-x c: 490)
-    (set-goal gl-gotNorthEastStoneGates 1)
+    (up-build-line innerSecGatePoint1-x innerSecGatePoint1-x c: 490)
+    (set-goal gotNorthEastStoneGates 1)
 )
 
 (defrule (true)
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (or(goal gl-buildSouthEastMainGates 1)(goal gl-buildNorthWestMainGates 1))
-    (up-can-build-line 0 gl-innerSecGatePoint2-x c: 490)
+    (up-compare-goal buildingInnerWall == 1)
+    (up-compare-goal dontBuildNorthEastWall == 0)
+    (or(goal buildSouthEastMainGates 1)(goal buildNorthWestMainGates 1))
+    (up-can-build-line 0 innerSecGatePoint2-x c: 490)
 =>
-    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint2-x c: 490)
-    (set-goal gl-gotNorthEastStoneGates 1)
+    (up-build-line innerSecGatePoint2-x innerSecGatePoint2-x c: 490)
+    (set-goal gotNorthEastStoneGates 1)
 )
 
 ; NORTH WEST (USED BY NE AND SW MAIN GATES)
 (defrule (true)
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (or(goal gl-buildNorthEastMainGates 1)(goal gl-buildSouthWestMainGates 1))
-    (up-can-build-line 0 gl-innerSecGatePoint1-x c: 487)
+    (up-compare-goal buildingInnerWall == 1)
+    (up-compare-goal dontBuildNorthWestWall == 0)
+    (or(goal buildNorthEastMainGates 1)(goal buildSouthWestMainGates 1))
+    (up-can-build-line 0 innerSecGatePoint1-x c: 487)
 =>
-    (up-build-line gl-innerSecGatePoint1-x gl-innerSecGatePoint1-x c: 487)
-    (set-goal gl-gotNorthWestStoneGates 1)
+    (up-build-line innerSecGatePoint1-x innerSecGatePoint1-x c: 487)
+    (set-goal gotNorthWestStoneGates 1)
 )
 
 (defrule (true)
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (or(goal gl-buildNorthEastMainGates 1)(goal gl-buildSouthWestMainGates 1))
-    (up-can-build-line 0 gl-innerSecGatePoint1-x c: 487)
+    (up-compare-goal buildingInnerWall == 1)
+    (up-compare-goal dontBuildNorthWestWall == 0)
+    (or(goal buildNorthEastMainGates 1)(goal buildSouthWestMainGates 1))
+    (up-can-build-line 0 innerSecGatePoint1-x c: 487)
 =>
-    (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint4-x c: 487)
-    (set-goal gl-gotNorthWestStoneGates 1)
+    (up-build-line innerSecGatePoint4-x innerSecGatePoint4-x c: 487)
+    (set-goal gotNorthWestStoneGates 1)
 )
 
 ; SOUTH WEST (USED BY SE AND NW MAIN GATES)
 (defrule (true)
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (or(goal gl-buildSouthEastMainGates 1)(goal gl-buildNorthWestMainGates 1))
-    (up-can-build-line 0 gl-innerSecGatePoint1-x c: 490)
+    (up-compare-goal buildingInnerWall == 1)
+    (up-compare-goal dontBuildNorthEastWall == 0)
+    (or(goal buildSouthEastMainGates 1)(goal buildNorthWestMainGates 1))
+    (up-can-build-line 0 innerSecGatePoint1-x c: 490)
 =>
-    (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint3-x c: 490)
-    (set-goal gl-gotSouthWestStoneGates 1)
+    (up-build-line innerSecGatePoint3-x innerSecGatePoint3-x c: 490)
+    (set-goal gotSouthWestStoneGates 1)
 )
 
 (defrule (true)
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (or(goal gl-buildSouthEastMainGates 1)(goal gl-buildNorthWestMainGates 1))
-    (up-can-build-line 0 gl-innerSecGatePoint2-x c: 490)
+    (up-compare-goal buildingInnerWall == 1)
+    (up-compare-goal dontBuildNorthEastWall == 0)
+    (or(goal buildSouthEastMainGates 1)(goal buildNorthWestMainGates 1))
+    (up-can-build-line 0 innerSecGatePoint2-x c: 490)
 =>
-    (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint4-x c: 490)
-    (set-goal gl-gotSouthWestStoneGates 1)
+    (up-build-line innerSecGatePoint4-x innerSecGatePoint4-x c: 490)
+    (set-goal gotSouthWestStoneGates 1)
 )
 
 
 ; SOUTH EAST (USED BY SW AND NE MAIN GATES)
 (defrule (true)
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildSouthEastWall 0)
-    (or(goal gl-buildSouthWestMainGates 1)(goal gl-buildNorthEastMainGates 1))
-    (up-can-build-line 0 gl-innerSecGatePoint2-x c: 487)
+    (goal buildingInnerWall 1)
+    (goal dontBuildSouthEastWall 0)
+    (or(goal buildSouthWestMainGates 1)(goal buildNorthEastMainGates 1))
+    (up-can-build-line 0 innerSecGatePoint2-x c: 487)
 =>
-    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint2-x c: 487)
-    (set-goal gl-gotSouthEastStoneGates 1)
+    (up-build-line innerSecGatePoint2-x innerSecGatePoint2-x c: 487)
+    (set-goal gotSouthEastStoneGates 1)
 )
 
 (defrule (true)
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildSouthEastWall 0)
-    (or(goal gl-buildSouthWestMainGates 1)(goal gl-buildNorthEastMainGates 1))
-    (up-can-build-line 0 gl-innerSecGatePoint3-x c: 487)
+    (goal buildingInnerWall 1)
+    (goal dontBuildSouthEastWall 0)
+    (or(goal buildSouthWestMainGates 1)(goal buildNorthEastMainGates 1))
+    (up-can-build-line 0 innerSecGatePoint3-x c: 487)
 =>
-    (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint3-x c: 487)
-    (set-goal gl-gotSouthEastStoneGates 1)
+    (up-build-line innerSecGatePoint3-x innerSecGatePoint3-x c: 487)
+    (set-goal gotSouthEastStoneGates 1)
 )
 
 
 ; BUILDING THE INNER STONE WALL ----------------------------------
 ; WHEN WE GOT GATES IN SAME SIDE OR MAIN GATES IN THE OPPOSITE SIDE
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildNorthEastWall 0)
-    (or(goal gl-gotNorthEastStoneGates 1)(goal gl-buildSouthWestMainGates 1))
+    (goal buildingInnerWall 1)
+    (goal dontBuildNorthEastWall 0)
+    (or(goal gotNorthEastStoneGates 1)(goal buildSouthWestMainGates 1))
 =>
-    (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
-    ;(up-chat-data-to-self "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
-    ;(up-chat-data-to-self "inner wall north east end y: %d" g: gl-innerWallPoint2-y)
+    (up-build-line innerWallPoint1-x innerWallPoint2-x c: stone-wall)
+    ;(up-chat-data-to-self "inner wall north east start y: %d" g: innerWallPoint1-y)
+    ;(up-chat-data-to-self "inner wall north east end y: %d" g: innerWallPoint2-y)
 )
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildSouthEastWall 0)
-    (or(goal gl-gotSouthEastStoneGates 1)(goal gl-buildNorthWestMainGates 1))
+    (goal buildingInnerWall 1)
+    (goal dontBuildSouthEastWall 0)
+    (or(goal gotSouthEastStoneGates 1)(goal buildNorthWestMainGates 1))
 =>
-    (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
-    ;(up-chat-data-to-self "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
-    ;(up-chat-data-to-self "inner wall south east end y: %d" g: gl-innerWallPoint3-y)
+    (up-build-line innerWallPoint2-x innerWallPoint3-x c: stone-wall)
+    ;(up-chat-data-to-self "inner wall south east start y: %d" g: innerWallPoint2-y)
+    ;(up-chat-data-to-self "inner wall south east end y: %d" g: innerWallPoint3-y)
 )
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildSouthWestWall 0)
-    (or(goal gl-gotSouthWestStoneGates 1)(goal gl-buildNorthEastMainGates 1))
+    (goal buildingInnerWall 1)
+    (goal dontBuildSouthWestWall 0)
+    (or(goal gotSouthWestStoneGates 1)(goal buildNorthEastMainGates 1))
 =>
-    (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
-    ;(up-chat-data-to-self "inner wall south west start y: %d" g: gl-innerWallPoint3-y)
-    ;(up-chat-data-to-self "inner wall south west end y: %d" g: gl-innerWallPoint4-y)
+    (up-build-line innerWallPoint3-x innerWallPoint4-x c: stone-wall)
+    ;(up-chat-data-to-self "inner wall south west start y: %d" g: innerWallPoint3-y)
+    ;(up-chat-data-to-self "inner wall south west end y: %d" g: innerWallPoint4-y)
 )
 (defrule
-    (goal gl-buildingInnerWall 1)
-    (goal gl-dontBuildNorthWestWall 0)
-    (or(goal gl-gotNorthWestStoneGates 1)(goal gl-buildSouthEastMainGates 1))
+    (goal buildingInnerWall 1)
+    (goal dontBuildNorthWestWall 0)
+    (or(goal gotNorthWestStoneGates 1)(goal buildSouthEastMainGates 1))
 =>
-    (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
-    ;(up-chat-data-to-self "inner wall north west start y: %d" g: gl-innerWallPoint3-y)
-    ;(up-chat-data-to-self "inner wall north west end y: %d" g: gl-innerWallPoint4-y)
+    (up-build-line innerWallPoint4-x innerWallPoint1-x c: stone-wall)
+    ;(up-chat-data-to-self "inner wall north west start y: %d" g: innerWallPoint3-y)
+    ;(up-chat-data-to-self "inner wall north west end y: %d" g: innerWallPoint4-y)
 )
 

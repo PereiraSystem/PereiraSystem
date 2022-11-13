@@ -4,12 +4,12 @@
 (defrule
 	(timer-triggered 11)
     (up-players-in-game enemy > 0)
-    (up-compare-goal gl-attackSoldierAmount > 0)
+    (up-compare-goal attackSoldierAmount > 0)
 =>
 	(disable-timer 11)
     (enable-timer 11 90)
-    (up-chat-data-to-self "NOT ATTACK NOW SOLDIERS: %d" g: gl-defendSoldierAmount)
-    (up-chat-data-to-self "ATTACK NOW SOLDIERS: %d" g: gl-attackSoldierAmount)
+    (up-chat-data-to-self "NOT ATTACK NOW SOLDIERS: %d" g: defendSoldierAmount)
+    (up-chat-data-to-self "ATTACK NOW SOLDIERS: %d" g: attackSoldierAmount)
 )
 ; TIMER 12 ENEMY BUILDINGS IN TOWN REPORT
 (defrule(true)=>(enable-timer 12 15)(disable-self))
@@ -18,7 +18,7 @@
 =>
 	(disable-timer 12)
     (enable-timer 12 90)
-    (up-chat-data-to-self "ENEMY BUILDINGS IN TOWN: %d" g: gl-enemyBuildingsInTown)
+    (up-chat-data-to-self "ENEMY BUILDINGS IN TOWN: %d" g: enemyBuildingsInTown)
     (up-chat-data-to-self "TOWN SIZE: %d" s: sn-maximum-town-size)
 )
 ; TIMER 13 SOLDIERS CREATED REPORT- only counting feudal age soldiers atm
@@ -28,7 +28,7 @@
 =>
 	(disable-timer 13)
     (enable-timer 13 60)
-    ;(up-chat-data-to-self "SOLDIERS CREATED THIS AGE: %d" g: gl-totalSoldiersCreatedThisAge)
+    ;(up-chat-data-to-self "SOLDIERS CREATED THIS AGE: %d" g: totalSoldiersCreatedThisAge)
 )
 ; ATTACK TIMER 21
 (defrule
@@ -51,7 +51,7 @@
     (set-strategic-number sn-percent-attack-soldiers 100)
 	(set-strategic-number sn-garrison-rams 1)
     (set-strategic-number sn-target-player-number 0)
-    (set-goal gl-weAreAttacking 1)
+    (set-goal weAreAttacking 1)
     (attack-now)
     (chat-to-allies "31 Attack!")
 )
@@ -80,7 +80,7 @@
     (set-strategic-number sn-maximum-attack-group-size 150)
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-strategic-number sn-maximum-town-size 512)
-    ;(set-goal gl-weAreAttacking 1)
+    ;(set-goal weAreAttacking 1)
     (attack-now)
     (chat-to-allies "48 Final Attack!")
 )

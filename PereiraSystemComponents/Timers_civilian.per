@@ -18,8 +18,8 @@
 =>
 	(disable-timer 2)
     (enable-timer 2 65)
-    (up-modify-goal gl-max-lumber-camps-qty c:+ 1)
-    ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: gl-max-lumber-camps-qty)
+    (up-modify-goal max-lumber-camps-qty c:+ 1)
+    ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: max-lumber-camps-qty)
 )
 ; TIMER 3 INCREASES LUMBER CAMPS DISTANCE FAST WHEN WE HAVE NONE
 (defrule(true)=>(enable-timer 3 320)(disable-self))
@@ -54,8 +54,8 @@
 =>
 	(disable-timer 5)
     (enable-timer 5 300) ;was 240
-    (up-modify-goal gl-max-mining-camps-qty c:+ 1)
-    ;(up-chat-data-to-self "Mining camps max qty increased = %d" g: gl-max-mining-camps-qty)
+    (up-modify-goal max-mining-camps-qty c:+ 1)
+    ;(up-chat-data-to-self "Mining camps max qty increased = %d" g: max-mining-camps-qty)
 )
 ; TIMER 6 INCREASES MINING CAMPS DISTANCE (FAST THEN SLOWER)
 (defrule(current-age == feudal-age)=>(enable-timer 6 60)(disable-self))
