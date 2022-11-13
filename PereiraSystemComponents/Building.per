@@ -1246,6 +1246,7 @@
 
 ; POS 5 (MIDDLE OF MAP) OWN SECTION
 ;  WHEN CLOSE TO WEST CORNER
+; AND X LOWER THAN Y
 (defrule
     (up-compare-goal gl-posQuadrantCode == 5)
     (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
@@ -1256,7 +1257,7 @@
     (chat-to-all "I WILL BUILD THE GATES TO THE NORTH EAST")
     (disable-self)
 )
-
+; AND X HIGHER THAN Y
 (defrule
     (up-compare-goal gl-posQuadrantCode == 5)
     (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
@@ -1264,11 +1265,55 @@
     (up-compare-goal gl-myPosition-x g:> gl-myPosition-y) ;closer to NW side   
 =>
     (set-goal gl-buildSouthEastMainGates 1)
-    (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH EAST")    
+    (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH EAST")
     (disable-self)
 )
 
+; WHEN CLOSE TO SOUTH CORNER
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 5)
+    (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
+    (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
+=>
+    (set-goal gl-buildNorthWestMainGates 1)
+    (chat-to-all "I WILL BUILD THE GATES TO THE NORTH WEST")
+    (disable-self)
+)
 
+; WHEN CLOSE TO EAST CORNER
+; AND X LOWER THAN Y
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 5)
+    (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
+    (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
+    (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)    
+=>
+    (set-goal gl-buildNorthWestMainGates 1)
+    (chat-to-all "I WILL BUILD THE GATES TO THE NORTH WEST")
+    (disable-self)
+)
+; AND X HIGHER THAN Y
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 5)
+    (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
+    (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
+    (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)      
+=>
+    (set-goal gl-buildNorthWestMainGates 1)
+    (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH WEST")
+    (disable-self)
+)
+
+; WHEN CLOSE TO NORTH CORNER
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 5)
+    (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
+    (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
+=>
+    (set-goal gl-buildSouthEastMainGates 1)
+    (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH EAST")
+    (disable-self)
+)
 
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
 ; 1/4 NORTH EAST MAIN PALISADE GATES -----------------------------------------
@@ -1394,58 +1439,6 @@
 
 ; -------------------------------------------------
 
-; CHECK X COMPARED TO Y FOR CORNER POSITIONS
-(defrule
-    (true) ;put pos 5 later!
-    (or
-        (or
-            (up-compare-goal gl-posQuadrantCode == 1)
-            (up-compare-goal gl-posQuadrantCode == 3)
-        )
-        (or
-            (up-compare-goal gl-posQuadrantCode == 7)
-            (up-compare-goal gl-posQuadrantCode == 9)
-        )
-    )
-    (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
-=>
-    ;(chat-to-all "my x is higher than y")
-    (disable-self)
-)
-(defrule ;put pos 5 later!
-    (true)
-    (or
-        (or
-            (up-compare-goal gl-posQuadrantCode == 1)
-            (up-compare-goal gl-posQuadrantCode == 3)
-        )
-        (or
-            (up-compare-goal gl-posQuadrantCode == 7)
-            (up-compare-goal gl-posQuadrantCode == 9)
-        )
-    )
-    (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
-=>
-    ;(chat-to-all "my x is lower than y")
-    (disable-self)
-)
-(defrule ;put pos 5 later!
-    (true)
-    (or
-        (or
-            (up-compare-goal gl-posQuadrantCode == 1)
-            (up-compare-goal gl-posQuadrantCode == 3)
-        )
-        (or
-            (up-compare-goal gl-posQuadrantCode == 7)
-            (up-compare-goal gl-posQuadrantCode == 9)
-        )
-    )
-    (up-compare-goal gl-myPosition-y g:== gl-myPosition-x)
-=>
-    ;(chat-to-all "my x is EQUAL TO y")
-    (disable-self)
-)
 
 ; OUTER PALISADE SECTION
 (defrule
