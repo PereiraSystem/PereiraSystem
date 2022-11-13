@@ -92,11 +92,12 @@
 )
 
 (defrule
-=>    (set-goal maxCiviliansDarkAge 16)
-
+    (true)
+=>
+    (set-goal maxCiviliansDarkAge 16)
     (set-goal tradeCartsQty 14)
     (set-goal tradeShipsQty 20)
-    (set-goal fishingShipsQty 6) 
+    (set-goal fishingShipsQty 6)
     (set-goal maxCiviliansFeudalAge 32)
     (set-goal maxCiviliansCastleAge 53)
     (set-goal maxCiviliansImperialAge 85)
@@ -115,7 +116,8 @@
 =>
     (up-modify-goal tradeCartsQty c:* 1,5)
     (up-modify-goal tradeShipsQty c:* 1,5)
-    (up-modify-goal fishingShipsQty c:* 1,1)  (disable-self)
+    (up-modify-goal fishingShipsQty c:* 1,1)
+    (disable-self)
 )
 
 (defrule
@@ -123,7 +125,8 @@
 =>
     (up-modify-goal tradeCartsQty c:* 1,5)
     (up-modify-goal tradeShipsQty c:* 1,5)
-    (up-modify-goal fishingShipsQty c:* 1,1)(disable-self)
+    (up-modify-goal fishingShipsQty c:* 1,1)
+    (disable-self)
 )
 
 (defrule
@@ -156,7 +159,8 @@
     (set-goal scoutsQtyHigh 40)
     (set-goal camelQtyLow 5)
     (set-goal camelQtyMedium 15)
-    (set-goal camelQtyHigh 28)(disable-self)
+    (set-goal camelQtyHigh 28)
+    (disable-self)
 )
 
 (defrule
@@ -177,7 +181,8 @@
     (set-goal uniqueUnitQtyHigh 40)
     (set-goal trebuchetsQtyLow 6)
     (set-goal trebuchetsQtyMedium 8)
-    (set-goal trebuchetsQtyHigh 12)(disable-self)
+    (set-goal trebuchetsQtyHigh 12)
+    (disable-self)
 )
 
 (defrule
@@ -187,7 +192,8 @@
     (set-goal galleonQty 20)
     (set-goal fireshipQty 20)
     (set-goal demolitionShipQty 20)
-    (set-goal specialShipQty 20)(disable-self)
+    (set-goal specialShipQty 20)
+    (disable-self)
 )
 
 (defrule
