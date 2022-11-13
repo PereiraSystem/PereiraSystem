@@ -1965,11 +1965,11 @@
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     ;(up-can-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
-    (up-can-build-line 0 gl-innerGatePoint4-x c: 497)    
+    (up-can-build-line 0 gl-innerGatePoint4-x c: 497)
 =>
     (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
-    (up-chat-data-to-player my-player-number "BUILDING GATE 1x %d" g: gl-innerGatePoint4-x)
-    (up-chat-data-to-player my-player-number "BUILDING GATE 1y %d" g: gl-innerGatePoint4-y)
+    (up-chat-data-to-player my-player-number "BUILDING GATE A - x %d" g: gl-innerGatePoint4-x)
+    (up-chat-data-to-player my-player-number "BUILDING GATE A - y %d" g: gl-innerGatePoint4-y)
     (set-goal gl-gotNorthWestStoneGates 1)
 )
 
@@ -1979,9 +1979,11 @@
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestMainGates == 1)
     ;(up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
+    (up-can-build-line 0 gl-innerGatePoint1-x c: 497)
 =>
     (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
-    (chat-to-player my-player-number "BUILDING GATE 2")    
+    (up-chat-data-to-player my-player-number "BUILDING GATE B - x %d" g: gl-innerGatePoint1-x)
+    (up-chat-data-to-player my-player-number "BUILDING GATE B - y %d" g: gl-innerGatePoint1-y)
     (set-goal gl-gotNorthWestStoneGates 1)
 )
 
