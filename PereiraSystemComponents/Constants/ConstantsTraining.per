@@ -75,6 +75,21 @@
 (defconst trebuchetsQtyHigh 504)
 
 (defrule
+    (current-age == castle-age)
+=>
+    (set-goal totalSoldiersCreatedThisAge 0)
+    (disable-self)
+)
+(defrule
+    (true)
+=>
+    (set-goal maximumSoldiersFeudal 30)
+    (set-goal totalSoldiersCreatedThisAge 0)
+    (set-goal nonUpgradedUniqueUnitsCreated 0)
+    (disable-self)
+)
+
+(defrule
 =>    (set-goal maxCiviliansDarkAge 16)
 
     (set-goal tradeCartsQty 14)
