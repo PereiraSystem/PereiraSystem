@@ -1208,11 +1208,11 @@
 )
 (defrule
     (or
-        (up-compare-goal gl-posQuadrantCode == 2) ;north east center
+        (goal gl-posQuadrantCode 2) ;north east center
         (or
             (and
-                (up-compare-goal gl-posQuadrantCode == 3)
-                (up-compare-goal gl-dontBuildNorthEastWall == 1)
+                (goal gl-posQuadrantCode 3)
+                (goal gl-dontBuildNorthEastWall 1)
             )
             (and
                 (up-compare-goal gl-myPosition-y g:<= gl-myPosition-x)
@@ -1228,7 +1228,7 @@
 ;  WHEN CLOSE TO WEST CORNER
 ; AND X LOWER THAN Y
 (defrule
-    (up-compare-goal gl-posQuadrantCode == 5)
+    (goal gl-posQuadrantCode 5)
     (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
     (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
     (up-compare-goal gl-myPosition-x g:< gl-myPosition-y); closer to SW side
@@ -1251,7 +1251,7 @@
 
 ; WHEN CLOSE TO SOUTH CORNER
 (defrule
-    (up-compare-goal gl-posQuadrantCode == 5)
+    (goal gl-posQuadrantCode 5)
     (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
     (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
 =>
@@ -1263,7 +1263,7 @@
 ; WHEN CLOSE TO EAST CORNER
 ; AND X LOWER THAN Y
 (defrule
-    (up-compare-goal gl-posQuadrantCode == 5)
+    (goal gl-posQuadrantCode 5)
     (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
     (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
     (up-compare-goal gl-myPosition-x g:< gl-myPosition-y)
@@ -1274,7 +1274,7 @@
 )
 ; AND X HIGHER THAN Y
 (defrule
-    (up-compare-goal gl-posQuadrantCode == 5)
+    (goal gl-posQuadrantCode 5)
     (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
     (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
     (up-compare-goal gl-myPosition-x g:> gl-myPosition-x)
@@ -1286,7 +1286,7 @@
 
 ; WHEN CLOSE TO NORTH CORNER
 (defrule
-    (up-compare-goal gl-posQuadrantCode == 5)
+    (goal gl-posQuadrantCode 5)
     (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
     (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
 =>
