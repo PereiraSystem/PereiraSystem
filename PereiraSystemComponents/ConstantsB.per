@@ -107,6 +107,15 @@
 (defconst trebuchetsQtyMedium 503)
 (defconst trebuchetsQtyHigh 504)
 
+; COSTS
+
+(defrule
+    (true)
+=>
+    (set-goal minimumWoodForTC 275)
+    (set-goal minimumWoodForLC 100)
+    (disable-self)
+)
 
 (defrule
     (civ-selected japanese)
