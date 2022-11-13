@@ -62,6 +62,12 @@
     (disable-self)
 )
 
+(defrule
+    (true)
+=>
+    (up-chat-data-to-self "DIMENSIONS OF MAP" g: maxDimensionOfMap)
+)
+
 ; CHECK OUR POSITION IN 9 SQUARES
 (defrule
     (up-compare-goal myPositionX g:>= mapSizeTwoThirds)
@@ -210,8 +216,8 @@
     (up-modify-goal outerWallPoint3Y g:+ outerWallPerimeter)
     (up-modify-goal outerWallPoint4X g:- outerWallPerimeter)
     (up-modify-goal outerWallPoint4Y g:- outerWallPerimeter)
-    ;(up-chat-data-to-self "OUTER WALL POINT 1 X: %d" g: outerWallPoint1X)
-    ;(up-chat-data-to-self "OUTER WALL POINT 1 Y: %d" g: outerWallPoint1Y)
+    (up-chat-data-to-self "OUTER WALL POINT 1 X: %d" g: outerWallPoint1X)
+    (up-chat-data-to-self "OUTER WALL POINT 1 Y: %d" g: outerWallPoint1Y)
     (disable-self)
 )
 
