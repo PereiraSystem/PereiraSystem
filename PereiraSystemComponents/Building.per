@@ -251,7 +251,7 @@
 (defrule
     (current-age >= feudal-age)
     (building-type-count-total lumber-camp > 0)
-    (building-type-count-total lumber-camp g:< max-lumber-camps-qty)
+    (building-type-count-total lumber-camp g:< maxLumberCampsQty)
     (resource-found wood)
     (dropsite-min-distance wood > 3)
     (can-build lumber-camp)
@@ -281,7 +281,7 @@
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (or(building-type-count-total monastery > 0)
     (building-type-count-total dock > 1))
-    (building-type-count-total mining-camp g:< max-mining-camps-qty)
+    (building-type-count-total mining-camp g:< maxMiningCampsQty)
     (resource-found gold)
     (dropsite-min-distance gold > 3)
     (can-build mining-camp)
@@ -296,7 +296,7 @@
     (wood-amount > 200)
     (resource-found stone)
     (dropsite-min-distance stone > 3)
-    ;(building-type-count-total mining-camp g:< max-mining-camps-qty)
+    ;(building-type-count-total mining-camp g:< maxMiningCampsQty)
     (building-type-count-total mining-camp < 4)
     (can-build mining-camp)
 =>
@@ -311,7 +311,7 @@
     (wood-amount > 276)
     (resource-found stone)
     (dropsite-min-distance stone > 3)
-    (building-type-count-total mining-camp g:< max-mining-camps-qty)
+    (building-type-count-total mining-camp g:< maxMiningCampsQty)
     (can-build mining-camp)
 =>
     (up-chat-data-to-self "Trying To Build Mining Camp (Stone 2) - Max Distance: %d" s: sn-mining-camp-max-distance)
@@ -320,7 +320,7 @@
 (defrule
     (current-age > castle-age)
     (building-type-count-total monastery > 0)
-    (building-type-count-total mining-camp g:< max-mining-camps-qty)
+    (building-type-count-total mining-camp g:< maxMiningCampsQty)
     (resource-found stone)
     (dropsite-min-distance stone > 3)
     (can-build mining-camp)

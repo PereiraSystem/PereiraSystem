@@ -1,8 +1,11 @@
 ; CONSTANTS  -------------------------------------------------------
 (defrule(true)=>(chat-local-to-self "> 1. Constants Loaded")(disable-self))
-(defconst max-lumber-camps-qty 1)
-(defconst max-mining-camps-qty 2)
-(defconst house-distance-mod 4)
+(defconst maxLumberCampsQty 1)
+(defconst maxMiningCampsQty 2)
+
+(defconst houseDistanceMod 4)
+
+;costs of stuff
 (defconst minimumWoodForTC 10)
 (defconst minimumWoodForLC 11)
 (defconst feudalAgeFoodCost 12)
@@ -14,10 +17,12 @@
 (defconst universityWoodCost 17)
 (defconst fishingShipWoodCost 30)
 (defconst galleyWoodCost 31)
+
 (defconst civNeedsArchersSoon 41)
 (defconst civNeedsCavalrySoon 42)
 (defconst civNeedsMonastery 43)
 (defconst civHasGunpowderBonus 44)
+;detecting enemy units
 (defconst dudeHasCavalry 50)
 (defconst dudeHasScouts 51)
 (defconst dudeHasKnights 52)
@@ -33,6 +38,7 @@
 (defconst dudeHasCannonShips 62)
 (defconst dudeHasFireShips 63)
 (defconst dudeHasExplosiveShips 64)
+
 (defconst maximumSoldiersFeudal 80)
 (defconst totalSoldiersCreatedThisAge 89)
 (defconst nonUpgradedUniqueUnitsCreated 90)
@@ -41,7 +47,8 @@
 (defconst maxHousesBeforeDeleting 101)
 (defconst maxHousesNeeded 102)
 (defconst farmQtyImperial 103)
-; civilian units constants
+
+; civilian units qty
 (defconst maxCiviliansDarkAge 104)
 (defconst maxCiviliansFeudalAge 105)
 (defconst maxCiviliansCastleAge 106)
@@ -49,7 +56,7 @@
 (defconst tradeCartsQty 108)
 (defconst tradeShipsQty 109)
 (defconst fishingShipsQty 110)
-; infantry constants
+; infantry units qty
 (defconst spearmenQtyLow 120)
 (defconst spearmenQtyMedium 121)
 (defconst spearmenQtyHigh 122)
@@ -59,19 +66,19 @@
 (defconst eagleQtyLow 160)
 (defconst eagleQtyMedium 161)
 (defconst eagleQtyHigh 162)
-; ranged constants
+; ranged units qty
 (defconst archerQtyLow 200)
 (defconst archerQtyMedium 201)
 (defconst archerQtyHigh 202)
-(defconst skirmisherQtyLow 210)
-(defconst skirmisherQtyMedium 211)
-(defconst skirmisherQtyHigh 212)
-(defconst cavalryArcherQtyLow 220)
+(defconst skirmisherQtyLow 205)
+(defconst skirmisherQtyMedium 206)
+(defconst skirmisherQtyHigh 207)
+(defconst cavalryArcherQtyLow 210)
 (defconst cavalryArcherQtyMedium 221)
 (defconst cavalryArcherQty 223)
 (defconst cavalryArcherQtyHigh 223)
 (defconst handCannoneerQty 225)
-; cavalry constants
+; cavalry units qty
 (defconst knightsQtyLow 130)
 (defconst knightsQtyMedium 131)
 (defconst knightsQtyHigh 132)
@@ -84,11 +91,11 @@
 (defconst battleElephantQtyLow 180)
 (defconst battleElephantQtyMedium 181)
 (defconst battleElephantQtyHigh 182)
-; priest constants
+; priest units qty
 (defconst monkQtyLow 290)
 (defconst monkQtyMedium 291)
 (defconst monkQtyHigh 292)
-; siege constants
+; siege units qty
 (defconst ramQtyLow 300)
 (defconst ramQtyMedium 301)
 (defconst ramQtyHigh 302)
@@ -99,7 +106,7 @@
 (defconst trebuchetsQtyLow 320)
 (defconst trebuchetsQtyMedium 321)
 (defconst trebuchetsQtyHigh 322)
-; unique units constants
+; unique units qty
 (defconst uniqueUnitQtyLow 330)
 (defconst uniqueUnitQtyMedium 331)
 (defconst uniqueUnitQtyHigh 332)
@@ -108,7 +115,8 @@
 (defconst fireshipQty 337)
 (defconst demolitionShipQty 338)
 (defconst specialShipQty 339)
-; UP WALL CONSTANTS 
+
+; UP WALL CONSTANTS
 (defconst posMapSizeX 390)
 (defconst posMapSizeY 391)
 (defconst mapSizeThird 392)
@@ -181,7 +189,7 @@
 (defconst dontBuildSouthWestWall 478)
 
 (defconst buildingInnerWall 479)
-
+(defconst buildingOuterWall 480)
 
 (defconst gotNorthEastPalisadeGates 488)
 (defconst gotSouthEastPalisadeGates 489)
@@ -191,10 +199,11 @@
 (defconst gotSouthEastStoneGates 493)
 (defconst gotSouthWestStoneGates 494)
 (defconst gotNorthWestStoneGates 495)
+
 (defconst weHaveTownCenterAndWoodForLC 500)
 (defconst weHaveBarracksAndSomeVillagers 501)
 (defconst weHaveArcheryOrStableAndSomeSoldiers 502)
-(defconst buildingOuterWall 503)
+
 
 (defconst randomNumber 509)
 ; SETTING CIVILIAN CONSTANTS
@@ -359,11 +368,11 @@
 (defrule
     (true)
 =>
-    (set-goal max-lumber-camps-qty 3)
-    (set-goal max-mining-camps-qty 1)
+    (set-goal maxLumberCampsQty 3)
+    (set-goal maxMiningCampsQty 1)
     (set-goal minimumWoodForTC 275)
     (set-goal minimumWoodForLC 100)
-    ;(up-chat-data-to-self "Lumber Camps Max Qty = %d" g: max-lumber-camps-qty)
+    ;(up-chat-data-to-self "Lumber Camps Max Qty = %d" g: maxLumberCampsQty)
     ;(up-chat-data-to-self "Mining Camps Max Qty = %d" g: max-mining-camps-qty)
     (disable-self)
 )
