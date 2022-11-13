@@ -1,12 +1,5 @@
-; CONSTANTS A, 1 TO 300: IMPORTANT STUFF, BUILDING, MILITARY
-
+; CONSTANTS A: ATTACKING AND SOME DECISIONS
 (defconst randomNumber 1)
-
-; 2 TO 20: CIV CHARACTERISTICS
-(defconst civNeedsArchersSoon 2)
-(defconst civNeedsCavalrySoon 3)
-(defconst civNeedsMonastery 4)
-(defconst civHasGunpowderBonus 5)
 
 ; 20 TO 50: ATTACK - DEFENSE
 (defconst weAreAttacking 20)
@@ -16,30 +9,3 @@
 (defconst weHaveTownCenterAndWoodForLC 51)
 (defconst weHaveBarracksAndSomeVillagers 52)
 (defconst weHaveArcheryOrStableAndSomeSoldiers 53)
-
-
-; END OF CONSTANTS DECLARATION ---------------------------------
-
-; SETTING  CONSTANTS
-
-(defrule
-    (or     (or(civ-selected aztec)(civ-selected mayan))
-            (or(civ-selected italian)(civ-selected korean)))
-=>
-    (set-goal civNeedsArchersSoon 1)(disable-self)
-)
-(defrule
-    (or     (or(civ-selected bulgarians)(civ-selected bulgarians))
-            (or(civ-selected bulgarians)(civ-selected bulgarians)))
-=>
-    (set-goal civNeedsCavalrySoon 1)(disable-self)
-)
-
-
-(defrule
-    (true)
-=>
-    (set-goal weMovedPlace 0)
-    (set-goal weAreAttacking 0)
-    (disable-self)
-)
