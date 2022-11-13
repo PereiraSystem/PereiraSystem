@@ -275,8 +275,8 @@
 (defrule
     (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint1X posMapSizeX)
-    (set-goal innerWallPoint1X posMapSizeX)
+    (set-goal outerWallPoint1X g: maxDimensionOfMap)
+    (set-goal innerWallPoint1X maxDimensionOfMap)
     (disable-self)
 )
 (defrule
