@@ -1964,7 +1964,7 @@
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestMainGates == 1)
-    (up-can-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
+    ;(up-can-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
 =>
     (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
     (set-goal gl-gotNorthWestStoneGates 1)
@@ -1975,7 +1975,7 @@
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (up-compare-goal gl-buildNorthWestMainGates == 1)
-    (up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
+    ;(up-can-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
 =>
     (up-build-line gl-innerGatePoint1-x gl-innerGatePoint1-x c: 497)
     (set-goal gl-gotNorthWestStoneGates 1)
@@ -2089,6 +2089,7 @@
     (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint4-x c: 490)
     (set-goal gl-gotSouthWestStoneGates 1)
 )
+
 
 ; BUILDING THE INNER STONE WALL ----------------------------------
 (defrule
