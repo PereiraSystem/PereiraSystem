@@ -1047,13 +1047,19 @@
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerGatePoint1X g:- randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint1X c:- 1)
+    (up-modify-goal innerGatePoint1X g:- randomNumber)
+    (disable-self)
+)
 
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerGatePoint4X g:+ randomNumber)(disable-self))    
+    (up-modify-goal innerGatePoint4X c:+ 1)
+    (up-modify-goal innerGatePoint4X g:+ randomNumber)
+    (disable-self)
+)
 
 
     ; SECONDARY TO MAIN NORTH WEST GATES ( 4 POINTS)
@@ -1081,7 +1087,8 @@
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint3Y g:- randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint3Y g:- randomNumber)
+    (disable-self))
 
 ; BUILDING THE MAIN INNER WALL GATES
 ; 1 NORTH EAST MAIN GATES -------------
