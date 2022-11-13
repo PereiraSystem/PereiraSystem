@@ -856,10 +856,10 @@
 )
 
 (defrule
-    (game-time > 60)
+    (game-time > 30)
 =>
-    ;(up-chat-data-to-self "POS X: %d" g: gl-myPosition-x)
-    ;(up-chat-data-to-self "POS Y: %d" g: gl-myPosition-y)
+    (up-chat-data-to-self "POS X: %d" g: gl-myPosition-x)
+    (up-chat-data-to-self "POS Y: %d" g: gl-myPosition-y)
     (disable-self)
 )
 
@@ -1854,7 +1854,10 @@
     (up-compare-goal gl-buildNorthWestMainGates == 1)
 =>
     ;(up-modify-goal gl-innerGatePoint4-x g:+ gl-randomNumber)(disable-self)
-    (up-modify-goal gl-innerGatePoint4-x c:+ 4)(disable-self)
+    (up-modify-goal gl-innerGatePoint4-x c:+ 3)
+    ;LETS TRY SOMETHING
+    (up-modify-goal gl-innerGatePoint4-y c:+ 1)
+    (disable-self)
 )
 
 
