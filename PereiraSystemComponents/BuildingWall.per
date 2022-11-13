@@ -10,7 +10,7 @@
     (up-get-point position-map-size mapSizeTwoThirds)
     (up-get-point position-map-size mapSizeTenth)
     (up-get-point position-map-size mapSizeNineTenths)
-    
+
     (up-modify-goal mapSizeThird c:/ 3)
     (up-modify-goal mapSizeTwoThirds c:/ 3)
     (up-modify-goal mapSizeTwoThirds c:* 2)
@@ -25,6 +25,7 @@
     (up-chat-data-to-self "Position Map Size X: %d" g: posMapSizeX)
     (up-chat-data-to-self "Position Map Size Y: %d" g: posMapSizeY)
     (up-chat-data-to-self "Map Size: %d" g: maxDimensionOfMap)
+    (disable-self)
 )
 
 ; CHECK OUR POSITION IN 9 SQUARES
@@ -175,8 +176,6 @@
     (up-modify-goal outerWallPoint3Y g:+ outerWallPerimeter)
     (up-modify-goal outerWallPoint4X g:- outerWallPerimeter)
     (up-modify-goal outerWallPoint4Y g:- outerWallPerimeter)
-    (up-chat-data-to-self "OUTER WALL POINT 1 X: %d" g: outerWallPoint1X)
-    (up-chat-data-to-self "OUTER WALL POINT 1 Y: %d" g: outerWallPoint1Y)
     (disable-self)
 )
 
@@ -284,9 +283,8 @@
 =>
     (set-goal outerWallPoint2X maxDimensionOfMap)
     (set-goal innerWallPoint2X maxDimensionOfMap)
-    (up-chat-data-to-player my-player-number "point 2x: %d" g: innerWallPoint2X)    
-    (up-chat-data-to-player my-player-number "map max: %d" g: maxDimensionOfMap)     
-    
+    (up-chat-data-to-player my-player-number "point 2x: %d" g: innerWallPoint2X)
+    (up-chat-data-to-player my-player-number "map max: %d" g: maxDimensionOfMap)
     (disable-self)
 )
 (defrule
@@ -294,8 +292,8 @@
 =>
     (set-goal outerWallPoint2Y maxDimensionOfMap)
     (set-goal innerWallPoint2Y maxDimensionOfMap)
-    (up-chat-data-to-player my-player-number "point 2y: %d" g: innerWallPoint2Y)    
-    (up-chat-data-to-player my-player-number "map max: %d" g: maxDimensionOfMap)    
+    (up-chat-data-to-player my-player-number "point 2y: %d" g: innerWallPoint2Y)
+    (up-chat-data-to-player my-player-number "map max: %d" g: maxDimensionOfMap)
     (disable-self)
 )
 (defrule
@@ -304,6 +302,8 @@
     (set-goal outerWallPoint3Y maxDimensionOfMap)
     (set-goal innerWallPoint3Y maxDimensionOfMap)(disable-self)
 )
+
+
 
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
