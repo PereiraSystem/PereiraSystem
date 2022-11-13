@@ -2019,7 +2019,7 @@
     (set-goal gl-gotNorthWestStoneGates 1)
 )
 
-(defrule (false)
+(defrule (true)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (or
@@ -2028,7 +2028,7 @@
     )
     (up-can-build-line 0 gl-innerSecGatePoint1-x c: 487)
 =>
-    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint1-x c: 487)
+    (up-build-line gl-innerSecGatePoint4-x gl-innerSecGatePoint4-x c: 487)
     (set-goal gl-gotNorthWestStoneGates 1)
 )
 
