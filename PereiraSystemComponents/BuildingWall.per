@@ -18,9 +18,16 @@
     (up-modify-goal mapSizeNineTenths g:- mapSizeTenth)
     (disable-self)
 )
-
 (defrule
     (game-time > 30)
+=>
+    (up-chat-data-to-self "Position Self X: %d" g: myPositionX)
+    (up-chat-data-to-self "Position Self X: %d" g: myPositionY)    
+    (disable-self)
+)
+
+(defrule
+    (game-time > 60)
 =>
     (up-chat-data-to-self "Position Map Size X: %d" g: posMapSizeX)
     (up-chat-data-to-self "Position Map Size Y: %d" g: posMapSizeY)
