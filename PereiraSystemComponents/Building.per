@@ -2060,7 +2060,7 @@
 )
 
 ; SOUTH EAST (USED BY Sw AND NE MAIN GATES)
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (or
@@ -2073,7 +2073,7 @@
     (set-goal gl-gotSouthEastStoneGates 1)
 )
 
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (or
