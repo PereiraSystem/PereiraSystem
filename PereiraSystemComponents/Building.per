@@ -369,7 +369,7 @@
 =>
     (chat-local-to-self "Trying To Build Market 1 outside")
     ;(up-set-placement-data my-player-number market c:+ 32)
-    (up-set-placement-data my-player-number town-center c:+ 36)
+    (up-set-placement-data my-player-number town-center c:+ 32)
     (up-build place-control 0 c: market)
 )
 (defrule
@@ -826,19 +826,19 @@
 )
 
 (defrule
-    (game-time > 120)
+    (game-time > 120)(false)
 =>
     (up-chat-data-to-self "Map Size x: %d" g: gl-posMapSize-x)
     (up-chat-data-to-self "Map Size manually set: %d" g: gl-maxDimensionOfMap)
-    ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
-    ;(up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
-    ;(up-chat-data-to-self "Map Size 1/10 %d" g: gl-mapSizeTenth)
+    (up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
+    (up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
+    (up-chat-data-to-self "Map Size 1/10 %d" g: gl-mapSizeTenth)
     (up-chat-data-to-self "Map Center %d" g: gl-mapCenter-x) ;all maps are square so y not needed
     (disable-self)
 )
 
 (defrule
-    (true)
+    (false)
     ;(game-time > 30)
 =>
     (up-chat-data-to-self "POS X: %d" g: gl-myPosition-x)
