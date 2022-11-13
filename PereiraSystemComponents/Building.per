@@ -858,7 +858,8 @@
 )
 
 (defrule
-    (game-time > 30)
+    (true)
+    ;(game-time > 30)
 =>
     (up-chat-data-to-self "POS X: %d" g: gl-myPosition-x)
     (up-chat-data-to-self "POS Y: %d" g: gl-myPosition-y)
@@ -1252,6 +1253,7 @@
     (up-compare-goal gl-myPosition-x g:< gl-myPosition-y); closer to SW side
 =>
     (set-goal gl-buildNorthEastMainGates 1)
+    (chat-to-all "I WILL BUILD THE GATES TO THE NORTH EAST")
     (disable-self)
 )
 
@@ -1262,6 +1264,7 @@
     (up-compare-goal gl-myPosition-x g:> gl-myPosition-y) ;closer to NW side   
 =>
     (set-goal gl-buildSouthEastMainGates 1)
+    (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH EAST")    
     (disable-self)
 )
 
