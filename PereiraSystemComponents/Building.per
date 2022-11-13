@@ -1244,42 +1244,28 @@
 )
 
 ; POS 5 (MIDDLE OF MAP) OWN SECTION
-;  PROVISIONAL - BETTER CHECK WITH MAP CENTER
-(defrule
-    (up-compare-goal gl-posQuadrantCode == 5) ;Y LOWER THAN X
-    (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
-=>
-    (set-goal gl-buildSouthEastMainGates 1)(disable-self)
-)
-
-(defrule
-    (up-compare-goal gl-posQuadrantCode == 5) ; X LOWER THAN Y
-    (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
-=>
-    (set-goal gl-buildNorthWestMainGates 1)(disable-self)
-)
-
-
-(defrule
-    (up-compare-goal gl-posQuadrantCode == 5) ; X == Y
-    (up-compare-goal gl-myPosition-y g:== gl-myPosition-x)
-=>
-    (generate-random-number 100)(disable-self)
-)
+;  WHEN CLOSE TO WEST CORNER
 (defrule
     (up-compare-goal gl-posQuadrantCode == 5)
-    (up-compare-goal gl-myPosition-y g:== gl-myPosition-x)
-    (random-number < 50)
-=>
-    (set-goal gl-buildSouthWestMainGates 1)
-)
-(defrule
-    (up-compare-goal gl-posQuadrantCode == 5)
-    (up-compare-goal gl-myPosition-y g:== gl-myPosition-x)
-    (random-number < 50)
+    (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
+    (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
+    (up-compare-goal gl-myPosition-x g:< gl-myPosition-y); closer to SW side
 =>
     (set-goal gl-buildNorthEastMainGates 1)
+    (disable-self)
 )
+
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 5)
+    (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
+    (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
+    (up-compare-goal gl-myPosition-x g:> gl-myPosition-y) ;closer to NW side   
+=>
+    (set-goal gl-buildSouthEastMainGates 1)
+    (disable-self)
+)
+
+
 
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
 ; 1/4 NORTH EAST MAIN PALISADE GATES -----------------------------------------
