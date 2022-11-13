@@ -851,7 +851,7 @@
     (up-compare-goal myPositionX g:>= mapSizeTwoThirds)
 =>
     (set-goal posXisHigh 1)
-    (chat-to-player my-player-number "IM CLOSE TO THE HIGH X BORDER")
+    ;(chat-to-player my-player-number "IM CLOSE TO THE HIGH X BORDER")
     ;(up-chat-data-to-self "this is x : %d" g: myPositionX)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
     (disable-self)
@@ -860,10 +860,9 @@
     (up-compare-goal myPositionY g:>= mapSizeTwoThirds)
 =>
     (set-goal posYisHigh 1)
-    (chat-to-player my-player-number "IM CLOSE TO THE HIGH Y BORDER")
+    ;(chat-to-player my-player-number "IM CLOSE TO THE HIGH Y BORDER")
     ;(up-chat-data-to-self "this is y : %d" g: myPositionX)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
-
     (disable-self)
 )
 (defrule
@@ -882,7 +881,7 @@
     (up-compare-goal myPositionX g:<= mapSizeThird)
 =>
     (set-goal posXisLow 1)
-    (chat-to-player my-player-number "IM CLOSE TO THE LOW X BORDER")
+    ;(chat-to-player my-player-number "IM CLOSE TO THE LOW X BORDER")
     ;(up-chat-data-to-self "this is x : %d" g: myPositionX)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
     (disable-self)
@@ -891,7 +890,7 @@
     (up-compare-goal myPositionY g:<= mapSizeThird)
 =>
     (set-goal posYisLow 1)
-    (chat-to-player my-player-number "IM CLOSE TO THE LOW Y BORDER")
+    ;(chat-to-player my-player-number "IM CLOSE TO THE LOW Y BORDER")
     ;(up-chat-data-to-self "this is y : %d" g: myPositionY)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
     (disable-self)
