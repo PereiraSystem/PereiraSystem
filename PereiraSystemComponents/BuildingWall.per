@@ -276,15 +276,14 @@
     (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
 =>
     (set-goal outerWallPoint1X maxDimensionOfMap)
-    (set-goal innerWallPoint1X maxDimensionOfMap)(disable-self)
+    (set-goal innerWallPoint1X maxDimensionOfMap)
+    (disable-self)
 )
 (defrule
     (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
 =>
     (set-goal outerWallPoint2X maxDimensionOfMap)
     (set-goal innerWallPoint2X maxDimensionOfMap)
-    (up-chat-data-to-player my-player-number "point 2x: %d" g: innerWallPoint2X)
-    (up-chat-data-to-player my-player-number "map max: %d" g: maxDimensionOfMap)
     (disable-self)
 )
 (defrule
@@ -292,15 +291,21 @@
 =>
     (set-goal outerWallPoint2Y maxDimensionOfMap)
     (set-goal innerWallPoint2Y maxDimensionOfMap)
-    (up-chat-data-to-player my-player-number "point 2y: %d" g: innerWallPoint2Y)
-    (up-chat-data-to-player my-player-number "map max: %d" g: maxDimensionOfMap)
     (disable-self)
 )
 (defrule
     (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
 =>
     (set-goal outerWallPoint3Y maxDimensionOfMap)
-    (set-goal innerWallPoint3Y maxDimensionOfMap)(disable-self)
+    (set-goal innerWallPoint3Y maxDimensionOfMap)
+    (disable-self)
+)
+
+(defrule
+    (true)
+=>
+    (up-chat-data-to-self "O. WALL P 1X: %d" g: outerWallPoint1X)
+    (up-chat-data-to-self "O. WALL P 1Y: %d" g: outerWallPoint1Y)    
 )
 
 
