@@ -1979,7 +1979,7 @@
 
 ; BUILD SECONDARY INNER WALL GATES--------------------------------
 ; NORTH EAST (USED BY SE AND NW MAIN GATES)
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (or
@@ -1992,7 +1992,7 @@
     (set-goal gl-gotNorthEastStoneGates 1)
 )
 
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (or
@@ -2006,7 +2006,7 @@
 )
 
 ; NORTH WEST (USED BY NE AND SW MAIN GATES)
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (or
@@ -2019,7 +2019,7 @@
     (set-goal gl-gotNorthWestStoneGates 1)
 )
 
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
     (or
@@ -2033,7 +2033,7 @@
 )
 
 ; SOUTH WEST (USED BY SE AND NW MAIN GATES)
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (or
@@ -2046,7 +2046,7 @@
     (set-goal gl-gotSouthWestStoneGates 1)
 )
 
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
     (or
