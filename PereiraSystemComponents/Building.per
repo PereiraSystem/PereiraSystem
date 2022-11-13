@@ -1967,7 +1967,8 @@
     ;(up-can-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
 =>
     (up-build-line gl-innerGatePoint4-x gl-innerGatePoint4-x c: 497)
-    (chat-to-player my-player-number "BUILDING GATE 1")
+    (up-chat-data-to-player my-player-number "BUILDING GATE 1x %d" g: gl-innerGatePoint4-x)
+    (up-chat-data-to-player my-player-number "BUILDING GATE 1y %d" g: gl-innerGatePoint4-y)
     (set-goal gl-gotNorthWestStoneGates 1)
 )
 
