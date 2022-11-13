@@ -26,3 +26,9 @@
 
 ; 4.
 (load "main/PereiraSystemComponents/Building")
+
+(defrule (true)
+    (cheats-enabled)
+=>
+    (up-cc-send-cheat "AEGIS")
+)
