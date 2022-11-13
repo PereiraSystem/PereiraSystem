@@ -2105,7 +2105,10 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (up-compare-goal gl-gotSouthEastStoneGates == 1)
+    (or
+        (up-compare-goal gl-gotSouthEastStoneGates == 1)
+        (up-compare-goal gl-buildNorthWestMainGates == 1)
+    )
 =>
     (up-build-line gl-innerWallPoint2-x gl-innerWallPoint3-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south east start y: %d" g: gl-innerWallPoint2-y)
@@ -2114,7 +2117,10 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthWestWall == 0)
-    (up-compare-goal gl-gotSouthWestStoneGates == 1)
+    (or
+        (up-compare-goal gl-gotSouthWestStoneGates == 1)
+        (up-compare-goal gl-buildNorthEastMainGates == 1)
+    )
 =>
     (up-build-line gl-innerWallPoint3-x gl-innerWallPoint4-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall south west start y: %d" g: gl-innerWallPoint3-y)
@@ -2123,7 +2129,10 @@
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthWestWall == 0)
-    (up-compare-goal gl-gotNorthWestStoneGates == 1)
+    (or
+        (up-compare-goal gl-gotNorthWestStoneGates == 1)
+        (up-compare-goal gl-buildSouthEastMainGates == 1)
+    )
 =>
     (up-build-line gl-innerWallPoint4-x gl-innerWallPoint1-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north west start y: %d" g: gl-innerWallPoint3-y)
