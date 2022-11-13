@@ -103,6 +103,16 @@
 (defrule
     (true)
 =>
+    (set-goal maxLumberCampsQty 3)
+    (set-goal maxMiningCampsQty 1)
+    ;(up-chat-data-to-self "Lumber Camps Max Qty = %d" g: maxLumberCampsQty)
+    ;(up-chat-data-to-self "Mining Camps Max Qty = %d" g: max-mining-camps-qty)
+    (disable-self)
+)
+
+(defrule
+    (true)
+=>
     (set-goal houseDistanceMod 12)
 
     (set-goal maxHousesBeforeDeleting 21)
