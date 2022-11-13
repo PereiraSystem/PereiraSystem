@@ -144,6 +144,16 @@
     (set-goal imperialAgeFoodCost 850)
     (set-goal imperialAgeGoldCost 680) (disable-self)
 )
+
+; TRAINING QTYS
+(defrule
+=>
+    (set-goal maxCiviliansFeudalAge 32)
+    (set-goal maxCiviliansCastleAge 53)
+    (set-goal maxCiviliansImperialAge 85)
+    (disable-self)
+)
+
 (defrule
     (current-age == feudal-age)
 =>
