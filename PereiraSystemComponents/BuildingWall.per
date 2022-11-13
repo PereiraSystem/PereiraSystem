@@ -318,7 +318,11 @@
     (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
 =>
     (set-goal outerWallPoint2X maxDimensionOfMap)
-    (set-goal innerWallPoint2X maxDimensionOfMap)(disable-self)
+    (set-goal innerWallPoint2X maxDimensionOfMap)
+    (up-chat-data-to-player my-player-number "point 2x: %d" g: innerWallPoint2X)    
+    (up-chat-data-to-player my-player-number "map max: %d" g: maxDimensionOfMap)     
+    
+    (disable-self)
 )
 (defrule
     (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
