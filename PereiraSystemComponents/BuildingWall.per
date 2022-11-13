@@ -309,9 +309,11 @@
 )
 
 (defrule
-    (true)
+    (game-time > 90)
 =>
     (up-chat-data-to-self "O. WALL P 1X: %d" g: outerWallPoint1X)
+    (up-chat-data-to-self "O. WALL P 1Y: %d" g: outerWallPoint1Y)
+    (disable-self)  
 )
 
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
