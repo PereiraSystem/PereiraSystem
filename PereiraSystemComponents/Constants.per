@@ -3,8 +3,8 @@
 (defconst gl-max-lumber-camps-qty 1)
 (defconst gl-max-mining-camps-qty 2)
 (defconst gl-house-distance-mod 4)
-(defconst gl-minimumWoodForTC 10)
-(defconst gl-minimumWoodForLC 11)
+(defconst minimumWoodForTC 10)
+(defconst minimumWoodForLC 11)
 (defconst gl-feudalAgeFoodCost 12)
 (defconst gl-castleAgeFoodCost 12)
 (defconst gl-castleAgeGoldCost 13)
@@ -201,8 +201,8 @@
 (defrule
     (true)
 =>
-    (set-goal gl-minimumWoodForTC 275)
-    (set-goal gl-minimumWoodForLC 100)
+    (set-goal minimumWoodForTC 275)
+    (set-goal minimumWoodForLC 100)
     (set-goal gl-house-distance-mod 12)
     (set-goal gl-feudalAgeFoodCost 500)
     (set-goal gl-castleAgeFoodCost 800)
@@ -235,14 +235,14 @@
 (defrule
     (civ-selected japanese)
 =>
-    (set-goal gl-minimumWoodForTC 275)
-    (set-goal gl-minimumWoodForLC 100)(disable-self)
+    (set-goal minimumWoodForTC 275)
+    (set-goal minimumWoodForLC 100)(disable-self)
 )
 (defrule
     (civ-selected malian)
 =>
-    (set-goal gl-minimumWoodForTC 275)
-    (set-goal gl-minimumWoodForLC 100)(disable-self)
+    (set-goal minimumWoodForTC 275)
+    (set-goal minimumWoodForLC 100)(disable-self)
 )
 (defrule
     (civ-selected italian)
@@ -361,8 +361,8 @@
 =>
     (set-goal gl-max-lumber-camps-qty 3)
     (set-goal gl-max-mining-camps-qty 1)
-    (set-goal gl-minimumWoodForTC 275)
-    (set-goal gl-minimumWoodForLC 100)
+    (set-goal minimumWoodForTC 275)
+    (set-goal minimumWoodForLC 100)
     ;(up-chat-data-to-self "Lumber Camps Max Qty = %d" g: gl-max-lumber-camps-qty)
     ;(up-chat-data-to-self "Mining Camps Max Qty = %d" g: gl-max-mining-camps-qty)
     (disable-self)
