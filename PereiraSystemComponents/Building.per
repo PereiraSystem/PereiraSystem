@@ -1,4 +1,4 @@
-; BUILDING -------------------------------------------------------
+; BUILDING ---------------p center----------------------------------------
 (defrule(true)=>(chat-local-to-self "> 4. Building Loaded")(disable-self))
 ; CIVILIAN BUILDINGS
 ; WONDER
@@ -945,7 +945,7 @@
 (defrule
     (up-compare-goal gl-posXisMed == 1)(up-compare-goal gl-posYisMed == 1)
 =>
-    ;(chat-to-allies "IM IN THE MIDDLE OF THE MAP - POS 5")
+    (chat-to-allies "IM IN THE MIDDLE OF THE MAP - POS 5")
     (set-goal gl-posQuadrantCode 5)
     (up-send-flare position-self)(disable-self)
 )
