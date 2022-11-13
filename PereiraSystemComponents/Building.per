@@ -1234,18 +1234,18 @@
     (up-compare-goal gl-myPosition-x g:< gl-myPosition-y); closer to SW side
 =>
     (set-goal gl-buildNorthEastMainGates 1)
-    (chat-to-all "I WILL BUILD THE GATES TO THE NORTH EAST")
+    (chat-to-all "IM IN THE MIDDLE - WEST CORNER - CLOSE TO SOUTH WEST SIDE")
     (disable-self)
 )
 ; AND X HIGHER THAN Y
 (defrule
-    (up-compare-goal gl-posQuadrantCode == 5)
+    (goal gl-posQuadrantCode 5)
     (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
     (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
     (up-compare-goal gl-myPosition-x g:> gl-myPosition-y) ;closer to NW side
 =>
     (set-goal gl-buildSouthEastMainGates 1)
-    (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH EAST")
+    (chat-to-all "IM IN THE MIDDLE - WEST CORNER - CLOSE TO NORTH WEST SIDE")
     (disable-self)
 )
 
@@ -1256,7 +1256,7 @@
     (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
 =>
     (set-goal gl-buildNorthWestMainGates 1)
-    (chat-to-all "I WILL BUILD THE GATES TO THE NORTH WEST")
+    (chat-to-all "IM IN THE MIDDLE - SOUTH CORNER")
     (disable-self)
 )
 
