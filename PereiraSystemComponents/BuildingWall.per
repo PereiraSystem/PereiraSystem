@@ -42,13 +42,7 @@
     (set-goal maxDimensionOfMap 480)
     (disable-self)
 )
-(defrule
-    (true)
-=>
-    ;(up-chat-data-to-self "Inner wall perimeter: %d" g: innerWallPerimeter)
-    ;(up-chat-data-to-self "Outer wall perimeter: %d" g: outerWallPerimeter)
-    (disable-self)
-)
+
 (defrule
     (true)
 =>
@@ -65,27 +59,6 @@
     (up-modify-goal mapSizeTwoThirds c:* 2)
     (up-modify-goal mapSizeTenth c:/ 10)
     (up-modify-goal mapSizeNineTenths g:- mapSizeTenth)
-    (disable-self)
-)
-
-(defrule
-    (game-time > 120)(false)
-=>
-    (up-chat-data-to-self "Map Size x: %d" g: posMapSizeX)
-    (up-chat-data-to-self "Map Size manually set: %d" g: maxDimensionOfMap)
-    (up-chat-data-to-self "Map Size 1/3 %d" g: mapSizeThird)
-    (up-chat-data-to-self "Map Size 2/3 %d" g: mapSizeTwoThirds)
-    (up-chat-data-to-self "Map Size 1/10 %d" g: mapSizeTenth)
-    (up-chat-data-to-self "Map Center %d" g: mapCenterX) ;all maps are square so y not needed
-    (disable-self)
-)
-
-(defrule
-    (false)
-    ;(game-time > 30)
-=>
-    (up-chat-data-to-self "POS X: %d" g: myPositionX)
-    (up-chat-data-to-self "POS Y: %d" g: myPositionY)
     (disable-self)
 )
 
@@ -382,10 +355,8 @@
 =>
     (set-goal dontBuildNorthWestWall 1)(disable-self)
 )
+
 ; CHOOSE GATES POSITION
-; 2, 4 , 6 AND 8 GET FIXED GATES
-; 1 AND 9 CORNERS DEPEND ON X AND Y RELATIONSHIP
-; 3 AND 7 CORNERS DEPEND ON NOT BUILDING A WALL (NE 3 AND SW 7)
 (defrule
     (or
         (goal posQuadrantCode 8) ;south west center
@@ -456,8 +427,6 @@
 )
 
 ; POS 5 (MIDDLE OF MAP) OWN SECTION
-;  WHEN CLOSE TO WEST CORNER
-; AND X LOWER THAN Y
 (defrule
     (goal posQuadrantCode 5)
     (up-compare-goal myPositionY g:< mapCenterY)
@@ -468,7 +437,6 @@
     (chat-to-all "IM IN THE MIDDLE - WEST CORNER - CLOSE TO SOUTH WEST SIDE")
     (disable-self)
 )
-; AND X HIGHER THAN Y
 (defrule
     (goal posQuadrantCode 5)
     (up-compare-goal myPositionY g:< mapCenterY)
@@ -480,7 +448,6 @@
     (disable-self)
 )
 
-; WHEN CLOSE TO SOUTH CORNER
 (defrule
     (goal posQuadrantCode 5)
     (up-compare-goal myPositionY g:> mapCenterY)
@@ -491,8 +458,7 @@
     (disable-self)
 )
 
-; WHEN CLOSE TO EAST CORNER
-; AND X LOWER THAN Y
+
 (defrule
     (goal posQuadrantCode 5)
     (up-compare-goal myPositionY g:> mapCenterY)
@@ -503,7 +469,6 @@
     (chat-to-all "I WILL BUILD THE GATES TO THE NORTH WEST")
     (disable-self)
 )
-; AND X HIGHER THAN Y
 (defrule
     (goal posQuadrantCode 5)
     (up-compare-goal myPositionY g:> mapCenterY)
@@ -515,7 +480,6 @@
     (disable-self)
 )
 
-; WHEN CLOSE TO NORTH CORNER
 (defrule
     (goal posQuadrantCode 5)
     (up-compare-goal myPositionY g:< mapCenterY)
@@ -1043,7 +1007,7 @@
     (disable-self)
 )
 
-          ; GATES CLOSER TO BACK
+        ; GATES CLOSER TO BACK
 
 (defrule
     (goal buildSouthWestMainGates 1)
@@ -1063,7 +1027,6 @@
 
 ; 4 -WITH MAIN NORTH WEST GATES ---
     ; MAIN
-
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
@@ -1100,7 +1063,7 @@
     (disable-self)
 )
 
-          ; GATES CLOSER TO BACK
+        ; GATES CLOSER TO BACK
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
@@ -1273,7 +1236,6 @@
     (up-build-line innerSecGatePoint4X innerSecGatePoint4X c: 490)
     (set-goal gotSouthWestStoneGates 1)
 )
-
 
 ; SOUTH EAST (USED BY SW AND NE MAIN GATES)
 (defrule (true)
