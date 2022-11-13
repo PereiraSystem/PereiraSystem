@@ -757,64 +757,45 @@
 )
 
 ; MAP SIZE AND PLAYER NUMBER CHECKS -------------------------
-
+(defrule
+    (map-size tiny)
+=>
+    (set-goal gl-maxDimensionOfMap 120)
+    (disable-self)
+)
 (defrule
     (map-size small)
 =>
-    (up-modify-goal gl-innerWallPerimeter c:+ 1)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)
-    (up-modify-sn sn-maximum-town-size c:+ 3)
-    (up-modify-sn sn-minimum-town-size c:+ 3)
     (set-goal gl-maxDimensionOfMap 144)
     (disable-self)
 )
 (defrule
     (map-size medium)
 =>
-    (up-modify-goal gl-innerWallPerimeter c:+ 2)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)
-    (up-modify-sn sn-maximum-town-size c:+ 4)
-    (up-modify-sn sn-minimum-town-size c:+ 4)
     (set-goal gl-maxDimensionOfMap 168)
     (disable-self)
 )
 (defrule
     (map-size normal)
 =>
-    (up-modify-goal gl-innerWallPerimeter c:+ 2)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)
-    (up-modify-sn sn-maximum-town-size c:+ 4)
-    (up-modify-sn sn-minimum-town-size c:+ 4)
     (set-goal gl-maxDimensionOfMap 200)
     (disable-self)
 )
 (defrule
     (map-size large)
 =>
-    (up-modify-goal gl-innerWallPerimeter c:+ 2)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)
-    (up-modify-sn sn-maximum-town-size c:+ 4)
-    (up-modify-sn sn-minimum-town-size c:+ 4)
     (set-goal gl-maxDimensionOfMap 220)
     (disable-self)
 )
 (defrule
     (map-size giant)
 =>
-    (up-modify-goal gl-innerWallPerimeter c:+ 4)
-    (up-modify-goal gl-outerWallPerimeter c:+ 6)
-    (up-modify-sn sn-maximum-town-size c:+ 6)
-    (up-modify-sn sn-minimum-town-size c:+ 6)
     (set-goal gl-maxDimensionOfMap 240)
     (disable-self)
 )
 (defrule
     (up-compare-goal gl-posMapSize-x > 256)
 =>
-    (up-modify-goal gl-innerWallPerimeter c:+ 2)
-    (up-modify-goal gl-outerWallPerimeter c:+ 4)
-    (up-modify-sn sn-maximum-town-size c:+ 4)
-    (up-modify-sn sn-minimum-town-size c:+ 4)
     (set-goal gl-maxDimensionOfMap 480)
     (disable-self)
 )
@@ -843,7 +824,6 @@
     (up-modify-goal gl-mapSizeNineTenths g:- gl-mapSizeTenth)
     (disable-self)
 )
-
 
 (defrule
     (game-time > 120)
@@ -1190,7 +1170,7 @@
         )
     )
 =>
-    (set-goal gl-buildNorthEastMainGates 1)
+    (set-goal gl-buildNorthEastMainGates 1)(disable-self)
 )
 (defrule
     (or
@@ -1207,7 +1187,7 @@
         )
     )
 =>
-    (set-goal gl-buildSouthEastMainGates 1)
+    (set-goal gl-buildSouthEastMainGates 1)(disable-self)
 )
 (defrule
     (or
@@ -1224,7 +1204,7 @@
         )
     )
 =>
-    (set-goal gl-buildNorthWestMainGates 1)
+    (set-goal gl-buildNorthWestMainGates 1)(disable-self)
 )
 (defrule
     (or
@@ -1241,7 +1221,7 @@
         )
     )
 =>
-    (set-goal gl-buildSouthWestMainGates 1)
+    (set-goal gl-buildSouthWestMainGates 1)(disable-self)
 )
 
 ; POS 5 (MIDDLE OF MAP) OWN SECTION
@@ -1262,7 +1242,7 @@
     (up-compare-goal gl-posQuadrantCode == 5)
     (up-compare-goal gl-myPosition-y g:< gl-mapCenter-y)
     (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)
-    (up-compare-goal gl-myPosition-x g:> gl-myPosition-y) ;closer to NW side   
+    (up-compare-goal gl-myPosition-x g:> gl-myPosition-y) ;closer to NW side
 =>
     (set-goal gl-buildSouthEastMainGates 1)
     (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH EAST")
@@ -1286,7 +1266,7 @@
     (up-compare-goal gl-posQuadrantCode == 5)
     (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
     (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
-    (up-compare-goal gl-myPosition-x g:< gl-mapCenter-x)    
+    (up-compare-goal gl-myPosition-x g:< gl-myPosition-y)
 =>
     (set-goal gl-buildNorthWestMainGates 1)
     (chat-to-all "I WILL BUILD THE GATES TO THE NORTH WEST")
@@ -1297,7 +1277,7 @@
     (up-compare-goal gl-posQuadrantCode == 5)
     (up-compare-goal gl-myPosition-y g:> gl-mapCenter-y)
     (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)
-    (up-compare-goal gl-myPosition-x g:> gl-mapCenter-x)      
+    (up-compare-goal gl-myPosition-x g:> gl-myPosition-x)
 =>
     (set-goal gl-buildNorthWestMainGates 1)
     (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH WEST")
