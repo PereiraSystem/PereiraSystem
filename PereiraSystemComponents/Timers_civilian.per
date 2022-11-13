@@ -18,7 +18,7 @@
 =>
 	(disable-timer 2)
     (enable-timer 2 65)
-    (up-modify-goal max-lumber-camps-qty c:+ 1)
+    (up-modify-goal maxLumberCampsQty c:+ 1)
     ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: maxLumberCampsQty)
 )
 ; TIMER 3 INCREASES LUMBER CAMPS DISTANCE FAST WHEN WE HAVE NONE
@@ -54,7 +54,7 @@
 =>
 	(disable-timer 5)
     (enable-timer 5 300) ;was 240
-    (up-modify-goal max-mining-camps-qty c:+ 1)
+    (up-modify-goal maxMiningCampsQty c:+ 1)
     ;(up-chat-data-to-self "Mining camps max qty increased = %d" g: max-mining-camps-qty)
 )
 ; TIMER 6 INCREASES MINING CAMPS DISTANCE (FAST THEN SLOWER)
