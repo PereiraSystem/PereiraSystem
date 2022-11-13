@@ -908,187 +908,214 @@
 ; MAKE THE INNER WALL GATE SECTION SMALLER THAN INNER WALL SECTION
 ; 1 - WITH MAIN NORTH EAST GATES -------------------------------------
 ; MAIN
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthEastMainGates 1)
-=>
+=>  (generate-random-number 7)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerGatePoint1Y g:+ randomNumber)
     (disable-self)
 )
 
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
+    (generate-random-number 7)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerGatePoint2Y g:- randomNumber)
     (disable-self)
 )
 
     ; SECONDARY
         ; GATES CLOSER TO FRONT
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
+    (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerSecGatePoint1X g:- randomNumber)
     (disable-self)
 )
 
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
+    (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerSecGatePoint2X g:- randomNumber)
     (disable-self)
 )
 
         ; GATES CLOSER TO BACK
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
+    (generate-random-number 8)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerSecGatePoint4X g:+ randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
+
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
+    (generate-random-number 8)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerSecGatePoint3X g:+ randomNumber)(disable-self))
-
 
 
 ; 2 - WITH MAIN SOUTH EAST GATES -------------------------------------
     ; MAIN
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
-(defrule
-    (goal buildSouthEastMainGates 1)
-=>
-    (up-modify-goal innerGatePoint2X g:- randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal innerGatePoint3X g:+ randomNumber)(disable-self))
+    (generate-random-number 7)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal innerGatePoint2X c:- 1)
+    (up-modify-goal innerGatePoint2X g:- randomNumber)
+    (disable-self)
+)
+
+(defrule
+    (goal buildSouthEastMainGates 1)
+=>
+    (generate-random-number 7)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal innerGatePoint3X c:+ 1)
+    (up-modify-goal innerGatePoint3X g:+ randomNumber)
+    (disable-self)
+)
 
     ; SECONDARY - 4 POINTS INSTEAD OF 2 LIKE THE OUTER WALL
         ; GATES CLOSER TO FRONT
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
+
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
+    (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerSecGatePoint2Y g:- randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
+
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
+    (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerSecGatePoint3Y g:- randomNumber)(disable-self))    
 
         ; GATES CLOSER TO BACK
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
+
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
+    (generate-random-number 8)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerSecGatePoint1Y g:+ randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
+    (generate-random-number 8)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerSecGatePoint4Y g:+ randomNumber)(disable-self))
 
 ; 3 - WITH MAIN SOUTH WEST GATES -------------------------------------
     ; MAIN SOUTH WEST GATES -----------------
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
+
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
+    (generate-random-number 7)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerGatePoint3Y g:- randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
+
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
+    (generate-random-number 7)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerGatePoint4Y g:+ randomNumber)(disable-self))
 
     ; SECONDARY TO MAIN SOUTH WEST GATES ( 4 POINTS)
         ; GATES CLOSER TO FRONT
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
-(defrule
-    (goal buildSouthWestMainGates 1)
-=>
-    (up-modify-goal innerSecGatePoint3X g:+ randomNumber)(disable-self))
 
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint4X g:+ randomNumber)(disable-self))    
+    (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal innerSecGatePoint3X g:+ randomNumber)
+    (disable-self)
+)
+
+
+(defrule
+    (goal buildSouthWestMainGates 1)
+=>
+    (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal innerSecGatePoint4X g:+ randomNumber)
+    (disable-self)
+)
 
           ; GATES CLOSER TO BACK
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
+
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint1X g:- randomNumber)(disable-self))
+    (generate-random-number 8)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal innerSecGatePoint1X g:- randomNumber)
+    (disable-self)
+)
 
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint2X g:- randomNumber)(disable-self))
-
-
+    (generate-random-number 8)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal innerSecGatePoint2X g:- randomNumber)
+    (disable-self)
+)
 
 ; 4 -WITH MAIN NORTH WEST GATES ---
     ; MAIN
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
+
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
+    (generate-random-number 7)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerGatePoint1X c:- 1)
     (up-modify-goal innerGatePoint1X g:- randomNumber)
     (disable-self)
 )
 
-(defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
+    (generate-random-number 7)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerGatePoint4X c:+ 1)
     (up-modify-goal innerGatePoint4X g:+ randomNumber)
     (disable-self)
 )
 
-
     ; SECONDARY TO MAIN NORTH WEST GATES ( 4 POINTS)
         ; GATES CLOSER TO FRONT
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint1Y g:+ randomNumber)(disable-self))
+    (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal innerSecGatePoint1Y g:+ randomNumber)
+    (disable-self)
+)
 
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint4Y g:+ randomNumber)(disable-self))    
+    (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal innerSecGatePoint4Y g:+ randomNumber)
+    (disable-self)
+)
 
           ; GATES CLOSER TO BACK
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint2Y g:- randomNumber)(disable-self))
+    (generate-random-number 8)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal innerSecGatePoint2Y g:- randomNumber)
+    (disable-self)
+)
 
-(defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
+    (generate-random-number 8)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal innerSecGatePoint3Y g:- randomNumber)
-    (disable-self))
+    (disable-self)
+)
 
 ; BUILDING THE MAIN INNER WALL GATES
 ; 1 NORTH EAST MAIN GATES -------------
