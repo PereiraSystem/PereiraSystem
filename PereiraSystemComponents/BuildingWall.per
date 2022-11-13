@@ -1,60 +1,16 @@
 
-; MAP SIZE AND PLAYER NUMBER CHECKS -------------------------
-(defrule
-    (map-size tiny)
-=>
-    (set-goal maxDimensionOfMap 120)
-    (disable-self)
-)
-(defrule
-    (map-size small)
-=>
-    (set-goal maxDimensionOfMap 144)
-    (disable-self)
-)
-(defrule
-    (map-size medium)
-=>
-    (set-goal maxDimensionOfMap 168)
-    (disable-self)
-)
-(defrule
-    (map-size normal)
-=>
-    (set-goal maxDimensionOfMap 203)
-    (disable-self)
-)
-(defrule
-    (map-size large)
-=>
-    (set-goal maxDimensionOfMap 220)
-    (disable-self)
-)
-(defrule
-    (map-size giant)
-=>
-    (set-goal maxDimensionOfMap 240)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal posMapSizeX > 256)
-=>
-    (set-goal maxDimensionOfMap 480)
-    (disable-self)
-)
-
 (defrule
     (true)
 =>
+    (up-get-point position-center mapCenterX)
     (up-get-point position-self myPositionX)
+
+    (up-get-point position-map-size posMapSizeX)
     (up-get-point position-map-size mapSizeThird)
     (up-get-point position-map-size mapSizeTwoThirds)
     (up-get-point position-map-size mapSizeTenth)
     (up-get-point position-map-size mapSizeNineTenths)
-    (up-get-point position-map-size posMapSizeX)
-    ;(up-get-point position-map-size maxDimensionOfMap)
-    ;are maps bigger????? is pos map size wrong?
-    (up-get-point position-center mapCenterX)
+    
     (up-modify-goal mapSizeThird c:/ 3)
     (up-modify-goal mapSizeTwoThirds c:/ 3)
     (up-modify-goal mapSizeTwoThirds c:* 2)
