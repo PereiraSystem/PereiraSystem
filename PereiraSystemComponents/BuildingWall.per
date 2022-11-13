@@ -63,9 +63,9 @@
 )
 
 (defrule
-    (true)
+    (game-time > 30)
 =>
-    (up-chat-data-to-self "DIMENSIONS OF MAP %d" g: maxDimensionOfMap)
+    (up-chat-data-to-self "Map Size: %d" g: maxDimensionOfMap)
 )
 
 ; CHECK OUR POSITION IN 9 SQUARES
