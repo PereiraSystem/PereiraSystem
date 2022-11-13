@@ -835,6 +835,7 @@
     (up-get-point position-map-size gl-mapSizeNineTenths)
     (up-get-point position-map-size gl-posMapSize-x)
     (up-get-point position-map-size gl-maxDimensionOfMap)
+    (up-get-point position-center gl-mapCenter-x)
     (up-modify-goal gl-mapSizeThird c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:/ 3)
     (up-modify-goal gl-mapSizeTwoThirds c:* 2)
@@ -852,6 +853,7 @@
     ;(up-chat-data-to-self "Map Size 1/3 %d" g: gl-mapSizeThird)
     ;(up-chat-data-to-self "Map Size 2/3 %d" g: gl-mapSizeTwoThirds)
     ;(up-chat-data-to-self "Map Size 1/10 %d" g: gl-mapSizeTenth)
+    (up-chat-data-to-self "Map Center %d" g: gl-mapCenter-x) ;all maps are square so y not needed
     (disable-self)
 )
 
@@ -1239,6 +1241,44 @@
     )
 =>
     (set-goal gl-buildSouthWestMainGates 1)
+)
+
+; POS 5 (MIDDLE OF MAP) OWN SECTION
+;  PROVISIONAL - BETTER CHECK WITH MAP CENTER
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 5) ;Y LOWER THAN X
+    (up-compare-goal gl-myPosition-y g:< gl-myPosition-x)
+=>
+    (set-goal gl-buildSouthEastMainGates 1)(disable-self)
+)
+
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 5) ; X LOWER THAN Y
+    (up-compare-goal gl-myPosition-y g:> gl-myPosition-x)
+=>
+    (set-goal gl-buildNorthWestMainGates 1)(disable-self)
+)
+
+
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 5) ; X == Y
+    (up-compare-goal gl-myPosition-y g:== gl-myPosition-x)
+=>
+    (generate-random-number 100)(disable-self)
+)
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 5)
+    (up-compare-goal gl-myPosition-y g:== gl-myPosition-x)
+    (random-number < 50)
+=>
+    (set-goal gl-buildSouthWestMainGates 1)
+)
+(defrule
+    (up-compare-goal gl-posQuadrantCode == 5)
+    (up-compare-goal gl-myPosition-y g:== gl-myPosition-x)
+    (random-number < 50)
+=>
+    (set-goal gl-buildNorthEastMainGates 1)
 )
 
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
