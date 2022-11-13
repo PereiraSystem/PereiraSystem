@@ -10,6 +10,7 @@
 )
 (defrule
     (current-age == dark-age)
+    (food-amount < 50000)(wood-amount < 50000)
     (not
         (and
             (research-available feudal-age)
@@ -23,6 +24,7 @@
 )
 (defrule
     (current-age == feudal-age)
+    (food-amount < 50000)(wood-amount < 50000)
     (not
         (and
             ;(research-available castle-age)
@@ -40,6 +42,7 @@
 )
 (defrule
     (current-age == castle-age)
+    (food-amount < 50000)(wood-amount < 50000)  
     (not
         (and
             (research-available imperial-age)
@@ -56,7 +59,7 @@
 )
 ; villagers imperial age
 (defrule
-    (current-age == imperial-age)
+    (current-age == imperial-age)(food-amount < 50000)
     (civilian-population g:< gl-maxCiviliansCastleAge)
     (can-train villager)
 =>
