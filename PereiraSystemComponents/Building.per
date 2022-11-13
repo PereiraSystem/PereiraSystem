@@ -1297,92 +1297,81 @@
 ; MAKE THE OUTER WALL GATE SECTION SMALLER THAN OUTER WALL SECTION
 ; 1/4 NORTH EAST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthEastMainGates 1)
-=>
+=>  (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint1Y g:+ randomNumber)(disable-self))
 
 ; MAIN GATE 2
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthEastMainGates 1)
-=>
+=>  (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint2Y g:- randomNumber)(disable-self))
 
 ; NORTH EAST SECONDARY PALISADE GATES-----------------------
 ; SECONDARY GATE 1
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthEastMainGates 1)
-=>
+=>  (generate-random-number 16)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint3X g:+ randomNumber)(disable-self))
 
 ; SECONDARY GATE 2
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthEastMainGates 1)
-=>
+=>  (generate-random-number 16)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint4X g:+ randomNumber)(disable-self))
 
 ; 2/4 SOUTH EAST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthEastMainGates 1)
-=>
+=>  (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint2X g:- randomNumber)(disable-self))
 
 ; MAIN GATE 2
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthEastMainGates 1)
-=>
+=>  (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint3X g:+ randomNumber)(disable-self))
 
 ; SOUTH EAST SECONDARY PALISADE GATES --------------
 ; SECONDARY GATE 1
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthEastMainGates 1)
-=>
+=>  (generate-random-number 16)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint1Y g:+ randomNumber)(disable-self))
 
 ; SECONDARY GATE 2
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthEastMainGates 1)
-=>
+=>  (generate-random-number 16)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint4Y g:+ randomNumber)(disable-self)
 )
 
 ; 3/4 SOUTH WEST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthWestMainGates 1)
-=>
+=>  (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint3Y g:- randomNumber)(disable-self))
 
 ; MAIN GATE 2
-(defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthWestMainGates 1)
-=>
+=>  (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint4Y g:+ randomNumber)(disable-self))
 
 ; SOUTH WEST SECONDARY PALISADE GATES -------------
 ; GATE 1
-(defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthWestMainGates 1)
-=>
+=>  (generate-random-number 16)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint2X g:- randomNumber)(disable-self))
 
 ; GATE 2
 (defrule
     (goal buildSouthWestMainGates 1)
-=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)
+=>  (generate-random-number 16)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint1X g:- randomNumber)(disable-self))
 
 ; 4/4 NORTH WEST MAIN PALISADE GATES -----------------------------------------
