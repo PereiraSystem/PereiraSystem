@@ -809,14 +809,14 @@
 (defrule
     (true)
 =>
-    (up-get-point position-self myPosition-x)
+    (up-get-point position-self myPositionX)
     (up-get-point position-map-size mapSizeThird)
     (up-get-point position-map-size mapSizeTwoThirds)
     (up-get-point position-map-size mapSizeTenth)
     (up-get-point position-map-size mapSizeNineTenths)
     (up-get-point position-map-size posMapSizeX)
     (up-get-point position-map-size maxDimensionOfMap)
-    (up-get-point position-center mapCenter-x)
+    (up-get-point position-center mapCenterX)
     (up-modify-goal mapSizeThird c:/ 3)
     (up-modify-goal mapSizeTwoThirds c:/ 3)
     (up-modify-goal mapSizeTwoThirds c:* 2)
@@ -833,7 +833,7 @@
     (up-chat-data-to-self "Map Size 1/3 %d" g: mapSizeThird)
     (up-chat-data-to-self "Map Size 2/3 %d" g: mapSizeTwoThirds)
     (up-chat-data-to-self "Map Size 1/10 %d" g: mapSizeTenth)
-    (up-chat-data-to-self "Map Center %d" g: mapCenter-x) ;all maps are square so y not needed
+    (up-chat-data-to-self "Map Center %d" g: mapCenterX) ;all maps are square so y not needed
     (disable-self)
 )
 
@@ -841,58 +841,58 @@
     (false)
     ;(game-time > 30)
 =>
-    (up-chat-data-to-self "POS X: %d" g: myPosition-x)
-    (up-chat-data-to-self "POS Y: %d" g: myPosition-y)
+    (up-chat-data-to-self "POS X: %d" g: myPositionX)
+    (up-chat-data-to-self "POS Y: %d" g: myPositionY)
     (disable-self)
 )
 
 ; CHECK OUR POSITION IN 9 SQUARES
 (defrule
-    (up-compare-goal myPosition-x g:>= mapSizeTwoThirds)
+    (up-compare-goal myPositionX g:>= mapSizeTwoThirds)
 =>
     (set-goal posXisHigh 1)
     (chat-to-player my-player-number "IM CLOSE TO THE HIGH X BORDER")
-    ;(up-chat-data-to-self "this is x : %d" g: myPosition-x)
+    ;(up-chat-data-to-self "this is x : %d" g: myPositionX)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
     (disable-self)
 )
 (defrule
-    (up-compare-goal myPosition-y g:>= mapSizeTwoThirds)
+    (up-compare-goal myPositionY g:>= mapSizeTwoThirds)
 =>
     (set-goal posYisHigh 1)
     (chat-to-player my-player-number "IM CLOSE TO THE HIGH Y BORDER")
-    ;(up-chat-data-to-self "this is y : %d" g: myPosition-x)
+    ;(up-chat-data-to-self "this is y : %d" g: myPositionX)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
 
     (disable-self)
 )
 (defrule
-    (up-compare-goal myPosition-x g:< mapSizeTwoThirds)
-    (up-compare-goal myPosition-x g:> mapSizeThird)
+    (up-compare-goal myPositionX g:< mapSizeTwoThirds)
+    (up-compare-goal myPositionX g:> mapSizeThird)
 =>
     (set-goal posXisMed 1)(disable-self)
 )
 (defrule
-    (up-compare-goal myPosition-y g:< mapSizeTwoThirds)
-    (up-compare-goal myPosition-y g:> mapSizeThird)
+    (up-compare-goal myPositionY g:< mapSizeTwoThirds)
+    (up-compare-goal myPositionY g:> mapSizeThird)
 =>
     (set-goal posYisMed 1)(disable-self)
 )
 (defrule
-    (up-compare-goal myPosition-x g:<= mapSizeThird)
+    (up-compare-goal myPositionX g:<= mapSizeThird)
 =>
     (set-goal posXisLow 1)
     (chat-to-player my-player-number "IM CLOSE TO THE LOW X BORDER")
-    ;(up-chat-data-to-self "this is x : %d" g: myPosition-x)
+    ;(up-chat-data-to-self "this is x : %d" g: myPositionX)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
     (disable-self)
 )
 (defrule
-    (up-compare-goal myPosition-y g:<= mapSizeThird)
+    (up-compare-goal myPositionY g:<= mapSizeThird)
 =>
     (set-goal posYisLow 1)
     (chat-to-player my-player-number "IM CLOSE TO THE LOW Y BORDER")
-    ;(up-chat-data-to-self "this is y : %d" g: myPosition-y)
+    ;(up-chat-data-to-self "this is y : %d" g: myPositionY)
     ;(up-chat-data-to-self "this is map size two thirds : %d" g: mapSizeTwoThirds)
     (disable-self)
 )
@@ -964,31 +964,31 @@
 (defrule
     (true)
 =>
-    (up-get-point position-self outerWallPoint1-x)
-    (up-get-point position-self outerWallPoint2-x)
-    (up-get-point position-self outerWallPoint3-x)
-    (up-get-point position-self outerWallPoint4-x)
-    (up-get-point position-self innerWallPoint1-x)
-    (up-get-point position-self innerWallPoint2-x)
-    (up-get-point position-self innerWallPoint3-x)
-    (up-get-point position-self innerWallPoint4-x)
-    (up-get-point position-self innerGatePoint1-x)
-    (up-get-point position-self innerGatePoint2-x)
-    (up-get-point position-self innerGatePoint3-x)
-    (up-get-point position-self innerGatePoint4-x)
-    (up-get-point position-self outerGatePoint1-x)
-    (up-get-point position-self outerGatePoint2-x)
-    (up-get-point position-self outerGatePoint3-x)
-    (up-get-point position-self outerGatePoint4-x)
+    (up-get-point position-self outerWallPoint1X)
+    (up-get-point position-self outerWallPoint2X)
+    (up-get-point position-self outerWallPoint3X)
+    (up-get-point position-self outerWallPoint4X)
+    (up-get-point position-self innerWallPoint1X)
+    (up-get-point position-self innerWallPoint2X)
+    (up-get-point position-self innerWallPoint3X)
+    (up-get-point position-self innerWallPoint4X)
+    (up-get-point position-self innerGatePoint1X)
+    (up-get-point position-self innerGatePoint2X)
+    (up-get-point position-self innerGatePoint3X)
+    (up-get-point position-self innerGatePoint4X)
+    (up-get-point position-self outerGatePoint1X)
+    (up-get-point position-self outerGatePoint2X)
+    (up-get-point position-self outerGatePoint3X)
+    (up-get-point position-self outerGatePoint4X)
     (disable-self)
 )
 (defrule
     (true)
 =>
-    (up-get-point position-self innerSecGatePoint1-x)
-    (up-get-point position-self innerSecGatePoint2-x)
-    (up-get-point position-self innerSecGatePoint3-x)
-    (up-get-point position-self innerSecGatePoint4-x)
+    (up-get-point position-self innerSecGatePoint1X)
+    (up-get-point position-self innerSecGatePoint2X)
+    (up-get-point position-self innerSecGatePoint3X)
+    (up-get-point position-self innerSecGatePoint4X)
     (disable-self)
 )
 
@@ -996,16 +996,16 @@
 (defrule
     (true)
 =>
-    (up-modify-goal outerWallPoint1-x g:+ outerWallPerimeter)
-    (up-modify-goal outerWallPoint1-y g:- outerWallPerimeter)
-    (up-modify-goal outerWallPoint2-x g:+ outerWallPerimeter)
-    (up-modify-goal outerWallPoint2-y g:+ outerWallPerimeter)
-    (up-modify-goal outerWallPoint3-x g:- outerWallPerimeter)
-    (up-modify-goal outerWallPoint3-y g:+ outerWallPerimeter)
-    (up-modify-goal outerWallPoint4-x g:- outerWallPerimeter)
-    (up-modify-goal outerWallPoint4-y g:- outerWallPerimeter)
-    ;(up-chat-data-to-self "OUTER WALL POINT 1 X: %d" g: outerWallPoint1-x)
-    ;(up-chat-data-to-self "OUTER WALL POINT 1 Y: %d" g: outerWallPoint1-y)
+    (up-modify-goal outerWallPoint1X g:+ outerWallPerimeter)
+    (up-modify-goal outerWallPoint1Y g:- outerWallPerimeter)
+    (up-modify-goal outerWallPoint2X g:+ outerWallPerimeter)
+    (up-modify-goal outerWallPoint2Y g:+ outerWallPerimeter)
+    (up-modify-goal outerWallPoint3X g:- outerWallPerimeter)
+    (up-modify-goal outerWallPoint3Y g:+ outerWallPerimeter)
+    (up-modify-goal outerWallPoint4X g:- outerWallPerimeter)
+    (up-modify-goal outerWallPoint4Y g:- outerWallPerimeter)
+    ;(up-chat-data-to-self "OUTER WALL POINT 1 X: %d" g: outerWallPoint1X)
+    ;(up-chat-data-to-self "OUTER WALL POINT 1 Y: %d" g: outerWallPoint1Y)
     (disable-self)
 )
 
@@ -1013,16 +1013,16 @@
 (defrule
     (true)
 =>
-    (up-modify-goal outerGatePoint1-x g:+ outerWallPerimeter)
-    (up-modify-goal outerGatePoint1-y g:- outerWallPerimeter)
-    (up-modify-goal outerGatePoint2-x g:+ outerWallPerimeter)
-    (up-modify-goal outerGatePoint2-y g:+ outerWallPerimeter)
-    (up-modify-goal outerGatePoint3-x g:- outerWallPerimeter)
-    (up-modify-goal outerGatePoint3-y g:+ outerWallPerimeter)
-    (up-modify-goal outerGatePoint4-x g:- outerWallPerimeter)
-    (up-modify-goal outerGatePoint4-y g:- outerWallPerimeter)
-    ;(up-chat-data-to-self "OUTER GATE POINT 1 X: %d" g: outerGatePoint1-x)
-    ;(up-chat-data-to-self "OUTER GATE POINT 1 Y: %d" g: outerGatePoint1-y)
+    (up-modify-goal outerGatePoint1X g:+ outerWallPerimeter)
+    (up-modify-goal outerGatePoint1Y g:- outerWallPerimeter)
+    (up-modify-goal outerGatePoint2X g:+ outerWallPerimeter)
+    (up-modify-goal outerGatePoint2Y g:+ outerWallPerimeter)
+    (up-modify-goal outerGatePoint3X g:- outerWallPerimeter)
+    (up-modify-goal outerGatePoint3Y g:+ outerWallPerimeter)
+    (up-modify-goal outerGatePoint4X g:- outerWallPerimeter)
+    (up-modify-goal outerGatePoint4Y g:- outerWallPerimeter)
+    ;(up-chat-data-to-self "OUTER GATE POINT 1 X: %d" g: outerGatePoint1X)
+    ;(up-chat-data-to-self "OUTER GATE POINT 1 Y: %d" g: outerGatePoint1Y)
     (disable-self)
 )
 
@@ -1030,14 +1030,14 @@
 (defrule
     (true)
 =>
-    (up-modify-goal innerWallPoint1-x g:+ innerWallPerimeter)
-    (up-modify-goal innerWallPoint1-y g:- innerWallPerimeter)
-    (up-modify-goal innerWallPoint2-x g:+ innerWallPerimeter)
-    (up-modify-goal innerWallPoint2-y g:+ innerWallPerimeter)
-    (up-modify-goal innerWallPoint3-x g:- innerWallPerimeter)
-    (up-modify-goal innerWallPoint3-y g:+ innerWallPerimeter)
-    (up-modify-goal innerWallPoint4-x g:- innerWallPerimeter)
-    (up-modify-goal innerWallPoint4-y g:- innerWallPerimeter)
+    (up-modify-goal innerWallPoint1X g:+ innerWallPerimeter)
+    (up-modify-goal innerWallPoint1Y g:- innerWallPerimeter)
+    (up-modify-goal innerWallPoint2X g:+ innerWallPerimeter)
+    (up-modify-goal innerWallPoint2Y g:+ innerWallPerimeter)
+    (up-modify-goal innerWallPoint3X g:- innerWallPerimeter)
+    (up-modify-goal innerWallPoint3Y g:+ innerWallPerimeter)
+    (up-modify-goal innerWallPoint4X g:- innerWallPerimeter)
+    (up-modify-goal innerWallPoint4Y g:- innerWallPerimeter)
     (disable-self)
 )
 
@@ -1046,14 +1046,14 @@
 (defrule
     (true)
 =>
-    (up-modify-goal innerGatePoint1-x g:+ innerWallPerimeter)
-    (up-modify-goal innerGatePoint1-y g:- innerWallPerimeter)
-    (up-modify-goal innerGatePoint2-x g:+ innerWallPerimeter)
-    (up-modify-goal innerGatePoint2-y g:+ innerWallPerimeter)
-    (up-modify-goal innerGatePoint3-x g:- innerWallPerimeter)
-    (up-modify-goal innerGatePoint3-y g:+ innerWallPerimeter)
-    (up-modify-goal innerGatePoint4-x g:- innerWallPerimeter)
-    (up-modify-goal innerGatePoint4-y g:- innerWallPerimeter)
+    (up-modify-goal innerGatePoint1X g:+ innerWallPerimeter)
+    (up-modify-goal innerGatePoint1Y g:- innerWallPerimeter)
+    (up-modify-goal innerGatePoint2X g:+ innerWallPerimeter)
+    (up-modify-goal innerGatePoint2Y g:+ innerWallPerimeter)
+    (up-modify-goal innerGatePoint3X g:- innerWallPerimeter)
+    (up-modify-goal innerGatePoint3Y g:+ innerWallPerimeter)
+    (up-modify-goal innerGatePoint4X g:- innerWallPerimeter)
+    (up-modify-goal innerGatePoint4Y g:- innerWallPerimeter)
     (disable-self)
 )
 
@@ -1061,93 +1061,93 @@
 (defrule
     (true)
 =>
-    (up-modify-goal innerSecGatePoint1-x g:+ innerWallPerimeter)
-    (up-modify-goal innerSecGatePoint1-y g:- innerWallPerimeter)
-    (up-modify-goal innerSecGatePoint2-x g:+ innerWallPerimeter)
-    (up-modify-goal innerSecGatePoint2-y g:+ innerWallPerimeter)
-    (up-modify-goal innerSecGatePoint3-x g:- innerWallPerimeter)
-    (up-modify-goal innerSecGatePoint3-y g:+ innerWallPerimeter)
-    (up-modify-goal innerSecGatePoint4-x g:- innerWallPerimeter)
-    (up-modify-goal innerSecGatePoint4-y g:- innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint1X g:+ innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint1Y g:- innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint2X g:+ innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint2Y g:+ innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint3X g:- innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint3Y g:+ innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint4X g:- innerWallPerimeter)
+    (up-modify-goal innerSecGatePoint4Y g:- innerWallPerimeter)
     (disable-self)
 )
 
 ; MAKE THE OUTER AND INNER WALLS REACH THE BORDERS IF THEY ARE CLOSE
 ; LOWER POINTS SET TO ZERO
 (defrule
-    (up-compare-goal outerWallPoint1-y g:< mapSizeTenth)
+    (up-compare-goal outerWallPoint1Y g:< mapSizeTenth)
 =>
-    (set-goal outerWallPoint1-y 0)
-    (set-goal innerWallPoint1-y 0)
+    (set-goal outerWallPoint1Y 0)
+    (set-goal innerWallPoint1Y 0)
     (disable-self)
 )
 (defrule
-    (up-compare-goal outerWallPoint3-x g:< mapSizeTenth)
+    (up-compare-goal outerWallPoint3X g:< mapSizeTenth)
 =>
-    (set-goal outerWallPoint3-x 0)
-    (set-goal innerWallPoint3-x 0)
+    (set-goal outerWallPoint3X 0)
+    (set-goal innerWallPoint3X 0)
     (disable-self)
 )
 (defrule
-    (up-compare-goal outerWallPoint4-x g:< mapSizeTenth)
+    (up-compare-goal outerWallPoint4X g:< mapSizeTenth)
 =>
-    (set-goal outerWallPoint4-x 0)
-    (set-goal innerWallPoint4-x 0)
+    (set-goal outerWallPoint4X 0)
+    (set-goal innerWallPoint4X 0)
     (disable-self)
 )
 (defrule
-    (up-compare-goal outerWallPoint4-y g:< mapSizeTenth)
+    (up-compare-goal outerWallPoint4Y g:< mapSizeTenth)
 =>
-    (set-goal outerWallPoint4-y 0)
-    (set-goal innerWallPoint4-y 0)
+    (set-goal outerWallPoint4Y 0)
+    (set-goal innerWallPoint4Y 0)
     (disable-self)
 )
 
 ; HIGHER POINTS SET TO THE MAX SIZE OF MAP
 (defrule
-    (up-compare-goal outerWallPoint1-x g:> mapSizeNineTenths)
+    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint1-x maxDimensionOfMap)
-    (set-goal innerWallPoint1-x maxDimensionOfMap)(disable-self)
+    (set-goal outerWallPoint1X maxDimensionOfMap)
+    (set-goal innerWallPoint1X maxDimensionOfMap)(disable-self)
 )
 (defrule
-    (up-compare-goal outerWallPoint2-x g:> mapSizeNineTenths)
+    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint2-x maxDimensionOfMap)
-    (set-goal innerWallPoint2-x maxDimensionOfMap)(disable-self)
+    (set-goal outerWallPoint2X maxDimensionOfMap)
+    (set-goal innerWallPoint2X maxDimensionOfMap)(disable-self)
 )
 (defrule
-    (up-compare-goal outerWallPoint2-y g:> mapSizeNineTenths)
+    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint2-y maxDimensionOfMap)
-    (set-goal innerWallPoint2-y maxDimensionOfMap)(disable-self)
+    (set-goal outerWallPoint2Y maxDimensionOfMap)
+    (set-goal innerWallPoint2Y maxDimensionOfMap)(disable-self)
 )
 (defrule
-    (up-compare-goal outerWallPoint3-y g:> mapSizeNineTenths)
+    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint3-y maxDimensionOfMap)
-    (set-goal innerWallPoint3-y maxDimensionOfMap)(disable-self)
+    (set-goal outerWallPoint3Y maxDimensionOfMap)
+    (set-goal innerWallPoint3Y maxDimensionOfMap)(disable-self)
 )
 
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
 (defrule  ; no north east (1 to 2) if point 1 too close to north border
-    (up-compare-goal outerWallPoint1-x g:> mapSizeNineTenths)
+    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
 =>
     (set-goal dontBuildNorthEastWall 1)(disable-self)
 )
 (defrule ; no south east (2 to 3) if point 2 too close to east border
-    (up-compare-goal outerWallPoint2-y g:> mapSizeNineTenths)
+    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
 =>
     (set-goal dontBuildSouthEastWall 1)(disable-self)
 )
 (defrule ; no south west (3 to 4) if point 3 too close to south border
-    (up-compare-goal outerWallPoint3-x g:< mapSizeTenth)
+    (up-compare-goal outerWallPoint3X g:< mapSizeTenth)
 =>
     (set-goal dontBuildSouthWestWall 1)(disable-self)
 )
 (defrule ; no north west (4 to 1) if point 4 too close to west border
-    (up-compare-goal outerWallPoint4-y g:< mapSizeTenth)
+    (up-compare-goal outerWallPoint4Y g:< mapSizeTenth)
 =>
     (set-goal dontBuildNorthWestWall 1)(disable-self)
 )
@@ -1164,7 +1164,7 @@
                 (up-compare-goal dontBuildSouthWestWall == 1)
             )
             (and
-                (up-compare-goal myPosition-y g:> myPosition-x)
+                (up-compare-goal myPositionY g:> myPositionX)
                 (goal posQuadrantCode 9)
             )
         )
@@ -1182,7 +1182,7 @@
             )
             (and
                 (goal posQuadrantCode 9)
-                (up-compare-goal myPosition-y g:<= myPosition-x)
+                (up-compare-goal myPositionY g:<= myPositionX)
             )
         )
     )
@@ -1198,7 +1198,7 @@
                 (up-compare-goal dontBuildSouthWestWall == 0)
             )
             (and
-                (up-compare-goal myPosition-y g:> myPosition-x)
+                (up-compare-goal myPositionY g:> myPositionX)
                 (goal posQuadrantCode 1)
             )
         )
@@ -1215,7 +1215,7 @@
                 (goal dontBuildNorthEastWall 1)
             )
             (and
-                (up-compare-goal myPosition-y g:<= myPosition-x)
+                (up-compare-goal myPositionY g:<= myPositionX)
                 (goal posQuadrantCode 1)
             )
         )
@@ -1229,9 +1229,9 @@
 ; AND X LOWER THAN Y
 (defrule
     (goal posQuadrantCode 5)
-    (up-compare-goal myPosition-y g:< mapCenter-y)
-    (up-compare-goal myPosition-x g:< mapCenter-x)
-    (up-compare-goal myPosition-x g:< myPosition-y); closer to SW side
+    (up-compare-goal myPositionY g:< mapCenterY)
+    (up-compare-goal myPositionX g:< mapCenterX)
+    (up-compare-goal myPositionX g:< myPositionY); closer to SW side
 =>
     (set-goal buildNorthEastMainGates 1)
     (chat-to-all "IM IN THE MIDDLE - WEST CORNER - CLOSE TO SOUTH WEST SIDE")
@@ -1240,9 +1240,9 @@
 ; AND X HIGHER THAN Y
 (defrule
     (goal posQuadrantCode 5)
-    (up-compare-goal myPosition-y g:< mapCenter-y)
-    (up-compare-goal myPosition-x g:< mapCenter-x)
-    (up-compare-goal myPosition-x g:> myPosition-y) ;closer to NW side
+    (up-compare-goal myPositionY g:< mapCenterY)
+    (up-compare-goal myPositionX g:< mapCenterX)
+    (up-compare-goal myPositionX g:> myPositionY) ;closer to NW side
 =>
     (set-goal buildSouthEastMainGates 1)
     (chat-to-all "IM IN THE MIDDLE - WEST CORNER - CLOSE TO NORTH WEST SIDE")
@@ -1252,8 +1252,8 @@
 ; WHEN CLOSE TO SOUTH CORNER
 (defrule
     (goal posQuadrantCode 5)
-    (up-compare-goal myPosition-y g:> mapCenter-y)
-    (up-compare-goal myPosition-x g:< mapCenter-x)
+    (up-compare-goal myPositionY g:> mapCenterY)
+    (up-compare-goal myPositionX g:< mapCenterX)
 =>
     (set-goal buildNorthWestMainGates 1)
     (chat-to-all "IM IN THE MIDDLE - SOUTH CORNER")
@@ -1264,9 +1264,9 @@
 ; AND X LOWER THAN Y
 (defrule
     (goal posQuadrantCode 5)
-    (up-compare-goal myPosition-y g:> mapCenter-y)
-    (up-compare-goal myPosition-x g:> mapCenter-x)
-    (up-compare-goal myPosition-x g:< myPosition-y)
+    (up-compare-goal myPositionY g:> mapCenterY)
+    (up-compare-goal myPositionX g:> mapCenterX)
+    (up-compare-goal myPositionX g:< myPositionY)
 =>
     (set-goal buildNorthWestMainGates 1)
     (chat-to-all "I WILL BUILD THE GATES TO THE NORTH WEST")
@@ -1275,9 +1275,9 @@
 ; AND X HIGHER THAN Y
 (defrule
     (goal posQuadrantCode 5)
-    (up-compare-goal myPosition-y g:> mapCenter-y)
-    (up-compare-goal myPosition-x g:> mapCenter-x)
-    (up-compare-goal myPosition-x g:> myPosition-x)
+    (up-compare-goal myPositionY g:> mapCenterY)
+    (up-compare-goal myPositionX g:> mapCenterX)
+    (up-compare-goal myPositionX g:> myPositionX)
 =>
     (set-goal buildNorthWestMainGates 1)
     (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH WEST")
@@ -1287,8 +1287,8 @@
 ; WHEN CLOSE TO NORTH CORNER
 (defrule
     (goal posQuadrantCode 5)
-    (up-compare-goal myPosition-y g:< mapCenter-y)
-    (up-compare-goal myPosition-x g:> mapCenter-x)
+    (up-compare-goal myPositionY g:< mapCenterY)
+    (up-compare-goal myPositionX g:> mapCenterX)
 =>
     (set-goal buildSouthEastMainGates 1)
     (chat-to-all "I WILL BUILD THE GATES TO THE SOUTH EAST")
@@ -1302,14 +1302,14 @@
 (defrule
     (up-compare-goal buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint1-y g:+ randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint1Y g:+ randomNumber)(disable-self))
 
 ; MAIN GATE 2
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (up-compare-goal buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint2-y g:- randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint2Y g:- randomNumber)(disable-self))
 
 ; NORTH EAST SECONDARY PALISADE GATES-----------------------
 ; SECONDARY GATE 1
@@ -1317,14 +1317,14 @@
 (defrule
     (up-compare-goal buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint3-x g:+ randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint3X g:+ randomNumber)(disable-self))
 
 ; SECONDARY GATE 2
 (defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (up-compare-goal buildNorthEastMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint4-x g:+ randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint4X g:+ randomNumber)(disable-self))
 
 ; 2/4 SOUTH EAST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
@@ -1332,14 +1332,14 @@
 (defrule
     (up-compare-goal buildSouthEastMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint2-x g:- randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint2X g:- randomNumber)(disable-self))
 
 ; MAIN GATE 2
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (up-compare-goal buildSouthEastMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint3-x g:+ randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint3X g:+ randomNumber)(disable-self))
 
 ; SOUTH EAST SECONDARY PALISADE GATES --------------
 ; SECONDARY GATE 1
@@ -1347,14 +1347,14 @@
 (defrule
     (up-compare-goal buildSouthEastMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint1-y g:+ randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint1Y g:+ randomNumber)(disable-self))
 
 ; SECONDARY GATE 2
 (defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (up-compare-goal buildSouthEastMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint4-y g:+ randomNumber)(disable-self)
+    (up-modify-goal outerGatePoint4Y g:+ randomNumber)(disable-self)
 )
 
 ; 3/4 SOUTH WEST MAIN PALISADE GATES -----------------------------------------
@@ -1363,14 +1363,14 @@
 (defrule
     (up-compare-goal buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint3-y g:- randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint3Y g:- randomNumber)(disable-self))
 
 ; MAIN GATE 2
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (up-compare-goal buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint4-y g:+ randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint4Y g:+ randomNumber)(disable-self))
 
 ; SOUTH WEST SECONDARY PALISADE GATES -------------
 ; GATE 1
@@ -1378,14 +1378,14 @@
 (defrule
     (up-compare-goal buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint2-x g:- randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint2X g:- randomNumber)(disable-self))
 
 ; GATE 2
 (defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (up-compare-goal buildSouthWestMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint1-x g:- randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint1X g:- randomNumber)(disable-self))
 
 ; 4/4 NORTH WEST MAIN PALISADE GATES -----------------------------------------
 ; MAIN GATE 1
@@ -1393,14 +1393,14 @@
 (defrule
     (up-compare-goal buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint1-x g:- randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint1X g:- randomNumber)(disable-self))
 
 ; MAIN GATE 2
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (up-compare-goal buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint4-x g:+ randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint4X g:+ randomNumber)(disable-self))
 
 ; NORTH WEST SECONDARY PALISADE GATES -------------
 ; GATE 1
@@ -1408,14 +1408,14 @@
 (defrule
     (up-compare-goal buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint2-y g:- randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint2Y g:- randomNumber)(disable-self))
 
 ; GATE 2
 (defrule(true)=>(generate-random-number 16)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (up-compare-goal buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal outerGatePoint3-y g:- randomNumber)(disable-self))
+    (up-modify-goal outerGatePoint3Y g:- randomNumber)(disable-self))
 
 ; -------------------------------------------------
 
@@ -1448,18 +1448,18 @@
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildNorthEastWall == 0)
     (up-compare-goal buildNorthEastMainGates == 1)
-    (up-can-build-line outerGatePoint1-x outerGatePoint1-x c: 796)
+    (up-can-build-line outerGatePoint1X outerGatePoint1X c: 796)
 =>
-    (up-build-line outerGatePoint1-x outerGatePoint1-x c: 796)
+    (up-build-line outerGatePoint1X outerGatePoint1X c: 796)
     (set-goal gotNorthEastPalisadeGates 1)
 )
 (defrule
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildNorthEastWall == 0)
     (up-compare-goal buildNorthEastMainGates == 1)
-    (up-can-build-line outerGatePoint2-x outerGatePoint2-x c: 796)
+    (up-can-build-line outerGatePoint2X outerGatePoint2X c: 796)
 =>
-    (up-build-line outerGatePoint2-x outerGatePoint2-x c: 796)
+    (up-build-line outerGatePoint2X outerGatePoint2X c: 796)
     (set-goal gotNorthEastPalisadeGates 1)
 )
 
@@ -1468,18 +1468,18 @@
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildSouthEastWall == 0)
     (up-compare-goal buildSouthEastMainGates == 1)
-    (up-can-build-line outerGatePoint2-x outerGatePoint2-x c: 792)
+    (up-can-build-line outerGatePoint2X outerGatePoint2X c: 792)
 =>
-    (up-build-line outerGatePoint2-x outerGatePoint2-x c: 792)
+    (up-build-line outerGatePoint2X outerGatePoint2X c: 792)
     (set-goal gotSouthEastPalisadeGates 1)
 )
 (defrule
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildSouthEastWall == 0)
     (up-compare-goal buildSouthEastMainGates == 1)
-    (up-can-build-line outerGatePoint3-x outerGatePoint3-x c: 792)
+    (up-can-build-line outerGatePoint3X outerGatePoint3X c: 792)
 =>
-    (up-build-line outerGatePoint3-x outerGatePoint3-x c: 792)
+    (up-build-line outerGatePoint3X outerGatePoint3X c: 792)
     (set-goal gotSouthEastPalisadeGates 1)
 )
 
@@ -1488,18 +1488,18 @@
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildSouthWestWall == 0)
     (up-compare-goal buildSouthWestMainGates == 1)
-    (up-can-build-line outerGatePoint3-x outerGatePoint3-x c: 796)
+    (up-can-build-line outerGatePoint3X outerGatePoint3X c: 796)
 =>
-    (up-build-line outerGatePoint3-x outerGatePoint3-x c: 796)
+    (up-build-line outerGatePoint3X outerGatePoint3X c: 796)
     (set-goal gotSouthWestPalisadeGates 1)
 )
 (defrule
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildSouthWestWall == 0)
     (up-compare-goal buildSouthWestMainGates == 1)
-    (up-can-build-line outerGatePoint4-x outerGatePoint4-x c: 796)
+    (up-can-build-line outerGatePoint4X outerGatePoint4X c: 796)
 =>
-    (up-build-line outerGatePoint4-x outerGatePoint4-x c: 796)
+    (up-build-line outerGatePoint4X outerGatePoint4X c: 796)
     (set-goal gotSouthWestPalisadeGates 1)
 )
 
@@ -1508,18 +1508,18 @@
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildNorthWestWall == 0)
     (up-compare-goal buildNorthWestMainGates == 1)
-    (up-can-build-line outerGatePoint4-x outerGatePoint4-x c: 792)
+    (up-can-build-line outerGatePoint4X outerGatePoint4X c: 792)
 =>
-    (up-build-line outerGatePoint4-x outerGatePoint4-x c: 792)
+    (up-build-line outerGatePoint4X outerGatePoint4X c: 792)
     (set-goal gotNorthWestPalisadeGates 1)
 )
 (defrule
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildNorthWestWall == 0)
     (up-compare-goal buildNorthWestMainGates == 1)
-    (up-can-build-line outerGatePoint1-x outerGatePoint1-x c: 792)
+    (up-can-build-line outerGatePoint1X outerGatePoint1X c: 792)
 =>
-    (up-build-line outerGatePoint1-x outerGatePoint1-x c: 792)
+    (up-build-line outerGatePoint1X outerGatePoint1X c: 792)
     (set-goal gotNorthWestPalisadeGates 1)
 )
 
@@ -1530,18 +1530,18 @@
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildNorthEastWall == 0)
     (up-compare-goal buildNorthEastMainGates == 1)
-    (up-can-build-line outerGatePoint4-x outerGatePoint4-x c: 792)
+    (up-can-build-line outerGatePoint4X outerGatePoint4X c: 792)
 =>
-    (up-build-line outerGatePoint4-x outerGatePoint4-x c: 792)
+    (up-build-line outerGatePoint4X outerGatePoint4X c: 792)
     (set-goal gotNorthWestPalisadeGates 1)
 )
 (defrule
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildNorthEastWall == 0)
     (up-compare-goal buildNorthEastMainGates == 1)
-    (up-can-build-line outerGatePoint3-x outerGatePoint3-x c: 792)
+    (up-can-build-line outerGatePoint3X outerGatePoint3X c: 792)
 =>
-    (up-build-line outerGatePoint3-x outerGatePoint3-x c: 792)
+    (up-build-line outerGatePoint3X outerGatePoint3X c: 792)
     (set-goal gotSouthEastPalisadeGates 1)
 )
 
@@ -1551,18 +1551,18 @@
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildNorthEastWall == 0)
     (up-compare-goal buildSouthEastMainGates == 1)
-    (up-can-build-line outerGatePoint1-x outerGatePoint1-x c: 796)
+    (up-can-build-line outerGatePoint1X outerGatePoint1X c: 796)
 =>
-    (up-build-line outerGatePoint1-x outerGatePoint1-x c: 796)
+    (up-build-line outerGatePoint1X outerGatePoint1X c: 796)
     (set-goal gotNorthEastPalisadeGates 1)
 )
 (defrule
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildSouthWestWall == 0)
     (up-compare-goal buildSouthEastMainGates == 1)
-    (up-can-build-line outerGatePoint4-x outerGatePoint4-x c: 796)
+    (up-can-build-line outerGatePoint4X outerGatePoint4X c: 796)
 =>
-    (up-build-line outerGatePoint4-x outerGatePoint4-x c: 796)
+    (up-build-line outerGatePoint4X outerGatePoint4X c: 796)
     (set-goal gotSouthWestPalisadeGates 1)
 )
 
@@ -1572,18 +1572,18 @@
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildSouthWestWall == 0)
     (up-compare-goal buildSouthWestMainGates == 1)
-    (up-can-build-line outerGatePoint1-x outerGatePoint1-x c: 792)
+    (up-can-build-line outerGatePoint1X outerGatePoint1X c: 792)
 =>
-    (up-build-line outerGatePoint1-x outerGatePoint1-x c: 792)
+    (up-build-line outerGatePoint1X outerGatePoint1X c: 792)
     (set-goal gotNorthWestPalisadeGates 1)
 )
 (defrule
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildSouthWestWall == 0)
     (up-compare-goal buildSouthWestMainGates == 1)
-    (up-can-build-line outerGatePoint2-x outerGatePoint2-x c: 792)
+    (up-can-build-line outerGatePoint2X outerGatePoint2X c: 792)
 =>
-    (up-build-line outerGatePoint2-x outerGatePoint2-x c: 792)
+    (up-build-line outerGatePoint2X outerGatePoint2X c: 792)
     (set-goal gotSouthEastPalisadeGates 1)
 )
 
@@ -1593,18 +1593,18 @@
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildNorthWestWall == 0)
     (up-compare-goal buildNorthWestMainGates == 1)
-    (up-can-build-line outerGatePoint3-x outerGatePoint3-x c: 796)
+    (up-can-build-line outerGatePoint3X outerGatePoint3X c: 796)
 =>
-    (up-build-line outerGatePoint3-x outerGatePoint3-x c: 796)
+    (up-build-line outerGatePoint3X outerGatePoint3X c: 796)
     (set-goal gotSouthWestPalisadeGates 1)
 )
 (defrule
     (up-compare-goal buildingOuterWall == 1)
     (up-compare-goal dontBuildNorthWestWall == 0)
     (up-compare-goal buildNorthWestMainGates == 1)
-    (up-can-build-line outerGatePoint2-x outerGatePoint2-x c: 796)
+    (up-can-build-line outerGatePoint2X outerGatePoint2X c: 796)
 =>
-    (up-build-line outerGatePoint2-x outerGatePoint2-x c: 796)
+    (up-build-line outerGatePoint2X outerGatePoint2X c: 796)
     (set-goal gotNorthEastPalisadeGates 1)
 )
 
@@ -1614,76 +1614,76 @@
     (goal buildingOuterWall 1)
     (goal dontBuildNorthEastWall 0)
     (goal gotNorthEastPalisadeGates 1)
-    ;(up-can-build-line outerWallPoint1-x outerWallPoint2-x c: palisade-wall)
-    ;(up-can-build-line 0 outerWallPoint1-x  c: palisade-wall)
+    ;(up-can-build-line outerWallPoint1X outerWallPoint2X c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint1X  c: palisade-wall)
 =>
-    (up-build-line outerWallPoint1-x outerWallPoint2-x c: palisade-wall)
+    (up-build-line outerWallPoint1X outerWallPoint2X c: palisade-wall)
 )
 (defrule
     (goal buildingOuterWall 1)
     (goal dontBuildNorthEastWall 0)
     (goal gotNorthEastPalisadeGates 1)
-    ;(up-can-build-line outerWallPoint2-x outerWallPoint1-x c: palisade-wall)
-    ;(up-can-build-line 0 outerWallPoint2-x  c: palisade-wall)
+    ;(up-can-build-line outerWallPoint2X outerWallPoint1X c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint2X  c: palisade-wall)
 =>
-    (up-build-line outerWallPoint2-x outerWallPoint1-x c: palisade-wall)
+    (up-build-line outerWallPoint2X outerWallPoint1X c: palisade-wall)
 )
 
 (defrule
     (goal buildingOuterWall 1)
     (goal dontBuildSouthEastWall 0)
     (goal gotSouthEastPalisadeGates 1)
-    ;(up-can-build-line outerWallPoint2-x outerWallPoint3-x c: palisade-wall)
-    ;(up-can-build-line 0 outerWallPoint2-x  c: palisade-wall)
+    ;(up-can-build-line outerWallPoint2X outerWallPoint3X c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint2X  c: palisade-wall)
 =>
-    (up-build-line outerWallPoint2-x outerWallPoint3-x c: palisade-wall)
+    (up-build-line outerWallPoint2X outerWallPoint3X c: palisade-wall)
 )
 (defrule
     (goal buildingOuterWall 1)
     (goal dontBuildSouthEastWall 0)
     (goal gotSouthEastPalisadeGates 1)
-    ;(up-can-build-line outerWallPoint3-x outerWallPoint2-x c: palisade-wall)
-    ;(up-can-build-line 0 outerWallPoint3-x  c: palisade-wall)
+    ;(up-can-build-line outerWallPoint3X outerWallPoint2X c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint3X  c: palisade-wall)
 =>
-    (up-build-line outerWallPoint3-x outerWallPoint2-x c: palisade-wall)
+    (up-build-line outerWallPoint3X outerWallPoint2X c: palisade-wall)
 )
 
 (defrule
     (goal buildingOuterWall 1)
     (goal dontBuildSouthWestWall 0)
     (goal gotSouthWestPalisadeGates 1)
-    ;(up-can-build-line outerWallPoint3-x outerWallPoint4-x c: palisade-wall)
-    ;(up-can-build-line 0 outerWallPoint3-x  c: palisade-wall)
+    ;(up-can-build-line outerWallPoint3X outerWallPoint4X c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint3X  c: palisade-wall)
 =>
-    (up-build-line outerWallPoint3-x outerWallPoint4-x c: palisade-wall)
+    (up-build-line outerWallPoint3X outerWallPoint4X c: palisade-wall)
 )
 (defrule
     (goal buildingOuterWall 1)
     (goal dontBuildSouthWestWall 0)
     (goal gotSouthWestPalisadeGates 1)
-    ;(up-can-build-line outerWallPoint4-x outerWallPoint3-x c: palisade-wall)
-    ;(up-can-build-line 0 outerWallPoint4-x  c: palisade-wall)
+    ;(up-can-build-line outerWallPoint4X outerWallPoint3X c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint4X  c: palisade-wall)
 =>
-    (up-build-line outerWallPoint4-x outerWallPoint3-x c: palisade-wall)
+    (up-build-line outerWallPoint4X outerWallPoint3X c: palisade-wall)
 )
 
 (defrule
     (goal buildingOuterWall 1)
     (goal dontBuildNorthWestWall 0)
     (goal gotNorthWestPalisadeGates 1)
-    ;(up-can-build-line outerWallPoint4-x outerWallPoint1-x c: palisade-wall)
-    ;(up-can-build-line 0 outerWallPoint4-x  c: palisade-wall)
+    ;(up-can-build-line outerWallPoint4X outerWallPoint1X c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint4X  c: palisade-wall)
 =>
-    (up-build-line outerWallPoint4-x outerWallPoint1-x c: palisade-wall)
+    (up-build-line outerWallPoint4X outerWallPoint1X c: palisade-wall)
 )
 (defrule
     (goal buildingOuterWall 1)
     (goal dontBuildNorthWestWall 0)
     (goal gotNorthWestPalisadeGates 1)
-    ;(up-can-build-line outerWallPoint1-x outerWallPoint4-x c: palisade-wall)
-    ;(up-can-build-line 0 outerWallPoint1-x  c: palisade-wall)
+    ;(up-can-build-line outerWallPoint1X outerWallPoint4X c: palisade-wall)
+    ;(up-can-build-line 0 outerWallPoint1X  c: palisade-wall)
 =>
-    (up-build-line outerWallPoint1-x outerWallPoint4-x c: palisade-wall)
+    (up-build-line outerWallPoint1X outerWallPoint4X c: palisade-wall)
 )
 
 ; INNER STONE WALL SECTION
@@ -1713,7 +1713,7 @@
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal innerGatePoint1-y g:+ randomNumber)
+    (up-modify-goal innerGatePoint1Y g:+ randomNumber)
     (disable-self)
 )
 
@@ -1721,7 +1721,7 @@
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal innerGatePoint2-y g:- randomNumber)
+    (up-modify-goal innerGatePoint2Y g:- randomNumber)
     (disable-self)
 )
 
@@ -1731,7 +1731,7 @@
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint1-x g:- randomNumber)
+    (up-modify-goal innerSecGatePoint1X g:- randomNumber)
     (disable-self)
 )
 
@@ -1739,7 +1739,7 @@
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint2-x g:- randomNumber)
+    (up-modify-goal innerSecGatePoint2X g:- randomNumber)
     (disable-self)
 )
 
@@ -1748,13 +1748,13 @@
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint4-x g:+ randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint4X g:+ randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthEastMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint3-x g:+ randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint3X g:+ randomNumber)(disable-self))
 
 
 
@@ -1764,13 +1764,13 @@
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal innerGatePoint2-x g:- randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint2X g:- randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal innerGatePoint3-x g:+ randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint3X g:+ randomNumber)(disable-self))
 
     ; SECONDARY - 4 POINTS INSTEAD OF 2 LIKE THE OUTER WALL
         ; GATES CLOSER TO FRONT
@@ -1778,26 +1778,26 @@
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint2-y g:- randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint2Y g:- randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint3-y g:- randomNumber)(disable-self))    
+    (up-modify-goal innerSecGatePoint3Y g:- randomNumber)(disable-self))    
 
         ; GATES CLOSER TO BACK
 (defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint1-y g:+ randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint1Y g:+ randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthEastMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint4-y g:+ randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint4Y g:+ randomNumber)(disable-self))
 
 ; 3 - WITH MAIN SOUTH WEST GATES -------------------------------------
     ; MAIN SOUTH WEST GATES -----------------
@@ -1805,13 +1805,13 @@
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal innerGatePoint3-y g:- randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint3Y g:- randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal innerGatePoint4-y g:+ randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint4Y g:+ randomNumber)(disable-self))
 
     ; SECONDARY TO MAIN SOUTH WEST GATES ( 4 POINTS)
         ; GATES CLOSER TO FRONT
@@ -1819,26 +1819,26 @@
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint3-x g:+ randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint3X g:+ randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint4-x g:+ randomNumber)(disable-self))    
+    (up-modify-goal innerSecGatePoint4X g:+ randomNumber)(disable-self))    
 
           ; GATES CLOSER TO BACK
 (defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint1-x g:- randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint1X g:- randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildSouthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint2-x g:- randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint2X g:- randomNumber)(disable-self))
 
 
 
@@ -1848,13 +1848,13 @@
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerGatePoint1-x g:- randomNumber)(disable-self))
+    (up-modify-goal innerGatePoint1X g:- randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerGatePoint4-x g:+ randomNumber)(disable-self))    
+    (up-modify-goal innerGatePoint4X g:+ randomNumber)(disable-self))    
 
 
     ; SECONDARY TO MAIN NORTH WEST GATES ( 4 POINTS)
@@ -1863,26 +1863,26 @@
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint1-y g:+ randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint1Y g:+ randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 10)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint4-y g:+ randomNumber)(disable-self))    
+    (up-modify-goal innerSecGatePoint4Y g:+ randomNumber)(disable-self))    
 
           ; GATES CLOSER TO BACK
 (defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint2-y g:- randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint2Y g:- randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 8)(up-get-fact random-number 0 randomNumber)(disable-self))
 (defrule
     (goal buildNorthWestMainGates 1)
 =>
-    (up-modify-goal innerSecGatePoint3-y g:- randomNumber)(disable-self))
+    (up-modify-goal innerSecGatePoint3Y g:- randomNumber)(disable-self))
 
 ; BUILDING THE MAIN INNER WALL GATES
 ; 1 NORTH EAST MAIN GATES -------------
@@ -1891,9 +1891,9 @@
     (goal buildingInnerWall 1)
     (goal dontBuildNorthEastWall 0)
     (goal buildNorthEastMainGates 1)
-    (up-can-build-line innerGatePoint1-x innerGatePoint1-x c: 490)
+    (up-can-build-line innerGatePoint1X innerGatePoint1X c: 490)
 =>
-    (up-build-line innerGatePoint1-x innerGatePoint1-x c: 490)
+    (up-build-line innerGatePoint1X innerGatePoint1X c: 490)
     (set-goal gotNorthEastStoneGates 1)
 )
 
@@ -1902,9 +1902,9 @@
     (goal buildingInnerWall 1)
     (goal dontBuildNorthEastWall 0)
     (goal buildNorthEastMainGates 1)
-    (up-can-build-line innerGatePoint2-x innerGatePoint2-x c: 490)
+    (up-can-build-line innerGatePoint2X innerGatePoint2X c: 490)
 =>
-    (up-build-line innerGatePoint2-x innerGatePoint2-x c: 490)
+    (up-build-line innerGatePoint2X innerGatePoint2X c: 490)
     (set-goal gotNorthEastStoneGates 1)
 )
 
@@ -1914,9 +1914,9 @@
     (goal buildingInnerWall 1)
     (goal dontBuildSouthEastWall 0)
     (goal buildSouthEastMainGates 1)
-    (up-can-build-line innerGatePoint2-x innerGatePoint2-x c: 487)
+    (up-can-build-line innerGatePoint2X innerGatePoint2X c: 487)
 =>
-    (up-build-line innerGatePoint2-x innerGatePoint2-x c: 487)
+    (up-build-line innerGatePoint2X innerGatePoint2X c: 487)
     (set-goal gotSouthEastStoneGates 1)
 )
 
@@ -1925,9 +1925,9 @@
     (goal buildingInnerWall 1)
     (goal dontBuildSouthEastWall 0)
     (goal buildSouthEastMainGates 1)
-    (up-can-build-line innerGatePoint3-x innerGatePoint3-x c: 487)
+    (up-can-build-line innerGatePoint3X innerGatePoint3X c: 487)
 =>
-    (up-build-line innerGatePoint3-x innerGatePoint3-x c: 487)
+    (up-build-line innerGatePoint3X innerGatePoint3X c: 487)
     (set-goal gotSouthEastStoneGates 1)
 )
 
@@ -1937,9 +1937,9 @@
     (goal buildingInnerWall 1)
     (goal dontBuildSouthWestWall 0)
     (goal buildSouthWestMainGates 1)
-    (up-can-build-line innerGatePoint3-x innerGatePoint3-x c: 490)
+    (up-can-build-line innerGatePoint3X innerGatePoint3X c: 490)
 =>
-    (up-build-line innerGatePoint3-x innerGatePoint3-x c: 490)
+    (up-build-line innerGatePoint3X innerGatePoint3X c: 490)
     (set-goal gotSouthWestStoneGates 1)
 )
 
@@ -1948,9 +1948,9 @@
     (goal buildingInnerWall 1)
     (goal dontBuildSouthWestWall 0)
     (goal buildSouthWestMainGates 1)
-    (up-can-build-line innerGatePoint4-x innerGatePoint4-x c: 490)
+    (up-can-build-line innerGatePoint4X innerGatePoint4X c: 490)
 =>
-    (up-build-line innerGatePoint4-x innerGatePoint4-x c: 490)
+    (up-build-line innerGatePoint4X innerGatePoint4X c: 490)
     (set-goal gotSouthWestStoneGates  1)
 )
 
@@ -1960,9 +1960,9 @@
     (goal buildingInnerWall 1)
     (goal dontBuildNorthWestWall 0)
     (goal buildNorthWestMainGates 1)
-    (up-can-build-line innerGatePoint4-x innerGatePoint4-x c: 487)
+    (up-can-build-line innerGatePoint4X innerGatePoint4X c: 487)
 =>
-    (up-build-line innerGatePoint4-x innerGatePoint4-x c: 487)
+    (up-build-line innerGatePoint4X innerGatePoint4X c: 487)
     (set-goal gotNorthWestStoneGates 1)
 )
 
@@ -1971,9 +1971,9 @@
     (goal buildingInnerWall 1)
     (goal dontBuildNorthWestWall 0)
     (goal buildNorthWestMainGates 1)
-    (up-can-build-line innerGatePoint1-x innerGatePoint1-x c: 487)
+    (up-can-build-line innerGatePoint1X innerGatePoint1X c: 487)
 =>
-    (up-build-line innerGatePoint1-x innerGatePoint1-x c: 487)
+    (up-build-line innerGatePoint1X innerGatePoint1X c: 487)
     (set-goal gotNorthWestStoneGates 1)
 )
 
@@ -1983,9 +1983,9 @@
     (up-compare-goal buildingInnerWall == 1)
     (up-compare-goal dontBuildNorthEastWall == 0)
     (or(goal buildSouthEastMainGates 1)(goal buildNorthWestMainGates 1))
-    (up-can-build-line 0 innerSecGatePoint1-x c: 490)
+    (up-can-build-line 0 innerSecGatePoint1X c: 490)
 =>
-    (up-build-line innerSecGatePoint1-x innerSecGatePoint1-x c: 490)
+    (up-build-line innerSecGatePoint1X innerSecGatePoint1X c: 490)
     (set-goal gotNorthEastStoneGates 1)
 )
 
@@ -1993,9 +1993,9 @@
     (up-compare-goal buildingInnerWall == 1)
     (up-compare-goal dontBuildNorthEastWall == 0)
     (or(goal buildSouthEastMainGates 1)(goal buildNorthWestMainGates 1))
-    (up-can-build-line 0 innerSecGatePoint2-x c: 490)
+    (up-can-build-line 0 innerSecGatePoint2X c: 490)
 =>
-    (up-build-line innerSecGatePoint2-x innerSecGatePoint2-x c: 490)
+    (up-build-line innerSecGatePoint2X innerSecGatePoint2X c: 490)
     (set-goal gotNorthEastStoneGates 1)
 )
 
@@ -2004,9 +2004,9 @@
     (up-compare-goal buildingInnerWall == 1)
     (up-compare-goal dontBuildNorthWestWall == 0)
     (or(goal buildNorthEastMainGates 1)(goal buildSouthWestMainGates 1))
-    (up-can-build-line 0 innerSecGatePoint1-x c: 487)
+    (up-can-build-line 0 innerSecGatePoint1X c: 487)
 =>
-    (up-build-line innerSecGatePoint1-x innerSecGatePoint1-x c: 487)
+    (up-build-line innerSecGatePoint1X innerSecGatePoint1X c: 487)
     (set-goal gotNorthWestStoneGates 1)
 )
 
@@ -2014,9 +2014,9 @@
     (up-compare-goal buildingInnerWall == 1)
     (up-compare-goal dontBuildNorthWestWall == 0)
     (or(goal buildNorthEastMainGates 1)(goal buildSouthWestMainGates 1))
-    (up-can-build-line 0 innerSecGatePoint1-x c: 487)
+    (up-can-build-line 0 innerSecGatePoint1X c: 487)
 =>
-    (up-build-line innerSecGatePoint4-x innerSecGatePoint4-x c: 487)
+    (up-build-line innerSecGatePoint4X innerSecGatePoint4X c: 487)
     (set-goal gotNorthWestStoneGates 1)
 )
 
@@ -2025,9 +2025,9 @@
     (up-compare-goal buildingInnerWall == 1)
     (up-compare-goal dontBuildNorthEastWall == 0)
     (or(goal buildSouthEastMainGates 1)(goal buildNorthWestMainGates 1))
-    (up-can-build-line 0 innerSecGatePoint1-x c: 490)
+    (up-can-build-line 0 innerSecGatePoint1X c: 490)
 =>
-    (up-build-line innerSecGatePoint3-x innerSecGatePoint3-x c: 490)
+    (up-build-line innerSecGatePoint3X innerSecGatePoint3X c: 490)
     (set-goal gotSouthWestStoneGates 1)
 )
 
@@ -2035,9 +2035,9 @@
     (up-compare-goal buildingInnerWall == 1)
     (up-compare-goal dontBuildNorthEastWall == 0)
     (or(goal buildSouthEastMainGates 1)(goal buildNorthWestMainGates 1))
-    (up-can-build-line 0 innerSecGatePoint2-x c: 490)
+    (up-can-build-line 0 innerSecGatePoint2X c: 490)
 =>
-    (up-build-line innerSecGatePoint4-x innerSecGatePoint4-x c: 490)
+    (up-build-line innerSecGatePoint4X innerSecGatePoint4X c: 490)
     (set-goal gotSouthWestStoneGates 1)
 )
 
@@ -2047,9 +2047,9 @@
     (goal buildingInnerWall 1)
     (goal dontBuildSouthEastWall 0)
     (or(goal buildSouthWestMainGates 1)(goal buildNorthEastMainGates 1))
-    (up-can-build-line 0 innerSecGatePoint2-x c: 487)
+    (up-can-build-line 0 innerSecGatePoint2X c: 487)
 =>
-    (up-build-line innerSecGatePoint2-x innerSecGatePoint2-x c: 487)
+    (up-build-line innerSecGatePoint2X innerSecGatePoint2X c: 487)
     (set-goal gotSouthEastStoneGates 1)
 )
 
@@ -2057,9 +2057,9 @@
     (goal buildingInnerWall 1)
     (goal dontBuildSouthEastWall 0)
     (or(goal buildSouthWestMainGates 1)(goal buildNorthEastMainGates 1))
-    (up-can-build-line 0 innerSecGatePoint3-x c: 487)
+    (up-can-build-line 0 innerSecGatePoint3X c: 487)
 =>
-    (up-build-line innerSecGatePoint3-x innerSecGatePoint3-x c: 487)
+    (up-build-line innerSecGatePoint3X innerSecGatePoint3X c: 487)
     (set-goal gotSouthEastStoneGates 1)
 )
 
@@ -2071,35 +2071,35 @@
     (goal dontBuildNorthEastWall 0)
     (or(goal gotNorthEastStoneGates 1)(goal buildSouthWestMainGates 1))
 =>
-    (up-build-line innerWallPoint1-x innerWallPoint2-x c: stone-wall)
-    ;(up-chat-data-to-self "inner wall north east start y: %d" g: innerWallPoint1-y)
-    ;(up-chat-data-to-self "inner wall north east end y: %d" g: innerWallPoint2-y)
+    (up-build-line innerWallPoint1X innerWallPoint2X c: stone-wall)
+    ;(up-chat-data-to-self "inner wall north east start y: %d" g: innerWallPoint1Y)
+    ;(up-chat-data-to-self "inner wall north east end y: %d" g: innerWallPoint2Y)
 )
 (defrule
     (goal buildingInnerWall 1)
     (goal dontBuildSouthEastWall 0)
     (or(goal gotSouthEastStoneGates 1)(goal buildNorthWestMainGates 1))
 =>
-    (up-build-line innerWallPoint2-x innerWallPoint3-x c: stone-wall)
-    ;(up-chat-data-to-self "inner wall south east start y: %d" g: innerWallPoint2-y)
-    ;(up-chat-data-to-self "inner wall south east end y: %d" g: innerWallPoint3-y)
+    (up-build-line innerWallPoint2X innerWallPoint3X c: stone-wall)
+    ;(up-chat-data-to-self "inner wall south east start y: %d" g: innerWallPoint2Y)
+    ;(up-chat-data-to-self "inner wall south east end y: %d" g: innerWallPoint3Y)
 )
 (defrule
     (goal buildingInnerWall 1)
     (goal dontBuildSouthWestWall 0)
     (or(goal gotSouthWestStoneGates 1)(goal buildNorthEastMainGates 1))
 =>
-    (up-build-line innerWallPoint3-x innerWallPoint4-x c: stone-wall)
-    ;(up-chat-data-to-self "inner wall south west start y: %d" g: innerWallPoint3-y)
-    ;(up-chat-data-to-self "inner wall south west end y: %d" g: innerWallPoint4-y)
+    (up-build-line innerWallPoint3X innerWallPoint4X c: stone-wall)
+    ;(up-chat-data-to-self "inner wall south west start y: %d" g: innerWallPoint3Y)
+    ;(up-chat-data-to-self "inner wall south west end y: %d" g: innerWallPoint4Y)
 )
 (defrule
     (goal buildingInnerWall 1)
     (goal dontBuildNorthWestWall 0)
     (or(goal gotNorthWestStoneGates 1)(goal buildSouthEastMainGates 1))
 =>
-    (up-build-line innerWallPoint4-x innerWallPoint1-x c: stone-wall)
-    ;(up-chat-data-to-self "inner wall north west start y: %d" g: innerWallPoint3-y)
-    ;(up-chat-data-to-self "inner wall north west end y: %d" g: innerWallPoint4-y)
+    (up-build-line innerWallPoint4X innerWallPoint1X c: stone-wall)
+    ;(up-chat-data-to-self "inner wall north west start y: %d" g: innerWallPoint3Y)
+    ;(up-chat-data-to-self "inner wall north west end y: %d" g: innerWallPoint4Y)
 )
 
