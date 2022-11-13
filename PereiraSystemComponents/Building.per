@@ -1846,7 +1846,7 @@
 (defrule
     (up-compare-goal gl-buildNorthWestMainGates == 1)
 =>
-    (up-modify-goal gl-innerGatePoint1-x g:+ gl-randomNumber)(disable-self))
+    (up-modify-goal gl-innerGatePoint1-x g:- gl-randomNumber)(disable-self))
 
 (defrule(true)=>(generate-random-number 7)(up-get-fact random-number 0 gl-randomNumber)(disable-self))
 (defrule
