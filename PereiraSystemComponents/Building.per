@@ -2089,10 +2089,14 @@
 
 
 ; BUILDING THE INNER STONE WALL ----------------------------------
+; WHEN WE GOT GATES IN SAME SIDE OR MAIN GATES IN THE OPPOSITE SIDE
 (defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildNorthEastWall == 0)
-    (up-compare-goal gl-gotNorthEastStoneGates == 1)
+    (or
+        (up-compare-goal gl-gotNorthEastStoneGates == 1)
+        (up-compare-goal gl-buildSouthWestGates == 0)
+    )
 =>
     (up-build-line gl-innerWallPoint1-x gl-innerWallPoint2-x c: stone-wall)
     ;(up-chat-data-to-self "inner wall north east start y: %d" g: gl-innerWallPoint1-y)
