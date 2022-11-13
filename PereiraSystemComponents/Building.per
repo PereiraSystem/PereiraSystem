@@ -2060,7 +2060,20 @@
 )
 
 ; SOUTH EAST (USED BY Sw AND NE MAIN GATES)
-(defrule 
+(defrule
+    (up-compare-goal gl-buildingInnerWall == 1)
+    (up-compare-goal gl-dontBuildSouthEastWall == 0)
+    (or
+        (up-compare-goal gl-buildSouthWestMainGates == 1)
+        (up-compare-goal gl-buildNorthEastMainGates == 1)
+    )
+    (up-can-build-line 0 gl-innerSecGatePoint2-x c: 487)
+=>
+    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint2-x c: 487)
+    (set-goal gl-gotSouthEastStoneGates 1)
+)
+
+(defrule
     (up-compare-goal gl-buildingInnerWall == 1)
     (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (or
@@ -2070,19 +2083,6 @@
     (up-can-build-line 0 gl-innerSecGatePoint3-x c: 487)
 =>
     (up-build-line gl-innerSecGatePoint3-x gl-innerSecGatePoint3-x c: 487)
-    (set-goal gl-gotSouthEastStoneGates 1)
-)
-
-(defrule (false)
-    (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildSouthEastWall == 0)
-    (or
-        (up-compare-goal gl-buildSouthEastMainGates == 1)
-        (up-compare-goal gl-buildNorthWestMainGates == 1)
-    )
-    (up-can-build-line 0 gl-innerSecGatePoint2-x c: 487)
-=>
-    (up-build-line gl-innerSecGatePoint2-x gl-innerSecGatePoint2-x c: 487)
     (set-goal gl-gotSouthEastStoneGates 1)
 )
 
