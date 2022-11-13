@@ -783,19 +783,8 @@
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
-    ;(chat-to-player my-player-number "TRAINING ANOTHER RAM!")
 )
-(defrule
-    (current-age == imperial-age)
-	(unit-type-count-total battering-ram-line g:< gl-ramQtyHigh)
-    (military-population > 50)
-    (gold-amount > 200)
-    (or(civ-selected mongol)(civ-selected ethiopian))
-	(can-train battering-ram-line)
-=>
-	(train battering-ram-line)
-    ;(chat-to-player my-player-number "TRAINING ANOTHER RAM - HIGH QTY!")
-)
+
 ; SCORPIONS
 (defrule
     (current-age == castle-age)
