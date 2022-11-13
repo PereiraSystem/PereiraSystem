@@ -794,7 +794,7 @@
     (disable-self)
 )
 (defrule
-    (up-compare-goal posMapSize-x > 256)
+    (up-compare-goal posMapSizeX > 256)
 =>
     (set-goal maxDimensionOfMap 480)
     (disable-self)
@@ -814,7 +814,7 @@
     (up-get-point position-map-size mapSizeTwoThirds)
     (up-get-point position-map-size mapSizeTenth)
     (up-get-point position-map-size mapSizeNineTenths)
-    (up-get-point position-map-size posMapSize-x)
+    (up-get-point position-map-size posMapSizeX)
     (up-get-point position-map-size maxDimensionOfMap)
     (up-get-point position-center mapCenter-x)
     (up-modify-goal mapSizeThird c:/ 3)
@@ -828,7 +828,7 @@
 (defrule
     (game-time > 120)(false)
 =>
-    (up-chat-data-to-self "Map Size x: %d" g: posMapSize-x)
+    (up-chat-data-to-self "Map Size x: %d" g: posMapSizeX)
     (up-chat-data-to-self "Map Size manually set: %d" g: maxDimensionOfMap)
     (up-chat-data-to-self "Map Size 1/3 %d" g: mapSizeThird)
     (up-chat-data-to-self "Map Size 2/3 %d" g: mapSizeTwoThirds)
