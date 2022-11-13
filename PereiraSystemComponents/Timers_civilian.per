@@ -19,7 +19,7 @@
 	(disable-timer 2)
     (enable-timer 2 65)
     (up-modify-goal max-lumber-camps-qty c:+ 1)
-    ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: max-lumber-camps-qty)
+    ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: maxLumberCampsQty)
 )
 ; TIMER 3 INCREASES LUMBER CAMPS DISTANCE FAST WHEN WE HAVE NONE
 (defrule(true)=>(enable-timer 3 320)(disable-self))
