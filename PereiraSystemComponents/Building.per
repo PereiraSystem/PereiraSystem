@@ -2059,13 +2059,13 @@
     (set-goal gl-gotSouthWestStoneGates 1)
 )
 
-; SOUTH EAST
-(defrule
+; SOUTH EAST (USED BY Sw AND NE MAIN GATES)
+(defrule 
     (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (or
-        (up-compare-goal gl-buildSouthEastMainGates == 1)
-        (up-compare-goal gl-buildNorthWestMainGates == 1)
+        (up-compare-goal gl-buildSouthWestMainGates == 1)
+        (up-compare-goal gl-buildNorthEastMainGates == 1)
     )
     (up-can-build-line 0 gl-innerSecGatePoint3-x c: 487)
 =>
@@ -2073,9 +2073,9 @@
     (set-goal gl-gotSouthEastStoneGates 1)
 )
 
-(defrule
+(defrule (false)
     (up-compare-goal gl-buildingInnerWall == 1)
-    (up-compare-goal gl-dontBuildNorthEastWall == 0)
+    (up-compare-goal gl-dontBuildSouthEastWall == 0)
     (or
         (up-compare-goal gl-buildSouthEastMainGates == 1)
         (up-compare-goal gl-buildNorthWestMainGates == 1)
