@@ -52,7 +52,8 @@
     (up-get-point position-map-size mapSizeTenth)
     (up-get-point position-map-size mapSizeNineTenths)
     (up-get-point position-map-size posMapSizeX)
-    (up-get-point position-map-size maxDimensionOfMap)
+    ;(up-get-point position-map-size maxDimensionOfMap)
+    ;are maps bigger????? is pos map size wrong?
     (up-get-point position-center mapCenterX)
     (up-modify-goal mapSizeThird c:/ 3)
     (up-modify-goal mapSizeTwoThirds c:/ 3)
@@ -65,6 +66,8 @@
 (defrule
     (game-time > 30)
 =>
+    (up-chat-data-to-self "Position Map Size X: %d" g: posMapSizeX)
+    (up-chat-data-to-self "Position Map Size Y: %d" g: posMapSizeY)
     (up-chat-data-to-self "Map Size: %d" g: maxDimensionOfMap)
 )
 
