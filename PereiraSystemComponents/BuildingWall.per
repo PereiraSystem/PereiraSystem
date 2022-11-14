@@ -322,7 +322,7 @@
 (defrule
     (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint2X maxDimensionsOfMapManuallyEntered)
+    (set-goal outerWallPoint2X maxDimensionsOfMap)
     (set-goal innerWallPoint2X maxDimensionsOfMap)
     (up-chat-data-to-all "POINT 2 X SET TO %d " g: maxDimensionsOfMap)    
     (disable-self)
