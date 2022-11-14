@@ -612,6 +612,7 @@
     (up-set-placement-data my-player-number -1 c: +32)
     (up-build place-control 0 c: barracks)
 )
+
 ; BUILD STABLES
 (defrule
     (or(wood-amount > 275)(building-type-count market > 0))
@@ -621,9 +622,10 @@
 =>
     (chat-local-to-self "Trying To Build Stable 1")
     ;(up-set-placement-data my-player-number town-center c: 2)
-    (up-set-placement-data my-player-number town-center c: 1)
+    (up-set-placement-data my-player-number town-center c: 2)
     (up-build place-control 0 c: stable)
 )
+
 ; BUILD ARCHERY RANGE
 (defrule
 	(building-type-count-total archery-range == 0)
