@@ -535,24 +535,24 @@
 (defrule
     (map-size large)
 =>
-    (up-modify-goal outerWallPerimer c:+ 2)
-    (up-modify-goal innerWallPerimer c:+ 2)
+    (up-modify-goal outerWallPerimeter c:+ 2)
+    (up-modify-goal innerWallPerimeter c:+ 2)
     (disable-self)
 )
 
 (defrule
     (map-size giant)
 =>
-    (up-modify-goal outerWallPerimer c:+ 3)
-    (up-modify-goal innerWallPerimer c:+ 3)
+    (up-modify-goal outerWallPerimeter c:+ 3)
+    (up-modify-goal innerWallPerimeter c:+ 3)
     (disable-self)
 )
 
 (defrule
     (maxDimensionsOfMap > 256)
 =>
-    (up-modify-goal outerWallPerimer c:+ 6)
-    (up-modify-goal innerWallPerimer c:+ 6)
+    (up-modify-goal outerWallPerimeter c:+ 6)
+    (up-modify-goal innerWallPerimeter c:+ 6)
     (disable-self)
 )
 
