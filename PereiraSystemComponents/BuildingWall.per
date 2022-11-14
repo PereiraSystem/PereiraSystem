@@ -637,7 +637,7 @@
 
 ; OUTER PALISADE SECTION
 (defrule
-    (true)
+    (false)
 =>
     (set-goal buildingOuterWall 1)
     (chat-to-player my-player-number "TIME FOR OUTER WALL")
@@ -645,7 +645,7 @@
 )
 
 (defrule
-    (false)
+    (true)
     (unit-type-count villager > 10)
     (wood-amount > 200)
     (building-type-count town-center > 0)
@@ -887,7 +887,7 @@
 
 ; INNER STONE WALL SECTION
 (defrule
-    (true)
+    (false)
 =>
     (set-goal buildingInnerWall 1)
     (chat-local-to-self "TIME FOR INNER WALL")
@@ -895,7 +895,7 @@
 )
 
 (defrule
-    (false)
+    (true)
     (current-age >= castle-age)(building-type-count town-center > 0)
     (or(building-type-count castle > 0)(building-type-count university > 0))
     (or(game-time > 600)(cheats-enabled))
