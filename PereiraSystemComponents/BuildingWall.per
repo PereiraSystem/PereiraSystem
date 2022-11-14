@@ -23,25 +23,25 @@
 (defrule
     (map-size tiny)
 =>
-    (set-goal maxDimensionOfMapManuallyEntered 120)
+    (set-goal maxDimensionsOfMapManuallyEntered 120)
 )
 
 (defrule
     (map-size small)
 =>
-    (set-goal maxDimensionOfMapManuallyEntered 144)
+    (set-goal maxDimensionsOfMapManuallyEntered 144)
 )
 
 (defrule
     (map-size medium)
 =>
-    (set-goal maxDimensionOfMapManuallyEntered 168)
+    (set-goal maxDimensionsOfMapManuallyEntered 168)
 )
 
 (defrule
     (map-size normal)
 =>
-    (set-goal maxDimensionOfMapManuallyEntered 208)
+    (set-goal maxDimensionsOfMapManuallyEntered 208)
 )
 
 (defrule
@@ -58,8 +58,8 @@
 =>
     (up-chat-data-to-self "Position Map Size X: %d" g: posMapSizeX)
     (up-chat-data-to-self "Position Map Size Y: %d" g: posMapSizeY)
-    (up-chat-data-to-self "Map Size: %d" g: maxDimensionsOfMap)
-    (up-chat-data-to-self "Map Size (manual): %d" g: maxDimensionOfMapManuallyEntered)    
+    (up-chat-data-to-self "maxDimensionsOfMap: %d" g: maxDimensionsOfMap)
+    (up-chat-data-to-self "maxDimensionsOfMap(manual): %d" g: maxDimensionOfMapManuallyEntered)    
     (disable-self)
 )
 
