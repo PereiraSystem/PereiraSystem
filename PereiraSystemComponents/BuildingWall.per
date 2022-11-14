@@ -306,7 +306,7 @@
     (up-modify-goal innerWallPoint1X g:= maxDimensionsOfMap)
     (up-modify-goal innerGatePoint1X g:= maxDimensionsOfMap)
     (up-modify-goal innerSecGatePoint1X g:= maxDimensionsOfMap)
-    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
+    ;(up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
     (disable-self)
 )
 (defrule
@@ -317,7 +317,7 @@
     (up-modify-goal innerWallPoint2X g:= maxDimensionsOfMap)
     (up-modify-goal innerGatePoint2X g:= maxDimensionsOfMap)
     (up-modify-goal innerSecGatePoint2X g:= maxDimensionsOfMap)
-    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
+    ;(up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
     (disable-self)
 )
 (defrule
@@ -328,7 +328,7 @@
     (up-modify-goal innerWallPoint2Y g:= maxDimensionsOfMap)
     (up-modify-goal innerGatePoint2Y g:= maxDimensionsOfMap)
     (up-modify-goal innerSecGatePoint2Y g:= maxDimensionsOfMap)
-    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
+    ;(up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
     (disable-self)
 )
 (defrule
@@ -339,7 +339,7 @@
     (up-modify-goal innerWallPoint3Y g:= maxDimensionsOfMap)
     (up-modify-goal innerGatePoint3Y g:= maxDimensionsOfMap)
     (up-modify-goal innerSecGatePoint3Y g:= maxDimensionsOfMap)
-    (up-chat-data-to-all "POINT 3 Y SET TO %d " g: outerWallPoint3Y)
+    ;(up-chat-data-to-all "POINT 3 Y SET TO %d " g: outerWallPoint3Y)
     (disable-self)
 )
 
@@ -368,13 +368,6 @@
     (disable-self)
 )
 
-(defrule
-    (game-time > 90)
-=>
-    (up-chat-data-to-self "OUTER WALL P 1X: %d" g: outerWallPoint1X)
-    (up-chat-data-to-self "OUTER WALL P 1Y: %d" g: outerWallPoint1Y)
-    (disable-self)
-)
 
 ; DISABLE THE WALLS THAT WOULD BE PARALLEL TO THE BORDER AND TOO CLOSE TO IT
 ; BY CHECKING THE FIRST OF THE 2 POINTS
