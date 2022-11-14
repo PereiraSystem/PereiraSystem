@@ -506,14 +506,18 @@
 =>
     (set-goal outerWallPoint1X 240)
     (set-goal innerWallPoint1X 240)
+    (set-goal outerGatePoint1X 240)
+    (set-goal innerSecGatePoint1X 240)
     (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
     (disable-self)
 )
 (defrule
     (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint2X 240)
+    (set-goal outerWallPoint21X 240)
     (set-goal innerWallPoint2X 240)
+    (set-goal outerGatePoint2X 240)
+    (set-goal innerSecGatePoint2X 240)
     (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
     (disable-self)
 )
@@ -522,6 +526,8 @@
 =>
     (set-goal outerWallPoint2Y 240)
     (set-goal innerWallPoint2Y 240)
+    (set-goal outerGatePoint2Y 240)
+    (set-goal innerSecGatePoint2Y 240)
     (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
     (disable-self)
 )
@@ -530,6 +536,8 @@
 =>
     (set-goal outerWallPoint3Y 240)
     (set-goal innerWallPoint3Y 240)
+    (set-goal outerGatePoint3Y 240)
+    (set-goal innerSecGatePoint3Y 240)
     (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
     (disable-self)
 )
