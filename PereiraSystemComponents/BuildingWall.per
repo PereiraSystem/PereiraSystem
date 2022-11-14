@@ -29,7 +29,7 @@
     (disable-self)
 )
 
-(defrule (false)
+(defrule
     (game-time > 60)
 =>
     (up-chat-data-to-self "Position Map Size X: %d" g: posMapSizeX)
