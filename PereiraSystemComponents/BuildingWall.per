@@ -549,7 +549,7 @@
 )
 
 (defrule
-    (maxDimensionsOfMap > 256)
+    (up-compare-goal maxDimensionsOfMap g:> 256)
 =>
     (up-modify-goal outerWallPerimeter c:+ 6)
     (up-modify-goal innerWallPerimeter c:+ 6)
