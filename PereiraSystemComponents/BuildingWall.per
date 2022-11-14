@@ -19,6 +19,31 @@
     (up-modify-goal mapSizeNineTenths g:- mapSizeTenth)
     (disable-self)
 )
+
+(defrule
+    (map-size tiny)
+=>
+    (set-goal maxDimensionOfMapManuallyEntered 120)
+)
+
+(defrule
+    (map-size small)
+=>
+    (set-goal maxDimensionOfMapManuallyEntered 144)
+)
+
+(defrule
+    (map-size medium)
+=>
+    (set-goal maxDimensionOfMapManuallyEntered 168)
+)
+
+(defrule
+    (map-size normal)
+=>
+    (set-goal maxDimensionOfMapManuallyEntered 200)
+)
+
 (defrule
     (game-time > 30)
 =>
@@ -34,6 +59,7 @@
     (up-chat-data-to-self "Position Map Size X: %d" g: posMapSizeX)
     (up-chat-data-to-self "Position Map Size Y: %d" g: posMapSizeY)
     (up-chat-data-to-self "Map Size: %d" g: maxDimensionOfMap)
+    (up-chat-data-to-self "Map Size (manual): %d" g: maxDimensionOfMapManuallyEntered)    
     (disable-self)
 )
 
