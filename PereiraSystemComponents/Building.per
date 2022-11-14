@@ -616,14 +616,7 @@
 (defrule
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
-    (or
-        (not(civ-selected japanese))(building-type-count archery-range > 0)
-    )
-    (or
-        (not(civ-selected portuguese))(building-type-count archery-range > 0)
-    )
     (building-type-count-total stable == 0)
-    (or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable 1")
