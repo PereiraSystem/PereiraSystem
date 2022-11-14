@@ -10,6 +10,7 @@
     (up-get-point position-map-size mapSizeTwoThirds)
     (up-get-point position-map-size mapSizeTenth)
     (up-get-point position-map-size mapSizeNineTenths)
+    (up-get-point position-map-size maxDimensionOfMap)    
 
     (up-modify-goal mapSizeThird c:/ 3)
     (up-modify-goal mapSizeTwoThirds c:/ 3)
@@ -22,9 +23,10 @@
     (game-time > 30)
 =>
     (up-chat-data-to-self "Position Self X: %d" g: myPositionX)
-    (up-chat-data-to-self "Position Self X: %d" g: myPositionY)
+    (up-chat-data-to-self "Position Self Y: %d" g: myPositionY)
     (disable-self)
 )
+
 
 (defrule
     (game-time > 60)
