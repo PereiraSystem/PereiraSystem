@@ -10,7 +10,7 @@
     (up-get-point position-map-size mapSizeTwoThirds)
     (up-get-point position-map-size mapSizeTenth)
     (up-get-point position-map-size mapSizeNineTenths)
-    (up-get-point position-map-size maxDimensionOfMap)    
+    (up-get-point position-map-size maxDimensionOfMap)
 
     (up-modify-goal mapSizeThird c:/ 3)
     (up-modify-goal mapSizeTwoThirds c:/ 3)
@@ -282,6 +282,7 @@
 =>
     (set-goal outerWallPoint1Y 0)
     (set-goal innerWallPoint1Y 0)
+    ;(chat-local-to-self "POINT 1 Y SET TO ZERO")
     (disable-self)
 )
 (defrule
@@ -289,6 +290,7 @@
 =>
     (set-goal outerWallPoint3X 0)
     (set-goal innerWallPoint3X 0)
+    ;(chat-local-to-self "POINT 3 X SET TO ZERO")
     (disable-self)
 )
 (defrule
@@ -296,6 +298,7 @@
 =>
     (set-goal outerWallPoint4X 0)
     (set-goal innerWallPoint4X 0)
+    ;(chat-local-to-self "POINT 4 X SET TO ZERO")
     (disable-self)
 )
 (defrule
@@ -303,6 +306,7 @@
 =>
     (set-goal outerWallPoint4Y 0)
     (set-goal innerWallPoint4Y 0)
+    ;(chat-local-to-self "POINT 4 Y SET TO ZERO")
     (disable-self)
 )
 
@@ -310,9 +314,9 @@
 (defrule
     (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
 =>
-    ;(set-goal outerWallPoint1X maxDimensionOfMap)
-    (set-goal outerWallPoint1X maxDimensionOfMap)    
+    (set-goal outerWallPoint1X maxDimensionOfMap)
     (set-goal innerWallPoint1X maxDimensionOfMap)
+    (up-chat-data-to-all "POINT 1 X SET TO %d " g: maxDimensionsOfMap)
     (disable-self)
 )
 (defrule
@@ -320,6 +324,7 @@
 =>
     (set-goal outerWallPoint2X maxDimensionOfMap)
     (set-goal innerWallPoint2X maxDimensionOfMap)
+    (up-chat-data-to-all "POINT 2 X SET TO %d " g: maxDimensionsOfMap)    
     (disable-self)
 )
 (defrule
@@ -327,6 +332,7 @@
 =>
     (set-goal outerWallPoint2Y maxDimensionOfMap)
     (set-goal innerWallPoint2Y maxDimensionOfMap)
+    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: maxDimensionsOfMap)    
     (disable-self)
 )
 (defrule
@@ -334,6 +340,7 @@
 =>
     (set-goal outerWallPoint3Y maxDimensionOfMap)
     (set-goal innerWallPoint3Y maxDimensionOfMap)
+    (up-chat-data-to-all "POINT 3 X SET TO %d " g: maxDimensionsOfMap)    
     (disable-self)
 )
 
