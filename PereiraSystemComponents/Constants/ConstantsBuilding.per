@@ -112,8 +112,6 @@
 =>
     (set-goal maxLumberCampsQty 3)
     (set-goal maxMiningCampsQty 1)
-    ;(up-chat-data-to-self "Lumber Camps Max Qty = %d" g: maxLumberCampsQty)
-    ;(up-chat-data-to-self "Mining Camps Max Qty = %d" g: max-mining-camps-qty)
     (disable-self)
 )
 
@@ -125,9 +123,8 @@
     (set-goal maxHousesBeforeDeleting 21)
     (set-goal maxHousesNeeded 30)
     (set-goal farmQtyImperial 20)
-(disable-self)
+    (disable-self)
 )
-
 
 ; wall constants
 (defrule
@@ -139,13 +136,14 @@
     (set-goal mapSizeTwoThirds 0)
     (set-goal mapSizeTenth 0)
     (set-goal mapSizeNineTenths 0)
-    (set-goal maxDimensionOfMap 0)
+    (set-goal maxDimensionsOfMap 0)
+    (set-goal maxDimensionOfMapManuallyEntered 0)
     (set-goal myPositionX 0)
     (set-goal myPositionY 0)
     (set-goal posXisHigh 40)
     (set-goal posXisMed 0)
     (set-goal posXisLow 0)
-    (set-goal posYisHigh 40)
+    (set-goal posYisHigh 0)
     (set-goal posYisMed 0)
     (set-goal posYisLow 0)
     (set-goal posQuadrantCode 0)
@@ -215,10 +213,7 @@
     (set-goal dontBuildNorthWestWall 0)
     (set-goal dontBuildSouthWestWall 0)
     (set-goal buildingInnerWall 0)
-
-
-
-
+    (set-goal buildingOuterWall 0)
     (set-goal gotNorthEastPalisadeGates 0)
     (set-goal gotSouthEastPalisadeGates 0)
     (set-goal gotSouthWestPalisadeGates 0)
@@ -227,6 +222,5 @@
     (set-goal gotSouthEastStoneGates 0)
     (set-goal gotSouthWestStoneGates 0)
     (set-goal gotNorthWestStoneGates 0)
-    (set-goal buildingOuterWall 0)
     (disable-self)
 )
