@@ -20,29 +20,6 @@
     (disable-self)
 )
 
-(defrule
-    (map-size tiny)
-=>
-    (set-goal maxDimensionsOfMapManuallyEntered 120)
-)
-
-(defrule
-    (map-size small)
-=>
-    (set-goal maxDimensionsOfMapManuallyEntered 144)
-)
-
-(defrule
-    (map-size medium)
-=>
-    (set-goal maxDimensionsOfMapManuallyEntered 168)
-)
-
-(defrule
-    (map-size normal)
-=>
-    (set-goal maxDimensionsOfMapManuallyEntered 208)
-)
 
 (defrule
     (game-time > 30)
@@ -52,14 +29,12 @@
     (disable-self)
 )
 
-
-(defrule
+(defrule (false)
     (game-time > 60)
 =>
     (up-chat-data-to-self "Position Map Size X: %d" g: posMapSizeX)
     (up-chat-data-to-self "Position Map Size Y: %d" g: posMapSizeY)
     (up-chat-data-to-self "maxDimensionsOfMap: %d" g: maxDimensionsOfMap)
-    (up-chat-data-to-self "maxDimensionsOfMap(manual): %d" g: maxDimensionsOfMapManuallyEntered)    
     (disable-self)
 )
 
@@ -310,8 +285,147 @@
     (disable-self)
 )
 
-#load-if-defined NORMAL-MAP
 ; HIGHER POINTS SET TO THE MAX SIZE OF MAP
+
+(defrule
+    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint1X 468)
+    (set-goal innerWallPoint1X 468)
+    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint2X 468)
+    (set-goal innerWallPoint2X 468)
+    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint2Y 468)
+    (set-goal innerWallPoint2Y 468)
+    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint3Y 468)
+    (set-goal innerWallPoint3Y 468)
+    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
+    (disable-self)
+)
+
+#load-if-defined TINY-MAP
+(defrule
+    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint1X 120)
+    (set-goal innerWallPoint1X 120)
+    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint2X 120)
+    (set-goal innerWallPoint2X 120)
+    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint2Y 120)
+    (set-goal innerWallPoint2Y 120)
+    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint3Y 120)
+    (set-goal innerWallPoint3Y 120)
+    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
+    (disable-self)
+)
+#end-if
+
+#load-if-defined SMALL-MAP
+(defrule
+    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint1X 144)
+    (set-goal innerWallPoint1X 144)
+    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint2X 144)
+    (set-goal innerWallPoint2X 144)
+    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint2Y 144)
+    (set-goal innerWallPoint2Y 144)
+    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint3Y 144)
+    (set-goal innerWallPoint3Y 144)
+    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
+    (disable-self)
+)
+#end-if
+
+#load-if-defined MEDIUM-MAP
+(defrule
+    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint1X 168)
+    (set-goal innerWallPoint1X 168)
+    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint2X 168)
+    (set-goal innerWallPoint2X 168)
+    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint2Y 168)
+    (set-goal innerWallPoint2Y 168)
+    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
+    (disable-self)
+)
+(defrule
+    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
+=>
+    (set-goal outerWallPoint3Y 168)
+    (set-goal innerWallPoint3Y 168)
+    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
+    (disable-self)
+)
+#end-if
+
+#load-if-defined NORMAL-MAP
 (defrule
     (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
 =>
@@ -386,32 +500,32 @@
 (defrule
     (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint1X 200)
-    (set-goal innerWallPoint1X 200)
+    (set-goal outerWallPoint1X 240)
+    (set-goal innerWallPoint1X 240)
     (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
     (disable-self)
 )
 (defrule
     (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint2X 200)
-    (set-goal innerWallPoint2X 200)
+    (set-goal outerWallPoint2X 240)
+    (set-goal innerWallPoint2X 240)
     (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
     (disable-self)
 )
 (defrule
     (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint2Y 200)
-    (set-goal innerWallPoint2Y 200)
+    (set-goal outerWallPoint2Y 240)
+    (set-goal innerWallPoint2Y 240)
     (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
     (disable-self)
 )
 (defrule
     (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint3Y 200)
-    (set-goal innerWallPoint3Y 200)
+    (set-goal outerWallPoint3Y 240)
+    (set-goal innerWallPoint3Y 240)
     (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
     (disable-self)
 )
