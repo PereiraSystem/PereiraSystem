@@ -814,6 +814,7 @@
     (or(goal gotNorthEastPalisadeGates 1)(goal buildSouthWestMainGates 1))
 =>
     (up-build-line outerWallPoint1X outerWallPoint2X c: palisade-wall)
+    (up-chat-data-to-all "OUTER WALL P1 X = %d" g: outerWallPoint1X)
 )
 (defrule
     (goal buildingOuterWall 1)
