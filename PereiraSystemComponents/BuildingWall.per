@@ -1238,6 +1238,7 @@
     (goal buildSouthWestMainGates 1)
 =>
     (generate-random-number 10)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal innerSecGatePoint3X c:+ 1)    
     (up-modify-goal innerSecGatePoint3X g:+ randomNumber)
     (disable-self)
 )
