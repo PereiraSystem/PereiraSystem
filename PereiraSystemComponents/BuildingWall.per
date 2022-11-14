@@ -363,8 +363,10 @@
 (defrule
     (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint1X 144)
-    (set-goal innerWallPoint1X 144)
+    ;(set-goal outerWallPoint1X 144)
+    (up-modify-goal outerWallPoints1X g:= maxDimensionsOfMap)
+    ;(set-goal innerWallPoint1X 144)
+    (up-modify-goal innerWallPoint1X g:= maxDimensionsOfMap)      
     (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
     (disable-self)
 )
