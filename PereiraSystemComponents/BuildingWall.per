@@ -286,86 +286,10 @@
 )
 
 ; HIGHER POINTS SET TO THE MAX SIZE OF MAP
-
-(defrule
-    (up-compare-goal maxDimensionsOfMap > 256)
-    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint1X 480)
-    (set-goal innerWallPoint1X 480)
-    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal maxDimensionsOfMap > 256)
-    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2X 480)
-    (set-goal innerWallPoint2X 480)
-    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal maxDimensionsOfMap > 256)
-    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2Y 480)
-    (set-goal innerWallPoint2Y 480)
-    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal maxDimensionsOfMap > 256)
-    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint3Y 480)
-    (set-goal innerWallPoint3Y 480)
-    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
-    (disable-self)
-)
-
-#load-if-defined TINY-MAP
 (defrule
     (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint1X 120)
-    (set-goal innerWallPoint1X 120)
-    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2X 120)
-    (set-goal innerWallPoint2X 120)
-    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2Y 120)
-    (set-goal innerWallPoint2Y 120)
-    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint3Y 120)
-    (set-goal innerWallPoint3Y 120)
-    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
-    (disable-self)
-)
-#end-if
-
-#load-if-defined SMALL-MAP
-(defrule
-    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
-=>
-    ;(set-goal outerWallPoint1X 144)
     (up-modify-goal outerWallPoint1X g:= maxDimensionsOfMap)
-    ;(set-goal innerWallPoint1X 144)
     (up-modify-goal innerWallPoint1X g:= maxDimensionsOfMap)
     (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
     (disable-self)
@@ -373,177 +297,27 @@
 (defrule
     (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint2X 144)
-    (set-goal innerWallPoint2X 144)
+    (up-modify-goal outerWallPoint2X g:= maxDimensionsOfMap)
+    (up-modify-goal innerWallPoint2X g:= maxDimensionsOfMap)
     (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
     (disable-self)
 )
 (defrule
     (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint2Y 144)
-    (set-goal innerWallPoint2Y 144)
+    (up-modify-goal outerWallPoint2Y g:= maxDimensionsOfMap)
+    (up-modify-goal innerWallPoint2Y g:= maxDimensionsOfMap)
     (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
     (disable-self)
 )
 (defrule
     (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
 =>
-    (set-goal outerWallPoint3Y 144)
-    (set-goal innerWallPoint3Y 144)
-    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
+    (up-modify-goal outerWallPoint3Y g:= maxDimensionsOfMap)
+    (up-modify-goal innerWallPoint3Y g:= maxDimensionsOfMap)
+    (up-chat-data-to-all "POINT 3 Y SET TO %d " g: outerWallPoint3Y)
     (disable-self)
 )
-#end-if
-
-#load-if-defined MEDIUM-MAP
-(defrule
-    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint1X 168)
-    (set-goal innerWallPoint1X 168)
-    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2X 168)
-    (set-goal innerWallPoint2X 168)
-    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2Y 168)
-    (set-goal innerWallPoint2Y 168)
-    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint3Y 168)
-    (set-goal innerWallPoint3Y 168)
-    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
-    (disable-self)
-)
-#end-if
-
-#load-if-defined NORMAL-MAP
-(defrule
-    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint1X 200)
-    (set-goal innerWallPoint1X 200)
-    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2X 200)
-    (set-goal innerWallPoint2X 200)
-    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2Y 200)
-    (set-goal innerWallPoint2Y 200)
-    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint3Y 200)
-    (set-goal innerWallPoint3Y 200)
-    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
-    (disable-self)
-)
-#end-if
-
-#load-if-defined LARGE-MAP
-(defrule
-    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint1X 220)
-    (set-goal innerWallPoint1X 220)
-    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2X 220)
-    (set-goal innerWallPoint2X 220)
-    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2Y 220)
-    (set-goal innerWallPoint2Y 220)
-    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint3Y 220)
-    (set-goal innerWallPoint3Y 220)
-    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
-    (disable-self)
-)
-#end-if
-
-#load-if-defined GIANT-MAP
-; HIGHER POINTS SET TO THE MAX SIZE OF MAP
-(defrule
-    (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint1X 240)
-    (set-goal innerWallPoint1X 240)
-    (set-goal outerGatePoint1X 240)
-    (set-goal innerSecGatePoint1X 240)
-    (up-chat-data-to-all "POINT 1 X SET TO %d " g: outerWallPoint1X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2X 240)
-    (set-goal innerWallPoint2X 240)
-    (set-goal outerGatePoint2X 240)
-    (set-goal innerSecGatePoint2X 240)
-    (up-chat-data-to-all "POINT 2 X SET TO %d " g: outerWallPoint2X)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint2Y 240)
-    (set-goal innerWallPoint2Y 240)
-    (set-goal outerGatePoint2Y 240)
-    (set-goal innerSecGatePoint2Y 240)
-    (up-chat-data-to-all "POINT 2 Y SET TO %d " g: outerWallPoint2Y)
-    (disable-self)
-)
-(defrule
-    (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
-=>
-    (set-goal outerWallPoint3Y 240)
-    (set-goal innerWallPoint3Y 240)
-    (set-goal outerGatePoint3Y 240)
-    (set-goal innerSecGatePoint3Y 240)
-    (up-chat-data-to-all "POINT 3 X SET TO %d " g: outerWallPoint3Y)
-    (disable-self)
-)
-#end-if
 
 ;CHANGE PERIMETER TOO
 (defrule
