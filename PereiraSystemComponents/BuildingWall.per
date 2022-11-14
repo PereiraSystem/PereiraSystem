@@ -288,7 +288,7 @@
 ; HIGHER POINTS SET TO THE MAX SIZE OF MAP
 
 (defrule
-    (up-compare-goal maxDimensionsOfMap g:> 256)
+    (up-compare-goal maxDimensionsOfMap > 256)
     (up-compare-goal outerWallPoint1X g:> mapSizeNineTenths)
 =>
     (set-goal outerWallPoint1X 480)
@@ -297,7 +297,7 @@
     (disable-self)
 )
 (defrule
-    (up-compare-goal maxDimensionsOfMap g:> 256)
+    (up-compare-goal maxDimensionsOfMap > 256)
     (up-compare-goal outerWallPoint2X g:> mapSizeNineTenths)
 =>
     (set-goal outerWallPoint2X 480)
@@ -306,7 +306,7 @@
     (disable-self)
 )
 (defrule
-    (up-compare-goal maxDimensionsOfMap g:> 256)
+    (up-compare-goal maxDimensionsOfMap > 256)
     (up-compare-goal outerWallPoint2Y g:> mapSizeNineTenths)
 =>
     (set-goal outerWallPoint2Y 480)
@@ -315,7 +315,7 @@
     (disable-self)
 )
 (defrule
-    (up-compare-goal maxDimensionsOfMap g:> 256)
+    (up-compare-goal maxDimensionsOfMap > 256)
     (up-compare-goal outerWallPoint3Y g:> mapSizeNineTenths)
 =>
     (set-goal outerWallPoint3Y 480)
