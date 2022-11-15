@@ -273,17 +273,36 @@
     (set-strategic-number sn-town-center-placement 0)
     (set-strategic-number sn-minimum-town-size 20)
     (set-strategic-number sn-maximum-town-size 22)
-    ;(set-strategic-number sn-minimum-town-size 0)
-    ;(set-strategic-number sn-maximum-town-size 0)
     (disable-self)
 )
+
 (defrule
-    (game-time > 360)
+    (building-type-count barracks > 0)
+    (building-type-count stable > 0)
+    (building-type-count archery-range > 0)
+    (building-type-count monastery > 0)
 =>
     (up-modify-sn sn-maximum-town-size c:+ 10)
     (up-modify-sn sn-minimum-town-size c:+ 10)
     (disable-self)
 )
+
+(defrule
+    (building-type-count siege-workshop > 0)
+=>
+    (up-modify-sn sn-maximum-town-size c:+ 10)
+    (up-modify-sn sn-minimum-town-size c:+ 10)
+    (disable-self)
+)
+
+(defrule
+    (building-type-count castle > 0)
+=>
+    (up-modify-sn sn-maximum-town-size c:+ 10)
+    (up-modify-sn sn-minimum-town-size c:+ 10)
+    (disable-self)
+)
+
 ; DROPSITES AND DISTANCES
 ; CANCEL SITE BUILDING IF DANGEROUS
 (defrule
