@@ -652,11 +652,45 @@
     (up-can-build 0 c: siege-workshop)
     ;(can-build siege-workshop)
 =>
-    (chat-local-to-self "Trying To Build Siege Workshop 1")
+    (chat-local-to-self "Trying To Build Siege Workshop 1 - Place Control +")
     ;(build siege-workshop)
-    (up-set-placement-data my-player-number town-center c: 12)
+    (up-set-placement-data my-player-number town-center c: 26)
     (up-build place-control 0 c: siege-workshop)
 )
+(defrule
+    (building-type-count-total siege-workshop == 0)
+    (building-type-count town-center > 0)
+    (or(building-type-count monastery > 0)
+    (players-building-type-count any-ally monastery > 0))
+    (or
+        (building-type-count-total university == 1)
+        (not(civ-selected bohemians))
+    )
+    (not(civ-selected gothic))
+    (up-can-build 0 c: siege-workshop)
+    ;(can-build siege-workshop)
+=>
+    (chat-local-to-self "Trying To Build Siege Workshop 1- Place Control -")
+    ;(build siege-workshop)
+    (up-set-placement-data my-player-number town-center c: -26)
+    (up-build place-control 0 c: siege-workshop)
+)
+(defrule
+    (building-type-count-total siege-workshop == 0)
+    (building-type-count town-center > 0)
+    (or(building-type-count monastery > 0)
+    (players-building-type-count any-ally monastery > 0))
+    (or
+        (building-type-count-total university == 1)
+        (not(civ-selected bohemians))
+    )
+    (not(civ-selected gothic))
+    (can-build siege-workshop)
+=>
+    (chat-local-to-self "Trying To Build Siege Workshop 1 - Normal")
+    (build siege-workshop)
+)
+
 ; MONASTERY
 (defrule
     (or(building-type-count-total house > 3)(civ-selected hun))
