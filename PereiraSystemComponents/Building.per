@@ -338,14 +338,13 @@
     (or(building-type-count-total archery-range > 0)
         (or(civ-selected cumans)(civ-selected bohemians))
     )
-    ;(research-completed ri-wheel-barrow)(research-completed ri-double-bit-axe)(research-completed ri-horse-collar)
-    (or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (up-can-build 0 c: blacksmith)
 =>
     (chat-local-to-self "Trying to build blacksmith")
-    (up-set-placement-data my-player-number town-center c: 4)
+    (up-set-placement-data my-player-number town-center c: 8)
     (up-build place-control 0 c: blacksmith)
 )
+
 ; MARKET
 (defrule
     (up-players-in-game ally > 1)
