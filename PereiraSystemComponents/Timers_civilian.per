@@ -89,12 +89,12 @@
 )
 
 ; INCREASE OTHER BUILDINGS QTY
-(defrule(true)=>(enable-timer 19 800)(disable-self))
+(defrule(true)=>(enable-timer 19 900)(disable-self))
 (defrule
 	(timer-triggered 19)
 =>
 	(disable-timer 19)
-    (enable-timer 19 180)
+    (enable-timer 19 300)
     (up-modify-goal barracksQty c:+ 1)
     (up-modify-goal archeryRangeQty c:+ 1)
     (up-modify-goal stableQty c:+ 1)
