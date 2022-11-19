@@ -495,13 +495,14 @@
 =>
 	(build-wall 2 72)
 )
+
 ; CASTLE
 (defrule
     (building-type-count-total castle g:< castleQty)
     (up-can-build 0 c: castle)
     ;(can-build castle)
 =>
-    (chat-local-to-self "Trying To Build Castle 1")
+    (chat-local-to-self "Trying To Build Castle")
     (up-set-placement-data my-player-number -1 c: -7)
     ;(up-set-placement-data my-player-number palisade-wall c: -1)
     (up-build place-control 0 c: castle)
