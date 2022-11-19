@@ -601,33 +601,11 @@
 (defrule
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
-    (building-type-count-total stable == 0)
+    (building-type-count-total stable g:< stableQty)
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable 1")
     (up-set-placement-data my-player-number town-center c: 2)
-    (up-build place-control 0 c: stable)
-)
-
-(defrule
-    (or(wood-amount > 275)(building-type-count market > 0))
-    (building-type-count lumber-camp > 0)
-    (building-type-count-total stable == 1)
-    (up-can-build 0 c: stable)
-=>
-    (chat-local-to-self "Trying To Build Stable 2")
-    (up-set-placement-data my-player-number town-center c: 26)
-    (up-build place-control 0 c: stable)
-)
-
-(defrule
-    (or(wood-amount > 275)(building-type-count market > 0))
-    (building-type-count lumber-camp > 0)
-    (building-type-count-total stable == 2)
-    (up-can-build 0 c: stable)
-=>
-    (chat-local-to-self "Trying To Build Stable 3")
-    (up-set-placement-data my-player-number town-center c: 32)
     (up-build place-control 0 c: stable)
 )
 

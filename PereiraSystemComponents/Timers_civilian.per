@@ -87,3 +87,13 @@
 	(chat-local-to-self "DELETING VILLAGERS!")
     (up-delete-idle-units idle-type-villager)
 )
+
+; INCREASE OTHER BUILDINGS QTY
+(defrule(true)=>(enable-timer 19 800)(disable-self))
+(defrule
+	(timer-triggered 19)
+=>
+	(disable-timer 19)
+    (enable-timer 19 180)
+    (up-modify-goal stableQty c:+ 1)
+)
