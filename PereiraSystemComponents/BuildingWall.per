@@ -899,6 +899,7 @@
     (current-age >= castle-age)(building-type-count town-center > 0)
     (or(building-type-count castle > 0)(building-type-count university > 0))
     (or(game-time > 600)(cheats-enabled))
+    (stone-amount > 400)
 =>
     (set-goal buildingInnerWall 1)
     (chat-local-to-self "TIME FOR INNER WALL")
