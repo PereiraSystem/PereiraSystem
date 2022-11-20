@@ -191,6 +191,7 @@
 =>
     (build farm)
 )
+
 ; HOUSES
 (defrule
     (wood-amount g:> minimumWoodForLC)
@@ -198,7 +199,6 @@
     (up-can-build 0 c: house)
 =>
     (chat-local-to-self "Trying To Build House")
-    ;(build house)
     (up-set-placement-data my-player-number house c: 0)
     (up-build place-control 0 c: house)
 )
@@ -357,7 +357,7 @@
     (up-build place-control 0 c: market)
 )
 (defrule
-    (up-players-in-game ally == 1)
+    (up-players-in-game ally == 2)
     (building-type-count town-center > 0)
     (building-type-count-total market == 0)
     (up-can-build 0 c: market)
@@ -369,8 +369,7 @@
 ; UNIVERSITY
 (defrule
     (building-type-count town-center > 0)
-    (or(building-type-count-total monastery > 0)
-    (players-building-type-count any-ally monastery > 0))
+    (players-building-type-count any-ally monastery > 0)
     (building-type-count-total market > 0)
     (or(unit-type-count villager > 24)
     (building-type-count-total siege-workshop > 0))
@@ -536,15 +535,11 @@
         )
         (wood-amount > 305)
     )
-    ;(can-build barracks)
     (up-can-build 0 c: barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks 1")
     (up-set-placement-data my-player-number town-center c:+ 1)
     (up-build place-control 0 c: barracks)
-    ;(build barracks)
-    (up-chat-data-to-player my-player-number "MAX TS: %d" s: sn-maximum-town-size)
-    (up-chat-data-to-player my-player-number "MIN TS: %d" s: sn-minimum-town-size)
 )
 
 ; BUILD STABLES
@@ -585,9 +580,9 @@
     (up-can-build 0 c: siege-workshop)
     ;(can-build siege-workshop)
 =>
-    (chat-local-to-self "Trying To Build Siege Workshop 1 - Place Control")
+    (chat-local-to-self "Trying To Build Siege Workshop")
     ;(build siege-workshop)
-    (up-set-placement-data my-player-number town-center c: 26)
+    (up-set-placement-data my-player-number town-center c:+ 26)
     (up-build place-control 0 c: siege-workshop)
 )
 
@@ -603,55 +598,11 @@
     )
     (can-build monastery)
 =>
-    (chat-local-to-self "Trying To Build Monastery 1")
+    (chat-local-to-self "Trying To Build Monastery")
     (up-set-placement-data my-player-number town-center c: -4)
     (up-build place-control 0 c: monastery)
 )
 
-(defrule
-    (game-time > 900)
-    (or
-        (hold-relics)
-        (not(enemy-captured-relics))
-    )
-    (and
-        (not(civ-selected burgundians))
-        (players-civ any-ally burgundians)
-    )
-=>
-    (chat-to-allies "RELIC TRANSFUSION TO BURGUNDIANS")
-    (delete-building monastery)(disable-self)
-)
-(defrule
-    (game-time > 900)
-    (or
-        (hold-relics)
-        (not(enemy-captured-relics))
-    )
-    (and
-        (not(civ-selected aztec))
-        (players-civ any-ally aztec)
-    )
-    (not(civ-selected burgundians))
-=>
-    (chat-to-allies "RELIC TRANSFUSION TO AZTECS")
-    (delete-building monastery)(disable-self)
-)
-(defrule
-    (or
-        (civ-selected burgundians)(civ-selected aztec)
-    )
-    (game-time > 900)
-    (or
-        (hold-relics)
-        (not(enemy-captured-relics))
-    )
-    (up-can-build 0 c: monastery)
-=>
-    (chat-local-to-self "BUILDING RELIC TRANSFUSION MONASTERY")
-    (up-set-placement-data my-player-number -1 c:- 6)
-    (up-build place-control 0 c: monastery)
-)
 ; TOWERS
 ; BOMBARD TOWER
 (defrule

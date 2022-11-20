@@ -89,7 +89,7 @@
 )
 
 ; INCREASE OTHER BUILDINGS QTY
-(defrule(true)=>(enable-timer 19 900)(disable-self))
+(defrule(current-age == imperial-age)=>(enable-timer 19 600)(disable-self))
 (defrule
 	(timer-triggered 19)
 =>
@@ -99,5 +99,5 @@
     (up-modify-goal archeryRangeQty c:+ 1)
     (up-modify-goal stableQty c:+ 1)
     (up-modify-goal siegeWorkshopQty c:+ 1)
-    (up-modify-goal castleQty c:+ 1)        
+    (up-modify-goal castleQty c:+ 1)
 )
