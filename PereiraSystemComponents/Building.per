@@ -650,6 +650,12 @@
     (chat-local-to-self "Trying To Build Monastery")
     (up-set-placement-data my-player-number town-center c: -4)
     (up-build place-control 0 c: monastery)
+
+)
+
+(defrule
+    (building-type-count monastery > 0)
+=>    
     (set-strategic-number sn-placement-zone-size 25)
 )
 
