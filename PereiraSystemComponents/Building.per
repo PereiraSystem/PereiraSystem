@@ -585,6 +585,40 @@
     (up-set-placement-data my-player-number town-center c:+ 26)
     (up-build place-control 0 c: siege-workshop)
 )
+(defrule
+	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
+    (building-type-count town-center > 0)
+    (players-building-type-count any-ally monastery > 0)
+    (or
+        (building-type-count-total university == 1)
+        (not(civ-selected bohemians))
+    )
+    (not(civ-selected gothic))
+    (up-can-build 0 c: siege-workshop)
+    ;(can-build siege-workshop)
+=>
+    (chat-local-to-self "Trying To Build Siege Workshop -26")
+    ;(build siege-workshop)
+    (up-set-placement-data my-player-number town-center c:- 26)
+    (up-build place-control 0 c: siege-workshop)
+)
+(defrule
+	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
+    (building-type-count town-center > 0)
+    (players-building-type-count any-ally monastery > 0)
+    (or
+        (building-type-count-total university == 1)
+        (not(civ-selected bohemians))
+    )
+    (not(civ-selected gothic))
+    (up-can-build 0 c: siege-workshop)
+    ;(can-build siege-workshop)
+=>
+    (chat-local-to-self "Trying To Build Siege Workshop 36")
+    ;(build siege-workshop)
+    (up-set-placement-data my-player-number town-center c:+ 36)
+    (up-build place-control 0 c: siege-workshop)
+)
 
 (defrule
 	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
