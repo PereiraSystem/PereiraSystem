@@ -333,6 +333,14 @@
 
 ; MARKET
 (defrule
+    (building-type-count town-center > 0)
+    (building-type-count-total market == 0)
+    (can-build market)
+=>
+    (build market)
+)
+
+(defrule
     (up-players-in-game ally > 1)
     (game-time > 120) ; so they dont build it inside
     (building-type-count town-center > 0)
