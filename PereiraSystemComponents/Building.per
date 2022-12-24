@@ -367,7 +367,16 @@
     (up-set-placement-data my-player-number town-center c:+ 1)
     (up-build place-control 0 c: market)
 )
+
 ; UNIVERSITY
+(defrule
+    (building-type-count-total university == 0)
+    (can-build university)
+=>
+    (build university)
+    (chat-to-player my-player-number "UNIVERSITY - NORMAL")
+)
+
 (defrule
     (building-type-count town-center > 0)
     (players-building-type-count any-ally monastery > 0)
@@ -377,7 +386,7 @@
     (research-completed ri-hand-cart)
     (research-completed ri-bow-saw)
     (building-type-count-total university == 0)
-    (can-build university)
+    (up-can-build 0 c: university)
 =>
     (chat-local-to-self "Trying To Build University")
     (up-set-placement-data my-player-number town-center c: 40)
