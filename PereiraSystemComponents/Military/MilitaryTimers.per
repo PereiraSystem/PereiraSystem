@@ -1,8 +1,4 @@
-(defrule
-    (true)
-=>  (set-strategic-number sn-do-not-scale-for-difficulty-level 1)
-    (disable-self)
-)
+
 ; COMBAT
 ; DEFENSE
 (defrule
@@ -11,20 +7,22 @@
     (set-strategic-number sn-allow-civilian-defense 1)
     (disable-self)
 )
+
 (defrule
-    (game-time > 360)(military-population < 2)
+    (game-time > 360)
+    (military-population < 2)
 =>
     (set-strategic-number sn-allow-civilian-defense 2)
 )
+
 (defrule
     (true)
 =>
-    (set-difficulty-parameter ability-to-dodge-missiles 0)
-	(set-difficulty-parameter ability-to-maintain-distance 0)
     (set-strategic-number sn-defense-distance 26)
     (set-strategic-number sn-task-ungrouped-soldiers 0)
     (disable-self)
 )
+
 (defrule ;DEFENSE PRIORITIES
 	(true)
 =>
@@ -33,6 +31,7 @@
 	(up-set-defense-priority c: farm c: 20000)
 	(disable-self)
 )
+
 (defrule ;OFFENSE PRIORITIES
 	(true)
 =>
@@ -63,6 +62,7 @@
     (set-strategic-number sn-target-evaluation-boat 10)
     (disable-self)
 )
+
 (defrule
     (true)
 =>
@@ -79,6 +79,7 @@
     (set-strategic-number sn-gather-idle-soldiers-at-center 1)
     (disable-self)
 )
+
 (defrule
     (true)
 =>
@@ -91,6 +92,7 @@
     (set-strategic-number sn-number-attack-groups 0)
     (disable-self)
 )
+
 ; BOATS
 (defrule
     (true)
