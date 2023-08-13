@@ -525,6 +525,20 @@
     (up-modify-goal nonUpgradedUniqueUnitsCreated c:+ 1)
     (up-chat-data-to-self "Training Non Upgraded Chariot %d" g: nonUpgradedUniqueUnitsCreated)
 )
+
+(defrule
+    (civ-selected bengalis)
+	  (current-age == imperial-age)
+    (gold-amount > 360)
+    (or(up-compare-goal dudeHasSpearmen == 1)
+    (up-compare-goal dudeHasMilitia == 1))
+    (unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyMedium)
+    (research-completed my-unique-unit-upgrade)
+  	(can-train my-unique-unit-line)
+=>
+	  (train my-unique-unit-line)
+)
+
 ; BRITON UU - upgrade costs different resource
 (defrule
     (civ-selected briton)
