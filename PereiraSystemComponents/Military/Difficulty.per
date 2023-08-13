@@ -9,8 +9,11 @@
 (defrule
     (true)
 =>
+    (chat-to-player my-player-number "DIFFICULTY LEVEL = EASIEST (1/6)")
     (set-difficulty-parameter ability-to-dodge-missiles 25)
-	(set-difficulty-parameter ability-to-maintain-distance 25)
+	  (set-difficulty-parameter ability-to-maintain-distance 25)
+    (set-goal baseChanceOfBuildingWall 100)
+    (up-chat-data-to-self "TEST - CHANCE OF BUILDING WALL : %d" g: baseChanceOfBuildingWall)    
     (disable-self)
 )
 #end-if
@@ -19,8 +22,11 @@
 (defrule
     (true)
 =>
+    (chat-to-player my-player-number "DIFFICULTY LEVEL = STANDARD (2/6)")
     (set-difficulty-parameter ability-to-dodge-missiles 50)
-	(set-difficulty-parameter ability-to-maintain-distance 50)
+	  (set-difficulty-parameter ability-to-maintain-distance 50)
+    (set-goal baseChanceOfBuildingWall 100)
+    (up-chat-data-to-self "TEST - CHANCE OF BUILDING WALL : %d" g: baseChanceOfBuildingWall)    
     (disable-self)
 )
 #end-if
@@ -29,8 +35,11 @@
 (defrule
     (true)
 =>
+    (chat-to-player my-player-number "DIFFICULTY LEVEL = MODERATE (3/6)")
     (set-difficulty-parameter ability-to-dodge-missiles 75)
-	(set-difficulty-parameter ability-to-maintain-distance 75)
+	  (set-difficulty-parameter ability-to-maintain-distance 75)
+    (set-goal baseChanceOfBuildingWall 100)
+    (up-chat-data-to-self "TEST - CHANCE OF BUILDING WALL : %d" g: baseChanceOfBuildingWall)    
     (disable-self)
 )
 #end-if
@@ -39,8 +48,11 @@
 (defrule
     (true)
 =>
+    (chat-to-player my-player-number "DIFFICULTY LEVEL = HARD (4/6)")
     (set-difficulty-parameter ability-to-dodge-missiles 0)
-	(set-difficulty-parameter ability-to-maintain-distance 0)
+	  (set-difficulty-parameter ability-to-maintain-distance 0)
+    (set-goal baseChanceOfBuildingWall 100)
+    (up-chat-data-to-self "TEST - CHANCE OF BUILDING WALL : %d" g: baseChanceOfBuildingWall)    
     (disable-self)
 )
 #end-if
@@ -49,8 +61,11 @@
 (defrule
     (true)
 =>
+    (chat-to-player my-player-number "DIFFICULTY LEVEL = HARDEST (5/6)")
     (set-difficulty-parameter ability-to-dodge-missiles 0)
-	(set-difficulty-parameter ability-to-maintain-distance 0)
+	  (set-difficulty-parameter ability-to-maintain-distance 0)
+    (set-goal baseChanceOfBuildingWall 100)
+    (up-chat-data-to-self "TEST - CHANCE OF BUILDING WALL : %d" g: baseChanceOfBuildingWall)
     (disable-self)
 )
 #end-if
@@ -60,7 +75,9 @@
     (true)
 =>
     (set-difficulty-parameter ability-to-dodge-missiles 0)
-	(set-difficulty-parameter ability-to-maintain-distance 0)
+	  (set-difficulty-parameter ability-to-maintain-distance 0)
+    (set-goal baseChanceOfBuildingWall 01)
+    (up-chat-data-to-self "TEST - CHANCE OF BUILDING WALL : %d" g: baseChanceOfBuildingWall)    
     (disable-self)
 )
 #end-if
