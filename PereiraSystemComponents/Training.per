@@ -518,12 +518,13 @@
     (gold-amount > 360)
     (or(up-compare-goal dudeHasSpearmen == 1)
     (up-compare-goal dudeHasMilitia == 1))
+    (up-compare-goal nonUpgradedUniqueUnitsCreated < 25)
     (unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyMedium)
 	  (can-train my-unique-unit-line)
 =>
 	  (train my-unique-unit-line)
     (up-modify-goal nonUpgradedUniqueUnitsCreated c:+ 1)
-    ;(up-chat-data-to-self "Training Non Upgraded Chariot %d" g: nonUpgradedUniqueUnitsCreated)
+    (up-chat-data-to-self "Training Non Upgraded Chariot %d" g: nonUpgradedUniqueUnitsCreated)
 )
 
 (defrule
