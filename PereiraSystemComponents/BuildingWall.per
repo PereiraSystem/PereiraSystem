@@ -91,56 +91,56 @@
 (defrule
     (up-compare-goal posXisHigh == 1)(up-compare-goal posYisHigh == 1)
 =>
-    ;(chat-to-allies "IM AT THE EAST, IN THE CORNER! - POS 1")
+    (chat-to-allies "IM AT THE EAST, IN THE CORNER! - POS 1")
     (set-goal posQuadrantCode 1)(disable-self))
 
 (defrule
     (up-compare-goal posXisHigh == 1)(up-compare-goal posYisMed == 1)
 =>
-    ;(chat-to-allies "IM AT THE NORTH EAST!")
+    (chat-to-allies "IM AT THE NORTH EAST!")
     (set-goal posQuadrantCode 2)(disable-self))
 
 (defrule
     (up-compare-goal posXisHigh == 1)(up-compare-goal posYisLow == 1)
 =>
-    ;(chat-to-allies "IM AT AT THE NORTH, IN THE CORNER! - POS 3")
+    (chat-to-allies "IM AT AT THE NORTH, IN THE CORNER! - POS 3")
     (set-goal posQuadrantCode 3)(disable-self))
 
 (defrule
     (up-compare-goal posXisMed == 1)(up-compare-goal posYisHigh == 1)
 =>
-    ;(chat-to-allies "IM AT THE SOUTH EAST!")
+    (chat-to-allies "IM AT THE SOUTH EAST!")
     (set-goal posQuadrantCode 4)(disable-self))
 
 (defrule
     (up-compare-goal posXisMed == 1)(up-compare-goal posYisMed == 1)
 =>
-    ;(chat-to-allies "IM IN THE MIDDLE OF THE MAP - POS 5")
+    (chat-to-allies "IM IN THE MIDDLE OF THE MAP - POS 5")
     (set-goal posQuadrantCode 5)(disable-self))
 
 (defrule
     (up-compare-goal posXisMed == 1)(up-compare-goal posYisLow == 1)
 =>
-    ;(chat-to-allies "IM AT THE NORTH WEST!")
+    (chat-to-allies "IM AT THE NORTH WEST!")
     (set-goal posQuadrantCode 6)(disable-self))
 
 (defrule
     (up-compare-goal posXisLow == 1)(up-compare-goal posYisHigh == 1)
 =>
-    ;(chat-to-allies "IM AT THE SOUTH, IN THE CORNER! - POS 7")
+    (chat-to-allies "IM AT THE SOUTH, IN THE CORNER! - POS 7")
     (set-goal posQuadrantCode 7)(disable-self))
 
 (defrule
     (up-compare-goal posXisLow == 1)(up-compare-goal posYisMed == 1)
 =>
-    ;(chat-to-allies "IM AT THE SOUTH WEST!")
+    (chat-to-allies "IM AT THE SOUTH WEST!")
     (set-goal posQuadrantCode 8)
     (disable-self)
 )
 (defrule
     (up-compare-goal posXisLow == 1)(up-compare-goal posYisLow == 1)
 =>
-    ;(chat-to-allies "IM AT THE WEST, IN THE CORNER! - POS 9")
+    (chat-to-allies "IM AT THE WEST, IN THE CORNER! - POS 9")
     (set-goal posQuadrantCode 9)(disable-self))
 
 (defrule
@@ -220,7 +220,7 @@
 )
 
 ; CREATE INNER GATES SHAPE ACCORDING TO PERIMETER SIZE
-; primery----
+; primary----
 (defrule
     (true)
 =>

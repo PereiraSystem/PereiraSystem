@@ -43,10 +43,10 @@
     (up-set-offense-priority c: house c: 4)
     (up-set-offense-priority c: villager c: 4)
     (up-set-offense-priority c: town-center c: 5)
-	(up-set-offense-priority c: castle c: 6)
-	(up-set-offense-priority c: cavalry-class c: 11)
-	(up-set-offense-priority c: archery-class c: 5)
-	(disable-self)
+    (up-set-offense-priority c: castle c: 6)
+    (up-set-offense-priority c: cavalry-class c: 11)
+    (up-set-offense-priority c: archery-class c: 5)
+    (disable-self)
 )
 ; ATTACK
 ; CHOOSING TARGET
@@ -75,7 +75,7 @@
     (set-strategic-number sn-relic-return-distance 17)
     (set-strategic-number sn-allow-civilian-offense 0)
     ;(set-strategic-number sn-number-civilian-militia 100)
-	(set-strategic-number sn-garrison-rams 1)
+	  (set-strategic-number sn-garrison-rams 1)
     (set-strategic-number sn-gather-idle-soldiers-at-center 1)
     (disable-self)
 )
@@ -162,11 +162,29 @@
 ; RETREAT
 (defrule
 	(current-age == imperial-age)(up-players-in-game enemy > 0)
-    (military-population < 2)
-    (players-building-type-count focus-player castle > 0)
+  (military-population < 2)
+  (players-building-type-count focus-player castle > 0)
 =>
 	(up-retreat-now)
-    (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-to-allies "45 I Have No Soldiers To Destroy A Castle!")
+  (set-strategic-number sn-task-ungrouped-soldiers 1)
+  (chat-to-allies "45 I Have No Soldiers To Destroy A Castle!")
 	(disable-self)
+)
+
+;WALL TIMERS
+(defrule
+  (up-compare-goal buildNorthWestMainGates == 1)
+  (up-compare-goal gotNorthWestPalisadeGates == 1)
+=>
+  (enable-timer 23 120)
+  (chat-to-player my-player-number "WE GOT THE MAIN NW PALISADE! START THE TIMER!")
+  (disable-self)
+)
+
+
+(defrule (true)
+    (timer-triggered 23)
+    (up-compare-goal gotSouthEastPalisadeGates == 0)
+=>
+    (chat-to-player my-player-number "PROBLEMS WITH SOUTH EAST PALISADE!!!")
 )
