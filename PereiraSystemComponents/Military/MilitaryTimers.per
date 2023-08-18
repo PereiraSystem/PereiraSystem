@@ -189,8 +189,11 @@
     (chat-to-all "PROBLEMS WITH SECONDARY PALISADE!!!")
     (generate-random-number 1)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint3Y g:+ randomNumber)
-    (up-chat-data-to-all "SOUTH GATE POINT IN %d" outerGatePoint3Y)
+    (up-chat-data-to-all "SOUTH GATE POINT IN %d" g: outerGatePoint3Y)
     (generate-random-number 1)(up-get-fact random-number 0 randomNumber)
-    (up-modify-goal outerGatePoint2Y g:+ randomNumber)        
+    (up-modify-goal outerGatePoint2Y g:+ randomNumber)
+    (disable-timer 23)
+    (enable-timer 23 10)      
+    
 )
 
