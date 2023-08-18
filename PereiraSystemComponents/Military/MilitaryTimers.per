@@ -184,11 +184,12 @@
 
 (defrule (true)
     (timer-triggered 23)
-    (up-compare-goal gotSouthEastPalisadeGates == 0)
+    (or(up-compare-goal gotSouthWestPalisadeGates == 0)
+    (up-compare-goal gotNorthEastPalisadeGates == 0))
 =>
-    (chat-to-all "PROBLEMS WITH SOUTH EAST PALISADE!!!")
-    (generate-random-number 16)(up-get-fact random-number 0 randomNumber)
+    (chat-to-all "PROBLEMS WITH SECONDARY PALISADE!!!")
+    (generate-random-number 1)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint3Y g:- randomNumber)
-    (generate-random-number 16)(up-get-fact random-number 0 randomNumber)
+    (generate-random-number 1)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint2Y g:- randomNumber)        
 )
