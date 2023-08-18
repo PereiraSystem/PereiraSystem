@@ -173,23 +173,24 @@
 
 ;WALL TIMERS
 (defrule
-  (up-compare-goal buildNorthWestMainGates == 1)
-  (up-compare-goal gotNorthWestPalisadeGates == 1)
+  (goal buildNorthWestMainGates 1)
+  (goal gotNorthWestPalisadeGates 1)
 =>
   (enable-timer 23 180)
-  (chat-to-all "WE GOT THE MAIN NW PALISADE! START THE TIMER!")
+  (chat-to-all "WE GOT THE MAIN NORTH WEST PALISADE! START THE TIMER!")
   (disable-self)
 )
 
-
 (defrule (true)
     (timer-triggered 23)
-    (or(up-compare-goal gotSouthWestPalisadeGates == 0)
-    (up-compare-goal gotNorthEastPalisadeGates == 0))
+    (or(goal gotSouthWestPalisadeGates 0)
+    (goal gotNorthEastPalisadeGates 0))
 =>
     (chat-to-all "PROBLEMS WITH SECONDARY PALISADE!!!")
     (generate-random-number 1)(up-get-fact random-number 0 randomNumber)
-    (up-modify-goal outerGatePoint3Y g:- randomNumber)
+    (up-modify-goal outerGatePoint3Y g:+ randomNumber)
+    (up-chat-data-to-all "SOUTH GATE POINT IN %d" outerGatePoint3Y)
     (generate-random-number 1)(up-get-fact random-number 0 randomNumber)
-    (up-modify-goal outerGatePoint2Y g:- randomNumber)        
+    (up-modify-goal outerGatePoint2Y g:+ randomNumber)        
 )
+
