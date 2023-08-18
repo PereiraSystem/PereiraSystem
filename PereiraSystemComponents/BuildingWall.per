@@ -408,7 +408,9 @@
         )
     )
 =>
-    (set-goal buildNorthEastMainGates 1)(disable-self)
+    (set-goal buildNorthEastMainGates 1)
+    (chat-to-all "CITY ENTRANCE TO THE NORTH EAST!!!")
+    (disable-self)
 )
 (defrule
     (or
@@ -425,7 +427,9 @@
         )
     )
 =>
-    (set-goal buildSouthEastMainGates 1)(disable-self)
+    (set-goal buildSouthEastMainGates 1)
+    (chat-to-all "CITY ENTRANCE TO THE SOUTH EAST!!!")
+    (disable-self)
 )
 (defrule
     (or
@@ -442,7 +446,9 @@
         )
     )
 =>
-    (set-goal buildNorthWestMainGates 1)(disable-self)
+    (set-goal buildNorthWestMainGates 1)
+    (chat-to-all "CITY ENTRANCE TO THE NORTH WEST!!!")    
+    (disable-self)
 )
 (defrule
     (or
@@ -459,7 +465,9 @@
         )
     )
 =>
-    (set-goal buildSouthWestMainGates 1)(disable-self)
+    (set-goal buildSouthWestMainGates 1)
+    (chat-to-all "CITY ENTRANCE TO THE SOUTH WEST!!!")       
+    (disable-self)
 )
 
 ; POS 5 (MIDDLE OF MAP) OWN SECTION
@@ -638,7 +646,7 @@
 
 ; OUTER PALISADE SECTION
 (defrule
-    (false)
+    (true);test---------------------------------------
 =>
     (set-goal buildingOuterWall 1)
     (chat-to-player my-player-number "TIME FOR OUTER WALL")

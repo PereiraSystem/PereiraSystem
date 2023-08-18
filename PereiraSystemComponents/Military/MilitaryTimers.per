@@ -176,8 +176,8 @@
   (up-compare-goal buildNorthWestMainGates == 1)
   (up-compare-goal gotNorthWestPalisadeGates == 1)
 =>
-  (enable-timer 23 120)
-  (chat-to-player my-player-number "WE GOT THE MAIN NW PALISADE! START THE TIMER!")
+  (enable-timer 23 180)
+  (chat-to-all "WE GOT THE MAIN NW PALISADE! START THE TIMER!")
   (disable-self)
 )
 
@@ -186,5 +186,9 @@
     (timer-triggered 23)
     (up-compare-goal gotSouthEastPalisadeGates == 0)
 =>
-    (chat-to-player my-player-number "PROBLEMS WITH SOUTH EAST PALISADE!!!")
+    (chat-to-all "PROBLEMS WITH SOUTH EAST PALISADE!!!")
+    (generate-random-number 16)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal outerGatePoint3Y g:- randomNumber)
+    (generate-random-number 16)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal outerGatePoint2Y g:- randomNumber)        
 )
