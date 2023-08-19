@@ -646,7 +646,7 @@
 
 ; OUTER PALISADE SECTION
 (defrule
-    (true);test---------------------------------------
+    (false);test---------------------------------------
 =>
     (set-goal buildingOuterWall 1)
     (chat-to-player my-player-number "TIME FOR OUTER WALL")
@@ -656,7 +656,7 @@
 (defrule
     (true)
     (unit-type-count villager > 10)
-    (wood-amount > 400)
+    (wood-amount > 450)
     (building-type-count town-center > 0)
     (building-type-count barracks > 0)
     (or(building-type-count archery-range > 0)(building-type-count stable > 0))
