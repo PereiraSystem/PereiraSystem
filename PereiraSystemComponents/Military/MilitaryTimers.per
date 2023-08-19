@@ -185,15 +185,34 @@
     (timer-triggered 23)
     (or(goal gotSouthWestPalisadeGates 0)
     (goal gotNorthEastPalisadeGates 0))
+    (up-compare-goal movingGatesEast < 16)
 =>
-    (chat-to-all "PROBLEMS WITH SECONDARY PALISADE!!!")
-    (generate-random-number 1)(up-get-fact random-number 0 randomNumber)
-    (up-modify-goal outerGatePoint3Y g:+ randomNumber)
+    (chat-to-all "PROBLEMS WITH SECONDARY PALISADE, LETS TRY TO MOVE GATES TO EAST!!!")
+    (up-modify-goal outerGatePoint3Y g:+ 1)
     (up-chat-data-to-all "SOUTH GATE POINT IN %d" g: outerGatePoint3Y)
-    (generate-random-number 1)(up-get-fact random-number 0 randomNumber)
-    (up-modify-goal outerGatePoint2Y g:+ randomNumber)
+
+    (up-modify-goal outerGatePoint2Y g:+ 1)
+    (up-modify-goal movingGatesEast g:+ 1)    
     (disable-timer 23)
     (enable-timer 23 10)      
     
 )
 
+(defrule (true)
+    (timer-triggered 23)
+    (or(goal gotSouthWestPalisadeGates 0)
+    (goal gotNorthEastPalisadeGates 0))
+    (up-compare-goal movingGatesEast >= 16)
+=>
+    (chat-to-all "PROBLEMS WITH SECONDARY PALISADE, LETS TRY TO MOVE GATES TO WEST!!!")
+    (generate-random-number 2)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal outerGatePoint3Y g:- 1)
+    (up-chat-data-to-all "SOUTH GATE POINT IN %d" g: outerGatePoint3Y)
+
+    (generate-random-number 2)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal outerGatePoint2Y g:- 1)
+    (up-modify-goal movingGatesEast g:+ 1)    
+    (disable-timer 23)
+    (enable-timer 23 10)      
+    
+)
