@@ -384,7 +384,7 @@
     (can-build university)
 =>
     (build university)
-    ;(chat-to-player my-player-number "UNIVERSITY - NORMAL")
+    (chat-to-player my-player-number "UNIVERSITY - NORMAL")
 )
 
 (defrule
@@ -398,8 +398,24 @@
     (building-type-count-total university == 0)
     (up-can-build 0 c: university)
 =>
-    (chat-local-to-self "Trying To Build University")
-    (up-set-placement-data my-player-number town-center c: 40)
+    (chat-local-to-self "UNIVERSITY - PLACE CONTROL 1")
+    (up-set-placement-data my-player-number town-center c: 35)
+    (up-build place-control 0 c: university)
+)
+
+(defrule
+    (building-type-count town-center > 0)
+    (players-building-type-count any-ally monastery > 0)
+    (building-type-count-total market > 0)
+    (or(unit-type-count villager > 24)
+    (building-type-count-total siege-workshop > 0))
+    (research-completed ri-hand-cart)
+    (research-completed ri-bow-saw)
+    (building-type-count-total university == 0)
+    (up-can-build 0 c: university)
+=>
+    (chat-local-to-self "UNIVERSITY - PLACE CONTROL 2")
+    (up-set-placement-data my-player-number town-center c: -45)
     (up-build place-control 0 c: university)
 )
 ; DOCK
