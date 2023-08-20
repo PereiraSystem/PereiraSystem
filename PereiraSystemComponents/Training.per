@@ -237,7 +237,7 @@
 =>
     (train missionary)
 )
-; MONKS FOR RELIC TRANSFUSION
+; MONKS FOR RELIC TRANSFER
 (defrule
     (or
         (civ-selected burgundians)(civ-selected aztec)
@@ -257,7 +257,7 @@
 ; CASTLE
 ; TREBUCHET
 (defrule
-    (or(military-population > 20)(enemy-buildings-in-town))
+    ;(or(military-population > 20)(enemy-buildings-in-town))
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
         (unit-type-count-total 954 g:< trebuchetsQtyLow)
