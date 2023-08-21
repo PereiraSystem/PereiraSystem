@@ -1,5 +1,66 @@
 ; TRAINING -------------------------------------------------------
 (defrule(true)=>(chat-local-to-self "> 5. Training Loaded")(disable-self))
+; TREBUCHET
+(defrule
+    (unit-type-count trebuchet < 10)
+    (can-train trebuchet)
+=>
+    (train trebuchet)
+)
+
+(defrule
+    (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
+    (can-train trebuchet)
+=>
+    (train trebuchet)
+)
+
+(defrule
+    ;(or(military-population > 20)(enemy-buildings-in-town))
+    (and
+        (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
+        (unit-type-count-total 954 g:< trebuchetsQtyLow)
+    )
+    (not(civ-selected gothic))
+    (not
+        (and(civ-selected bohemians)(can-train bombard-cannon))
+    )
+    (not
+        (and(civ-selected burgundians)(can-train bombard-cannon))
+    )
+    (not(up-research-status c: 787 == research-available))
+    (can-train trebuchet)
+=>
+    (train trebuchet)
+)
+(defrule
+    (civ-selected hun)
+    (and
+        (unit-type-count-total trebuchet g:< trebuchetsQtyMedium)
+        (unit-type-count-total 954 g:< trebuchetsQtyMedium)
+    )
+    (can-train trebuchet)
+=>
+    (train trebuchet)
+)
+(defrule
+    (or
+        (or
+            (and(civ-selected tatars)(research-completed my-unique-research))
+            (and(civ-selected japanese)(research-completed my-unique-research))
+        )
+        (and(civ-selected briton)(research-completed my-unique-research))
+    )
+    (and
+        (unit-type-count-total trebuchet g:< trebuchetsQtyHigh)
+        (unit-type-count-total 954 g:< trebuchetsQtyHigh)
+    )
+    ;(wood-amount > 1000)(gold-amount > 1000)
+    (can-train trebuchet)
+=>
+    (train trebuchet)
+)
+
 ; CIVILIAN UNITS
 ; VILLAGERS
 (defrule
