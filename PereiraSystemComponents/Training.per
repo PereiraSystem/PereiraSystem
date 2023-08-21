@@ -257,6 +257,20 @@
 ; CASTLE
 ; TREBUCHET
 (defrule
+    (unit-type-count trebuchet < 10)
+    (can-train trebuchet)
+=>
+    (train trebuchet)
+)
+
+(defrule
+    (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
+    (can-train trebuchet)
+=>
+    (train trebuchet)
+)
+
+(defrule
     ;(or(military-population > 20)(enemy-buildings-in-town))
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
@@ -296,7 +310,7 @@
         (unit-type-count-total trebuchet g:< trebuchetsQtyHigh)
         (unit-type-count-total 954 g:< trebuchetsQtyHigh)
     )
-    (wood-amount > 1000)(gold-amount > 1000)
+    ;(wood-amount > 1000)(gold-amount > 1000)
     (can-train trebuchet)
 =>
     (train trebuchet)
