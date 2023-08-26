@@ -116,13 +116,13 @@
     (up-players-in-game enemy > 0)
     (military-population > 0)
 =>
-	(disable-timer 21)
+	  (disable-timer 21)
     (enable-timer 21 60)
     (set-strategic-number sn-number-attack-groups 1)
     (set-strategic-number sn-minimum-attack-group-size 50)
     (set-strategic-number sn-maximum-attack-group-size 150)
     (set-strategic-number sn-percent-attack-soldiers 100)
-	(set-strategic-number sn-garrison-rams 1)
+	  (set-strategic-number sn-garrison-rams 1)
     (set-strategic-number sn-target-player-number 0)
     (set-goal weAreAttacking 1)
     (attack-now)
@@ -146,12 +146,12 @@
     (population-headroom == 0)
     (housing-headroom == 0)
 =>
-	(disable-timer 22)
+	  (disable-timer 22)
     (enable-timer 22 30)
-    (chat-local-to-self ">>> Final Attack! No Retreating*!")
+    (chat-local-to-self ">>> ATTACK!")
     (set-strategic-number sn-number-attack-groups 1)
-    (set-strategic-number sn-minimum-attack-group-size 1)
-    (set-strategic-number sn-maximum-attack-group-size 150)
+    (set-strategic-number sn-minimum-attack-group-size 50)
+    (set-strategic-number sn-maximum-attack-group-size 1000)
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-strategic-number sn-maximum-town-size 512)
     ;(set-goal weAreAttacking 1)
@@ -161,14 +161,15 @@
 
 ; RETREAT
 (defrule
-	(current-age == imperial-age)(up-players-in-game enemy > 0)
-  (military-population < 2)
+  (game-time > 1800)
+	(up-players-in-game enemy > 0)
+  (military-population < 50)
   (players-building-type-count focus-player castle > 0)
 =>
 	(up-retreat-now)
   (set-strategic-number sn-task-ungrouped-soldiers 1)
   (chat-to-allies "45 I Have No Soldiers To Destroy A Castle!")
-	(disable-self)
+  (chat-local-to-self "<<< RETREAT!")
 )
 
 ;WALL TIMERS

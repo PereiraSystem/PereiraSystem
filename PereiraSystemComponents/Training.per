@@ -3,23 +3,13 @@
 ; TREBUCHET
 
 (defrule
-    (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
+    (unit-type-count trebuchet g:< trebuchetsQtyLow); COUNT TOTAL?
     (military-population > 30)    
     (can-train trebuchet)
 =>
     (train trebuchet)
     (chat-to-player my-player-number "VARIABLE QTY TREB")
 )
-
-(defrule
-    (unit-type-count trebuchet < 10)
-    (military-population > 30)
-    (can-train trebuchet)
-=>
-    (train trebuchet)
-    (chat-to-player my-player-number "FIXED QTY TREB")
-)
-
 
 
 (defrule
