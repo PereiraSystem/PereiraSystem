@@ -37,15 +37,18 @@
 =>
     (up-set-offense-priority c: university c: 1)
     (up-set-offense-priority c: blacksmith c: 1)
-    (up-set-offense-priority c: lumber-camp c: 2)
-    (up-set-offense-priority c: mining-camp c: 2)
-    (up-set-offense-priority c: siege-workshop c: 3)
-    (up-set-offense-priority c: house c: 4)
-    (up-set-offense-priority c: villager c: 4)
+    (up-set-offense-priority c: farm c: 1)       
+    (up-set-offense-priority c: lumber-camp c: 1)
+    (up-set-offense-priority c: mining-camp c: 1)
+    (up-set-offense-priority c: siege-workshop c: 1)
+    (up-set-offense-priority c: house c: 1)
+    (up-set-offense-priority c: villager c: 1)
+    (up-set-offense-priority c: dock c: 4)    
     (up-set-offense-priority c: town-center c: 5)
-    (up-set-offense-priority c: castle c: 6)
-    (up-set-offense-priority c: cavalry-class c: 11)
-    (up-set-offense-priority c: archery-class c: 5)
+    (up-set-offense-priority c: cavalry-class c: 10)
+    (up-set-offense-priority c: archery-class c: 9) 
+    (up-set-offense-priority c: castle c: 11)
+
     (disable-self)
 )
 ; ATTACK
@@ -83,7 +86,7 @@
 (defrule
     (true)
 =>
-    (set-strategic-number sn-group-form-distance 24) ;def 20
+    (set-strategic-number sn-group-form-distance 30) ;24 20
     (set-strategic-number sn-attack-group-gather-spacing 2)
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-strategic-number sn-attack-group-size-randomness 0)
@@ -107,7 +110,7 @@
 (defrule
     (up-players-in-game enemy > 0)
 =>
-    (enable-timer 21 2400)
+    (enable-timer 21 3000)
     (disable-self)
 )
 ; ATTACK!

@@ -219,3 +219,9 @@
     (up-modify-goal knightsQtyLow c:+ 5)
     (disable-self)
 )
+
+(defrule
+  (population-cap == 125)
+=>
+  (disable-self)
+)
