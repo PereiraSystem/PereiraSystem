@@ -3,8 +3,9 @@
 ; TREBUCHET
 
 (defrule
-    (unit-type-count trebuchet g:< trebuchetsQtyLow); COUNT TOTAL?
-    (military-population > 30)    
+    (unit-type-count-total trebuchet g:< trebuchetsQtyLow); 
+    (unit-type-count-total 954 g:< trebuchetsQtyLow); 
+    (military-population > 39)    
     (can-train trebuchet)
 =>
     (train trebuchet)
