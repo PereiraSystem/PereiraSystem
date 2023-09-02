@@ -1,3 +1,10 @@
+(defrule
+    (generate-random-number 100)(up-get-fact random-number 0 randomNumber)
+=>
+    (up-modify-goal chanceOfBuildingWall g:+ randomNumber)
+    (up-chat-data-to-self "REAL CHANCE OF BUILDING WALL : %d" g: chanceOfBuildingWall)    
+    (disable-self)
+)
 
 (defrule
     (true)
@@ -654,7 +661,7 @@
 )
 
 (defrule
-    (true)
+    (up-compare-goal chanceOfBuildingWall > 99)
     (unit-type-count villager > 10)
     (wood-amount > 450)
     (building-type-count town-center > 0)
