@@ -445,14 +445,17 @@
 )
 ; DOCK
 (defrule
-    (building-type-count-total dock == 0)
-    (can-build dock)
+  (goal avoidBuildingDocks 0)
+  (building-type-count-total dock == 0)
+  (can-build dock)
 =>
     (chat-local-to-self "Trying To Build Dock 1 - Place Control")
     (up-set-placement-data my-player-number town-center c: -16)
     (up-build place-control 0 c: dock)
 )
+
 (defrule
+  (goal avoidBuildingDocks 0)
     (building-type-count-total dock == 0)
     (can-build dock)
 =>
@@ -460,6 +463,7 @@
     (build dock)
 )
 (defrule
+  (goal avoidBuildingDocks 0)
     (current-age == castle-age)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)
@@ -472,6 +476,7 @@
     (chat-local-to-self "Trying To Build Dock 2 - Place Control")
 )
 (defrule
+  (goal avoidBuildingDocks 0)
     (current-age == castle-age)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)
@@ -483,6 +488,7 @@
     (build dock)
 )
 (defrule
+  (goal avoidBuildingDocks 0)
     (current-age == imperial-age)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)

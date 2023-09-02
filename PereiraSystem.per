@@ -1,38 +1,39 @@
 ; PEREIRA SYSTEM AI - AGE OF EMPIRES II DEFINITIVE
 
-; 1 CONSTANTS
-(load "main/PereiraSystemComponents/Constants/ConstantsMain");1 to 35
-(load "main/PereiraSystemComponents/Constants/ConstantsCivCharacteristics");35 to 50
-(load "main/PereiraSystemComponents/Constants/ConstantsFacts");70 to 120
-(load "main/PereiraSystemComponents/Constants/ConstantsBuilding");120 to 170
+; CONSTANTS - 7 FILES
+(load "main/Components/Constants/ConstantsMain");1 to 50
+(load "main/Components/Constants/ConstantsCivCharacteristics");50 to 70
+(load "main/Components/Constants/ConstantsFacts");70 to 120
+(load "main/Components/Constants/ConstantsBuilding");120 to 170
+(load "main/Components/Constants/ConstantsCosts");300 to 350
+(load "main/Components/Constants/ConstantsDetecting");350 to 380
+(load "main/Components/Constants/ConstantsTraining");380 to 512
 
+; STRATEGIC NUMBERS - 2 FILES
+(load "main/Components/StrategicNumbers/Civilian_SN")
+(load "main/Components/StrategicNumbers/Military_SN")
 
-(load "main/PereiraSystemComponents/Constants/ConstantsCosts");300 to 350
-(load "main/PereiraSystemComponents/Constants/ConstantsDetecting");350 to 380
-(load "main/PereiraSystemComponents/Constants/ConstantsTraining");380 to 512
+; BUILDING ACTIONS - 2 FILES
+(load "main/Components/Building/BuildingMain")
+(load "main/Components/Building/BuildingWall")
 
-(load "main/PereiraSystemComponents/StrategicNumbers")
+; OTHER IMPORTANT ACTIONS - 4 FILES
+(load "main/Components/Detecting")
+(load "main/Components/Training")
+(load "main/Components/Researching")
+(load "main/Components/Trade")
 
-(load "main/PereiraSystemComponents/Taunts")
+; GAME VARIABLES (MAP TYPE, DIFFICULTY - MAP SIZE IN BUILDING WALL)
+(load "main/Components/GameVariables/Difficulty")
 
-(load "main/PereiraSystemComponents/Building")
-(load "main/PereiraSystemComponents/BuildingWall")
+; TIMERS -2 FILES
+(load "main/Components/Timers_civilian")
+(load "main/Components/Timers/Timers_military")
 
-(load "main/PereiraSystemComponents/Training")
-
-(load "main/PereiraSystemComponents/Trade")
-
-(load "main/PereiraSystemComponents/Detecting")
-
-(load "main/PereiraSystemComponents/Researching")
-
-(load "main/PereiraSystemComponents/Timers_civilian")
-
-(load "main/PereiraSystemComponents/Military/MilitaryTimers")
-(load "main/PereiraSystemComponents/Military/Difficulty")
-
-
-(load "main/PereiraSystemComponents/Testing")
+; OTHER - 2 FILES
+; TAUNTS
+(load "main/Components/Taunts")
+(load "main/Components/Testing")
 
 
 ; I use the cheat for making things faster sometimes

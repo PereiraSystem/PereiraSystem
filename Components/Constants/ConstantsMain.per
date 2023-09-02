@@ -1,0 +1,42 @@
+; CONSTANTS 1 TO 50
+(defconst randomNumber 1)
+
+(defconst weMovedPlace 2) ;for experimental move to the coast tactic
+(defconst weHaveTownCenterAndWoodForLC 3)
+(defconst weHaveBarracksAndSomeVillagers 4)
+(defconst weHaveArcheryOrStableAndSomeSoldiers 5)
+(defconst weAreAttacking 6)
+
+(defconst avoidBuildingDocks 10)
+
+(defrule
+  (or
+    (or
+      (or(map-type acropolis)(map-type acropolis)); alpine lakes doesnt work
+      (or(map-type arabia)(map-type atacama))
+    )
+    (or
+      (or(map-type baltic)(map-type black-forest))
+      (or(map-type bog-islands)(map-type budapest))
+    )
+  )  
+=>
+  (set-goal avoidBuildingDocks 1)
+  (disable-self)
+)
+
+(defrule
+  (or
+    (or
+      (or(map-type cenotes)(map-type coastal))
+      (or(map-type coastal-forest)(map-type crater-lake))
+    )
+    (or
+      (or(map-type crossroads)(map-type arabia))
+      (or(map-type black-forest)(map-type cenotes))
+    )
+  )  
+=>
+  (set-goal avoidBuildingDocks 1)
+  (disable-self)
+)
