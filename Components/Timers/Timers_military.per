@@ -4,7 +4,7 @@
 (defrule
     (up-players-in-game enemy > 0)
 =>
-    (enable-timer 21 3000)
+    (enable-timer 21 c: secondsUntilFirstAttack)
     (disable-self)
 )
 ; ATTACK!
@@ -25,6 +25,7 @@
     (attack-now)
     (chat-to-allies "31 Attack!")
 )
+
 (defrule
     (military-population > 25)
     (not(town-under-attack))
