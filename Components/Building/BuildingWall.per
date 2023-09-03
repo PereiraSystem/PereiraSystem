@@ -7,8 +7,11 @@
     (disable-self)
 )
 
-(defrule(up-compare-goal chanceOfBuildingWall >= 100)=>(chat-local-to-self "NOT BUILDING WALLS!"))
-(defrule(up-compare-goal chanceOfBuildingWall < 100)=>(chat-local-to-self "BUILDING WALLS!"))
+(defrule(up-compare-goal chanceOfBuildingWall >= 100)
+=>(chat-to-player my-player-number "NOT BUILDING WALLS!")(disable-self))
+
+(defrule(up-compare-goal chanceOfBuildingWall < 100)
+=>(chat-to-player my-player-number "BUILDING WALLS!")(disable-self))
 
 
 (defrule
