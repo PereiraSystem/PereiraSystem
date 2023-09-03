@@ -104,7 +104,7 @@
   (disable-self)
 )
 
-; SECONDS UNTIL FIRST ATTACK
+; SECONDS UNTIL FIRST ATTACK ----------------
 ; FIXED (ludicrous not recognized)
 
 (defrule(true)=>(set-goal secondsUntilFirstAttack 3600)(disable-self))
@@ -129,9 +129,6 @@
     (set-goal secondsUntilFirstAttack 60)
     (generate-random-number 1700)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal secondsUntilFirstAttack c:+ random-number)
-    (up-modify-goal minutesUntilFirstAttack c:= secondsUntilFirstAttack)
-    (up-modify-goal minutesUntilFirstAttack c:/ 60)    
-    (up-chat-data-to-self "FIRST ATTACK IN %d MINUTES!!!" c: minutesUntilFirstAttack)
     (disable-self)
 )
 ; MSG

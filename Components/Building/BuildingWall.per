@@ -3,7 +3,7 @@
 =>    
     (generate-random-number 100)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal chanceOfBuildingWall g:+ randomNumber)
-    (up-chat-data-to-self "REAL CHANCE OF BUILDING WALL : %d" g: chanceOfBuildingWall)    
+    (up-chat-data-to-self "BUILDING WALL INDEX : %d" g: chanceOfBuildingWall)    
     (disable-self)
 )
 
@@ -662,7 +662,7 @@
 )
 
 (defrule
-    (up-compare-goal chanceOfBuildingWall > 99)
+    (up-compare-goal chanceOfBuildingWall >= 100)
     (unit-type-count villager > 10)
     (wood-amount > 450)
     (building-type-count town-center > 0)
@@ -916,7 +916,7 @@
     (or(building-type-count castle > 0)(building-type-count university > 0))
     (or(game-time > 600)(cheats-enabled))
     (stone-amount > 400)
-    (up-compare-goal chanceOfBuildingWall > 99)
+    (up-compare-goal chanceOfBuildingWall >= 100)
     (up-enemy-units-in-town < 3)
 =>
     (set-goal buildingInnerWall 1)
