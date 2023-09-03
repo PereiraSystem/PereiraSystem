@@ -84,7 +84,7 @@
     (timer-triggered 23)
     (or(goal gotSouthWestPalisadeGates 0)
     (goal gotNorthEastPalisadeGates 0))
-    (up-compare-goal movingGatesEast < 16)
+    (up-compare-goal movingGatesEast < 12)
 =>
     (chat-to-all "PROBLEMS WITH SECONDARY PALISADE, LETS TRY TO MOVE GATES TO EAST!!!")
     (up-modify-goal outerGatePoint3Y g:+ 1)
@@ -101,7 +101,7 @@
     (timer-triggered 23)
     (or(goal gotSouthWestPalisadeGates 0)
     (goal gotNorthEastPalisadeGates 0))
-    (up-compare-goal movingGatesEast >= 16)
+    (up-compare-goal movingGatesEast >= 12)
 =>
     (chat-to-all "PROBLEMS WITH SECONDARY PALISADE, LETS TRY TO MOVE GATES TO WEST!!!")
     (generate-random-number 2)(up-get-fact random-number 0 randomNumber)
