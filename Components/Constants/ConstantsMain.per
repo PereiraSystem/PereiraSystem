@@ -10,6 +10,10 @@
 (defconst avoidBuildingDocks 10)
 
 (defconst minAttackGroupSize 20)
+(defconst secondsUntilFirstAttack 21)
+
+
+; AVOID DOCKS - 10
 
 (defrule
   (or
@@ -43,7 +47,7 @@
   (disable-self)
 )
 
-; CHANGE SOME VARIABLES ACCORDING TO MAP SIZE
+; MIN ATTACK GP SIZE - 20
 (defrule
   (population-cap == 25)
   =>
@@ -98,4 +102,19 @@
   =>
   (set-goal minAttackGroupSize 40)
   (disable-self)
+)
+
+; SECONDS UNTIL FIRST ATTACK
+(defrule
+    (true)
+=>  
+    (set-goal secondsUntilFirstAttack 60)
+    (disable-self)
+)
+
+(defrule
+    (true)
+=>  (generate-random-number 1700)(up-get-fact random-number 0 randomNumber)
+    (up-modify-goal secondsUntilFirstAttack c:+ random-number)
+    (disable-self)
 )
