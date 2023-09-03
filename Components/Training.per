@@ -5,7 +5,7 @@
 (defrule
     (unit-type-count-total trebuchet g:< trebuchetsQtyLow); 
     (unit-type-count-total 954 g:< trebuchetsQtyLow); 
-    (military-population > 39)    
+    (military-population g:> minAttackGroupSize)    
     (can-train trebuchet)
 =>
     (train trebuchet)
