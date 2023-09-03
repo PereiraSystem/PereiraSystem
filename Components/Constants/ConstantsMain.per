@@ -105,16 +105,28 @@
 )
 
 ; SECONDS UNTIL FIRST ATTACK
-(defrule
-    (true)
-=>  
-    (set-goal secondsUntilFirstAttack 60)
-    (disable-self)
-)
+; FIXED
 
+(defrule(map-size tiny)=>(set-goal secondsUntilFirstAttack 600)(disable-self))
+
+(defrule(map-size small)=>(set-goal secondsUntilFirstAttack 1200)(disable-self))
+
+(defrule(map-size medium)=>(set-goal secondsUntilFirstAttack 1500)(disable-self))
+
+(defrule(map-size normal)=>(set-goal secondsUntilFirstAttack 1800)(disable-self))
+
+(defrule(map-size large)=>(set-goal secondsUntilFirstAttack 2400)(disable-self))
+
+(defrule(map-size giant)=>(set-goal secondsUntilFirstAttack 3000)(disable-self))
+
+(defrule(map-size ludicrous)=>(set-goal secondsUntilFirstAttack 3600)(disable-self))
+
+; RANDOM
 (defrule
-    (true)
-=>  (generate-random-number 1700)(up-get-fact random-number 0 randomNumber)
+    (false)
+=>     
+    (set-goal secondsUntilFirstAttack 60)
+    (generate-random-number 1700)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal secondsUntilFirstAttack c:+ random-number)
     (up-modify-goal minutesUntilFirstAttack c:= secondsUntilFirstAttack)
     (up-modify-goal minutesUntilFirstAttack c:/ 60)    
