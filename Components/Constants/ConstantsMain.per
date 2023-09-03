@@ -135,8 +135,8 @@
 (defrule
     (true)
 =>     
-    (up-modify-goal minutesUntilFirstAttack c:= secondsUntilFirstAttack)
-    (up-modify-goal minutesUntilFirstAttack c:/ 60)    
-    (up-chat-data-to-self "FIRST ATTACK IN %d MINUTES!!!" c: minutesUntilFirstAttack)
+    (up-modify-goal minutesUntilFirstAttack g:= secondsUntilFirstAttack)
+    (up-modify-goal minutesUntilFirstAttack c:/ 60)       
+    (up-chat-data-to-self "FIRST ATTACK IN %d MINUTES!!!" g: minutesUntilFirstAttack)
     (disable-self)
 )
