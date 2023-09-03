@@ -9,6 +9,8 @@
 
 (defconst avoidBuildingDocks 10)
 
+(defconst minAttackGroupSize 20)
+
 (defrule
   (or
     (or
@@ -38,5 +40,62 @@
   )  
 =>
   (set-goal avoidBuildingDocks 1)
+  (disable-self)
+)
+
+; CHANGE SOME VARIABLES ACCORDING TO MAP SIZE
+(defrule
+  (population-cap == 25)
+  =>
+  (set-goal minAttackGroupSize 5)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 50)
+  =>
+  (set-goal minAttackGroupSize 10)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 75)
+  =>
+  (set-goal minAttackGroupSize 15)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 100)
+  =>
+  (set-goal minAttackGroupSize 20)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 125)
+  =>
+  (set-goal minAttackGroupSize 25)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 150)
+  =>
+  (set-goal minAttackGroupSize 30)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 175)
+  =>
+  (set-goal minAttackGroupSize 35)
+  (disable-self)
+)
+
+(defrule
+  (population-cap > 175)
+  =>
+  (set-goal minAttackGroupSize 40)
   (disable-self)
 )
