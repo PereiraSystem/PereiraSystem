@@ -11,7 +11,7 @@
 
 (defconst minAttackGroupSize 20)
 (defconst secondsUntilFirstAttack 21)
-
+(defconst minutesUntilFirstAttack 22); for info only
 
 ; AVOID DOCKS - 10
 
@@ -116,5 +116,8 @@
     (true)
 =>  (generate-random-number 1700)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal secondsUntilFirstAttack c:+ random-number)
+    (up-modify-goal minutesUntilFirstAttack c:= secondsUntilFirstAttack)
+    (up-modify-goal minutesUntilFirstAttack c:/ 60)    
+    (up-chat-data-to-self "FIRST ATTACK IN %d MINUTES!!!" minutesUntilFirstAttack)
     (disable-self)
 )
