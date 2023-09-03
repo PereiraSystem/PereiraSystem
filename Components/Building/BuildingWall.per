@@ -912,11 +912,12 @@
 )
 
 (defrule
-    (true)
     (current-age >= castle-age)(building-type-count town-center > 0)
     (or(building-type-count castle > 0)(building-type-count university > 0))
     (or(game-time > 600)(cheats-enabled))
     (stone-amount > 400)
+    (up-compare-goal chanceOfBuildingWall > 99)
+    (up-enemy-units-in-town < 3)
 =>
     (set-goal buildingInnerWall 1)
     (chat-local-to-self "TIME FOR INNER WALL")
