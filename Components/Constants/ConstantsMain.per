@@ -118,6 +118,6 @@
     (up-modify-goal secondsUntilFirstAttack c:+ random-number)
     (up-modify-goal minutesUntilFirstAttack c:= secondsUntilFirstAttack)
     (up-modify-goal minutesUntilFirstAttack c:/ 60)    
-    (up-chat-data-to-self "FIRST ATTACK IN %d MINUTES!!!" minutesUntilFirstAttack)
+    (up-chat-data-to-self "FIRST ATTACK IN %d MINUTES!!!" c: minutesUntilFirstAttack)
     (disable-self)
 )
