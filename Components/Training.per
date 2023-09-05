@@ -179,7 +179,7 @@
 (defrule
     (current-age == imperial-age)
     (or(players-building-type-count any-ally market  > 0)
-    (up-gaia-type-count-total market > 0))
+    ;(players-building-type-count GAIA market > 0)) ; neutralmarket in michi map
     (unit-type-count-total trade-cart g:< tradeCartsQty)
     (civilian-population < 100)(military-population > 50)
 =>
