@@ -162,7 +162,7 @@
     (or(players-building-type-count any-ally market  > 0)
     (players-building-type-count any-computer-neutral market > 0))
     (unit-type-count-total trade-cart < 3)
-    (civilian-population < 100)
+    (civilian-population < g: maxCiviliansImperialAge); does not include fishships!!
     (military-population > 4)
     (can-train trade-cart)
 =>
@@ -173,7 +173,7 @@
     (or(players-building-type-count any-ally market  > 0)
     (players-building-type-count any-computer-neutral market > 0))
     (unit-type-count-total trade-cart < 6)
-    (civilian-population < 100)
+    (civilian-population < g: maxCiviliansImperialAge)
     (military-population > 8)
     (can-train trade-cart)
 =>
@@ -184,7 +184,8 @@
     (or(players-building-type-count any-ally market  > 0)
     (players-building-type-count any-computer-neutral market > 0)) ; neutralmarket in michi map
     (unit-type-count-total trade-cart g:< tradeCartsQty)
-    (civilian-population < 100)(military-population > 50)
+    (civilian-population < g: maxCiviliansImperialAge)
+    (military-population > 50)
 =>
 	(train trade-cart)
 )
