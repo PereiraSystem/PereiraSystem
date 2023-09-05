@@ -148,7 +148,8 @@
     (building-type-count monastery > 0))
     (or(building-type-count university > 0)
     (building-type-count monastery > 0))
-    (players-building-type-count any-ally market > 0)
+    (or(players-building-type-count any-ally market  > 0)
+    (players-building-type-count any-computer-neutral market > 0))
     (unit-type-count-total trade-cart < 3)
     (wood-amount > 250)
     (military-population > 10)
@@ -158,7 +159,8 @@
 )
 (defrule
     (or(current-age == imperial-age)(up-research-status c: imperial-age == research-pending))
-    (players-building-type-count any-ally market > 0)
+    (or(players-building-type-count any-ally market  > 0)
+    (players-building-type-count any-computer-neutral market > 0))
     (unit-type-count-total trade-cart < 3)
     (civilian-population < 100)
     (military-population > 4)
@@ -168,7 +170,8 @@
 )
 (defrule
     (or(current-age == imperial-age)(up-research-status c: imperial-age == research-pending))
-    (players-building-type-count any-ally market > 0)
+    (or(players-building-type-count any-ally market  > 0)
+    (players-building-type-count any-computer-neutral market > 0))
     (unit-type-count-total trade-cart < 6)
     (civilian-population < 100)
     (military-population > 8)
@@ -179,7 +182,7 @@
 (defrule
     (current-age == imperial-age)
     (or(players-building-type-count any-ally market  > 0)
-    ;(players-building-type-count GAIA market > 0)) ; neutralmarket in michi map
+    (players-building-type-count any-computer-neutral market > 0)) ; neutralmarket in michi map
     (unit-type-count-total trade-cart g:< tradeCartsQty)
     (civilian-population < 100)(military-population > 50)
 =>
