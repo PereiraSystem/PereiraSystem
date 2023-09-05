@@ -39,8 +39,16 @@
 
 
 ; I use the cheat for making things faster sometimes
-(defrule (false)
+(defrule (true)
     (cheats-enabled)
 =>
     (up-cc-send-cheat "AEGIS")
+)
+
+
+(defrule (true)
+
+=>
+  (up-chat-data-to-self "CAMEL QTY HIGH = %d" g: camelQtyHigh)
+  (disable-self)
 )
