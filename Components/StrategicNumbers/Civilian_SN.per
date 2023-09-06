@@ -447,14 +447,14 @@
 )
 ; CHANGE PERCENTAGES WHEN TOO MANY OF SOMETHING - THEY TEND TO GET MORE GOLD THAN NEEDED
 ; EXCESS FOOD
-(defrule
-    (food-amount > 2500)(wood-amount < 500)
-=>
-    (up-modify-sn sn-food-gatherer-percentage c: -16)
-    (up-modify-sn sn-wood-gatherer-percentage c: +16)
-    (chat-local-to-self  "We Need More Wood, Less Food")
-    (disable-self)
-)
+;(defrule
+;    (food-amount > 2500)(wood-amount < 500)
+;=>
+;    (up-modify-sn sn-food-gatherer-percentage c: -16)
+;    (up-modify-sn sn-wood-gatherer-percentage c: +16)
+;    (chat-local-to-self  "We Need More Wood, Less Food")
+;    (disable-self)
+;)
 ;(defrule
 ;    (food-amount > 2600)(gold-amount < 500)
 ;=>
