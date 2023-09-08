@@ -42,6 +42,7 @@
 =>
 	(delete-unit trade-cart)
 )
+
 ; experimental strategy to move the city to the coast
   (defrule (false)
     ; can build dock doesnt really check the water
@@ -72,7 +73,7 @@
     (delete-building farm)(delete-building farm)(delete-building farm)
     (disable-self)
 )
-(defrule
+(defrule (false)
     (up-compare-goal weMovedPlace > 0)
     (building-type-count town-center < 1)
     (building-type-count farm > 0)
@@ -85,7 +86,7 @@
     ;(up-modify-sn sn-stone-gatherer-percentage c: +4)
     (chat-local-to-self "Deleting farms cause no town center")
 )
-(defrule
+(defrule(false)
     (up-compare-goal weMovedPlace > 0)
     (building-type-count town-center > 0)
     (building-type-count dock > 0)

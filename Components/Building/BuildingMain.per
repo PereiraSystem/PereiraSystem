@@ -128,16 +128,17 @@
     (up-modify-sn sn-mill-max-distance c:+ 12)
 )
 (defrule
-	(current-age == imperial-age)(military-population > 40)
-    (resource-found food)(building-type-count-total mill < 24)
-    (or(wood-amount > 9000)(building-type-count-total mill < 5))
+	  (current-age == imperial-age)
+    (military-population > 40)
+    ;(resource-found food)
+    (building-type-count-total mill < 256)
     (dropsite-min-distance food > 3)
-    (wood-amount > 800)
-    (or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
+    (wood-amount > 400)
+    ;(or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (can-build mill)(not(civ-selected khmer))
 =>
     (chat-local-to-self "Trying To Build Mill")
-    (up-modify-sn sn-mill-max-distance c:+ 8)
+    (up-modify-sn sn-mill-max-distance c:+ 12)
     (build mill)
  )
 ; FARMS
@@ -185,11 +186,10 @@
 ; IMPERIAL AGE
 (defrule
 	(current-age == imperial-age)
-    (food-amount < 5000)(wood-amount > 300)
-	(building-type-count-total farm < 32)
-    (can-build farm)
+	(building-type-count-total farm < maxCiviliansImperialAge)
+  (can-build farm)
 =>
-    (build farm)
+  (build farm)
 )
 
 ; HOUSES
