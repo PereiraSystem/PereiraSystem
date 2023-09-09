@@ -829,11 +829,8 @@
 =>
     (train mangonel-line)
 )
-(defrule
-    (or
-        (civ-selected korean)
-        (civ-selected celtic)
-    )
+(defrule ;celts removed
+    (civ-selected korean)
     (current-age == imperial-age)
 	(can-train mangonel-line)
 =>
@@ -951,7 +948,7 @@
     (current-age == imperial-age)(research-completed my-unique-research)
     (can-train scorpion-line)
     (wood-amount > 200)
-    (civ-selected khmer)
+    (or(civ-selected khmer)(civ-selected celtic))
 =>
     (train scorpion-line)
 )
