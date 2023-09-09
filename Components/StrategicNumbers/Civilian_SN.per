@@ -511,7 +511,7 @@
 )
 
 (defrule
-  (wood-amount < 5000)(current-age imperial-age)
+  (wood-amount < 5000)(current-age == imperial-age)
   (game-time > 1800)
 =>
   (set-strategic-number sn-maximum-wood-drop-distance 3)
