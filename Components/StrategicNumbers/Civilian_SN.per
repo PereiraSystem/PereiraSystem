@@ -509,3 +509,13 @@
   ;(set-strategic-number sn-wood-modifier-percentage 0)
   (chat-to-player my-player-number "STOP CUTTING TREES NOW!!!")
 )
+
+(defrule
+  (wood-amount < 5000)(current-age imperial-age)
+  (game-time > 1800)
+=>
+  (set-strategic-number sn-maximum-wood-drop-distance 3)
+  (set-strategic-number sn-wood-gatherer-percentage 45)  
+  ;(set-strategic-number sn-wood-modifier-percentage 0)
+  (chat-to-player my-player-number "START CUTTING TREES NOW!!!")
+)

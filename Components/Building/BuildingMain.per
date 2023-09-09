@@ -46,7 +46,8 @@
 =>
     ;(build town-center)
        (up-set-placement-data my-player-number -1 c: -28)
-    (up-build place-control 0 c: town-center)   (chat-local-to-self "Trying To Build Town Center 3")
+    (up-build place-control 0 c: town-center)
+    (chat-local-to-self "Trying To Build Town Center 3")
 )
 (defrule
 	(current-age == imperial-age)(military-population > 60)(food-amount > 400)
