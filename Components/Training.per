@@ -313,12 +313,6 @@
 )
 ; CASTLE
 ; TREBUCHET
-(defrule
-    (unit-type-count trebuchet < 10)
-    (can-train trebuchet)
-=>
-    (train trebuchet)
-)
 
 (defrule
     (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
@@ -328,7 +322,6 @@
 )
 
 (defrule
-    ;(or(military-population > 20)(enemy-buildings-in-town))
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
         (unit-type-count-total 954 g:< trebuchetsQtyLow)
@@ -345,6 +338,7 @@
 =>
     (train trebuchet)
 )
+
 (defrule
     (civ-selected hun)
     (and
@@ -367,11 +361,12 @@
         (unit-type-count-total trebuchet g:< trebuchetsQtyHigh)
         (unit-type-count-total 954 g:< trebuchetsQtyHigh)
     )
-    ;(wood-amount > 1000)(gold-amount > 1000)
+    (wood-amount > 1000)(gold-amount > 1000)
     (can-train trebuchet)
 =>
     (train trebuchet)
 )
+
 ; PETARD
 (defrule
     (current-age == imperial-age)
@@ -380,6 +375,7 @@
 =>
     (train petard)
 )
+
 ; UNIQUE UNIT
 (defrule ;flemish militia
     (can-train flemish-pikeman)
