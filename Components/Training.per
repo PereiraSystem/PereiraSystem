@@ -5,7 +5,7 @@
 (defrule
     (unit-type-count-total trebuchet g:< trebuchetsQtyLow); 
     (unit-type-count-total 954 g:< trebuchetsQtyLow); 
-    (military-population g:> minAttackGroupSize)    
+    ;(military-population g:> minAttackGroupSize)    
     (can-train trebuchet)
 =>
     (train trebuchet)
@@ -313,9 +313,15 @@
 )
 ; CASTLE
 ; TREBUCHET
-
 (defrule
-    (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
+    (unit-type-count 954 g:< trebuchetsQtyLow)
+    (can-train 954)
+=>
+    (train 954)
+
+)
+(defrule
+    (unit-type-count trebuchet g:< trebuchetsQtyLow)
     (can-train trebuchet)
 =>
     (train trebuchet)
@@ -722,28 +728,25 @@
 	(train my-unique-unit-line)
 )
 ; VIKING UU
-(defrule
+(defrule(false);they are in other section before with limited qty
     (civ-selected viking)
     (not(research-completed my-unique-unit-upgrade))
-	;(current-age == imperial-age)
-	;(unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyMedium)
-    (gold-amount > 100)
+	(unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyMedium)
+    (gold-amount > 600)
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
-    (chat-local-to-self "uu")
 )
 (defrule
     (civ-selected viking)
     (research-completed my-unique-unit-upgrade)
-	;(current-age == imperial-age)
-	;(unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyMedium)
-    ;(gold-amount > 201)
+	(unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyMedium)
+    (gold-amount > 500)
 	(can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
-    (chat-local-to-self "uu 2")
 )
+
 ; SIEGE WORKSHOP
 ; BOMBARD CANNON , trebuchets have better AI
 (defrule
