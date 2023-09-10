@@ -119,21 +119,13 @@
 ; villagers imperial age
 (defrule
     (current-age == imperial-age)(food-amount < 50000)
-    (civilian-population g:< maxCiviliansCastleAge)
-    (can-train villager)
-=>
-    (train villager)
-)
-(defrule
-    (current-age == imperial-age) ;save some food for soldiers after age change
-    (or(military-population > 55)(food-amount > 400))
-    (or(food-amount < 12000)(unit-type-count-total villager < 10))
     (civilian-population g:< maxCiviliansImperialAge)
     (unit-type-count-total villager g:< maxCiviliansImperialAge)
     (can-train villager)
 =>
     (train villager)
 )
+
 ; TRADE CARTS
 (defrule
     (players-building-type-count any-ally market > 0)
