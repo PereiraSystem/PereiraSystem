@@ -948,7 +948,7 @@
     (current-age == imperial-age)(research-completed my-unique-research)
     (can-train scorpion-line)
     (wood-amount > 200)
-    (or(civ-selected khmer)(civ-selected celtic))
+    (civ-selected khmer)
 =>
     (train scorpion-line)
 )
@@ -1897,7 +1897,7 @@
     (train militiaman-line)(disable-self)
 )
 (defrule
-    (can-train militiaman-line)(or(civ-selected incan)(civ-selected aztec))
+    (can-train militiaman-line)(or(civ-selected incan)(civ-selected celtic))
 =>
     (train militiaman-line)(disable-self)
 )
