@@ -1,20 +1,9 @@
 ; TRAINING -------------------------------------------------------
 (defrule(true)=>(chat-local-to-self "> 5. Training Loaded")(disable-self))
+
 ; TREBUCHET
-
 (defrule
-    (unit-type-count-total trebuchet g:< trebuchetsQtyLow); 
-    (unit-type-count-total 954 g:< trebuchetsQtyLow); 
-    ;(military-population g:> minAttackGroupSize)    
-    (can-train trebuchet)
-=>
-    (train trebuchet)
-    (chat-to-player my-player-number "VARIABLE QTY TREB")
-)
-
-
-(defrule
-    ;(or(military-population > 20)(enemy-buildings-in-town))
+    (military-population g:> minAttackGroupSize)    
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
         (unit-type-count-total 954 g:< trebuchetsQtyLow)
@@ -31,6 +20,7 @@
 =>
     (train trebuchet)
 )
+
 (defrule
     (civ-selected hun)
     (and
@@ -41,6 +31,7 @@
 =>
     (train trebuchet)
 )
+
 (defrule
     (or
         (or
