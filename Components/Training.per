@@ -832,7 +832,7 @@
     (current-age == castle-age)
 	(unit-type-count-total battering-ram-line g:< ramQtyLow)
     (enemy-buildings-in-town)
-    (military-population > 25)
+    (military-population > 4)
     (not(civ-selected gothic))
     (can-train battering-ram-line)
 =>
@@ -851,7 +851,8 @@
         )
     )
     (unit-type-count trebuchet-set == 0)
-    (not(can-train trebuchet))
+    ;(not(can-train trebuchet))
+    (military-population g:> minAttackGroupSize)
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
