@@ -802,7 +802,7 @@
 (defrule
     (current-age == imperial-age)
     (gold-amount > 251)
-    ;(not(and(civ-selected bohemians)(can-train bombard-cannon)))
+    (not(and(civ-selected bohemians)(can-train bombard-cannon)))
     (not
         (and(civ-selected burgundians)(can-train bombard-cannon))
     )
@@ -870,13 +870,14 @@
     (current-age == castle-age)
     (can-train scorpion-line)
     (unit-type-count-total scorpion-line g:< scorpionQty)
-    (military-population > 45)
+    (military-population g:> minAttackGroupSize)
     (civ-selected chinese)
 =>
     (train scorpion-line)
 )
 (defrule
     (current-age == imperial-age)
+    (military-population g:> minAttackGroupSize)
     (gold-amount > 245)
     (can-train scorpion-line)
     (unit-type-count-total scorpion-line g:< scorpionQty)
@@ -1673,7 +1674,7 @@
     (current-age == imperial-age)
     (wood-amount > 225)(gold-amount > 245)
     (or(civ-selected ethiopian)(civ-selected ethiopian))
-    (up-compare-goal dudeHasSpearmen == 1)
+    ;(up-compare-goal dudeHasSpearmen == 1)
     (unit-type-count-total archer-line g:< archerQtyHigh)
 	(can-train archer-line)
 =>
