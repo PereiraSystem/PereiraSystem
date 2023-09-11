@@ -840,7 +840,7 @@
 )
 (defrule
     (current-age == imperial-age)
-	(unit-type-count-total battering-ram-line g:< enemyBuildingsInTown)
+	(unit-type-count-total battering-ram-line g:< ramQtyMedium)
     (not(civ-selected gothic))
     (not(civ-selected vietnamese)) ;they block the elephants, maybe put more ele civs here    
     (not
@@ -849,6 +849,16 @@
             (and(gold-amount < 250)(wood-amount < 250))
         )
     )
+    (military-population g:> minAttackGroupSize)
+    (can-train battering-ram-line)
+=>
+	(train battering-ram-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+	(unit-type-count-total battering-ram-line g:< ramQtyHigh)
+    (civ-selected ethiopian)
     (military-population g:> minAttackGroupSize)
     (can-train battering-ram-line)
 =>
