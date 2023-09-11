@@ -842,16 +842,13 @@
     (current-age == imperial-age)
 	(unit-type-count-total battering-ram-line g:< enemyBuildingsInTown)
     (not(civ-selected gothic))
-    (not(civ-selected vietnamese)) ;they block the elephants, maybe put more ele civs here
-    (military-population > 40)
+    (not(civ-selected vietnamese)) ;they block the elephants, maybe put more ele civs here    
     (not
         (and
             (civ-selected bohemians)
             (and(gold-amount < 250)(wood-amount < 250))
         )
     )
-    (unit-type-count trebuchet-set == 0)
-    ;(not(can-train trebuchet))
     (military-population g:> minAttackGroupSize)
     (can-train battering-ram-line)
 =>
@@ -933,6 +930,15 @@
     (can-train scorpion-line)
     (wood-amount > 200)
     (civ-selected khmer)
+=>
+    (train scorpion-line)
+)
+(defrule
+    (current-age == imperial-age)
+    (research-completed my-unique-research) ; is this one torsion engines or the other?
+    (can-train scorpion-line)
+    (wood-amount > 200)
+    (civ-selected ethiopian)
 =>
     (train scorpion-line)
 )
