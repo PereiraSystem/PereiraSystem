@@ -17,7 +17,11 @@
 (defconst minutesUntilFirstAttack 22); for info only
 (defconst weAreAttacking 25)
 
-
+(defrule
+  (true)
+=>
+  (set-goal populationRoomBeforeBuildingHouses 5)
+)  
 
 ; AVOID DOCKS - 10
 
