@@ -196,7 +196,7 @@
 ; HOUSES
 (defrule
     (wood-amount g:> minimumWoodForLC)
-    (and(housing-headroom < 3)(population-headroom > 0))
+    (and(housing-headroom g:<  populationRoomBeforeBuildingHouse)(population-headroom > 0))
     (up-can-build 0 c: house)
 =>
     (chat-local-to-self "Trying To Build House")
