@@ -748,7 +748,7 @@
 )
 (defrule
     (gold-amount > 350) ;trebuchet priority
-	(unit-type-count-total bombard-cannon < 8)
+	(unit-type-count-total bombard-cannon g:< trebuchetsQtyLow)
 	(can-train bombard-cannon)
 =>
 	(train bombard-cannon)

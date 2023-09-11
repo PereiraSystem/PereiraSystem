@@ -129,11 +129,11 @@
     (up-modify-sn sn-mill-max-distance c:+ 12)
 )
 (defrule
-	  (current-age == imperial-age)
+	(current-age == imperial-age)
     (military-population > 40)
     ;(resource-found food)
     (building-type-count-total mill < 256)
-    (dropsite-min-distance food > 3)
+    ;(dropsite-min-distance food > 3)
     (wood-amount > 400)
     ;(or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (can-build mill)(not(civ-selected khmer))
