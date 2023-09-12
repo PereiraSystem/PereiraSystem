@@ -466,15 +466,18 @@
 ;    (chat-local-to-self  "We Need More Gold, Less Food")
 ;    (disable-self)
 ;)
+
 ; EXCESS WOOD
 (defrule
     (wood-amount > 2500)(food-amount < 500)
 =>
     (up-modify-sn sn-wood-gatherer-percentage c: -16)
     (up-modify-sn sn-food-gatherer-percentage c: +16)
-    (chat-local-to-self  "We Need More Food, Less Wood")
+    (chat-local-to-self  "We Need More Food, Less Wood - ")
+    (up-chat-data-to-self "WOOD: %d , FOOD: %d" s: sn-wood-gatherer-percentage s: sn-food-gatherer-percentage)
     (disable-self)
 )
+
 (defrule
     (wood-amount > 2600)(gold-amount < 500)
 =>
