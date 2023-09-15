@@ -473,8 +473,8 @@
 =>
     (up-modify-sn sn-wood-gatherer-percentage c: -16)
     (up-modify-sn sn-food-gatherer-percentage c: +16)
-    (chat-local-to-self  "We Need More Food, Less Wood - ")
-    (up-chat-data-to-self "WOOD: %d , FOOD: %d" s: sn-wood-gatherer-percentage s: sn-food-gatherer-percentage)
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)    
     (disable-self)
 )
 
@@ -505,23 +505,29 @@
 )
 
 (defrule
-  (wood-amount > 200000)(food-amount < 10000)
+    (wood-amount > 200000)(food-amount < 5000)
 =>
-  (set-strategic-number sn-maximum-wood-drop-distance 1)
-  (set-strategic-number sn-wood-gatherer-percentage 0)  
-  ;(set-strategic-number sn-wood-modifier-percentage 0)
-  (chat-to-player my-player-number "STOP CUTTING TREES NOW!!!")
-  (set-goal weStoppedLumberjacks 1)
+    (set-strategic-number sn-maximum-wood-drop-distance 1)
+    (set-strategic-number sn-wood-gatherer-percentage 0)  
+    ;(set-strategic-number sn-wood-modifier-percentage 0)
+    (chat-to-player my-player-number "STOP CUTTING TREES NOW!!!")
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage) 
+    (set-goal weStoppedLumberjacks 1)
 )
 
 (defrule
-  (goal weStoppedLumberjacks 1)
-  (wood-amount < 5000)(current-age == imperial-age)
-  (game-time > 1800)
+    (goal weStoppedLumberjacks 1)
+    (wood-amount < 5000)(current-age == imperial-age)
+    (game-time > 1800)
 =>
-  (set-strategic-number sn-maximum-wood-drop-distance 3); industrial mode = 3 distance
-  (set-strategic-number sn-wood-gatherer-percentage 45)  
-  ;(set-strategic-number sn-wood-modifier-percentage 0)
-  (chat-to-player my-player-number "START CUTTING TREES NOW!!!")
-  (set-goal weStoppedLumberjacks 0)
+    (set-strategic-number sn-maximum-wood-drop-distance 3); industrial mode = 3 distance
+    (set-strategic-number sn-wood-gatherer-percentage 45)  
+    ;(set-strategic-number sn-wood-modifier-percentage 0)
+    (chat-to-player my-player-number "START CUTTING TREES NOW!!!")
+    (up-modify-sn sn-wood-gatherer-percentage c: -16)
+    (up-modify-sn sn-food-gatherer-percentage c: +16)
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)     
+    (set-goal weStoppedLumberjacks 0)
 )
