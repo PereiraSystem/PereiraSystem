@@ -86,7 +86,7 @@
 (defrule
     (true)
 =>
-    (set-strategic-number sn-group-form-distance 30) ;24 20
+    (set-strategic-number sn-group-form-distance 18) ;24 20
     (set-strategic-number sn-attack-group-gather-spacing 2)
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-strategic-number sn-attack-group-size-randomness 0)
@@ -107,3 +107,12 @@
     (set-strategic-number sn-number-boat-explore-groups 2)
     (disable-self)
 )
+
+#load-if-defined POPULATION-CAP-150
+(defrule
+    (true)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 60)
+    (set-strategic-number sn-maximum-attack-group-size 60)
+)
+#end-if
