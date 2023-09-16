@@ -21,9 +21,7 @@
 (defconst lumberCampQtyIncrement 145)
 (defconst miningCampQtyIncrement 146)
 (defconst millQtyIncrement 147)
-(set-goal lumberCampQtyIncrement 1)
-(set-goal miningCampQtyIncrement 1)
-(set-goal millQtyIncrement 1)
+
 ;-----------------------------
 
 
@@ -134,7 +132,10 @@
 =>
     (set-goal maxLumberCampsQty 3)
     (set-goal maxMiningCampsQty 1)
-    (set-goal maxMillsQty 4)    
+    (set-goal maxMillsQty 4)  
+    (set-goal lumberCampQtyIncrement 1)
+    (set-goal miningCampQtyIncrement 1)
+    (set-goal millQtyIncrement 1)      
     (disable-self)
 )
 
