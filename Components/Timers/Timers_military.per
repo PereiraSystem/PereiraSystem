@@ -17,17 +17,18 @@
     (enable-timer 21 60)
     (set-strategic-number sn-number-attack-groups 1)
     (up-modify-goal sn-minimum-attack-group-size g:= minAttackGroupSize)
-    (set-strategic-number sn-maximum-attack-group-size 150)
+    (set-strategic-number sn-maximum-attack-group-size g:= minAttackGroupSize)
     (set-strategic-number sn-percent-attack-soldiers 100)
 	  (set-strategic-number sn-garrison-rams 1)
     (set-strategic-number sn-target-player-number 0)
     (set-goal weAreAttacking 1)
     (attack-now)
     (chat-to-allies "31 Attack!")
+    (chat-to-player my-player-number "ATTACK!")
 )
 
 (defrule
-    (military-population > 25)
+    (military-population g:>= minAttackGroupSize)
     (not(town-under-attack))
 =>
     (set-strategic-number sn-task-ungrouped-soldiers 1)
@@ -35,33 +36,12 @@
     (disable-self)
 )
 
-(defrule(up-players-in-game enemy > 0)=>(enable-timer 22 3300)(disable-self)) ; 55 min
-(defrule
-    (or
-        (timer-triggered 22)
-        (and(civ-selected burgundians)(research-completed my-unique-research))
-    )
-    (population-headroom == 0)
-    (housing-headroom == 0)
-=>
-	  (disable-timer 22)
-    (enable-timer 22 30)
-    (chat-local-to-self ">>> ATTACK!")
-    (set-strategic-number sn-number-attack-groups 1)
-    (set-strategic-number sn-minimum-attack-group-size 50)
-    (set-strategic-number sn-maximum-attack-group-size 1000)
-    (set-strategic-number sn-percent-attack-soldiers 100)
-    (set-strategic-number sn-maximum-town-size 512)
-    ;(set-goal weAreAttacking 1)
-    (attack-now)
-    (chat-to-allies "48 Final Attack!")
-)
 
 ; RETREAT
 (defrule
   (game-time > 1800)
 	(up-players-in-game enemy > 0)
-  (military-population < 50)
+  (military-population g:> minAttackGroupSize)
   (players-building-type-count focus-player castle > 0)
 =>
 	(up-retreat-now)
@@ -84,7 +64,7 @@
     (timer-triggered 23)
     (or(goal gotSouthWestPalisadeGates 0)
     (goal gotNorthEastPalisadeGates 0))
-    (up-compare-goal movingGatesEast < 12)
+    (up-compare-goal movingGatesEast <= 8)
 =>
     (chat-to-all "PROBLEMS WITH SECONDARY PALISADE, LETS TRY TO MOVE GATES TO EAST!!!")
     (up-modify-goal outerGatePoint3Y g:+ 1)
@@ -101,7 +81,7 @@
     (timer-triggered 23)
     (or(goal gotSouthWestPalisadeGates 0)
     (goal gotNorthEastPalisadeGates 0))
-    (up-compare-goal movingGatesEast >= 12)
+    (up-compare-goal movingGatesEast >= 8)
 =>
     (chat-to-all "PROBLEMS WITH SECONDARY PALISADE, LETS TRY TO MOVE GATES TO WEST!!!")
     (generate-random-number 2)(up-get-fact random-number 0 randomNumber)
