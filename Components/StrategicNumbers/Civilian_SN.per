@@ -377,6 +377,8 @@
     (set-strategic-number sn-stone-gatherer-percentage 6)
     (set-strategic-number sn-maximum-stone-drop-distance 0)
     (chat-local-to-self "STONE MINING AVAILABLE----------------------------")
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)  
     (disable-self)
 )
 (defrule
@@ -393,7 +395,7 @@
 =>
     (up-modify-sn sn-food-gatherer-percentage c:+ 16)
     (up-modify-sn sn-gold-gatherer-percentage c:- 16)
-     (disable-self)
+    (disable-self)
 )
 (defrule
     (up-research-status c: imperial-age == research-pending)
@@ -412,8 +414,11 @@
     (set-strategic-number sn-gold-gatherer-percentage 10)
     (set-strategic-number sn-stone-gatherer-percentage 6)
     (chat-local-to-self  "Imperial Age With No Relics - Sending More Villagers For Gold")
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)  
     (disable-self)
 )
+
 (defrule
     (current-age == imperial-age)(hold-relics)
 =>
@@ -422,8 +427,11 @@
     (set-strategic-number sn-gold-gatherer-percentage 4)
     (set-strategic-number sn-stone-gatherer-percentage 6)
     (chat-local-to-self "Imperial Age With All Relics - Sending Less Villagers For Gold")
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)  
     (disable-self)
 )
+
 (defrule
     (current-age == imperial-age)
     (not(civ-selected cumans)); to get mercenaries
@@ -436,6 +444,7 @@
     (chat-local-to-self "CASTLE BUILT! STONE DISTANCE 0, PERCENTAGE 0")
     (disable-self)
 )
+
 (defrule
     (current-age == imperial-age)(food-amount > 400)
     (building-type-count market > 0)
@@ -448,8 +457,10 @@
     (chat-local-to-self "TWO TOWN CENTERS, 2 BARRACK: STONE DISTANCE 9 AGAIN")
     (disable-self)
 )
+
 ; CHANGE PERCENTAGES WHEN TOO MANY OF SOMETHING - THEY TEND TO GET MORE GOLD THAN NEEDED
 ; EXCESS FOOD
+
 ;(defrule
 ;    (food-amount > 2500)(wood-amount < 500)
 ;=>
@@ -458,6 +469,7 @@
 ;    (chat-local-to-self  "We Need More Wood, Less Food")
 ;    (disable-self)
 ;)
+
 ;(defrule
 ;    (food-amount > 2600)(gold-amount < 500)
 ;=>
@@ -486,6 +498,7 @@
     (chat-local-to-self  "We Need More Gold, Less Wood")
     (disable-self)
 )
+
 ; EXCESS GOLD
 (defrule(false)
     (gold-amount > 1600)(food-amount < 500)
@@ -493,41 +506,35 @@
     (up-modify-sn sn-gold-gatherer-percentage c: -16)
     (up-modify-sn sn-food-gatherer-percentage c: +16)
     (chat-local-to-self "We Need More Food, Less Gold")
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage) 
     (disable-self)
 )
+
 (defrule(false)
     (gold-amount > 1600)(wood-amount < 500)
 =>
     (up-modify-sn sn-gold-gatherer-percentage c: -16)
     (up-modify-sn sn-wood-gatherer-percentage c: +16)
     (chat-local-to-self "We Need More Wood, Less Gold")
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)     
     (disable-self)
 )
 
 (defrule
-    (wood-amount > 200000)(food-amount < 5000)
+    (wood-amount > 50000)(food-amount < 5000)
 =>
     (set-strategic-number sn-maximum-wood-drop-distance 1)
-    (set-strategic-number sn-wood-gatherer-percentage 0)  
-    ;(set-strategic-number sn-wood-modifier-percentage 0)
     (chat-to-player my-player-number "STOP CUTTING TREES NOW!!!")
-    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
-    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage) 
     (set-goal weStoppedLumberjacks 1)
 )
 
 (defrule
     (goal weStoppedLumberjacks 1)
     (wood-amount < 5000)(current-age == imperial-age)
-    (game-time > 1800)
 =>
-    (set-strategic-number sn-maximum-wood-drop-distance 3); industrial mode = 3 distance
-    (set-strategic-number sn-wood-gatherer-percentage 45)  
-    ;(set-strategic-number sn-wood-modifier-percentage 0)
-    (chat-to-player my-player-number "START CUTTING TREES NOW!!!")
-    (up-modify-sn sn-wood-gatherer-percentage c: -16)
-    (up-modify-sn sn-food-gatherer-percentage c: +16)
-    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
-    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)     
+    (set-strategic-number sn-maximum-wood-drop-distance 3); industrial mode = 3 distance 
+    (chat-to-player my-player-number "START CUTTING TREES NOW!!!")  
     (set-goal weStoppedLumberjacks 0)
 )
