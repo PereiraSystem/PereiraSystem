@@ -132,10 +132,9 @@
 	(current-age == imperial-age)
     (military-population > 40)
     ;(resource-found food)
-    (building-type-count-total mill < 64)
-    ;(dropsite-min-distance food > 3)
+    (building-type-count-total mill < 32)
     (wood-amount > 400)
-    ;(or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
+    (or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (can-build mill)(not(civ-selected khmer))
 =>
     (chat-local-to-self "Trying To Build Mill")
@@ -177,8 +176,8 @@
         (building-type-count monastery > 0)
         (building-type-count siege-workshop > 0)
     )
-	(building-type-count-total farm < 20)
-    (idle-farm-count < 3)
+	(building-type-count-total farm < 24)
+    (idle-farm-count < 4)
 	(can-build farm)
 =>
 	(build farm)
@@ -186,10 +185,10 @@
 ; IMPERIAL AGE
 (defrule
 	(current-age == imperial-age)
-	(building-type-count-total farm < maxCiviliansImperialAge)
-  (can-build farm)
+    (building-type-count-total farm < maxCiviliansImperialAge)
+    (can-build farm)
 =>
-  (build farm)
+    (build farm)
 )
 
 ; HOUSES

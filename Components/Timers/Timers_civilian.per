@@ -67,6 +67,18 @@
     (up-modify-sn sn-mining-camp-max-distance c:+ 1)
     ;(up-chat-data-to-self "Mining camps max distance increased = %d" s: sn-mining-camp-max-distance)
 )
+; TIMER 7 INCREASES MILL QUANTITY
+(defrule(building-type-count mill > 2)=>(enable-timer 7 180)(disable-self))
+(defrule
+	(timer-triggered 7)
+=>
+	(disable-timer 7)
+    (enable-timer 7 300) 
+    (up-modify-goal maxMillsQty g:+: millQtyIncrement)
+    ;(up-chat-data-to-self "Mills max qty increased = %d" s: sn-mining-camp-max-distance)   
+)
+
+
 ; TIMER 10 DELETES VILLAGERS
 (defrule(true)=>(enable-timer 10 1200)(disable-self))
 (defrule(false)

@@ -3,18 +3,28 @@
 ; 120: TO 150 BUILDING QTYS
 (defconst maxLumberCampsQty 120)
 (defconst maxMiningCampsQty 121)
+(defconst maxMillsQty 121)
 
-(defconst maxHousesBeforeDeleting 122)
-(defconst maxHousesNeeded 123)
-(defconst farmQtyImperial 124)
+(defconst maxHousesBeforeDeleting 125)
+(defconst maxHousesNeeded 126)
+(defconst farmQtyImperial 127)
 
-(defconst houseDistanceMod 125)
+(defconst houseDistanceMod 128)
 
 (defconst barracksQty 130)
 (defconst stableQty 131)
 (defconst archeryRangeQty 132)
 (defconst siegeWorkshopQty 133)
 (defconst castleQty 134)
+
+;--------------------------------------- TODO
+(defconst lumberCampQtyIncrement 145)
+(defconst miningCampQtyIncrement 146)
+(defconst millQtyIncrement 147)
+(set-goal lumberCampQtyIncrement 1)
+(set-goal miningCampQtyIncrement 1)
+(set-goal millQtyIncrement 1)
+;-----------------------------
 
 
 ; 150 TO 270: WALL
@@ -124,6 +134,7 @@
 =>
     (set-goal maxLumberCampsQty 3)
     (set-goal maxMiningCampsQty 1)
+    (set-goal maxMillsQty 4)    
     (disable-self)
 )
 
