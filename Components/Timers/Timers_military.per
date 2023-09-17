@@ -1,10 +1,16 @@
-
+(defrule
+    (true)
+=>
+    (up-chat-data-to-player my-player-number "SECONDS UNTIL FIRST ATTACK %d" g: secondsUntilFirstAttack)
+    (disable-self)
+)
 
 ; ATTACK TIMER 21
 (defrule
     (up-players-in-game enemy > 0)
+    (game-time g:> secondsUntilFirstAttack)
 =>
-    (enable-timer 21 secondsUntilFirstAttack)
+    (enable-timer 21 00)
     (disable-self)
 )
 ; ATTACK!
@@ -17,7 +23,7 @@
     (enable-timer 21 60)
     (set-strategic-number sn-number-attack-groups 1)
     (up-modify-goal sn-minimum-attack-group-size g:= minAttackGroupSize)
-    (set-strategic-number sn-maximum-attack-group-size g:= minAttackGroupSize)
+    (up-modify-goal sn-maximum-attack-group-size g:= minAttackGroupSize)
     (set-strategic-number sn-percent-attack-soldiers 100)
 	  (set-strategic-number sn-garrison-rams 1)
     (set-strategic-number sn-target-player-number 0)

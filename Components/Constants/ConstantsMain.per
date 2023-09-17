@@ -89,30 +89,17 @@
 (defrule
   (population-cap == 125)
   =>
-  (set-goal minAttackGroupSize 25)
-  (disable-self)
-)
-
-(defrule
-  (population-cap == 150)
-  =>
   (set-goal minAttackGroupSize 30)
   (disable-self)
 )
 
 (defrule
-  (population-cap == 175)
+  (population-cap >= 150)
   =>
-  (set-goal minAttackGroupSize 35)
+  (set-goal minAttackGroupSize 60)
   (disable-self)
 )
 
-(defrule
-  (population-cap > 175)
-  =>
-  (set-goal minAttackGroupSize 40)
-  (disable-self)
-)
 
 ; SECONDS UNTIL FIRST ATTACK ----------------
 ; FIXED (ludicrous not recognized)
@@ -131,22 +118,3 @@
 
 (defrule(map-size giant)=>(set-goal secondsUntilFirstAttack 3000)(disable-self))
 
-
-; RANDOM
-(defrule
-    (false)
-=>     
-    (set-goal secondsUntilFirstAttack 60)
-    (generate-random-number 1700)(up-get-fact random-number 0 randomNumber)
-    (up-modify-goal secondsUntilFirstAttack c:+ random-number)
-    (disable-self)
-)
-; MSG
-(defrule
-    (true)
-=>     
-    (up-modify-goal minutesUntilFirstAttack g:= secondsUntilFirstAttack)
-    (up-modify-goal minutesUntilFirstAttack c:/ 60)       
-    (up-chat-data-to-self "FIRST ATTACK IN %d (INGAME) MINUTES!!!" g: minutesUntilFirstAttack)
-    (disable-self)
-)
