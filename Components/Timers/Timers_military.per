@@ -19,13 +19,13 @@
     (up-players-in-game enemy > 0)
     (military-population > 0)
 =>
-	  (disable-timer 21)
-    (enable-timer 21 60)
+	(disable-timer 21)
+    (enable-timer 21 20)
     (set-strategic-number sn-number-attack-groups 1)
-    (up-modify-goal sn-minimum-attack-group-size g:= minAttackGroupSize)
-    (up-modify-goal sn-maximum-attack-group-size g:= minAttackGroupSize)
+    (set-strategic-number sn-minimum-attack-group-size 1)    
+    (set-strategic-number sn-maximum-attack-group-size 1)      
     (set-strategic-number sn-percent-attack-soldiers 100)
-	  (set-strategic-number sn-garrison-rams 1)
+	(set-strategic-number sn-garrison-rams 1)
     (set-strategic-number sn-target-player-number 0)
     (set-goal weAreAttacking 1)
     (attack-now)
@@ -47,7 +47,7 @@
 (defrule
   (game-time > 1800)
 	(up-players-in-game enemy > 0)
-  (military-population g:> minAttackGroupSize)
+  (military-population g:< minAttackGroupSize)
   (players-building-type-count focus-player castle > 0)
 =>
 	(up-retreat-now)

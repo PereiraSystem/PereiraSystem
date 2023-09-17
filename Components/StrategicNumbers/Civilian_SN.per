@@ -369,10 +369,10 @@
         (building-type-count siege-workshop > 0)(building-type-count university > 0)
     )
 =>
-    (set-strategic-number sn-food-gatherer-percentage 55)
-    (set-strategic-number sn-wood-gatherer-percentage 23)
-    (set-strategic-number sn-gold-gatherer-percentage 11)
-    (set-strategic-number sn-stone-gatherer-percentage 11)
+    (set-strategic-number sn-food-gatherer-percentage 50)
+    (set-strategic-number sn-wood-gatherer-percentage 20)
+    (set-strategic-number sn-gold-gatherer-percentage 15)
+    (set-strategic-number sn-stone-gatherer-percentage 15)
     (set-strategic-number sn-maximum-stone-drop-distance 9)
     (chat-local-to-self "STONE MINING AVAILABLE----------------------------")
     (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
@@ -395,15 +395,8 @@
     (up-modify-sn sn-gold-gatherer-percentage c:- 16)
     (disable-self)
 )
-(defrule
-    (up-research-status c: imperial-age == research-pending)
-=>
-    (set-strategic-number sn-food-gatherer-percentage 61)
-    (set-strategic-number sn-wood-gatherer-percentage 20)
-    (set-strategic-number sn-gold-gatherer-percentage 13)
-    (set-strategic-number sn-stone-gatherer-percentage 6)
-    (disable-self)
-)
+
+
 (defrule
     (current-age == imperial-age)(not(hold-relics))
 =>
@@ -412,8 +405,8 @@
     (set-strategic-number sn-gold-gatherer-percentage 10)
     (set-strategic-number sn-stone-gatherer-percentage 6)
     (chat-local-to-self  "Imperial Age With No Relics - Sending More Villagers For Gold")
-    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
-    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)  
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d" s: sn-food-gatherer-percentage)  
     (disable-self)
 )
 
@@ -425,8 +418,8 @@
     (set-strategic-number sn-gold-gatherer-percentage 4)
     (set-strategic-number sn-stone-gatherer-percentage 6)
     (chat-local-to-self "Imperial Age With All Relics - Sending Less Villagers For Gold")
-    (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
-    (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)  
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d" s: sn-food-gatherer-percentage)  
     (disable-self)
 )
 

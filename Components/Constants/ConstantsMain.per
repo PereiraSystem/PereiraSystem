@@ -80,25 +80,12 @@
 )
 
 (defrule
-  (population-cap == 100)
+  (population-cap >= 100)
   =>
-  (set-goal minAttackGroupSize 20)
+  (set-goal minAttackGroupSize 40)
   (disable-self)
 )
 
-(defrule
-  (population-cap == 125)
-  =>
-  (set-goal minAttackGroupSize 30)
-  (disable-self)
-)
-
-(defrule
-  (population-cap >= 150)
-  =>
-  (set-goal minAttackGroupSize 60)
-  (disable-self)
-)
 
 
 ; SECONDS UNTIL FIRST ATTACK ----------------

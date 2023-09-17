@@ -834,6 +834,8 @@
     (enemy-buildings-in-town)
     (military-population > 4)
     (not(civ-selected gothic))
+    (not(can-train trebuchet)); magyar huszar bonus vs siege
+    (building-type-count castle == 0)
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
@@ -850,6 +852,8 @@
         )
     )
     (military-population g:> minAttackGroupSize)
+    (not(can-train trebuchet)); magyar huszar bonus vs siege
+    (building-type-count castle == 0)    
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
@@ -860,6 +864,8 @@
 	(unit-type-count-total battering-ram-line g:< ramQtyHigh)
     (civ-selected ethiopian)
     (military-population g:> minAttackGroupSize)
+    (not(can-train trebuchet)); magyar huszar bonus vs siege
+    (building-type-count castle == 0)    
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
