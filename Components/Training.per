@@ -878,6 +878,8 @@
     (unit-type-count-total scorpion-line g:< scorpionQty)
     (military-population g:> minAttackGroupSize)
     (civ-selected chinese)
+    (not(can-train trebuchet)); magyar huszar bonus vs siege
+    (building-type-count castle == 0) 
 =>
     (train scorpion-line)
 )
@@ -926,6 +928,8 @@
             )
         )
     )
+    (not(can-train trebuchet)); magyar huszar bonus vs siege
+    (building-type-count castle == 0)     
 =>
     (train scorpion-line)
 )
@@ -938,6 +942,8 @@
         (civ-selected tatars)
         (civ-selected tatars)
     )
+    (not(can-train trebuchet)); magyar huszar bonus vs siege
+    (building-type-count castle == 0)     
 =>
     (train scorpion-line)
 )
@@ -946,15 +952,20 @@
     (can-train scorpion-line)
     (wood-amount > 200)
     (civ-selected khmer)
+    (not(can-train trebuchet)); magyar huszar bonus vs siege
+    (building-type-count castle == 0)     
 =>
     (train scorpion-line)
 )
+
 (defrule
     (current-age == imperial-age)
     (research-completed my-unique-research) ; is this one torsion engines or the other?
     (can-train scorpion-line)
     (wood-amount > 200)
     (civ-selected ethiopian)
+    (not(can-train trebuchet)); magyar huszar bonus vs siege
+    (building-type-count castle == 0)     
 =>
     (train scorpion-line)
 )
