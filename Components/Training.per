@@ -2129,6 +2129,7 @@
                 (civ-selected viking)
             )
         )
+    (not(can-train berserk-line))
     (can-train militiaman-line)
 =>
     (train militiaman-line)
@@ -2253,6 +2254,7 @@
     (up-compare-goal dudeHasCavalry == 1)
     (not(can-train coustillier))(not(can-train flemish-pikeman))
     (not(can-train steppe-lancer-line))
+    (not(can-train berserk-line))    
     (unit-type-count-total spearman-line g:< spearmenQtyHigh)
     (can-train spearman-line)
 =>
