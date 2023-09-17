@@ -17,6 +17,7 @@
     )
     (not(up-research-status c: 787 == research-available))
     (can-train trebuchet)
+
 =>
     (train trebuchet)
 )
@@ -27,6 +28,7 @@
         (unit-type-count-total trebuchet g:< trebuchetsQtyMedium)
         (unit-type-count-total 954 g:< trebuchetsQtyMedium)
     )
+ 
     (can-train trebuchet)
 =>
     (train trebuchet)
@@ -44,7 +46,7 @@
         (unit-type-count-total trebuchet g:< trebuchetsQtyHigh)
         (unit-type-count-total 954 g:< trebuchetsQtyHigh)
     )
-    ;(wood-amount > 1000)(gold-amount > 1000)
+
     (can-train trebuchet)
 =>
     (train trebuchet)
@@ -891,47 +893,57 @@
     (or
         (or
             (or
-                (or
-                    (civ-selected viking)
-                    (civ-selected celtic)
-                )
-                (or
-                    (civ-selected mongol)
-                    (civ-selected berbers)
-                )
+                (civ-selected ethiopian)
+                (civ-selected chinese)
             )
             (or
-                (or
-                    (civ-selected teutonic)
-                    (civ-selected slavic)
-                )
-                (or
-                    (civ-selected burmese)
-                    (civ-selected sicilians)
-                )
+                (civ-selected magyar)
+                (civ-selected malay)
             )
         )
         (or
-            (or
-                (or
-                    (civ-selected ethiopian)
-                    (civ-selected chinese)
-                )
-                (or
-                    (civ-selected magyar)
-                    (civ-selected malay)
-                )
-            )
-            (or
-                (civ-selected incan)
-                (civ-selected japanese)
-            )
+            (civ-selected incan)
+            (civ-selected japanese)
         )
     )
     (building-type-count castle == 0)     
 =>
     (train scorpion-line)
 )
+(defrule
+    (current-age == imperial-age)
+    (gold-amount > 245)
+    (can-train scorpion-line)
+    (unit-type-count-total scorpion-line g:< scorpionQty)
+
+    (or
+        (or
+            (or
+                (civ-selected viking)
+                (civ-selected celtic)
+            )
+            (or
+                (civ-selected mongol)
+                (civ-selected berbers)
+            )
+        )
+        (or
+            (or
+                (civ-selected teutonic)
+                (civ-selected slavic)
+            )
+            (or
+                (civ-selected burmese)
+                (civ-selected sicilians)
+            )
+        )
+    )
+
+    (building-type-count castle == 0)     
+=>
+    (train scorpion-line)
+)
+
 (defrule
     (current-age == imperial-age)
     (gold-amount > 645)
