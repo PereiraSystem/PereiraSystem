@@ -610,6 +610,20 @@
 
 ; BUILD STABLES
 (defrule
+    (current-age == feudal-age)
+    (not(civ-selected viking))
+    (or(wood-amount > 275)(building-type-count market > 0))
+    (building-type-count lumber-camp > 0)
+    (building-type-count-total stable g:< stableQty)
+    (up-can-build 0 c: stable)
+=>
+    (chat-local-to-self "Trying To Build Stable")
+    (up-set-placement-data my-player-number town-center c: 2)
+    (up-build place-control 0 c: stable)
+)
+
+(defrule
+    (current-age >= castle-age)
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
     (building-type-count-total stable g:< stableQty)
