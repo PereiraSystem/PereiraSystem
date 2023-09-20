@@ -185,7 +185,7 @@
 ; IMPERIAL AGE
 (defrule
 	(current-age == imperial-age)
-    (building-type-count-total farm < maxCiviliansImperialAge)
+    (building-type-count-total farm g:< maxCiviliansImperialAge)
     (can-build farm)
 =>
     (build farm)
