@@ -394,7 +394,7 @@
     (current-age == imperial-age)
     (up-players-in-game ally == 2)    
     (building-type-count town-center > 0)
-    (building-type-count-total market == 1)
+    (building-type-count-total market < 2)
     (can-build market)
 =>
     (build market)
@@ -404,7 +404,7 @@
 (defrule
     (up-players-in-game ally == 2)
     (building-type-count town-center > 0)
-    (building-type-count-total market == 0)
+    (building-type-count-total market < 2)
     (up-can-build 0 c: market)
 =>
     (chat-local-to-self "Trying To Build Market 2 far away")
