@@ -193,6 +193,7 @@
 
 ; HOUSES
 (defrule
+    (current-age < imperial-age)
     (wood-amount g:> minimumWoodForLC)
     (and(housing-headroom g:<  populationRoomBeforeBuildingHouses)(population-headroom > 0))
     (up-can-build 0 c: house)
@@ -201,6 +202,19 @@
     (up-set-placement-data my-player-number house c: 0)
     (up-build place-control 0 c: house)
 )
+
+(defrule
+    (current-age == imperial-age)
+    (wood-amount g:> minimumWoodForLC)
+    (and(housing-headroom g:<  populationRoomBeforeBuildingHouses)(population-headroom > 0))
+    (up-can-build 0 c: house)
+=>
+    (chat-local-to-self "Trying To Build House")
+    (up-set-placement-data my-player-number house c: 30)
+    (up-build place-control 0 c: house)
+)
+
+
 
 ; LUMBER CAMP
 (defrule
@@ -373,6 +387,28 @@
 =>
     (chat-local-to-self "Trying To Build Market 1 inside")
     (up-set-placement-data my-player-number town-center c:+ 1)
+    (up-build place-control 0 c: market)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (up-players-in-game ally == 2)    
+    (building-type-count town-center > 0)
+    (building-type-count-total market == 1)
+    (can-build market)
+=>
+    (build market)
+    (chat-local-to-self "Trying To Build Market 2 normal")    
+)
+
+(defrule
+    (up-players-in-game ally == 2)
+    (building-type-count town-center > 0)
+    (building-type-count-total market == 0)
+    (up-can-build 0 c: market)
+=>
+    (chat-local-to-self "Trying To Build Market 2 far away")
+    (up-set-placement-data my-player-number town-center c:+ 64)
     (up-build place-control 0 c: market)
 )
 
