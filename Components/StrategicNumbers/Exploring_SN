@@ -1,0 +1,87 @@
+
+; EXPLORE
+(defrule
+    (true)
+=>
+    (set-strategic-number sn-total-number-explorers 2)
+    (set-strategic-number sn-number-explore-groups 2)
+    (set-strategic-number sn-minimum-boat-explore-group-size 1)
+    (set-strategic-number sn-blot-exploration-map 0)
+    (disable-self)
+)
+; SCOUT STYLES
+(defrule
+	(true)
+=>
+	;(up-send-scout group-type-land-explore scout-center)
+    ;(chat-to-player my-player-number "SCOUTING STYLE CENTER")
+	;(up-send-scout group-type-land-explore scout-opposite)
+	(up-send-scout group-type-land-explore scout-corner)
+    ;(chat-to-player my-player-number "SCOUTING STYLE CORNER")
+	;(up-send-scout group-type-land-explore scout-enemy)
+ 	;(up-send-scout group-type-land-explore scout-border)
+    ;(chat-to-player my-player-number "SCOUTING STYLE BORDER")
+	;(up-send-scout group-type-land-explore scout-mirror)
+	;(up-send-scout group-type-land-explore scout-flank)
+    ;(chat-to-player my-player-number "SCOUTING STYLE FLANK")
+	(disable-self)
+)
+(defrule
+    (game-time > 120)
+=>
+    ;(up-send-scout group-type-land-explore scout-flank)
+    ;(chat-to-player my-player-number "SCOUTING STYLE FLANK")
+    (disable-self)
+)
+(defrule
+    (game-time > 150)
+=>
+    (up-send-scout group-type-land-explore scout-corner)
+    ;(chat-to-player my-player-number "SCOUTING STYLE CORNER")
+    (disable-self)
+)
+(defrule
+    (game-time > 180)
+=>
+    (up-send-scout group-type-land-explore scout-border)
+    ;(chat-to-player my-player-number "SCOUTING STYLE BORDER")
+    (disable-self)
+)
+(defrule
+    (game-time > 210)
+=>
+    (up-send-scout group-type-land-explore scout-flank)
+    ;(chat-to-player my-player-number "SCOUTING STYLE FLANK")
+    (disable-self)
+)
+(defrule
+    (game-time > 230)
+=>
+    (up-send-scout group-type-land-explore scout-corner)
+    ;(chat-to-player my-player-number "SCOUTING STYLE CORNER")
+    (disable-self)
+)
+(defrule
+    (game-time > 250)
+=>
+    (up-send-scout group-type-land-explore scout-center)
+    ;(chat-to-player my-player-number "SCOUTING STYLE CENTER")
+    (disable-self)
+)
+
+; EXPLORE GROUPS
+(defrule
+    (current-age == castle-age)(not(town-under-attack))
+=>
+    (set-strategic-number sn-total-number-explorers 3)
+    (set-strategic-number sn-number-explore-groups 3)
+    (disable-self)
+)
+
+(defrule
+    (hold-relics)
+=>
+    (set-strategic-number sn-total-number-explorers 0)
+    (set-strategic-number sn-number-explore-groups 0)
+    (disable-self)
+)
