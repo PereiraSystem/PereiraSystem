@@ -34,7 +34,7 @@
 )
 
 (defrule
-    (military-population g:>= minAttackGroupSize)
+    (military-population g:>= minArmySize)
     (not(town-under-attack))
 =>
     (set-strategic-number sn-task-ungrouped-soldiers 1)
@@ -47,7 +47,7 @@
 (defrule
   (game-time > 1800)
 	(up-players-in-game enemy > 0)
-  (military-population g:< minAttackGroupSize)
+  (military-population g:< minArmySize)
   (players-building-type-count focus-player castle > 0)
 =>
 	(up-retreat-now)

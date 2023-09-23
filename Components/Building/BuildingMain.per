@@ -468,6 +468,15 @@
 ; DOCK
 (defrule
   (goal avoidBuildingDocks 0)
+    (building-type-count-total dock == 0)
+    (can-build dock)
+=>
+    (chat-local-to-self "Trying To Build Dock 1 - Normal mode")
+    (build dock)
+)
+
+(defrule
+  (goal avoidBuildingDocks 0)
   (building-type-count-total dock == 0)
   (can-build dock)
 =>
@@ -817,7 +826,7 @@
     (up-can-build 0 c: bombard-tower)
 =>
     (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)  
-    (up-modify-goal militaryBuildingsDistance c:+ 20)    
+    (up-modify-goal militaryBuildingsDistance c:+ 24)    
     (up-build place-control 0 c: bombard-tower)
 )
 

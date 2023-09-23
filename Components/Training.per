@@ -3,7 +3,7 @@
 
 ; TREBUCHET
 (defrule
-    (military-population g:> minAttackGroupSize)    
+    (military-population g:> minArmySize)    
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
         (unit-type-count-total 954 g:< trebuchetsQtyLow)
@@ -23,6 +23,7 @@
 )
 
 (defrule
+    (military-population g:> minArmySize)  
     (civ-selected hun)
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyMedium)
@@ -35,6 +36,7 @@
 )
 
 (defrule
+    (military-population g:> minArmySize)  
     (or
         (or
             (and(civ-selected tatars)(research-completed my-unique-research))
@@ -853,7 +855,7 @@
             (and(gold-amount < 250)(wood-amount < 250))
         )
     )
-    (military-population g:> minAttackGroupSize)
+    (military-population g:> minArmySize)
     (not(can-train trebuchet)); magyar huszar bonus vs siege
     (building-type-count castle == 0)    
     (can-train battering-ram-line)
@@ -865,7 +867,7 @@
     (current-age == imperial-age)
 	(unit-type-count-total battering-ram-line g:< ramQtyHigh)
     (civ-selected ethiopian)
-    (military-population g:> minAttackGroupSize)
+    (military-population g:> minArmySize)
     (not(can-train trebuchet)); magyar huszar bonus vs siege
     (building-type-count castle == 0)    
     (can-train battering-ram-line)
@@ -878,7 +880,7 @@
     (current-age == castle-age)
     (can-train scorpion-line)
     (unit-type-count-total scorpion-line g:< scorpionQty)
-    (military-population g:> minAttackGroupSize)
+    (military-population g:> minArmySize)
     (civ-selected chinese)
     (not(can-train trebuchet)); magyar huszar bonus vs siege
     (building-type-count castle == 0) 
@@ -1175,10 +1177,10 @@
 ; CASTLE AGE SCOUTS
 (defrule
 	(current-age == castle-age)
-    (or(research-completed ri-hand-cart)(town-under-attack))
+    ;(or(research-completed ri-hand-cart)(town-under-attack))
     (or(up-compare-goal dudeHasArchers == 1)
     (up-compare-goal dudeHasSkirmishers == 1))
-    (unit-type-count-total scout-cavalry-line g:< scoutsQtyLow)
+    (unit-type-count-total scout-cavalry-line g:< scoutsQtyMedium)
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)

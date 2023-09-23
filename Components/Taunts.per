@@ -47,7 +47,6 @@
 ; WHEN TOWN UNDER ATTACK
 (defrule
 	(town-under-attack)
-	(up-compare-sn sn-maximum-town-size < 40)
 	(up-timer-status 40 == timer-disabled)
 =>
     (enable-timer 40 1)
@@ -137,12 +136,21 @@
 =>
 	(acknowledge-taunt any-ally 48)
     ;(set-strategic-number sn-task-ungrouped-soldiers 1)
-	(set-strategic-number sn-minimum-attack-group-size 4)
+	(set-strategic-number sn-minimum-attack-group-size 1)
 	(set-strategic-number sn-target-player-number -1) 
 	; sn-coop-share-attacking SET TO 1
     (chat-to-allies "My Attacks Will Be Directed Around Your Town Center For 2 Minutes!")
-	(attack-now)
+	(enable-timer 42 1)
 )
+(defrule
+	(timer-triggered 42)
+=>
+    (disable-timer 42)
+	(enable-timer 42 30)
+	(attack-now)
+	(chat-to-allies "I´m helping!")
+)
+
 ; DISABLE HELP
 (defrule
 	(up-compare-sn sn-target-player-number == -1) ; (attacks directed to ally)

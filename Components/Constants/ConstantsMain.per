@@ -12,7 +12,7 @@
 (defconst avoidCreatingNavy 11)
 (defconst weStoppedLumberjacks 12)
 
-(defconst minAttackGroupSize 20)
+(defconst minArmySize 20)
 (defconst secondsUntilFirstAttack 21)
 (defconst minutesUntilFirstAttack 22); for info only
 (defconst weAreAttacking 25)
@@ -21,6 +21,7 @@
   (true)
 =>
   (set-goal populationRoomBeforeBuildingHouses 5)
+  (set-goal avoidBuildingDocks 0)  
   (disable-self)
 )  
 
@@ -55,6 +56,7 @@
   )  
 =>
   (set-goal avoidBuildingDocks 1)
+
   (disable-self)
 )
 
@@ -62,28 +64,28 @@
 (defrule
   (population-cap == 25)
   =>
-  (set-goal minAttackGroupSize 5)
+  (set-goal minArmySize 5)
   (disable-self)
 )
 
 (defrule
   (population-cap == 50)
   =>
-  (set-goal minAttackGroupSize 10)
+  (set-goal minArmySize 10)
   (disable-self)
 )
 
 (defrule
   (population-cap == 75)
   =>
-  (set-goal minAttackGroupSize 15)
+  (set-goal minArmySize 15)
   (disable-self)
 )
 
 (defrule
   (population-cap >= 100)
   =>
-  (set-goal minAttackGroupSize 40)
+  (set-goal minArmySize 40)
   (set-goal populationRoomBeforeBuildingHouses 10)
   (disable-self)
 )
