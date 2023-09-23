@@ -40,7 +40,7 @@
     (building-type-count-total monastery > 0)
     (building-type-count-total university > 0)
     (building-type-count-total castle > 0)
-    (military-population > 10)
+    (up-enemy-units-in-town < 2)
     ;(can-build town-center)
      (up-can-build 0 c: town-center)
 =>
@@ -347,15 +347,9 @@
 )
 
 ; MARKET
-(defrule
-    (building-type-count town-center > 0)
-    (building-type-count-total market == 0)
-    (can-build market)
-=>
-    (build market)
-)
 
 (defrule
+    (current-age == castle-age)
     (up-players-in-game ally > 1)
     (game-time > 120) ; so they dont build it inside
     (building-type-count town-center > 0)
@@ -377,39 +371,31 @@
 =>
     (chat-local-to-self "Trying To Build Market 1 outside")
     ;(up-set-placement-data my-player-number market c:+ 32)
-    (up-set-placement-data my-player-number town-center c:+ 32)
+    (up-set-placement-data my-player-number town-center c:- 24)
     (up-build place-control 0 c: market)
 )
+
 (defrule
-    (up-players-in-game ally == 2)
+    (up-players-in-game ally == 1)
     (building-type-count town-center > 0)
     (building-type-count-total market == 0)
     (up-can-build 0 c: market)
 =>
     (chat-local-to-self "Trying To Build Market 1 inside")
-    (up-set-placement-data my-player-number town-center c:+ 1)
+    (up-set-placement-data my-player-number town-center c: -1)
     (up-build place-control 0 c: market)
 )
 
-(defrule
-    (current-age == imperial-age)
-    (up-players-in-game ally == 2)    
-    (building-type-count town-center > 0)
-    (building-type-count-total market < 2)
-    (can-build market)
-=>
-    (build market)
-    (chat-local-to-self "Trying To Build Market 2 normal")    
-)
 
 (defrule
-    (up-players-in-game ally == 2)
-    (building-type-count town-center > 0)
-    (building-type-count-total market < 2)
+    (current-age == imperial-age)
+    (up-players-in-game ally > 1)
+    (building-type-count town-center > 1)
+    (building-type-count-total market == 1)
     (up-can-build 0 c: market)
 =>
     (chat-local-to-self "Trying To Build Market 2 far away")
-    (up-set-placement-data my-player-number town-center c:- 40)
+    (up-set-placement-data my-player-number town-center c:- 64)
     (up-build place-control 0 c: market)
 )
 
@@ -605,7 +591,7 @@
     ;(can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle")
-    (up-set-placement-data my-player-number -1 c: -7)
+    (up-set-placement-data my-player-number -1 c: 7)
     ;(up-set-placement-data my-player-number palisade-wall c: -1)
     (up-build place-control 0 c: castle)
     (build castle)
@@ -653,6 +639,24 @@
     (up-can-build 0 c: barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks")
+    (up-set-placement-data my-player-number town-center c:+ 0)
+    (up-build place-control 0 c: barracks)
+)
+
+(defrule
+	(building-type-count-total barracks g:< barracksQty)
+    (building-type-count barracks > 1)
+    (building-type-count town-center > 0)
+    (or
+        (and
+            (building-type-count-total lumber-camp > 0)
+            (wood-amount g:> minimumWoodForLC)
+        )
+        (wood-amount > 305)
+    )
+    (up-can-build 0 c: barracks)
+=>
+    (chat-local-to-self "Trying To Build Barracks Advanced")
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-modify-goal militaryBuildingsDistance c:+ 20)
     (up-build place-control 0 c: barracks)
@@ -786,7 +790,7 @@
         (not(players-building-type-count any-ally monastery > 0))
         (or
             (or(civ-selected bohemians)(civ-selected aztec))
-            (game-time > 3600)
+            (and(current-age == imperial-age)(current-age-time == 2400))
         )
     )
     (can-build monastery)
@@ -812,7 +816,8 @@
     (building-type-count-total castle > 1)
     (up-can-build 0 c: bombard-tower)
 =>
-    (up-set-placement-data my-player-number town-center c: +64)  
+    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)  
+    (up-modify-goal militaryBuildingsDistance c:+ 20)    
     (up-build place-control 0 c: bombard-tower)
 )
 
@@ -826,6 +831,16 @@
     (build bombard-tower)
 )
 ; NORMAL TOWER
+
+(defrule
+    (building-type-count-total watch-tower == 0)
+    (up-can-build 0 c: watch-tower)
+=>
+    (up-set-placement-data my-player-number town-center c: 2)
+    (up-build place-control 0 c: watch-tower)
+    (build watch-tower)
+)
+
 (defrule (false)
     (up-can-build 0 c: watch-tower)
 =>

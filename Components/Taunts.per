@@ -48,14 +48,12 @@
 (defrule
 	(town-under-attack)
 	(up-compare-sn sn-maximum-town-size < 40)
-	(game-time < 1500) ; 25 min
 	(up-timer-status 40 == timer-disabled)
 =>
     (enable-timer 40 1)
 )
 (defrule
 	(timer-triggered 40)
-	(game-time < 1500)
 	(town-under-attack)
 =>
     (disable-timer 40)
@@ -111,13 +109,7 @@
 )
 ; HELP TAUNT 48
 ; REJECT
-(defrule
-	(taunt-detected any-ally 48)
-	(game-time > 1500)
-=>
-	(acknowledge-taunt any-ally 48)
-    (chat-to-allies "Just Attack The Enemy Base!")
-)
+
 (defrule
 	(taunt-detected any-ally 48)
 	(enemy-buildings-in-town)
