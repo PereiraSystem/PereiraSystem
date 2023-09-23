@@ -186,6 +186,7 @@
 (defrule
 	(current-age == imperial-age)
     (building-type-count-total farm g:< maxCiviliansImperialAge)
+    (idle-farm-count < 5)
     (can-build farm)
 =>
     (build farm)
@@ -617,7 +618,7 @@
     ;(can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle Advanced")
-    (up-set-placement-data my-player-number -1 c: 30)
+    (up-set-placement-data my-player-number -1 c: 45)
     (up-build place-control 0 c: castle)
     (build castle)
 )
@@ -651,28 +652,12 @@
     )
     (up-can-build 0 c: barracks)
 =>
-    (chat-local-to-self "Trying To Build Barracks 1")
-    (up-set-placement-data my-player-number town-center c:+ 1)
+    (chat-local-to-self "Trying To Build Barracks")
+    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
+    (up-modify-goal militaryBuildingsDistance c:+ 20)
     (up-build place-control 0 c: barracks)
 )
 
-(defrule
-	(building-type-count-total barracks g:< barracksQty)
-    (building-type-count-total barracks > 1)
-    (building-type-count town-center > 0)
-    (or
-        (and
-            (building-type-count-total lumber-camp > 0)
-            (wood-amount g:> minimumWoodForLC)
-        )
-        (wood-amount > 305)
-    )
-    (up-can-build 0 c: barracks)
-=>
-    (chat-local-to-self "Trying To Build Barracks Middle")
-    (up-set-placement-data my-player-number town-center c:+ 64)
-    (up-build place-control 0 c: barracks)
-)
 
 ; BUILD STABLES
 (defrule
@@ -739,13 +724,15 @@
     (up-can-build 0 c: siege-workshop)
     ;(can-build siege-workshop)
 =>
-    (chat-local-to-self "Trying To Build Siege Workshop 26")
+    (chat-local-to-self "Trying To Build Siege Workshop -26")
     ;(build siege-workshop)
-    (up-set-placement-data my-player-number town-center c:+ 26)
+    (up-set-placement-data my-player-number town-center c:- 26)
     (up-build place-control 0 c: siege-workshop)
 )
+
 (defrule
 	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
+	(building-type-count-total siege-workshop > 0)    
     (building-type-count town-center > 0)
     (players-building-type-count any-ally monastery > 0)
     (or
@@ -756,13 +743,17 @@
     (up-can-build 0 c: siege-workshop)
     ;(can-build siege-workshop)
 =>
-    (chat-local-to-self "Trying To Build Siege Workshop -26")
+    (chat-local-to-self "Trying To Build Siege Workshop 26")
     ;(build siege-workshop)
-    (up-set-placement-data my-player-number town-center c:- 26)
+    (up-set-placement-data my-player-number town-center c:+ 26)
     (up-build place-control 0 c: siege-workshop)
 )
+
+
+
 (defrule
 	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
+	(building-type-count-total siege-workshop > 1)      
     (building-type-count town-center > 0)
     (players-building-type-count any-ally monastery > 0)
     (or
@@ -794,7 +785,9 @@
     (or
         (not(players-building-type-count any-ally monastery > 0))
         (or
-            (civ-selected bohemians)(civ-selected aztec)
+            (or(civ-selected bohemians)(civ-selected aztec)
+            (game-time > 3600)
+
         )
     )
     (can-build monastery)

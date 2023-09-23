@@ -161,10 +161,10 @@
 (defrule
     (building-type-count-total lumber-camp > 3)
 =>
-    (set-strategic-number sn-maximum-wood-drop-distance 3)
+    (set-strategic-number sn-maximum-wood-drop-distance 5)
     ;(set-strategic-number sn-required-forest-tiles 8)
     (chat-local-to-self ">>> Industrial lumber mode!")
-    (chat-to-player my-player-number "INDUSTRIAL MODE LUMBER - MAX DROP DISTANCE = 3")
+    (chat-to-player my-player-number "INDUSTRIAL MODE LUMBER - MAX DROP DISTANCE = 5")
     (disable-self)
 )
 
@@ -256,7 +256,7 @@
     (set-strategic-number sn-gold-gatherer-percentage 10)
     (set-strategic-number sn-stone-gatherer-percentage 10)
     (set-strategic-number sn-maximum-stone-drop-distance 9)
-    (chat-local-to-self "STONE MINING AVAILABLE----------------------------")
+    (chat-local-to-self "STONE MINING AVAILABLE????")
     (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)
     (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)  
     (disable-self)
@@ -266,8 +266,8 @@
     (current-age == imperial-age)(not(hold-relics))
 =>
     (set-strategic-number sn-food-gatherer-percentage 75)
-    (set-strategic-number sn-wood-gatherer-percentage 9)
-    (set-strategic-number sn-gold-gatherer-percentage 10)
+    (set-strategic-number sn-wood-gatherer-percentage 11)
+    (set-strategic-number sn-gold-gatherer-percentage 9)
     (set-strategic-number sn-stone-gatherer-percentage 6)
     (chat-local-to-self  "Imperial Age With No Relics - Sending More Villagers For Gold")
     (up-chat-data-to-self "WOOD GATHER PERCENT: %d" s: sn-wood-gatherer-percentage)
