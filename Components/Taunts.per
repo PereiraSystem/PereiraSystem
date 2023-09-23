@@ -145,9 +145,11 @@
 =>
 	(acknowledge-taunt any-ally 48)
     ;(set-strategic-number sn-task-ungrouped-soldiers 1)
-	(set-strategic-number sn-target-player-number -1) ;put back to 0 when??
+	(set-strategic-number sn-minimum-attack-group-size 4)
+	(set-strategic-number sn-target-player-number -1) 
 	; sn-coop-share-attacking SET TO 1
     (chat-to-allies "My Attacks Will Be Directed Around Your Town Center For 2 Minutes!")
+	(attack-now)
 )
 ; DISABLE HELP
 (defrule

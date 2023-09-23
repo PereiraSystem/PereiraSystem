@@ -130,7 +130,7 @@
 )
 (defrule
 	(current-age == imperial-age)
-    (military-population > 40)
+    (military-population s> 40)
     ;(resource-found food)
     (building-type-count-total mill < 32)
     (wood-amount > 400)
@@ -408,7 +408,7 @@
     (up-can-build 0 c: market)
 =>
     (chat-local-to-self "Trying To Build Market 2 far away")
-    (up-set-placement-data my-player-number town-center c:+ 64)
+    (up-set-placement-data my-player-number town-center c:- 40)
     (up-build place-control 0 c: market)
 )
 
@@ -610,6 +610,18 @@
     (build castle)
 )
 
+(defrule
+    (building-type-count-total castle > 1)
+    (building-type-count-total castle g:< castleQty)
+    (up-can-build 0 c: castle)
+    ;(can-build castle)
+=>
+    (chat-local-to-self "Trying To Build Castle Advanced")
+    (up-set-placement-data my-player-number -1 c: 30)
+    (up-build place-control 0 c: castle)
+    (build castle)
+)
+
 ; MINI CASTLES (MEGA TOWERS?)
 (defrule
     (building-type-count-total castle > 1)
@@ -641,6 +653,24 @@
 =>
     (chat-local-to-self "Trying To Build Barracks 1")
     (up-set-placement-data my-player-number town-center c:+ 1)
+    (up-build place-control 0 c: barracks)
+)
+
+(defrule
+	(building-type-count-total barracks g:< barracksQty)
+    (building-type-count-total barracks > 1)
+    (building-type-count town-center > 0)
+    (or
+        (and
+            (building-type-count-total lumber-camp > 0)
+            (wood-amount g:> minimumWoodForLC)
+        )
+        (wood-amount > 305)
+    )
+    (up-can-build 0 c: barracks)
+=>
+    (chat-local-to-self "Trying To Build Barracks Middle")
+    (up-set-placement-data my-player-number town-center c:+ 64)
     (up-build place-control 0 c: barracks)
 )
 
@@ -680,6 +710,19 @@
 =>
     (chat-local-to-self "Trying To Build Archery Range")
     (up-set-placement-data my-player-number town-center c: 4)
+    (up-build place-control 0 c: archery-range)
+)
+
+(defrule
+	(building-type-count-total archery-range g:< archeryRangeQty)
+	(building-type-count-total archery-range > 64)    
+    (wood-amount > 275)
+    (building-type-count town-center > 0)
+    (building-type-count lumber-camp > 0)
+    (up-can-build 0 c: archery-range)
+=>
+    (chat-local-to-self "Trying To Build Archery Range Middle")
+    (up-set-placement-data my-player-number town-center c: 64)
     (up-build place-control 0 c: archery-range)
 )
 
@@ -774,7 +817,7 @@
     (can-build bombard-tower)
     (gold-amount > 301)
     (building-type-count-total castle > 0)
-    (up-modify-sn sn-maximum-town-size c:+ 1)
+    (up-modify-sn sn-maximum-town-size c:+ 2)
 =>
     (build bombard-tower)
 )
@@ -802,3 +845,5 @@
     (up-set-placement-data my-player-number town-center c: +16)
     (up-build place-control 0 c: watch-tower)
 )
+
+

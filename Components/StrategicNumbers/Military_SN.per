@@ -18,7 +18,7 @@
 (defrule
     (true)
 =>
-    (set-strategic-number sn-defense-distance 26)
+    (set-strategic-number sn-defense-distance 22)
     (set-strategic-number sn-task-ungrouped-soldiers 0)
     (set-strategic-number sn-percent-enemy-sighted-response 100)
     (disable-self)
@@ -49,10 +49,10 @@
     (up-set-offense-priority c: dock c: 4)    
     (up-set-offense-priority c: town-center c: 5)
 
-    (up-set-offense-priority c: archery-class c: 9)
-    (up-set-offense-priority c: cavalry-class c: 10)    
-    (up-set-offense-priority c: monastery c: 10)    
-    (up-set-offense-priority c: castle c: 11)
+    (up-set-offense-priority c: archery-class c: 11)
+    (up-set-offense-priority c: cavalry-class c: 11)    
+    (up-set-offense-priority c: monastery c: 9)    
+    (up-set-offense-priority c: castle c: 10)
     (up-set-offense-priority c: battering-ram-line c: 11)     
     (up-set-offense-priority c: mangonel-line c: 11)     
 
@@ -63,12 +63,14 @@
 (defrule
     (true)
 =>
+    ;(set-strategic-number sn-attack-coordination 2) INVALID
     (set-strategic-number sn-free-siege-targeting 0)
     (set-strategic-number sn-enemy-sighted-response-distance 25)
     (set-strategic-number sn-wall-targeting-mode 1)
     (set-strategic-number sn-attack-intelligence 1)
     (set-strategic-number sn-target-evaluation-distance 10)
     (set-strategic-number sn-coop-share-attacking 1)
+       
     (set-strategic-number sn-target-evaluation-boat 10)
     (disable-self)
 )
@@ -77,7 +79,7 @@
     (true)
 =>
     (set-strategic-number sn-enable-offensive-priority 1)
-    (set-strategic-number sn-local-targeting-mode 2)
+    (set-strategic-number sn-local-targeting-mode 1)
     (set-strategic-number sn-ignore-attack-group-under-attack 0)
     (set-strategic-number sn-enable-patrol-attack 1)
     (set-strategic-number sn-percentage-explore-exterminators 50)
