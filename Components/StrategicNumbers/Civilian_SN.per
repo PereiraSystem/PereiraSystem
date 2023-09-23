@@ -244,7 +244,6 @@
     (disable-self)
 )
 
-
 (defrule
     (current-age == castle-age)
     (players-building-type-count any-ally monastery > 0)
@@ -262,7 +261,6 @@
     (up-chat-data-to-self "FOOD GATHER PERCENT: %d : %d" s: sn-food-gatherer-percentage)  
     (disable-self)
 )
-
 
 (defrule
     (current-age == imperial-age)(not(hold-relics))
