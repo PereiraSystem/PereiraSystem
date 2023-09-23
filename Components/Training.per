@@ -757,52 +757,18 @@
 =>
 	(train bombard-cannon)
 )
+
 ; MANGONEL
 (defrule
     (current-age == castle-age)
     (building-type-count town-center > 0)
     (unit-type-count-total monk > 2)
-    (unit-type-count-total mangonel-line < 2)
+    (unit-type-count-total mangonel-line < 1)
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
 )
-(defrule
-    (current-age == castle-age)
-    (building-type-count town-center > 0)
-    (unit-type-count-total monk > 3)
-    (unit-type-count-total mangonel-line < 3)
-	(can-train mangonel-line)
-=>
-    (train mangonel-line)
-)
-(defrule
-    (current-age == castle-age)
-    (building-type-count town-center > 0)
-    (unit-type-count-total monk > 4)
-    (unit-type-count-total mangonel-line < 4)
-	(can-train mangonel-line)
-=>
-    (train mangonel-line)
-)
-(defrule
-    (current-age == castle-age) ;rest of mangonels when producing 5th monk, against arch
-    (building-type-count town-center > 0)
-    (unit-type-count-total mangonel-line g:< mangonelQtyLow)
-    (or ;maybe dont check this
-        (up-compare-goal dudeHasArchers == 0)
-        (up-compare-goal dudeHasCavalryArchers == 0)
-    )
-    (or
-        (unit-type-count-total monk > 4)
-        (or
-            (hold-relics)(town-under-attack)
-        )
-    )
-	(can-train mangonel-line)
-=>
-    (train mangonel-line)
-)
+
 (defrule
     (current-age == imperial-age)
     (gold-amount > 251)
@@ -1093,12 +1059,22 @@
 ; STEPPE LANCER
 (defrule
     (current-age == castle-age)
-    (or(unit-type-count-total monk > 4)(hold-relics))
     (unit-type-count-total steppe-lancer-line g:< knightsQtyLow)
     (can-train steppe-lancer-line)
 =>
     (train steppe-lancer-line)
 )
+
+(defrule
+    (current-age == castle-age)
+    (or(unit-type-count-total monk > 4)(hold-relics))
+    (unit-type-count-total steppe-lancer-line g:< knightsQtyMedium)
+    (can-train steppe-lancer-line)
+=>
+    (train steppe-lancer-line)
+)
+
+
 (defrule
     (current-age == imperial-age)
     (unit-type-count-total steppe-lancer-line g:< knightsQtyMedium)
@@ -1514,6 +1490,9 @@
 =>
 	(train archer-line)
 )
+
+
+
 (defrule ;civs with cav archer bonus
     (current-age == imperial-age)
     (wood-amount > 525)(gold-amount > 545)
@@ -1732,12 +1711,14 @@
             (and(civ-selected turkish)(research-completed my-second-unique-research))
         )
     )
-    (gold-amount > 845)(wood-amount > 400)
+    ;(gold-amount > 845)
+    (wood-amount > 125)
 	(unit-type-count-total cavalry-archer-line g:< cavalryArcherQtyLow)
     (can-train cavalry-archer-line)
 =>
 	(train cavalry-archer-line)
 )
+
 (defrule
     (current-age == imperial-age)
     (or(civ-selected frankish)(civ-selected vietnamese))
@@ -1747,6 +1728,7 @@
 =>
 	(train cavalry-archer-line)
 )
+
 (defrule
     (current-age == imperial-age)
     (or
@@ -2229,6 +2211,7 @@
 =>
     (train spearman-line)
 )
+
 ; SPEARMEN CASTLE AGE
 (defrule
     (current-age == castle-age) ;non reactive
@@ -2237,16 +2220,16 @@
         (building-type-count town-center > 0)
     )
     (wood-amount >= 125)
-    (up-compare-goal totalSoldiersCreatedThisAge < 10)
+    (unit-type-count-total spearman-line g:< spearmenQtyLow)
     (can-train spearman-line)
 =>
     (train spearman-line)
-    (up-modify-goal totalSoldiersCreatedThisAge c:+ 1)
 )
+
 (defrule
     (current-age == castle-age)
     (or(wood-amount > 275)(building-type-count town-center > 0))
-    (building-type-count-total monastery > 0)
+    (players-building-type-count any-ally monastery > 0)
     (wood-amount > 125)
     (or
         (and(building-type-count siege-workshop == 0)
@@ -2260,14 +2243,14 @@
 =>
     (train spearman-line)
 )
+
 (defrule
     (current-age == imperial-age)(gold-amount < 2000)
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 125)
     (up-compare-goal dudeHasCavalry == 1)
-    (not(can-train coustillier))(not(can-train flemish-pikeman))
-    (not(can-train steppe-lancer-line))
-    (not(can-train berserk-line))    
+    (not(can-train flemish-pikeman))
+    (not(can-train steppe-lancer-line))   
     (unit-type-count-total spearman-line g:< spearmenQtyHigh)
     (can-train spearman-line)
 =>

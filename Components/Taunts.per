@@ -143,7 +143,7 @@
 	(enable-timer 42 1)
 )
 (defrule
-	(timer-triggered 42)
+	(timer-triggered 42)(up-compare-sn sn-target-player-number == -1)
 =>
     (disable-timer 42)
 	(enable-timer 42 30)
