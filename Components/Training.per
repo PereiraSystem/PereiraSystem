@@ -1,6 +1,96 @@
 ; TRAINING -------------------------------------------------------
 (defrule(true)=>(chat-local-to-self "> 5. Training Loaded")(disable-self))
 
+
+; DOCK MILITARY SHIPS
+; SPECIAL SHIPS
+; KOREANS
+(defrule
+    (can-train turtle-ship-line)
+=>
+    (train turtle-ship-line)(disable-self)
+)
+(defrule
+    (building-type-count-total dock > 1)
+    (unit-type-count-total turtle-ship-line < 4)
+    (can-train turtle-ship-line)
+=>
+    (train turtle-ship-line)
+)
+; VIKINGS
+(defrule
+    (can-train longboat-line)
+=>
+    (train longboat-line)(disable-self)
+)
+(defrule
+    (building-type-count-total dock > 1)
+    (unit-type-count-total longboat-line < 4)
+    (can-train longboat-line)
+=>
+    (train longboat-line)
+)
+; PORTUGUESE
+(defrule
+    (can-train caravel-line)
+=>
+    (train caravel-line)(disable-self)
+)
+(defrule
+    (building-type-count-total dock > 1)
+    (unit-type-count-total caravel-line < 4)
+    (can-train caravel-line)
+=>
+    (train caravel-line)
+)
+; CANNON GALLEON
+(defrule
+    (building-type-count-total dock > 1)
+    (unit-type-count-total cannon-galleon-line < 4)
+    (can-train cannon-galleon-line)
+=>
+    (train cannon-galleon-line)
+)
+; GALLEY
+(defrule
+    (can-train galley-line)
+=>
+    (train galley-line)
+    (disable-self)
+)(defrule
+    (can-train galley-line)
+=>
+    (train galley-line)
+    (disable-self)
+)
+(defrule
+    (building-type-count-total dock > 1)
+    (up-compare-goal dudeHasExplosiveShips == 1)
+    (wood-amount > 350)
+    (unit-type-count-total galley-line < 4)
+    (can-train galley-line)
+=>
+    (train galley-line)
+)
+; FIRE SHIP
+(defrule
+    (or(up-compare-goal dudeHasGalleys == 1)
+    (up-compare-goal dudeHasCannonShips == 1))
+    (unit-type-count-total fire-ship-line < 4)
+    (can-train fire-ship-line)
+=>
+    (train fire-ship-line)
+)
+; DEMO SHIP
+(defrule
+    (up-compare-goal dudeHasFireShips == 1)
+    (wood-amount > 350)
+    (unit-type-count-total demolition-ship-line < 1)
+    (can-train demolition-ship-line)
+=>
+    (train demolition-ship-line)
+)
+
 ; TREBUCHET
 (defrule
     (military-population g:> minArmySize)    
@@ -782,8 +872,8 @@
 =>
     (train mangonel-line)
 )
-(defrule ;celts removed
-    (civ-selected korean)
+(defrule 
+    (or(civ-selected korean)(civ-selected celtic))
     (current-age == imperial-age)
 	(can-train mangonel-line)
 =>
@@ -967,94 +1057,7 @@
 =>
 	(train armored-elephant-line)
 )
-; DOCK MILITARY SHIPS
-; SPECIAL SHIPS
-; KOREANS
-(defrule
-    (can-train turtle-ship-line)
-=>
-    (train turtle-ship-line)(disable-self)
-)
-(defrule
-    (building-type-count-total dock > 1)
-    (unit-type-count-total turtle-ship-line < 4)
-    (can-train turtle-ship-line)
-=>
-    (train turtle-ship-line)
-)
-; VIKINGS
-(defrule
-    (can-train longboat-line)
-=>
-    (train longboat-line)(disable-self)
-)
-(defrule
-    (building-type-count-total dock > 1)
-    (unit-type-count-total longboat-line < 4)
-    (can-train longboat-line)
-=>
-    (train longboat-line)
-)
-; PORTUGUESE
-(defrule
-    (can-train caravel-line)
-=>
-    (train caravel-line)(disable-self)
-)
-(defrule
-    (building-type-count-total dock > 1)
-    (unit-type-count-total caravel-line < 4)
-    (can-train caravel-line)
-=>
-    (train caravel-line)
-)
-; CANNON GALLEON
-(defrule
-    (building-type-count-total dock > 1)
-    (unit-type-count-total cannon-galleon-line < 4)
-    (can-train cannon-galleon-line)
-=>
-    (train cannon-galleon-line)
-)
-; GALLEY
-(defrule
-    (can-train galley-line)
-=>
-    (train galley-line)
-    (disable-self)
-)(defrule
-    (can-train galley-line)
-=>
-    (train galley-line)
-    (disable-self)
-)
-(defrule
-    (building-type-count-total dock > 1)
-    (up-compare-goal dudeHasExplosiveShips == 1)
-    (wood-amount > 350)
-    (unit-type-count-total galley-line < 4)
-    (can-train galley-line)
-=>
-    (train galley-line)
-)
-; FIRE SHIP
-(defrule
-    (or(up-compare-goal dudeHasGalleys == 1)
-    (up-compare-goal dudeHasCannonShips == 1))
-    (unit-type-count-total fire-ship-line < 4)
-    (can-train fire-ship-line)
-=>
-    (train fire-ship-line)
-)
-; DEMO SHIP
-(defrule
-    (up-compare-goal dudeHasFireShips == 1)
-    (wood-amount > 350)
-    (unit-type-count-total demolition-ship-line < 1)
-    (can-train demolition-ship-line)
-=>
-    (train demolition-ship-line)
-)
+
 ; STABLE
 ; STEPPE LANCER
 (defrule
@@ -1074,7 +1077,6 @@
     (train steppe-lancer-line)
 )
 
-
 (defrule
     (current-age == imperial-age)
     (unit-type-count-total steppe-lancer-line g:< knightsQtyMedium)
@@ -1082,11 +1084,11 @@
         (and(up-compare-goal dudeHasCavalry == 1)
             (can-train camel-line))
     )
-    (not(can-train steppe-lancer-line))
     (can-train steppe-lancer-line)
 =>
     (train steppe-lancer-line)
 )
+
 ; ELEPHANTS
 (defrule
     (current-age == castle-age)
@@ -1138,7 +1140,6 @@
 )
 (defrule
 	(current-age == feudal-age) ; counter to archers
-    (town-under-attack)
     (or(up-compare-goal dudeHasArchers == 1)
     (up-compare-goal dudeHasSkirmishers == 1))
     (not(civ-selected celtic))
@@ -1150,6 +1151,7 @@
     (train scout-cavalry-line)
     (up-modify-goal totalSoldiersCreatedThisAge c:+ 1)
 )
+
 ; CASTLE AGE SCOUTS
 (defrule
 	(current-age == castle-age)

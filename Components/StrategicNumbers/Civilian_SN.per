@@ -1,4 +1,3 @@
-
 ; HUNTING
 (defrule
     (true)
@@ -131,9 +130,10 @@
 (defrule
     (true)
 =>
-    (set-strategic-number sn-dropsite-separation-distance 3) ; WORKS?
+    (set-strategic-number sn-dropsite-separation-distance 2) ; WORKS?
     (set-strategic-number sn-allow-adjacent-dropsites 1) 
     (set-strategic-number sn-required-forest-tiles 8)
+    (set-strategic-number sn-wood-dropsite-distance 4) ; DOESNT WORK, THEY STILL BUILD AT 3 DISTANCE DONT DELETE    
     (disable-self)
 )
 
@@ -141,7 +141,7 @@
 (defrule
     (true)
 =>
-    (set-strategic-number sn-lumber-camp-max-distance 24);
+    (set-strategic-number sn-lumber-camp-max-distance 24);  
     (set-strategic-number sn-mining-camp-max-distance 24);
     (set-strategic-number sn-mill-max-distance 12)
     (disable-self)
@@ -210,7 +210,7 @@
 =>
     (set-strategic-number sn-maximum-hunt-drop-distance 22)
     (set-strategic-number sn-maximum-food-drop-distance 9)
-    (set-strategic-number sn-maximum-wood-drop-distance 9)
+    (set-strategic-number sn-maximum-wood-drop-distance 6);!!!!!!!!!!!
     (set-strategic-number sn-maximum-gold-drop-distance 0)
     (set-strategic-number sn-maximum-stone-drop-distance 0)
     (disable-self)
@@ -226,35 +226,29 @@
 (defrule
     (up-research-status c: feudal-age == research-pending)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 38)
-    (set-strategic-number sn-wood-gatherer-percentage 52)
-    (set-strategic-number sn-gold-gatherer-percentage 10) ;
+    (set-strategic-number sn-food-gatherer-percentage 66)
+    (set-strategic-number sn-wood-gatherer-percentage 30)
+    (set-strategic-number sn-gold-gatherer-percentage 4) ;
     (set-strategic-number sn-stone-gatherer-percentage 0)
-    (set-strategic-number sn-maximum-gold-drop-distance 14)
+    (set-strategic-number sn-maximum-gold-drop-distance 9)
     (disable-self)
 )
 
 (defrule
-    (current-age == feudal-age)
+    (up-research-status c: castle-age == research-pending)
 =>
-    (set-strategic-number sn-maximum-stone-drop-distance 0)
-    (set-strategic-number sn-food-gatherer-percentage 50)
-    (set-strategic-number sn-wood-gatherer-percentage 40)
-    (set-strategic-number sn-gold-gatherer-percentage 10) ;
+
+    (set-strategic-number sn-maximum-hunt-drop-distance 0)
     (disable-self)
 )
 
 (defrule
     (current-age == castle-age)
-    (players-building-type-count any-ally monastery > 0)
-    (or
-        (building-type-count siege-workshop > 0)(building-type-count university > 0)
-    )
 =>
-    (set-strategic-number sn-food-gatherer-percentage 60)
-    (set-strategic-number sn-wood-gatherer-percentage 20)
-    (set-strategic-number sn-gold-gatherer-percentage 10)
-    (set-strategic-number sn-stone-gatherer-percentage 10)
+    (set-strategic-number sn-food-gatherer-percentage 62)
+    (set-strategic-number sn-wood-gatherer-percentage 26)
+    (set-strategic-number sn-gold-gatherer-percentage 8)
+    (set-strategic-number sn-stone-gatherer-percentage 4)
     (set-strategic-number sn-maximum-stone-drop-distance 9)
     (chat-local-to-self "STONE MINING AVAILABLE????")
     (up-chat-data-to-self "WOOD GATHER PERCENT: %d : %d" s: sn-wood-gatherer-percentage)

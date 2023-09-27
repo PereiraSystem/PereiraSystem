@@ -3,7 +3,7 @@
 ; ADVANCING AGE
 (defrule
     (can-research feudal-age)
-    (or(unit-type-count-total villager > 6)(food-amount > 501))
+    (unit-type-count-total villager > 6)
 =>
     (research feudal-age)
 )

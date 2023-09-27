@@ -12,12 +12,12 @@
     (up-chat-data-to-self "Town size min increased = %d" s: sn-minimum-town-size)
 )
 ; TIMER 2 INCREASES LUMBER CAMPS QUANTITY
-(defrule(building-type-count lumber-camp > 0)=>(enable-timer 2 120)(disable-self))
+(defrule(building-type-count lumber-camp > 0)=>(enable-timer 2 240)(disable-self))
 (defrule
 	(timer-triggered 2)
 =>
 	(disable-timer 2)
-    (enable-timer 2 65)
+    (enable-timer 2 240)
     (up-modify-goal maxLumberCampsQty c:+ 1)
     ;(up-chat-data-to-self "Lumber camps max qty increased = %d" g: maxLumberCampsQty)
 )

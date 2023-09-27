@@ -13,91 +13,38 @@
     (enable-timer 21 00)
     (disable-self)
 )
+
 ; ATTACK!
 (defrule
     (timer-triggered 21)
     (up-players-in-game enemy > 0)
     (military-population > 0)
+
 =>
 	(disable-timer 21)
     (enable-timer 21 20)
-    (set-strategic-number sn-number-attack-groups 1)
-    (set-strategic-number sn-minimum-attack-group-size 1)    
-    (set-strategic-number sn-maximum-attack-group-size 1)      
-    (set-strategic-number sn-percent-attack-soldiers 100)
-	(set-strategic-number sn-garrison-rams 1)
     (set-strategic-number sn-target-player-number 0)
+    (set-strategic-number sn-number-attack-groups 1)
+    (set-strategic-number sn-minimum-attack-group-size 4)    
+    (set-strategic-number sn-maximum-attack-group-size 5)      
+    (set-strategic-number sn-percent-attack-soldiers 100)
     (set-goal weAreAttacking 1)
     (attack-now)
     (chat-to-allies "31 Attack!")
     (chat-to-player my-player-number "ATTACK!")
 )
 
-(defrule
-    (military-population g:>= minArmySize)
-    (not(town-under-attack))
-=>
-    (set-strategic-number sn-task-ungrouped-soldiers 1)
-    (chat-local-to-self ">>> Soldiers spread!")
-    (disable-self)
-)
-
 
 ; RETREAT
 (defrule
-  (game-time > 1800)
+    (game-time > 1800)
 	(up-players-in-game enemy > 0)
-  (military-population g:< minArmySize)
-  (players-building-type-count focus-player castle > 0)
+    (military-population g:< minArmySize)
+    (players-building-type-count focus-player castle > 0)
 =>
-	(up-retreat-now)
-  (set-strategic-number sn-task-ungrouped-soldiers 1)
-  (chat-to-allies "45 I Have No Soldiers To Destroy A Castle!")
-  (chat-local-to-self "<<< RETREAT!")
+    (up-retreat-now)
+    (chat-to-allies "45 I Have No Soldiers To Destroy A Castle!")
+    (chat-local-to-self "<<< RETREAT!")
 )
 
-;WALL TIMERS
-(defrule
-  (goal buildNorthWestMainGates 1)
-  (goal gotNorthWestPalisadeGates 1)
-=>
-  (enable-timer 23 180)
-  (chat-to-all "WE GOT THE MAIN NORTH WEST PALISADE! START THE TIMER!")
-  (disable-self)
-)
 
-(defrule (true)
-    (timer-triggered 23)
-    (or(goal gotSouthWestPalisadeGates 0)
-    (goal gotNorthEastPalisadeGates 0))
-    (up-compare-goal movingGatesEast <= 8)
-=>
-    (chat-to-all "PROBLEMS WITH SECONDARY PALISADE, LETS TRY TO MOVE GATES TO EAST!!!")
-    (up-modify-goal outerGatePoint3Y g:+ 1)
-    (up-chat-data-to-all "SOUTH GATE POINT IN %d" g: outerGatePoint3Y)
-
-    (up-modify-goal outerGatePoint2Y g:+ 1)
-    (up-modify-goal movingGatesEast g:+ 1)    
-    (disable-timer 23)
-    (enable-timer 23 10)      
-    
-)
-
-(defrule (true)
-    (timer-triggered 23)
-    (or(goal gotSouthWestPalisadeGates 0)
-    (goal gotNorthEastPalisadeGates 0))
-    (up-compare-goal movingGatesEast >= 8)
-=>
-    (chat-to-all "PROBLEMS WITH SECONDARY PALISADE, LETS TRY TO MOVE GATES TO WEST!!!")
-    (generate-random-number 2)(up-get-fact random-number 0 randomNumber)
-    (up-modify-goal outerGatePoint3Y g:- 1)
-    (up-chat-data-to-all "SOUTH GATE POINT IN %d" g: outerGatePoint3Y)
-
-    (generate-random-number 2)(up-get-fact random-number 0 randomNumber)
-    (up-modify-goal outerGatePoint2Y g:- 1)
-    (up-modify-goal movingGatesEast g:+ 1)    
-    (disable-timer 23)
-    (enable-timer 23 10)      
-    
-)

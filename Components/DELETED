@@ -1,0 +1,27 @@
+
+(defrule
+	(timer-triggered 42)(up-compare-sn sn-target-player-number == -1)
+=>
+	(attack-now)
+    (disable-timer 42)
+	(enable-timer 42 60)
+	
+	(chat-to-allies "I´m helping!")
+)
+
+; DISABLE HELP
+(defrule
+	(up-compare-sn sn-target-player-number == -1)
+	(up-timer-status 49 == timer-disabled) ; (attacks directed to ally)
+=>	
+    (chat-to-all "Back To Attacking The Frontlines in 120 SECONDS!!")
+    (enable-timer 49 120)
+)
+
+(defrule
+	(timer-triggered 49)
+=>
+    (disable-timer 49)
+	(set-strategic-number sn-target-player-number 0)
+    (chat-to-all "Back To Attacking The Frontlines!")
+)

@@ -1,10 +1,8 @@
-
-; COMBAT
 ; DEFENSE
 (defrule
     (true)
 =>
-    (set-strategic-number sn-allow-civilian-defense 1)
+    (set-strategic-number sn-allow-civilian-defense 0)
     (disable-self)
 )
 
@@ -12,19 +10,90 @@
     (game-time > 360)
     (military-population < 2)
 =>
-    (set-strategic-number sn-allow-civilian-defense 2)
+    (set-strategic-number sn-allow-civilian-defense 0)
 )
 
 (defrule
     (true)
 =>
-    (set-strategic-number sn-defense-distance 22)
+    (set-strategic-number sn-defense-distance 26)
     (set-strategic-number sn-task-ungrouped-soldiers 0)
     (set-strategic-number sn-percent-enemy-sighted-response 100)
     (disable-self)
 )
 
-(defrule ;DEFENSE PRIORITIES
+(defrule
+    (military-population g:>= minArmySize)
+    (not(town-under-attack))
+=>
+    (set-strategic-number sn-task-ungrouped-soldiers 1)
+    (chat-local-to-self ">>> Soldiers spread!")
+    (disable-self)
+)
+
+
+; ATTACK
+; CHOOSING TARGET
+(defrule
+    (true)
+=>
+    ;(set-strategic-number sn-attack-coordination 2) INVALID
+    (set-strategic-number sn-free-siege-targeting 0)
+    (set-strategic-number sn-enemy-sighted-response-distance 10)
+    (set-strategic-number sn-wall-targeting-mode 1)
+    (set-strategic-number sn-attack-intelligence 0);!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    (set-strategic-number sn-target-evaluation-distance 10)
+    (set-strategic-number sn-coop-share-attacking 0)
+       
+    (set-strategic-number sn-target-evaluation-boat 10)
+    (disable-self)
+)
+
+(defrule
+    (true)
+=>
+    (set-strategic-number sn-enable-offensive-priority 1)
+    (set-strategic-number sn-local-targeting-mode 1)
+    (set-strategic-number sn-ignore-attack-group-under-attack 0)
+    (set-strategic-number sn-enable-patrol-attack 1)
+    (set-strategic-number sn-percentage-explore-exterminators 50)
+    (set-strategic-number sn-disable-defend-groups 0);!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    (set-strategic-number sn-relic-return-distance 17)
+    (set-strategic-number sn-allow-civilian-offense 0)
+    ;(set-strategic-number sn-number-civilian-militia 100)
+	(set-strategic-number sn-garrison-rams 1)
+    (set-strategic-number sn-gather-idle-soldiers-at-center 1)
+    (disable-self)
+)
+
+(defrule
+    (true)
+=>
+    (set-strategic-number sn-group-form-distance 20) ;24 20
+    (set-strategic-number sn-attack-group-gather-spacing 4)
+    (set-strategic-number sn-percent-attack-soldiers 100)
+    (set-strategic-number sn-attack-group-size-randomness 0)
+    (set-strategic-number sn-minimum-attack-group-size 1)
+    (set-strategic-number sn-maximum-attack-group-size 1000)
+    (set-strategic-number sn-number-attack-groups 1)
+    (disable-self)
+)
+
+
+
+; BOATS
+(defrule
+    (true)
+=>
+    (set-strategic-number sn-minimum-boat-attack-group-size 2)
+    (set-strategic-number sn-maximum-boat-attack-group-size 2)
+    (set-strategic-number sn-number-boat-attack-groups 1)
+    (set-strategic-number sn-number-boat-explore-groups 2)
+    (disable-self)
+)
+
+; PRIORITIES --------
+(defrule ; DEFENSE 
 	(true)
 =>
 	(up-set-defense-priority c: lumber-camp c: 20000)
@@ -35,7 +104,7 @@
 	(disable-self)
 )
 
-(defrule ;OFFENSE PRIORITIES
+(defrule ; OFFENSE 
 	(true)
 =>
     (up-set-offense-priority c: university c: 1)
@@ -59,61 +128,3 @@
 
     (disable-self)
 )
-; ATTACK
-; CHOOSING TARGET
-(defrule
-    (true)
-=>
-    ;(set-strategic-number sn-attack-coordination 2) INVALID
-    (set-strategic-number sn-free-siege-targeting 0)
-    (set-strategic-number sn-enemy-sighted-response-distance 28)
-    (set-strategic-number sn-wall-targeting-mode 1)
-    (set-strategic-number sn-attack-intelligence 1)
-    (set-strategic-number sn-target-evaluation-distance 10)
-    (set-strategic-number sn-coop-share-attacking 1)
-       
-    (set-strategic-number sn-target-evaluation-boat 10)
-    (disable-self)
-)
-
-(defrule
-    (true)
-=>
-    (set-strategic-number sn-enable-offensive-priority 1)
-    (set-strategic-number sn-local-targeting-mode 1)
-    (set-strategic-number sn-ignore-attack-group-under-attack 0)
-    (set-strategic-number sn-enable-patrol-attack 1)
-    (set-strategic-number sn-percentage-explore-exterminators 50)
-    (set-strategic-number sn-disable-defend-groups 0)
-    (set-strategic-number sn-relic-return-distance 17)
-    (set-strategic-number sn-allow-civilian-offense 1)
-    ;(set-strategic-number sn-number-civilian-militia 100)
-	  (set-strategic-number sn-garrison-rams 1)
-    (set-strategic-number sn-gather-idle-soldiers-at-center 1)
-    (disable-self)
-)
-
-(defrule
-    (true)
-=>
-    (set-strategic-number sn-group-form-distance 10) ;24 20
-    (set-strategic-number sn-attack-group-gather-spacing 2)
-    (set-strategic-number sn-percent-attack-soldiers 100)
-    (set-strategic-number sn-attack-group-size-randomness 0)
-    (set-strategic-number sn-minimum-attack-group-size 3)
-    (set-strategic-number sn-maximum-attack-group-size 3)
-    (set-strategic-number sn-number-attack-groups 0)
-    (disable-self)
-)
-
-; BOATS
-(defrule
-    (true)
-=>
-    (set-strategic-number sn-minimum-boat-attack-group-size 1)
-    (set-strategic-number sn-maximum-boat-attack-group-size 150)
-    (set-strategic-number sn-number-boat-attack-groups 1)
-    (set-strategic-number sn-number-boat-explore-groups 2)
-    (disable-self)
-)
-
