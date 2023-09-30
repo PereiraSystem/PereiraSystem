@@ -613,27 +613,9 @@
 =>
     (build donjon)
 )
+
 ; MILITARY PRODUCTION BUILDINGS
 ; BARRACKS
-(defrule
-	(building-type-count-total barracks g:< barracksQty)
-    (building-type-count barracks > 1)
-    (building-type-count town-center > 0)
-    (or
-        (and
-            (building-type-count-total lumber-camp > 0)
-            (wood-amount g:> minimumWoodForLC)
-        )
-        (wood-amount > 305)
-    )
-    (up-can-build 0 c: barracks)
-=>
-    (chat-local-to-self "Trying To Build Barracks Advanced")
-    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
-    (up-modify-goal militaryBuildingsDistance c:+ 20)
-    (up-build place-control 0 c: barracks)
-)
-
 (defrule
 	(building-type-count-total barracks g:< barracksQty)
     (building-type-count town-center > 0)
@@ -647,88 +629,37 @@
     (up-can-build 0 c: barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks")
-    (up-set-placement-data my-player-number town-center c:+ 0)
+    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
+
     (up-build place-control 0 c: barracks)
+    (up-modify-goal militaryBuildingsDistance c:+ 2)    
 )
-
-
-
 
 ; BUILD STABLES
 (defrule
-    (current-age >= castle-age)
-    (or(wood-amount > 275)(building-type-count market > 0))
-    (building-type-count lumber-camp > 0)
-    (building-type-count-total stable g:< stableQty)
-    (up-can-build 0 c: stable)
-=>
-    (chat-local-to-self "Trying To Build Stable Advanced")
-    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
-    (up-build place-control 0 c: stable)
-)
-
-(defrule
-    (current-age == feudal-age)
-    (not(civ-selected viking))
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
     (building-type-count-total stable g:< stableQty)
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable")
-    (up-set-placement-data my-player-number town-center c: 2)
+    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)    
     (up-build place-control 0 c: stable)
-)
-
-(defrule
-    (current-age >= castle-age)
-    (or(wood-amount > 275)(building-type-count market > 0))
-    (building-type-count lumber-camp > 0)
-    (building-type-count-total stable g:< stableQty)
-    (up-can-build 0 c: stable)
-=>
-    (chat-local-to-self "Trying To Build Stable")
-    (up-set-placement-data my-player-number town-center c: 2)
-    (up-build place-control 0 c: stable)
+    (up-modify-goal militaryBuildingsDistance c:+ 2)
 )
 
 ; BUILD ARCHERY RANGE
 (defrule
-	(building-type-count-total archery-range g:< archeryRangeQty)
-	(building-type-count-total archery-range > 64)    
+	(building-type-count-total archery-range g:< archeryRangeQty)   
     (wood-amount > 275)
     (building-type-count town-center > 0)
     (building-type-count lumber-camp > 0)
     (up-can-build 0 c: archery-range)
 =>
     (chat-local-to-self "Trying To Build Archery Range Advanced")
-    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
+    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
     (up-build place-control 0 c: archery-range)
-)
-
-(defrule
-	(building-type-count-total archery-range g:< archeryRangeQty)
-    (wood-amount > 275)
-    (building-type-count town-center > 0)
-    (building-type-count lumber-camp > 0)
-    (up-can-build 0 c: archery-range)
-=>
-    (chat-local-to-self "Trying To Build Archery Range")
-    (up-set-placement-data my-player-number town-center c: 4)
-    (up-build place-control 0 c: archery-range)
-)
-
-(defrule
-	(building-type-count-total archery-range g:< archeryRangeQty)
-	(building-type-count-total archery-range > 64)    
-    (wood-amount > 275)
-    (building-type-count town-center > 0)
-    (building-type-count lumber-camp > 0)
-    (up-can-build 0 c: archery-range)
-=>
-    (chat-local-to-self "Trying To Build Archery Range Advanced")
-    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
-    (up-build place-control 0 c: archery-range)
+        (up-modify-goal militaryBuildingsDistance c:+ 2)
 )
 
 ; MONASTERY
@@ -762,22 +693,14 @@
     )
     (not(civ-selected gothic))
     (up-can-build 0 c: siege-workshop)
-    ;(can-build siege-workshop)
 =>
     (chat-local-to-self "Trying To Build Siege Workshop Advanced")
-    ;(build siege-workshop)
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: siege-workshop)
+    (up-modify-goal militaryBuildingsDistance c:+ 2)
 )
 
 
-(defrule
-	(building-type-count-total siege-workshop == 0)
-    (can-build siege-workshop)
-=>
-    (chat-local-to-self "Trying To Build Siege Workshop NORMAL")
-    (build siege-workshop)
-)
 
 
 
@@ -791,7 +714,7 @@
     (up-can-build 0 c: bombard-tower)
 =>
     (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)  
-    (up-modify-goal militaryBuildingsDistance c:+ 24)    
+    (up-modify-goal militaryBuildingsDistance c:+ 2)    
     (up-build place-control 0 c: bombard-tower)
 )
 
