@@ -165,6 +165,18 @@
     (buy-commodity stone)
     ;(chat-local-to-self "BUYING STONE (NO CASTLE)")
 )
+
+(defrule ;imperial age with many gold, buy stone
+    (current-age == imperial-age)
+    (stone-amount < 650)
+    (gold-amount > 7000)
+    (food-amount > 20000)
+    (wood-amount > 2000)
+	(can-buy-commodity stone)
+=>
+    (buy-commodity stone)
+    ;(chat-local-to-self "BUYING STONE")
+)
 ; TRIBUTE, just randomly give resources to anyone for now
 ; TRIBUTE IN FEUDAL AGE
 ; TRIBUTE IN IMPERIAL AGE

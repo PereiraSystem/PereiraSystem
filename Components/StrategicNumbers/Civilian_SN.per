@@ -21,10 +21,10 @@
     (true)
 =>
     (set-strategic-number sn-initial-exploration-required 2)
-    (set-strategic-number sn-minimum-water-body-size-for-dock 3)
-    (set-strategic-number sn-dock-avoidance-factor 1000)
-    (set-strategic-number sn-dock-proximity-factor 10)
-    (set-strategic-number sn-dock-placement-mode 1)
+    ;(set-strategic-number sn-minimum-water-body-size-for-dock 3)
+    ;(set-strategic-number sn-dock-avoidance-factor 1000)
+    ;(set-strategic-number sn-dock-proximity-factor 10)
+    ;(set-strategic-number sn-dock-placement-mode 1)
     (set-strategic-number sn-placement-zone-size 1);change with monastery
     (disable-self)
 )
@@ -33,6 +33,7 @@
 (defrule
     (true)
 =>
+    (up-assign-builders c: dock c: 2)
     (up-assign-builders c: monastery c: 3)
     (up-assign-builders c: archery-range c: 1)
     (up-assign-builders c: stable c: 1)

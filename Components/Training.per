@@ -872,8 +872,19 @@
 =>
     (train mangonel-line)
 )
+
+#load-if-defined UP-KOREAN-CIV-ALLY
 (defrule 
-    (or(civ-selected korean)(civ-selected celtic))
+    (civ-selected celtic)
+    (current-age == imperial-age)
+	(can-train mangonel-line)
+=>
+    (train mangonel-line)
+)
+#end-if
+
+(defrule 
+    (civ-selected korean)
     (current-age == imperial-age)
 	(can-train mangonel-line)
 =>
