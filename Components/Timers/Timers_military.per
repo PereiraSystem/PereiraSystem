@@ -8,7 +8,10 @@
 ; ATTACK TIMER 21
 (defrule
     (up-players-in-game enemy > 0)
-    (game-time g:> secondsUntilFirstAttack)
+    (or
+        (game-time g:> secondsUntilFirstAttack)
+        (and(wood-amount > 100000)(food-amount > 100000))
+    )
 =>
     (enable-timer 21 00)
     (disable-self)
