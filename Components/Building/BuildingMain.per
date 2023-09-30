@@ -617,23 +617,6 @@
 ; BARRACKS
 (defrule
 	(building-type-count-total barracks g:< barracksQty)
-    (building-type-count town-center > 0)
-    (or
-        (and
-            (building-type-count-total lumber-camp > 0)
-            (wood-amount g:> minimumWoodForLC)
-        )
-        (wood-amount > 305)
-    )
-    (up-can-build 0 c: barracks)
-=>
-    (chat-local-to-self "Trying To Build Barracks")
-    (up-set-placement-data my-player-number town-center c:+ 0)
-    (up-build place-control 0 c: barracks)
-)
-
-(defrule
-	(building-type-count-total barracks g:< barracksQty)
     (building-type-count barracks > 1)
     (building-type-count town-center > 0)
     (or
@@ -651,8 +634,39 @@
     (up-build place-control 0 c: barracks)
 )
 
+(defrule
+	(building-type-count-total barracks g:< barracksQty)
+    (building-type-count town-center > 0)
+    (or
+        (and
+            (building-type-count-total lumber-camp > 0)
+            (wood-amount g:> minimumWoodForLC)
+        )
+        (wood-amount > 305)
+    )
+    (up-can-build 0 c: barracks)
+=>
+    (chat-local-to-self "Trying To Build Barracks")
+    (up-set-placement-data my-player-number town-center c:+ 0)
+    (up-build place-control 0 c: barracks)
+)
+
+
+
 
 ; BUILD STABLES
+(defrule
+    (current-age >= castle-age)
+    (or(wood-amount > 275)(building-type-count market > 0))
+    (building-type-count lumber-camp > 0)
+    (building-type-count-total stable g:< stableQty)
+    (up-can-build 0 c: stable)
+=>
+    (chat-local-to-self "Trying To Build Stable Advanced")
+    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
+    (up-build place-control 0 c: stable)
+)
+
 (defrule
     (current-age == feudal-age)
     (not(civ-selected viking))
@@ -681,6 +695,19 @@
 ; BUILD ARCHERY RANGE
 (defrule
 	(building-type-count-total archery-range g:< archeryRangeQty)
+	(building-type-count-total archery-range > 64)    
+    (wood-amount > 275)
+    (building-type-count town-center > 0)
+    (building-type-count lumber-camp > 0)
+    (up-can-build 0 c: archery-range)
+=>
+    (chat-local-to-self "Trying To Build Archery Range Advanced")
+    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
+    (up-build place-control 0 c: archery-range)
+)
+
+(defrule
+	(building-type-count-total archery-range g:< archeryRangeQty)
     (wood-amount > 275)
     (building-type-count town-center > 0)
     (building-type-count lumber-camp > 0)
@@ -699,8 +726,8 @@
     (building-type-count lumber-camp > 0)
     (up-can-build 0 c: archery-range)
 =>
-    (chat-local-to-self "Trying To Build Archery Range Middle")
-    (up-set-placement-data my-player-number town-center c: 64)
+    (chat-local-to-self "Trying To Build Archery Range Advanced")
+    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: archery-range)
 )
 
@@ -737,51 +764,12 @@
     (up-can-build 0 c: siege-workshop)
     ;(can-build siege-workshop)
 =>
-    (chat-local-to-self "Trying To Build Siege Workshop -26")
+    (chat-local-to-self "Trying To Build Siege Workshop Advanced")
     ;(build siege-workshop)
-    (up-set-placement-data my-player-number town-center c:- 26)
+    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: siege-workshop)
 )
 
-(defrule
-	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
-	(building-type-count-total siege-workshop > 0)    
-    (building-type-count town-center > 0)
-    (players-building-type-count any-ally monastery > 0)
-    (or
-        (building-type-count-total university == 1)
-        (not(civ-selected bohemians))
-    )
-    (not(civ-selected gothic))
-    (up-can-build 0 c: siege-workshop)
-    ;(can-build siege-workshop)
-=>
-    (chat-local-to-self "Trying To Build Siege Workshop 26")
-    ;(build siege-workshop)
-    (up-set-placement-data my-player-number town-center c:+ 26)
-    (up-build place-control 0 c: siege-workshop)
-)
-
-
-
-(defrule
-	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
-	(building-type-count-total siege-workshop > 1)      
-    (building-type-count town-center > 0)
-    (players-building-type-count any-ally monastery > 0)
-    (or
-        (building-type-count-total university == 1)
-        (not(civ-selected bohemians))
-    )
-    (not(civ-selected gothic))
-    (up-can-build 0 c: siege-workshop)
-    ;(can-build siege-workshop)
-=>
-    (chat-local-to-self "Trying To Build Siege Workshop 36")
-    ;(build siege-workshop)
-    (up-set-placement-data my-player-number town-center c:+ 36)
-    (up-build place-control 0 c: siege-workshop)
-)
 
 (defrule
 	(building-type-count-total siege-workshop == 0)
@@ -846,37 +834,38 @@
 ;DELETE BUILDINGS TO MOVE FORWARD------------------------------------------------------------------
 
 (defrule
-    (building-type-count barracks > 12)
+    (building-type-count barracks > 10)
 =>
     (delete-building barracks)    
 )
 
 (defrule
-    (building-type-count stable > 12)
+    (building-type-count stable > 10)
 =>
     (delete-building stable)    
 )
 
 (defrule
-    (building-type-count archery-range > 12)
+    (building-type-count archery-range > 10)
 =>
     (delete-building archery-range)    
 )
 
 (defrule
-    (building-type-count siege-workshop > 12)
+    (building-type-count siege-workshop > 8)
 =>
     (delete-building siege-workshop)    
 )
 
 (defrule
-    (building-type-count mining-camp > 24)
+    (building-type-count mining-camp > 20)
 =>
     (delete-building mining-camp)    
 )
 
 (defrule
-    (building-type-count lumber-camp > 24)
+    (building-type-count lumber-camp > 20)
 =>
     (delete-building lumber-camp)    
 )
+
