@@ -131,10 +131,10 @@
 (defrule
     (true)
 =>
-    (set-strategic-number sn-dropsite-separation-distance 2) ; WORKS?
-    (set-strategic-number sn-allow-adjacent-dropsites 1) 
-    (set-strategic-number sn-required-forest-tiles 8)
+    (set-strategic-number sn-dropsite-separation-distance 2) ; DOESNT WORK AT ALL
     (set-strategic-number sn-wood-dropsite-distance 4) ; DOESNT WORK, THEY STILL BUILD AT 3 DISTANCE DONT DELETE    
+    (set-strategic-number sn-allow-adjacent-dropsites 1) ;only works for (dropsite-min-distance wood > 0 or 1)
+    (set-strategic-number sn-required-forest-tiles 8)
     (disable-self)
 )
 
@@ -165,8 +165,6 @@
     (set-strategic-number sn-maximum-wood-drop-distance 5)
     ;(set-strategic-number sn-required-forest-tiles 8)
     (chat-local-to-self ">>> Industrial lumber mode!")
-    (chat-to-player my-player-number "INDUSTRIAL MODE LUMBER - MAX DROP DISTANCE = 5")
-    (disable-self)
 )
 
 (defrule

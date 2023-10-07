@@ -330,6 +330,8 @@
 )
 
 ; MARKET - need the market to share exploration and help the ally to defend
+
+
 (defrule 
     (up-players-in-game ally > 1)
     (building-type-count town-center > 0)
@@ -580,7 +582,7 @@
     ;(can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle")
-    (up-set-placement-data my-player-number -1 c: 7)
+    (up-set-placement-data my-player-number 0 c: 7)
     ;(up-set-placement-data my-player-number palisade-wall c: -1)
     (up-build place-control 0 c: castle)
     (build castle)
@@ -593,7 +595,7 @@
     ;(can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle Advanced")
-    (up-set-placement-data my-player-number -1 c: 45)
+    (up-set-placement-data my-player-number 0 c: militaryBuildingsDistance)
     (up-build place-control 0 c: castle)
     (build castle)
 )
@@ -632,7 +634,24 @@
     (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
 
     (up-build place-control 0 c: barracks)
-    (up-modify-goal militaryBuildingsDistance c:+ 2)    
+    (up-modify-goal militaryBuildingsDistance c:+ 1)    
+)
+
+(defrule
+    (building-type-count town-center > 0)
+	(building-type-count-total barracks g:< barracksQty)
+    	(building-type-count-total barracks > 12)    
+    (or
+        (and
+            (building-type-count-total lumber-camp > 0)
+            (wood-amount g:> minimumWoodForLC)
+        )
+        (wood-amount > 305)
+    )
+    (can-build barracks)
+=>
+    (chat-local-to-self "Trying To Build Barracks - Forward")
+    (build-forward barracks)    
 )
 
 ; BUILD STABLES
@@ -645,7 +664,18 @@
     (chat-local-to-self "Trying To Build Stable")
     (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)    
     (up-build place-control 0 c: stable)
-    (up-modify-goal militaryBuildingsDistance c:+ 2)
+    (up-modify-goal militaryBuildingsDistance c:+ 1)
+)
+
+(defrule
+    (or(wood-amount > 275)(building-type-count market > 0))
+    (building-type-count lumber-camp > 0)
+    (building-type-count-total stable g:< stableQty)
+    (building-type-count-total stable > 12)    
+    (can-build stable)
+=>
+    (chat-local-to-self "Trying To Build Stable - Forward")
+    (build-forward stable)
 )
 
 ; BUILD ARCHERY RANGE
@@ -656,10 +686,22 @@
     (building-type-count lumber-camp > 0)
     (up-can-build 0 c: archery-range)
 =>
-    (chat-local-to-self "Trying To Build Archery Range Advanced")
+    (chat-local-to-self "Trying To Build Archery Range")
     (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
     (up-build place-control 0 c: archery-range)
-        (up-modify-goal militaryBuildingsDistance c:+ 2)
+    (up-modify-goal militaryBuildingsDistance c:+ 1)
+)
+
+(defrule
+	(building-type-count-total archery-range g:< archeryRangeQty)
+    (building-type-count-total archery-range > 12 ) 
+    (wood-amount > 275)
+    (building-type-count town-center > 0)
+    (building-type-count lumber-camp > 0)
+    (can-build archery-range)
+=>
+    (chat-local-to-self "Trying To Build Archery Range - Forward")
+    (build-forward archery-range)
 )
 
 ; MONASTERY
@@ -694,12 +736,27 @@
     (not(civ-selected gothic))
     (up-can-build 0 c: siege-workshop)
 =>
-    (chat-local-to-self "Trying To Build Siege Workshop Advanced")
+    (chat-local-to-self "Trying To Build Siege Workshop")
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: siege-workshop)
-    (up-modify-goal militaryBuildingsDistance c:+ 2)
+    (up-modify-goal militaryBuildingsDistance c:+ 3)
 )
 
+(defrule
+    (building-type-count town-center > 0)
+    (players-building-type-count any-ally monastery > 0)
+	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
+    	(building-type-count-total siege-workshop > 10)    
+    (or
+        (building-type-count-total university == 1)
+        (not(civ-selected bohemians))
+    )
+    (not(civ-selected gothic))
+    (can-build siege-workshop)
+=>
+    (chat-local-to-self "Trying To Build Siege Workshop - Forward")
+    (build archery-range)
+)
 
 
 
@@ -719,7 +776,7 @@
 )
 
 
-(defrule
+(defrule(false)
     (can-build bombard-tower)
     (gold-amount > 301)
     (building-type-count-total castle > 0)
@@ -758,36 +815,42 @@
 
 (defrule
     (building-type-count barracks > 10)
+    (wood-amount > 50000)    
 =>
     (delete-building barracks)    
 )
 
 (defrule
     (building-type-count stable > 10)
+    (wood-amount > 50000)    
 =>
     (delete-building stable)    
 )
 
 (defrule
     (building-type-count archery-range > 10)
+    (wood-amount > 50000)    
 =>
     (delete-building archery-range)    
 )
 
 (defrule
     (building-type-count siege-workshop > 8)
+    (wood-amount > 50000)    
 =>
     (delete-building siege-workshop)    
 )
 
 (defrule
     (building-type-count mining-camp > 20)
+    (wood-amount > 50000)    
 =>
     (delete-building mining-camp)    
 )
 
 (defrule
     (building-type-count lumber-camp > 20)
+    (wood-amount > 50000)
 =>
     (delete-building lumber-camp)    
 )
