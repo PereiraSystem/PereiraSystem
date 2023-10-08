@@ -638,7 +638,7 @@
 
 (defrule
 	(building-type-count-total barracks g:< barracksQty)
-	(building-type-count-total barracks > 1)    
+	(building-type-count-total barracks > 0)    
     (building-type-count town-center > 0)
     (or
         (and
@@ -689,7 +689,7 @@
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
     (building-type-count-total stable g:< stableQty)
-    (building-type-count-total stable > 1)    
+    (building-type-count-total stable > 0)    
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable With Increment")
@@ -724,7 +724,7 @@
 
 (defrule
 	(building-type-count-total archery-range g:< archeryRangeQty)   
-	(building-type-count-total archery-range > 1)       
+	(building-type-count-total archery-range > 0)       
     (wood-amount > 275)
     (building-type-count town-center > 0)
     (building-type-count lumber-camp > 0)
@@ -748,26 +748,6 @@
     (build-forward archery-range)
 )
 
-; MONASTERY
-(defrule
-    (or(building-type-count-total house > 3)(civ-selected hun))
-    (building-type-count-total monastery == 0)
-    (can-build monastery)
-=>
-    (chat-local-to-self "Trying To Build Monastery Place Control")
-    (up-set-placement-data my-player-number town-center c: -6)
-    (up-build place-control 0 c: monastery)
-)
-
-(defrule
-    (or(building-type-count-total house > 3)(civ-selected hun))
-    (building-type-count-total monastery == 0)
-    (can-build monastery)
-=>    
-    (build monastery)
-    (chat-local-to-self "Trying To Build Monastery - Normal")
-)
-
 ; BUILD SIEGE WORKSHOP
 (defrule
 	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
@@ -787,7 +767,7 @@
 
 (defrule
 	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
-	(building-type-count-total siege-workshop > 1)    
+	(building-type-count-total siege-workshop > 0)    
     (building-type-count town-center > 0)
     (players-building-type-count any-ally monastery > 0)
     (or
@@ -819,8 +799,25 @@
     (build archery-range)
 )
 
+; MONASTERY
+(defrule
+    (or(building-type-count-total house > 3)(civ-selected hun))
+    (building-type-count-total monastery == 0)
+    (can-build monastery)
+=>
+    (chat-local-to-self "Trying To Build Monastery Place Control")
+    (up-set-placement-data my-player-number town-center c: -6)
+    (up-build place-control 0 c: monastery)
+)
 
-
+(defrule
+    (or(building-type-count-total house > 3)(civ-selected hun))
+    (building-type-count-total monastery == 0)
+    (can-build monastery)
+=>    
+    (build monastery)
+    (chat-local-to-self "Trying To Build Monastery - Normal")
+)
 
 ; TOWERS
 ; BOMBARD TOWER
@@ -836,7 +833,6 @@
     (up-build place-control 0 c: bombard-tower)
 )
 
-
 (defrule(false)
     (can-build bombard-tower)
     (gold-amount > 301)
@@ -845,8 +841,8 @@
 =>
     (build bombard-tower)
 )
-; NORMAL TOWER
 
+; NORMAL TOWER
 
 (defrule (false)
     (up-can-build 0 c: watch-tower)
@@ -872,47 +868,4 @@
     (up-build place-control 0 c: watch-tower)
 )
 
-;DELETE BUILDINGS TO MOVE FORWARD------------------------------------------------------------------
-
-(defrule
-    (building-type-count barracks > 10)
-    (wood-amount > 50000)    
-=>
-    (delete-building barracks)    
-)
-
-(defrule
-    (building-type-count stable > 10)
-    (wood-amount > 50000)    
-=>
-    (delete-building stable)    
-)
-
-(defrule
-    (building-type-count archery-range > 10)
-    (wood-amount > 50000)    
-=>
-    (delete-building archery-range)    
-)
-
-(defrule
-    (building-type-count siege-workshop > 8)
-    (wood-amount > 50000)    
-=>
-    (delete-building siege-workshop)    
-)
-
-(defrule
-    (building-type-count mining-camp > 20)
-    (wood-amount > 50000)    
-=>
-    (delete-building mining-camp)    
-)
-
-(defrule
-    (building-type-count lumber-camp > 20)
-    (wood-amount > 50000)
-=>
-    (delete-building lumber-camp)    
-)
 
