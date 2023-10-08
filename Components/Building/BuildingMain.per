@@ -594,7 +594,7 @@
     ;(can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle Advanced")
-    (up-set-placement-data my-player-number 0 c: militaryBuildingsDistance)
+    (up-set-placement-data my-player-number 0 g:- militaryBuildingsDistance)
     (up-build place-control 0 c: castle)
 )
 
@@ -617,7 +617,7 @@
 ; MILITARY PRODUCTION BUILDINGS
 ; BARRACKS
 (defrule
-	(building-type-count-total barracks g:< barracksQty)
+	(building-type-count-total barracks == 0)
     (building-type-count town-center > 0)
     (or
         (and
@@ -647,8 +647,8 @@
     (up-can-build 0 c: barracks)
 =>
     (up-chat-data-to-self "Trying To Build Barracks With Increment %d" g: militaryBuildingsDistance)
-    (up-modify-goal militaryBuildingsDistance g:+ 3)      
-    (up-set-placement-data my-player-number town-center g: militaryBuildingsDistance)
+    (up-modify-goal militaryBuildingsDistance c:+ 3)      
+    (up-set-placement-data my-player-number 0 c:- militaryBuildingsDistance)
     (up-build place-control 0 c: barracks)
   
 )
@@ -674,7 +674,7 @@
 (defrule
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
-    (building-type-count-total stable g:< stableQty)
+    (building-type-count-total stable == 0)    
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable")
@@ -685,13 +685,12 @@
 (defrule
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
-    (building-type-count-total stable g:< stableQty)
-    (building-type-count-total stable > 0)    
+    (building-type-count-total stable g:< stableQty)  
     (up-can-build 0 c: stable)
 =>
     (up-chat-data-to-self "Trying To Build Stable With Increment %d" g: militaryBuildingsDistance)
-    (up-modify-goal militaryBuildingsDistance g:+ 3)    
-    (up-set-placement-data my-player-number town-center g:+ militaryBuildingsDistance)    
+    (up-modify-goal militaryBuildingsDistance c:+ 3)    
+    (up-set-placement-data my-player-number 0 c: militaryBuildingsDistance)    
     (up-build place-control 0 c: stable)
 
 )
@@ -709,7 +708,7 @@
 
 ; BUILD ARCHERY RANGE
 (defrule
-	(building-type-count-total archery-range g:< archeryRangeQty)   
+	(building-type-count-total archery-range == 0)   
     (wood-amount > 275)
     (building-type-count town-center > 0)
     (building-type-count lumber-camp > 0)
@@ -721,7 +720,7 @@
 )
 
 (defrule
-	(building-type-count-total archery-range g:< archeryRangeQty)   
+	(building-type-count-total archery-range g:< archeryRangeQty)    
 	(building-type-count-total archery-range > 0)       
     (wood-amount > 275)
     (building-type-count town-center > 0)
@@ -729,8 +728,8 @@
     (up-can-build 0 c: archery-range)
 =>
     (up-chat-data-to-self "Trying To Build Archery Range With Increment %d" g: militaryBuildingsDistance)
-    (up-modify-goal militaryBuildingsDistance g:+ 3)    
-    (up-set-placement-data my-player-number town-center g:+ militaryBuildingsDistance)
+    (up-modify-goal militaryBuildingsDistance c:+ 3)    
+    (up-set-placement-data my-player-number 0 c: militaryBuildingsDistance)
     (up-build place-control 0 c: archery-range)
 
 )
@@ -749,7 +748,7 @@
 
 ; BUILD SIEGE WORKSHOP
 (defrule
-	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
+	(building-type-count-total siege-workshop == 0)
     (building-type-count town-center > 0)
     (players-building-type-count any-ally monastery > 0)
     (or
@@ -777,8 +776,8 @@
     (up-can-build 0 c: siege-workshop)
 =>
     (up-chat-data-to-self "Trying To Build Siege Workshop With Increment %d" g: militaryBuildingsDistance)
-    (up-modify-goal militaryBuildingsDistance g:+ 4)    
-    (up-set-placement-data my-player-number town-center g:+ militaryBuildingsDistance)
+    (up-modify-goal militaryBuildingsDistance c:+ 4)    
+    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
     (up-build place-control 0 c: siege-workshop)
 
 )

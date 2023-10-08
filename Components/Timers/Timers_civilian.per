@@ -94,7 +94,11 @@
 )
 
 ; INCREASE OTHER BUILDINGS QTY
-(defrule(current-age == imperial-age)=>(enable-timer 19 600)(disable-self))
+(defrule
+    (or(current-age == imperial-age)(cheats-enabled))
+    =>(enable-timer 19 60)(disable-self)
+)
+
 (defrule
 	(timer-triggered 19)
 =>
