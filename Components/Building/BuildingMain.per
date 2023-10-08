@@ -585,11 +585,10 @@
     (up-set-placement-data my-player-number 0 c: 7)
     ;(up-set-placement-data my-player-number palisade-wall c: -1)
     (up-build place-control 0 c: castle)
-    (build castle)
 )
 
 (defrule
-    (building-type-count-total castle > 1)
+    (building-type-count-total castle > 0)
     (building-type-count-total castle g:< castleQty)
     (up-can-build 0 c: castle)
     ;(can-build castle)
@@ -597,7 +596,6 @@
     (chat-local-to-self "Trying To Build Castle Advanced")
     (up-set-placement-data my-player-number 0 c: militaryBuildingsDistance)
     (up-build place-control 0 c: castle)
-    (build castle)
 )
 
 ; MINI CASTLES (MEGA TOWERS?)
@@ -632,7 +630,6 @@
 =>
     (chat-local-to-self "Trying To Build Barracks")
     (up-set-placement-data my-player-number town-center c: -1)
-
     (up-build place-control 0 c: barracks)  
 )
 
@@ -650,10 +647,10 @@
     (up-can-build 0 c: barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks With Increment")
+    (up-modify-goal militaryBuildingsDistance c:+ 3)      
     (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
-
     (up-build place-control 0 c: barracks)
-    (up-modify-goal militaryBuildingsDistance c:+ 3)    
+  
 )
 
 (defrule
@@ -693,9 +690,10 @@
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable With Increment")
+    (up-modify-goal militaryBuildingsDistance c:+ 3)    
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)    
     (up-build place-control 0 c: stable)
-    (up-modify-goal militaryBuildingsDistance c:+ 3)
+
 )
 
 (defrule
@@ -718,7 +716,7 @@
     (up-can-build 0 c: archery-range)
 =>
     (chat-local-to-self "Trying To Build Archery Range")
-    (up-set-placement-data my-player-number town-center c: -3)
+    (up-set-placement-data my-player-number town-center c: 0)
     (up-build place-control 0 c: archery-range)
 )
 
@@ -731,9 +729,10 @@
     (up-can-build 0 c: archery-range)
 =>
     (chat-local-to-self "Trying To Build Archery Range With Increment")
+    (up-modify-goal militaryBuildingsDistance c:+ 3)    
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: archery-range)
-    (up-modify-goal militaryBuildingsDistance c:+ 3)
+
 )
 
 (defrule
@@ -778,9 +777,10 @@
     (up-can-build 0 c: siege-workshop)
 =>
     (chat-local-to-self "Trying To Build Siege Workshop With Increment")
+    (up-modify-goal militaryBuildingsDistance c:+ 4)    
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: siege-workshop)
-    (up-modify-goal militaryBuildingsDistance c:+ 4)
+
 )
 
 (defrule
