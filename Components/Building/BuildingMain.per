@@ -593,8 +593,9 @@
     (up-can-build 0 c: castle)
     ;(can-build castle)
 =>
-    (chat-local-to-self "Trying To Build Castle Advanced")
-    (up-set-placement-data my-player-number 0 g:- militaryBuildingsDistance)
+    (up-chat-data-to-self "Trying To Build Castle With Increment %d" g: militaryBuildingsDistance)
+    (up-modify-goal militaryBuildingsDistance c:+ 1)      
+    (up-set-placement-data my-player-number 0 c: militaryBuildingsDistance)
     (up-build place-control 0 c: castle)
 )
 
