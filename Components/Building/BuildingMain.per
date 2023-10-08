@@ -653,7 +653,7 @@
     (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
 
     (up-build place-control 0 c: barracks)
-    (up-modify-goal militaryBuildingsDistance c:+ 1)    
+    (up-modify-goal militaryBuildingsDistance c:+ 3)    
 )
 
 (defrule
@@ -695,7 +695,7 @@
     (chat-local-to-self "Trying To Build Stable With Increment")
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)    
     (up-build place-control 0 c: stable)
-    (up-modify-goal militaryBuildingsDistance c:+ 1)
+    (up-modify-goal militaryBuildingsDistance c:+ 3)
 )
 
 (defrule
@@ -733,7 +733,7 @@
     (chat-local-to-self "Trying To Build Archery Range With Increment")
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: archery-range)
-    (up-modify-goal militaryBuildingsDistance c:+ 1)
+    (up-modify-goal militaryBuildingsDistance c:+ 3)
 )
 
 (defrule
@@ -800,7 +800,7 @@
     (chat-local-to-self "Trying To Build Siege Workshop With Increment")
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: siege-workshop)
-    (up-modify-goal militaryBuildingsDistance c:+ 3)
+    (up-modify-goal militaryBuildingsDistance c:+ 4)
 )
 
 (defrule
