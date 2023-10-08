@@ -646,7 +646,7 @@
     )
     (up-can-build 0 c: barracks)
 =>
-    (chat-local-to-self "Trying To Build Barracks With Increment")
+    (up-chat-data-to-self "Trying To Build Barracks With Increment %d" g: militaryBuildingsDistance)
     (up-modify-goal militaryBuildingsDistance c:+ 3)      
     (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
     (up-build place-control 0 c: barracks)
@@ -689,7 +689,7 @@
     (building-type-count-total stable > 0)    
     (up-can-build 0 c: stable)
 =>
-    (chat-local-to-self "Trying To Build Stable With Increment")
+    (up-chat-data-to-self "Trying To Build Stable With Increment %d" g: militaryBuildingsDistance)
     (up-modify-goal militaryBuildingsDistance c:+ 3)    
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)    
     (up-build place-control 0 c: stable)
@@ -728,7 +728,7 @@
     (building-type-count lumber-camp > 0)
     (up-can-build 0 c: archery-range)
 =>
-    (chat-local-to-self "Trying To Build Archery Range With Increment")
+    (up-chat-data-to-self "Trying To Build Archery Range With Increment %d" g: militaryBuildingsDistance)
     (up-modify-goal militaryBuildingsDistance c:+ 3)    
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: archery-range)
@@ -776,7 +776,7 @@
     (not(civ-selected gothic))
     (up-can-build 0 c: siege-workshop)
 =>
-    (chat-local-to-self "Trying To Build Siege Workshop With Increment")
+    (up-chat-data-to-self "Trying To Build Siege Workshop With Increment %d" g: militaryBuildingsDistance)
     (up-modify-goal militaryBuildingsDistance c:+ 4)    
     (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: siege-workshop)
