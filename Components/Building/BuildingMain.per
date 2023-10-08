@@ -576,7 +576,7 @@
 
 ; CASTLE
 (defrule
-    (building-type-count-total castle g:< castleQty)
+    (building-type-count-total castle == 0)
     (up-can-build 0 c: castle)
     (players-building-type-count any-ally monastery > 0)
     ;(can-build castle)
@@ -588,7 +588,6 @@
 )
 
 (defrule
-    (building-type-count-total castle > 0)
     (building-type-count-total castle g:< castleQty)
     (up-can-build 0 c: castle)
     ;(can-build castle)
