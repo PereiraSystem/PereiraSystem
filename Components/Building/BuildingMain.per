@@ -647,8 +647,8 @@
     (up-can-build 0 c: barracks)
 =>
     (up-chat-data-to-self "Trying To Build Barracks With Increment %d" g: militaryBuildingsDistance)
-    (up-modify-goal militaryBuildingsDistance c:+ 3)      
-    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
+    (up-modify-goal militaryBuildingsDistance g:+ 3)      
+    (up-set-placement-data my-player-number town-center g: militaryBuildingsDistance)
     (up-build place-control 0 c: barracks)
   
 )
@@ -690,8 +690,8 @@
     (up-can-build 0 c: stable)
 =>
     (up-chat-data-to-self "Trying To Build Stable With Increment %d" g: militaryBuildingsDistance)
-    (up-modify-goal militaryBuildingsDistance c:+ 3)    
-    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)    
+    (up-modify-goal militaryBuildingsDistance g:+ 3)    
+    (up-set-placement-data my-player-number town-center g:+ militaryBuildingsDistance)    
     (up-build place-control 0 c: stable)
 
 )
@@ -729,8 +729,8 @@
     (up-can-build 0 c: archery-range)
 =>
     (up-chat-data-to-self "Trying To Build Archery Range With Increment %d" g: militaryBuildingsDistance)
-    (up-modify-goal militaryBuildingsDistance c:+ 3)    
-    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
+    (up-modify-goal militaryBuildingsDistance g:+ 3)    
+    (up-set-placement-data my-player-number town-center g:+ militaryBuildingsDistance)
     (up-build place-control 0 c: archery-range)
 
 )
@@ -777,8 +777,8 @@
     (up-can-build 0 c: siege-workshop)
 =>
     (up-chat-data-to-self "Trying To Build Siege Workshop With Increment %d" g: militaryBuildingsDistance)
-    (up-modify-goal militaryBuildingsDistance c:+ 4)    
-    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
+    (up-modify-goal militaryBuildingsDistance g:+ 4)    
+    (up-set-placement-data my-player-number town-center g:+ militaryBuildingsDistance)
     (up-build place-control 0 c: siege-workshop)
 
 )
