@@ -652,7 +652,7 @@
   
 )
 
-(defrule
+(defrule(false)
     (building-type-count town-center > 0)
 	(building-type-count-total barracks g:< barracksQty)
     	(building-type-count-total barracks > 12)    
@@ -693,7 +693,7 @@
 
 )
 
-(defrule
+(defrule(false)
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
     (building-type-count-total stable g:< stableQty)
@@ -731,7 +731,7 @@
 
 )
 
-(defrule
+(defrule(false)
 	(building-type-count-total archery-range g:< archeryRangeQty)
     (building-type-count-total archery-range > 12 ) 
     (wood-amount > 275)
@@ -778,11 +778,11 @@
 
 )
 
-(defrule
+(defrule(false)
     (building-type-count town-center > 0)
     (players-building-type-count any-ally monastery > 0)
 	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
-    	(building-type-count-total siege-workshop > 10)    
+    (building-type-count-total siege-workshop > 10)    
     (or
         (building-type-count-total university == 1)
         (not(civ-selected bohemians))
