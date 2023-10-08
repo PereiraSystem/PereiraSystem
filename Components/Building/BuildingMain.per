@@ -631,7 +631,7 @@
     (up-can-build 0 c: barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks")
-    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
+    (up-set-placement-data my-player-number town-center c: -1)
 
     (up-build place-control 0 c: barracks)  
 )
@@ -681,7 +681,7 @@
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable")
-    (up-set-placement-data my-player-number town-center c: 0)    
+    (up-set-placement-data my-player-number town-center c: -3)    
     (up-build place-control 0 c: stable)
 )
 
@@ -718,7 +718,7 @@
     (up-can-build 0 c: archery-range)
 =>
     (chat-local-to-self "Trying To Build Archery Range")
-    (up-set-placement-data my-player-number town-center c: 0)
+    (up-set-placement-data my-player-number town-center c: -3)
     (up-build place-control 0 c: archery-range)
 )
 
