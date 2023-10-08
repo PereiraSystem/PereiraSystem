@@ -650,7 +650,7 @@
     (up-can-build 0 c: barracks)
 =>
     (chat-local-to-self "Trying To Build Barracks With Increment")
-    (up-set-placement-data my-player-number town-center c: 0)
+    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
 
     (up-build place-control 0 c: barracks)
     (up-modify-goal militaryBuildingsDistance c:+ 1)    
@@ -693,7 +693,7 @@
     (up-can-build 0 c: stable)
 =>
     (chat-local-to-self "Trying To Build Stable With Increment")
-    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)    
+    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)    
     (up-build place-control 0 c: stable)
     (up-modify-goal militaryBuildingsDistance c:+ 1)
 )
@@ -731,7 +731,7 @@
     (up-can-build 0 c: archery-range)
 =>
     (chat-local-to-self "Trying To Build Archery Range With Increment")
-    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)
+    (up-set-placement-data my-player-number town-center c:+ militaryBuildingsDistance)
     (up-build place-control 0 c: archery-range)
     (up-modify-goal militaryBuildingsDistance c:+ 1)
 )
