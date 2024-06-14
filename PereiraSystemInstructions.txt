@@ -1,0 +1,6 @@
+put "main" folder in resources/common/ai 
+
+move "PereiraLoader.per" and "PereiraLoader.ai" to resources/common/ai 
+
+inside the game pick the AI "PereiraLoader" and it will call the AI inside "main" folder
+
