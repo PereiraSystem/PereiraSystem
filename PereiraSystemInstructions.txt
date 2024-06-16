@@ -1,6 +1,18 @@
-put "main" folder in resources/common/ai 
+1- Put "PereiraSystemAI" folder in your AOE2 DE (Dynasties of India) "resources/common/ai" folder
 
-move "PereiraLoader.per" and "PereiraLoader.ai" to resources/common/ai 
+2- Move "PereiraLoader.per" and "PereiraLoader.ai" files out to "resources/common/ai" folder
 
-inside the game pick the AI "PereiraLoader" and it will call the AI inside "main" folder
+3- Once inside the game pick the player "PereiraLoader" and it will call the AI inside "PereiraSystemAI" folder
 
+4- Ready for battle!
+
+
+Best settings:
+
+- Population 150, 175, 200, 225
+
+- Maps like Amazon Tunnel and Black Forest where the attack can be more focused.
+
+Pereira System AI will try to build some cute walls in the lowest difficulty settings sometimes, making it less competitive.
+
+It will create all units up to Dinasties of India expansion except flaming camels cause putting a camel on fire is lame.
