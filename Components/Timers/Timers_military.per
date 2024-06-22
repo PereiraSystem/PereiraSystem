@@ -51,3 +51,68 @@
 )
 
 
+; DELETE FIRST MILITARY BUILDINGS
+; --------------------------------------------------------
+(defrule
+    (building-type-count-total barracks > 6)
+=>
+    (enable-timer 22 00)
+    (disable-self)
+)
+(defrule
+    (timer-triggered 22)
+    (wood-amount > 20000)
+=>
+    (disable-timer 22)
+    (enable-timer 22 180)
+    (delete-building barracks)
+    (up-modify-goal militaryBuildingsDistance c:+ 2)        
+)
+
+(defrule
+    (building-type-count-total stable > 6)
+=>
+    (enable-timer 23 00)
+    (disable-self)
+)
+(defrule
+    (timer-triggered 23)
+    (wood-amount > 20000)
+=>
+    (disable-timer 23)
+    (enable-timer 23 180)
+    (delete-building stable)
+    (up-modify-goal militaryBuildingsDistance c:+ 2)    
+)
+
+(defrule
+    (building-type-count-total archery-range > 6)
+=>
+    (enable-timer 24 00)
+    (disable-self)
+)
+(defrule
+    (timer-triggered 24)
+    (wood-amount > 20000)
+=>
+    (disable-timer 24)
+    (enable-timer 24 180)
+    (delete-building archery-range)
+    (up-modify-goal militaryBuildingsDistance c:+ 2)    
+)
+
+(defrule
+    (building-type-count-total siege-workshop > 6)
+=>
+    (enable-timer 25 00)
+    (disable-self)
+)
+(defrule
+    (timer-triggered 25)
+    (wood-amount > 20000)
+=>
+    (disable-timer 25)
+    (enable-timer 25 180)
+    (delete-building siege-workshop)
+    (up-modify-goal militaryBuildingsDistance c:+ 2)    
+)
