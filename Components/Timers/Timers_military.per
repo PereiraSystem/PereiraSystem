@@ -53,7 +53,7 @@
 
 ; DELETE FIRST MILITARY BUILDINGS
 ; --------------------------------------------------------
-(defrule
+(defrule(wood-amount > 20000)
     (building-type-count-total barracks > 6)
 =>
     (enable-timer 22 00)
@@ -69,7 +69,7 @@
     (up-modify-goal militaryBuildingsDistance c:+ 2)        
 )
 
-(defrule
+(defrule(wood-amount > 20000)
     (building-type-count-total stable > 6)
 =>
     (enable-timer 23 00)
@@ -85,7 +85,7 @@
     (up-modify-goal militaryBuildingsDistance c:+ 2)    
 )
 
-(defrule
+(defrule(wood-amount > 20000)
     (building-type-count-total archery-range > 6)
 =>
     (enable-timer 24 00)
@@ -101,7 +101,7 @@
     (up-modify-goal militaryBuildingsDistance c:+ 2)    
 )
 
-(defrule
+(defrule(wood-amount > 20000)
     (building-type-count-total siege-workshop > 6)
 =>
     (enable-timer 25 00)
