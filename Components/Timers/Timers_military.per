@@ -59,9 +59,9 @@
     (enable-timer 22 00)
     (disable-self)
 )
-(defrule
+(defrule(wood-amount > 20000)
     (timer-triggered 22)
-    (wood-amount > 20000)
+    
 =>
     (disable-timer 22)
     (enable-timer 22 180)
@@ -75,9 +75,9 @@
     (enable-timer 23 00)
     (disable-self)
 )
-(defrule
+(defrule(wood-amount > 20000)
     (timer-triggered 23)
-    (wood-amount > 20000)
+    
 =>
     (disable-timer 23)
     (enable-timer 23 180)
@@ -91,9 +91,9 @@
     (enable-timer 24 00)
     (disable-self)
 )
-(defrule
+(defrule(wood-amount > 20000)
     (timer-triggered 24)
-    (wood-amount > 20000)
+    
 =>
     (disable-timer 24)
     (enable-timer 24 180)
@@ -108,6 +108,7 @@
     (disable-self)
 )
 (defrule
+(wood-amount > 20000)
     (timer-triggered 25)
     (wood-amount > 20000)
 =>
