@@ -753,13 +753,14 @@
 )
 (defrule
     (civ-selected burgundians)
-    (can-research my-unique-research)(food-amount > 1500)
+    (can-research my-unique-research)(food-amount > 2500)
     (unit-type-count-total villager g:> knightsQtyMedium)
     (military-population g:> knightsQtyMedium)
     (or
         (unit-type-count-total battering-ram > 4)
         (unit-type-count-total trebuchet > 4)
     )
+    (players-building-type-count focus-player castle < 2)
 =>
     (research my-unique-research)
     (chat-to-player my-player-number "REVOLUTION!")
