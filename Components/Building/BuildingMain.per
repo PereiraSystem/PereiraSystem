@@ -855,6 +855,13 @@
 
 ; TOWERS
 ; BOMBARD TOWER
+(defrule
+    (gold-amount > 301)
+    (building-type-count-total bombard-tower > 6)
+    (can-build bombard-tower)
+=>
+    (build-forward bombard-tower)
+)
 
 (defrule
     (can-build bombard-tower)
