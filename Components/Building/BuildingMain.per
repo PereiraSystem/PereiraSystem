@@ -588,6 +588,7 @@
 )
 
 (defrule
+    (wood-amount > 2000)
     (building-type-count-total castle g:< castleQty)
     (up-can-build 0 c: castle)
     ;(can-build castle)
@@ -632,7 +633,7 @@
     (up-build place-control 0 c: barracks)  
 )
 
-(defrule
+(defrule    (wood-amount > 2000)
 	(building-type-count-total barracks g:< barracksQty)
 	(building-type-count-total barracks > 0)    
     (building-type-count town-center > 0)
@@ -680,7 +681,8 @@
     (up-build place-control 0 c: stable)
 )
 
-(defrule
+(defrule    
+    (wood-amount > 2000)
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
     (building-type-count-total stable g:< stableQty)  
@@ -717,6 +719,7 @@
 )
 
 (defrule
+    (wood-amount > 2000)
 	(building-type-count-total archery-range g:< archeryRangeQty)    
 	(building-type-count-total archery-range > 0)       
     (wood-amount > 275)
@@ -795,6 +798,7 @@
 )
 
 (defrule
+    (wood-amount > 2000)
 	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
 	(building-type-count-total siege-workshop > 0)    
     (building-type-count town-center > 0)
