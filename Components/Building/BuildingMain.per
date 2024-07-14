@@ -859,11 +859,12 @@
 (defrule
     (can-build bombard-tower)
     (gold-amount > 301)
-    (building-type-count-total castle > 1)
+    ;(building-type-count-total castle > 3)
+    (building-type-count-total castle g:>= castleQty)
     (up-can-build 0 c: bombard-tower)
 =>
-    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)  
-    (up-modify-goal militaryBuildingsDistance c:+ 2)    
+    (up-modify-goal militaryBuildingsDistance c:+ 3)
+    (up-set-placement-data my-player-number town-center c: militaryBuildingsDistance)    
     (up-build place-control 0 c: bombard-tower)
 )
 
