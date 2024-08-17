@@ -1,8 +1,8 @@
-1- Put "PereiraSystemAI" folder in your AOE2 DE (Dynasties of India) "resources/common/ai" folder
+1- Place the "PereiraSystemAI" folder and the files 
+"PereiraLoader.ai" and "PereiraLoader.per" 
+into (Dynasties of India) "resources/common/ai"
 
-2- Move "PereiraLoader.per" and "PereiraLoader.ai" files out to "resources/common/ai" folder
-
-3- Once inside the game pick the player "PereiraLoader" and it will call the AI inside "PereiraSystemAI" folder
+2- Once inside the game pick the player "PereiraLoader" and it will call the AI inside "PereiraSystemAI" folder
 
 4- Ready for battle!
 
