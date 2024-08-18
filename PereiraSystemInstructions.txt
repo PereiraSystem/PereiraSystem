@@ -1,6 +1,6 @@
 1- Place the "PereiraSystemAI" folder and the files 
 "PereiraLoader.ai" and "PereiraLoader.per" 
-into (Dynasties of India) "resources/common/ai"
+into AoE Definitive Edition (Dynasties of India) "resources/common/ai"
 
 2- Once inside the game pick the player "PereiraLoader" and it will call the AI inside "PereiraSystemAI" folder
 
