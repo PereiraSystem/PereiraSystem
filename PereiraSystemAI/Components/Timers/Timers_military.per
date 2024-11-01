@@ -33,8 +33,8 @@
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-goal weAreAttacking 1)
     (attack-now)
-    (chat-to-allies "31 Attack!")
-    (chat-to-player my-player-number "ATTACK!")
+    ;(chat-to-allies "31 Attack!")
+    ; (chat-to-player my-player-number "ATTACK!")
 )
 
 
@@ -53,67 +53,83 @@
 
 ; DELETE FIRST MILITARY BUILDINGS
 ; --------------------------------------------------------
-(defrule(wood-amount > 20000)
-    (building-type-count-total barracks > 6)
-=>
-    (enable-timer 22 00)
-    (disable-self)
-)
-(defrule(wood-amount > 20000)
-    (timer-triggered 22)
+(defrule
+    ;;(building-type-count-total barracks g:> barracksQty)
+    (building-type-count-total barracks > 5)
     
+=>
+    (enable-timer 22 30)
+        (chat-to-player my-player-number "DELETING BARRACKS IN 30 SEC BARRACKS! --------------")
+        (chat-local-to-self "DELETING BARRACKS IN 30 SEC BARRACKS! --------------")
+
+)
+
+(defrule
+    ;;(building-type-count-total barracks g:> barracksQty)
+    (building-type-count-total barracks < 5)
 =>
     (disable-timer 22)
-    (enable-timer 22 180)
+
+)
+
+(defrule
+    (timer-triggered 22)
+    (building-type-count-total barracks > 5)
+    
+=>
+    
     (delete-building barracks)
-    (up-modify-goal militaryBuildingsDistance c:+ 2)        
+    (chat-to-player my-player-number "DELETING BARRACKS!")
+    (up-modify-goal militaryBuildingsDistance c:+ 2)     
+    (disable-timer 22)   
 )
 
-(defrule(wood-amount > 20000)
-    (building-type-count-total stable > 6)
+(defrule
+    (building-type-count-total stable > 5)
 =>
-    (enable-timer 23 00)
-    (disable-self)
-)
-(defrule(wood-amount > 20000)
-    (timer-triggered 23)
-    
-=>
-    (disable-timer 23)
-    (enable-timer 23 180)
-    (delete-building stable)
-    (up-modify-goal militaryBuildingsDistance c:+ 2)    
-)
-
-(defrule(wood-amount > 20000)
-    (building-type-count-total archery-range > 6)
-=>
-    (enable-timer 24 00)
-    (disable-self)
-)
-(defrule(wood-amount > 20000)
-    (timer-triggered 24)
-    
-=>
-    (disable-timer 24)
-    (enable-timer 24 180)
-    (delete-building archery-range)
-    (up-modify-goal militaryBuildingsDistance c:+ 2)    
-)
-
-(defrule(wood-amount > 20000)
-    (building-type-count-total siege-workshop > 6)
-=>
-    (enable-timer 25 00)
-    (disable-self)
+    (enable-timer 23 30)
 )
 (defrule
-(wood-amount > 20000)
-    (timer-triggered 25)
-    (wood-amount > 20000)
+    (timer-triggered 23)
+    (building-type-count-total stable > 5)
 =>
-    (disable-timer 25)
-    (enable-timer 25 180)
-    (delete-building siege-workshop)
+    
+    (delete-building stable)
+    (chat-to-player my-player-number "DELETING STABLE!")
     (up-modify-goal militaryBuildingsDistance c:+ 2)    
+    (disable-timer 23)
+)
+
+(defrule
+    (building-type-count-total archery-range > 6)
+=>
+    (enable-timer 24 30)
+
+)
+(defrule
+    (timer-triggered 24)
+    (building-type-count-total archery-range > 5)
+=>
+    
+    (delete-building archery-range)
+    (chat-to-player my-player-number "DELETING ARCHERY!")    
+    (up-modify-goal militaryBuildingsDistance c:+ 2)    
+    (disable-timer 24)
+)
+
+(defrule
+    (building-type-count-total siege-workshop > 5)
+=>
+    (enable-timer 25 30)
+
+)
+(defrule
+    (timer-triggered 25)
+    (building-type-count-total siege-workshop > 5)    
+=>
+   
+    (delete-building siege-workshop)
+    (chat-to-player my-player-number "DELETING SIEGE!")
+    (up-modify-goal militaryBuildingsDistance c:+ 2)    
+     (disable-timer 25)
 )
