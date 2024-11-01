@@ -3,7 +3,7 @@
 2 - Move "PereiraLoader.ai" and "PereiraLoader.per" files from the "PereiraSystem" folder to the upper level (AoE Definitive Edition "resources/common/ai")
 where you put the main folder first
 
-3- Once inside the game pick the player "PereiraLoader" and it will call the AI inside "PereiraSystemAI" folder
+3- Once inside the game pick the player "PereiraLoader"
 
 4- Ready for battle!
 
@@ -14,6 +14,6 @@ Best settings:
 
 - Maps like Amazon Tunnel and Black Forest where the attack can be more focused.
 
-Pereira System AI will try to build some cute walls in the lowest difficulty settings sometimes, making it less competitive.
+Pereira System AI will try to build some cute walls in the lowest difficulty settings sometimes, 
+making it less competitive.
 
-It will create all units up to Dinasties of India expansion except flaming camels cause putting a camel on fire is lame.
