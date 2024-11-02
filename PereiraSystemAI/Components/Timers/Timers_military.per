@@ -54,6 +54,7 @@
 ; DELETE FIRST MILITARY BUILDINGS
 ; --------------------------------------------------------
 (defrule
+    (current-age == imperial-age)(wood-amount > 2000)
     (up-compare-goal deletingBarracks == 0)
     (building-type-count-total barracks g:== barracksQty)
 =>
@@ -73,6 +74,7 @@
 )
 
 (defrule
+    (current-age == imperial-age)(wood-amount > 2000)
     (up-compare-goal deletingStable == 0)
     (building-type-count-total stable g:== stableQty)
 =>
@@ -92,6 +94,7 @@
 )
 
 (defrule
+    (current-age == imperial-age)(wood-amount > 2000)
     (up-compare-goal deletingArchery == 0)
     (building-type-count-total archery-range g:== archeryRangeQty)
 =>
@@ -111,6 +114,7 @@
 )
 
 (defrule
+    (current-age == imperial-age)(wood-amount > 2000)
     (up-compare-goal deletingSiege == 0)
     (building-type-count-total siege-workshop g:== siegeWorkshopQty)
 =>
