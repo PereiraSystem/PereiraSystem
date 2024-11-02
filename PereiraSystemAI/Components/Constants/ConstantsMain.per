@@ -17,11 +17,18 @@
 (defconst minutesUntilFirstAttack 22); for info only
 (defconst weAreAttacking 25)
 
+
+(defconst deletingBarracks 30)
+(defconst deletingStable 31)
+(defconst deletingArchery 32)
+(defconst deletingSiege 33)
+
 (defrule
   (true)
 =>
   (set-goal populationRoomBeforeBuildingHouses 5)
-  (set-goal avoidBuildingDocks 0)  
+  (set-goal avoidBuildingDocks 0)
+  (set-goal deletingBarracks 0) ;; really need to initalize?
   (disable-self)
 )  
 

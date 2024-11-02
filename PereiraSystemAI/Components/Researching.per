@@ -199,7 +199,7 @@
     )
 =>
     (research ri-stronghold)
-    (chat-to-player my-player-number "TOWERS AND CASTLES SHOOT 25% FASTER!")
+    (chat-to-player my-player-number "TOWERS AND CASTLES SHOOT 33% FASTER, CASTLES HEAL NEARBY INFANTRY!")
 )
 (defrule
     (can-research my-unique-research)
@@ -316,19 +316,18 @@
     (unit-type-count-total my-unique-unit-line > 0)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "ELEPHANTS 30% FASTER!")
+    (chat-to-player my-player-number "CASTLES + ATTACK AND DEFENSE!")
 )
 ; SARACEN
 (defrule
-    (civ-selected saracen)
-    (can-research my-second-unique-research)
+    (civ-selected saracen)(can-research my-second-unique-research)
+    (unit-type-count monk > 1)
 =>
     (research my-second-unique-research)
-    (chat-to-player my-player-number "CAMELS +20 HP!")
+    (chat-to-player my-player-number "MONKS HEALING AURA!")
 )
 (defrule
-    (civ-selected saracen)
-    (can-research my-unique-research)
+    (civ-selected saracen)(can-research my-unique-research)
 =>
     (research my-unique-research)
     (chat-to-player my-player-number "TREBUCHETS AND MANGONELS +15% ATTACK!")
@@ -360,20 +359,21 @@
     (civ-selected turkish)(can-research my-unique-research)
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "ALL TYPES OF CANNONS +3 RANGE!")
+    (chat-to-player my-player-number "ALL TYPES OF CANNONS +2 RANGE!")
 )
 ; VIKINGS
 (defrule
     (can-research ri-chieftains)
 =>
     (research ri-chieftains)
-    (chat-to-player my-player-number "INFANTRY CAUSES EXTRA DAMAGE TO CAVALRY!")
+    (chat-to-player my-player-number "INFANTRY CAUSES EXTRA DAMAGE TO CAVALRY, WINS GOLD BY KILLING CIVILIANS AND MONKS!")
 )
 (defrule
-    (civ-selected viking)(can-research my-unique-research)(unit-type-count-total my-unique-unit-line > 0)
+    (civ-selected viking)(can-research my-unique-research)
+    (or(unit-type-count-total archer-line > 4)(unit-type-count-total galley-line > 4))
 =>
     (research my-unique-research)
-    (chat-to-player my-player-number "BERSERKERS REGENERATE!")
+    (chat-to-player my-player-number "ARCHERS AND DRAKKARS +1 ATTACK")
 )
 ; AOC
 ; AZTECS

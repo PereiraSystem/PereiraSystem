@@ -54,82 +54,77 @@
 ; DELETE FIRST MILITARY BUILDINGS
 ; --------------------------------------------------------
 (defrule
-    ;;(building-type-count-total barracks g:> barracksQty)
-    (building-type-count-total barracks > 5)
-    
+    (up-compare-goal deletingBarracks == 0)
+    (building-type-count-total barracks g:== barracksQty)
 =>
-    (enable-timer 22 30)
-        (chat-to-player my-player-number "DELETING BARRACKS IN 30 SEC BARRACKS! --------------")
-        (chat-local-to-self "DELETING BARRACKS IN 30 SEC BARRACKS! --------------")
-
+    (enable-timer 22 15)
+    (chat-to-player my-player-number "DELETING BARRACKS IN 15 SEC! --------------")
+    (up-modify-goal deletingBarracks c:= 1)
 )
 
 (defrule
-    ;;(building-type-count-total barracks g:> barracksQty)
-    (building-type-count-total barracks < 5)
+    (timer-triggered 22)    
 =>
-    (disable-timer 22)
-
-)
-
-(defrule
-    (timer-triggered 22)
-    (building-type-count-total barracks > 5)
-    
-=>
-    
     (delete-building barracks)
     (chat-to-player my-player-number "DELETING BARRACKS!")
     (up-modify-goal militaryBuildingsDistance c:+ 2)     
     (disable-timer 22)   
+    (up-modify-goal deletingBarracks c:= 0)
 )
 
 (defrule
-    (building-type-count-total stable > 5)
+    (up-compare-goal deletingStable == 0)
+    (building-type-count-total stable g:== stableQty)
 =>
-    (enable-timer 23 30)
+    (enable-timer 23 15)
+    (chat-to-player my-player-number "DELETING STABLE IN 15 SEC! --------------")
+    (up-modify-goal deletingStable c:= 1)
 )
+
 (defrule
-    (timer-triggered 23)
-    (building-type-count-total stable > 5)
+    (timer-triggered 23)    
 =>
-    
     (delete-building stable)
     (chat-to-player my-player-number "DELETING STABLE!")
-    (up-modify-goal militaryBuildingsDistance c:+ 2)    
-    (disable-timer 23)
+    (up-modify-goal militaryBuildingsDistance c:+ 2)     
+    (disable-timer 23)   
+    (up-modify-goal deletingStable c:= 0)
 )
 
 (defrule
-    (building-type-count-total archery-range > 6)
+    (up-compare-goal deletingArchery == 0)
+    (building-type-count-total archery-range g:== archeryRangeQty)
 =>
-    (enable-timer 24 30)
-
+    (enable-timer 24 15)
+    (chat-to-player my-player-number "DELETING ARCHERY RANGE IN 15 SEC! --------------")
+    (up-modify-goal deletingArchery c:= 1)
 )
+
 (defrule
-    (timer-triggered 24)
-    (building-type-count-total archery-range > 5)
+    (timer-triggered 24)    
 =>
-    
     (delete-building archery-range)
-    (chat-to-player my-player-number "DELETING ARCHERY!")    
-    (up-modify-goal militaryBuildingsDistance c:+ 2)    
-    (disable-timer 24)
+    (chat-to-player my-player-number "DELETING ARCHERY RANGE!")
+    (up-modify-goal militaryBuildingsDistance c:+ 2)     
+    (disable-timer 24)   
+    (up-modify-goal deletingArchery c:= 0)
 )
 
 (defrule
-    (building-type-count-total siege-workshop > 5)
+    (up-compare-goal deletingSiege == 0)
+    (building-type-count-total siege-workshop g:== siegeWorkshopQty)
 =>
-    (enable-timer 25 30)
-
+    (enable-timer 25 15)
+    (chat-to-player my-player-number "DELETING SIEGE WORKSHOP IN 15 SEC! --------------")
+    (up-modify-goal deletingSiege c:= 1)
 )
+
 (defrule
-    (timer-triggered 25)
-    (building-type-count-total siege-workshop > 5)    
+    (timer-triggered 25)    
 =>
-   
     (delete-building siege-workshop)
-    (chat-to-player my-player-number "DELETING SIEGE!")
-    (up-modify-goal militaryBuildingsDistance c:+ 2)    
-     (disable-timer 25)
+    (chat-to-player my-player-number "DELETING SIEGE WORKSHOP!")
+    (up-modify-goal militaryBuildingsDistance c:+ 2)     
+    (disable-timer 25)   
+    (up-modify-goal deletingSiege c:= 0)
 )
