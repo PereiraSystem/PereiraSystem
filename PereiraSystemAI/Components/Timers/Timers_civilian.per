@@ -97,11 +97,11 @@
 (defrule
     (or(current-age == imperial-age)(cheats-enabled))
     =>
-    (up-modify-goal barracksQty c:+ 1)
-    (up-modify-goal archeryRangeQty c:+ 1)
-    (up-modify-goal stableQty c:+ 1)
+    (up-modify-goal barracksQty c:+ 2)
+    (up-modify-goal archeryRangeQty c:+ 2)
+    (up-modify-goal stableQty c:+ 2)
     (up-modify-goal siegeWorkshopQty c:+ 1)
-    (up-modify-goal castleQty c:+ 1)    
+    (up-modify-goal castleQty c:+ 2)    
     (enable-timer 19 60)
     (disable-self)
 )
