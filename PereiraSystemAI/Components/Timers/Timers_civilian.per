@@ -96,7 +96,14 @@
 ; INCREASE OTHER BUILDINGS QTY
 (defrule
     (or(current-age == imperial-age)(cheats-enabled))
-    =>(enable-timer 19 60)(disable-self)
+    =>
+    (up-modify-goal barracksQty c:+ 1)
+    (up-modify-goal archeryRangeQty c:+ 1)
+    (up-modify-goal stableQty c:+ 1)
+    (up-modify-goal siegeWorkshopQty c:+ 1)
+    (up-modify-goal castleQty c:+ 1)    
+    (enable-timer 19 60)
+    (disable-self)
 )
 
 (defrule
