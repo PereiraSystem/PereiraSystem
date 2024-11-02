@@ -103,8 +103,7 @@
 	(timer-triggered 19)
 =>
 	(disable-timer 19)
-    (enable-timer 19 1200)
-    (up-modify-goal militaryBuildingsDistance c:+ 2)      
+    (enable-timer 19 1200)   
     (up-modify-goal barracksQty c:+ 1)
     (up-modify-goal archeryRangeQty c:+ 1)
     (up-modify-goal stableQty c:+ 1)
@@ -112,3 +111,17 @@
     (up-modify-goal castleQty c:+ 1)
 )
 
+;INCREASE DISTANCE
+(defrule
+    (or(current-age == imperial-age)(cheats-enabled))
+    =>(enable-timer 20 60)(disable-self)
+)
+
+(defrule
+	(timer-triggered 20)
+=>
+	(disable-timer 20)
+    (enable-timer 20 600)
+    (up-modify-goal militaryBuildingsDistance c:+ 2)      
+
+)
