@@ -76,6 +76,8 @@
     (delete-building barracks)
     (chat-to-player my-player-number "DELETING BARRACKS")
     (up-modify-goal militaryBuildingsDistance c:+ 6)     
+    (disable-timer 22)
+    (enable-timer 22 120)
 )
 
 (defrule
@@ -86,7 +88,9 @@
 =>
     (delete-building stable)
     (chat-to-player my-player-number "DELETING STABLES")
-    (up-modify-goal militaryBuildingsDistance c:+ 6)     
+    (up-modify-goal militaryBuildingsDistance c:+ 6)
+    (disable-timer 23)
+    (enable-timer 23 120)    
 )
 
 (defrule
@@ -97,7 +101,9 @@
 =>
     (delete-building archery-range)
     (chat-to-player my-player-number "DELETING ARCHERY RANGE")
-    (up-modify-goal militaryBuildingsDistance c:+ 6)     
+    (up-modify-goal militaryBuildingsDistance c:+ 6)
+    (disable-timer 24)
+    (enable-timer 24 120)    
 )
 
 (defrule
@@ -108,5 +114,7 @@
 =>
     (delete-building siege-workshop)
     (chat-to-player my-player-number "DELETING SIEGE WORKSHOP")
-    (up-modify-goal militaryBuildingsDistance c:+ 6)     
+    (up-modify-goal militaryBuildingsDistance c:+ 6)
+    (disable-timer 25)
+    (enable-timer 25 120)      
 )
