@@ -81,7 +81,7 @@
 (defrule
     (timer-triggered 23)
     (wood-amount > 2000)
-    (building-type-count-total stable g:== stablesQty)
+    (building-type-count-total stable g:== stableQty)
     (building-type-count-total stable > 3)
 =>
     (delete-building stable)
