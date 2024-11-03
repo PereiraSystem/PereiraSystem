@@ -115,10 +115,10 @@
     (wood-amount > 200)
     (building-type-count town-center > 0)
     (building-type-count lumber-camp > 1)
-    (or(up-compare-goal weMovedPlace == 0)
-    (building-type-count dock > 0))
+    ;(or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (not(civ-selected khmer))
-    (dropsite-min-distance food > 12)
+    ;(dropsite-min-distance food > 12)
+    (dropsite-min-distance food > 8)
     (can-build mill)
 =>
     (build mill)(chat-local-to-self "Trying To Build Mill 2")
@@ -133,7 +133,7 @@
     (wood-amount > 200)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)
-    (or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
+    ;(or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (not(civ-selected khmer))
 =>
     (build mill)(chat-local-to-self "Trying To Build Mill 3")
