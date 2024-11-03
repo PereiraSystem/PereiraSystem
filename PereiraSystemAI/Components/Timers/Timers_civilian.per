@@ -121,7 +121,10 @@
 ;INCREASE DISTANCE
 (defrule
     (or(current-age == imperial-age)(cheats-enabled))
-    =>(enable-timer 20 60)(disable-self)
+    =>
+    (up-modify-goal militaryBuildingsDistance c:+ 8)
+    (enable-timer 20 60)
+    (disable-self)
 )
 
 (defrule
