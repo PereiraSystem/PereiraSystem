@@ -1010,12 +1010,21 @@
 =>
     (research ri-supplies)
 )
- (defrule
+
+(defrule
     (unit-type-count-total militiaman-line > 0)
     (can-research ri-supplies)
 =>
     (research ri-supplies)
 )
+
+(defrule
+    (unit-type-count-total militiaman-line > 2)
+    (can-research ri-gambesons)
+=>
+    (research ri-gambesons)
+)
+
 (defrule
     (or(civ-selected aztec)(civ-selected incan))
     (can-research ri-man-at-arms)
