@@ -106,17 +106,16 @@
 ; FIXED PART (ludicrous not recognized so its default)
 (defrule(true)=>(set-goal secondsUntilFirstAttack 3600)(disable-self))
 
-(defrule(map-size tiny)=>(set-goal secondsUntilFirstAttack 600)(disable-self))
+(defrule(map-size tiny)=>(set-goal secondsUntilFirstAttack 1080)(disable-self))
 
-(defrule(map-size small)=>(set-goal secondsUntilFirstAttack 1200)(disable-self))
+(defrule(map-size small)=>(set-goal secondsUntilFirstAttack 1296)(disable-self))
 
-(defrule(map-size medium)=>(set-goal secondsUntilFirstAttack 1500)(disable-self))
+(defrule(map-size medium)=>(set-goal secondsUntilFirstAttack 1512)(disable-self))
 
 (defrule(map-size normal)=>(set-goal secondsUntilFirstAttack 1800)(disable-self))
 
-(defrule(map-size large)=>(set-goal secondsUntilFirstAttack 2400)(disable-self))
+(defrule(map-size large)=>(set-goal secondsUntilFirstAttack 1920)(disable-self))
 
-(defrule(map-size giant)=>(set-goal secondsUntilFirstAttack 3000)(disable-self))
 
 ;+ RANDOM PART
 (defrule

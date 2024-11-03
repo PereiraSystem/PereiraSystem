@@ -58,83 +58,55 @@
 
 
 (defrule
-    (current-age == imperial-age)
+    (or(current-age == imperial-age)(cheats-enabled))
 =>
     (enable-timer 22 120)
+    (enable-timer 23 120)
+    (enable-timer 24 120)
+    (enable-timer 25 120)
+    (disable-self)
 )
 
 (defrule
     (timer-triggered 22)
     (wood-amount > 2000)
     (building-type-count-total barracks g:== barracksQty)
-    (building-type-count-total barracks > 4)
+    (building-type-count-total barracks > 3)
 =>
     (delete-building barracks)
     (chat-to-player my-player-number "DELETING BARRACKS")
-)
-
-
-
-
-(defrule
-    (current-age == imperial-age)(wood-amount > 2000)
-    (up-compare-goal deletingStable == 0)
-    (building-type-count-total stable g:== stableQty)
-    (building-type-count-total stable > 4)    
-=>
-    (enable-timer 23 15)
-    (chat-to-player my-player-number "DELETING STABLE IN 15 SEC! --------------")
-    (up-modify-goal deletingStable c:= 1)
+    (up-modify-goal militaryBuildingsDistance c:+ 6)     
 )
 
 (defrule
-    (timer-triggered 23)    
+    (timer-triggered 23)
+    (wood-amount > 2000)
+    (building-type-count-total stable g:== stablesQty)
+    (building-type-count-total stable > 3)
 =>
     (delete-building stable)
-    (chat-to-player my-player-number "DELETING STABLE!")
-    (up-modify-goal militaryBuildingsDistance c:+ 2)     
-    (disable-timer 23)   
-    (up-modify-goal deletingStable c:= 0)
+    (chat-to-player my-player-number "DELETING STABLES")
+    (up-modify-goal militaryBuildingsDistance c:+ 6)     
 )
 
 (defrule
-    (current-age == imperial-age)(wood-amount > 2000)
-    (up-compare-goal deletingArchery == 0)
+    (timer-triggered 24)
+    (wood-amount > 2000)
     (building-type-count-total archery-range g:== archeryRangeQty)
-    (building-type-count-total archery-range > 4)    
-=>
-    (enable-timer 24 15)
-    (chat-to-player my-player-number "DELETING ARCHERY RANGE IN 15 SEC! --------------")
-    (up-modify-goal deletingArchery c:= 1)
-)
-
-(defrule
-    (timer-triggered 24)    
+    (building-type-count-total archery-range > 3)
 =>
     (delete-building archery-range)
-    (chat-to-player my-player-number "DELETING ARCHERY RANGE!")
-    (up-modify-goal militaryBuildingsDistance c:+ 2)     
-    (disable-timer 24)   
-    (up-modify-goal deletingArchery c:= 0)
+    (chat-to-player my-player-number "DELETING ARCHERY RANGE")
+    (up-modify-goal militaryBuildingsDistance c:+ 6)     
 )
 
 (defrule
-    (current-age == imperial-age)(wood-amount > 2000)
-    (up-compare-goal deletingSiege == 0)
+    (timer-triggered 25)
+    (wood-amount > 2000)
     (building-type-count-total siege-workshop g:== siegeWorkshopQty)
-    (building-type-count-total siege-workshop > 3)    
-=>
-    (enable-timer 25 15)
-    (chat-to-player my-player-number "DELETING SIEGE WORKSHOP IN 15 SEC! --------------")
-    (up-modify-goal deletingSiege c:= 1)
-)
-
-(defrule
-    (timer-triggered 25)    
+    (building-type-count-total siege-workshop > 3)
 =>
     (delete-building siege-workshop)
-    (chat-to-player my-player-number "DELETING SIEGE WORKSHOP!")
-    (up-modify-goal militaryBuildingsDistance c:+ 2)     
-    (disable-timer 25)   
-    (up-modify-goal deletingSiege c:= 0)
+    (chat-to-player my-player-number "DELETING SIEGE WORKSHOP")
+    (up-modify-goal militaryBuildingsDistance c:+ 6)     
 )
