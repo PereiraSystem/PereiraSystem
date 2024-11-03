@@ -313,7 +313,8 @@
 )
 (defrule
     (civ-selected persian)(can-research my-unique-research)
-    (unit-type-count-total my-unique-unit-line > 0)
+    (building-type-count castle > 2)
+    (wood-amount > 1000)
 =>
     (research my-unique-research)
     (chat-to-player my-player-number "CASTLES + ATTACK AND DEFENSE!")
