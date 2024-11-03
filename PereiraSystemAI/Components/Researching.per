@@ -1501,10 +1501,20 @@
 =>
     (research ri-redemption )
 )
+
 (defrule
     (current-age == imperial-age)
 	(research-completed ri-hand-cart)
-    (players-unit-type-count any-enemy monk > 7)
+    (players-unit-type-count any-enemy monk > 2)
+    (gold-amount > 1100)
+    (can-research ri-devotion)
+=>
+    (research ri-devotion )
+)
+(defrule
+    (current-age == imperial-age)
+	(research-completed ri-hand-cart)
+    (players-unit-type-count any-enemy monk > 3)
     (gold-amount > 1100)
     (can-research ri-heresy)
 =>
