@@ -103,10 +103,8 @@
 
 
 ; SECONDS UNTIL FIRST ATTACK ----------------
-; FIXED (ludicrous not recognized)
-
+; FIXED PART (ludicrous not recognized so its default)
 (defrule(true)=>(set-goal secondsUntilFirstAttack 3600)(disable-self))
-
 
 (defrule(map-size tiny)=>(set-goal secondsUntilFirstAttack 600)(disable-self))
 
@@ -120,6 +118,7 @@
 
 (defrule(map-size giant)=>(set-goal secondsUntilFirstAttack 3000)(disable-self))
 
+;+ RANDOM PART
 (defrule
   (true)
 =>
