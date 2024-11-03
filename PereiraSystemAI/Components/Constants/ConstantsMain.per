@@ -107,6 +107,7 @@
 
 (defrule(true)=>(set-goal secondsUntilFirstAttack 3600)(disable-self))
 
+
 (defrule(map-size tiny)=>(set-goal secondsUntilFirstAttack 600)(disable-self))
 
 (defrule(map-size small)=>(set-goal secondsUntilFirstAttack 1200)(disable-self))
@@ -119,3 +120,10 @@
 
 (defrule(map-size giant)=>(set-goal secondsUntilFirstAttack 3000)(disable-self))
 
+(defrule
+  (true)
+=>
+  (generate-random-number 600)
+  (up-get-fact random-number 0 randomNumber)
+  (up-modify-goal secondsUntilFirstAttack g:+ randomNumber)
+)

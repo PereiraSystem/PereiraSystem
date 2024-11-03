@@ -3,13 +3,13 @@
   (goal buildNorthWestMainGates 1)
   (goal gotNorthWestPalisadeGates 1)
 =>
-  (enable-timer 23 180)
+  (enable-timer 33 180)
   (chat-to-all "WE GOT THE MAIN NORTH WEST PALISADE! START THE TIMER!")
   (disable-self)
 )
 
 (defrule (true)
-    (timer-triggered 23)
+    (timer-triggered 33)
     (or(goal gotSouthWestPalisadeGates 0)
     (goal gotNorthEastPalisadeGates 0))
     (up-compare-goal movingGatesEast <= 8)
@@ -20,13 +20,13 @@
 
     (up-modify-goal outerGatePoint2Y g:+ 1)
     (up-modify-goal movingGatesEast g:+ 1)    
-    (disable-timer 23)
-    (enable-timer 23 10)      
+    (disable-timer 33)
+    (enable-timer 33 10)      
     
 )
 
 (defrule (true)
-    (timer-triggered 23)
+    (timer-triggered 33)
     (or(goal gotSouthWestPalisadeGates 0)
     (goal gotNorthEastPalisadeGates 0))
     (up-compare-goal movingGatesEast >= 8)
@@ -39,7 +39,7 @@
     (generate-random-number 2)(up-get-fact random-number 0 randomNumber)
     (up-modify-goal outerGatePoint2Y g:- 1)
     (up-modify-goal movingGatesEast g:+ 1)    
-    (disable-timer 23)
-    (enable-timer 23 10)      
+    (disable-timer 33)
+    (enable-timer 33 10)      
     
 )

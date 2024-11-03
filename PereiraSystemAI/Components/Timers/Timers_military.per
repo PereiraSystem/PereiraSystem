@@ -51,28 +51,30 @@
 )
 
 
+
+
 ; DELETE FIRST MILITARY BUILDINGS
 ; --------------------------------------------------------
+
+
 (defrule
-    (current-age == imperial-age)(wood-amount > 2000)
-    (up-compare-goal deletingBarracks == 0)
-    (building-type-count-total barracks g:== barracksQty)
-    (building-type-count-total barracks > 4)
+    (current-age == imperial-age)
 =>
-    (enable-timer 22 15)
-    (chat-to-player my-player-number "DELETING BARRACKS IN 15 SEC! --------------")
-    (up-modify-goal deletingBarracks c:= 1)
+    (enable-timer 22 120)
 )
 
 (defrule
-    (timer-triggered 22)    
+    (timer-triggered 22)
+    (wood-amount > 2000)
+    (building-type-count-total barracks g:== barracksQty)
+    (building-type-count-total barracks > 4)
 =>
     (delete-building barracks)
-    (chat-to-player my-player-number "DELETING BARRACKS!")
-    (up-modify-goal militaryBuildingsDistance c:+ 2)     
-    (disable-timer 22)   
-    (up-modify-goal deletingBarracks c:= 0)
+    (chat-to-player my-player-number "DELETING BARRACKS")
 )
+
+
+
 
 (defrule
     (current-age == imperial-age)(wood-amount > 2000)
