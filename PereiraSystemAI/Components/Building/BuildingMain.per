@@ -287,7 +287,7 @@
     (resource-found stone)
     (dropsite-min-distance stone > 3)
     (building-type-count-total mining-camp g:< maxMiningCampsQty)
-    ;(building-type-count-total mining-camp < 8)
+    (building-type-count-total mining-camp == 0)
     (can-build mining-camp)
 =>
     (up-chat-data-to-self "Trying To Build Mining Camp (Stone 1) - Max Distance: %d" s: sn-mining-camp-max-distance)
@@ -303,7 +303,7 @@
     (wood-amount > 276)
     (resource-found stone)
     (dropsite-min-distance stone > 3)
-    (building-type-count-total mining-camp g:< maxMiningCampsQty)
+    (building-type-count-total mining-camp == 1)
     (can-build mining-camp)
 =>
     (up-chat-data-to-self "Trying To Build Mining Camp (Stone 2) - Max Distance: %d" s: sn-mining-camp-max-distance)
