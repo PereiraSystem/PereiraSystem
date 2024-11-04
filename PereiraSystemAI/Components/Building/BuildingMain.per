@@ -64,17 +64,18 @@
 (defrule
     (building-type-count-total mill == 0)(building-type-count town-center > 0)
     (resource-found food)
-    (wood-amount > 200)
+    (wood-amount > 225)
     (or(not(civ-selected poles))(wood-amount > 225))
     (can-build mill)
 =>
     (build mill)
+    (chat-local-to-self "Trying To Build Mill 1 - Normal")    
 )
 
 (defrule
     (building-type-count-total mill == 0)(building-type-count town-center > 0)
     (resource-found food)
-    (wood-amount > 200)
+    (wood-amount > 225)
     (or(not(civ-selected poles))(wood-amount > 225))
     ;(can-build mill)
     (up-can-build 0 c: mill)
@@ -82,78 +83,83 @@
     ;(build mill)
     (up-set-placement-data my-player-number -1 c: -6)
     (up-build place-control 0 c: mill)
-    (chat-local-to-self "Trying To Build Mill 1 (Food Found)")
+    (chat-local-to-self "Trying To Build Mill 1 - Food Found")
 )
+
 (defrule
-    (building-type-count-total mill < 1)(building-type-count town-center > 0)
+    (building-type-count-total mill == 0)(building-type-count town-center > 0)
     (wood-amount > 400)(can-build mill)
 =>
-    (build mill)(chat-local-to-self "Trying To Build Mill 1 (Excess Wood)")
+    (build mill)(chat-local-to-self "Trying To Build Mill 1 - Excess Wood")
 )
+
 (defrule
     (building-type-count-total mill < 1)(building-type-count town-center > 0)
     (building-type-count-total lumber-camp < 1)
     (building-type-count-total dock < 1)
     (game-time > 270)
-    (wood-amount > 200)(not(civ-selected khmer))
+    (wood-amount > 225)(not(civ-selected khmer))
     (can-build mill)
 =>
-    (build mill)(chat-local-to-self "Trying To Build Mill 1 (Forced)")
+    (build mill)(chat-local-to-self "Trying To Build Mill 1 - Forced")
 )
+
 (defrule
     (current-age == feudal-age)(building-type-count town-center > 0)
     (building-type-count-total mill < 1)
-    (wood-amount > 200)
+    (wood-amount > 225)
     (can-build mill)
 =>
     (build mill)
-    (chat-local-to-self "Trying To Build Mill 1 (Forced - Feudal)")
+    (chat-local-to-self "Trying To Build Mill 1 - Forced (Feudal)")
 )
+
 (defrule
-    (building-type-count-total mill == 1)
     (current-age >= feudal-age)
-    (wood-amount > 200)
+    (wood-amount > 225)
+    (building-type-count-total mill == 1)
+    ;(dropsite-min-distance food > 12)
+    (dropsite-min-distance food > 7)         
+    (building-type-count town-center > 0)
+    (building-type-count lumber-camp > 1)
+    ;(or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
+    (not(civ-selected khmer))    
+    (can-build mill)
+=>
+    (build mill)(chat-local-to-self "Trying To Build Mill 2-------------------")
+    (up-modify-sn sn-mill-max-distance c:+ 24)
+    (set-strategic-number sn-maximum-food-drop-distance 9)
+)
+
+(defrule
+    (current-age >= feudal-age)
+    (wood-amount > 225)    
+    (building-type-count-total mill == 2)
+    (dropsite-min-distance food > 7)
     (building-type-count town-center > 0)
     (building-type-count lumber-camp > 1)
     ;(or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
     (not(civ-selected khmer))
-    ;(dropsite-min-distance food > 12)
-    (dropsite-min-distance food > 8)
-    (can-build mill)
+    (can-build mill) 
 =>
-    (build mill)(chat-local-to-self "Trying To Build Mill 2")
-    (up-modify-sn sn-mill-max-distance c:+ 24)
-    (set-strategic-number sn-maximum-food-drop-distance 9)
-)
-(defrule
-    (military-population > 4)
-    (building-type-count-total mill == 2)
-    (current-age >= feudal-age)
-    (can-build mill)    
-    ;(dropsite-min-distance food > 12)
-    (dropsite-min-distance food > 8)
-    (wood-amount > 200)
-    (building-type-count lumber-camp > 0)
-    (building-type-count town-center > 0)
-    ;(or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
-    (not(civ-selected khmer))
-=>
-    (build mill)(chat-local-to-self "Trying To Build Mill 3")
+    (build mill)(chat-local-to-self "Trying To Build Mill 3----------------")
     (up-modify-sn sn-mill-max-distance c:+ 12)
 )
+
 (defrule
 	(current-age == imperial-age)
-    (military-population > 40)
-    ;(resource-found food)
+    (wood-amount > 400)    
     (building-type-count-total mill < 32)
-    (wood-amount > 400)
-    (or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
-    (can-build mill)(not(civ-selected khmer))
+    (dropsite-min-distance food > 6)
+    ;(or(up-compare-goal weMovedPlace == 0)(building-type-count dock > 0))
+    (not(civ-selected khmer))    
+    (can-build mill)
 =>
-    (chat-local-to-self "Trying To Build Mill")
+    (chat-local-to-self "Trying To Build Mill EXTRA--------------")
     (up-modify-sn sn-mill-max-distance c:+ 12)
     (build mill)
 )
+
 ; FARMS
 ; DARK AGE
 (defrule
@@ -305,10 +311,12 @@
 )
 (defrule
     (current-age > castle-age)
+    (wood-amount > 200)
     (building-type-count-total monastery > 0)
     (building-type-count-total mining-camp g:< maxMiningCampsQty)
     (resource-found stone)
-    (dropsite-min-distance stone > 3)
+    ;(dropsite-min-distance stone > 3)
+    (dropsite-min-distance stone < 8)    
     (can-build mining-camp)
 =>
     (up-chat-data-to-self "Trying To Build Mining Camp (Stone) - Max Distance: %d" s: sn-mining-camp-max-distance)

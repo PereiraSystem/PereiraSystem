@@ -258,10 +258,10 @@
 (defrule
     (current-age == imperial-age)(not(hold-relics))
 =>
-    (set-strategic-number sn-food-gatherer-percentage 75)
-    (set-strategic-number sn-wood-gatherer-percentage 11)
-    (set-strategic-number sn-gold-gatherer-percentage 9)
-    (set-strategic-number sn-stone-gatherer-percentage 6)
+    (set-strategic-number sn-food-gatherer-percentage 66)
+    (set-strategic-number sn-wood-gatherer-percentage 14)
+    (set-strategic-number sn-gold-gatherer-percentage 10)
+    (set-strategic-number sn-stone-gatherer-percentage 10)
     (chat-local-to-self  "Imperial Age With No Relics - Sending More Villagers For Gold")
     (up-chat-data-to-self "WOOD GATHER PERCENT: %d" s: sn-wood-gatherer-percentage)
     (up-chat-data-to-self "FOOD GATHER PERCENT: %d" s: sn-food-gatherer-percentage)  
@@ -271,10 +271,10 @@
 (defrule
     (current-age == imperial-age)(hold-relics)
 =>
-    (set-strategic-number sn-food-gatherer-percentage 77)
-    (set-strategic-number sn-wood-gatherer-percentage 13)
-    (set-strategic-number sn-gold-gatherer-percentage 4)
-    (set-strategic-number sn-stone-gatherer-percentage 6)
+    (set-strategic-number sn-food-gatherer-percentage 66)
+    (set-strategic-number sn-wood-gatherer-percentage 14)
+    (set-strategic-number sn-gold-gatherer-percentage 6)
+    (set-strategic-number sn-stone-gatherer-percentage 14)
     (chat-local-to-self "Imperial Age With All Relics - Sending Less Villagers For Gold")
     (up-chat-data-to-self "WOOD GATHER PERCENT: %d" s: sn-wood-gatherer-percentage)
     (up-chat-data-to-self "FOOD GATHER PERCENT: %d" s: sn-food-gatherer-percentage)  
