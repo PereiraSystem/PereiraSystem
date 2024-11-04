@@ -53,7 +53,7 @@
 	(timer-triggered 5)
 =>
 	(disable-timer 5)
-    (enable-timer 5 400) ;was 240
+    (enable-timer 5 500) ;was 240
     (up-modify-goal maxMiningCampsQty c:+ 1)
     ;(up-chat-data-to-self "Mining camps max qty increased = %d" g: max-mining-camps-qty)
 )
@@ -63,7 +63,7 @@
 	(timer-triggered 6)
 =>
 	(disable-timer 6)
-    (enable-timer 6 180)
+    (enable-timer 6 240)
     (up-modify-sn sn-mining-camp-max-distance c:+ 1)
     ;(up-chat-data-to-self "Mining camps max distance increased = %d" s: sn-mining-camp-max-distance)
 )
@@ -102,15 +102,15 @@
     (up-modify-goal stableQty c:+ 2)
     (up-modify-goal siegeWorkshopQty c:+ 1)
     (up-modify-goal castleQty c:+ 2)    
-    (enable-timer 19 60)
+    (enable-timer 15 60)
     (disable-self)
 )
 
 (defrule
-	(timer-triggered 19)
+	(timer-triggered 15)
 =>
-	(disable-timer 19)
-    (enable-timer 19 1200)   
+	(disable-timer 15)
+    (enable-timer 15 1200)   
     (up-modify-goal barracksQty c:+ 1)
     (up-modify-goal archeryRangeQty c:+ 1)
     (up-modify-goal stableQty c:+ 1)
@@ -133,5 +133,6 @@
 	(disable-timer 20)
     (enable-timer 20 600)
     (up-modify-goal militaryBuildingsDistance c:+ 4)      
-
 )
+
+
