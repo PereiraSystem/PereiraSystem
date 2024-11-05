@@ -80,6 +80,18 @@
 )
 
 
+(#load-if-defined POPULATION-CAP-250)
+(defrule
+    (true)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 50)
+    (set-strategic-number sn-maximum-attack-group-size 1000)
+    (set-strategic-number sn-number-attack-groups 3)
+    (disable-self)
+)
+
+
+
 
 ; BOATS
 (defrule
