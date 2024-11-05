@@ -80,15 +80,25 @@
 )
 
 
-(#load-if-defined POPULATION-CAP-250)
+;see constants main for min army size
 (defrule
-    (true)
+    (current-age == imperial-age)(population-cap >= 150)
 =>
-    (set-strategic-number sn-minimum-attack-group-size 50)
-    (set-strategic-number sn-maximum-attack-group-size 1000)
+    (set-strategic-number sn-minimum-attack-group-size 40)
+    (set-strategic-number sn-maximum-attack-group-size 50)
     (set-strategic-number sn-number-attack-groups 3)
     (disable-self)
 )
+
+(defrule
+    (current-age == imperial-age)(population-cap >= 250)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 70)
+    (set-strategic-number sn-maximum-attack-group-size 80)
+    (set-strategic-number sn-number-attack-groups 3)
+    (disable-self)
+)
+
 
 
 
