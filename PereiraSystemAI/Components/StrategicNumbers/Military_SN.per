@@ -73,31 +73,13 @@
     (set-strategic-number sn-attack-group-gather-spacing 4)
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-strategic-number sn-attack-group-size-randomness 0)
-    (set-strategic-number sn-minimum-attack-group-size 1)
+    (set-strategic-number sn-minimum-attack-group-size 1);overwritten by attack timer
     (set-strategic-number sn-maximum-attack-group-size 1000)
     (set-strategic-number sn-number-attack-groups 1)
     (disable-self)
 )
 
 
-;see constants main for min army size
-(defrule
-    (current-age == imperial-age)(population-cap >= 150)
-=>
-    (set-strategic-number sn-minimum-attack-group-size 40)
-    (set-strategic-number sn-maximum-attack-group-size 50)
-    (set-strategic-number sn-number-attack-groups 3)
-    (disable-self)
-)
-
-(defrule
-    (current-age == imperial-age)(population-cap >= 250)
-=>
-    (set-strategic-number sn-minimum-attack-group-size 70)
-    (set-strategic-number sn-maximum-attack-group-size 80)
-    (set-strategic-number sn-number-attack-groups 3)
-    (disable-self)
-)
 
 
 

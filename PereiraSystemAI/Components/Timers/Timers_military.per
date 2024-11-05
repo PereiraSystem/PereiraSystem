@@ -28,13 +28,13 @@
     (enable-timer 21 20)
     (set-strategic-number sn-target-player-number 0)
     (set-strategic-number sn-number-attack-groups 1)
-    (set-strategic-number sn-minimum-attack-group-size 4)    
-    (set-strategic-number sn-maximum-attack-group-size 5)      
+    (set-strategic-number sn-minimum-attack-group-size minArmySize)    
+    (set-strategic-number sn-maximum-attack-group-size maxArmySize)      
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-goal weAreAttacking 1)
     (attack-now)
     (chat-to-allies "31 Attack!");do not comment this line!!!
-    (chat-to-player my-player-number "ATTACK!")
+    (chat-to-player my-player-number "ATTACK! MIN ARMY SIZE = %d" sn-minimum-attack-group-size)
 )
 
 

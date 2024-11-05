@@ -12,10 +12,14 @@
 (defconst avoidCreatingNavy 11)
 (defconst weStoppedLumberjacks 12)
 
-(defconst minArmySize 20)
-(defconst secondsUntilFirstAttack 21)
-(defconst minutesUntilFirstAttack 22); for info only
-(defconst weAreAttacking 25)
+
+(defconst secondsUntilFirstAttack 20)
+(defconst minutesUntilFirstAttack 21); for info only
+(defconst weAreAttacking 22)
+(defconst minArmySize 24)
+(defconst maxArmySize 25)
+(defconst numberAttackGroups 26)
+
 
 
 (defconst deletingBarracks 30)
@@ -39,7 +43,6 @@
 )  
 
 ; AVOID DOCKS - 10
-
 (defrule
   (or
     (or
@@ -100,6 +103,23 @@
   =>
   (set-goal minArmySize 40)
   (set-goal populationRoomBeforeBuildingHouses 10)
+  (disable-self)
+)
+
+(defrule
+  (population-cap >= 150)
+  =>
+  (set-goal minArmySize 50)
+  (set-goal numberAttackGroups 3)    
+  (disable-self)
+)
+
+(defrule
+  (population-cap >= 250)
+  =>
+  (set-goal minArmySize 70)
+  (set-goal maxArmySize 80)
+
   (disable-self)
 )
 
