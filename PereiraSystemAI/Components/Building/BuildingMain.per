@@ -388,6 +388,9 @@
 ; UNIVERSITY
 (defrule
     (building-type-count-total university == 0)
+    (wood-amount > 150)
+    (research-completed ri-hand-cart)
+    (current-age == imperial-age)
     (building-type-count monastery > 0)    
     (can-build university)
 =>
@@ -902,10 +905,13 @@
 
 (defrule
 	(current-age == imperial-age)
-    (building-type-count-total castle > 1)
-    (not(civ-selected teutonic))(not(civ-selected portuguese))
-    (building-type-count watch-tower-line < 4)
+    (building-type-count-total castle > 3)
+    (or
+        (civ-selected japanese)
+        (civ-selected korean)
+    )
     (not(can-build bombard-tower))
+    (building-type-count watch-tower-line < 4)
     (up-can-build 0 c: watch-tower)
     ;(can-build watch-tower-line)
 =>

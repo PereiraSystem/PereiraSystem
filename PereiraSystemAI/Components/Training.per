@@ -399,13 +399,15 @@
 ; CASTLE
 ; TREBUCHET
 (defrule
+    (players-building-type-count any-enemy castle > 0)
     (unit-type-count 954 g:< trebuchetsQtyLow)
     (can-train 954)
 =>
     (train 954)
-
 )
+
 (defrule
+    (players-building-type-count any-enemy castle > 0)
     (unit-type-count trebuchet g:< trebuchetsQtyLow)
     (can-train trebuchet)
 =>
@@ -413,6 +415,7 @@
 )
 
 (defrule
+    (players-building-type-count any-enemy castle > 0)
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
         (unit-type-count-total 954 g:< trebuchetsQtyLow)
@@ -431,6 +434,7 @@
 )
 
 (defrule
+    (players-building-type-count any-enemy castle > 0)
     (civ-selected hun)
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyMedium)
@@ -440,7 +444,9 @@
 =>
     (train trebuchet)
 )
+
 (defrule
+    (players-building-type-count any-enemy castle > 0)
     (or
         (or
             (and(civ-selected tatars)(research-completed my-unique-research))

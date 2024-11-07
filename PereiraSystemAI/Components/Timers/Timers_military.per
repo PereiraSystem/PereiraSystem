@@ -19,24 +19,46 @@
 
 ; ATTACK!
 (defrule
+    (population-cap >= 150)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 39)    
+    (set-strategic-number sn-maximum-attack-group-size 40)
+    (set-strategic-number sn-number-attack-groups 2)      
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
+    (population-cap >= 250)
+    (timer-triggered 21)
+
+=>
+    (set-strategic-number sn-minimum-attack-group-size 79)    
+    (set-strategic-number sn-maximum-attack-group-size 80)
+    (set-strategic-number sn-number-attack-groups 2)    
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
     (timer-triggered 21)
     (up-players-in-game enemy > 0)
-    (military-population > 0)
-
+    (military-population > minArmySize)
 =>
 	(disable-timer 21)
     (enable-timer 21 20)
-    (set-strategic-number sn-target-player-number 0)
-    (set-strategic-number sn-number-attack-groups 1)
-    (set-strategic-number sn-minimum-attack-group-size minArmySize)    
-    (set-strategic-number sn-maximum-attack-group-size maxArmySize)      
+    (set-strategic-number sn-target-player-number 0)   
     (set-strategic-number sn-percent-attack-soldiers 100)
     (set-goal weAreAttacking 1)
     (attack-now)
     (chat-to-allies "31 Attack!");do not comment this line!!!
     (chat-to-player my-player-number "ATTACK!")
-    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
 )
+
+
+
+
 
 
 ; RETREAT
