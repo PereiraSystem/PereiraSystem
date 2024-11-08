@@ -400,7 +400,10 @@
 
 (defrule
     (building-type-count-total university == 0)
-    (players-building-type-count any-ally monastery > 0)    
+    (wood-amount > 150)    
+    (players-building-type-count any-ally monastery > 0)
+    (research-completed ri-hand-cart)
+    (current-age == imperial-age)
     (can-build university)
 =>
     (build university)
