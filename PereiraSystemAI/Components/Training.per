@@ -889,6 +889,7 @@
 )
 #end-if
 
+#load-if-defined UP-CELTIC-CIV-ALLY
 (defrule 
     (civ-selected korean)
     (current-age == imperial-age)
@@ -896,6 +897,8 @@
 =>
     (train mangonel-line)
 )
+#end-if
+
 ; RAM
 (defrule
     (current-age == feudal-age)
@@ -950,94 +953,23 @@
 
 ; SCORPIONS
 (defrule
-    (current-age == imperial-age)
-    (research-completed my-unique-research) ; is this one torsion engines or the other?
-    (can-train scorpion-line)
-    (wood-amount > 200)
     (or(or(civ-selected ethiopian)(civ-selected khmer))
-        (civ-selected chinese)
-    )
-    ;(not(can-train trebuchet)); magyar huszar bonus vs siege   
+        (civ-selected chinese))
+    (research-completed my-unique-research) ; is this one torsion engines or the other?
+    (wood-amount > 200)
+    (can-train scorpion-line)    
 =>
     (train scorpion-line)
 )
 
 (defrule
+    (civ-selected celtic)
     (current-age == imperial-age)
-    (gold-amount > 245)
-    (can-train scorpion-line)
-    (unit-type-count-total scorpion-line g:< scorpionQty)
-    (or
-        (or
-            (or
-                (civ-selected ethiopian)
-                (civ-selected chinese)
-            )
-            (or
-                (civ-selected magyar)
-                (civ-selected malay)
-            )
-        )
-        (or
-            (civ-selected incan)
-            (civ-selected japanese)
-        )
-    )
-    ;(building-type-count castle == 0)     
+    (wood-amount > 200)
+    (can-train scorpion-line)    
 =>
     (train scorpion-line)
 )
-
-(defrule
-    (current-age == imperial-age)
-    (gold-amount > 245)
-    (can-train scorpion-line)
-    (unit-type-count-total scorpion-line g:< scorpionQty)
-
-    (or
-        (or
-            (or
-                (civ-selected viking)
-                (civ-selected celtic)
-            )
-            (or
-                (civ-selected mongol)
-                (civ-selected berbers)
-            )
-        )
-        (or
-            (or
-                (civ-selected teutonic)
-                (civ-selected slavic)
-            )
-            (or
-                (civ-selected burmese)
-                (civ-selected sicilians)
-            )
-        )
-    )
-
-    (building-type-count castle == 0)     
-=>
-    (train scorpion-line)
-)
-
-(defrule
-    (current-age == imperial-age)
-    (gold-amount > 645)
-    (can-train scorpion-line)
-    (unit-type-count-total scorpion-line g:< scorpionQty)
-    (or
-        (civ-selected tatars)
-        (civ-selected tatars)
-    )
-    (not(can-train trebuchet)); magyar huszar bonus vs siege
-    (building-type-count castle == 0)     
-=>
-    (train scorpion-line)
-)
-
-
 
 
 ; SIEGE ELEPHANT
