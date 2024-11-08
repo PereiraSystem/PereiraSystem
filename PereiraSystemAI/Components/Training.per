@@ -950,16 +950,18 @@
 
 ; SCORPIONS
 (defrule
-    (current-age == castle-age)
+    (current-age == imperial-age)
+    (research-completed my-unique-research) ; is this one torsion engines or the other?
     (can-train scorpion-line)
-    (unit-type-count-total scorpion-line g:< scorpionQty)
-    (military-population g:> minArmySize)
-    (civ-selected chinese)
-    (not(can-train trebuchet)); magyar huszar bonus vs siege
-    (building-type-count castle == 0) 
+    (wood-amount > 200)
+    (or(or(civ-selected ethiopian)(civ-selected khmer))
+        (civ-selected chinese)
+    )
+    ;(not(can-train trebuchet)); magyar huszar bonus vs siege   
 =>
     (train scorpion-line)
 )
+
 (defrule
     (current-age == imperial-age)
     (gold-amount > 245)
@@ -981,10 +983,11 @@
             (civ-selected japanese)
         )
     )
-    (building-type-count castle == 0)     
+    ;(building-type-count castle == 0)     
 =>
     (train scorpion-line)
 )
+
 (defrule
     (current-age == imperial-age)
     (gold-amount > 245)
@@ -1033,28 +1036,10 @@
 =>
     (train scorpion-line)
 )
-(defrule
-    (current-age == imperial-age)(research-completed my-unique-research)
-    (can-train scorpion-line)
-    (wood-amount > 200)
-    (civ-selected khmer)
-    (not(can-train trebuchet)); magyar huszar bonus vs siege
-    (building-type-count castle == 0)     
-=>
-    (train scorpion-line)
-)
 
-(defrule
-    (current-age == imperial-age)
-    (research-completed my-unique-research) ; is this one torsion engines or the other?
-    (can-train scorpion-line)
-    (wood-amount > 200)
-    (civ-selected ethiopian)
-    (not(can-train trebuchet)); magyar huszar bonus vs siege
-    (building-type-count castle == 0)     
-=>
-    (train scorpion-line)
-)
+
+
+
 ; SIEGE ELEPHANT
 (defrule
     (current-age == castle-age)(food-amount > 400)(gold-amount > 300)
