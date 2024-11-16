@@ -4,7 +4,7 @@
     (generate-random-number 100)(up-get-fact random-number 0 randomNumber)
         ;(up-chat-data-to-player my-player-number "base chance of wall = %d" g: chanceOfBuildingWall)
     (up-modify-goal chanceOfBuildingWall g:+ randomNumber)   
-    ;(up-chat-data-to-player my-player-number "new chance of wall = %d" g: chanceOfBuildingWall)
+    (up-chat-data-to-player my-player-number "new chance of wall = %d" g: chanceOfBuildingWall)
     (disable-self)
 )
 
