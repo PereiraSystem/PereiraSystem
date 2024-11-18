@@ -393,6 +393,21 @@
     (up-build place-control 0 c: market)
 )
 
+; CARAVANSERAI
+(defrule
+    (current-age == imperial-age)
+    (up-players-in-game ally > 1)
+    (building-type-count town-center > 1)
+    (building-type-count-total market > 0)
+    (building-type-count caravanserai == 0)
+    (up-can-build 0 c: caravanserai)
+=>
+    (chat-local-to-self "Trying To Build Caranvserai 1 far away")
+    (up-set-placement-data my-player-number town-center c:- 64)
+    (up-build place-control 0 c: caravanserai)
+)
+
+
 ; UNIVERSITY
 (defrule
     (building-type-count-total university == 0)
@@ -933,10 +948,3 @@
 
 
 
-
-; CARAVANSERAI
-(defrule
-    (can-build carav)
-    =>
-    (build feitoria)
-)
