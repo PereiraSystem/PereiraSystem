@@ -60,6 +60,13 @@
     (build town-center)(chat-local-to-self "Trying To Build Town Center")
 )
 
+; FEITORIA
+(defrule
+    (can-build feitoria)
+    =>
+    (build feitoria)
+)
+
 ; MILL
 (defrule
     (building-type-count-total mill == 0)(building-type-count town-center > 0)
@@ -924,3 +931,11 @@
 )
 
 
+
+
+; CARAVANSERAI
+(defrule
+    (can-build carav)
+    =>
+    (build feitoria)
+)
