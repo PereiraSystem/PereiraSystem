@@ -762,7 +762,7 @@
         (unit-type-count-total trebuchet > 4)
     )
     (or
-        (players-building-type-count focus-player castle == 0)
+        (players-building-type-count focus-player castle == 1);with 0 takes too much before attack
         (food-amount > 50000)
     )
 =>
