@@ -233,15 +233,15 @@
 ; FRANKS
 (defrule
     (civ-selected frankish)(unit-type-count-total my-unique-unit-line > 0)
-    (can-research my-unique-research)
+    (can-research my-second-unique-research)
 =>
-    (research my-unique-research)
+    (research my-second-unique-research)
     (chat-to-player my-player-number "AXE THROWERS +1 RANGE!")
 )
 (defrule
-    (civ-selected frankish)(can-research my-second-unique-research )
+    (civ-selected frankish)(can-research my-unique-research )
 =>
-    (research my-second-unique-research)
+    (research my-unique-research)
     (chat-to-player my-player-number "STABLES WORK 40% FASTER!")
 )
 ; GOTHS
