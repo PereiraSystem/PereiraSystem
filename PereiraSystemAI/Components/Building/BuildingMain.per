@@ -610,6 +610,14 @@
 
 ; CASTLE
 (defrule
+    (building-type-count-total castle > 3)
+    (can-build castle)
+=>
+    (chat-to-player my-player-number "Trying To Build Castle FORWARD!!!!!!!!!!!!" )
+    (build-forward castle)
+)
+
+(defrule
     (building-type-count-total castle == 0)
     (up-can-build 0 c: castle)
     (players-building-type-count any-ally monastery > 0)
