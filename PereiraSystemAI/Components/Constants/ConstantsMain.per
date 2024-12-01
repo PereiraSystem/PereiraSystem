@@ -141,6 +141,16 @@
 
 (defrule(map-size giant)=>(set-goal secondsUntilFirstAttack 1920)(disable-self))
 
+; POPULATION PART
+(defrule
+  (population-cap >= 250)
+=>
+  (up-modify-goal secondsUntilFirstAttack g:+ 600)
+  (disable-self)
+)
+
+
+
 ;+ RANDOM PART
 (defrule
   (true)
