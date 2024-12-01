@@ -93,6 +93,18 @@
     (up-delete-idle-units idle-type-villager)
 )
 
+; TIMER 11 - DELETES CARTS
+(defrule(true)=>(enable-timer 11 1200)(disable-self))
+(defrule
+    (timer-triggered 11)
+=>
+	(chat-local-to-self "DELETING IDLE CARTS!")
+	(disable-timer 10)
+    (enable-timer 10 150)
+    (up-delete-idle-units idle-type-trade-cart)
+)
+
+
 ; INCREASE OTHER BUILDINGS QTY
 (defrule
     (or(current-age == imperial-age)(cheats-enabled))
@@ -117,6 +129,8 @@
     (up-modify-goal siegeWorkshopQty c:+ 1)
     (up-modify-goal castleQty c:+ 1)
 )
+
+
 
 ;INCREASE DISTANCE
 (defrule
