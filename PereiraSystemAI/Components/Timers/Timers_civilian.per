@@ -80,7 +80,7 @@
 )
 
 
-; TIMER 10 DELETES VILLAGERS
+; TIMER 10 - DELETES VILLAGERS
 (defrule(true)=>(enable-timer 10 1200)(disable-self))
 (defrule(false)
     (timer-triggered 10)
@@ -99,8 +99,8 @@
     (timer-triggered 11)
 =>
 	(chat-local-to-self "DELETING IDLE CARTS!")
-	(disable-timer 10)
-    (enable-timer 10 150)
+	(disable-timer 11)
+    (enable-timer 11 150)
     (up-delete-idle-units idle-type-trade-cart)
 )
 
