@@ -41,18 +41,25 @@
 (defrule
     (can-research ri-wheel-barrow)
     (or
-        (and(not(town-under-attack))(enemy-buildings-in-town))
-        (civilian-population > 5)
+        (or
+            (and(not(town-under-attack))(enemy-buildings-in-town))
+            (civilian-population > 5)
+        )   
+        (civ-selected viking)
     )
 =>
     (research ri-wheel-barrow)
 )
+
 (defrule
     (can-research ri-hand-cart)
     (or
-        (or(building-type-count-total monastery > 0)
-        (players-building-type-count any-ally monastery > 0))
-        (and(civ-selected burgundians)(civilian-population > 10))
+        (or
+            (or(building-type-count-total monastery > 0)
+            (players-building-type-count any-ally monastery > 0))
+            (and(civ-selected burgundians)(civilian-population > 10))
+        )   
+        (civ-selected viking)
     )
 =>
     (research ri-hand-cart)
