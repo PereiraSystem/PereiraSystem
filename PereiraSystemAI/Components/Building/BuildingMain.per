@@ -220,11 +220,8 @@
 )
 
 ; HOUSES
-
-
-(defrule
     (current-age < imperial-age)
-    (wood-amount g:> minimumWoodForLC)
+    (or(wood-amount g:> minimumWoodForLC)(building-type-count lumber-camp > 2)
     (and(housing-headroom g:<  populationRoomBeforeBuildingHouses)(population-headroom > 0))
     (up-can-build 0 c: house)
 =>
