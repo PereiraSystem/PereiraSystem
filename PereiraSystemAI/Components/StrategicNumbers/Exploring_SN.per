@@ -9,6 +9,15 @@
     (set-strategic-number sn-blot-exploration-map 0)
     (disable-self)
 )
+(defrule
+    (and
+        (unit-type-count-total scout-cavalry-line == 0)
+        (unit-type-count-total scout-cavalry-class == 0)
+    )
+=>
+    (set-strategic-number sn-total-number-explorers 3)
+)
+
 ; SCOUT STYLES
 (defrule
 	(true)
