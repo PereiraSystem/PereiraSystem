@@ -231,7 +231,7 @@
     (chat-local-to-self "Trying To Build House")
     (up-set-placement-data my-player-number house c: 0)
     (up-build place-control 0 c: house)
-    (up-chat-data-to-self "Wood > s%" minimumWoodForLC)
+    (up-chat-data-to-player my-player-number "Wood > %d" g: minimumWoodForLC)
 )
 
 (defrule
