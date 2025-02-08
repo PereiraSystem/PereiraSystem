@@ -930,7 +930,11 @@
 ; NORMAL TOWER
 (defrule
     (gold-amount > 301)
-    (building-type-count-total watch-tower > 6)
+    (building-type-count-total watch-tower > 3)
+    (or
+        (civ-selected japanese)
+        (civ-selected korean)
+    )
     (can-build watch-tower)
 =>
     (build-forward watch-tower)
