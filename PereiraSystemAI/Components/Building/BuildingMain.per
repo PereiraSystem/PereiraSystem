@@ -897,6 +897,7 @@
 ; TOWERS
 ; BOMBARD TOWER
 (defrule
+    (up-compare-goal weAreAttacking == 1)
     (gold-amount > 301)
     (building-type-count-total bombard-tower > 6)
     (can-build bombard-tower)
@@ -929,8 +930,13 @@
 
 ; NORMAL TOWER
 (defrule
+    (up-compare-goal weAreAttacking == 1)
     (gold-amount > 301)
-    (building-type-count-total watch-tower > 6)
+    (building-type-count-total watch-tower > 3)
+    (or
+        (civ-selected japanese)
+        (civ-selected korean)
+    )
     (can-build watch-tower)
 =>
     (build-forward watch-tower)
