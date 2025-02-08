@@ -180,11 +180,15 @@
 ; AOK
 ; BYZANTINES
 (defrule
-    (civ-selected byzantine)(unit-type-count-total fire-ship-line > 0)
+    (civ-selected byzantine)
+    (or
+        (unit-type-count-total fire-ship-line > 0)
+        (unit-type-count-total bombard-tower > 0)
+    )
     (can-research my-second-unique-research )
 =>
     (research my-second-unique-research)
-    (chat-to-player my-player-number "FIRE SHIPS +1 RANGE!")
+    (chat-to-player my-player-number "FIRE SHIPS +1 RANGE! - BOMBARD TOWERS AOE DAMAGE!")
 )
 (defrule
     (can-research my-unique-research)
