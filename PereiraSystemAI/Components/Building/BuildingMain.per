@@ -909,6 +909,7 @@
     (gold-amount > 301)
     ;(building-type-count-total castle > 3)
     (building-type-count-total castle g:>= castleQty)
+    (not(civ-selected korean))
     (up-can-build 0 c: bombard-tower)
 =>
     (up-modify-goal militaryBuildingsDistance c:+ 5)
@@ -927,6 +928,13 @@
 )
 
 ; NORMAL TOWER
+(defrule
+    (gold-amount > 301)
+    (building-type-count-total watch-tower > 6)
+    (can-build watch-tower)
+=>
+    (build-forward watch-tower-tower)
+)
 
 (defrule (false)
     (up-can-build 0 c: watch-tower)
