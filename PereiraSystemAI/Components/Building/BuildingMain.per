@@ -652,15 +652,34 @@
 
 ; MINI CASTLES (MEGA TOWERS?)
 (defrule
-    (building-type-count-total castle > 1)
-    (building-type-count-total krepost < 64)
+    (goal weAreAttacking 1)
+    (building-type-count-total castle > 3)
+    (can-build krepost)
+=>
+    (chat-to-player my-player-number "Trying To Build Castle FORWARD!!!!!!!!!!!!" )
+    (build-forward krepost)
+)
+
+(defrule
+    (building-type-count-total castle > 3)
+    (building-type-count-total krepost < 32)
     (can-build krepost)
 =>
     (build krepost)
 )
+
 (defrule
-    (building-type-count-total castle > 1)
-    (building-type-count-total donjon < 64)
+    (goal weAreAttacking 1)
+    (building-type-count-total castle > 3)
+    (can-build donjon)
+=>
+    (chat-to-player my-player-number "Trying To Build Donjon FORWARD!!!!!!!!!!!!" )
+    (build-forward donjon)
+)
+
+(defrule
+    (building-type-count-total castle > 3)
+    (building-type-count-total donjon < 32)
     (can-build donjon)
 =>
     (build donjon)
