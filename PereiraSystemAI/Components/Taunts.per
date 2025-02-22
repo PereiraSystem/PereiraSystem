@@ -109,43 +109,35 @@
 	;(set-strategic-number sn-coop-share-attacking 1); maybe leave this always on? 	see military sn
 	(set-strategic-number sn-target-player-number -1)
 	(set-strategic-number sn-percent-attack-soldiers 100)
-
-    (chat-to-allies "My Attacks Will Be Directed Around Your Town Center For 2 Minutes!")
-	(enable-timer 42 10)
+	(enable-timer 42 0); start help-attack timer 42 in X seconds
 )
 
-
-
-
-(defrule
+; HELP ATTACK TIMER
+(defrule 
 	(timer-triggered 42)
-	(up-compare-sn sn-target-player-number == -1); (attacks directed to ally base)
 =>
 	(attack-now)
     (disable-timer 42)
-	(enable-timer 42 60)
-	
-	(chat-to-allies "I´m helping!")
+	(enable-timer 42 15); do help- attack every X seconds
 )
 
-; DISABLE HELP
+; DISABLE HELP TIMER
 (defrule
-	(up-compare-sn sn-target-player-number == -1); (attacks directed to ally base)
-	(up-timer-status 49 == timer-disabled) 
+	(timer-triggered 42)
+	(up-timer-status 43 == timer-disabled) 
 =>	
-    (chat-to-all "Back To Attacking The Frontlines in 120 SECONDS!!")
-    (enable-timer 49 120)
+    (enable-timer 43 120); stop the help-attack timer 42 with disable-help timer 43
 )
 
-(defrule
-	(timer-triggered 49)
+(defrule 
+	(timer-triggered 43)
 =>
-    (disable-timer 49)
+    (disable-timer 43)
+	(disable-timer 42)
 	(set-strategic-number sn-target-player-number 0)
 	;(set-strategic-number sn-coop-share-attacking 0) 	
-    (chat-to-all "Back To Attacking The Frontlines!")
+    (chat-to-all "Stopping the help!")
 )
-
 
 
 ; RETREAT TAUNT 45
@@ -154,4 +146,5 @@
 =>
 	(acknowledge-taunt any-ally 45)
 	(chat-to-allies "Ok, We Retreat!")
+	(up-retreat-now)
 )
