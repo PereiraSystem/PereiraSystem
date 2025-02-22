@@ -613,6 +613,15 @@
 (defrule
     (goal weAreAttacking 1)
     (building-type-count-total castle > 3)
+    (not
+        (or
+            (or
+                (or(civ-selected japanese)(civ-selected korean))
+                (or(civ-selected turkish)(civ-selected spanish))           
+            )  
+            (or(civ-selected sicilian)(civ-selected bulgarian))   
+        )            
+    )
     (can-build castle)
 =>
     (chat-to-player my-player-number "Trying To Build Castle FORWARD!!!!!!!!!!!!" )
