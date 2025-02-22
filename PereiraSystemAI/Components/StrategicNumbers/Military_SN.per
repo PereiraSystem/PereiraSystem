@@ -42,7 +42,7 @@
     (set-strategic-number sn-enemy-sighted-response-distance 10)
     (set-strategic-number sn-wall-targeting-mode 1)
     (set-strategic-number sn-attack-intelligence 0);!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    (set-strategic-number sn-target-evaluation-distance 10);10
+    (set-strategic-number sn-target-evaluation-distance 512);10
     (set-strategic-number sn-coop-share-attacking 0)
        
     (set-strategic-number sn-target-evaluation-boat 10)
@@ -125,12 +125,12 @@
     (up-set-offense-priority c: monastery c: 6)    
     (up-set-offense-priority c: castle c: 9)
 
-    (up-set-offense-priority c: villager-class c: 1)
-    (up-set-offense-priority c: archery-class c: 10)
-    (up-set-offense-priority c: cavalry-class c: 10)
-    (up-set-offense-priority c: cavalry-archer-class c: 11)         
-    (up-set-offense-priority c: battering-ram-line c: 10)     
-    (up-set-offense-priority c: mangonel-line c: 11)     
+    (up-set-offense-priority c: villager-class c: 11);1
+    (up-set-offense-priority c: archery-class c: 9)
+    (up-set-offense-priority c: cavalry-class c: 9)
+    (up-set-offense-priority c: cavalry-archer-class c: 10)         
+    (up-set-offense-priority c: battering-ram-line c: 9)     
+    (up-set-offense-priority c: mangonel-line c: 10)     
 
     (disable-self)
 )
