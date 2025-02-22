@@ -6,11 +6,12 @@
     (disable-self)
 )
 
+; defend with peasants when there´s no army and 6 minutes have passed
 (defrule
     (game-time > 360)
     (military-population < 2)
 =>
-    (set-strategic-number sn-allow-civilian-defense 0)
+    (set-strategic-number sn-allow-civilian-defense 1)
 )
 
 (defrule
@@ -43,11 +44,16 @@
     (set-strategic-number sn-wall-targeting-mode 1)
     (set-strategic-number sn-attack-intelligence 0);!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     (set-strategic-number sn-target-evaluation-distance 512);10
-    (set-strategic-number sn-coop-share-attacking 0)
+    (set-strategic-number sn-coop-share-attacking 1); IF SET TO 1, IT MIGHT AVOID HAVING TO USE HELP TAUNTS
        
     (set-strategic-number sn-target-evaluation-boat 10)
     (disable-self)
 )
+
+
+; todo: try to find player with lowest score
+
+
 
 (defrule
     (true)

@@ -106,19 +106,15 @@
 	(set-strategic-number sn-minimum-attack-group-size 1)
 	(set-strategic-number sn-maximum-attack-group-size 1000)
 	(set-strategic-number sn-number-attack-groups 1)
-	(set-strategic-number sn-coop-share-attacking 1); maybe leave this always on? 	
+	;(set-strategic-number sn-coop-share-attacking 1); maybe leave this always on? 	see military sn
 	(set-strategic-number sn-target-player-number -1)
 	(set-strategic-number sn-percent-attack-soldiers 100)
-	; sn-coop-share-attacking SET TO 1
+
     (chat-to-allies "My Attacks Will Be Directed Around Your Town Center For 2 Minutes!")
 	(enable-timer 42 10)
 )
 
-(defrule
-	(true)
-=>
-	(set-strategic-number sn-coop-share-attacking 1); maybe leave this always on? move to other section
-)
+
 
 
 (defrule
@@ -146,7 +142,7 @@
 =>
     (disable-timer 49)
 	(set-strategic-number sn-target-player-number 0)
-	(set-strategic-number sn-coop-share-attacking 0) 	
+	;(set-strategic-number sn-coop-share-attacking 0) 	
     (chat-to-all "Back To Attacking The Frontlines!")
 )
 
