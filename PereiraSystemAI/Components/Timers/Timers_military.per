@@ -76,7 +76,7 @@
 
 
 
-; DELETE FIRST MILITARY BUILDINGS
+; TRYING TO DELETE FIRST MILITARY BUILDINGS
 ; --------------------------------------------------------
 
 
@@ -91,6 +91,7 @@
 )
 
 (defrule
+    (goal weAreAttacking 1)
     (timer-triggered 22)
     (wood-amount > 2000)
     (building-type-count-total barracks g:== barracksQty)
@@ -104,6 +105,7 @@
 )
 
 (defrule
+    (goal weAreAttacking 1)
     (timer-triggered 23)
     (wood-amount > 2000)
     (building-type-count-total stable g:== stableQty)
@@ -117,6 +119,7 @@
 )
 
 (defrule
+    (goal weAreAttacking 1)
     (timer-triggered 24)
     (wood-amount > 2000)
     (building-type-count-total archery-range g:== archeryRangeQty)
@@ -130,6 +133,7 @@
 )
 
 (defrule
+    (goal weAreAttacking 1)
     (timer-triggered 25)
     (wood-amount > 2000)
     (building-type-count-total siege-workshop g:== siegeWorkshopQty)
