@@ -33,12 +33,11 @@
 (defrule
   (true)
 =>
-  (set-goal populationRoomBeforeBuildingHouses 5)
-  (set-goal avoidBuildingDocks 0)
   (set-goal deletingBarracks 0)
   (set-goal deletingStable 0)
   (set-goal deletingArchery 0)
   (set-goal deletingSiege 0)
+  (set-goal weAreAttacking 0)
   (disable-self)
 )  
 
@@ -160,3 +159,14 @@
   (up-modify-goal secondsUntilFirstAttack g:+ randomNumber)
   (disable-self)
 )
+
+(defrule
+  (true)
+=>
+  (set-goal deletingBarracks 0)
+  (set-goal deletingStable 0)
+  (set-goal deletingArchery 0)
+  (set-goal deletingSiege 0)
+  (set-goal weAreAttacking 0)
+  (disable-self)
+)  
