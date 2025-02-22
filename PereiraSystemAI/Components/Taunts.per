@@ -1,6 +1,11 @@
 ; SEND TAUNTS TO OTHERS
+
+
+; PROBLEM ----------------> AFTER HELP, THEY ATTACK THE ENEMY LEMMING STYLE
+
 ; WHEN TOWN UNDER ATTACK
 (defrule
+	(goal weAreAttacking 0);we only ask for help before attacking
 	(town-under-attack)
 	(up-timer-status 40 == timer-disabled)
 =>
@@ -8,6 +13,7 @@
 )
 
 (defrule
+
 	(timer-triggered 40)
 	(town-under-attack)
 =>
@@ -25,6 +31,7 @@
 
 ; WHEN ENEMY BUILDINGS IN TOWN
 (defrule
+	(goal weAreAttacking 0);we only ask for help before attacking
 	(enemy-buildings-in-town)
 	(up-compare-sn sn-maximum-town-size < 30)
 	(up-timer-status 41 == timer-disabled)
@@ -91,7 +98,7 @@
 )
 
 ; ACCEPT
-(defrule
+(defrule(false)
 	(taunt-detected any-ally 48)
 =>
 	(acknowledge-taunt any-ally 48)
@@ -99,7 +106,7 @@
 	(set-strategic-number sn-minimum-attack-group-size 1)
 	(set-strategic-number sn-maximum-attack-group-size 1000)
 	(set-strategic-number sn-number-attack-groups 1)
-	(set-strategic-number sn-coop-share-attacking 1) 	
+	(set-strategic-number sn-coop-share-attacking 1); maybe leave this always on? 	
 	(set-strategic-number sn-target-player-number -1)
 	(set-strategic-number sn-percent-attack-soldiers 100)
 	; sn-coop-share-attacking SET TO 1
@@ -107,10 +114,16 @@
 	(enable-timer 42 10)
 )
 
+(defrule
+	(true)
+=>
+	(set-strategic-number sn-coop-share-attacking 1); maybe leave this always on? move to other section
+)
+
 
 (defrule
 	(timer-triggered 42)
-	(up-compare-sn sn-target-player-number == -1)
+	(up-compare-sn sn-target-player-number == -1); (attacks directed to ally base)
 =>
 	(attack-now)
     (disable-timer 42)
