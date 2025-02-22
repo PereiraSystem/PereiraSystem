@@ -483,7 +483,7 @@
 )
 ; DOCK
 (defrule
-    ;(goal avoidBuildingDocks 0)
+    (goal avoidBuildingDocks 0)
     (building-type-count-total dock == 0)
     (can-build dock)
 =>
@@ -510,7 +510,7 @@
     (build dock)
 )
 (defrule
-    ;(goal avoidBuildingDocks 0)
+    (goal avoidBuildingDocks 0)
     (current-age == castle-age)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)
@@ -535,7 +535,7 @@
     (build dock)
 )
 (defrule
-    ;(goal avoidBuildingDocks 0)
+    (goal avoidBuildingDocks 0)
     (current-age == imperial-age)
     (building-type-count lumber-camp > 0)
     (building-type-count town-center > 0)
