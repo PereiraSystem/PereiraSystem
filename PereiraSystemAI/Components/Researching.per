@@ -602,7 +602,7 @@
 )
 (defrule
     (can-research ri-torsion-engines)
-    (unit-type-count siege-weapon-class > 0)
+    (unit-type-count siege-weapon-class > 4)
     (civ-selected ethiopian)
 =>
     (research ri-torsion-engines)
@@ -1489,9 +1489,9 @@
 ; MONASTERY
 (defrule ;herbs
     (town-under-attack)(research-completed ri-atonement)
-    (can-research 441)
+    (can-research ri-herbal-medicine)
 =>
-    (research 441)
+    (research ri-herbal-medicine)
 )
 (defrule
     (unit-type-count-total monk > 1)
