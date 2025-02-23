@@ -117,12 +117,14 @@
 ; HELP ATTACK TIMER
 (defrule 
 	(up-compare-goal weAreAttacking == 0)
+	
 	(timer-triggered 42)
 =>
+(set-strategic-number sn-target-player-number -1)
 	(attack-now)
     (disable-timer 42)
 	(enable-timer 42 15); do help- attack every X seconds
-	(chat-to-allies "Help attack now?")
+
 )
 
 ; DISABLE HELP TIMER

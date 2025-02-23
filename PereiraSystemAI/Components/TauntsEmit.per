@@ -1,0 +1,158 @@
+; SEND TAUNTS TO OTHERS
+
+
+; PROBLEM ----------------> AFTER HELP, THEY ATTACK THE ENEMY LEMMING STYLE
+
+; WHEN TOWN UNDER ATTACK
+(defrule
+	(goal weAreAttacking 0);we only ask for help before attacking
+	(town-under-attack)
+	(up-timer-status 40 == timer-disabled)
+=>
+    (enable-timer 40 1)
+)
+
+(defrule
+	(goal weAreAttacking 0);we only ask for help before attacking
+	(timer-triggered 40)
+	(town-under-attack)
+=>
+    (disable-timer 40)
+	(enable-timer 40 90)
+	(chat-to-allies "48 Help! My Town Is Under Attack!")
+)
+
+(defrule
+	(timer-triggered 40)
+	(not(town-under-attack))
+=>
+    (disable-timer 40)
+)
+
+; WHEN ENEMY BUILDINGS IN TOWN
+(defrule
+	(up-compare-goal weAreAttacking == 0);we only ask for help before attacking
+	(enemy-buildings-in-town)
+	(up-compare-sn sn-maximum-town-size < 30)
+	(up-timer-status 41 == timer-disabled)
+=>
+    (enable-timer 41 1)
+)
+(defrule
+	(enemy-buildings-in-town)
+	(timer-triggered 41)
+=>
+    (disable-timer 41)
+	(enable-timer 41 90)
+	(chat-to-allies "48 Help! Enemy Buildings In My Town!")
+)
+(defrule
+	(timer-triggered 41)
+	(not(enemy-buildings-in-town))
+=>
+    (disable-timer 41)
+)
+
+; RESPOND TO TAUNTS
+; ATTACK TAUNT 31
+(defrule
+	(taunt-detected any-ally 31)
+	(military-population >= 1)
+=>
+	(attack-now)
+	(acknowledge-taunt any-ally 31)
+    (chat-to-player this-any-ally "I´m Already Attacking!!")
+)
+(defrule
+	(taunt-detected any-ally 31)
+	(up-players-in-game enemy == 0)
+=>
+	(acknowledge-taunt any-ally 31)
+    (chat-to-allies "We Have No Enemies Retard!")
+)
+
+; HELP TAUNT 48
+; REJECT
+(defrule
+	(taunt-detected any-ally 48)
+	(enemy-buildings-in-town)
+=>
+	(acknowledge-taunt any-ally 48)
+    (chat-to-allies "I Can´t Help You, Enemy Buildings In My Town!")
+)
+
+(defrule
+	(taunt-detected any-ally 48)
+	(town-under-attack)
+=>
+	(acknowledge-taunt any-ally 48)
+    (chat-to-allies "I Can´t Help You, Im Under Attack!")
+)
+
+(defrule
+	(taunt-detected any-ally 48)
+	(military-population == 0)
+=>
+	(acknowledge-taunt any-ally 48)
+    (chat-to-allies "I Can´t Help You, I Have No Soldiers Dude!")
+)
+
+; ACCEPT
+(defrule
+	(up-compare-goal weAreAttacking == 0)
+	(taunt-detected any-ally 48)
+=>
+	(acknowledge-taunt any-ally 48)
+    (set-strategic-number sn-task-ungrouped-soldiers 0)
+	(set-strategic-number sn-minimum-attack-group-size 1)
+	(set-strategic-number sn-maximum-attack-group-size 4)
+	;(set-strategic-number sn-number-attack-groups 1)
+	;(set-strategic-number sn-coop-share-attacking 1); maybe leave this always on? 	see military sn
+	(set-strategic-number sn-target-player-number -1)
+	(set-strategic-number sn-percent-attack-soldiers 100)
+	(enable-timer 42 1); start help-attack timer 42 in X seconds
+	(chat-to-allies "I will help for 120 seconds!")
+)
+
+; HELP ATTACK TIMER
+(defrule 
+	(up-compare-goal weAreAttacking == 0)
+	
+	(timer-triggered 42)
+=>
+(set-strategic-number sn-target-player-number -1)
+	(attack-now)
+    (disable-timer 42)
+	(enable-timer 42 15); do help- attack every X seconds
+
+)
+
+; DISABLE HELP TIMER
+(defrule
+	(timer-triggered 42)
+	(up-timer-status 43 == timer-disabled) 
+=>	
+    (enable-timer 43 120); stop the help-attack timer 42 with disable-help timer 43
+)
+
+(defrule 
+	(timer-triggered 43)
+=>
+    
+	(disable-timer 42)
+	(up-retreat-now)
+	(set-strategic-number sn-target-player-number 0)
+	;(set-strategic-number sn-coop-share-attacking 0)
+    (chat-to-all "Stopping the help!")
+	(disable-timer 43)
+)
+
+
+; RETREAT TAUNT 45
+(defrule
+	(taunt-detected any-ally 45)
+=>
+	(acknowledge-taunt any-ally 45)
+	(chat-to-allies "Ok, We Retreat!")
+	(up-retreat-now)
+)
