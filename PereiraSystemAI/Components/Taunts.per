@@ -31,7 +31,7 @@
 
 ; WHEN ENEMY BUILDINGS IN TOWN
 (defrule
-	(goal weAreAttacking 0);we only ask for help before attacking
+	(up-compare-goal weAreAttacking == 0);we only ask for help before attacking
 	(enemy-buildings-in-town)
 	(up-compare-sn sn-maximum-town-size < 30)
 	(up-timer-status 41 == timer-disabled)
@@ -99,6 +99,7 @@
 
 ; ACCEPT
 (defrule
+	(up-compare-goal weAreAttacking == 0)
 	(taunt-detected any-ally 48)
 =>
 	(acknowledge-taunt any-ally 48)
@@ -115,7 +116,7 @@
 
 ; HELP ATTACK TIMER
 (defrule 
-	(goal weAreAttacking 0); this line "shouldnt" be needed
+	(up-compare-goal weAreAttacking == 0)
 	(timer-triggered 42)
 =>
 	(attack-now)
