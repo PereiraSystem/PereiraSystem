@@ -641,7 +641,7 @@
 )
 
 (defrule
-    (up-compare-goal militaryBuildingsDistance g:< 260)
+    (up-compare-goal militaryBuildingsDistance g:< 460)
     (building-type-count-total castle g:< castleQty)
     (up-can-build 0 c: castle)
     ;(can-build castle)
@@ -705,7 +705,9 @@
     (up-build place-control 0 c: barracks)  
 )
 
-(defrule    (wood-amount > 2000)
+(defrule    
+    (up-compare-goal militaryBuildingsDistance g:< 460)
+    (wood-amount > 2000)
 	(building-type-count-total barracks g:< barracksQty)
 	(building-type-count-total barracks > 0)    
     (building-type-count town-center > 0)
@@ -754,6 +756,7 @@
 )
 
 (defrule    
+    (up-compare-goal militaryBuildingsDistance g:< 460)
     (wood-amount > 2000)
     (or(wood-amount > 275)(building-type-count market > 0))
     (building-type-count lumber-camp > 0)
@@ -791,6 +794,7 @@
 )
 
 (defrule
+    (up-compare-goal militaryBuildingsDistance g:< 460)
     (wood-amount > 2000)
 	(building-type-count-total archery-range g:< archeryRangeQty)    
 	(building-type-count-total archery-range > 0)       
@@ -868,6 +872,7 @@
 )
 
 (defrule
+    (up-compare-goal militaryBuildingsDistance g:< 460)
     (wood-amount > 2000)
 	(building-type-count-total siege-workshop g:< siegeWorkshopQty)
 	(building-type-count-total siege-workshop > 0)    
@@ -936,6 +941,7 @@
 )
 
 (defrule
+    (up-compare-goal militaryBuildingsDistance g:< 460)
     (can-build bombard-tower)
     (gold-amount > 301)
     ;(building-type-count-total castle > 3)
