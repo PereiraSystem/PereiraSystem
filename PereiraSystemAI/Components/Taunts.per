@@ -13,7 +13,7 @@
 )
 
 (defrule
-
+	(goal weAreAttacking 0);we only ask for help before attacking
 	(timer-triggered 40)
 	(town-under-attack)
 =>
@@ -115,6 +115,7 @@
 
 ; HELP ATTACK TIMER
 (defrule 
+	(goal weAreAttacking 0); this line "shouldnt" be needed
 	(timer-triggered 42)
 =>
 	(attack-now)
