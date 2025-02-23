@@ -1489,9 +1489,9 @@
 ; MONASTERY
 (defrule ;herbs
     (town-under-attack)(research-completed ri-atonement)
-    (can-research 441)
+    (can-research ri-herbal-medicine)
 =>
-    (research 441)
+    (research ri-herbal-medicine)
 )
 (defrule
     (unit-type-count-total monk > 1)
