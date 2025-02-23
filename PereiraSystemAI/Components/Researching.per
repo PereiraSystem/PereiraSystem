@@ -594,17 +594,18 @@
 )
 ; ETHIOPIAN
 (defrule
-    (can-research 574); ethiop, royal
+    (can-research ri-royal-heirs); generic research wasnt workin
     (unit-type-count-total my-unique-unit-line > 0)
 =>
-    (research 574)
+    (research ri-royal-heirs)
     (chat-to-player my-player-number "UNIQUE UNITS PRODUCED FASTER!")
 )
 (defrule
-    (can-research my-unique-research)
+    (can-research ri-torsion-engines)
+    (unit-type-count siege-weapon-class > 0)
     (civ-selected ethiopian)
 =>
-    (research my-unique-research)
+    (research ri-torsion-engines)
     (chat-to-player my-player-number "SIEGE WORKSHOP UNITS BLAST RADIUS INCREASED!")
 )
 ; BERBER
