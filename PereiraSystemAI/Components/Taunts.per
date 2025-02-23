@@ -102,10 +102,10 @@
 	(taunt-detected any-ally 48)
 =>
 	(acknowledge-taunt any-ally 48)
-    ;(set-strategic-number sn-task-ungrouped-soldiers 0)
+    (set-strategic-number sn-task-ungrouped-soldiers 0)
 	(set-strategic-number sn-minimum-attack-group-size 1)
-	(set-strategic-number sn-maximum-attack-group-size 1000)
-	(set-strategic-number sn-number-attack-groups 1)
+	(set-strategic-number sn-maximum-attack-group-size 4)
+	;(set-strategic-number sn-number-attack-groups 1)
 	;(set-strategic-number sn-coop-share-attacking 1); maybe leave this always on? 	see military sn
 	(set-strategic-number sn-target-player-number -1)
 	(set-strategic-number sn-percent-attack-soldiers 100)
@@ -134,12 +134,13 @@
 (defrule 
 	(timer-triggered 43)
 =>
-    (disable-timer 43)
+    
 	(disable-timer 42)
 	(up-retreat-now)
 	(set-strategic-number sn-target-player-number 0)
 	;(set-strategic-number sn-coop-share-attacking 0)
     (chat-to-all "Stopping the help!")
+	(disable-timer 43)
 )
 
 
