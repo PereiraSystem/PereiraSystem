@@ -611,11 +611,11 @@
 ; BERBER
 (defrule
     (civ-selected berbers)
-    (can-research 578)
+    (can-research ri-kasbah)
     (research-completed my-unique-research)
     (building-type-count-total castle > 1);KASBAH
 =>
-    (research 578)
+    (research ri-kasbah)
     (chat-to-player my-player-number "CASTLES WORK FASTER!")
 )
 (defrule
@@ -662,11 +662,11 @@
 )
 ; MALAY
 (defrule
-    (can-research 624)
+    (can-research ri-thalassocracy)
     (building-type-count dock > 1)
     (current-age == imperial-age)
 =>
-    (research 624)
+    (research ri-thalassocracy)
     (chat-to-player my-player-number "DOCKS SHOOT ARROWS!")
 )
 (defrule
