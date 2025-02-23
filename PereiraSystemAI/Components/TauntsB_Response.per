@@ -1,59 +1,5 @@
-; SEND TAUNTS TO OTHERS
-
-
-; PROBLEM ----------------> AFTER HELP, THEY ATTACK THE ENEMY LEMMING STYLE
-
-; WHEN TOWN UNDER ATTACK
-(defrule
-	(goal weAreAttacking 0);we only ask for help before attacking
-	(town-under-attack)
-	(up-timer-status 40 == timer-disabled)
-=>
-    (enable-timer 40 1)
-)
-
-(defrule
-	(goal weAreAttacking 0);we only ask for help before attacking
-	(timer-triggered 40)
-	(town-under-attack)
-=>
-    (disable-timer 40)
-	(enable-timer 40 90)
-	(chat-to-allies "48 Help! My Town Is Under Attack!")
-)
-
-(defrule
-	(timer-triggered 40)
-	(not(town-under-attack))
-=>
-    (disable-timer 40)
-)
-
-; WHEN ENEMY BUILDINGS IN TOWN
-(defrule
-	(up-compare-goal weAreAttacking == 0);we only ask for help before attacking
-	(enemy-buildings-in-town)
-	(up-compare-sn sn-maximum-town-size < 30)
-	(up-timer-status 41 == timer-disabled)
-=>
-    (enable-timer 41 1)
-)
-(defrule
-	(enemy-buildings-in-town)
-	(timer-triggered 41)
-=>
-    (disable-timer 41)
-	(enable-timer 41 90)
-	(chat-to-allies "48 Help! Enemy Buildings In My Town!")
-)
-(defrule
-	(timer-triggered 41)
-	(not(enemy-buildings-in-town))
-=>
-    (disable-timer 41)
-)
-
 ; RESPOND TO TAUNTS
+
 ; ATTACK TAUNT 31
 (defrule
 	(taunt-detected any-ally 31)
@@ -62,13 +8,6 @@
 	(attack-now)
 	(acknowledge-taunt any-ally 31)
     (chat-to-player this-any-ally "I´m Already Attacking!!")
-)
-(defrule
-	(taunt-detected any-ally 31)
-	(up-players-in-game enemy == 0)
-=>
-	(acknowledge-taunt any-ally 31)
-    (chat-to-allies "We Have No Enemies Retard!")
 )
 
 ; HELP TAUNT 48

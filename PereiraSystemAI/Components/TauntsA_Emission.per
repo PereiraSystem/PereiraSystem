@@ -1,0 +1,50 @@
+; SEND TAUNTS TO OTHERS
+
+; TOWN UNDER ATTACK
+(defrule
+	(up-compare-goal weAreAttacking == 0);we only ask for help before attack time
+	(town-under-attack)
+	(up-timer-status 40 == timer-disabled)
+=>
+    (enable-timer 40 0)
+)
+
+(defrule
+	(timer-triggered 40)
+=>
+    (disable-timer 40)
+	(enable-timer 40 60)
+	(chat-to-allies "48 Help! My Town Is Under Attack!")
+)
+
+(defrule
+	(timer-triggered 40)
+	(not(town-under-attack))
+=>
+    (disable-timer 40)
+)
+
+; ENEMY BUILDINGS IN TOWN
+(defrule
+	(up-compare-goal weAreAttacking == 0);we only ask for help before attack time
+	(enemy-buildings-in-town)
+	(up-compare-sn sn-maximum-town-size < 30)
+	(up-timer-status 41 == timer-disabled)
+=>
+    (enable-timer 41 0)
+)
+
+(defrule
+	(timer-triggered 41)
+=>
+    (disable-timer 41)
+	(enable-timer 41 60)
+	(chat-to-allies "48 Help! Enemy Buildings In My Town!")
+)
+
+(defrule
+	(timer-triggered 41)
+	(not(enemy-buildings-in-town))
+=>
+    (disable-timer 41)
+)
