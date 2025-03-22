@@ -1,4 +1,89 @@
+; CASTLE
+(defrule
+    (goal weAreAttacking 1)
+    (building-type-count-total castle > 3)
+    (not
+        (or
+            (or
+                (or(civ-selected japanese)(civ-selected korean))
+                (or(civ-selected turkish)(civ-selected spanish))           
+            )  
+            (or(civ-selected sicilians)(civ-selected bulgarians))   
+        )            
+    )
+    (can-build castle)
+=>
+    (chat-to-player my-player-number "Trying To Build Castle FORWARD!!!!!!!!!!!!" )
+    (build-forward castle)
+)
 
+(defrule
+    (building-type-count-total castle == 0)
+    (up-can-build 0 c: castle)
+    (players-building-type-count any-ally monastery > 0)
+    ;(can-build castle)
+=>
+    (chat-local-to-self "Trying To Build Castle (Place Control)")
+    (up-set-placement-data my-player-number 0 c: 7)
+    ;(up-set-placement-data my-player-number palisade-wall c: -1)
+    (up-build place-control 0 c: castle)
+)
+
+(defrule
+    ;(building-type-count-total castle == 0)
+    ;(or(players-building-type-count any-ally monastery > 0) castle not built in turbo mode??
+    ;(building-type-count-total monastery > 0))
+    (can-build castle)
+=>
+    (chat-local-to-self "Trying To Build Castle (Normal)")
+    (build castle)
+)
+
+(defrule
+    (up-compare-goal militaryBuildingsDistance g:< 460)
+    (building-type-count-total castle g:< castleQty)
+    (up-can-build 0 c: castle)
+    ;(can-build castle)
+=>
+    (up-chat-data-to-self "Trying To Build Castle With Increment %d" g: militaryBuildingsDistance)
+    (up-set-placement-data my-player-number 0 g: militaryBuildingsDistance)
+    (up-build place-control 0 c: castle)
+)
+
+; MINI CASTLES (MEGA TOWERS?)
+(defrule
+    (goal weAreAttacking 1)
+    (building-type-count-total castle > 3)
+    (can-build krepost)
+=>
+    (chat-to-player my-player-number "Trying To Build Castle FORWARD!!!!!!!!!!!!" )
+    (build-forward krepost)
+)
+
+(defrule
+    (building-type-count-total castle > 3)
+    (building-type-count-total krepost < 32)
+    (can-build krepost)
+=>
+    (build krepost)
+)
+
+(defrule
+    (goal weAreAttacking 1)
+    (building-type-count-total castle > 3)
+    (can-build donjon)
+=>
+    (chat-to-player my-player-number "Trying To Build Donjon FORWARD!!!!!!!!!!!!" )
+    (build-forward donjon)
+)
+
+(defrule
+    (building-type-count-total castle > 3)
+    (building-type-count-total donjon < 32)
+    (can-build donjon)
+=>
+    (build donjon)
+)
 
 ; CIVILIAN BUILDINGS
 ; WONDER
@@ -609,92 +694,7 @@
 	(build-wall 2 72)
 )
 
-; CASTLE
-(defrule
-    (goal weAreAttacking 1)
-    (building-type-count-total castle > 3)
-    (not
-        (or
-            (or
-                (or(civ-selected japanese)(civ-selected korean))
-                (or(civ-selected turkish)(civ-selected spanish))           
-            )  
-            (or(civ-selected sicilians)(civ-selected bulgarians))   
-        )            
-    )
-    (can-build castle)
-=>
-    (chat-to-player my-player-number "Trying To Build Castle FORWARD!!!!!!!!!!!!" )
-    (build-forward castle)
-)
 
-(defrule
-    (building-type-count-total castle == 0)
-    (up-can-build 0 c: castle)
-    (players-building-type-count any-ally monastery > 0)
-    ;(can-build castle)
-=>
-    (chat-local-to-self "Trying To Build Castle (Place Control)")
-    (up-set-placement-data my-player-number 0 c: 7)
-    ;(up-set-placement-data my-player-number palisade-wall c: -1)
-    (up-build place-control 0 c: castle)
-)
-
-(defrule
-    (building-type-count-total castle == 0)
-    (or(players-building-type-count any-ally monastery > 0)
-    (building-type-count-total monastery > 0))
-    (can-build castle)
-=>
-    (chat-local-to-self "Trying To Build Castle (Normal)")
-    (build castle)
-)
-
-(defrule
-    (up-compare-goal militaryBuildingsDistance g:< 460)
-    (building-type-count-total castle g:< castleQty)
-    (up-can-build 0 c: castle)
-    ;(can-build castle)
-=>
-    (up-chat-data-to-self "Trying To Build Castle With Increment %d" g: militaryBuildingsDistance)
-    (up-set-placement-data my-player-number 0 g: militaryBuildingsDistance)
-    (up-build place-control 0 c: castle)
-)
-
-; MINI CASTLES (MEGA TOWERS?)
-(defrule
-    (goal weAreAttacking 1)
-    (building-type-count-total castle > 3)
-    (can-build krepost)
-=>
-    (chat-to-player my-player-number "Trying To Build Castle FORWARD!!!!!!!!!!!!" )
-    (build-forward krepost)
-)
-
-(defrule
-    (building-type-count-total castle > 3)
-    (building-type-count-total krepost < 32)
-    (can-build krepost)
-=>
-    (build krepost)
-)
-
-(defrule
-    (goal weAreAttacking 1)
-    (building-type-count-total castle > 3)
-    (can-build donjon)
-=>
-    (chat-to-player my-player-number "Trying To Build Donjon FORWARD!!!!!!!!!!!!" )
-    (build-forward donjon)
-)
-
-(defrule
-    (building-type-count-total castle > 3)
-    (building-type-count-total donjon < 32)
-    (can-build donjon)
-=>
-    (build donjon)
-)
 
 ; MILITARY PRODUCTION BUILDINGS
 ; BARRACKS
