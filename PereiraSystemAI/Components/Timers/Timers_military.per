@@ -9,8 +9,14 @@
 (defrule
     (up-players-in-game enemy > 0)
     (or
-        (game-time g:> secondsUntilFirstAttack)
-        (and(wood-amount > 100000)(food-amount > 100000))
+        (or
+            (game-time g:> secondsUntilFirstAttack)
+            (and(wood-amount > 100000)(food-amount > 100000))
+        )
+        (and
+            (cheats-enabled)
+            (game-time > 900)
+        )
     )
 =>
     (enable-timer 21 00)
