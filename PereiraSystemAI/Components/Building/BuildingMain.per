@@ -634,10 +634,19 @@
     (players-building-type-count any-ally monastery > 0)
     ;(can-build castle)
 =>
-    (chat-local-to-self "Trying To Build Castle")
+    (chat-local-to-self "Trying To Build Castle (Place Control)")
     (up-set-placement-data my-player-number 0 c: 7)
     ;(up-set-placement-data my-player-number palisade-wall c: -1)
     (up-build place-control 0 c: castle)
+)
+
+(defrule
+    (building-type-count-total castle == 0)
+    (players-building-type-count any-ally monastery > 0)
+    (can-build castle)
+=>
+    (chat-local-to-self "Trying To Build Castle (Normal)")
+    (build castle)
 )
 
 (defrule
