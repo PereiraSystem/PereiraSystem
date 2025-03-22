@@ -301,7 +301,7 @@
 ; MONASTERY
 ; CASTLE AGE MONKS
 (defrule
-    (current-age == castle-age)
+    (current-age >= castle-age)
     (and
         (unit-type-count-total monk g:< monkQtyLow)
         (unit-type-count-total 286 g:< monkQtyLow)
