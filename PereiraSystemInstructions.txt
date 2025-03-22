@@ -1,11 +1,12 @@
-1- Place the "PereiraSystem" folder into AoE Definitive Edition "resources/common/ai" folder
+1- Place 
+    - the "PereiraSystem" folder 
+    - the "PereiraLoader.ai" and "PereiraLoader.per" files
+    into AoE Definitive Edition "resources/common/ai" folder
 
-2 - Move "PereiraLoader.ai" and "PereiraLoader.per" files from the "PereiraSystem" folder to the upper level (AoE Definitive Edition "resources/common/ai")
-where you put the main folder first
 
-3- Once inside the game pick the player "PereiraLoader"
+2- Once inside the game pick the player "PereiraLoader"
 
-4- Ready for battle!
+3- Ready for battle!
 
 
 Best settings:
