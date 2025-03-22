@@ -16,10 +16,12 @@
         (and
             (cheats-enabled)
             (game-time > 900)
+                
         )
     )
 =>
     (enable-timer 21 00)
+    (chat-to-player my-player-number "ATTACK CONDITIONS HAVE BEEN MET!")
     (disable-self)
 )
 
