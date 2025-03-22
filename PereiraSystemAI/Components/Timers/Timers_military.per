@@ -25,17 +25,6 @@
 
 ; ATTACK!
 (defrule
-    (population-cap >= 150)
-    (timer-triggered 21)
-=>
-    (set-strategic-number sn-minimum-attack-group-size 39)    
-    (set-strategic-number sn-maximum-attack-group-size 40)
-    (set-strategic-number sn-number-attack-groups 2)      
-    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
-    (disable-self)
-)
-
-(defrule
     (population-cap >= 250)
     (timer-triggered 21)
 =>
@@ -47,6 +36,20 @@
 )
 
 (defrule
+    (population-cap >= 150)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 39)    
+    (set-strategic-number sn-maximum-attack-group-size 40)
+    (set-strategic-number sn-number-attack-groups 2)      
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+
+
+(defrule
+    (population-cap < 150)
     (timer-triggered 21)
     (up-players-in-game enemy > 0)
     (military-population > minArmySize)
