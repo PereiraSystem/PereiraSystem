@@ -818,6 +818,18 @@
 =>
 	(train my-unique-unit-line)
 )
+; TEUTONS
+; TATAR UU
+(defrule
+    (civ-selected teutonic)
+	(current-age == imperial-age)
+	(unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyHigh)
+    (gold-amount > 201)
+	(can-train my-unique-unit-line)
+=>
+	(train my-unique-unit-line)
+)
+
 ; VIKING UU
 (defrule(false);they are in other section before with limited qty
     (civ-selected viking)
