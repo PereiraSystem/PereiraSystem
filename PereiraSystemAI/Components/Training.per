@@ -880,6 +880,14 @@
     (train mangonel-line)
 )
 
+(defrule
+    (or(dudeHasSkirmishers)(dudeHasArchers))
+    (unit-type-count-total mangonel-line < 4)
+	(can-train mangonel-line)
+=>
+    (train mangonel-line)
+)
+
 (defrule(false); THEY ARE KILLING OUR OWN TROOPS
     (current-age == imperial-age)
     (or

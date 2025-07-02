@@ -81,7 +81,7 @@
     ;(chat-local-to-self "DUDE HAS ELEPHANTS!")
 )
 (defrule
-    (players-unit-type-count any-enemy skirmisher-line > 0)
+    (players-unit-type-count any-enemy skirmisher-line > 6)
 =>
     (set-goal dudeHasSkirmishers 1)
     ;(chat-local-to-self "DUDE HAS SKIRMISHERS!")
@@ -92,7 +92,7 @@
     (set-goal dudeHasSkirmishers 0)
 )
 (defrule
-    (players-unit-type-count any-enemy archer-line > 0)
+    (players-unit-type-count any-enemy archer-line > 6)
 =>
     (set-goal dudeHasArchers 1)
     ;(chat-local-to-self "DUDE HAS ARCHERS!")
