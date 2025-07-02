@@ -1,13 +1,47 @@
 ; CASTLE
+(defrule 
+    (building-type-count-total castle < 3)
+    (up-can-build 0 c: castle)
+    (players-building-type-count any-ally monastery > 0)
+    ;(can-build castle)
+=>
+    (chat-local-to-self "Trying To Build Castle (A)")
+    (up-set-placement-data my-player-number 0 c: 7)
+    ;(up-set-placement-data my-player-number palisade-wall c: -1)
+    (up-build place-control 0 c: castle)
+)
+
+(defrule 
+    (building-type-count-total castle < 3)
+    (up-can-build 0 c: castle)
+    (players-building-type-count any-ally monastery > 0)
+=>
+    (chat-local-to-self "Trying To Build Castle (B)")
+    (up-set-placement-data my-player-number 0 c: -10)
+    (up-build place-control 0 c: castle)
+)
+
+(defrule 
+    (building-type-count-total castle < 3)
+    (up-can-build 0 c: castle)
+    (players-building-type-count any-ally monastery > 0)
+=>
+    (chat-local-to-self "Trying To Build Castle (C)")
+    (up-set-placement-data my-player-number 0 c: 15)
+    (up-build place-control 0 c: castle)
+)
+
 (defrule
     (can-build castle)
+    (building-type-count-total castle < 3)
 =>
     (build castle)
+    (chat-local-to-self "Trying To Build Castle (Normal)")
 )
 
 (defrule
     (goal weAreAttacking 1)
-    (building-type-count-total castle > 3)
+    (building-type-count-total castle >= 3)
     (not
         (or
             (or
@@ -17,25 +51,16 @@
             (or(civ-selected sicilians)(civ-selected bulgarians))   
         )            
     )
+    (not(civ-selected byzantine))
     (can-build castle)
 =>
     (chat-to-player my-player-number "Trying To Build Castle FORWARD!!!!!!!!!!!!" )
     (build-forward castle)
 )
 
-(defrule
-    (building-type-count-total castle == 0)
-    (up-can-build 0 c: castle)
-    (players-building-type-count any-ally monastery > 0)
-    ;(can-build castle)
-=>
-    (chat-local-to-self "Trying To Build Castle (Place Control)")
-    (up-set-placement-data my-player-number 0 c: 7)
-    ;(up-set-placement-data my-player-number palisade-wall c: -1)
-    (up-build place-control 0 c: castle)
-)
 
-(defrule
+
+(defrule (false)
     (up-compare-goal militaryBuildingsDistance g:< 460)
     (building-type-count-total castle g:< castleQty)
     (up-can-build 0 c: castle)
@@ -46,15 +71,6 @@
     (up-build place-control 0 c: castle)
 )
 
-(defrule
-    ;(building-type-count-total castle == 0)
-    ;(or(players-building-type-count any-ally monastery > 0) castle not built in turbo mode??
-    ;(building-type-count-total monastery > 0))
-    (can-build castle)
-=>
-    (chat-local-to-self "Trying To Build Castle (Normal)")
-    (build castle)
-)
 
 ; MINI CASTLES (MEGA TOWERS?)
 (defrule
@@ -513,9 +529,13 @@
     (chat-to-player my-player-number "UNIVERSITY - NORMAL")
 )
 
-(defrule
+(defrule(false)
     (building-type-count-total university == 0)
-    (wood-amount > 150)    
+    (wood-amount > 150)
+    (or;aztecs will build monastery before university even if allies have built monastery
+        (building-type-count monastery > 0)
+        (not (civ-selected aztec))
+        )  
     (players-building-type-count any-ally monastery > 0)
     (research-completed ri-hand-cart)
     (current-age == imperial-age)
@@ -950,7 +970,9 @@
 (defrule
     (up-compare-goal weAreAttacking == 1)
     (gold-amount > 301)
-    (building-type-count-total bombard-tower > 6)
+    (building-type-count-total castle > 2)
+    (not(civ-selected teutonic))
+    (not(civ-selected korean))
     (can-build bombard-tower)
 =>
     (build-forward bombard-tower)

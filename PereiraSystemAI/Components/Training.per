@@ -212,7 +212,7 @@
 )
 
 ; TRADE CARTS
-(defrule
+(defrule(false)
     (players-building-type-count any-ally market > 0)
     (unit-type-count-total trade-cart < 1)
     (wood-amount > 150)
@@ -221,7 +221,7 @@
 =>
 	(train trade-cart)
 )
-(defrule
+(defrule(false)
     (or(building-type-count siege-workshop > 0)
     (building-type-count monastery > 0))
     (or(building-type-count university > 0)
@@ -396,6 +396,9 @@
 =>
     (train monk)
 )
+
+
+
 ; CASTLE
 ; TREBUCHET
 (defrule
@@ -877,7 +880,26 @@
     (train mangonel-line)
 )
 
-(defrule
+(defrule(false); THEY ARE KILLING OUR OWN TROOPS
+    (current-age == imperial-age)
+    (or
+        (or
+            (civ-selected celtic)(civ-selected korean)
+        )
+        (or
+            (civ-selected ethiopian)(civ-selected ethiopian)
+        )
+    )
+    (or (not(can-train bombard-cannon))(up-compare-goal dudeHasCavalryArchers == 1)
+    )
+    (gold-amount > 251)
+    (unit-type-count-total mangonel-line g:< mangonelQtyLow)
+    (can-train mangonel-line)
+=>
+    (train mangonel-line)
+)
+
+(defrule(false); THEY ARE KILLING OUR OWN TROOPS, try to just create with some civs
     (current-age == imperial-age)
     (gold-amount > 251)
     (not(and(civ-selected bohemians)(can-train bombard-cannon)))
@@ -886,6 +908,7 @@
     )
     (not(unit-type-count-total karambit-warrior-line > 9))
     (unit-type-count-total mangonel-line g:< mangonelQtyLow)
+    (up-compare-goal dudeHasCavalryArchers == 1)
     (can-train mangonel-line)
 =>
     (train mangonel-line)

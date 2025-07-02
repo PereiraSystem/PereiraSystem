@@ -98,12 +98,12 @@
     ;(chat-local-to-self "DUDE HAS ARCHERS!")
 )
 (defrule
-    (players-unit-type-count any-enemy cavalry-archer-line < 1)
+    (players-unit-type-count any-enemy cavalry-archer-line < 6); enough to justify mangonel
 =>
     (set-goal dudeHasCavalryArchers 0)
 )
 (defrule
-    (players-unit-type-count any-enemy cavalry-archer-line > 0)
+    (players-unit-type-count any-enemy cavalry-archer-line > 6)
 =>
     (set-goal dudeHasCavalryArchers 1)
     ;(chat-local-to-self "DUDE HAS CAVALRY ARCHERS!")

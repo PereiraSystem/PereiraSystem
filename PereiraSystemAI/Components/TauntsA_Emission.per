@@ -9,7 +9,7 @@
     (enable-timer 40 0)
 )
 
-(defrule
+(defrule(false)
 	(timer-triggered 40)
 =>
     (disable-timer 40)
@@ -34,7 +34,7 @@
     (enable-timer 41 0)
 )
 
-(defrule
+(defrule(false)
 	(timer-triggered 41)
 =>
     (disable-timer 41)

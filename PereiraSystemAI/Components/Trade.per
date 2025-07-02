@@ -104,6 +104,7 @@
     ;(chat-local-to-self "BUYING FOOD TO GET TO IMPERIAL AGE")
 )
 ; IMPERIAL AGE TRADE
+
 (defrule ;SELL WOOD
     (current-age == imperial-age)
     (wood-amount > 1600)
@@ -113,6 +114,38 @@
     (sell-commodity wood)
     ;(chat-local-to-self "SELLING WOOD (> 1600)")
 )
+
+(defrule ;SELL WOOD
+    (current-age == imperial-age)
+    (wood-amount > 99999)
+    (gold-amount < 9999)
+    (can-sell-commodity wood)
+=>
+    (sell-commodity wood)
+    ;(chat-local-to-self "SELLING WOOD (> 9999)")
+)
+
+(defrule ;SELL fOOD
+    (current-age == imperial-age)
+    (food-amount > 1600)
+    (gold-amount < 1000)
+    (can-sell-commodity food)
+=>
+    (sell-commodity food)
+    ;(chat-local-to-self "SELLING fOOD (> 1600)")
+)
+
+(defrule ;SELL fOOD
+    (current-age == imperial-age)
+    (food-amount > 99999)
+    (gold-amount < 9999)
+    (can-sell-commodity food)
+=>
+    (sell-commodity food)
+    ;(chat-local-to-self "SELLING fOOD (> 9999)")
+)
+
+
 (defrule
     (current-age == imperial-age)
     (food-amount > 2200)
@@ -122,20 +155,7 @@
     (sell-commodity food)
     ;(chat-local-to-self "SELLING FOOD (> 2400)")
 )
-(defrule
-    (current-age == imperial-age)
-    (not(civ-selected cumans));to get mercs
-    (not(civ-selected sicilians)) ;to build donjons
-    (not(civ-selected bulgarians)) ;to build krepost
-    (building-type-count castle >= 3)
-    (not(can-build bombard-tower))
-    (stone-amount > 300)
-	(gold-amount < 1000)
-    (can-sell-commodity stone)
-=>
-    (sell-commodity stone)
-    ;(chat-local-to-self "SELLING STONE (> 300), 3 CASTLES AND NO B.T.")
-)
+
 (defrule ;imperial age with no castle, we buy stone
     (current-age == imperial-age)
     (building-type-count-total castle == 0)
@@ -169,7 +189,7 @@
 (defrule ;imperial age with many gold, buy stone
     (current-age == imperial-age)
     (stone-amount < 650)
-    (gold-amount > 7000)
+    (gold-amount > 1000)
     (food-amount > 20000)
     (wood-amount > 2000)
 	(can-buy-commodity stone)
