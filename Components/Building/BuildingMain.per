@@ -1,4 +1,12 @@
 ; CASTLE
+(defrule(false)
+    (can-build castle)
+    (building-type-count-total castle < 3)
+=>
+    (build castle)
+    (chat-local-to-self "Trying To Build Castle (Normal)")
+)
+
 (defrule 
     (building-type-count-total castle < 3)
     (up-can-build 0 c: castle)
@@ -6,7 +14,7 @@
     ;(can-build castle)
 =>
     (chat-local-to-self "Trying To Build Castle (A)")
-    (up-set-placement-data my-player-number 0 c: 7)
+    (up-set-placement-data my-player-number 0 c: 21)
     ;(up-set-placement-data my-player-number palisade-wall c: -1)
     (up-build place-control 0 c: castle)
 )
@@ -17,7 +25,7 @@
     (players-building-type-count any-ally monastery > 0)
 =>
     (chat-local-to-self "Trying To Build Castle (B)")
-    (up-set-placement-data my-player-number 0 c: -10)
+    (up-set-placement-data my-player-number 0 c: 25)
     (up-build place-control 0 c: castle)
 )
 
@@ -27,7 +35,7 @@
     (players-building-type-count any-ally monastery > 0)
 =>
     (chat-local-to-self "Trying To Build Castle (C)")
-    (up-set-placement-data my-player-number 0 c: 15)
+    (up-set-placement-data my-player-number 0 c: 29)
     (up-build place-control 0 c: castle)
 )
 
@@ -125,6 +133,28 @@
     (chat-local-to-self "Trying To Build Town Center 1")
     (build town-center)
 )
+
+(defrule
+    (current-age == castle-age)
+    (building-type-count-total town-center == 1)
+    (can-build town-center)
+
+=>    
+    (set-strategic-number sn-town-center-placement mining-camp)
+    (chat-local-to-self "Trying To Build Town Center 2")
+    (build town-center)
+)
+
+(defrule
+    (current-age == castle-age)
+    (building-type-count-total town-center == 2)
+    (can-build town-center)
+=>
+    (set-strategic-number sn-town-center-placement lumber-camp)
+    (chat-local-to-self "Trying To Build Town Center 3")
+    (build town-center)
+)
+
 (defrule
 	(building-type-count-total town-center == 1)
     (up-enemy-units-in-town < 3)
@@ -141,21 +171,8 @@
     (up-build place-control 0 c: town-center)
     ;(build town-center)
 )
-(defrule
-    (current-age == imperial-age)(food-amount > 400)
-	(building-type-count-total town-center == 2)
-    (building-type-count-total monastery > 0)
-    (building-type-count-total university > 0)
-    (building-type-count-total castle > 0)
-    (up-enemy-units-in-town < 2)
-    ;(can-build town-center)
-     (up-can-build 0 c: town-center)
-=>
-    ;(build town-center)
-       (up-set-placement-data my-player-number -1 c: -28)
-    (up-build place-control 0 c: town-center)
-    (chat-local-to-self "Trying To Build Town Center 3")
-)
+
+
 (defrule
 	(current-age == imperial-age)(military-population > 60)(food-amount > 400)
     (building-type-count-total monastery > 0)
@@ -163,7 +180,9 @@
     (building-type-count-total town-center < 4)
     (not(research-available ri-heavy-scorpion))
     (can-build town-center)
+
 =>
+    (set-strategic-number sn-town-center-placement town-center)
     (build town-center)(chat-local-to-self "Trying To Build Town Center")
 )
 
@@ -451,7 +470,16 @@
 )
 
 ; MARKET - need the market to share exploration and help the ally to defend
-
+(defrule
+    (up-players-in-game ally == 1)
+    (building-type-count town-center > 0)
+    (building-type-count-total market == 0)
+    (up-can-build 0 c: market)
+=>
+    (chat-local-to-self "Trying To Build Market 1 inside")
+    (up-set-placement-data my-player-number town-center c: -24)
+    (up-build place-control 0 c: market)
+)
 
 (defrule 
     (up-players-in-game ally > 1)
@@ -477,16 +505,7 @@
     (up-build place-control 0 c: market)
 )
 
-(defrule
-    (up-players-in-game ally == 1)
-    (building-type-count town-center > 0)
-    (building-type-count-total market == 0)
-    (up-can-build 0 c: market)
-=>
-    (chat-local-to-self "Trying To Build Market 1 inside")
-    (up-set-placement-data my-player-number town-center c: -1)
-    (up-build place-control 0 c: market)
-)
+
 
 
 (defrule
@@ -869,8 +888,8 @@
     (not(civ-selected gothic))
     (up-can-build 0 c: siege-workshop)
 =>
-    (chat-local-to-self "Trying To Build Siege Workshop - Place control -7")
-    (up-set-placement-data my-player-number town-center c: -7)
+    (chat-local-to-self "Trying To Build Siege Workshop - Place control 10")
+    (up-set-placement-data my-player-number town-center c: 10)
     (up-build place-control 0 c: siege-workshop)
 )
 
@@ -885,8 +904,8 @@
     (not(civ-selected gothic))
     (up-can-build 0 c: siege-workshop)
 =>
-    (chat-local-to-self "Trying To Build Siege Workshop - Place control +7")
-    (up-set-placement-data my-player-number town-center c: +7)
+    (chat-local-to-self "Trying To Build Siege Workshop - Place control -10")
+    (up-set-placement-data my-player-number town-center c: -10)
     (up-build place-control 0 c: siege-workshop)
 )
 

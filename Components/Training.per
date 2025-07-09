@@ -402,7 +402,9 @@
 ; CASTLE
 ; TREBUCHET
 (defrule
+    (up-compare-goal weAreAttacking == 1)
     (players-building-type-count any-enemy castle > 0)
+    (up-compare-goal weAreAttacking == 1)
     (unit-type-count 954 g:< trebuchetsQtyLow)
     (can-train 954)
 =>
@@ -410,6 +412,7 @@
 )
 
 (defrule
+    (up-compare-goal weAreAttacking == 1)
     (players-building-type-count any-enemy castle > 0)
     (unit-type-count trebuchet g:< trebuchetsQtyLow)
     (can-train trebuchet)
@@ -418,6 +421,7 @@
 )
 
 (defrule
+    (up-compare-goal weAreAttacking == 1)
     (players-building-type-count any-enemy castle > 0)
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
@@ -437,6 +441,7 @@
 )
 
 (defrule
+    (up-compare-goal weAreAttacking == 1)
     (players-building-type-count any-enemy castle > 0)
     (civ-selected hun)
     (and
@@ -449,6 +454,7 @@
 )
 
 (defrule
+    (up-compare-goal weAreAttacking == 1)
     (players-building-type-count any-enemy castle > 0)
     (or
         (or
@@ -881,8 +887,18 @@
 )
 
 (defrule
-    (or(dudeHasSkirmishers)(dudeHasArchers))
+    (current-age == castle-age)
+    (or(up-compare-goal dudeHasSkirmishers > 0)(up-compare-goal dudeHasArchers > 0))
     (unit-type-count-total mangonel-line < 4)
+	(can-train mangonel-line)
+=>
+    (train mangonel-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (or(up-compare-goal dudeHasSkirmishers > 0)(up-compare-goal dudeHasArchers > 0))
+    (unit-type-count-total mangonel-line < 10)
 	(can-train mangonel-line)
 =>
     (train mangonel-line)
