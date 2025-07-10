@@ -124,8 +124,8 @@
 (defrule
     (current-age == imperial-age)
 =>
-    (up-modify-goal tradeCartsQty c:%/ 66)
-    (up-modify-goal tradeShipsQty c:%/ 66)
+    ;(up-modify-goal tradeCartsQty c:%/ 66) ;traffic jams
+    ;(up-modify-goal tradeShipsQty c:%/ 66)
     (up-modify-goal fishingShipsQty c:%/ 90)
     (disable-self)
 )

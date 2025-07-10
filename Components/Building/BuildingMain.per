@@ -83,37 +83,25 @@
 ; MINI CASTLES (MEGA TOWERS?)
 (defrule
     (goal weAreAttacking 1)
-    (building-type-count-total castle > 3)
+    (building-type-count-total castle > 2)
     (can-build krepost)
 =>
-    (chat-to-player my-player-number "Trying To Build Castle FORWARD!!!!!!!!!!!!" )
+    (chat-to-player my-player-number "Trying To Build Krepost FORWARD!!!!!!!!!!!!" )
     (build-forward krepost)
 )
 
-(defrule
-    (building-type-count-total castle > 3)
-    (building-type-count-total krepost < 32)
-    (can-build krepost)
-=>
-    (build krepost)
-)
+
 
 (defrule
     (goal weAreAttacking 1)
-    (building-type-count-total castle > 3)
+    (building-type-count-total castle > 2)
     (can-build donjon)
 =>
     (chat-to-player my-player-number "Trying To Build Donjon FORWARD!!!!!!!!!!!!" )
     (build-forward donjon)
 )
 
-(defrule
-    (building-type-count-total castle > 3)
-    (building-type-count-total donjon < 32)
-    (can-build donjon)
-=>
-    (build donjon)
-)
+
 
 ; CIVILIAN BUILDINGS
 ; WONDER
@@ -1024,8 +1012,8 @@
 ; NORMAL TOWER
 (defrule
     (up-compare-goal weAreAttacking == 1)
+    (building-type-count-total castle > 2)
     (gold-amount > 301)
-    (building-type-count-total watch-tower > 3)
     (or
         (civ-selected japanese)
         (civ-selected korean)

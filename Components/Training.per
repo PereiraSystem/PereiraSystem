@@ -1806,20 +1806,19 @@
     (train skirmisher-line)(disable-self)
 )
 (defrule
-    (current-age == feudal-age)
-    (or(up-compare-goal dudeHasArchers == 1)
-    (up-compare-goal dudeHasCavalryArchers == 1))
+    (or(up-compare-goal dudeHasArchers == 1)(up-compare-goal dudeHasCavalryArchers == 1))
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (or(wood-amount > 135)(building-type-count lumber-camp > 0))
     (not(can-train genitour))
-    (unit-type-count-total skirmisher-line g:< skirmisherQtyLow)
-    (not(civ-selected portuguese))
+    (unit-type-count-total skirmisher g:< skirmisherQtyMedium)
     (can-train skirmisher-line)
 =>
+    (chat-local-to-self "COUNTER SKIRMS!")
     (train skirmisher-line)
+        
 )
 (defrule
-    (current-age == castle-age)
+    (current-age == castle-age)(false)
     (up-compare-goal dudeHasArchers == 1)
     (or(wood-amount > 275)(building-type-count town-center > 0))
     (wood-amount > 135)   ; <---------------------
