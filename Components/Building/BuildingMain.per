@@ -914,6 +914,18 @@
     (build siege-workshop)
 )
 
+    
+(defrule
+    (current-age == imperial-age)
+    (up-compare-goal scorpionsSpam == 1)
+	(building-type-count-total siege-workshop < 4)
+    (can-build siege-workshop)
+=>
+    (chat-local-to-self "Trying To Build Siege Workshop Scorpion Spam")
+    (build siege-workshop)
+)
+    
+
 (defrule
     (up-compare-goal militaryBuildingsDistance g:< 460)
     (wood-amount > 2000)

@@ -1,9 +1,11 @@
 ; TRAINING CONSTANTS 380 TO MAX LIMIT
 
-; TRAINED UNITS COUNT 380 TO 400
-(defconst maximumSoldiersFeudal 380) ;
-(defconst totalSoldiersCreatedThisAge 381)
-(defconst nonUpgradedUniqueUnitsCreated 382)
+(defconst scorpionsSpam 380)
+
+; TRAINED UNITS COUNT 390 TO 400
+(defconst maximumSoldiersFeudal 390) ;
+(defconst totalSoldiersCreatedThisAge 391)
+(defconst nonUpgradedUniqueUnitsCreated 392)
 
 ; TRAINING UNITS QTY 400 TO 512
 ; civilian units qty
@@ -76,6 +78,30 @@
 (defconst trebuchetsQtyLow 504)
 (defconst trebuchetsQtyMedium 505)
 (defconst trebuchetsQtyHigh 506)
+
+; STRATS
+#load-if-defined UP-KHMER-CIV-ALLY
+(defrule
+    (current-age == imperial-age)
+    (or
+      (civ-selected korean)
+      (or
+        (or
+          (civ-selected slavic)  
+          (civ-selected celtic)
+        )      
+        (or
+          (civ-selected ethiopian)  
+          (civ-selected chinese)
+        )          
+      )   
+    )
+
+=>
+    (set-goal scorpionsSpam 1)
+    (disable-self)
+)
+#end-if
 
 (defrule
     (current-age == castle-age)

@@ -106,6 +106,7 @@
         (and(civ-selected burgundians)(can-train bombard-cannon))
     )
     (not(up-research-status c: 787 == research-available))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))    
     (can-train trebuchet)
 
 =>
@@ -119,7 +120,7 @@
         (unit-type-count-total trebuchet g:< trebuchetsQtyMedium)
         (unit-type-count-total 954 g:< trebuchetsQtyMedium)
     )
- 
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
     (can-train trebuchet)
 =>
     (train trebuchet)
@@ -138,7 +139,7 @@
         (unit-type-count-total trebuchet g:< trebuchetsQtyHigh)
         (unit-type-count-total 954 g:< trebuchetsQtyHigh)
     )
-
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
     (can-train trebuchet)
 =>
     (train trebuchet)
@@ -870,6 +871,7 @@
 (defrule
     (gold-amount > 350) ;trebuchet priority
 	(unit-type-count-total bombard-cannon g:< trebuchetsQtyLow)
+    (up-compare-goal scorpionsSpam == 0)
 	(can-train bombard-cannon)
 =>
 	(train bombard-cannon)
@@ -895,11 +897,12 @@
     (train mangonel-line)
 )
 
-(defrule
+(defrule 
     (current-age == imperial-age)
     (or(up-compare-goal dudeHasSkirmishers > 0)(up-compare-goal dudeHasArchers > 0))
     (unit-type-count-total mangonel-line < 10)
 	(can-train mangonel-line)
+    (up-compare-goal scorpionsSpam == 0)
 =>
     (train mangonel-line)
 )
@@ -919,6 +922,7 @@
     (gold-amount > 251)
     (unit-type-count-total mangonel-line g:< mangonelQtyLow)
     (can-train mangonel-line)
+    (up-compare-goal scorpionsSpam == 0)
 =>
     (train mangonel-line)
 )
@@ -934,6 +938,7 @@
     (unit-type-count-total mangonel-line g:< mangonelQtyLow)
     (up-compare-goal dudeHasCavalryArchers == 1)
     (can-train mangonel-line)
+    (up-compare-goal scorpionsSpam == 0)
 =>
     (train mangonel-line)
 )
@@ -943,6 +948,7 @@
     (civ-selected celtic)
     (current-age == imperial-age)
 	(can-train mangonel-line)
+    (up-compare-goal scorpionsSpam == 0)
 =>
     (train mangonel-line)
 )
@@ -953,6 +959,7 @@
     (civ-selected korean)
     (current-age == imperial-age)
 	(can-train mangonel-line)
+    (up-compare-goal scorpionsSpam == 0)
 =>
     (train mangonel-line)
 )
@@ -992,7 +999,8 @@
     )
     (military-population g:> minArmySize)
     (not(can-train trebuchet)); magyar huszar bonus vs siege
-    (building-type-count castle == 0)    
+    (building-type-count castle == 0)
+    (up-compare-goal scorpionsSpam == 0)    
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
@@ -1004,7 +1012,8 @@
     (civ-selected ethiopian)
     (military-population g:> minArmySize)
     (not(can-train trebuchet)); magyar huszar bonus vs siege
-    (building-type-count castle == 0)    
+    (building-type-count castle == 0)
+    (up-compare-goal scorpionsSpam == 0)        
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
@@ -1012,24 +1021,11 @@
 
 ; SCORPIONS
 (defrule
-    (or(or(civ-selected ethiopian)(civ-selected khmer))
-        (civ-selected chinese))
-    (research-completed my-unique-research) ; is this one torsion engines or the other?
-    (wood-amount > 200)
+    (up-compare-goal scorpionsSpam == 1)
     (can-train scorpion-line)    
 =>
     (train scorpion-line)
 )
-
-(defrule
-    (civ-selected celtic)
-    (current-age == imperial-age)
-    (wood-amount > 200)
-    (can-train scorpion-line)    
-=>
-    (train scorpion-line)
-)
-
 
 ; SIEGE ELEPHANT
 (defrule
@@ -1509,6 +1505,7 @@
     (civ-selected burgundians)) ;hc bonus
     (up-compare-goal dudeHasSpearmen == 1)
     (unit-type-count-total archer-line g:< archerQtyMedium)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1550,6 +1547,7 @@
     (up-compare-goal dudeHasSpearmen == 1)
     (unit-type-count-total archer-line g:< archerQtyMedium)
     (not(can-train hand-cannoneer))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1567,6 +1565,7 @@
         (not(research-completed ri-chemistry))
     )
     (up-compare-goal dudeHasSpearmen == 1)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
     (unit-type-count-total archer-line g:< archerQtyMedium)
 	(can-train archer-line)
 =>
@@ -1580,6 +1579,7 @@
         (or(civ-selected poles)(civ-selected khmer))
     )
     (up-compare-goal dudeHasSpearmen == 1)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
     (unit-type-count-total archer-line g:< archerQtyMedium)
 	(can-train archer-line)
 =>
@@ -1607,6 +1607,7 @@
         (or(civ-selected chinese)(civ-selected dravidians))
     )
     (up-compare-goal dudeHasSpearmen == 1)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
     (unit-type-count-total archer-line g:< archerQtyHigh)
 	(can-train archer-line)
 =>
@@ -1620,6 +1621,7 @@
         (or(civ-selected japanese)(civ-selected japanese))
     )
     (up-compare-goal dudeHasSpearmen == 1)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))    
     (unit-type-count-total archer-line g:< archerQtyHigh)
 	(can-train archer-line)
 =>
@@ -1643,6 +1645,7 @@
         (or(civ-selected malay)(civ-selected mayan))
     )
     (up-compare-goal dudeHasSpearmen == 1)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))    
     (unit-type-count-total archer-line g:< archerQtyHigh)
 	(can-train archer-line)
 =>
@@ -1679,6 +1682,7 @@
     (or(civ-selected ethiopian)(civ-selected ethiopian))
     ;(up-compare-goal dudeHasSpearmen == 1)
     (unit-type-count-total archer-line g:< archerQtyHigh)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))    
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1870,6 +1874,7 @@
     (up-compare-goal dudeHasCavalryArchers == 1))
     (not(civ-selected gothic))(not(civ-selected burgundians))
     (not(can-train genitour))(not(can-train conquistador-line))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))    
     (unit-type-count-total skirmisher-line g:< skirmisherQtyMedium)
     (can-train skirmisher-line)
 =>
@@ -1883,6 +1888,7 @@
     (up-compare-goal dudeHasMilitia == 1))
     (unit-type-count-total hand-cannoneer g:< handCannoneerQty)
     (not(can-train conquistador))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))    
     (can-train hand-cannoneer)
 =>
     (train hand-cannoneer)
