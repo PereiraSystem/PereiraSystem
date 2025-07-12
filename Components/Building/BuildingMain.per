@@ -922,7 +922,18 @@
     (can-build siege-workshop)
 =>
     (chat-local-to-self "Trying To Build Siege Workshop Scorpion Spam")
+    (up-modify-sn sn-maximum-town-size c:+ 6)
     (build siege-workshop)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (up-compare-goal scorpionsSpam == 1)
+	(building-type-count-total siege-workshop < 8)
+    (can-build siege-workshop)
+=>
+    (chat-local-to-self "Trying To Build Siege Workshop Scorpion Spam")
+    (build-forward siege-workshop)
 )
     
 
@@ -961,7 +972,7 @@
     (can-build siege-workshop)
 =>
     (chat-local-to-self "Trying To Build Siege Workshop - Forward")
-    (build archery-range)
+    (build siege-workshop)
 )
 
 ; MONASTERY

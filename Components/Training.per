@@ -91,59 +91,6 @@
     (train demolition-ship-line)
 )
 
-; TREBUCHET
-(defrule
-    (military-population g:> minArmySize)    
-    (and
-        (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
-        (unit-type-count-total 954 g:< trebuchetsQtyLow)
-    )
-    (not(civ-selected gothic))
-    (not
-        (and(civ-selected bohemians)(can-train bombard-cannon))
-    )
-    (not
-        (and(civ-selected burgundians)(can-train bombard-cannon))
-    )
-    (not(up-research-status c: 787 == research-available))
-    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))    
-    (can-train trebuchet)
-
-=>
-    (train trebuchet)
-)
-
-(defrule
-    (military-population g:> minArmySize)  
-    (civ-selected hun)
-    (and
-        (unit-type-count-total trebuchet g:< trebuchetsQtyMedium)
-        (unit-type-count-total 954 g:< trebuchetsQtyMedium)
-    )
-    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
-    (can-train trebuchet)
-=>
-    (train trebuchet)
-)
-
-(defrule
-    (military-population g:> minArmySize)  
-    (or
-        (or
-            (and(civ-selected tatars)(research-completed my-unique-research))
-            (and(civ-selected japanese)(research-completed my-unique-research))
-        )
-        (and(civ-selected briton)(research-completed my-unique-research))
-    )
-    (and
-        (unit-type-count-total trebuchet g:< trebuchetsQtyHigh)
-        (unit-type-count-total 954 g:< trebuchetsQtyHigh)
-    )
-    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
-    (can-train trebuchet)
-=>
-    (train trebuchet)
-)
 
 ; CIVILIAN UNITS
 ; VILLAGERS
@@ -398,15 +345,16 @@
     (train monk)
 )
 
-
-
 ; CASTLE
 ; TREBUCHET
-(defrule
+
+
+(defrule(false)
     (up-compare-goal weAreAttacking == 1)
     (players-building-type-count any-enemy castle > 0)
     (up-compare-goal weAreAttacking == 1)
     (unit-type-count 954 g:< trebuchetsQtyLow)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))    
     (can-train 954)
 =>
     (train 954)
@@ -416,14 +364,19 @@
     (up-compare-goal weAreAttacking == 1)
     (players-building-type-count any-enemy castle > 0)
     (unit-type-count trebuchet g:< trebuchetsQtyLow)
+    ;(not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))  
     (can-train trebuchet)
 =>
     (train trebuchet)
 )
 
+
+
+
+
+
 (defrule
-    (up-compare-goal weAreAttacking == 1)
-    (players-building-type-count any-enemy castle > 0)
+    (military-population g:> minArmySize)    
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyLow)
         (unit-type-count-total 954 g:< trebuchetsQtyLow)
@@ -436,27 +389,28 @@
         (and(civ-selected burgundians)(can-train bombard-cannon))
     )
     (not(up-research-status c: 787 == research-available))
+    (up-compare-goal scorpionsSpam == 0)   
     (can-train trebuchet)
+
 =>
     (train trebuchet)
 )
 
 (defrule
-    (up-compare-goal weAreAttacking == 1)
-    (players-building-type-count any-enemy castle > 0)
+    (military-population g:> minArmySize)  
     (civ-selected hun)
     (and
         (unit-type-count-total trebuchet g:< trebuchetsQtyMedium)
         (unit-type-count-total 954 g:< trebuchetsQtyMedium)
     )
+    (up-compare-goal scorpionsSpam == 0)   
     (can-train trebuchet)
 =>
     (train trebuchet)
 )
 
 (defrule
-    (up-compare-goal weAreAttacking == 1)
-    (players-building-type-count any-enemy castle > 0)
+    (military-population g:> minArmySize)  
     (or
         (or
             (and(civ-selected tatars)(research-completed my-unique-research))
@@ -468,11 +422,12 @@
         (unit-type-count-total trebuchet g:< trebuchetsQtyHigh)
         (unit-type-count-total 954 g:< trebuchetsQtyHigh)
     )
-    (wood-amount > 1000)(gold-amount > 1000)
+    (up-compare-goal scorpionsSpam == 0)   
     (can-train trebuchet)
 =>
     (train trebuchet)
 )
+
 
 ; PETARD
 (defrule
@@ -530,7 +485,7 @@
     (up-compare-goal nonUpgradedUniqueUnitsCreated < 6)
     (can-train my-unique-unit-line)
 =>
-	(train my-unique-unit-line)
+	(train my-unique-unit-line)  
     (up-modify-goal nonUpgradedUniqueUnitsCreated c:+ 1)
 )
 (defrule
@@ -631,7 +586,7 @@
         )
     )
     (unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyLow)
-    (gold-amount > 460) ;trebuchets and mangonels have priority
+    (gold-amount > 460) ;trebuchets and mangonels have priority  
     (can-train my-unique-unit-line)
 =>
 	(train my-unique-unit-line)
@@ -1052,6 +1007,7 @@
 (defrule
     (current-age == castle-age)
     (unit-type-count-total steppe-lancer-line g:< knightsQtyLow)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train steppe-lancer-line)
 =>
     (train steppe-lancer-line)
@@ -1061,6 +1017,7 @@
     (current-age == castle-age)
     (or(unit-type-count-total monk > 4)(hold-relics))
     (unit-type-count-total steppe-lancer-line g:< knightsQtyMedium)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train steppe-lancer-line)
 =>
     (train steppe-lancer-line)
@@ -1073,6 +1030,7 @@
         (and(up-compare-goal dudeHasCavalry == 1)
             (can-train camel-line))
     )
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train steppe-lancer-line)
 =>
     (train steppe-lancer-line)
@@ -1087,6 +1045,7 @@
         (and(up-compare-goal dudeHasCavalry == 1)
             (can-train camel-line))
     )
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train battle-elephant-line)
 =>
     (train battle-elephant-line)
@@ -1147,7 +1106,7 @@
     ;(or(research-completed ri-hand-cart)(town-under-attack))
     (or(up-compare-goal dudeHasArchers == 1)
     (up-compare-goal dudeHasSkirmishers == 1))
-    (unit-type-count-total scout-cavalry-line g:< scoutsQtyMedium)
+    (unit-type-count-total scout-cavalry-line g:< scoutsQtyMedium)    
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
@@ -1172,6 +1131,7 @@
     (not(civ-selected japanese))(not(civ-selected viking))(not(civ-selected gothic))
     (or(not(civ-selected burmese))(research-completed my-unique-research))
     (unit-type-count-total scout-cavalry-line g:< scoutsQtyMedium)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
 	(can-train scout-cavalry-line)
 =>
     (train scout-cavalry-line)
@@ -1198,6 +1158,7 @@
     (up-compare-goal dudeHasCavalry == 1)
     (up-compare-goal dudeHasSpearmen == 0)
 	(unit-type-count-total camel-line g:< camelQtyMedium)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
 	(can-train camel-line)
 =>
     (train camel-line)
@@ -1206,6 +1167,7 @@
 	(current-age == imperial-age)
     (gold-amount > 260)
 	(unit-type-count-total camel-line g:< camelQtyMedium)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
 	(can-train camel-line)
 =>
     (train camel-line)
@@ -1232,6 +1194,7 @@
     (not(civ-selected vietnamese))    ;elephants will improve later
     (not(civ-selected malay)) ;ele are cheaper
     (not(can-train steppe-lancer-line))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1266,6 +1229,7 @@
             (civ-selected teutonic)
         )
     )
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1290,6 +1254,7 @@
     (not(can-train steppe-lancer-line))
     (not(can-train battle-elephant-line))
     (or(not(civ-selected burmese))(research-completed my-unique-research))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1325,6 +1290,7 @@
     (not(can-train steppe-lancer-line))
     (not(can-train cataphract-line))
     ;(not(can-train coustillier-line))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train knight-line)
 =>
     (train knight-line)
@@ -1693,6 +1659,7 @@
     (wood-amount > 270)
     (up-compare-goal dudeHasSpearmen == 1)
 	(unit-type-count-total archer-line g:< archerQtyHigh)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
 	(can-train archer-line)
 =>
 	(train archer-line)
@@ -1713,6 +1680,7 @@
     ;(gold-amount > 845)
     (wood-amount > 125)
 	(unit-type-count-total cavalry-archer-line g:< cavalryArcherQtyLow)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train cavalry-archer-line)
 =>
 	(train cavalry-archer-line)
@@ -1720,7 +1688,7 @@
 
 (defrule
     (current-age == imperial-age)
-    (or(civ-selected frankish)(civ-selected vietnamese))
+    (civ-selected vietnamese)
     (wood-amount > 200)(gold-amount > 300)
 	(unit-type-count-total cavalry-archer-line g:< cavalryArcherQtyMedium)
 	(can-train cavalry-archer-line)
@@ -1746,6 +1714,7 @@
     )
     (wood-amount > 200)(gold-amount > 260)
 	(unit-type-count-total cavalry-archer-line g:< cavalryArcherQtyHigh)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))  
 	(can-train cavalry-archer-line)
 =>
 	(train cavalry-archer-line)
@@ -1815,6 +1784,7 @@
     (or(wood-amount > 135)(building-type-count lumber-camp > 0))
     (not(can-train genitour))
     (unit-type-count-total skirmisher g:< skirmisherQtyMedium)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))  
     (can-train skirmisher-line)
 =>
     (chat-local-to-self "COUNTER SKIRMS!")
@@ -1938,6 +1908,7 @@
     (not(can-train steppe-lancer-line))
     (not(can-train battle-elephant-line))
     (not(can-train mangonel-line))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train militiaman-line)
 =>
     (train militiaman-line)
@@ -1972,6 +1943,7 @@
         )
     )
     (not(can-train steppe-lancer-line))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train militiaman-line)
 =>
     (train militiaman-line)
@@ -2004,6 +1976,7 @@
         )
     )
     (not(can-train steppe-lancer-line))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train militiaman-line)
 =>
     (train militiaman-line)
@@ -2024,6 +1997,7 @@
         )
     )
     (not(can-train steppe-lancer-line))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train militiaman-line)
 =>
     (train militiaman-line)
@@ -2044,6 +2018,7 @@
         )
     )
     (can-train militiaman-line)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
 =>
     (train militiaman-line)
 )
@@ -2125,6 +2100,7 @@
             )
         )
     (not(can-train berserk-line))
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train militiaman-line)
 =>
     (train militiaman-line)
@@ -2221,6 +2197,7 @@
     )
     (wood-amount >= 125)
     (unit-type-count-total spearman-line g:< spearmenQtyLow)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train spearman-line)
 =>
     (train spearman-line)
@@ -2239,6 +2216,7 @@
     )
     (or(up-compare-goal dudeHasCavalry == 1)(up-compare-goal dudeHasCavalryArchers == 1))
     (unit-type-count-total spearman-line g:< spearmenQtyMedium)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train spearman-line)
 =>
     (train spearman-line)
@@ -2252,6 +2230,7 @@
     (not(can-train flemish-pikeman))
     (not(can-train steppe-lancer-line))   
     (unit-type-count-total spearman-line g:< spearmenQtyHigh)
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
     (can-train spearman-line)
 =>
     (train spearman-line)
