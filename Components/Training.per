@@ -1852,7 +1852,7 @@
     (not(can-train genitour))
     (unit-type-count-total skirmisher g:< skirmisherQtyMedium)
     (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
-    (or (current-age == imperial-age)(up-compare-goal infantrySpam == 0))
+    (or (current-age < imperial-age)(up-compare-goal infantrySpam == 0))
     (can-train skirmisher-line)
 =>
     (chat-local-to-self "COUNTER SKIRMS!")
