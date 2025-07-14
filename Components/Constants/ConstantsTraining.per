@@ -174,8 +174,12 @@
 
 #load-if-defined UP-MALAY-CIV-ALLY
 (defrule
-    (or(civ-selected ethiopian)(civ-selected gothic))
+    (or
+      (or(civ-selected ethiopian)(civ-selected gothic))
+      (or(civ-selected celtic)(civ-selected burgundians))
+    )
 =>
+    (set-goal scorpionsSpam 0)
     (set-goal infantrySpam 1)
     (disable-self)
 )

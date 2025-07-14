@@ -282,7 +282,22 @@
     (disable-self)
 )
 
-
+(defrule
+    (current-age == imperial-age)
+    (up-compare-goal infantrySpam == 1)
+    (game-time > 3600)
+    (wood-amount > 60000)
+    (food-amount < 20000)
+=>
+    (set-strategic-number sn-food-gatherer-percentage 72)
+    (set-strategic-number sn-wood-gatherer-percentage 8)
+    (set-strategic-number sn-gold-gatherer-percentage 6)
+    (set-strategic-number sn-stone-gatherer-percentage 14)
+    (chat-local-to-self "Imperial Age & Infantry Spam - Sending Less Villagers For Wood")
+    (up-chat-data-to-self "WOOD GATHER PERCENT: %d" s: sn-wood-gatherer-percentage)
+    (up-chat-data-to-self "FOOD GATHER PERCENT: %d" s: sn-food-gatherer-percentage)  
+    (disable-self)
+)
 
 
 

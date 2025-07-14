@@ -1852,7 +1852,7 @@
     (not(can-train genitour))
     (unit-type-count-total skirmisher g:< skirmisherQtyMedium)
     (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
-    (up-compare-goal infantrySpam == 0)    
+    (or (current-age == imperial-age)(up-compare-goal infantrySpam == 0))
     (can-train skirmisher-line)
 =>
     (chat-local-to-self "COUNTER SKIRMS!")
@@ -1999,14 +1999,10 @@
     (up-compare-goal dudeHasSpearmen == 1)
     (or
         (or
-            (or
-                (civ-selected bulgarians)
-                (civ-selected ethiopian)
-            )
-            (or
+
                 (civ-selected gurjaras)
                 (civ-selected hun)
-            )
+
         )
         (or
             (or
@@ -2020,11 +2016,40 @@
         )
     )
     (not(can-train steppe-lancer-line))
-    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
     (can-train militiaman-line)
 =>
     (train militiaman-line)
 )
+
+(defrule ; rule for civs affected by infantry spam whose UU is infantry
+    (current-age == imperial-age)(gold-amount > 600)
+    (unit-type-count-total militiaman-line g:< militiaQtyMedium)
+    (up-compare-goal dudeHasSpearmen == 1)
+    (or
+        (or
+            (civ-selected ethiopian)
+            (civ-selected ethiopian)
+        )
+        (or
+            (civ-selected aztec)
+            (civ-selected burgundians)
+
+        )
+    )
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
+    (not        
+        (and
+            (up-compare-goal infantrySpam == 1)
+            (can-train my-unique-unit-line)
+        )        
+    )
+    (can-train militiaman-line)
+=>
+    (train militiaman-line)
+)
+
+
 ; CIVS WITH NOT FU CHAMPION, OR NO INTERESTING BONUS
 (defrule
     (current-age == imperial-age)(gold-amount > 500)
@@ -2095,7 +2120,8 @@
         )
     )
     (can-train militiaman-line)
-    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
+       
 =>
     (train militiaman-line)
 )
@@ -2206,6 +2232,7 @@
     (civ-selected malay)(research-completed my-unique-research)
     (up-compare-goal dudeHasSpearmen == 1)
     (unit-type-count-total militiaman-line g:< militiaQtyHigh)
+    (not(and(up-compare-goal infantrySpam == 1)(can-train my-unique-unit-line)))    
     (can-train militiaman-line)
 =>
     (train militiaman-line)
