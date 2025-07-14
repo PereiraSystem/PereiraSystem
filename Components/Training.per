@@ -979,7 +979,16 @@
     (military-population g:> minArmySize)
     (not(can-train trebuchet)); magyar huszar bonus vs siege
     (building-type-count castle == 0)
-    (up-compare-goal scorpionsSpam == 0)      
+    (can-train battering-ram-line)
+=>
+	(train battering-ram-line)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (military-population g:> minArmySize)    
+	(unit-type-count-total battering-ram-line g:< ramQtyHigh)
+    (up-compare-goal scorpionsSpam == 1)      
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)
