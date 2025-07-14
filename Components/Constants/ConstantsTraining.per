@@ -1,7 +1,7 @@
 ; TRAINING CONSTANTS 380 TO MAX LIMIT
 
 (defconst scorpionsSpam 380)
-
+(defconst infantrySpam 381)
 ; TRAINED UNITS COUNT 390 TO 400
 (defconst maximumSoldiersFeudal 390) ;
 (defconst totalSoldiersCreatedThisAge 391)
@@ -82,6 +82,7 @@
 ; STRATS 
 ; SCORPION SPAM
 (defrule(true)=>(set-goal scorpionsSpam 0)(disable-self))
+
 #load-if-defined UP-KHMER-CIV-ALLY
 (defrule
     ;(current-age == imperial-age)
@@ -164,6 +165,36 @@
     (civ-selected khmer)
 =>
     (set-goal scorpionsSpam 1)
+    (disable-self)
+)
+#end-if
+
+; INFANTRY ZERG
+(defrule(true)=>(set-goal infantrySpam 0)(disable-self))
+
+#load-if-defined UP-MALAY-CIV-ALLY
+(defrule
+    (or(civ-selected ethiopian)(civ-selected gothic))
+=>
+    (set-goal infantrySpam 1)
+    (disable-self)
+)
+#end-if
+
+#load-if-defined UP-ETHIOPIAN-CIV-ALLY
+(defrule
+    (civ-selected malay)
+=>
+    (set-goal infantrySpam 1)
+    (disable-self)
+)
+#end-if
+
+#load-if-defined UP-GOTHIC-CIV-ALLY
+(defrule
+    (civ-selected malay)
+=>
+    (set-goal infantrySpam 1)
     (disable-self)
 )
 #end-if

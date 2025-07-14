@@ -51,6 +51,8 @@
 
 
 (defrule
+    (current-age == imperial-age)
+    (food-amount > 1200)
     (timer-triggered 21)
     (up-players-in-game enemy > 0)
     (military-population > minArmySize)

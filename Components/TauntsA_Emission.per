@@ -9,7 +9,7 @@
     (enable-timer 40 0)
 )
 
-(defrule(false)
+(defrule(false) ; it will mess with monks picking relics
 	(timer-triggered 40)
 =>
     (disable-timer 40)
