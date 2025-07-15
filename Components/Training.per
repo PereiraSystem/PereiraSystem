@@ -400,7 +400,8 @@
         (unit-type-count-total trebuchet g:< trebuchetsQtyMedium)
         (unit-type-count-total 954 g:< trebuchetsQtyMedium)
     )
-    (up-compare-goal scorpionsSpam == 0) 
+    (up-compare-goal scorpionsSpam == 0)
+    (up-compare-goal infantrySpam == 0)      
     (can-train trebuchet)
 =>
     (train trebuchet)
@@ -707,15 +708,18 @@
 =>
     (train my-unique-unit-line)
 )
+
 (defrule
     (civ-selected burgundians)
     (research-completed my-unique-unit-upgrade)
     (gold-amount > 209)
     (unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyHigh)
+    (or(current-age < imperial-age)(up-compare-goal infantrySpam == 0))
     (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
 )
+
 ; CUMANS UU
 (defrule
     (research-completed my-unique-unit-upgrade)
@@ -779,7 +783,12 @@
     (train my-unique-unit-line)
 )
 ; SICILIAN UU
-;(defrule(can-train donjon-serjeant-line)=>(train donjon-serjeant-line))
+(defrule(current-age == imperial-age)(up-compare-goal infantrySpam == 1)(can-train donjon-serjeant-line)=>(train donjon-serjeant-line))
+(defrule(current-age == imperial-age)(up-compare-goal infantrySpam == 1)
+(not(can-train donjon-serjeant-line))
+(can-train serjeant-line)
+=>(train serjeant-line))
+
 ; TATAR UU
 (defrule
     (civ-selected tatars)
@@ -791,6 +800,14 @@
 	(train my-unique-unit-line)
 )
 ; TEUTONS
+(defrule
+    (current-age == imperial-age)
+    (up-compare-goal infantrySpam == 1)
+    (can-train my-unique-unit-line)
+=>
+    (train my-unique-unit-line)
+)
+
 ; TATAR UU
 (defrule
     (civ-selected teutonic)
@@ -984,11 +1001,11 @@
 	(train battering-ram-line)
 )
 
-(defrule
+(defrule(false);not really getting troops inside rams right now - change gp size?
     (current-age == imperial-age)
     (military-population g:> minArmySize)    
 	(unit-type-count-total battering-ram-line g:< ramQtyHigh)
-    (up-compare-goal scorpionsSpam == 1)      
+    (up-compare-goal infantrySpam == 1)      
     (can-train battering-ram-line)
 =>
 	(train battering-ram-line)

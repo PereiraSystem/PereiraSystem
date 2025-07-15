@@ -175,8 +175,33 @@
 #load-if-defined UP-MALAY-CIV-ALLY
 (defrule
     (or
-      (or(civ-selected ethiopian)(civ-selected gothic))
-      (or(civ-selected celtic)(civ-selected burgundians))
+      (or
+        (or(civ-selected ethiopian)(civ-selected gothic))
+        (or(civ-selected celtic)(civ-selected burgundians))
+      )
+      (or
+        (or(civ-selected viking)(civ-selected aztec))
+        (or(civ-selected burmese)(civ-selected slavic))
+      )      
+    )
+=>
+    (set-goal scorpionsSpam 0)
+    (set-goal infantrySpam 1)
+    (disable-self)
+)
+#end-if
+
+#load-if-defined UP-MALAY-CIV-ALLY
+(defrule
+    (or
+      (or
+        (or(civ-selected dravidians)(civ-selected incan))
+        (or(civ-selected sicilians)(civ-selected teutonic))
+      )
+      (or
+        (or(civ-selected japanese)(civ-selected malian))
+        (or(civ-selected poles)(civ-selected poles))
+      )      
     )
 =>
     (set-goal scorpionsSpam 0)
