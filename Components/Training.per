@@ -580,7 +580,7 @@
                 (civ-selected italian)(civ-selected portuguese)
             )
             (or
-                (civ-selected burmese)(civ-selected vietnamese)
+                (civ-selected vietnamese)(civ-selected vietnamese)
             )
         )
     )
@@ -590,6 +590,18 @@
 =>
 	(train my-unique-unit-line)
 )
+
+; BURMESE
+(defrule
+    (not(research-completed my-unique-unit-upgrade))
+    (unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyLow)
+    (gold-amount > 460) ;trebuchets and mangonels have priority 
+    (up-compare-goal infantrySpam == 0) 
+    (can-train my-unique-unit-line)
+=>
+	(train my-unique-unit-line)
+)
+
 (defrule
     (not(research-completed my-unique-unit-upgrade))
     (or
