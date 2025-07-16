@@ -748,6 +748,29 @@
     (up-build place-control 0 c: barracks)  
 )
 
+(defrule
+    (current-age == imperial-age)
+    (or(civ-selected burmese)(civ-selected burgundians))
+    (up-compare-goal infantrySpam == 1)
+	(building-type-count-total barracks < 4)
+    (can-build barracks)
+=>
+    (chat-local-to-self "Trying To Build Barracks Infantry Spam")
+    (up-modify-sn sn-maximum-town-size c:+ 6)
+    (build barracks)
+)
+
+(defrule
+    (current-age == imperial-age)
+    (or(civ-selected burmese)(civ-selected burgundians))
+    (up-compare-goal infantrySpam == 1)
+	(building-type-count-total barracks < 8)
+    (can-build barracks)
+=>
+    (chat-local-to-self "Trying To Build Barracks Infantry Spam")
+    (build-forward barracks)
+)
+
 (defrule    
     (up-compare-goal militaryBuildingsDistance g:< 460)
     (wood-amount > 2000)

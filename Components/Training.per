@@ -439,15 +439,50 @@
 
 ; UNIQUE UNIT
 (defrule ;flemish militia
+    (current-age == castle-age)
+    (up-compare-goal infantrySpam == 1)
     (can-train flemish-pikeman)
 =>
     (train flemish-pikeman)
 )
+
 (defrule ;flemish militia
+    (current-age == castle-age)
+    (or(up-compare-goal dudeHasCavalry == 1)(up-compare-goal dudeHasCavalryArchers == 1))
+    (unit-type-count-total flemish-pikeman g:< spearmenQtyMedium)    
+    (can-train flemish-pikeman)
+=>
+    (train flemish-pikeman)
+)
+
+(defrule ;flemish militia
+    (current-age == imperial-age)
+    (or(up-compare-goal dudeHasCavalry == 1)(up-compare-goal dudeHasCavalryArchers == 1))
+    (unit-type-count-total flemish-pikeman g:< spearmenQtyHigh)    
+    (can-train flemish-pikeman)
+=>
+    (train flemish-pikeman)
+)
+
+(defrule ;flemish militia
+    (current-age == imperial-age)
+    (or(up-compare-goal infantrySpam == 1)(research-completed my-unique-research))
+    (can-train flemish-pikeman)
+=>
+    (train flemish-pikeman)
+)
+
+
+
+(defrule ;flemish militia
+    (current-age == imperial-age)
+    (or(up-compare-goal infantrySpam == 1)(research-completed my-unique-research))
     (can-train 1699)
 =>
     (train 1699)
 )
+
+
 ; CASTLE AGE DEFENSE UU
 (defrule
     (current-age == castle-age)
@@ -620,15 +655,8 @@
     (gold-amount > 350)
     (not(civ-selected ethiopian))(not(civ-selected gothic))
     (not(civ-selected berbers))
-    (not
-        (and
-            (up-compare-goal infantrySpam == 1)
-            (or
-                (civ-selected burmese)
-                (civ-selected burgundian)
-            )
-        )
-    )
+    (not(and(up-compare-goal infantrySpam == 1)(civ-selected burmese)))
+    (not(and(up-compare-goal infantrySpam == 1)(civ-selected burgundians)))    
     (unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyMedium)
     (can-train my-unique-unit-line)
 =>
@@ -760,6 +788,7 @@
 
 ; ETHIOPIAN
 (defrule
+    (civ-selected ethiopian)
     (current-age == imperial-age)
     (up-compare-goal infantrySpam == 1)
 =>
@@ -823,6 +852,7 @@
 )
 ; TEUTONS
 (defrule
+    (civ-selected teutonic)
     (current-age == imperial-age)
     (up-compare-goal infantrySpam == 1)
     (can-train my-unique-unit-line)
@@ -830,16 +860,7 @@
     (train my-unique-unit-line)
 )
 
-; TATAR UU
-(defrule
-    (civ-selected teutonic)
-	(current-age == imperial-age)
-	(unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyHigh)
-    (gold-amount > 201)
-	(can-train my-unique-unit-line)
-=>
-	(train my-unique-unit-line)
-)
+
 
 ; VIKING UU
 (defrule(false);they are in other section before with limited qty
@@ -2081,7 +2102,7 @@
         )
         (or
             (civ-selected aztec)
-            (civ-selected burgundians)
+            (civ-selected viking)
 
         )
     )
@@ -2096,6 +2117,28 @@
 =>
     (train militiaman-line)
 )
+
+(defrule ; rule for civs affected by infantry spam whose UU is NOT infantry
+    (current-age == imperial-age)
+    (or
+        (or
+            (civ-selected burmese)
+            (civ-selected burmese)
+        )
+        (or
+            (civ-selected burmese)
+            (civ-selected burmese)
+
+        )
+    )
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
+    (up-compare-goal infantrySpam == 1)
+    (can-train militiaman-line)
+=>
+    (train militiaman-line)
+)
+
+
 
 
 ; CIVS WITH NOT FU CHAMPION, OR NO INTERESTING BONUS
@@ -2126,7 +2169,8 @@
         )
     )
     (not(can-train steppe-lancer-line))
-    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))      
+    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line))) 
+    (not(and(up-compare-goal infantrySpam == 1)(can-train flemish-pikeman)))     
     (can-train militiaman-line)
 =>
     (train militiaman-line)
