@@ -620,11 +620,21 @@
     (gold-amount > 350)
     (not(civ-selected ethiopian))(not(civ-selected gothic))
     (not(civ-selected berbers))
+    (not
+        (and
+            (up-compare-goal infantrySpam == 1)
+            (or
+                (civ-selected burmese)
+                (civ-selected burgundian)
+            )
+        )
+    )
     (unit-type-count-total my-unique-unit-line g:< uniqueUnitQtyMedium)
     (can-train my-unique-unit-line)
 =>
     (train my-unique-unit-line)
 )
+
 ; BERBER UU - upgrade costs same resource
 (defrule
     (civ-selected berbers)
