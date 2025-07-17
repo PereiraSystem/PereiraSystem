@@ -881,6 +881,14 @@
 =>
 	(train my-unique-unit-line)
 )
+(defrule
+    (civ-selected viking)
+    (current-age == imperial-age)
+    (up-compare-goal infantrySpam == 1)
+	(can-train my-unique-unit-line)
+=>
+	(train my-unique-unit-line)
+)
 
 ; SIEGE WORKSHOP
 ; BOMBARD CANNON , trebuchets have better AI
