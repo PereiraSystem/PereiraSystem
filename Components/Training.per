@@ -1220,7 +1220,7 @@
     (not(civ-selected japanese))(not(civ-selected viking))(not(civ-selected gothic))
     (or(not(civ-selected burmese))(research-completed my-unique-research))
     (unit-type-count-total scout-cavalry-line g:< scoutsQtyMedium)
-    (not(and(up-compare-goal scorpionsSpam == 1)(can-train scorpion-line)))
+    (not(and(up-compare-goal scorpionsSpam == 1)(and(can-train scorpion-line)(wood-amount > 200))))
     (up-compare-goal infantrySpam == 0)         
 	(can-train scout-cavalry-line)
 =>
