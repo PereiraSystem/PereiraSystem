@@ -1,4 +1,4 @@
-; CONSTANTS 1 TO 50
+w; CONSTANTS 1 TO 50
 (defconst randomNumber 1)
 
 (defconst weMovedPlace 2) ;for experimental move to the coast tactic
@@ -77,48 +77,122 @@
 
 ; MIN ATTACK GP SIZE - 20
 (defrule
-  (population-cap == 25)
-  =>
-  (set-goal minArmySize 5)
-  (disable-self)
-)
-
-(defrule
   (population-cap == 50)
   =>
-  (set-goal minArmySize 10)
+  (set-goal minArmySize 19)
+  (set-goal maxArmySize 20)
   (disable-self)
 )
 
 (defrule
   (population-cap == 75)
   =>
-  (set-goal minArmySize 15)
+  (set-goal minArmySize 29)
+  (set-goal maxArmySize 30)
   (disable-self)
 )
 
 (defrule
-  (population-cap >= 100)
+  (population-cap == 100)
   =>
-  (set-goal minArmySize 40)
-  (set-goal populationRoomBeforeBuildingHouses 10)
+  (set-goal minArmySize 39)
+  (set-goal maxArmySize 40)
   (disable-self)
 )
 
 (defrule
-  (population-cap >= 150)
+  (population-cap == 125)
   =>
-  (set-goal minArmySize 50)
-  (set-goal numberAttackGroups 3)    
+  (set-goal minArmySize 49)
+  (set-goal maxArmySize 50)
   (disable-self)
 )
 
 (defrule
-  (population-cap >= 250)
+  (population-cap == 150)
   =>
-  (set-goal minArmySize 70)
+  (set-goal minArmySize 59)
+  (set-goal maxArmySize 60)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 175)
+  =>
+  (set-goal minArmySize 69)
+  (set-goal maxArmySize 70)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 200)
+  =>
+  (set-goal minArmySize 79)
   (set-goal maxArmySize 80)
+  (disable-self)
+)
 
+(defrule
+  (population-cap == 225)
+  =>
+  (set-goal minArmySize 89)
+  (set-goal maxArmySize 90)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 250)
+  =>
+  (set-goal minArmySize 99)
+  (set-goal maxArmySize 100)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 275)
+  =>
+  (set-goal minArmySize 109)
+  (set-goal maxArmySize 110)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 300)
+  =>
+  (set-goal minArmySize 119)
+  (set-goal maxArmySize 120)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 350)
+  =>
+  (set-goal minArmySize 139)
+  (set-goal maxArmySize 140)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 400)
+  =>
+  (set-goal minArmySize 159)
+  (set-goal maxArmySize 160)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 450)
+  =>
+  (set-goal minArmySize 179)
+  (set-goal maxArmySize 180)
+  (disable-self)
+)
+
+(defrule
+  (population-cap == 500)
+  =>
+  (set-goal minArmySize 199)
+  (set-goal maxArmySize 200)
   (disable-self)
 )
 
