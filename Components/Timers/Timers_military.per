@@ -48,7 +48,16 @@
     (disable-self)
 )
 
-
+(defrule
+    (population-cap >= 400)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 159)    
+    (set-strategic-number sn-maximum-attack-group-size 160)
+    (set-strategic-number sn-number-attack-groups 2)    
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
 
 
 
