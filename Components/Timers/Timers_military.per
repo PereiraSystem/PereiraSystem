@@ -1,7 +1,7 @@
 (defrule
     (true)
 =>
-    ;(up-chat-data-to-player my-player-number "SECONDS UNTIL FIRST ATTACK %d" g: secondsUntilFirstAttack)
+    (up-chat-data-to-player my-player-number "SECONDS UNTIL FIRST ATTACK %d" g: secondsUntilFirstAttack)
     (disable-self)
 )
 
@@ -27,6 +27,17 @@
 
 ; ATTACK!
 (defrule
+    (population-cap >= 150)(population-cap < 250)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 39)    
+    (set-strategic-number sn-maximum-attack-group-size 40)
+    (set-strategic-number sn-number-attack-groups 2)      
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
     (population-cap >= 250)
     (timer-triggered 21)
 =>
@@ -37,16 +48,7 @@
     (disable-self)
 )
 
-(defrule
-    (population-cap >= 150)
-    (timer-triggered 21)
-=>
-    (set-strategic-number sn-minimum-attack-group-size 39)    
-    (set-strategic-number sn-maximum-attack-group-size 40)
-    (set-strategic-number sn-number-attack-groups 2)      
-    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
-    (disable-self)
-)
+
 
 
 
