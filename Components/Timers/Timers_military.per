@@ -27,12 +27,45 @@
 
 ; ATTACK!
 (defrule
-    (population-cap >= 150)(population-cap < 250)
+    (population-cap >= 150)
     (timer-triggered 21)
 =>
-    (set-strategic-number sn-minimum-attack-group-size 39)    
-    (set-strategic-number sn-maximum-attack-group-size 40)
-    (set-strategic-number sn-number-attack-groups 2)      
+    (set-strategic-number sn-minimum-attack-group-size 59)
+    (set-strategic-number sn-maximum-attack-group-size 60)
+    (set-strategic-number sn-number-attack-groups 2)
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
+    (population-cap >= 175)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 69)
+    (set-strategic-number sn-maximum-attack-group-size 70)
+    (set-strategic-number sn-number-attack-groups 2)
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
+    (population-cap >= 200)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 79)
+    (set-strategic-number sn-maximum-attack-group-size 80)
+    (set-strategic-number sn-number-attack-groups 2)
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
+    (population-cap >= 225)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 89)
+    (set-strategic-number sn-maximum-attack-group-size 90)
+    (set-strategic-number sn-number-attack-groups 2)
     (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
     (disable-self)
 )
@@ -41,9 +74,42 @@
     (population-cap >= 250)
     (timer-triggered 21)
 =>
-    (set-strategic-number sn-minimum-attack-group-size 79)    
-    (set-strategic-number sn-maximum-attack-group-size 80)
-    (set-strategic-number sn-number-attack-groups 2)    
+    (set-strategic-number sn-minimum-attack-group-size 99)
+    (set-strategic-number sn-maximum-attack-group-size 100)
+    (set-strategic-number sn-number-attack-groups 2)
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
+    (population-cap >= 275)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 109)
+    (set-strategic-number sn-maximum-attack-group-size 110)
+    (set-strategic-number sn-number-attack-groups 2)
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
+    (population-cap >= 300)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 119)
+    (set-strategic-number sn-maximum-attack-group-size 120)
+    (set-strategic-number sn-number-attack-groups 2)
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
+    (population-cap >= 350)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 139)
+    (set-strategic-number sn-maximum-attack-group-size 140)
+    (set-strategic-number sn-number-attack-groups 2)
     (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
     (disable-self)
 )
@@ -52,14 +118,38 @@
     (population-cap >= 400)
     (timer-triggered 21)
 =>
-    (set-strategic-number sn-minimum-attack-group-size 159)    
+    (set-strategic-number sn-minimum-attack-group-size 159)
     (set-strategic-number sn-maximum-attack-group-size 160)
-    (set-strategic-number sn-number-attack-groups 2)    
+    (set-strategic-number sn-number-attack-groups 2)
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
+    (population-cap >= 450)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 179)
+    (set-strategic-number sn-maximum-attack-group-size 180)
+    (set-strategic-number sn-number-attack-groups 2)
+    (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
+    (disable-self)
+)
+
+(defrule
+    (population-cap >= 500)
+    (timer-triggered 21)
+=>
+    (set-strategic-number sn-minimum-attack-group-size 199)
+    (set-strategic-number sn-maximum-attack-group-size 200)
+    (set-strategic-number sn-number-attack-groups 2)
     (up-chat-data-to-self "MIN ARMY SIZE: %d" s: sn-minimum-attack-group-size)
     (disable-self)
 )
 
 
+
+;-----------------
 
 (defrule
     (current-age == imperial-age)
