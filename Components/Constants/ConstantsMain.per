@@ -75,6 +75,17 @@
   (disable-self)
 )
 
+
+;--------------------
+
+(defrule
+  (true)
+  =>
+  (set-goal populationRoomBeforeBuildingHouses 3)
+  (disable-self)
+)
+
+
 ; MIN ATTACK GP SIZE - 20
 (defrule
   (population-cap == 50)

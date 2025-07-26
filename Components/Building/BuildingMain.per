@@ -333,20 +333,8 @@
     (build farm)
 )
 
-; HOUSES; place control problems in nomad type
+; HOUSES; place control problems in nomad type ?
 (defrule
-    (current-age < imperial-age)
-    (wood-amount g:> minimumWoodForLC)
-    (and(housing-headroom g:<  populationRoomBeforeBuildingHouses)(population-headroom > 0))
-    (can-build house)
-=>
-    (chat-local-to-self "Trying To Build House - Normal")
-    (build house)
-    ;(up-chat-data-to-player my-player-number "Wood > %d" g: minimumWoodForLC)
-)
-
-(defrule
-    (current-age < imperial-age)
     (or(wood-amount g:> minimumWoodForLC)(building-type-count lumber-camp > 2))
     (and(housing-headroom g:<  populationRoomBeforeBuildingHouses)(population-headroom > 0))
     (can-build house)
@@ -357,19 +345,7 @@
 )
 
 (defrule
-    (current-age < imperial-age)
-    (wood-amount g:> minimumWoodForLC)
-    (and(housing-headroom g:<  populationRoomBeforeBuildingHouses)(population-headroom > 0))
-    (up-can-build 0 c: house)
-=>
-    (chat-local-to-self "Trying To Build House - Place Control")
-    (up-set-placement-data my-player-number house c: 0)
-    (up-build place-control 0 c: house)
-    ;(up-chat-data-to-player my-player-number "Wood > %d" g: minimumWoodForLC)
-)
 
-(defrule
-    (current-age < imperial-age)
     (or(wood-amount g:> minimumWoodForLC)(building-type-count lumber-camp > 2))
     (and(housing-headroom g:<  populationRoomBeforeBuildingHouses)(population-headroom > 0))
     (up-can-build 0 c: house)
@@ -379,19 +355,6 @@
     (up-build place-control 0 c: house)
     ;(up-chat-data-to-player my-player-number "Wood > %d" g: minimumWoodForLC)
 )
-
-(defrule
-    (current-age == imperial-age)
-    (wood-amount g:> minimumWoodForLC)
-    (and(housing-headroom g:<  populationRoomBeforeBuildingHouses)(population-headroom > 0))
-    (up-can-build 0 c: house)
-=>
-    (chat-local-to-self "Trying To Build House")
-    (up-set-placement-data my-player-number house c: 20)
-    (up-build place-control 0 c: house)
-)
-
-
 
 ; LUMBER CAMP
 (defrule
