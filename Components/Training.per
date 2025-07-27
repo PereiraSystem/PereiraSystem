@@ -1065,6 +1065,7 @@
 ; SCORPIONS
 (defrule
     (up-compare-goal scorpionsSpam == 1)
+    (wood-amount g:> minimumWoodForLC)
     (can-train scorpion-line)    
 =>
     (train scorpion-line)
