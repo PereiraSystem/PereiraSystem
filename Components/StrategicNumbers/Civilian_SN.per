@@ -303,4 +303,16 @@
 
 
 
+(defrule
+    (current-age > dark-age)
+    (wood-amount g:< minimumWoodForLC)
+=>
+    (set-strategic-number sn-maximum-wood-drop-distance 40)
+)
 
+(defrule
+    (current-age > dark-age)
+    (wood-amount g:> minimumWoodForLC)
+=>
+    (set-strategic-number sn-maximum-wood-drop-distance 6)
+)
