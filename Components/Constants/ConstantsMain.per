@@ -7,6 +7,8 @@
 (defconst weHaveArcheryOrStableAndSomeSoldiers 5)
 
 (defconst populationRoomBeforeBuildingHouses 6); NEED TO USE IT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+(defconst lumberCampDistanceIncrement 7); 
+(defconst miningCampDistanceIncrement 8); 
 
 (defconst avoidBuildingDocks 10)
 (defconst avoidCreatingNavy 11)
@@ -40,6 +42,23 @@
   (set-goal weAreAttacking 0)
   (disable-self)
 )  
+
+
+(defrule
+  (population-cap <= 250)
+  =>
+  (set-goal campDistanceIncrement 1)
+  (set-goal miningCampDistanceIncrement 4)
+  (disable-self)
+)
+
+(defrule
+  (population-cap > 250)
+  =>
+  (set-goal lumperCampDistanceIncrement 2)
+  (set-goal miningCampDistanceIncrement 8)
+  (disable-self)
+)
 
 ; AVOID DOCKS - 10
 (defrule
