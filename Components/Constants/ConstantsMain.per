@@ -47,11 +47,7 @@
 (defrule
   (population-cap <= 250)
   =>
-<<<<<<< HEAD
   (set-goal lumberCampDistanceIncrement 1)
-=======
-  (set-goal campDistanceIncrement 1)
->>>>>>> d0fbbdfbdc9097cf49068f9b54e6c74fba86229b
   (set-goal miningCampDistanceIncrement 4)
   (disable-self)
 )
@@ -59,7 +55,7 @@
 (defrule
   (population-cap > 250)
   =>
-  (set-goal lumperCampDistanceIncrement 2)
+  (set-goal lumberCampDistanceIncrement 2)
   (set-goal miningCampDistanceIncrement 8)
   (disable-self)
 )
