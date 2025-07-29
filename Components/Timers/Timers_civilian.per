@@ -39,14 +39,18 @@
     (disable-self)
 )
 ; TIMER 4 INCREASES LUMBER CAMPS DISTANCE SLOWLY AFTER BUILDING ONE
+
+
 (defrule
 	(timer-triggered 4)
 =>
 	(disable-timer 4)
     (enable-timer 4 110) 
-    (up-modify-sn sn-lumber-camp-max-distance c:+ 1)
-    ;(up-chat-data-to-self "Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
+    (up-modify-sn sn-lumber-camp-max-distance g:+ lumberCampDistanceIncrement)
+    (up-chat-data-to-self "Lumber camps max distance increased = %d" s: sn-lumber-camp-max-distance)
 )
+
+
 ; TIMER 5 INCREASES MINING CAMPS QUANTITY
 (defrule(building-type-count mining-camp > 0)=>(enable-timer 5 180)(disable-self))
 (defrule
@@ -64,7 +68,7 @@
 =>
 	(disable-timer 6)
     (enable-timer 6 240)
-    (up-modify-sn sn-mining-camp-max-distance c:+ 4)
+    (up-modify-sn sn-mining-camp-max-distance g:+ miningCampDistanceIncrement)
     ;(up-chat-data-to-self "Mining camps max distance increased = %d" s: sn-mining-camp-max-distance)
 )
 
