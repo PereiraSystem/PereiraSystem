@@ -60,6 +60,14 @@
   (disable-self)
 )
 
+(defrule
+  (population-cap > 400)
+  =>
+  (set-goal lumberCampDistanceIncrement 4)
+  (set-goal miningCampDistanceIncrement 16)
+  (disable-self)
+)
+
 ; AVOID DOCKS - 10
 (defrule
   (or
