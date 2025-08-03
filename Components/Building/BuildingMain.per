@@ -1005,6 +1005,13 @@
     (chat-local-to-self "Trying To Build Monastery - Normal")
 )
 
+(defrule
+    (map-size == ludicrous)
+    (building-type-count-total monastery == 1)
+=>
+    (build monastery)
+)
+
 ; TOWERS
 ; BOMBARD TOWER
 (defrule
