@@ -123,12 +123,12 @@
 )
 
 (defrule
-    (town-under-attack)
+    ;(town-under-attack)
     (building-type-count-total town-center < 3)
     (up-can-build 0 c: town-center)
 =>
     (chat-local-to-self "Escape Maneuver!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    (up-set-placement-data any-ally town-center c: -256)
+    (up-set-placement-data any-ally town-center c: -24)
     (up-build place-control 0 c: town-center)
 )
 
